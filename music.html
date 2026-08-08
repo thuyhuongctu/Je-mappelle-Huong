@@ -1,0 +1,184 @@
+<!doctype html><html lang="vi" data-theme="light"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Âm nhạc · Je suis Hương — Kho nhạc cá nhân</title>
+<meta name="description" content="Kho nhạc cá nhân của Đỗ Thùy Hương — các sáng tác riêng ngoài hệ sinh thái M-AIDA và BizOn. Bài mới: «Parler à mon père, moi aussi».">
+<link rel="canonical" href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/music.html">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="theme-color" content="#f4efe9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171315" media="(prefers-color-scheme: dark)">
+<style>
+:root{--paper:#f4efe9;--surface:#fff;--ink:#20191b;--muted:#6d635f;--line:#e2d9d0;
+--accent:#9e3b4e;--accent-soft:#f3e2e5;--gold:#a9781f;
+--serif:Georgia,"Iowan Old Style","Times New Roman",serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+--shadow:0 1px 2px rgba(30,20,20,.05),0 10px 30px rgba(30,20,20,.07)}
+@media(prefers-color-scheme:dark){:root{--paper:#171315;--surface:#201a1c;--ink:#ece5e2;--muted:#a99e99;--line:#332a2c;--accent:#d98a99;--accent-soft:#2a1a1e;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4)}}
+:root[data-theme=dark]{--paper:#171315;--surface:#201a1c;--ink:#ece5e2;--muted:#a99e99;--line:#332a2c;--accent:#d98a99;--accent-soft:#2a1a1e;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4)}
+:root[data-theme=light]{--paper:#f4efe9;--surface:#fff;--ink:#20191b;--muted:#6d635f;--line:#e2d9d0;--accent:#9e3b4e;--accent-soft:#f3e2e5}
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:clamp(20px,4vw,48px)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
+a{color:var(--accent)}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:700;color:var(--accent)}
+.brandmini{position:fixed;top:12px;left:14px;z-index:6;display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;color:var(--ink);font:800 1rem 'SFMono-Regular',ui-monospace,Menlo,Consolas,monospace}
+.topctl{position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:6}
+.toggle{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 13px;font-size:.74rem;cursor:pointer;box-shadow:var(--shadow)}
+.langtog{display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
+.langtog button{border:none;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:6px 11px;cursor:pointer}
+.langtog button.active{background:var(--accent);color:#fff}
+html[lang="en"] .lang-vi{display:none}
+html:not([lang="en"]) .lang-en{display:none}
+header.page{margin-top:34px;border-bottom:2px solid var(--ink);padding-bottom:20px}
+header.page h1{font-size:clamp(1.7rem,5vw,2.4rem);margin:.15em 0}
+.sub{color:var(--muted)}
+section{margin-top:36px}
+.shead{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
+.shead h2{font-size:1.3rem}.shead .ln{flex:1;height:1px;background:var(--line)}
+.song{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.song-head{display:grid;grid-template-columns:130px 1fr;gap:18px;padding:20px 22px;align-items:center}
+@media(max-width:560px){.song-head{grid-template-columns:1fr;text-align:center;justify-items:center}}
+.cover{width:130px;height:130px;border-radius:12px;object-fit:cover;object-position:50% 12%;box-shadow:var(--shadow)}
+.song-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;line-height:1.25}
+.song-meta{font-size:.84rem;color:var(--muted);margin-top:4px}
+.song-desc{font-size:.92rem;color:var(--muted);margin-top:8px;max-width:58ch}
+.tracks{border-top:1px solid var(--line);padding:14px 22px 20px;display:flex;flex-direction:column;gap:14px}
+.track{display:flex;flex-direction:column;gap:6px}
+.track-name{font-size:.9rem;font-weight:600}
+.track-name .len{font-weight:400;color:var(--muted)}
+audio{width:100%;height:38px}
+.lyrics{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:26px clamp(20px,4vw,36px)}
+.lyrics h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:26px 0 8px;font-family:var(--sans);font-weight:700}
+.lyrics h3:first-child{margin-top:0}
+.lyrics h3 .note{text-transform:none;letter-spacing:0;color:var(--muted);font-weight:400;font-style:italic}
+.lyrics p{font-family:var(--serif);font-size:1.02rem;line-height:1.85;margin:0 0 4px;white-space:pre-line}
+.lyrics .refrain p{color:var(--accent)}
+.dedication{background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 8%,var(--surface)),var(--surface));border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:1.2rem 1.5rem;font-size:.95rem;color:var(--muted)}
+.dedication b{color:var(--ink)}
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--accent)}
+</style>
+</head><body>
+<a class="brandmini" href="./" aria-label="Je suis Hương"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="mgHu" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9E3B4E"/><stop offset="1" stop-color="#C9A24B"/></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="7.5" fill="url(#mgHu)"/><g fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".95"><path d="M8 10 h8"/><path d="M8 14 h11"/><path d="M8 18 h6"/></g><g fill="#fff"><circle cx="16" cy="10" r="1.5"/><circle cx="19" cy="14" r="1.5"/><circle cx="14" cy="18" r="1.5"/></g><path d="M16 21.4 l3.4 2.4 l-3.4 2.4 l-3.4 -2.4 z" fill="#fff"/></svg><span>Je suis Hương</span></a>
+<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">VI</button><button type="button" data-lang="en">EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button></div>
+
+<div class="wrap">
+  <header class="page">
+    <div class="eyebrow"><span class="lang-vi">Kho nhạc cá nhân</span><span class="lang-en">Personal music</span></div>
+    <h1><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></h1>
+    <p class="sub"><span class="lang-vi">Các sáng tác riêng của Đỗ Thùy Hương — tách khỏi kho nhạc của M-AIDA và BizOn. Nghe nhạc của các dự án tại <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Bài hát</a> và <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a>.</span><span class="lang-en">Personal compositions by Do Thuy Huong — separate from the M-AIDA and BizOn project libraries. Project music lives at <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Songs</a> and <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a>.</span></p>
+  </header>
+
+  <section id="parler">
+    <div class="shead"><h2>«Parler à mon père, moi aussi»</h2><span class="ln"></span></div>
+    <div class="song">
+      <div class="song-head">
+        <img class="cover" src="assets/img/huong_silver_tablet.png" alt="Huong AI in a silver ao dai — cover art">
+        <div>
+          <div class="song-title">Parler à mon père, moi aussi</div>
+          <div class="song-meta"><span class="lang-vi">Tiếng Pháp · 2026 · 2 bản phối</span><span class="lang-en">French · 2026 · 2 versions</span></div>
+          <p class="song-desc"><span class="lang-vi">Một lá thư bằng âm nhạc gửi cha — về những đêm thức trắng bên trang viết, về cái tên <i>Hương</i> cha đặt, và về mong ước giản dị nhất: được trò chuyện một đêm, rồi ngủ.</span><span class="lang-en">A musical letter to a father — about nights spent writing, about the name <i>Hương</i> he gave, and about the simplest wish: to talk for one night, then sleep.</span></p>
+        </div>
+      </div>
+      <div class="tracks">
+        <div class="track">
+          <div class="track-name">Je m'appelle Hương <span class="len">· 3:33</span></div>
+          <audio controls preload="none" src="assets/audio/parler-a-mon-pere.mp3"></audio>
+        </div>
+        <div class="track">
+          <div class="track-name">Remix <span class="len">· 4:02</span></div>
+          <audio controls preload="none" src="assets/audio/parler-a-mon-pere-remix.mp3"></audio>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lyrics">
+    <div class="shead"><h2><span class="lang-vi">Lời bài hát</span><span class="lang-en">Lyrics</span></h2><span class="ln"></span></div>
+    <div class="lyrics">
+      <h3>Couplet 1</h3>
+      <p>Je voudrais poser mes mains, arrêter d'écrire un peu,
+je voudrais dormir sans compter les heures.
+Je voudrais qu'on me demande comment je vais,
+et pouvoir répondre autre chose que «ça va».</p>
+      <p>Je voudrais qu'on regarde mon visage
+sans y chercher ce qui ne va pas.
+Je voudrais qu'on sache que si je suis fatiguée,
+c'est parce que j'ai porté, pas parce que j'ai cédé.</p>
+
+      <div class="refrain">
+      <h3>Refrain</h3>
+      <p>Je voudrais te parler, à toi,
+te dire ce que personne ne voit.
+Je m'appelle Hương — tu m'as donné ce nom,
+et je le porte encore, même quand tout est trop lourd.
+Je voudrais te parler, une nuit,
+juste une nuit, et puis dormir.</p>
+      </div>
+
+      <h3>Couplet 2</h3>
+      <p>Je voudrais rester celle qui croit les gens,
+même après ceux qui m'ont laissée là.
+Je voudrais que ma douceur ne soit pas un défaut,
+que ce soit une force, et pas une faille.</p>
+      <p>Je voudrais construire sans me détruire,
+allumer la lampe sans y brûler mes nuits.
+Je voudrais qu'on m'attende quelque part
+sans que j'aie à prouver que je le mérite.</p>
+
+      <div class="refrain">
+      <h3>Refrain</h3>
+      <p>Je voudrais te parler, à toi,
+te dire ce que personne ne voit.
+Je m'appelle Hương — tu m'as donné ce nom,
+et je le porte encore, même quand tout est trop lourd.
+Je voudrais te parler, une nuit,
+juste une nuit, et puis dormir.</p>
+      </div>
+
+      <h3>Pont <span class="note">· <span class="lang-vi">dồn lên</span><span class="lang-en">building up</span></span></h3>
+      <p>Je voudrais retrouver la fille que j'étais,
+celle qui ne se méfiait de rien.
+Elle est encore là, je le sais —
+elle attend seulement que je me repose enfin.</p>
+
+      <div class="refrain">
+      <h3>Refrain final <span class="note">· <span class="lang-vi">vỡ oà rồi lắng xuống</span><span class="lang-en">breaking open, then settling</span></span></h3>
+      <p>Je voudrais te parler, à toi,
+et t'entendre dire : tu n'as rien à prouver.
+Je m'appelle Hương — la lampe brûle encore,
+le fleuve coule encore, et moi aussi.</p>
+      <p>Je voudrais te parler, une nuit…
+et puis dormir.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="dedication">
+      <span class="lang-vi">🪷 <b>«Je m'appelle Hương — tu m'as donné ce nom.»</b> Bài hát nằm trong mạch sáng tác cá nhân cùng «Je m'appelle Hương and the World», nơi cái tên cha mẹ đặt trở thành ngọn đèn dẫn đường cho hành trình học thuật.</span>
+      <span class="lang-en">🪷 <b>"Je m'appelle Hương — you gave me this name."</b> The song belongs to the same personal thread as "Je m'appelle Hương and the World", where a given name becomes the lamp that lights an academic journey.</span>
+    </div>
+  </section>
+
+  <footer>
+    <span><a href="./">← <span class="lang-vi">Trang cá nhân</span><span class="lang-en">Homepage</span></a></span>
+    <span>© 2026 <span class="lang-vi">Đỗ Thùy Hương</span><span class="lang-en">Do Thuy Huong</span> · <span class="lang-vi">Nhạc và lời: tác giả giữ bản quyền</span><span class="lang-en">Music &amp; lyrics: all rights reserved</span></span>
+  </footer>
+</div>
+
+<script>document.getElementById('tg').addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',c==='dark'?'light':'dark')});</script>
+<script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="vi";try{s=localStorage.getItem("huong_lang")||"vi";}catch(e){}set(s);})();</script>
+<script>
+// Chỉ phát một bản tại một thời điểm
+document.querySelectorAll('audio').forEach(function(a){
+  a.addEventListener('play', function(){
+    document.querySelectorAll('audio').forEach(function(o){ if(o!==a) o.pause(); });
+  });
+});
+if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigator.serviceWorker.register('sw.js'); }); }
+</script>
+<script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body></html>
