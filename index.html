@@ -3,6 +3,12 @@
 <title>Đỗ Thùy Hương · Je suis Hương — Trang học thuật cá nhân</title>
 <meta name="description" content="Trang học thuật cá nhân độc lập của Đỗ Thùy Hương: giảng viên, nghiên cứu sinh tiến sĩ về quốc tế hóa và hiệu quả doanh nghiệp ở châu Á; hệ sinh thái số gồm M-AIDA, BizOn, EnQuiz và ThuyHuong Digital 2026 Games.">
 <link rel="canonical" href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="theme-color" content="#f4efe9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171315" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-title" content="Hương">
 <meta property="og:title" content="Đỗ Thùy Hương · Je suis Hương">
 <meta property="og:description" content="Giảng viên · Nghiên cứu sinh tiến sĩ · Quốc tế hóa & hiệu quả doanh nghiệp ở châu Á.">
 <meta property="og:type" content="profile">
@@ -142,6 +148,7 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
         <a href="https://osf.io/m25qs/" target="_blank" rel="noopener">OSF</a>
         <a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener">GitHub</a>
         <a href="#ecosystem"><span class="lang-vi">Hệ sinh thái số ↓</span><span class="lang-en">Digital ecosystem ↓</span></a>
+        <a href="#" id="installBtn" hidden style="border-color:var(--accent);color:var(--accent);font-weight:700">📲 <span class="lang-vi">Cài ứng dụng</span><span class="lang-en">Install app</span></a>
       </div>
     </div>
   </header>
@@ -397,6 +404,25 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
   </footer>
 </div>
 <script>document.getElementById('tg').addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',c==='dark'?'light':'dark')});</script>
+<script>
+// PWA: đăng ký service worker + nút cài đặt "Je m'appelle Hương"
+if ('serviceWorker' in navigator) {
+  addEventListener('load', function () { navigator.serviceWorker.register('sw.js'); });
+}
+(function () {
+  var deferred = null, btn = document.getElementById('installBtn');
+  addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault(); deferred = e; if (btn) btn.hidden = false;
+  });
+  if (btn) btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!deferred) return;
+    deferred.prompt();
+    deferred.userChoice.then(function () { deferred = null; btn.hidden = true; });
+  });
+  addEventListener('appinstalled', function () { if (btn) btn.hidden = true; });
+})();
+</script>
   <!-- Thong ke luot truy cap (GoatCounter) - khong dung cookie, ton trong quyen rieng tu -->
   <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>

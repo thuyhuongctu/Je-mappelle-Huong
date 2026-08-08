@@ -1,0 +1,17 @@
+{
+  "name": "Je m'appelle Hương — Đỗ Thùy Hương",
+  "short_name": "Hương",
+  "description": "Trang học thuật cá nhân của Đỗ Thùy Hương: quốc tế hóa & hiệu quả doanh nghiệp ở châu Á; hệ sinh thái M-AIDA, BizOn, EnQuiz, Trò Chơi Sử Việt.",
+  "lang": "vi",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4efe9",
+  "theme_color": "#9e3b4e",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
