@@ -41,6 +41,14 @@ Everything is plain HTML/CSS/JS — **no install, no build step**.
 
 Trang chạy trên **GitHub Pages**: Settings → Pages → Deploy from branch `main` → `/ (root)`.
 
+## 🎬 Công cụ video / Video tooling
+
+Repo cài sẵn bộ **skill MiniMax H3** (từ [thuyhuongctu/MiniMax-H3](https://github.com/thuyhuongctu/MiniMax-H3)) trong `.claude/skills/` cho các hoạt động video của hệ sinh thái — video giới thiệu trang, video nhân vật Hương AI (Ref2VA nhận tối đa 9 ảnh tham chiếu), MV bài hát có phụ đề, quảng bá thương hiệu:
+
+`h3-prompt-writing` · `brand-promo-video-generator` · `3d-animation-short-generator` · `mv-subtitle` · `minimalist-product-ad` · `co-op-game-intro` · `handdrawn-live-video` · `paper-collage-explainer` · `papercraft-stop-motion`
+
+Sinh video qua [hailuoai.video](https://hailuoai.video/tools/minimax-h3) hoặc [MiniMax API](https://platform.minimax.io/docs/api-reference/video-generation-v2-create).
+
 ## 📄 Bản quyền / Copyright
 
 © 2026 Đỗ Thùy Hương · Cần Thơ, Việt Nam · thuyhuongctu@gmail.com
