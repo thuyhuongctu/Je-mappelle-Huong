@@ -16,6 +16,7 @@
 @media(prefers-color-scheme:dark){:root{--paper:#171315;--surface:#201a1c;--ink:#ece5e2;--muted:#a99e99;--line:#332a2c;--accent:#d98a99;--accent-soft:#2a1a1e;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4)}}
 :root[data-theme=dark]{--paper:#171315;--surface:#201a1c;--ink:#ece5e2;--muted:#a99e99;--line:#332a2c;--accent:#d98a99;--accent-soft:#2a1a1e;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4)}
 :root[data-theme=light]{--paper:#f4efe9;--surface:#fff;--ink:#20191b;--muted:#6d635f;--line:#e2d9d0;--accent:#9e3b4e;--accent-soft:#f3e2e5}
+html{scroll-behavior:smooth}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
 .wrap{max-width:900px;margin:0 auto;padding:clamp(20px,4vw,48px)}
 h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
@@ -79,6 +80,15 @@ html:not([lang="en"]) .lang-en{display:none}
 .langtog{display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
 .langtog button{border:none;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:6px 11px;cursor:pointer}
 .langtog button.active{background:var(--accent);color:#fff}
+
+/* ===== site nav (standalone) ===== */
+.sitenav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:20px 0 6px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.sitenav a{font-size:.82rem;font-weight:600;text-decoration:none;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:6px 14px;box-shadow:var(--shadow)}
+.sitenav a:hover{border-color:var(--accent);color:var(--accent)}
+footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
+footer .fnav a{color:var(--muted);text-decoration:none}
+footer .fnav a:hover{color:var(--accent);text-decoration:underline}
+footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
 /* ===== 3D depth (Concept A) ===== */
 @media (prefers-reduced-motion: no-preference){
   .wrap{perspective:1400px}
@@ -131,10 +141,20 @@ html:not([lang="en"]) .lang-en{display:none}
         <a href="https://www.researchgate.net/profile/Do-Thuy-Huong" target="_blank" rel="noopener">ResearchGate</a>
         <a href="https://osf.io/m25qs/" target="_blank" rel="noopener">OSF</a>
         <a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://thuyhuongctu.github.io/M-AIDA/"><span class="lang-vi">M-AIDA (phần mềm luận án)</span><span class="lang-en">M-AIDA (dissertation software)</span></a>
+        <a href="#ecosystem"><span class="lang-vi">Hệ sinh thái số ↓</span><span class="lang-en">Digital ecosystem ↓</span></a>
       </div>
     </div>
   </header>
+
+  <nav class="sitenav" aria-label="Site">
+    <a href="#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
+    <a href="#ecosystem"><span class="lang-vi">Hệ sinh thái số</span><span class="lang-en">Ecosystem</span></a>
+    <a href="#gallery"><span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Virtual character</span></a>
+    <a href="#pubs"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a>
+    <a href="#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span></a>
+    <a href="#worlddata"><span class="lang-vi">Dữ liệu thế giới</span><span class="lang-en">World data</span></a>
+    <a href="#blog">Blog</a>
+  </nav>
 
   <section id="about">
     <div class="shead"><h2><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></h2><span class="ln"></span></div>
@@ -222,7 +242,7 @@ html:not([lang="en"]) .lang-en{display:none}
       <div class="card feat">
         <h3>M-AIDA, Meta-Analysis Intelligent Data Assistant</h3>
         <p><span class="lang-vi">Phần mềm trích xuất mức độ ảnh hưởng từ PDF bằng mô hình ngôn ngữ lớn, có kiểm chứng con người 100% và khóa bất biến. Xây dựng cho luận án; mã nguồn mở, lưu trữ Zenodo.</span><span class="lang-en">Software that extracts effect sizes from PDFs with large language models, with 100% human verification and immutable locking. Built for the dissertation; open-source, archived on Zenodo.</span></p>
-        <a class="go" href="https://thuyhuongctu.github.io/M-AIDA/"><span class="lang-vi">Xem M-AIDA →</span><span class="lang-en">View M-AIDA →</span></a>
+        <a class="go" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><span class="lang-vi">Xem M-AIDA →</span><span class="lang-en">View M-AIDA →</span></a>
       </div>
       <div class="card">
         <h3>BizOn AI</h3>
@@ -365,12 +385,13 @@ html:not([lang="en"]) .lang-en{display:none}
       <p><span class="lang-vi">M-AIDA không phải một demo. Nó được xây cho, và dùng xuyên suốt, phần phân tích tổng hợp của luận án tôi, quan hệ giữa quốc tế hóa và hiệu quả doanh nghiệp, gộp <b>236 nghiên cứu</b> công bố từ 1978 đến 2026 thành <b>286 bản ghi mức độ ảnh hưởng đã khóa</b>, cho hệ số tương quan gộp r = 0,074 [0,060; 0,088]. Trang minh họa công khai hiển thị bộ dữ liệu này dưới dạng biểu đồ rừng (forest plot) và bản đồ thế giới tương tác.</span><span class="lang-en">M-AIDA is not a demo. It was built for, and used throughout, the meta-analysis in my dissertation, the relationship between internationalization and firm performance, pooling <b>236 studies</b> published from 1978 to 2026 into <b>286 locked effect-size records</b>, yielding a pooled correlation of r = 0.074 [0.060; 0.088]. The public demo renders this dataset as an interactive forest plot and world atlas.</span></p>
       <p><span class="lang-vi">Điều tôi tâm đắc nhất không phải chuyện AI, mà là <b>dấu vết kiểm chứng</b>. Với mỗi giá trị được phát hành, hệ thống lưu lại: giá trị đã kiểm chứng, ghi chú của người rà, cách quy đổi, trạng thái phê duyệt và thời điểm khóa. Bất kỳ ai cũng có thể lần ngược một hệ số gộp về đúng trang của bài báo gốc. M-AIDA mã nguồn mở, có DOI Zenodo, và cố tình khiêm tốn: nó không sàng lọc tài liệu, không chạy thống kê, và không thay thế con người, nó giữ cho một con người <i>có tên</i> chịu trách nhiệm cho từng con số.</span><span class="lang-en">What I care about most is not the AI, but the <b>audit trail</b>. For every released value the system records the verified value, the reviewer’s notes, the conversion route, the approval status and the lock timestamp. Anyone can trace a pooled coefficient back to the exact page of the primary study. M-AIDA is open-source with a Zenodo DOI, and deliberately modest: it does not screen the literature, runs no statistics, and does not replace people, it keeps a <i>named</i> human responsible for every value.</span></p>
       <p><span class="lang-vi">Phiên bản 7.1.1 đã được đóng băng và đăng ký. Chặng tiếp theo: bản 7.2 thêm truy vết đến từng trường, một benchmark kiểm định độ chính xác, và một bài báo phần mềm (khuôn SoftwareX). Với tôi, M-AIDA là lời nhắc rằng công nghệ tốt trong nghiên cứu không phải để thay con người suy nghĩ, mà để con người suy nghĩ kỹ hơn, và minh bạch hơn.</span><span class="lang-en">Version 7.1.1 is frozen and registered. Next: a 7.2 release with field-level provenance, a benchmark to quantify accuracy, and a software paper (SoftwareX format). For me, M-AIDA is a reminder that good technology in research is not there to replace human thinking, but to let us think more carefully, and more transparently.</span></p>
-      <p class="post-links"><a href="https://thuyhuongctu.github.io/M-AIDA/"><span class="lang-vi">Xem M-AIDA →</span><span class="lang-en">Explore M-AIDA →</span></a> · <a href="https://doi.org/10.5281/zenodo.21282516" target="_blank" rel="noopener">Zenodo DOI</a></p>
+      <p class="post-links"><a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><span class="lang-vi">Xem M-AIDA →</span><span class="lang-en">Explore M-AIDA →</span></a> · <a href="https://doi.org/10.5281/zenodo.21282516" target="_blank" rel="noopener">Zenodo DOI</a></p>
     </article>
   </section>
 
   <footer>
-    <span style="flex-basis:100%"><a href="https://thuyhuongctu.github.io/M-AIDA/">M-AIDA</a> · <a href="https://thuyhuongctu.github.io/M-AIDA/library.html"><span class="lang-vi">Thư viện Sáng tạo</span><span class="lang-en">Creative Library</span></a> · <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html"><span class="lang-vi">Bài hát</span><span class="lang-en">Songs</span></a> · <a href="https://thuyhuongctu.github.io/M-AIDA/data_melody.html"><span class="lang-vi">Dữ liệu &amp; Giai điệu</span><span class="lang-en">Data &amp; Melody</span></a> · <a href="https://thuyhuongctu.github.io/M-AIDA/commercial.html"><span class="lang-vi">Bản thương mại</span><span class="lang-en">Commercial</span></a> · <a href="https://thuyhuongctu.github.io/M-AIDA/privacy.html"><span class="lang-vi">Quyền riêng tư</span><span class="lang-en">Privacy</span></a></span>
+    <span style="flex-basis:100%" class="fnav"><span class="fgroup"><span class="lang-vi">Trang này</span><span class="lang-en">This site</span></span><a href="#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a><a href="#ecosystem"><span class="lang-vi">Hệ sinh thái số</span><span class="lang-en">Ecosystem</span></a><a href="#gallery"><span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Virtual character</span></a><a href="#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span></a><a href="#blog">Blog</a></span>
+    <span style="flex-basis:100%" class="fnav"><span class="fgroup"><span class="lang-vi">Dự án</span><span class="lang-en">Projects</span></span><a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA ↗</a><a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn AI ↗</a><a href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener">EnQuiz ↗</a><a href="https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/" target="_blank" rel="noopener"><span class="lang-vi">Trò Chơi Sử Việt ↗</span><span class="lang-en">History Games ↗</span></a><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID ↗</a><a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener">GitHub ↗</a></span>
     <span>© 2026 <span class="lang-vi">Đỗ Thùy Hương</span><span class="lang-en">Do Thuy Huong</span> · <span class="lang-vi">Cần Thơ, Việt Nam</span><span class="lang-en">Can Tho, Vietnam</span></span>
     <span>thuyhuongctu@gmail.com</span>
   </footer>
