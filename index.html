@@ -122,6 +122,16 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
 .post-links{font-size:.9rem;font-weight:600;margin-top:4px}
 .post-links a{color:var(--accent);text-decoration:none}
 .post-links a:hover{text-decoration:underline}
+/* Tin nổi bật — hệ sinh thái */
+.hl-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:0 0 18px}
+.hl-stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:14px;padding:13px 16px;box-shadow:var(--shadow);text-decoration:none;display:block;transition:transform .15s}
+.hl-stat:hover{transform:translateY(-2px)}
+.hl-stat .hs-name{font-family:var(--sans);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--accent)}
+.hl-stat .hs-num{font-family:var(--serif);font-size:1.45rem;font-weight:700;color:var(--ink);margin:4px 0 1px}
+.hl-stat .hs-sub{font-size:.76rem;color:var(--muted)}
+.hl-stamp{font-family:var(--sans);font-size:.72rem;color:var(--muted);margin:-8px 0 20px}
+.post.featured{border:1.5px solid var(--accent);background:linear-gradient(180deg,var(--accent-soft),var(--surface) 34%)}
+.hl-badge{display:inline-block;font-family:var(--sans);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:#fff;background:var(--accent);border-radius:999px;padding:3px 11px;margin-bottom:10px}
   .hcm{background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 9%,var(--surface)),var(--surface));border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:1.4rem 1.6rem}
   .hcm-k{font:700 .68rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
   .hcm-q{font-family:var(--serif);font-size:1.16rem;line-height:1.55;font-style:italic;margin:.55rem 0 .45rem;color:var(--ink)}
@@ -354,6 +364,34 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
 
   <section id="blog">
     <div class="shead"><h2><span class="lang-vi">Blog · Tin tức học thuật</span><span class="lang-en">Blog · Academic news</span></h2><span class="ln"></span></div>
+
+    <div class="hl-strip">
+      <a class="hl-stat" href="https://doi.org/10.5281/zenodo.21850735" target="_blank" rel="noopener">
+        <div class="hs-name">EnQuiz</div>
+        <div class="hs-num">101 <span style="font-size:.85rem">👁</span> · 31 <span style="font-size:.85rem">⬇</span></div>
+        <div class="hs-sub"><span class="lang-vi">lượt xem · lượt tải — sau chưa đầy 3 ngày</span><span class="lang-en">views · downloads — in under 3 days</span></div>
+      </a>
+      <a class="hl-stat" href="https://doi.org/10.5281/zenodo.21282516" target="_blank" rel="noopener">
+        <div class="hs-name">M-AIDA</div>
+        <div class="hs-num">109 <span style="font-size:.85rem">👁</span> · 5 <span style="font-size:.85rem">⬇</span></div>
+        <div class="hs-sub"><span class="lang-vi">lượt xem · lượt tải — từ 09/07/2026</span><span class="lang-en">views · downloads — since Jul 9, 2026</span></div>
+      </a>
+      <a class="hl-stat" href="https://doi.org/10.5281/zenodo.21592241" target="_blank" rel="noopener">
+        <div class="hs-name">BizOn · Bật Nghiệp</div>
+        <div class="hs-num">70 <span style="font-size:.85rem">👁</span> · 10 <span style="font-size:.85rem">⬇</span></div>
+        <div class="hs-sub"><span class="lang-vi">lượt xem · lượt tải — từ 27/07/2026</span><span class="lang-en">views · downloads — since Jul 27, 2026</span></div>
+      </a>
+    </div>
+    <p class="hl-stamp"><span class="lang-vi">🌟 Tin nổi bật hệ sinh thái «Je m’appelle Hương» · số liệu Zenodo chốt ngày 12/08/2026</span><span class="lang-en">🌟 «Je m’appelle Hương» ecosystem highlights · Zenodo figures as of Aug 12, 2026</span></p>
+
+    <article class="post featured">
+      <span class="hl-badge"><span class="lang-vi">⭐ Tin nổi bật</span><span class="lang-en">⭐ Highlight</span></span>
+      <div class="post-meta">12 · 08 · 2026 · EnQuiz · <span class="lang-vi">Cột mốc</span><span class="lang-en">Milestone</span></div>
+      <h2 class="post-title"><span class="lang-vi">EnQuiz vượt 100 lượt xem và 31 lượt tải — chưa đầy 3 ngày sau khi công bố</span><span class="lang-en">EnQuiz passes 100 views and 31 downloads — less than 3 days after release</span></h2>
+      <p><span class="lang-vi">Thống kê Zenodo chốt ngày <b>12/08/2026</b>: bản ghi <b>EnQuiz</b> — ứng dụng ôn tập trắc nghiệm song ngữ, offline-first cho học phần Khởi sự doanh nghiệp — đạt <b>101 lượt xem</b> và <b>31 lượt tải</b>, dù mới công bố lần đầu ngày 09/08/2026. Đây là phần mềm có tốc độ lan tỏa nhanh nhất hệ sinh thái: số lượt tải đã gấp ba BizOn (10 lượt) và gấp sáu M-AIDA (5 lượt), hai công cụ ra mắt trước đó cả tháng.</span><span class="lang-en">Zenodo figures as of <b>Aug 12, 2026</b>: the record of <b>EnQuiz</b> — the offline-first bilingual quiz app for the Entrepreneurship course — has reached <b>101 views</b> and <b>31 downloads</b>, despite being first published on Aug 9, 2026. It is the fastest-spreading software in the ecosystem: its downloads already triple BizOn’s (10) and are six times M-AIDA’s (5), both released a month earlier.</span></p>
+      <p><span class="lang-vi">Trong ba ngày, EnQuiz đã qua ba phiên bản (v1.0 và v1.1 ngày 08–09/08, v1.2 ngày 11/08 — gói đầy đủ 42,9 MB kèm bộ thu âm hướng dẫn song ngữ), được lưu trữ vĩnh viễn tại Software Heritage và lập chỉ mục trên OpenAIRE.</span><span class="lang-en">Within three days EnQuiz shipped three versions (v1.0 and v1.1 on Aug 8–9, v1.2 on Aug 11 — a full 42.9 MB package with the bilingual voice-over tour), permanently archived in Software Heritage and indexed on OpenAIRE.</span></p>
+      <p class="post-links">→ <a href="https://doi.org/10.5281/zenodo.21850735" target="_blank" rel="noopener">DOI 10.5281/zenodo.21850735</a> · <a href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><span class="lang-vi">Dùng thử EnQuiz ↗</span><span class="lang-en">Try EnQuiz ↗</span></a></p>
+    </article>
     <article class="post">
       <div class="post-meta">11 · 08 · 2026 · M-AIDA · <span class="lang-vi">Cột mốc</span><span class="lang-en">Milestone</span></div>
       <h2 class="post-title"><span class="lang-vi">M-AIDA cán mốc 100 lượt xem trên Zenodo — phần mềm đầu tiên của hệ sinh thái chạm ba chữ số</span><span class="lang-en">M-AIDA passes 100 views on Zenodo — the ecosystem's first software to reach triple digits</span></h2>
