@@ -1553,6 +1553,92 @@ function capNhatSinhDong(t, dt){
   });
 }
 
+
+/* ---------- SINH ĐỘNG ĐỢT 2: cá chép nhảy, đèn lồng, ong mật ---------- */
+// cá chép — thi thoảng phóng vọt khỏi mặt sông theo cung tròn
+const dsCa = [];
+[['#F08A4B',-20,13.5,6.5,0],['#E85A4F',6,12,8,2.6],['#FFF3E0',34,15,7,4.4]].forEach(([mau,cx,cz,chuKy,tre])=>{
+  const g = new THREE.Group();
+  const than = new THREE.Mesh(new THREE.SphereGeometry(.3,16,12), vatLieu(mau,.55));
+  than.scale.set(1.9,.75,.6);
+  const duoi = new THREE.Mesh(new THREE.ConeGeometry(.16,.4,4), vatLieu(mau,.55));
+  duoi.rotation.z = Math.PI/2; duoi.position.x = -.62; duoi.scale.z=.35;
+  g.add(than); g.add(duoi);
+  g.visible = false;
+  g.userData = {cx,cz,chuKy,tre,duoi};
+  sinhDong.add(g); dsCa.push(g);
+});
+
+// đèn lồng hồng — cột gỗ kem, lồng đèn đung đưa theo gió
+const dsLong = [];
+[[3.2,.5],[-3.2,9],[3.2,20],[-3.2,29]].forEach(([lx,lz],i)=>{
+  const cum = new THREE.Group();
+  const cot = new THREE.Mesh(new THREE.CylinderGeometry(.07,.09,2.1,10), vatLieu('#EFE3CE',.9));
+  cot.position.y = 1.05; cot.castShadow = true;
+  const tay = new THREE.Mesh(new THREE.CylinderGeometry(.05,.05,.55,8), vatLieu('#EFE3CE',.9));
+  tay.rotation.z = Math.PI/2; tay.position.set(lx>0?-.24:.24, 2.06, 0);
+  const treo = new THREE.Group();
+  treo.position.set(lx>0?-.48:.48, 2.02, 0);
+  const den = new THREE.Mesh(new THREE.SphereGeometry(.22,14,12),
+    new THREE.MeshStandardMaterial({color:new THREE.Color('#F2909F'), roughness:.5, metalness:0,
+      emissive:new THREE.Color('#E8607A'), emissiveIntensity:.55}));
+  den.scale.y = 1.25; den.position.y = -.28;
+  const chop = new THREE.Mesh(new THREE.CylinderGeometry(.09,.13,.08,10), vatLieu('#C9A24B',.6));
+  chop.position.y = -.02;
+  const tua = new THREE.Mesh(new THREE.CylinderGeometry(.02,.005,.3,6), vatLieu('#C9A24B',.6));
+  tua.position.y = -.62;
+  treo.add(den); treo.add(chop); treo.add(tua);
+  cum.add(cot); cum.add(tay); cum.add(treo);
+  cum.position.set(lx, 0, lz);
+  cum.userData = {treo, pha:i*1.7};
+  sinhDong.add(cum); dsLong.push(cum);
+});
+
+// ong mật — vo ve vòng nhỏ quanh các khóm hoa
+const dsOng = [];
+[[-8,-2],[10,4],[-14,12]].forEach(([ox,oz],i)=>{
+  const g = new THREE.Group();
+  const than = new THREE.Mesh(new THREE.SphereGeometry(.09,10,8), vatLieu('#F2C94C',.7));
+  than.scale.set(1.5,1,1);
+  const dau = new THREE.Mesh(new THREE.SphereGeometry(.055,8,8), vatLieu('#5A4A52',.7));
+  dau.position.x = .13;
+  const vlCanh = new THREE.MeshBasicMaterial({color:0xffffff, transparent:true, opacity:.6, side:THREE.DoubleSide});
+  const c1 = new THREE.Mesh(new THREE.PlaneGeometry(.16,.07), vlCanh); c1.position.set(0,.07,.05);
+  const c2 = c1.clone(); c2.position.z = -.05;
+  g.add(than); g.add(dau); g.add(c1); g.add(c2);
+  g.userData = {ox,oz,pha:i*2.2,c1,c2};
+  sinhDong.add(g); dsOng.push(g);
+});
+
+function capNhatSinhDong2(t, dt){
+  dsCa.forEach(ca=>{
+    const u = ca.userData;
+    const chu = (t + u.tre) % u.chuKy;
+    const BAY = 1.25;
+    if(chu < BAY){
+      const p = chu / BAY;                     // 0→1 trong cú nhảy
+      ca.visible = true;
+      ca.position.set(u.cx + p*2.6 - 1.3, Math.sin(p*Math.PI)*1.5 + .02, u.cz);
+      ca.rotation.z = (.5 - p) * 1.9;          // chúi đầu lên rồi xuống
+      u.duoi.rotation.y = Math.sin(t*22)*.5;   // quẫy đuôi
+    } else {
+      ca.visible = false;
+    }
+  });
+  dsLong.forEach(c=>{
+    const u = c.userData;
+    u.treo.rotation.z = Math.sin(t*1.5 + u.pha) * .16;
+    u.treo.rotation.x = Math.sin(t*1.1 + u.pha) * .08;
+  });
+  dsOng.forEach(o=>{
+    const u = o.userData, rung = Math.sin(t*46 + u.pha) * .7;
+    u.c1.rotation.x = rung; u.c2.rotation.x = -rung;
+    const a = t*1.6 + u.pha;
+    o.position.set(u.ox + Math.cos(a)*1.1, .75 + Math.sin(t*3.1+u.pha)*.22, u.oz + Math.sin(a)*.9);
+    o.rotation.y = -a + Math.PI/2;
+  });
+}
+
 function vong(){
   requestAnimationFrame(vong);
   const dt = Math.min(dongHo.getDelta(), .05);
@@ -1712,6 +1798,7 @@ function vong(){
   bongHuong.material.opacity = dapXe ? .7 : .85;
 
   capNhatSinhDong(t, dt);
+  capNhatSinhDong2(t, dt);
   veBanDo();
   renderer.render(scene, camera);
 }
