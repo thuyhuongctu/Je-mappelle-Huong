@@ -138,6 +138,32 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
   .hcm-a{font-size:.9rem;color:var(--muted)}
   .hcm-note{font-size:.92rem;color:var(--muted);margin:.75rem 0 0}
 
+/* ===== Bản đồ trang viên (hero hướng B) ===== */
+#bando{position:relative;width:100%;aspect-ratio:1376/768;border-radius:26px;overflow:hidden;
+  border:5px solid var(--surface);box-shadow:var(--shadow);margin:6px 0 26px;
+  background:url('assets/img/garden_hub.jpg') center/cover no-repeat}
+:root[data-theme=dark] #bando{filter:saturate(.92) brightness(.9)}
+.bd-tieude{position:absolute;top:3.5%;left:50%;transform:translateX(-50%);z-index:3;
+  background:rgba(255,253,248,.94);border-radius:999px;padding:7px 18px;white-space:nowrap;
+  font:700 clamp(.68rem,1.6vw,.95rem) var(--serif);color:#a8394e;box-shadow:0 5px 16px rgba(90,50,50,.25)}
+.tram{position:absolute;z-index:3;transform:translate(-50%,-50%);cursor:pointer;border:none;
+  background:rgba(255,253,248,.95);border-radius:14px;padding:.55em .95em;text-align:center;
+  font:700 clamp(.58rem,1.5vw,.82rem)/1.25 var(--sans);color:#463029;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.6),0 6px 16px rgba(70,40,40,.3);transition:transform .15s}
+.tram:hover{transform:translate(-50%,-50%) scale(1.08);color:#a8394e}
+.tram small{display:block;font-weight:600;color:#8d7166;font-size:.78em}
+#bd-xe{position:absolute;z-index:4;width:9.5%;min-width:56px;left:50%;top:79%;
+  transform:translate(-50%,-92%);pointer-events:none;
+  transition:left 1.6s cubic-bezier(.45,.05,.35,1), top 1.6s cubic-bezier(.45,.05,.35,1);
+  filter:drop-shadow(0 8px 10px rgba(60,30,30,.45))}
+#bd-xe.chay{animation:bdNhun .4s ease-in-out infinite}
+@keyframes bdNhun{0%,100%{margin-top:0}50%{margin-top:-5px}}
+#bd-xe.lat{transform:translate(-50%,-92%) scaleX(-1)}
+.bd-mach{position:absolute;bottom:2.5%;left:50%;transform:translateX(-50%);z-index:3;white-space:nowrap;
+  color:#fff8ef;font:600 clamp(.58rem,1.5vw,.8rem) var(--sans);text-shadow:0 2px 8px rgba(60,30,30,.65)}
+@media(prefers-reduced-motion:reduce){#bd-xe{transition:none}#bd-xe.chay{animation:none}}
+
+
 /* ===== Hương đạp xe dẫn tour ===== */
 #hg{position:fixed;left:14px;bottom:14px;z-index:7;display:flex;align-items:flex-end;gap:10px;
   pointer-events:none;transition:opacity .4s}
@@ -190,7 +216,18 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
 </div>
 <div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">VI</button><button type="button" data-lang="en">EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button></div>
 <div class="wrap">
-  <img class="gh-banner" src="assets/img/garden_hub.jpg" alt="Garden Hub — khu vườn sen claymorphism với nhân vật Hương AI trong tà áo dài bạc, hai lối đi Academic Research và Creative Library">
+  <div id="bando" role="navigation" aria-label="Bản đồ trang viên">
+    <div class="bd-tieude">🌸 <span class="lang-vi">Trang viên «Je m'appelle Hương» — chọn nơi muốn ghé</span><span class="lang-en">"Je m'appelle Hương" garden — pick a place to visit</span></div>
+    <button class="tram" style="left:15%;top:57%" data-den="#about">🌸 <span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span><small>Academic Research</small></button>
+    <button class="tram" style="left:36%;top:37%" data-den="#ecosystem">🚀 <span class="lang-vi">Hệ sinh thái</span><span class="lang-en">Ecosystem</span><small>Open Projects</small></button>
+    <button class="tram" style="left:64%;top:37%" data-den="#pubs">📚 <span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><small>Publications</small></button>
+    <button class="tram" style="left:85%;top:56%" data-den="music.html">🎵 <span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><small>Creative Library</small></button>
+    <button class="tram" style="left:26%;top:79%" data-den="#teaching">🎓 <span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span><small>Lecture hall</small></button>
+    <button class="tram" style="left:74%;top:79%" data-den="#blog">📰 <span class="lang-vi">Blog · Tin tức</span><span class="lang-en">Blog · News</span><small>News corner</small></button>
+    <button class="tram" style="left:50%;top:90%" data-den="trangvien.html">🌷 <span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span><small>Open Projects</small></button>
+    <img id="bd-xe" src="assets/img/huong_xedap.webp" alt="">
+    <div class="bd-mach"><span class="lang-vi">Bấm một biển — cô Hương đạp xe đến đó rồi mở khu cho bạn ↓</span><span class="lang-en">Click a sign — Hương rides there, then the page opens that area ↓</span></div>
+  </div>
   <header class="hero">
     <img class="portrait" src="assets/img/pro_aodai.png" alt="3D render portrait of Do Thuy Huong in a white ao dai">
     <div>
@@ -893,6 +930,41 @@ if ('serviceWorker' in navigator) {
   // đổi ngôn ngữ thì đổi chữ trên biển
   new MutationObserver(capNhatBien).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
   capNhatBien();
+})();
+</script>
+
+<script>
+/* Bản đồ trang viên: bấm trạm — Hương đạp xe đến rồi mở khu */
+(function(){
+  const bd = document.getElementById('bando'), xe = document.getElementById('bd-xe');
+  if(!bd || !xe) return;
+  let dangChay = false;
+  bd.querySelectorAll('.tram').forEach(t=>{
+    t.addEventListener('click', ()=>{
+      if(dangChay) return;
+      dangChay = true;
+      const r = t.getBoundingClientRect(), b = bd.getBoundingClientRect();
+      const dx = (r.left + r.width/2 - b.left) / b.width * 100;
+      const dy = (r.top + r.height/2 - b.top) / b.height * 100;
+      const hienX = parseFloat(xe.style.left || '50');
+      xe.classList.toggle('lat', dx < hienX);
+      xe.classList.add('chay');
+      xe.style.left = dx + '%';
+      xe.style.top = Math.min(90, dy + 10) + '%';
+      const giam = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      setTimeout(()=>{
+        xe.classList.remove('chay');
+        const den = t.dataset.den;
+        if(den.startsWith('#')){
+          const el = document.querySelector(den);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        } else {
+          location.href = den;
+        }
+        dangChay = false;
+      }, giam ? 50 : 1700);
+    });
+  });
 })();
 </script>
 </body></html>
