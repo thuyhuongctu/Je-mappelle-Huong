@@ -138,6 +138,24 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
   .hcm-a{font-size:.9rem;color:var(--muted)}
   .hcm-note{font-size:.92rem;color:var(--muted);margin:.75rem 0 0}
 
+/* ===== Hương đạp xe dẫn tour ===== */
+#hg{position:fixed;left:14px;bottom:14px;z-index:7;display:flex;align-items:flex-end;gap:10px;
+  pointer-events:none;transition:opacity .4s}
+#hg.an{opacity:0}
+#hg-img{height:118px;width:auto;filter:drop-shadow(0 10px 12px rgba(120,60,60,.3));
+  transition:transform .3s ease;transform-origin:50% 88%}
+#hg.dap #hg-img{animation:hgDap .5s ease-in-out infinite}
+@keyframes hgDap{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(1.5deg) translateY(-4px)}}
+#hg-bien{pointer-events:auto;cursor:pointer;background:var(--surface);border:1px solid var(--line);
+  border-radius:16px;padding:9px 15px;margin-bottom:16px;max-width:190px;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.55),var(--shadow);
+  font:700 .8rem var(--sans);color:var(--ink);line-height:1.35}
+#hg-bien small{display:block;font-weight:600;color:var(--muted);font-size:.68rem;margin-top:2px}
+#hg-bien:hover{border-color:var(--accent);color:var(--accent)}
+@media(max-width:720px){#hg-img{height:84px}#hg-bien{max-width:150px;font-size:.72rem;padding:7px 11px}}
+@media(prefers-reduced-motion:reduce){#hg.dap #hg-img{animation:none}}
+
+
 /* ===== Garden Hub — claymorphism re-skin ===== */
 body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repeat,var(--paper)}
 .gh-banner{display:block;width:100%;height:auto;border-radius:26px;border:5px solid var(--surface);box-shadow:var(--shadow);margin:6px 0 26px}
@@ -166,6 +184,10 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
 <style>.brandmini{position:fixed;top:12px;left:14px;z-index:6;display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;color:var(--ink);font:800 1rem 'SFMono-Regular',ui-monospace,Menlo,Consolas,monospace;letter-spacing:.01em}.brandmini svg{flex:none}@media(max-width:560px){.brandmini span{display:none}}</style>
 </head><body>
 <a class="brandmini" href="./" aria-label="Je suis Hương"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="mgHu" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9E3B4E"/><stop offset="1" stop-color="#C9A24B"/></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="7.5" fill="url(#mgHu)"/><g fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".95"><path d="M8 10 h8"/><path d="M8 14 h11"/><path d="M8 18 h6"/></g><g fill="#fff"><circle cx="16" cy="10" r="1.5"/><circle cx="19" cy="14" r="1.5"/><circle cx="14" cy="18" r="1.5"/></g><path d="M16 21.4 l3.4 2.4 l-3.4 2.4 l-3.4 -2.4 z" fill="#fff"/></svg><span>Je suis Hương</span></a>
+<div id="hg" aria-hidden="false">
+  <img id="hg-img" src="assets/img/huong_chi.webp" alt="Hương AI đồng hành cùng bạn trên trang">
+  <div id="hg-bien" title="Bấm để đi tiếp mục kế"><span id="hg-ten"></span><small id="hg-phu"></small></div>
+</div>
 <div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">VI</button><button type="button" data-lang="en">EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button></div>
 <div class="wrap">
   <img class="gh-banner" src="assets/img/garden_hub.jpg" alt="Garden Hub — khu vườn sen claymorphism với nhân vật Hương AI trong tà áo dài bạc, hai lối đi Academic Research và Creative Library">
@@ -810,4 +832,67 @@ if ('serviceWorker' in navigator) {
  function initCap(){var L=lang();document.getElementById("globeCap").innerHTML=L==="en"?"Drag to spin · tap a marker to see the related research.":"Kéo để xoay · chạm một điểm để xem nghiên cứu liên quan.";}
  initCap();requestAnimationFrame(tick);
 })();</script>
+
+<script>
+/* Hương đạp xe dẫn tour qua các khu vực của trang */
+(function(){
+  const hg = document.getElementById('hg');
+  const anh = document.getElementById('hg-img');
+  const ten = document.getElementById('hg-ten');
+  const phu = document.getElementById('hg-phu');
+  const XE = 'assets/img/huong_xedap.webp', CHI = 'assets/img/huong_chi.webp';
+  const KHU = [
+    ['about',      {vi:'🌸 Giới thiệu',       en:'🌸 About'},        {vi:'Bấm để đạp xe đi tiếp →', en:'Click to ride on →'}],
+    ['inspiration',{vi:'✨ Nguồn cảm hứng',    en:'✨ Inspiration'},   null],
+    ['ecosystem',  {vi:'🚀 Hệ sinh thái số',  en:'🚀 Digital ecosystem'}, null],
+    ['gallery',    {vi:'🎀 Nhân vật ảo',      en:'🎀 Virtual character'}, null],
+    ['pubs',       {vi:'📚 Công bố khoa học', en:'📚 Publications'},  null],
+    ['teaching',   {vi:'🎓 Giảng dạy & dự án',en:'🎓 Teaching & projects'}, null],
+    ['worlddata',  {vi:'🌏 Dữ liệu thế giới', en:'🌏 World data'},    null],
+    ['blog',       {vi:'📰 Blog · Tin tức',   en:'📰 Blog · News'},   null]
+  ];
+  let hienTai = -1;
+  function ngonNgu(){ return document.documentElement.lang === 'en' ? 'en' : 'vi'; }
+  function capNhatBien(){
+    const l = ngonNgu();
+    if(hienTai < 0){
+      ten.textContent = l==='vi' ? '👋 Cùng dạo trang nhé!' : '👋 Let’s tour the page!';
+      phu.textContent = l==='vi' ? 'Bấm để đạp xe bắt đầu →' : 'Click to start riding →';
+    } else {
+      ten.textContent = KHU[hienTai][1][l];
+      phu.textContent = l==='vi' ? 'Bấm để đạp xe đi tiếp →' : 'Click to ride on →';
+    }
+  }
+  // theo dõi khu vực đang xem
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        const i = KHU.findIndex(k=>k[0]===e.target.id);
+        if(i>=0){ hienTai = i; capNhatBien(); }
+      }
+    });
+  }, {rootMargin:'-30% 0px -55% 0px'});
+  KHU.forEach(k=>{ const el = document.getElementById(k[0]); if(el) io.observe(el); });
+  // đạp xe khi cuộn, dừng thì chỉ tay
+  let henDung = null;
+  addEventListener('scroll', ()=>{
+    hg.classList.add('dap');
+    if(anh.getAttribute('src') !== XE) anh.src = XE;
+    clearTimeout(henDung);
+    henDung = setTimeout(()=>{
+      hg.classList.remove('dap');
+      anh.src = CHI;
+    }, 650);
+  }, {passive:true});
+  // bấm biển: đạp tới mục kế tiếp
+  document.getElementById('hg-bien').addEventListener('click', ()=>{
+    const ke = KHU[(hienTai+1) % KHU.length][0];
+    const el = document.getElementById(ke);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  // đổi ngôn ngữ thì đổi chữ trên biển
+  new MutationObserver(capNhatBien).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
+  capNhatBien();
+})();
+</script>
 </body></html>
