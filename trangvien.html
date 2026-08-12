@@ -217,6 +217,19 @@ body.cham #ban-do canvas{width:84px;height:84px}
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
 :focus-visible{outline:3px solid var(--nhan);outline-offset:3px}
 .an{display:none!important}
+
+/* mini-game hái sen */
+#hud-sen{position:fixed;left:14px;top:64px;z-index:8;background:rgba(255,253,248,.92);border-radius:999px;
+  padding:8px 16px;font:700 15px/1 system-ui,sans-serif;color:#a8394e;
+  box-shadow:0 4px 14px rgba(150,95,75,.25);pointer-events:none}
+#toast-sen{position:fixed;inset:0;display:none;place-items:center;z-index:40;background:rgba(40,25,35,.45)}
+#toast-sen.hien{display:grid}
+#toast-sen .hop{background:#fffdf8;border-radius:26px;padding:34px 40px;text-align:center;max-width:420px;
+  box-shadow:0 24px 60px rgba(40,20,30,.4)}
+#toast-sen h2{margin:0 0 10px;font:700 26px Georgia,serif;color:#a8394e}
+#toast-sen p{margin:0 0 18px;font:15px/1.6 system-ui,sans-serif;color:#6d5a52}
+#toast-sen button{border:none;border-radius:999px;padding:11px 26px;font:700 15px system-ui,sans-serif;
+  background:#c4596b;color:#fff;cursor:pointer;box-shadow:0 6px 16px rgba(196,89,107,.45)}
 </style>
 </head>
 <body>
@@ -229,6 +242,7 @@ body.cham #ban-do canvas{width:84px;height:84px}
   <div class="nhom">
     <button class="nut-nho" id="nut-xe-may" data-vi="🚲 Đạp xe" data-en="🚲 Cycle">🚲 Đạp xe</button>
     <button class="nut-nho" id="nut-thoi-khac" data-vi="🌇 Chiều" data-en="🌇 Sunset">🌇 Chiều</button>
+    <button class="nut-nho" id="nut-am-thanh" aria-label="Âm thanh">🔊</button>
     <button class="nut-nho" id="nut-ngu">EN</button>
     <button class="nut-nho" id="nut-tro-giup">?</button>
   </div>
@@ -246,6 +260,12 @@ body.cham #ban-do canvas{width:84px;height:84px}
 <div id="goi-y"><b>E</b><span></span></div>
 
 <div id="can"><i></i></div>
+<div id="hud-sen">🌸 <span id="sen-so">0</span>/12</div>
+<div id="toast-sen"><div class="hop">
+  <h2>🎉 <span data-vi="Hái đủ 12 đóa sen!" data-en="All 12 lotus picked!">Hái đủ 12 đóa sen!</span></h2>
+  <p data-vi="Khu vườn nở rộ chúc mừng bạn. Sen sẽ lại nở để bạn hái tiếp." data-en="The garden blooms in your honor. The lotus will bloom again for another round.">Khu vườn nở rộ chúc mừng bạn. Sen sẽ lại nở để bạn hái tiếp.</p>
+  <button id="sen-lai" data-vi="Chơi lại 🌸" data-en="Play again 🌸">Chơi lại 🌸</button>
+</div></div>
 <button id="nut-xe" aria-label="Đổi phương tiện">🚲</button>
 <button id="nut-cham" aria-label="Vào khu">✦</button>
 
@@ -1820,6 +1840,7 @@ function apThoiKhac(k){
   });
   dsDom.forEach(d=>d.visible = cfg.domDom);
   localStorage.setItem('tv_thoikhac', k);
+  if(window.__amSanSang) amTheoThoiKhac(k);
   const nutTK = document.getElementById('nut-thoi-khac');
   if(nutTK){
     const l = (typeof NG!=='undefined' && NG==='en') ? 'en' : 'vi';
@@ -1845,6 +1866,264 @@ window.__capNhatBoiCanh = function(t){
     d.position.set(u.x+Math.sin(t*.6+u.pha)*1.6, u.cao+Math.sin(t*1.7+u.pha)*.4, u.z+Math.cos(t*.5+u.pha)*1.4);
     d.material.opacity = .45+.45*Math.sin(t*2.4+u.pha);
   });
+}
+
+
+/* ========== ÂM THANH MÔI TRƯỜNG (Web Audio, tổng hợp — không cần file) ========== */
+let amCtx = null, amBat = localStorage.getItem('tv_amthanh') !== 'tat';
+const amNut = {chinh:null, gio:null, nuoc:null};
+let amChimHen = null, amDeNodes = [], amChuongHen = null;
+
+function amKhoiTao(){
+  if(amCtx) return;
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if(!AC) return;
+  amCtx = new AC();
+  amNut.chinh = amCtx.createGain();
+  amNut.chinh.gain.value = amBat ? 1 : 0;
+  amNut.chinh.connect(amCtx.destination);
+  window.__amSanSang = true;
+
+  // đệm nhiễu dùng chung (2s trắng -> hồng hoá nhẹ)
+  const dem = amCtx.createBuffer(1, amCtx.sampleRate*2, amCtx.sampleRate);
+  const kenh = dem.getChannelData(0);
+  let b0=0,b1=0,b2=0;
+  for(let i=0;i<kenh.length;i++){
+    const w = Math.random()*2-1;
+    b0 = .997*b0 + .029*w; b1 = .985*b1 + .045*w; b2 = .95*b2 + .09*w;
+    kenh[i] = (b0+b1+b2+w*.05)*.25;
+  }
+  function nguonNhieu(){
+    const n = amCtx.createBufferSource();
+    n.buffer = dem; n.loop = true; n.start();
+    return n;
+  }
+
+  // 1. gió & lá — nhiễu qua lọc trầm, phập phồng chậm
+  {
+    const loc = amCtx.createBiquadFilter(); loc.type='lowpass'; loc.frequency.value = 420; loc.Q.value = .4;
+    const g = amCtx.createGain(); g.gain.value = .05;
+    nguonNhieu().connect(loc); loc.connect(g); g.connect(amNut.chinh);
+    const lfo = amCtx.createOscillator(); lfo.frequency.value = .07;
+    const lfoG = amCtx.createGain(); lfoG.gain.value = .025;
+    lfo.connect(lfoG); lfoG.connect(g.gain); lfo.start();
+    amNut.gio = g;
+  }
+  // 2. sông nước — nhiễu dải giữa lăn tăn
+  {
+    const loc = amCtx.createBiquadFilter(); loc.type='bandpass'; loc.frequency.value = 950; loc.Q.value = .9;
+    const g = amCtx.createGain(); g.gain.value = .022;
+    nguonNhieu().connect(loc); loc.connect(g); g.connect(amNut.chinh);
+    const lfo = amCtx.createOscillator(); lfo.frequency.value = .9;
+    const lfoG = amCtx.createGain(); lfoG.gain.value = .008;
+    lfo.connect(lfoG); lfoG.connect(g.gain); lfo.start();
+    amNut.nuoc = g;
+  }
+  amTheoThoiKhac(typeof thoiKhac !== 'undefined' ? thoiKhac : 'chieu');
+}
+
+// tiếng chim — chuỗi líu lo ngắn, cao độ ngẫu nhiên
+function amChimHot(){
+  if(!amCtx || !amBat) return;
+  const t0 = amCtx.currentTime;
+  const so = 2 + Math.floor(Math.random()*4);
+  for(let i=0;i<so;i++){
+    const t = t0 + i*(.09+Math.random()*.07);
+    const o = amCtx.createOscillator(); o.type='sine';
+    const cao = 1900 + Math.random()*900;
+    o.frequency.setValueAtTime(cao, t);
+    o.frequency.exponentialRampToValueAtTime(cao*(1.25+Math.random()*.3), t+.05);
+    o.frequency.exponentialRampToValueAtTime(cao*.9, t+.1);
+    const g = amCtx.createGain();
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(.05, t+.015);
+    g.gain.exponentialRampToValueAtTime(.0001, t+.12);
+    o.connect(g); g.connect(amNut.chinh);
+    o.start(t); o.stop(t+.15);
+  }
+}
+// chuông gió — hoạ âm nhẹ tan chậm
+function amChuongGio(){
+  if(!amCtx || !amBat) return;
+  const t0 = amCtx.currentTime;
+  const goc = [740, 880, 990, 1180][Math.floor(Math.random()*4)];
+  [1, 2.76, 5.4].forEach((he, i)=>{
+    const o = amCtx.createOscillator(); o.type='sine';
+    o.frequency.value = goc*he;
+    const g = amCtx.createGain();
+    const dinh = .028/(i+1);
+    g.gain.setValueAtTime(0, t0);
+    g.gain.linearRampToValueAtTime(dinh, t0+.01);
+    g.gain.exponentialRampToValueAtTime(.0001, t0+2.2);
+    o.connect(g); g.connect(amNut.chinh);
+    o.start(t0); o.stop(t0+2.4);
+  });
+}
+// dế đêm — tiếng rung ngắt quãng
+function amDeBatDau(){
+  if(!amCtx || amDeNodes.length) return;
+  [4100, 4550].forEach((tan, i)=>{
+    const o = amCtx.createOscillator(); o.type='sine'; o.frequency.value = tan;
+    const nhip = amCtx.createOscillator(); nhip.frequency.value = 21 + i*6;
+    const nhipG = amCtx.createGain(); nhipG.gain.value = .5;
+    const cong = amCtx.createGain(); cong.gain.value = .5;
+    nhip.connect(nhipG); nhipG.connect(cong.gain);
+    const g = amCtx.createGain(); g.gain.value = .011;
+    o.connect(cong); cong.connect(g); g.connect(amNut.chinh);
+    o.start(); nhip.start();
+    amDeNodes.push(o, nhip);
+  });
+}
+function amDeDung(){
+  amDeNodes.forEach(n=>{ try{n.stop();}catch(e){} });
+  amDeNodes = [];
+}
+
+function amTheoThoiKhac(k){
+  if(!amCtx) return;
+  clearInterval(amChimHen); amChimHen = null;
+  clearInterval(amChuongHen); amChuongHen = null;
+  amDeDung();
+  if(k === 'dem'){
+    amDeBatDau();
+    amNut.gio.gain.value = .035;
+  } else {
+    const thua = k === 'sang' ? [2200, 4200] : [4500, 8000];
+    amChimHen = setInterval(()=>{ if(Math.random()<.8) amChimHot(); },
+      thua[0] + Math.random()*(thua[1]-thua[0]));
+    amNut.gio.gain.value = .05;
+  }
+  amChuongHen = setInterval(()=>{ if(Math.random()<.5) amChuongGio(); }, 9000);
+}
+
+function amDoi(){
+  amBat = !amBat;
+  localStorage.setItem('tv_amthanh', amBat ? 'bat' : 'tat');
+  if(!amCtx && amBat) amKhoiTao();
+  if(amCtx){
+    if(amCtx.state === 'suspended') amCtx.resume();
+    amNut.chinh.gain.linearRampToValueAtTime(amBat ? 1 : 0, amCtx.currentTime + .4);
+    if(amBat) amTheoThoiKhac(thoiKhac);
+  }
+  capNhatNutAm();
+}
+function capNhatNutAm(){
+  const n = document.getElementById('nut-am-thanh');
+  if(!n) return;
+  const l = (typeof NG !== 'undefined' && NG === 'en') ? 'en' : 'vi';
+  n.textContent = amBat ? '🔊' : '🔇';
+  n.title = amBat ? (l==='vi'?'Tắt âm thanh':'Mute') : (l==='vi'?'Bật âm thanh':'Unmute');
+}
+(function(){
+  const n = document.getElementById('nut-am-thanh');
+  if(n) n.addEventListener('click', amDoi);
+  capNhatNutAm();
+  // trình duyệt yêu cầu cử chỉ người dùng: khởi tạo khi bấm «Bắt đầu tham quan»
+  const vao = document.getElementById('nut-vao');
+  if(vao) vao.addEventListener('click', ()=>{ if(amBat){ amKhoiTao(); if(amCtx && amCtx.state==='suspended') amCtx.resume(); } });
+})();
+
+
+/* ========== MINI-GAME «HÁI SEN» ========== */
+const SEN_VT = [[-26,-14],[-10,-24],[8,-20],[22,-14],[34,4],[24,22],[8,28],[-8,20],[-24,26],[-34,8],[-16,2],[16,6]];
+const senVLGame = new THREE.MeshStandardMaterial({color:new THREE.Color('#F27FA5'), roughness:.55, metalness:0,
+  emissive:new THREE.Color('#E8607A'), emissiveIntensity:.5});
+const nhuyVLGame = new THREE.MeshStandardMaterial({color:new THREE.Color('#F2D06B'), roughness:.6, metalness:0,
+  emissive:new THREE.Color('#D8A82E'), emissiveIntensity:.6});
+const dsSenGame = [];
+SEN_VT.forEach(([x,z])=>{
+  const g = new THREE.Group();
+  for(let c=0;c<6;c++){
+    const canh = new THREE.Mesh(new THREE.SphereGeometry(.2,8,6), senVLGame);
+    canh.scale.set(.5,1.1,.32);
+    const a=c/6*Math.PI*2;
+    canh.position.set(Math.cos(a)*.2,.05,Math.sin(a)*.2);
+    canh.rotation.set(Math.sin(a)*.55, 0, -Math.cos(a)*.55);
+    g.add(canh);
+  }
+  const nhuy = new THREE.Mesh(new THREE.SphereGeometry(.12,8,7), nhuyVLGame);
+  nhuy.position.y = .1; g.add(nhuy);
+  g.position.set(x, .95, z);
+  g.userData = {goc:Math.random()*7, x, z};
+  theGioi.add(g);
+  dsSenGame.push(g);
+});
+let senDem = 0;
+const dsPhao = [];
+const PHAO_MAU = ['#F2A9B8','#F2D06B','#B9A9F2','#A9E3F2','#C4E8B0','#F27FA5'];
+
+function amNhatSen(){
+  if(typeof amCtx === 'undefined' || !amCtx || !amBat) return;
+  const t0 = amCtx.currentTime;
+  [880, 1320].forEach((tan, i)=>{
+    const o = amCtx.createOscillator(); o.type='sine'; o.frequency.value = tan;
+    const g = amCtx.createGain();
+    g.gain.setValueAtTime(0, t0+i*.07);
+    g.gain.linearRampToValueAtTime(.06, t0+i*.07+.01);
+    g.gain.exponentialRampToValueAtTime(.0001, t0+i*.07+.3);
+    o.connect(g); g.connect(amNut.chinh);
+    o.start(t0+i*.07); o.stop(t0+i*.07+.35);
+  });
+}
+function phaoHoa(vt){
+  for(let i=0;i<70;i++){
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(.16,.16),
+      new THREE.MeshBasicMaterial({color:new THREE.Color(PHAO_MAU[i%PHAO_MAU.length]),
+        side:THREE.DoubleSide, transparent:true, opacity:1, fog:false}));
+    m.position.set(vt.x, 2.4, vt.z);
+    const a = Math.random()*Math.PI*2, luc = 2.5+Math.random()*4.5;
+    m.userData = {vx:Math.cos(a)*luc, vy:3.5+Math.random()*4, vz:Math.sin(a)*luc,
+      quay:(Math.random()-.5)*9, song:0};
+    theGioi.add(m); dsPhao.push(m);
+  }
+}
+function senHoanThanh(){
+  document.getElementById('toast-sen').classList.add('hien');
+  phaoHoa(nhanVat.position);
+  if(typeof datBieuCam === 'function') datBieuCam('reo');
+  if(typeof amCtx !== 'undefined' && amCtx && amBat){
+    const t0 = amCtx.currentTime;
+    [660,880,990,1320,1760].forEach((tan,i)=>{
+      const o = amCtx.createOscillator(); o.frequency.value = tan;
+      const g = amCtx.createGain();
+      g.gain.setValueAtTime(0, t0+i*.11);
+      g.gain.linearRampToValueAtTime(.07, t0+i*.11+.02);
+      g.gain.exponentialRampToValueAtTime(.0001, t0+i*.11+.5);
+      o.connect(g); g.connect(amNut.chinh);
+      o.start(t0+i*.11); o.stop(t0+i*.11+.55);
+    });
+  }
+}
+document.getElementById('sen-lai').addEventListener('click', ()=>{
+  senDem = 0;
+  document.getElementById('sen-so').textContent = '0';
+  dsSenGame.forEach(g=>{ g.visible = true; });
+  document.getElementById('toast-sen').classList.remove('hien');
+});
+function capNhatSen(t, dt){
+  dsSenGame.forEach(g=>{
+    if(!g.visible) return;
+    g.position.y = .95 + Math.sin(t*1.6 + g.userData.goc)*.18;
+    g.rotation.y = t*.9 + g.userData.goc;
+    const dx = g.userData.x - nhanVat.position.x, dz = g.userData.z - nhanVat.position.z;
+    if(dx*dx + dz*dz < 3.2){
+      g.visible = false;
+      senDem++;
+      document.getElementById('sen-so').textContent = senDem;
+      amNhatSen();
+      if(senDem >= SEN_VT.length) senHoanThanh();
+    }
+  });
+  for(let i=dsPhao.length-1;i>=0;i--){
+    const m = dsPhao[i], u = m.userData;
+    u.vy -= 9*dt; u.song += dt;
+    m.position.x += u.vx*dt; m.position.y += u.vy*dt; m.position.z += u.vz*dt;
+    m.rotation.x += u.quay*dt; m.rotation.y += u.quay*.7*dt;
+    m.material.opacity = Math.max(0, 1 - u.song/3.2);
+    if(m.position.y < 0 || u.song > 3.4){
+      theGioi.remove(m); m.material.dispose(); dsPhao.splice(i,1);
+    }
+  }
 }
 
 function vong(){
@@ -2008,6 +2287,7 @@ function vong(){
   capNhatSinhDong(t, dt);
   capNhatSinhDong2(t, dt);
   if(window.__capNhatBoiCanh) window.__capNhatBoiCanh(t);
+  capNhatSen(t, dt);
   veBanDo();
   renderer.render(scene, camera);
 }
