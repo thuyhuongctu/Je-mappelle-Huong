@@ -1428,6 +1428,131 @@ addEventListener('resize', ()=>{
   renderer.setSize(innerWidth, innerHeight);
 });
 
+
+/* ---------- CHI TIẾT SINH ĐỘNG: bướm, chim, cánh hoa, vịt, chuồn chuồn ---------- */
+const sinhDong = new THREE.Group();
+theGioi.add(sinhDong);
+
+// bươm bướm — cánh kép vỗ, lượn quanh vườn
+const BUOM_MAU = ['#F2A9B8','#B9A9F2','#F2D9A9','#A9E3F2','#F2A9E0','#C4E8B0','#F6C1CB'];
+const dsBuom = [];
+BUOM_MAU.forEach((mau,i)=>{
+  const g = new THREE.Group();
+  const vl = new THREE.MeshStandardMaterial({color:new THREE.Color(mau), roughness:.7, metalness:0, side:THREE.DoubleSide});
+  const canhG = new THREE.Mesh(new THREE.PlaneGeometry(.42,.3), vl);
+  const canhP = canhG.clone();
+  canhG.position.x=-.2; canhP.position.x=.2;
+  const trai=new THREE.Group(), phai=new THREE.Group();
+  trai.add(canhG); phai.add(canhP);
+  g.add(trai); g.add(phai);
+  g.userData={trai,phai,goc:Math.random()*Math.PI*2,bk:9+Math.random()*22,
+    cao:1.3+Math.random()*1.6,toc:.14+Math.random()*.2,pha:Math.random()*7,
+    tx:(Math.random()-.5)*44,tz:(Math.random()-.5)*40};
+  sinhDong.add(g); dsBuom.push(g);
+});
+
+// đàn chim én — bóng sẫm chữ V vỗ cánh, bay vòng trên cao
+const dsChim = [];
+for(let i=0;i<5;i++){
+  const g = new THREE.Group();
+  const vl = new THREE.MeshBasicMaterial({color:new THREE.Color('#5A4A52'), side:THREE.DoubleSide});
+  const cT = new THREE.Mesh(new THREE.PlaneGeometry(1.15,.3), vl);
+  const cP = cT.clone();
+  cT.position.x=-.55; cP.position.x=.55;
+  const nT=new THREE.Group(), nP=new THREE.Group();
+  nT.add(cT); nP.add(cP);
+  g.add(nT); g.add(nP);
+  g.userData={nT,nP,goc:i*1.35+Math.random(),bk:34+i*5,cao:17+Math.random()*6,
+    toc:.10+Math.random()*.05,pha:Math.random()*7};
+  sinhDong.add(g); dsChim.push(g);
+}
+
+// cánh hoa sen rơi — chao nghiêng, chạm đất lại bay lên
+const dsCanh = [];
+{
+  const vl = new THREE.MeshStandardMaterial({color:new THREE.Color('#F5B7C4'), roughness:.75, metalness:0,
+    side:THREE.DoubleSide, transparent:true, opacity:.92});
+  for(let i=0;i<22;i++){
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(.26,.18), vl);
+    m.userData={x:(Math.random()-.5)*64,z:(Math.random()-.5)*56,y:1+Math.random()*6,
+      toc:.45+Math.random()*.5,pha:Math.random()*7,xoay:Math.random()*Math.PI};
+    sinhDong.add(m); dsCanh.push(m);
+  }
+}
+
+// vịt bầu đất sét — trôi dọc dải sông, lắc lư theo sóng
+const dsVit = [];
+function conVit(mauThan, mauMo){
+  const g = new THREE.Group();
+  const than = new THREE.Mesh(new THREE.SphereGeometry(.42,18,14), vatLieu(mauThan,.85));
+  than.scale.set(1.25,.85,.95);
+  const dau = new THREE.Mesh(new THREE.SphereGeometry(.24,16,12), vatLieu(mauThan,.85));
+  dau.position.set(.42,.42,0);
+  const mo = new THREE.Mesh(new THREE.ConeGeometry(.09,.22,10), vatLieu(mauMo,.7));
+  mo.rotation.z=-Math.PI/2; mo.position.set(.68,.4,0);
+  g.add(than); g.add(dau); g.add(mo);
+  return g;
+}
+[['#FFF6E8','#F0A24B',-34,.9],['#F7E19A','#E8823C',-10,1.5],['#FFF6E8','#F0A24B',18,.7]].forEach(([m1,m2,x0,toc],i)=>{
+  const v = conVit(m1,m2);
+  v.userData={x:x0,toc,pha:i*2.4};
+  sinhDong.add(v); dsVit.push(v);
+});
+
+// chuồn chuồn ớt — thân mảnh, cánh rung nhanh, đảo gần mép sông
+const dsChuon = [];
+[['#E85A4F',-8,11],['#5FA8E8',22,17]].forEach(([mau,cx,cz],i)=>{
+  const g = new THREE.Group();
+  const than = new THREE.Mesh(new THREE.CylinderGeometry(.03,.015,.7,8), vatLieu(mau,.6));
+  than.rotation.z = Math.PI/2;
+  const vlCanh = new THREE.MeshBasicMaterial({color:0xffffff, transparent:true, opacity:.5, side:THREE.DoubleSide});
+  const c1 = new THREE.Mesh(new THREE.PlaneGeometry(.55,.1), vlCanh);
+  const c2 = c1.clone();
+  c1.rotation.y=.5; c2.rotation.y=-.5;
+  g.add(than); g.add(c1); g.add(c2);
+  g.userData={c1,c2,cx,cz,pha:i*3.1};
+  sinhDong.add(g); dsChuon.push(g);
+});
+
+function capNhatSinhDong(t, dt){
+  dsBuom.forEach(b=>{
+    const u=b.userData, vo=Math.sin(t*11+u.pha)*.9;
+    u.trai.rotation.y =  vo; u.phai.rotation.y = -vo;
+    const a=u.goc+t*u.toc;
+    b.position.set(u.tx+Math.cos(a)*u.bk*.35, u.cao+Math.sin(t*.9+u.pha)*.35, u.tz+Math.sin(a*1.3)*u.bk*.3);
+    b.rotation.y = -a*1.1;
+  });
+  dsChim.forEach(c=>{
+    const u=c.userData, vo=Math.sin(t*6+u.pha)*.55;
+    u.nT.rotation.z =  vo; u.nP.rotation.z = -vo;
+    const a=u.goc+t*u.toc;
+    c.position.set(Math.cos(a)*u.bk, u.cao+Math.sin(t*.6+u.pha)*.8, Math.sin(a)*u.bk);
+    c.rotation.y = -a+Math.PI/2;
+  });
+  dsCanh.forEach(m=>{
+    const u=m.userData;
+    u.y -= u.toc*dt;
+    if(u.y < .12){ u.y = 4.5+Math.random()*3; u.x=(Math.random()-.5)*64; u.z=(Math.random()-.5)*56; }
+    m.position.set(u.x+Math.sin(t*1.3+u.pha)*.7, u.y, u.z+Math.cos(t*1.1+u.pha)*.5);
+    m.rotation.set(u.xoay+t*.8+u.pha, t*.6+u.pha, Math.sin(t+u.pha)*.7);
+  });
+  dsVit.forEach(v=>{
+    const u=v.userData;
+    u.x += u.toc*dt;
+    if(u.x > 56) u.x = -56;
+    const z = 13 + Math.sin(u.x*.09)*3.4;
+    v.position.set(u.x, .16+Math.sin(t*1.6+u.pha)*.05, z);
+    v.rotation.y = Math.cos(u.x*.09)*.5;
+    v.rotation.z = Math.sin(t*1.9+u.pha)*.06;
+  });
+  dsChuon.forEach(ch=>{
+    const u=ch.userData, rung=Math.sin(t*38+u.pha)*.55;
+    u.c1.rotation.x =  rung; u.c2.rotation.x = -rung;
+    ch.position.set(u.cx+Math.sin(t*.7+u.pha)*2.4, 1.15+Math.sin(t*2.3+u.pha)*.35, u.cz+Math.cos(t*.9+u.pha)*1.8);
+    ch.rotation.y = Math.sin(t*.5+u.pha)*1.4;
+  });
+}
+
 function vong(){
   requestAnimationFrame(vong);
   const dt = Math.min(dongHo.getDelta(), .05);
@@ -1586,6 +1711,7 @@ function vong(){
   bongHuong.scale.set(dapXe ? 1.55 : 1, dapXe ? 1.1 : 1, 1);
   bongHuong.material.opacity = dapXe ? .7 : .85;
 
+  capNhatSinhDong(t, dt);
   veBanDo();
   renderer.render(scene, camera);
 }
