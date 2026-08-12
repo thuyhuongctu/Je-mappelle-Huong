@@ -1639,6 +1639,156 @@ function capNhatSinhDong2(t, dt){
   });
 }
 
+
+/* ========== NÂNG CẤP BỐI CẢNH (gói chung) + KHÔNG KHÍ (theo hướng) ========== */
+const CFG_BC = {
+  troi:[[0,'#7A6BB8'],[.38,'#C97BA4'],[.58,'#F09A6E'],[.78,'#FBCB8A'],[1,'#FDE4B8']],
+  suong:'#EBB58F', nangMau:'#FFB36B', nangManh:1.35, nangViTri:[-30,14,26],
+  bauTroi:'#E8B49A', phanDat:'#B08A6E', bauManh:.75, phoiSang:1.02,
+  thienThe:{bk:7,mau:'#FFCE7A',quang:'#FF9E5E',vt:[-58,9,58]},
+  tre:'#8FAF6E', treDot:'#75955A', tham:['#F3D3A8','#F0BFA5','#E8CBB0','#F5B7A0'],
+  hoa:['#F2A9B8','#FFD9A0','#F2D06B','#E88AA0'], sen:'#F0789A', doiXa:'#B88AA8', denSang:1.15, domDom:null
+ };
+
+// 1. Vòm trời chuyển sắc (canvas gradient trên mặt cầu trong)
+(function(){
+  const cv = document.createElement('canvas'); cv.width = 2; cv.height = 512;
+  const g = cv.getContext('2d').createLinearGradient(0,0,0,512);
+  CFG_BC.troi.forEach(([o,m])=>g.addColorStop(o,m));
+  const ctx = cv.getContext('2d'); ctx.fillStyle = g; ctx.fillRect(0,0,2,512);
+  const tex = new THREE.CanvasTexture(cv); tex.encoding = THREE.sRGBEncoding;
+  const vom = new THREE.Mesh(new THREE.SphereGeometry(170, 24, 18),
+    new THREE.MeshBasicMaterial({map:tex, side:THREE.BackSide, fog:false}));
+  scene.add(vom);
+  scene.background = null;
+  scene.fog.color = new THREE.Color(CFG_BC.suong);
+})();
+
+// 2. Ánh sáng theo không khí
+nang.color = new THREE.Color(CFG_BC.nangMau);
+nang.intensity = CFG_BC.nangManh;
+nang.position.set(...CFG_BC.nangViTri);
+scene.children.filter(c=>c.isHemisphereLight).forEach(h=>{
+  h.color = new THREE.Color(CFG_BC.bauTroi); h.groundColor = new THREE.Color(CFG_BC.phanDat);
+  h.intensity = CFG_BC.bauManh;
+});
+renderer.toneMappingExposure = CFG_BC.phoiSang;
+
+// 3. Mặt trời / mặt trăng treo chân trời
+if(CFG_BC.thienThe){
+  const tt = new THREE.Mesh(new THREE.SphereGeometry(CFG_BC.thienThe.bk, 24, 20),
+    new THREE.MeshBasicMaterial({color:new THREE.Color(CFG_BC.thienThe.mau), fog:false}));
+  tt.position.set(...CFG_BC.thienThe.vt);
+  scene.add(tt);
+  if(CFG_BC.thienThe.quang){
+    const q = new THREE.Mesh(new THREE.SphereGeometry(CFG_BC.thienThe.bk*1.7, 24, 20),
+      new THREE.MeshBasicMaterial({color:new THREE.Color(CFG_BC.thienThe.quang), transparent:true, opacity:.35, fog:false}));
+    q.position.copy(tt.position); scene.add(q);
+  }
+}
+
+// 4. Khóm tre đất sét (điểm nhấn Garden Hub)
+function khomTreBC(x, z, so){
+  const g = new THREE.Group();
+  for(let i=0;i<so;i++){
+    const cao = 4.2 + Math.random()*2.6;
+    const than = new THREE.Mesh(new THREE.CylinderGeometry(.13,.16,cao,8), vatLieu(CFG_BC.tre,.85));
+    than.position.set((Math.random()-.5)*1.3, cao/2, (Math.random()-.5)*1.3);
+    than.rotation.z = (Math.random()-.5)*.08;
+    than.castShadow = true;
+    g.add(than);
+    for(let d=1; d<cao; d+=1.1){
+      const dot = new THREE.Mesh(new THREE.TorusGeometry(.15,.028,6,14), vatLieu(CFG_BC.treDot,.8));
+      dot.rotation.x = Math.PI/2;
+      dot.position.set(than.position.x, d, than.position.z);
+      g.add(dot);
+    }
+    const la = new THREE.Mesh(new THREE.SphereGeometry(.55,8,7), vatLieu(CFG_BC.tre,.9));
+    la.scale.set(1.4,.6,1.1);
+    la.position.set(than.position.x, cao+.15, than.position.z);
+    g.add(la);
+  }
+  g.position.set(x,0,z);
+  theGioi.add(g);
+}
+[[-38,-8,4],[40,-4,5],[-20,32,3],[26,30,4]].forEach(([x,z,so])=>khomTreBC(x,z,so));
+
+// 5. Thảm màu pastel + chấm hoa trên nền đất
+(function(){
+  const M = CFG_BC.tham;
+  for(let i=0;i<14;i++){
+    const bk = 3+Math.random()*6;
+    const vet = new THREE.Mesh(new THREE.CircleGeometry(bk, 22),
+      new THREE.MeshStandardMaterial({color:new THREE.Color(M[i%M.length]), roughness:.98, metalness:0,
+        transparent:true, opacity:.5}));
+    vet.rotation.x = -Math.PI/2;
+    vet.position.set((Math.random()-.5)*80, .022+i*.0007, (Math.random()-.5)*70);
+    theGioi.add(vet);
+  }
+  const HOA = CFG_BC.hoa;
+  for(let i=0;i<70;i++){
+    const h = new THREE.Mesh(new THREE.SphereGeometry(.09+Math.random()*.07, 6, 5),
+      vatLieu(HOA[i%HOA.length], .8));
+    const x=(Math.random()-.5)*84, z=(Math.random()-.5)*74;
+    h.position.set(x, .1, z);
+    theGioi.add(h);
+  }
+})();
+
+// 6. Sen hồng nở trên sông
+(function(){
+  for(let i=0;i<7;i++){
+    const g = new THREE.Group();
+    const x = -46+i*14, z = 13+Math.sin(x*.09)*3.2;
+    const la = new THREE.Mesh(new THREE.CircleGeometry(.85,18), vatLieu('#7FBF7A',.9));
+    la.rotation.x = -Math.PI/2; la.position.y = .09;
+    g.add(la);
+    if(i%2===0){
+      for(let c=0;c<7;c++){
+        const canh = new THREE.Mesh(new THREE.SphereGeometry(.22,8,6), vatLieu(CFG_BC.sen,.75));
+        canh.scale.set(.5,1.15,.32);
+        const a=c/7*Math.PI*2;
+        canh.position.set(Math.cos(a)*.24,.32,Math.sin(a)*.24);
+        canh.rotation.set(Math.sin(a)*.5, 0, -Math.cos(a)*.5);
+        g.add(canh);
+      }
+      const nhuy = new THREE.Mesh(new THREE.SphereGeometry(.13,8,7), vatLieu('#F2D06B',.8));
+      nhuy.position.y=.38; g.add(nhuy);
+    }
+    g.position.set(x,0,z);
+    theGioi.add(g);
+  }
+})();
+
+// 7. Nhuộm màu đồi xa + đèn lồng theo không khí
+theGioi.traverse(o=>{
+  if(o.isMesh && o.geometry && o.geometry.type==='ConeGeometry' && o.position.y===0 && o.scale.x>6){
+    o.material = o.material.clone();
+    o.material.color.lerp(new THREE.Color(CFG_BC.doiXa), .55);
+  }
+});
+if(typeof dsLong!=='undefined') dsLong.forEach(c=>{
+  c.userData.treo.children[0].material.emissiveIntensity = CFG_BC.denSang;
+});
+
+// 8. Đom đóm / hạt sáng lơ lửng (tùy hướng)
+const dsDom = [];
+if(CFG_BC.domDom){
+  const vl = new THREE.MeshBasicMaterial({color:new THREE.Color(CFG_BC.domDom), transparent:true, opacity:.9, fog:false});
+  for(let i=0;i<26;i++){
+    const d = new THREE.Mesh(new THREE.SphereGeometry(.05,6,5), vl);
+    d.userData={x:(Math.random()-.5)*70,z:(Math.random()-.5)*60,pha:Math.random()*7,cao:.6+Math.random()*1.8};
+    sinhDong.add(d); dsDom.push(d);
+  }
+}
+window.__capNhatBoiCanh = function(t){
+  dsDom.forEach(d=>{
+    const u=d.userData;
+    d.position.set(u.x+Math.sin(t*.6+u.pha)*1.6, u.cao+Math.sin(t*1.7+u.pha)*.4, u.z+Math.cos(t*.5+u.pha)*1.4);
+    d.material.opacity = .45+.45*Math.sin(t*2.4+u.pha);
+  });
+};
+
 function vong(){
   requestAnimationFrame(vong);
   const dt = Math.min(dongHo.getDelta(), .05);
@@ -1799,6 +1949,7 @@ function vong(){
 
   capNhatSinhDong(t, dt);
   capNhatSinhDong2(t, dt);
+  if(window.__capNhatBoiCanh) window.__capNhatBoiCanh(t);
   veBanDo();
   renderer.render(scene, camera);
 }
