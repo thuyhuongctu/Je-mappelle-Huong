@@ -49,6 +49,10 @@ Repo cài sẵn bộ **skill MiniMax H3** (từ [thuyhuongctu/MiniMax-H3](https:
 
 Sinh video qua [hailuoai.video](https://hailuoai.video/tools/minimax-h3) hoặc [MiniMax API](https://platform.minimax.io/docs/api-reference/video-generation-v2-create).
 
+## 🎨 Công cụ thiết kế / Design tooling
+
+Repo cài thêm skill **huashu-design** (MIT, từ [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)) trong `.claude/skills/huashu-design/` — làm prototype tương tác, slide deck HTML 1920×1080 (xuất PPTX/PDF), motion design xuất MP4/GIF, và chấm điểm thiết kế theo 5 tiêu chí. Quy tắc lõi: mọi thiết kế mới đều ra **3 hướng phác thảo** cho người dùng chọn trước khi thực hiện. Bản cài rút gọn (không kèm nhạc nền/demo nặng — xem `LOCAL-NOTE.md`).
+
 ## 📄 Bản quyền / Copyright
 
 © 2026 Đỗ Thùy Hương · Cần Thơ, Việt Nam · thuyhuongctu@gmail.com
