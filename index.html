@@ -152,16 +152,8 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
   box-shadow:inset 0 2px 0 rgba(255,255,255,.6),0 6px 16px rgba(70,40,40,.3);transition:transform .15s}
 .tram:hover{transform:translate(-50%,-50%) scale(1.08);color:#a8394e}
 .tram small{display:block;font-weight:600;color:#8d7166;font-size:.78em}
-#bd-xe{position:absolute;z-index:4;width:9.5%;min-width:56px;left:50%;top:79%;
-  transform:translate(-50%,-92%);pointer-events:none;
-  transition:left 1.6s cubic-bezier(.45,.05,.35,1), top 1.6s cubic-bezier(.45,.05,.35,1);
-  filter:drop-shadow(0 8px 10px rgba(60,30,30,.45))}
-#bd-xe.chay{animation:bdNhun .4s ease-in-out infinite}
-@keyframes bdNhun{0%,100%{margin-top:0}50%{margin-top:-5px}}
-#bd-xe.lat{transform:translate(-50%,-92%) scaleX(-1)}
 .bd-mach{position:absolute;bottom:2.5%;left:50%;transform:translateX(-50%);z-index:3;white-space:nowrap;
   color:#fff8ef;font:600 clamp(.58rem,1.5vw,.8rem) var(--sans);text-shadow:0 2px 8px rgba(60,30,30,.65)}
-@media(prefers-reduced-motion:reduce){#bd-xe{transition:none}#bd-xe.chay{animation:none}}
 
 
 /* ===== Hương đạp xe dẫn tour ===== */
@@ -225,7 +217,6 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
     <button class="tram" style="left:26%;top:79%" data-den="#teaching">🎓 <span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span><small>Lecture hall</small></button>
     <button class="tram" style="left:74%;top:79%" data-den="#blog">📰 <span class="lang-vi">Blog · Tin tức</span><span class="lang-en">Blog · News</span><small>News corner</small></button>
     <button class="tram" style="left:50%;top:90%" data-den="trangvien.html">🌷 <span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span><small>Open Projects</small></button>
-    <img id="bd-xe" src="assets/img/huong_xedap.webp" alt="">
     <div class="bd-mach"><span class="lang-vi">Bấm một biển — cô Hương đạp xe đến đó rồi mở khu cho bạn ↓</span><span class="lang-en">Click a sign — Hương rides there, then the page opens that area ↓</span></div>
   </div>
   <header class="hero">
@@ -933,27 +924,24 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 
+<script src="assets/vendor/three-r128.min.js" defer></script>
+<script src="assets/js/huong3d.js" defer></script>
 <script>
-/* Bản đồ trang viên: bấm trạm — Hương đạp xe đến rồi mở khu */
-(function(){
-  const bd = document.getElementById('bando'), xe = document.getElementById('bd-xe');
-  if(!bd || !xe) return;
+/* Bản đồ trang viên: cô Hương đất sét 3D đạp xe tới trạm được bấm */
+addEventListener('DOMContentLoaded', function(){
+  const bd = document.getElementById('bando');
+  if(!bd || typeof Huong3D === 'undefined') return;
+  const co = Huong3D.gan({
+    khung: bd, cao: .285, duong: .93, batDau: .5, zIndex: 2,
+    anh: { xedap: 'assets/img/huong_xedap.webp', chi: 'assets/img/huong_chi.webp' }
+  });
   let dangChay = false;
   bd.querySelectorAll('.tram').forEach(t=>{
     t.addEventListener('click', ()=>{
       if(dangChay) return;
       dangChay = true;
-      const r = t.getBoundingClientRect(), b = bd.getBoundingClientRect();
-      const dx = (r.left + r.width/2 - b.left) / b.width * 100;
-      const dy = (r.top + r.height/2 - b.top) / b.height * 100;
-      const hienX = parseFloat(xe.style.left || '50');
-      xe.classList.toggle('lat', dx < hienX);
-      xe.classList.add('chay');
-      xe.style.left = dx + '%';
-      xe.style.top = Math.min(90, dy + 10) + '%';
-      const giam = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      setTimeout(()=>{
-        xe.classList.remove('chay');
+      const x = parseFloat(t.style.left) / 100;
+      co.den(x, ()=>{
         const den = t.dataset.den;
         if(den.startsWith('#')){
           const el = document.querySelector(den);
@@ -962,9 +950,9 @@ if ('serviceWorker' in navigator) {
           location.href = den;
         }
         dangChay = false;
-      }, giam ? 50 : 1700);
+      });
     });
   });
-})();
+});
 </script>
 </body></html>
