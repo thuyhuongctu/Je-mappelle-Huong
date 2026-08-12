@@ -1,0 +1,77 @@
+<!doctype html><html lang="vi"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo C · Cuốn sách dọc đường</title>
+<style>
+:root{--paper:#f9f1e6;--surface:#fffdf8;--ink:#463029;--muted:#8d7166;--line:#eddcc9;
+--accent:#c4596b;--sans:system-ui,sans-serif;--serif:Georgia,serif;
+--shadow:0 2px 3px rgba(150,95,75,.06),0 14px 34px rgba(150,95,75,.13)}
+*{box-sizing:border-box}
+html{scroll-snap-type:y proximity}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6}
+.chuong{min-height:100vh;scroll-snap-align:start;display:grid;grid-template-columns:1.05fr .95fr;
+  align-items:center;gap:44px;max-width:1080px;margin:0 auto;padding:40px 30px;position:relative}
+.chuong:nth-child(even){grid-template-columns:.95fr 1.05fr}
+.chuong:nth-child(even) .tranh{order:2}
+.tranh img{width:100%;border-radius:26px;border:5px solid var(--surface);box-shadow:var(--shadow)}
+.so{font:800 .7rem var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.chuong h2{font-family:var(--serif);font-size:2.1rem;margin:.2em 0 .4em}
+.chuong p{color:var(--muted);max-width:46ch}
+.nut{display:inline-block;margin-top:14px;background:var(--accent);color:#fff;border-radius:999px;
+  padding:10px 22px;font:700 .85rem var(--sans);text-decoration:none;box-shadow:0 6px 16px rgba(196,89,107,.4)}
+/* dải chuyển cảnh: Hương đạp ngang màn hình */
+.deo{height:150px;scroll-snap-align:none;position:relative;overflow:hidden}
+.deo::before{content:"";position:absolute;left:0;right:0;bottom:34px;height:3px;
+  background:repeating-linear-gradient(90deg,var(--line) 0 26px,transparent 26px 44px)}
+.deo img{position:absolute;bottom:16px;left:-140px;width:110px;
+  filter:drop-shadow(0 8px 10px rgba(90,50,50,.3))}
+.deo.chay img{animation:bangQua 2.8s linear forwards}
+@keyframes bangQua{from{left:-140px}to{left:calc(100% + 40px)}}
+@media(max-width:760px){.chuong{grid-template-columns:1fr}.chuong:nth-child(even) .tranh{order:0}}
+</style></head><body>
+
+<section class="chuong">
+  <div class="tranh"><img src="../assets/img/garden_hub.jpg" alt=""></div>
+  <div><div class="so">Chương 01 · Garden Hub</div>
+    <h2>Đỗ Thùy Hương</h2>
+    <p>Giảng viên · nghiên cứu sinh tiến sĩ Quản trị kinh doanh. Mỗi chương của trang là một chặng đường — và giữa các chương, cô Hương đạp xe đưa bạn sang trang mới.</p>
+    <a class="nut" href="#">Bắt đầu hành trình ↓</a></div>
+</section>
+<div class="deo"><img src="../assets/img/huong_xedap.webp" alt=""></div>
+
+<section class="chuong">
+  <div class="tranh"><img src="../assets/img/research_map.jpg" alt=""></div>
+  <div><div class="so">Chương 02 · Academic Hub</div>
+    <h2>Nghiên cứu &amp; Công bố</h2>
+    <p>Quốc tế hóa và hiệu quả doanh nghiệp ở châu Á — 9 công bố 2020–2026, mạng lưới dữ liệu 50 nền kinh tế tỏa ra từ Cần Thơ.</p>
+    <a class="nut" href="#">Xem công bố →</a></div>
+</section>
+<div class="deo"><img src="../assets/img/huong_xedap.webp" alt=""></div>
+
+<section class="chuong">
+  <div class="tranh"><img src="../assets/img/innovation_banner.jpg" alt=""></div>
+  <div><div class="so">Chương 03 · Trang viên đổi mới</div>
+    <h2>Hệ sinh thái số</h2>
+    <p>M-AIDA, BizOn, EnQuiz và bộ trò chơi giáo dục — bốn phần mềm mở có DOI, cùng khu vườn 3D nơi bạn tự cầm lái.</p>
+    <a class="nut" href="#">Ghé các dự án →</a></div>
+</section>
+<div class="deo"><img src="../assets/img/huong_xedap.webp" alt=""></div>
+
+<section class="chuong">
+  <div class="tranh"><img src="../assets/img/creative_library.jpg" alt=""></div>
+  <div><div class="so">Chương 04 · Creative Library</div>
+    <h2>Âm nhạc &amp; Tin tức</h2>
+    <p>Album «Je m'appelle Hương» năm chương bảy bản thu, và bản tin Zenodo cập nhật từng cột mốc của hệ sinh thái.</p>
+    <a class="nut" href="#">Vào kho sáng tạo →</a></div>
+</section>
+
+<script>
+// khi dải đèo vào khung nhìn → cô Hương đạp ngang màn hình
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('chay');
+      setTimeout(()=>e.target.classList.remove('chay'), 3200); }
+  });
+},{threshold:.9});
+document.querySelectorAll('.deo').forEach(d=>io.observe(d));
+</script>
+</body></html>
