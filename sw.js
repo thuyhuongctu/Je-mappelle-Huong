@@ -1,10 +1,12 @@
 /* Service worker — Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v17';
+const CACHE = 'jshuong-v18';
 const CORE = [
   './',
   'index.html',
   'music.html',
   'songbook.html',
+  'trangvien.html',
+  'assets/vendor/three-r128.min.js',
   'manifest.webmanifest',
   'assets/img/pro_aodai.png',
   'assets/img/lab_scene.jpg',
