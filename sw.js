@@ -1,5 +1,5 @@
 /* Service worker — Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v15';
+const CACHE = 'jshuong-v16';
 const CORE = [
   './',
   'index.html',
@@ -17,6 +17,8 @@ const CORE = [
   'assets/img/think_scene.jpg',
   'assets/img/huong_silver_tablet.png',
   'assets/img/huong_silver_room.png',
+  'assets/img/garden_hub.jpg',
+  'assets/img/innovation_banner.jpg',
   'icons/icon-192.png',
   'icons/icon-512.png'
 ];
