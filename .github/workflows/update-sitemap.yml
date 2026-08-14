@@ -1,10 +1,9 @@
 # Tự động cập nhật sitemap.xml mỗi khi blog.html thay đổi.
 #
 # Chạy: mỗi khi có push chứa thay đổi blog.html, hoặc chạy thủ công
-# từ tab Actions → «Update sitemap (rebuild-sitemap.py)».
+# từ tab Actions > "Update sitemap (rebuild-sitemap.py)".
 # Khi phát hiện bài viết mới, workflow tự commit + push sitemap.xml lên
-# cùng nhánh và branch — GitHub Pages sẽ kích hoạt deploy theo workflow
-# pages.yml sẵn có.
+# cùng branch; workflow Pages sẵn có sẽ tự deploy sitemap mới.
 
 name: Update sitemap (rebuild-sitemap.py)
 
@@ -44,9 +43,9 @@ jobs:
           h = open('blog.html', encoding='utf-8').read()
           posts = h.count('<article class="post')
           if not posts:
-              print('LỖI: không tìm thấy bài viết nào trong blog.html — có thể HTML bị hỏng.', file=sys.stderr)
+              print('LOI: khong tim thay bai viet nao trong blog.html', file=sys.stderr)
               sys.exit(1)
-          print(f'blog.html hợp lệ: {posts} bài viết')
+          print(f'blog.html hop le: {posts} bai viet')
           EOF
 
       - name: Rebuild sitemap.xml
@@ -54,25 +53,31 @@ jobs:
 
       - name: Verify generated sitemap is valid XML
         run: |
-          python3 -c "import xml.etree.ElementTree as t; t.parse('sitemap.xml'); print('sitemap.xml hợp lệ')"
-          curl -sSf https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/sitemap.xml >/dev/null \
-            && echo "sitemap hiện tại trên GitHub Pages vẫn truy cập được (đối chiếu)" || true
+          python3 -c "import xml.etree.ElementTree as t; t.parse('sitemap.xml'); print('sitemap.xml hop le')"
+          curl -sSf https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/sitemap.xml >/dev/null && \
+            echo "sitemap hien tai tren GitHub Pages van truy cap duoc (doi chieu)" || true
+
+      - name: Write commit message file
+        run: |
+          cat > /tmp/sitemap_commit.txt <<'MSG'
+          SEO: auto-update sitemap.xml from blog.html (GitHub Actions)
+
+          Trinh run: scripts/rebuild-sitemap.py
+          Trigger: push thay doi blog.html / workflow_dispatch
+          MSG
+          sed -i 's/^        //' /tmp/sitemap_commit.txt
 
       - name: Commit and push if sitemap changed
         id: changes
         run: |
           if git diff --quiet sitemap.xml; then
-            echo 'Sitemap không đổi — không cần commit mới.'
+            echo 'Sitemap khong doi - khong can commit moi.'
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git config user.name 'github-actions[bot]'
             git config user.email 'github-actions[bot]@users.noreply.github.com'
             git add sitemap.xml
-            git commit -m "SEO: tự động cập nhật sitemap.xml từ blog.html (GitHub Actions)
-
-Trình: rebuild-sitemap.py
-Trigger: push thay đổi blog.html / workflow_dispatch"
+            git commit -F /tmp/sitemap_commit.txt
             git push origin HEAD
             echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "url=https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/sitemap.xml" >> "$GITHUB_OUTPUT"
           fi
