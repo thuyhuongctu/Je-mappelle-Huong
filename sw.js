@@ -1,5 +1,5 @@
 /* Service worker — Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v32';
+const CACHE = 'jshuong-v33';
 const CORE = [
   './',
   'index.html',
@@ -12,24 +12,27 @@ const CORE = [
   'manifest.webmanifest',
   'assets/img/pro_aodai.png',
   'assets/img/lab_scene.jpg',
-  'assets/img/greet_hero.png',
-  'assets/img/guide_tech.png',
-  'assets/img/present.png',
-  'assets/img/teach.png',
-  'assets/img/pose_tablet.png',
-  'assets/img/pose_laptop.png',
+  'assets/img/greet_hero.webp',
+  'assets/img/guide_tech.webp',
+  'assets/img/present.webp',
+  'assets/img/teach.webp',
+  'assets/img/pose_tablet.webp',
+  'assets/img/pose_laptop.webp',
   'assets/img/think_scene.jpg',
-  'assets/img/huong_silver_tablet.png',
-  'assets/img/huong_silver_room.png',
+  'assets/img/huong_silver_tablet.webp',
+  'assets/img/huong_silver_room.webp',
   'assets/img/huong_xedap.webp',
   'assets/img/huong_chi.webp',
-  'assets/img/lr-je-mappelle-huong.png',
+  'assets/img/lr-je-mappelle-huong.webp',
   'assets/img/garden_hub.jpg',
   'assets/img/innovation_banner.jpg',
   'assets/img/creative_library.jpg',
   'assets/img/research_map.jpg',
   'icons/icon-192.png',
-  'icons/icon-512.png'
+  'icons/icon-512.png',
+  'zenodo-stats.js',
+  'sitemap.xml',
+  'robots.txt'
 ];
 
 self.addEventListener('install', (e) => {

@@ -74,11 +74,11 @@ footer a{color:var(--muted)}
 footer a:hover{color:var(--accent)}
 </style>
 </head><body>
-<a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.png" alt="Logo LR — Je m'appelle Hương, Lecturer &amp; Researcher"></a>
+<a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo LR — Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
 <div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">VI</button><button type="button" data-lang="en">EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button></div>
 
 <div class="wrap">
-  <img class="gh-banner" src="assets/img/innovation_banner.jpg" alt="Trang viên đổi mới sáng tạo — Hương AI đạp xe qua đồng sen với các biển chỉ đường Nghiên cứu, Âm nhạc, Tin tức">
+  <img class="gh-banner" src="assets/img/innovation_banner.jpg" alt="Trang viên đổi mới sáng tạo — Hương AI đạp xe qua đồng sen với các biển chỉ đường Nghiên cứu, Âm nhạc, Tin tức" loading="lazy">
   <header class="page">
     <div class="eyebrow"><span class="lang-vi">Bảng tin học thuật</span><span class="lang-en">Academic newsboard</span></div>
     <h1><span class="lang-vi">Blog · Tin tức học thuật</span><span class="lang-en">Blog · Academic news</span></h1>
@@ -98,17 +98,17 @@ footer a:hover{color:var(--accent)}
   <div class="hl-strip">
     <a class="hl-stat" href="https://doi.org/10.5281/zenodo.21850735" target="_blank" rel="noopener">
       <div class="hs-name">EnQuiz</div>
-      <div class="hs-num">101 <span style="font-size:.85rem">👁</span> · 31 <span style="font-size:.85rem">⬇</span></div>
-      <div class="hs-sub"><span class="lang-vi">lượt xem · lượt tải — sau chưa đầy 3 ngày</span><span class="lang-en">views · downloads — in under 3 days</span></div>
+      <div class="hs-num" data-zenodo="21850735" data-default-v="101" data-default-d="31">101 <span style="font-size:.85rem">👁</span> · 31 <span style="font-size:.85rem">⬇</span></div>
+      <div class="hs-sub"><span class="lang-vi">lượt xem · lượt tải — cập nhật từ Zenodo</span><span class="lang-en">views · downloads — updated from Zenodo</span></div>
     </a>
     <a class="hl-stat" href="https://doi.org/10.5281/zenodo.21282516" target="_blank" rel="noopener">
       <div class="hs-name">M-AIDA</div>
-      <div class="hs-num">109 <span style="font-size:.85rem">👁</span> · 5 <span style="font-size:.85rem">⬇</span></div>
+      <div class="hs-num" data-zenodo="21282516" data-default-v="109" data-default-d="5">109 <span style="font-size:.85rem">👁</span> · 5 <span style="font-size:.85rem">⬇</span></div>
       <div class="hs-sub"><span class="lang-vi">lượt xem · lượt tải — từ 09/07/2026</span><span class="lang-en">views · downloads — since Jul 9, 2026</span></div>
     </a>
     <a class="hl-stat" href="https://doi.org/10.5281/zenodo.21592241" target="_blank" rel="noopener">
       <div class="hs-name">BizOn · Bật Nghiệp</div>
-      <div class="hs-num">70 <span style="font-size:.85rem">👁</span> · 10 <span style="font-size:.85rem">⬇</span></div>
+      <div class="hs-num" data-zenodo="21592241" data-default-v="70" data-default-d="10">70 <span style="font-size:.85rem">👁</span> · 10 <span style="font-size:.85rem">⬇</span></div>
       <div class="hs-sub"><span class="lang-vi">lượt xem · lượt tải — từ 27/07/2026</span><span class="lang-en">views · downloads — since Jul 27, 2026</span></div>
     </a>
   </div>
@@ -204,4 +204,5 @@ footer a:hover{color:var(--accent)}
 <script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="vi";try{s=localStorage.getItem("huong_lang")||"vi";}catch(e){}set(s);})();</script>
 <script>if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigator.serviceWorker.register('sw.js'); }); }</script>
 <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="zenodo-stats.js"></script>
 </body></html>

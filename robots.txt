@@ -1,0 +1,7 @@
+# robots.txt — Je m'appelle Hương (trang học thuật cá nhân)
+# Phục vụ trên GitHub Pages tại https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/sitemap.xml
