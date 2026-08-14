@@ -30,4 +30,67 @@
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html#enquiz-vuot-100-luot-xem-va-31-luot-tai-chua-day-3-ngay-sau-khi-cong-bo</loc>
+    <lastmod>2026-08-12</lastmod>
+    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <!-- EnQuiz vượt 100 lượt xem và 31 lượt tải — chưa đầy 3 ngày sau khi công bố -->
+  </url>
+  <url>
+    <loc>https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html#m-aida-can-moc-100-luot-xem-tren-zenodo-phan-mem-dau-tien-cua-he-sinh-thai-cham-ba-chu-so</loc>
+    <lastmod>2026-08-11</lastmod>
+    <priority>0.7</priority>
+    <changefreq>yearly</changefreq>
+    <!-- M-AIDA cán mốc 100 lượt xem trên Zenodo — phần mềm đầu tiên của hệ sinh thái chạ -->
+  </url>
+  <url>
+    <loc>https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html#enquiz-tang-toc-52-luot-xem-sau-ba-ngay-phien-ban-1-2-vua-phat-hanh</loc>
+    <lastmod>2026-08-11</lastmod>
+    <priority>0.7</priority>
+    <changefreq>yearly</changefreq>
+    <!-- EnQuiz tăng tốc: 52 lượt xem sau ba ngày, phiên bản 1.2 vừa phát hành -->
+  </url>
+  <url>
+    <loc>https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html#bizon-bat-nghiep-tren-zenodo-62-luot-xem-10-luot-tai-du-tep-da-dat-che-do-han-che</loc>
+    <lastmod>2026-08-11</lastmod>
+    <priority>0.7</priority>
+    <changefreq>yearly</changefreq>
+    <!-- BizOn Bật Nghiệp trên Zenodo: 62 lượt xem, 10 lượt tải — dù tệp đã đặt chế độ hạ -->
+  </url>
+  <url>
+    <loc>https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html#enquiz-1-0-len-zenodo-ung-dung-on-tap-khoi-nghiep-co-doi-chay-offline-song-ngu</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.7</priority>
+    <changefreq>yearly</changefreq>
+    <!-- EnQuiz 1.0 lên Zenodo: ứng dụng ôn tập Khởi nghiệp có DOI, chạy offline, song ng -->
+  </url>
+  <url>
+    <loc>https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html#pgs-ts-phan-anh-tu-tren-tap-chi-mot-the-gioi-doi-moi-sang-tao-o-can-tho-diem-sang-va-khoang-trong-phat-trien</loc>
+    <lastmod>2026-07-30</lastmod>
+    <priority>0.7</priority>
+    <changefreq>yearly</changefreq>
+    <!-- PGS.TS. Phan Anh Tú trên tạp chí Một Thế Giới: Đổi mới sáng tạo ở Cần Thơ: điểm  -->
+  </url>
+  <url>
+    <loc>https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html#tuoi-tre-online-doi-moi-sang-tao-co-the-tao-ra-dong-di-cu-moi-ve-dong-bang-song-cuu-long</loc>
+    <lastmod>2026-07-27</lastmod>
+    <priority>0.7</priority>
+    <changefreq>yearly</changefreq>
+    <!-- Tuổi Trẻ Online: Đổi mới sáng tạo có thể tạo ra dòng di cư mới về Đồng bằng sông -->
+  </url>
+  <url>
+    <loc>https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html#bizon-bat-nghiep-khi-lop-hoc-khoi-nghiep-tro-thanh-mot-ban-co-dat-set</loc>
+    <lastmod>2026-07-27</lastmod>
+    <priority>0.7</priority>
+    <changefreq>yearly</changefreq>
+    <!-- BizOn Bật Nghiệp: khi lớp học khởi nghiệp trở thành một bàn cờ đất sét -->
+  </url>
+  <url>
+    <loc>https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html#vi-sao-toi-xay-m-aida-de-may-doc-con-nguoi-quyet-dinh</loc>
+    <lastmod>2026-07-19</lastmod>
+    <priority>0.7</priority>
+    <changefreq>yearly</changefreq>
+    <!-- Vì sao tôi xây M-AIDA: để máy đọc, còn người quyết định -->
+  </url>
 </urlset>
