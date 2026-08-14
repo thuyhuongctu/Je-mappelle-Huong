@@ -1,11 +1,12 @@
 /* Service worker — Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v28';
+const CACHE = 'jshuong-v29';
 const CORE = [
   './',
   'index.html',
   'music.html',
   'songbook.html',
   'trangvien.html',
+  'blog.html',
   'assets/vendor/three-r128.min.js',
   'assets/js/huong3d.js',
   'manifest.webmanifest',
@@ -47,10 +48,12 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET' || url.origin !== location.origin) return;
   if (e.request.mode === 'navigate') {
+    const url = new URL(e.request.url);
+    const key = url.pathname === '/' || url.pathname.endsWith('/index.html') ? 'index.html' : url.pathname;
     e.respondWith(
       fetch(e.request)
-        .then((r) => { caches.open(CACHE).then((c) => c.put('index.html', r.clone())); return r; })
-        .catch(() => caches.match('index.html'))
+        .then((r) => { caches.open(CACHE).then((c) => c.put(key, r.clone())); return r; })
+        .catch(() => caches.match(key))
     );
     return;
   }
