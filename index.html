@@ -789,13 +789,13 @@ if ('serviceWorker' in navigator) {
   const phu = document.getElementById('hg-phu');
   const XE = 'assets/img/huong_xedap_new.webp', CHI = 'assets/img/huong_chi.webp';
   const KHU = [
-    ['about',      {vi:'🌸 Giới thiệu',       en:'🌸 About',            fr:'🌸 À propos'},           {vi:'Bấm để đạp xe đi tiếp →', en:'Click to ride on →',        fr:'Cliquez pour pédaler →'},       {vi:'Xin chào! Tôi là Hương AI, sẽ dẫn bạn thăm từng khu trên trang cá nhân này.', en:'Hello! I am Huong AI, your guide through this personal page.', fr:'Bonjour ! Je suis Hương IA, votre guide sur cette page personnelle.'}],
-    ['inspiration',{vi:'✨ Nguồn cảm hứng',    en:'✨ Inspiration',        fr:'✨ Inspiration'},        null, null],
-    ['ecosystem',  {vi:'🚀 Hệ sinh thái số',  en:'🚀 Digital ecosystem', fr:'🚀 Écosystème numérique'}, null, null],
-    ['gallery',    {vi:'🎀 Nhân vật ảo',      en:'🎀 Virtual character',  fr:'🎀 Personnage virtuel'},  null, null],
-    ['pubs',       {vi:'📚 Công bố khoa học', en:'📚 Publications',       fr:'📚 Publications'},        null, null],
-    ['teaching',   {vi:'🎓 Giảng dạy & dự án',en:'🎓 Teaching & projects',fr:'🎓 Enseignement & projets'}, null, null],
-    ['worlddata',  {vi:'🌏 Dữ liệu thế giới', en:'🌏 World data',         fr:'🌏 Données du monde'},    null, null]
+    ['about', {vi:'🌸 Giới thiệu',en:'🌸 About',fr:'🌸 À propos'}, {vi:'Bấm để đạp xe đi tiếp →',en:'Click to ride on →',fr:'Cliquez pour pédaler →'}, {vi:'Xin chào! Tôi là Hương AI, sẽ dẫn bạn thăm từng khu trên trang cá nhân này. Tôi là giảng viên và nghiên cứu sinh tiến sĩ tại Đại học Cần Thơ. Mời bạn đạp xe cùng tôi!',en:"Hello! I am Huong AI, your guide through this personal page. I am a lecturer and PhD candidate at Can Tho University. Let's ride together!",fr:"Bonjour ! Je suis Hương IA, votre guide sur cette page personnelle. Je suis enseignante-chercheuse à l'Université de Cần Thơ. Pédalons ensemble !"}],
+    ['inspiration', {vi:'✨ Nguồn cảm hứng',en:'✨ Inspiration',fr:'✨ Inspiration'}, {vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'}, {vi:'Nơi lưu giữ câu nói của Chủ tịch Hồ Chí Minh gửi học sinh nhân ngày khai trường — nguồn cảm hứng cho mọi việc tôi làm.',en:"Home of President Ho Chi Minh's letter to students on the first school day — the inspiration behind everything I do.",fr:"La lettre du Président Hô Chi Minh aux élèves, le jour de la rentrée — l'inspiration de tout ce que je fais."}],
+    ['ecosystem', {vi:'🚀 Hệ sinh thái số',en:'🚀 Digital ecosystem',fr:'🚀 Écosystème numérique'}, {vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'}, {vi:'Ba phần mềm của tôi chạy ngay trên trình duyệt: M-AIDA cho nghiên cứu, BizOn cho mô phỏng kinh doanh, và EnQuiz cho ôn tập khởi nghiệp.',en:'Three tools I built run straight in the browser: M-AIDA for research, BizOn for business simulation, and EnQuiz for revision.',fr:"Trois outils que j'ai construits : M-AIDA pour la recherche, BizOn pour la simulation d'entreprise, et EnQuiz pour la révision."}],
+    ['gallery', {vi:'🎀 Nhân vật ảo',en:'🎀 Virtual character',fr:'🎀 Personnage virtuel'}, {vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'}, {vi:'Đây là Hương AI trong tà áo dài trắng — gương mặt đại diện xuyên suốt hệ sinh thái, từ EnQuiz đến BizOn và M-AIDA.',en:'This is Huong AI in her white áo dài — the face of the whole ecosystem, from EnQuiz to BizOn and M-AIDA.',fr:"Huong IA dans son áo dài blanc — le visage de tout l'écosystème, d'EnQuiz à BizOn et M-AIDA."}],
+    ['pubs', {vi:'📚 Công bố khoa học',en:'📚 Publications',fr:'📚 Publications'}, {vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'}, {vi:'Phân tích tổng hợp hai trăm ba mươi sáu nghiên cứu về quốc tế hóa doanh nghiệp ở châu Á, từ năm mươi nền kinh tế.',en:'A meta-analysis of two hundred thirty-six studies on firm internationalization in Asia, drawn from fifty economies.',fr:"Une méta-analyse de deux cent trente-six études sur l'internationalisation des entreprises en Asie, à partir de cinquante économies."}],
+    ['teaching', {vi:'🎓 Giảng dạy & dự án',en:'🎓 Teaching & projects',fr:'🎓 Enseignement & projets'}, {vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'}, {vi:'Tôi giảng kinh tế lượng, phương pháp nghiên cứu và kinh doanh quốc tế — và hướng dẫn sinh viên khởi nghiệp qua các mô phỏng.',en:'I teach econometrics, research methods and international business — and coach students in entrepreneurship through simulations.',fr:"J'enseigne l'économétrie, les méthodes de recherche et le commerce international — et j'accompagne les étudiants en entrepreneuriat par des simulations."}],
+    ['worlddata', {vi:'🌏 Dữ liệu thế giới',en:'🌏 World data',fr:'🌏 Données du monde'}, {vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'}, {vi:'Số liệu trực tiếp từ Ngân hàng Thế giới — so sánh chỉ số giữa các nền kinh tế mà luận án của tôi phân tích.',en:'Live data from the World Bank — compare indicators across the economies studied in my dissertation.',fr:'Des données en direct de la Banque mondiale — comparer les indicateurs entre les économies analysées dans ma thèse.'}],
   ];
   let hienTai = -1;
   function ngonNgu(){ const l = document.documentElement.lang; return (l==='en'||l==='fr') ? l : 'vi'; }
@@ -812,7 +812,21 @@ if ('serviceWorker' in navigator) {
   // Lời dẫn bằng giọng nói: đọc file audio nếu có (assets/audio/tour/{khu}_{ngonNgu}.mp3),
   // nếu chưa có file thì dùng SpeechSynthesis làm giọng đọc tạm thời.
   let baiDangPhat = null;
+  let dangDocTTS = false;          // dang doc bang TTS?
+  let daTuongTac = false;          // user da tuong tac trang?
+  ['click','keydown','touchstart'].forEach(ev=>addEventListener(ev, ()=>{ daTuongTac = true; }, {once:true, passive:true}));
+  const LOI_BTN = document.getElementById('hg-loi');
+  const MA_LANG = {vi:'vi-VN', en:'en-US', fr:'fr-FR'};
+  function danhSachGiong(){ const g = speechSynthesis.getVoices(); if(g && g.length) return g; speechSynthesis.onvoiceschanged = ()=>{}; return []; }
+  function chonGiong(l){
+    const g = danhSachGiong().filter(v=>v.lang.startsWith(MA_LANG[l].split('-')[0]));
+    const nu = g.find(v=>/female|woman|zira|samantha|victoria|audrey|amelie|denise|hortense|moira|karen|google/i.test(v.name));
+    return (nu || g[0]) || speechSynthesis.getVoices().find(v=>v.default) || null;
+  }
+  function tatTTS(){ if(dangDocTTS){ speechSynthesis.cancel(); dangDocTTS = false; if(LOI_BTN) LOI_BTN.textContent = '🔊'; } }
   function phatLoiDanh(){
+    // click loai 2 khi dang doc -> dung
+    if(dangDocTTS && !baiDangPhat){ tatTTS(); return; }
     if(hienTai < 0){ phatText({vi:'Xin chào! Tôi là Hương AI, sẽ dẫn bạn tham quan trang cá nhân này. Nhấn vào biển chỉ đường để cùng đạp xe đi từng khu nhé!', en:'Hello! I am Huong AI, your guide on this personal page. Click the sign to ride from area to area!', fr:'Bonjour ! Je suis Hương IA, votre guide sur cette page. Cliquez sur le panneau pour pédaler d’une étape à l’autre !'}); return; }
     const k = KHU[hienTai][4];
     if(k){ phatText(k); return; }
@@ -821,27 +835,32 @@ if ('serviceWorker' in navigator) {
   }
   function phatText(t){
     const l = ngonNgu();
-    if(baiDangPhat){ try{baiDangPhat.pause();}catch(e){} baiDangPhat = null; }
+    tatTTS();
+    if(baiDangPhat){ try{baiDangPhat.pause(); baiDangPhat = null;}catch(e){} }
     const url = 'assets/audio/tour/' + (hienTai < 0 ? 'chao' : KHU[hienTai][0]) + '_' + l + '.mp3';
     const au = new Audio(url);
-    au.play().then(()=>{ baiDangPhat = au; au.onended = ()=>{ baiDangPhat = null; }; }).catch(()=>{
+    au.play().then(()=>{ baiDangPhat = au; au.onended = ()=>{ baiDangPhat = null; if(LOI_BTN) LOI_BTN.textContent = '🔊'; }; if(LOI_BTN) LOI_BTN.textContent = '🔈'; }).catch(()=>{
       if(!('speechSynthesis' in window)) return;
-      speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(t[l]);
-      const map = {vi:'vi-VN', en:'en-US', fr:'fr-FR'};
-      u.lang = map[l];
-      const g = speechSynthesis.getVoices().find(v=>v.lang.startsWith(map[l].split('-')[0])) || speechSynthesis.getVoices().find(v=>v.default);
+      u.lang = MA_LANG[l];
+      const g = chonGiong(l);
       if(g) u.voice = g;
+      u.rate = 1.0; u.pitch = 1.05;
+      dangDocTTS = true;
+      u.onend = u.onerror = ()=>{ dangDocTTS = false; if(LOI_BTN) LOI_BTN.textContent = '🔊'; };
       speechSynthesis.speak(u);
     });
   }
-  document.getElementById('hg-loi').addEventListener('click', phatLoiDanh);
+  LOI_BTN.addEventListener('click', phatLoiDanh);
+  // doi ngon ngu -> dung doc dang do va doc lai theo ngon ngu moi
+  new MutationObserver(()=>{ if(dangDocTTS){ tatTTS(); setTimeout(phatLoiDanh, 120); } }).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
   // theo dõi khu vực đang xem
   const io = new IntersectionObserver((es)=>{
     es.forEach(e=>{
       if(e.isIntersecting){
         const i = KHU.findIndex(k=>k[0]===e.target.id);
-        if(i>=0){ hienTai = i; capNhatBien(); }
+        if(i>=0 && i !== hienTai){ const cu = hienTai; hienTai = i; capNhatBien();
+          if(daTuongTac && cu >= 0){ phatLoiDanh(); } }
       }
     });
   }, {rootMargin:'-30% 0px -55% 0px'});

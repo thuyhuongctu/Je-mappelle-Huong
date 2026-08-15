@@ -290,7 +290,8 @@
     'thu-vien':   'track01',               // Je voudrais te parler — nội tâm, đọc trong yên lặng (khu thư viện)
     'am-nhac':    'track03',               // The Lamp Still Burns — ôm ấp, an ủi (khu âm nhạc)
     'bang-tin':   'track05',               // Je m'appelle Hương — thông điệp tổng hợp (khu bảng tin)
-    'gioi-thieu': 'official'               // Je m'appelle Hương bản đầy đủ — mở đầu chuyến tham quan (khu giới thiệu)
+    'gioi-thieu': 'official',              // Je m'appelle Hương bản đầy đủ — mở đầu chuyến tham quan (khu giới thiệu)
+    'kho-tuong-lai': 'track05'             // Je m'appelle Hương — khép chuyến tham quan bằng bài chủ đề (kho tương lai)
   };
   var khuDangChoi = '';
 

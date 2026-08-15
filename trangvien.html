@@ -517,6 +517,33 @@ const KHU = [
         <a class="the" href="https://github.com/thuyhuongctu" target="_blank" rel="noopener"><b>GitHub</b><span>Source code for the open projects</span><em>Open →</em></a>
         <a class="the" href="index.html"><b>Full academic site</b><span>The main site with publications, teaching and world data.</span><em>Back to main site →</em></a>`
     }
+  },
+  {
+    id:'kho-tuong-lai', icon:'🧭', mau:'#8A6FBF', vt:[-12,0,-38],
+    ten:{vi:'Kho tương lai', en:'Future Room'},
+    phu:{vi:'Ngọn hải đăng ước mơ · những kế hoạch sắp tới', en:'Lighthouse of dreams · what comes next'},
+    html:{
+      vi:`<p>Trang viên này vẫn đang lớn lên cùng hệ sinh thái. Mỗi chuyến tham quan của bạn là một viên gạch cho những điều sắp tới.</p>
+        <div class="hang">
+          <div class="o"><b>M-AIDA</b><span>phiên bản trích xuất mới</span></div>
+          <div class="o"><b>BizOn</b><span>bản mở rộng GO GlObal</span></div>
+          <div class="o"><b>EnQuiz</b><span>chương trình ôn tập tiếp theo</span></div>
+          <div class="o"><b>Songbook</b><span>chương mới của bài hát</span></div>
+        </div>
+        <h3>Định hướng học thuật</h3>
+        <p>Luận án tiến sĩ về <b>quốc tế hóa và hiệu quả hoạt động kinh doanh của doanh nghiệp ở châu Á</b> đang được hoàn thiện; các phát hiện mới sẽ được cập nhật tại khu học thuật.</p>
+        <p style="font-style:italic;color:var(--nhan)">“Hải đăng không cần to — chỉ cần sáng.”</p>`,
+      en:`<p>This estate keeps growing alongside the ecosystem. Every visit lays a brick for what comes next.</p>
+        <div class="hang">
+          <div class="o"><b>M-AIDA</b><span>next extraction release</span></div>
+          <div class="o"><b>BizOn</b><span>GO GlObal expansion</span></div>
+          <div class="o"><b>EnQuiz</b><span>next revision program</span></div>
+          <div class="o"><b>Songbook</b><span>new chapter of the songs</span></div>
+        </div>
+        <h3>Academic direction</h3>
+        <p>The doctoral dissertation on <b>internationalization and firm performance in Asia</b> is being finalized; new findings will appear in the research area.</p>
+        <p style="font-style:italic;color:var(--nhan)">“A lighthouse need not be big — only bright.”</p>`
+    }
   }
 ];
 
@@ -1015,6 +1042,7 @@ const dsSachTV = [];  // Clay Library — sách rung nhẹ
 const dsTuongTV = []; // Clay Library — tượng đất nặn xoay
 const dsDotMsg = [];  // Messenger — 3 chấm "typing" nhịp gõ
 const dsMsgTV = [];   // Messenger — cửa sổ + bong bóng
+const dsDomHDL = [];  // Kho tương lai — đom đóm tím hồng quanh hải đăng
 let denTV = new THREE.Mesh(new THREE.SphereGeometry(.01), new THREE.MeshBasicMaterial());
 
 function dungKhu(khu){
@@ -1249,6 +1277,46 @@ function dungKhu(khu){
     den.position.set(0, 3.3, 2.4); dt.add(den);
     const anh = new THREE.PointLight(0xFFD98A, .9, 12);
     anh.position.set(0, 3.9, 2.9); g.add(anh);
+  }
+  else if(khu.id === 'kho-tuong-lai'){
+    /* ===== KHO TƯƠNG LAI — ngọn hải đăng ước mơ ===== */
+    // thân hải đăng sọc tím-kem, càng lên càng nhỏ
+    for(let i=0;i<5;i++){
+      const r = 1.15 - i*.17;
+      const t = khoi(new THREE.CylinderGeometry(r*.88, r, .9, 18), i%2 ? '#8A6FBF' : '#EFE6F8', .92);
+      t.position.y = .45 + i*.9; dt.add(t);
+    }
+    // đỉnh đèn hải đăng (khối cầu phát sáng tím hồng + vòm kính)
+    const dinh = khoi(new THREE.SphereGeometry(.85, 14, 10), '#F7C4CC', .5);
+    dinh.position.y = 5.45; dt.add(dinh);
+    const vongDinh = khoi(new THREE.TorusGeometry(.82, .1, 8, 20), '#8A6FBF', .85);
+    vongDinh.rotation.x = Math.PI/2; vongDinh.position.y = 5.45; dt.add(vongDinh);
+    const chup = khoi(new THREE.ConeGeometry(.55, .8, 10), '#C4596B', .9);
+    chup.position.y = 6.35; dt.add(chup);
+    // ánh sáng thật của hải đăng (thấy rõ ban đêm)
+    const denHDL = new THREE.PointLight(0xD9B3FF, 1.1, 16);
+    denHDL.position.set(0, 6.2, 0); g.add(denHDL);
+    // vòng hào quang quanh đỉnh — đom đóm tím hồng bay vòng
+    for(let i=0;i<8;i++){
+      const d = khoi(new THREE.SphereGeometry(.06, 6, 6), '#D9B3FF', .6);
+      const a = i/8*Math.PI*2;
+      d.userData = {a: a, r: 1.6 + Math.random()*.5, y: 4.6+Math.random()*1.6, t: Math.random()*6};
+      if(dsDomHDL) dsDomHDL.push(d);
+      dt.add(d);
+    }
+    // bậc đá xoáy dẫn vào hải đăng
+    for(let i=0;i<6;i++){
+      const a = i/6*Math.PI*2;
+      const b = khoi(hopTron(.6, .45, .18, .07), '#EBD9C4', .94);
+      b.position.set(Math.cos(a)*2.2, .09, Math.sin(a)*2.2);
+      b.rotation.y = a; dt.add(b);
+    }
+    // hộp kế hoạch (giấy cuộn tương lai) trước hải đăng
+    const cuon = khoi(new THREE.CylinderGeometry(.28, .28, 1.3, 10), '#F2A8C4', .85);
+    cuon.rotation.z = Math.PI/2; cuon.position.set(0, .35, 2.6); dt.add(cuon);
+    const nutCuon1 = khoi(new THREE.CylinderGeometry(.34, .34, .1, 10), '#8A6FBF', .85);
+    nutCuon1.rotation.z = Math.PI/2; nutCuon1.position.set(.7, .35, 2.6); dt.add(nutCuon1);
+    const nutCuon2 = nutCuon1.clone(); nutCuon2.position.x = -.7; dt.add(nutCuon2);
   }
 
   theGioi.add(g);
@@ -1645,7 +1713,7 @@ addEventListener('keydown', e=>{
   if(e.key === 'b' || e.key === 'B'){ doiXe(); }
   if(e.key === 'Escape' && dangMo) dongBang();
   const ki = parseInt(e.key);
-  if(ki >= 1 && ki <= 6 && diemKhu[ki-1]) diToiKhu(diemKhu[ki-1].khu);
+  if(ki >= 1 && ki <= diemKhu.length && diemKhu[ki-1]) diToiKhu(diemKhu[ki-1].khu);
   if([' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) e.preventDefault();
 });
 addEventListener('keyup', e=>{ phim[e.key.toLowerCase()] = false; });
@@ -2190,6 +2258,14 @@ function capNhatSinhDong2(t, dt){
     const a = t*1.6 + u.pha;
     o.position.set(u.ox + Math.cos(a)*1.1, .75 + Math.sin(t*3.1+u.pha)*.22, u.oz + Math.sin(a)*.9);
     o.rotation.y = -a + Math.PI/2;
+  });
+  // đom đóm tím hồng bay vòng quanh đỉnh hải đăng
+  dsDomHDL.forEach(d=>{
+    const u = d.userData;
+    u.a += dt*1.3;
+    u.t += dt;
+    d.position.set(Math.cos(u.a)*u.r, u.y + Math.sin(u.t*2.6)*.2, Math.sin(u.a)*u.r);
+    d.material.opacity = .35 + Math.sin(u.t*4)*.45;
   });
 }
 
