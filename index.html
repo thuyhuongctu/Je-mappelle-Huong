@@ -145,11 +145,16 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
   .hcm-note{font-size:.92rem;color:var(--muted);margin:.75rem 0 0}
   /* Nền chìm Lăng Bác trong khối Nguồn cảm hứng */
   .hcm{position:relative;overflow:hidden;
-    background:url('assets/img/dinhdoclap.webp') center 35%/cover no-repeat, linear-gradient(160deg,color-mix(in srgb,var(--accent) 9%,var(--surface)),var(--surface))}
+    background:url('assets/img/dinhdoclap.webp') center 35%/cover no-repeat, linear-gradient(160deg,color-mix(in srgb,var(--accent) 9%,var(--surface)),var(--surface));
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;background-size:100% 105%}
+  .hcm:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(168,57,78,.22);border-left-color:#a8394e;background-size:115% 118%}
   .hcm::before{content:"";position:absolute;inset:0;
     background:linear-gradient(115deg,color-mix(in srgb,var(--surface) 82%,transparent) 0%,color-mix(in srgb,var(--surface) 62%,transparent) 42%,color-mix(in srgb,var(--surface) 36%,transparent) 100%);
     -webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px);z-index:0}
   .hcm>*{position:relative;z-index:1}
+  @keyframes hcm-drift{from{background-position:center 35%}to{background-position:center 40%}}
+  .hcm:hover{animation:hcm-drift 3s ease-in-out infinite alternate}
+  @media(prefers-reduced-motion:reduce){.hcm,.hcm:hover{animation:none;transition:none}}
 
 /* ===== Bản đồ trang viên (hero hướng B) ===== */
 #bando{position:relative;width:100%;aspect-ratio:1376/768;border-radius:26px;overflow:hidden;
