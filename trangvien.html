@@ -1059,13 +1059,13 @@ const dsBuiHoa = [];
   const mau = ['#F2A9B8','#FFD9E3','#F5C9D6','#FFFFFF','#F0C46B'];
   const hh = new THREE.SphereGeometry(.28, 7, 6);
   for(let mi=0; mi<mau.length; mi++){
-    const im = new THREE.InstancedMesh(hh, vatLieu(mau[mi], .9), 160);
+    const im = new THREE.InstancedMesh(hh, vatLieu(mau[mi], .9), 60);
     const d = new THREE.Object3D(); let k = 0;
-    while(k < 160){
+    while(k < 60){
       const a = Math.random()*Math.PI*2, r = 4.5 + Math.random()*5.2;
       const x = Math.cos(a)*r, z = Math.sin(a)*r;
       // tránh vùng chính giữa lối đi trung tâm
-      if(Math.hypot(x, z) < 4.2 || Math.hypot(x, z) > 10.5) continue;
+      if(Math.hypot(x, z) < 4.8 || Math.hypot(x, z) > 10.2) continue;
       d.position.set(x, .25 + Math.random()*.1, z);
       d.scale.setScalar(.65 + Math.random()*.55);
       d.updateMatrix();
