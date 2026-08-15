@@ -163,6 +163,9 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
 .bd-tieude{position:absolute;top:11%;left:50%;transform:translateX(-50%);z-index:3;
   background:rgba(255,253,248,.94);border-radius:999px;padding:7px 18px;white-space:nowrap;
   font:700 clamp(.68rem,1.6vw,.95rem) var(--serif);color:#a8394e;box-shadow:0 5px 16px rgba(90,50,50,.25)}
+.bd-map{position:absolute;right:3%;bottom:-6%;width:14%;opacity:.30;pointer-events:none;z-index:1;transform:rotate(8deg);filter:drop-shadow(0 3px 6px rgba(90,50,50,.25))}
+.bd-map img{display:block;width:100%;height:auto}
+@media(max-width:560px){.bd-map{width:26%;opacity:.22}}
 .tram{position:absolute;z-index:3;transform:translate(-50%,-50%);cursor:pointer;border:none;
   background:rgba(255,253,248,.95);border-radius:14px;padding:.55em .95em;text-align:center;
   font:700 clamp(.58rem,1.5vw,.82rem)/1.25 var(--sans);color:#463029;
@@ -219,9 +222,106 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
 .hl-badge{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.3)}
 .toggle,.langtog{border-radius:999px}
 .about-fig{border-radius:22px;border-width:4px}
+:focus-visible{outline:3px solid #c96a84;outline-offset:2px;border-radius:6px}
 </style>
 <style>.brandmini{position:fixed;top:10px;left:12px;z-index:6;display:block;width:min(230px,calc(100vw - 190px));height:auto;text-decoration:none;line-height:0}.brandmini img{display:block;width:100%;height:auto;object-fit:contain}@media(max-width:560px){.brandmini{top:6px;left:6px;width:96px;opacity:.97;background:rgba(255,253,248,.7);border-radius:14px;padding:3px 8px}}</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Person",
+   "name": "Do Thuy Huong",
+   "alternateName": "Đỗ Thùy Hương",
+   "jobTitle": "PhD Candidate & Lecturer, School of Economics, Can Tho University",
+   "email": "mailto:thuyhuongctu@gmail.com",
+   "url": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/",
+   "image": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/pro_aodai.png",
+   "sameAs": [
+    "https://orcid.org/0000-0002-7711-2487",
+    "https://scholar.google.com/citations?user=jSvAVnsAAAAJ",
+    "https://www.researchgate.net/profile/Do-Thuy-Huong",
+    "https://sciprofiles.com/profile/4613966",
+    "https://osf.io/m25qs/",
+    "https://github.com/thuyhuongctu"
+   ],
+   "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Can Tho University",
+    "alternateName": "Đại học Cần Thơ"
+   },
+   "knowsAbout": [
+    "Internationalization and firm performance",
+    "Meta-analysis",
+    "Firm-level econometrics",
+    "AI in higher education",
+    "Digital adoption",
+    "Technological capability"
+   ]
+  },
+  {
+   "@type": "ItemList",
+   "name": "Publications of Do Thuy Huong",
+   "numberOfItems": 19,
+   "itemListElement": [
+    {
+     "@type": "ScholarlyArticle",
+     "headline": "Nurturing the soul at work: spiritual values and psychological well-being in Vietnamese companies",
+     "datePublished": "2025",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "Human Resource Development International"
+     },
+     "identifier": "https://doi.org/10.1080/13678868.2025.2549549"
+    },
+    {
+     "@type": "ScholarlyArticle",
+     "headline": "AI in Higher Education: Does AI Fear Hinder Learning Outcomes?",
+     "datePublished": "2025",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "2024 Artificial Intelligence Revolutions (AIR)"
+     },
+     "identifier": "https://doi.org/10.1109/air63653.2024.00013"
+    },
+    {
+     "@type": "ScholarlyArticle",
+     "headline": "The Impact of the Covid-19 Pandemic on the Business Performance of Construction Industry Enterprises in Can Tho City",
+     "datePublished": "2023",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "Journal of Law and Sustainable Development"
+     },
+     "identifier": "https://doi.org/10.55908/sdgs.v11i12.1751"
+    },
+    {
+     "@type": "ScholarlyArticle",
+     "headline": "Internationalization and Turkish Manufacturing Firm Performance – Does Managerial Personality Matter?",
+     "datePublished": "2021",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "Accounting and Finance Innovations"
+     },
+     "identifier": "https://doi.org/10.5772/intechopen.97432"
+    },
+    {
+     "@type": "ScholarlyArticle",
+     "headline": "The moderating effects of managers’ experience and gender on internationalization and firm performance of manufacturing enterprises in Turkey",
+     "datePublished": "2020",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "Accounting"
+     },
+     "identifier": "https://doi.org/10.5267/j.ac.2020.9.006"
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head><body>
+<a class="skip-link" href="#main">Skip to content</a>
+
 <a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo LR — Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
 <div id="hg" aria-hidden="false">
   <img id="hg-img" src="assets/img/huong_chi.webp" alt="Hương AI đồng hành cùng bạn trên trang" fetchpriority="high">
@@ -230,10 +330,11 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
 <div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></span><a href="audio.html" class="topaudio" title="Phòng thu lời dẫn tour · Tour narration studio"><span>🎙️</span></a><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button></div>
 <div class="wrap">
   <div id="bando" role="navigation" aria-label="Bản đồ trang viên">
+    <img class="bd-map" src="assets/svg/vnmap.svg" alt="Bản đồ Việt Nam chìm trên trang viên" aria-hidden="true">
     <div class="bd-tieude">🌸 <span class="lang-vi">Trang viên «Je m'appelle Hương» — chọn nơi muốn ghé</span><span class="lang-en">"Je m'appelle Hương" garden — pick a place to visit</span><span class="lang-fr">Jardin «Je m'appelle Hương» — choisissez une étape</span></div>
     <button class="tram" style="left:15%;top:57%" data-den="#about">🌸 <span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span><small>Academic Research</small></button>
     <button class="tram" style="left:29%;top:22%" data-den="#ecosystem">🚀 <span class="lang-vi">Hệ sinh thái</span><span class="lang-en">Ecosystem</span><small>Open Projects</small></button>
-    <button class="tram" style="left:71%;top:22%" data-den="#pubs">📚 <span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><small>Publications</small></button>
+    <button class="tram" style="left:71%;top:22%" data-den="publications.html">📚 <span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><small>Publications</small></button>
     <button class="tram" style="left:85%;top:56%" data-den="music.html">🎵 <span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><small>Creative Library</small></button>
     <button class="tram" style="left:26%;top:79%" data-den="#teaching">🎓 <span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span><small>Lecture hall</small></button>
     <button class="tram" style="left:74%;top:79%" data-den="blog.html">📰 <span class="lang-vi">Blog · Tin tức</span><span class="lang-en">Blog · News</span><small>News corner</small></button>
@@ -254,6 +355,7 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
         <a href="https://www.researchgate.net/profile/Do-Thuy-Huong" target="_blank" rel="noopener">ResearchGate</a>
         <a href="https://osf.io/m25qs/" target="_blank" rel="noopener">OSF</a>
         <a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener">GitHub</a>
+        <a href="publications.html" class="go"><span class="lang-vi">📄 Công bố khoa học</span><span class="lang-en">📄 Publications</span></a>
         <a href="#ecosystem"><span class="lang-vi">Hệ sinh thái số ↓</span><span class="lang-en">Digital ecosystem ↓</span></a>
         <a href="#" id="installBtn" hidden style="border-color:var(--accent);color:var(--accent);font-weight:700">📲 <span class="lang-vi">Cài ứng dụng</span><span class="lang-en">Install app</span></a>
       </div>
@@ -264,12 +366,13 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
     <a href="#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
     <a href="#ecosystem"><span class="lang-vi">Hệ sinh thái số</span><span class="lang-en">Ecosystem</span></a>
     <a href="#gallery"><span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Virtual character</span></a>
-    <a href="#pubs"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a>
+    <a href="publications.html"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a>
     <a href="#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span></a>
     <a href="#worlddata"><span class="lang-vi">Dữ liệu thế giới</span><span class="lang-en">World data</span></a>
     <a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></a><a href="quan-ly-songbook.html"><span class="lang-vi">Danh sách bài hát</span><span class="lang-en">Song catalog</span></a><a href="songbook.html"><span class="lang-vi">Songbook</span><span class="lang-en">Songbook</span></a>
     <a href="trangvien.html">🌸 <span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span></a>
     <a href="blog.html">Blog</a>
+    <a href="publications.html"><span class="lang-vi">Danh mục đầy đủ ↗</span><span class="lang-en">Full list ↗</span></a>
   </nav>
 
   <section id="about">
@@ -464,7 +567,7 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
   
 
   <footer>
-    <span style="flex-basis:100%" class="fnav"><span class="fgroup"><span class="lang-vi">Trang này</span><span class="lang-en">This site</span></span><a href="#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a><a href="#ecosystem"><span class="lang-vi">Hệ sinh thái số</span><span class="lang-en">Ecosystem</span></a><a href="#gallery"><span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Virtual character</span></a><a href="#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span></a><a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></a><a href="quan-ly-songbook.html"><span class="lang-vi">Danh sách bài hát</span><span class="lang-en">Song catalog</span></a><a href="songbook.html"><span class="lang-vi">Songbook</span><span class="lang-en">Songbook</span></a><a href="trangvien.html"><span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span></a><a href="blog.html">Blog</a></span>
+    <span style="flex-basis:100%" class="fnav"><span class="fgroup"><span class="lang-vi">Trang này</span><span class="lang-en">This site</span></span><a href="#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a><a href="#ecosystem"><span class="lang-vi">Hệ sinh thái số</span><span class="lang-en">Ecosystem</span></a><a href="#gallery"><span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Virtual character</span></a><a href="#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span></a><a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></a><a href="quan-ly-songbook.html"><span class="lang-vi">Danh sách bài hát</span><span class="lang-en">Song catalog</span></a><a href="songbook.html"><span class="lang-vi">Songbook</span><span class="lang-en">Songbook</span></a><a href="trangvien.html"><span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span></a><a href="blog.html">Blog</a><a href="publications.html"><span class="lang-vi">Công bố khoa học</span><span class="lang-en">Publications</span></a></span>
     <span style="flex-basis:100%" class="fnav"><span class="fgroup"><span class="lang-vi">Dự án</span><span class="lang-en">Projects</span></span><a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA ↗</a><a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn AI ↗</a><a href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener">EnQuiz ↗</a><a href="https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/" target="_blank" rel="noopener"><span class="lang-vi">Trò Chơi Sử Việt ↗</span><span class="lang-en">History Games ↗</span></a><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID ↗</a><a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener">GitHub ↗</a></span>
     <span>© 2026 <span class="lang-vi">Đỗ Thùy Hương</span><span class="lang-en">Do Thuy Huong</span> · <span class="lang-vi">Cần Thơ, Việt Nam</span><span class="lang-en">Can Tho, Vietnam</span></span>
     <span>thuyhuongctu@gmail.com</span>
@@ -889,7 +992,7 @@ if ('serviceWorker' in navigator) {
 </script>
 
 <script src="assets/vendor/three-r128.min.js" defer></script>
-<script src="assets/js/huong3d.js" defer></script>
+<!-- huong3d.js removed: no .gh-map mount point in this page; 2D webp avatars are used instead -->
 <script>
 /* Bản đồ trang viên: cô Hương đất sét 3D đạp xe tới trạm được bấm */
 addEventListener('DOMContentLoaded', function(){
