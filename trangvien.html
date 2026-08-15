@@ -720,6 +720,194 @@ function thuyen(){
 });
 
 // 5.9 khóm tre
+/* ---------- 5.10 CẢNH TRANG TRÍ MỚI — cầu, ao sen, luống hoa, chòi, hạc, cối xay, bể koi ---------- */
+// (a) cầu gỗ cong bắc qua sông
+function cauGo(dai, x, z, goc){
+  const g = new THREE.Group();
+  // mặt cầu uốn cong như yên ngựa
+  for(let i=0;i<9;i++){
+    const tt = (i/8) - .5;                      // -0.5 → 0.5 dọc cầu
+    const phan = khoi(hopTron(2.4, .36, .18, .06), '#C09870', .94);
+    phan.position.set(tt*dai, .85 + Math.cos(tt*Math.PI)*.55, 0);
+    phan.rotation.y = Math.PI/2;
+    g.add(phan);
+  }
+  // lan can hai bên
+  for(const ben of [-1,1]){
+    for(let i=0;i<5;i++){
+      const cot = khoi(new THREE.CylinderGeometry(.07,.07,.9,7), '#C09870', .94);
+      const tt = (i/4) - .5;
+      cot.position.set(tt*dai, .45 + Math.cos(tt*Math.PI)*.55, ben*1.05);
+      g.add(cot);
+    }
+    const thanh = khoi(new THREE.CylinderGeometry(.05,.05,dai+.4,7), '#B08A5A', .94);
+    thanh.rotation.z = Math.PI/2;
+    thanh.rotation.y = Math.PI/2;
+    thanh.position.set(0, 1.15, ben*1.05);
+    // nâng giữa cầu theo cong — xấp xỉ bằng 2 nửa xiên
+    const nua = khoi(new THREE.CylinderGeometry(.05,.05,dai/2+.3,7), '#B08A5A', .94);
+    nua.rotation.z = Math.PI/2; nua.rotation.y = Math.PI/2;
+    nua.position.set(-dai/4, 1.42, ben*1.05); nua.rotation.x = .28; g.add(nua);
+    const nua2 = nua.clone(); nua2.position.x = dai/4; nua2.rotation.x = -.28; g.add(nua2);
+  }
+  const chanG = khoi(new THREE.CylinderGeometry(.12,.14,1.0,7), '#8A6A4A', .94);
+  chanG.position.set(-dai/2, .5, 0); g.add(chanG);
+  const chanP = chanG.clone(); chanP.position.x = dai/2; g.add(chanP);
+  g.position.set(x, 0, z); g.rotation.y = goc; g.scale.setScalar(.95);
+  theGioi.add(g);
+}
+cauGo(6.4, -12, 9, .35);
+cauGo(6.4, 34, 10, -1.1);
+
+// (b) ao sen + đài phun nước ở trung tâm
+const aoPhun = new THREE.Group();
+const boAo = new THREE.Mesh(new THREE.TorusGeometry(3.1, .7, 12, 34), vatLieu('#E8C9A8', .94));
+boAo.rotation.x = Math.PI/2; boAo.position.y = .35; aoPhun.add(boAo);
+const nuocAo = new THREE.Mesh(new THREE.CircleGeometry(2.7, 30),
+  new THREE.MeshStandardMaterial({color:new THREE.Color('#9FD3E8'), roughness:.25, metalness:.05, transparent:true, opacity:.92}));
+nuocAo.rotation.x = -Math.PI/2; nuocAo.position.y = .14; aoPhun.add(nuocAo);
+const cotPhun = khoi(new THREE.CylinderGeometry(.14,.2,.9,9), '#EFE3CE', .94);
+cotPhun.position.y = .95; aoPhun.add(cotPhun);
+const nuocPhun = new THREE.Group();
+for(let i=0;i<6;i++){
+  const tia = new THREE.Mesh(new THREE.ConeGeometry(.09,.7,8),
+    new THREE.MeshStandardMaterial({color:new THREE.Color('#CDEAF5'), roughness:.3, metalness:0, transparent:true, opacity:.9}));
+  const a = (i/6)*Math.PI*2;
+  tia.position.set(Math.cos(a)*.4, .42, Math.sin(a)*.4);
+  tia.rotation.set(Math.sin(a)*.4, 0, -Math.cos(a)*.4);
+  nuocPhun.add(tia);
+}
+nuocPhun.position.y = 1.4; aoPhun.add(nuocPhun);
+for(let i=0;i<4;i++){
+  const s = boSen(); s.scale.setScalar(.65);
+  const a = (i/4)*Math.PI*2 + .3;
+  s.position.set(Math.cos(a)*1.7, .1, Math.sin(a)*1.7);
+  aoPhun.add(s);
+}
+aoPhun.position.set(-16, 0, 16);
+theGioi.add(aoPhun);
+
+// (c) luống hoa dọc lối đi (InstancedMesh)
+const dsLuongHoa = new THREE.Group(); theGioi.add(dsLuongHoa);
+(function luongHoa(){
+  const mau = ['#F2A9B8','#FFFFFF','#E8DFA8','#D9A8F2','#F0C46B','#E88A6A'];
+  const hh = new THREE.SphereGeometry(1, 8, 7);
+  for(let mi=0; mi<mau.length; mi++){
+    const n = 70;
+    const im = new THREE.InstancedMesh(hh, vatLieu(mau[mi], .88), n);
+    const d = new THREE.Object3D(); let k = 0;
+    while(k < n){
+      const a = Math.random()*Math.PI*2, r = 16 + Math.random()*26;
+      const x = Math.cos(a)*r, z = Math.sin(a)*r;
+      // tránh sông
+      if(Math.abs(z - (Math.sin(x*.05)*7 + 8)) < 6) continue;
+      // tránh nền các khu
+      let trong = false;
+      for(const kk of KHU){ if(Math.hypot(x-kk.vt[0], z-kk.vt[2]) < 7.5){ trong = true; break; } }
+      if(trong) continue;
+      d.position.set(x, .3 + Math.random()*.35, z);
+      d.scale.setScalar(.3 + Math.random()*.35);
+      d.rotation.y = Math.random()*3;
+      d.updateMatrix();
+      im.setMatrixAt(k++, d.matrix);
+    }
+    im.count = k;
+    im.castShadow = false; im.receiveShadow = false;
+    im.userData = {pha: Math.random()*6, cx: 0, z: 0};
+    dsLuongHoa.add(im);
+  }
+})();
+
+// (d) chòi nghỉ mái nón giữa trang viên
+function choiNghi(x, z, goc){
+  const g = new THREE.Group();
+  const cot = []; for(const i of [0,1,2,3]){
+    const a = (i/4)*Math.PI*2 + Math.PI/4;
+    const c = khoi(new THREE.CylinderGeometry(.1,.12,2.4,7), '#8A6A4A', .93);
+    c.position.set(Math.cos(a)*1.7, 1.2, Math.sin(a)*1.7); cot.push(c); g.add(c);
+  }
+  const mai = new THREE.Mesh(new THREE.ConeGeometry(2.6, 1.7, 4), vatLieu('#D9749B', .93));
+  mai.position.y = 3.15; mai.rotation.y = Math.PI/4; g.add(mai);
+  const ben = khoi(hopTron(3.0, .5, 1.1, .14), '#D8B98E', .94);
+  ben.position.set(0, .75, .9); g.add(ben);
+  g.position.set(x, 0, z); g.rotation.y = goc;
+  theGioi.add(g);
+}
+choiNghi(-12, -18, .4);
+choiNghi(14, -14, 2.1);
+
+// (e) hạc giấy trắng ven sông
+const dsHac = [];
+function hacTrang(){
+  const g = new THREE.Group();
+  const than = new THREE.Mesh(new THREE.SphereGeometry(1,12,9), vatLieu('#F7F3EA', .8));
+  than.scale.set(.75, .6, .42); g.add(than);
+  const co = new THREE.Mesh(new THREE.CylinderGeometry(.055,.07,.9,7), vatLieu('#F7F3EA', .8));
+  co.position.set(.32, .52, 0); co.rotation.z = -.5; g.add(co);
+  const dau = new THREE.Mesh(new THREE.SphereGeometry(.12,9,8), vatLieu('#F7F3EA', .8));
+  dau.position.set(.72, .72, 0); g.add(dau);
+  const moi = new THREE.Mesh(new THREE.ConeGeometry(.04,.26,6), vatLieu('#E88A4A', .6));
+  moi.rotation.z = -Math.PI/2; moi.position.set(.88, .76, 0); g.add(moi);
+  for(const ben of [-1,1]){
+    const canh = new THREE.Mesh(new THREE.SphereGeometry(.65,10,8), vatLieu('#F7F3EA', .82));
+    canh.scale.set(1.7, .12, .55);
+    canh.position.set(-.15, .28, ben*.72);
+    canh.rotation.x = ben*.25;
+    g.add(canh);
+  }
+  return g;
+}
+[[-18,12.6,-.3],[-2,11.2,.8],[44,13.6,-2.2],[12,6.8,.4]].forEach(([x,z,goc],i)=>{
+  const h = hacTrang(); h.position.set(x, 0, z); h.rotation.y = goc;
+  h.userData = {pha: i*1.9}; dsHac.push(h);
+});
+
+// (f) cối xay gió tre trên đồi xa
+const dsCoiXay = [];
+const dsBanhRang = [];
+function coiXay(x, z){
+  const g = new THREE.Group();
+  const than = khoi(new THREE.CylinderGeometry(.16,.26,4.2,8), '#EFE3CE', .93);
+  than.position.y = 2.1; g.add(than);
+  const mai = khoi(new THREE.ConeGeometry(.7, 1.1, 8), '#C4596B', .93);
+  mai.position.y = 4.7; g.add(mai);
+  const canhQuat = new THREE.Group();
+  for(let i=0;i<4;i++){
+    const canh = khoi(hopTron(.24, 2.6, .1, .05), '#8FBF6A', .94);
+    canh.rotation.z = (i/4)*Math.PI*2;
+    canhQuat.add(canh);
+  }
+  const tam = khoi(new THREE.SphereGeometry(.24,10,8), '#E8B84B', .8);
+  canhQuat.add(tam);
+  canhQuat.position.set(0, 3.5, .32);
+  g.add(canhQuat);
+  g.position.set(x, 0, z);
+  g.userData = {canh: canhQuat};
+  dsCoiXay.push(g);
+}
+coiXay(-42, -26); coiXay(46, -22); coiXay(-24, -44);
+
+// (g) bể cá koi gần khu học thuật
+const beKoi = new THREE.Group();
+const boBe = khoi(hopTron(4.6, 3.0, .5, .14), '#D8B98E', .94);
+boBe.position.y = .25; beKoi.add(boBe);
+const nuocBe = new THREE.Mesh(new THREE.PlaneGeometry(4.0, 2.5),
+  new THREE.MeshStandardMaterial({color:new THREE.Color('#A8DDE8'), roughness:.22, metalness:.05, transparent:true, opacity:.9}));
+nuocBe.rotation.x = -Math.PI/2; nuocBe.position.y = .52; beKoi.add(nuocBe);
+const dsKoi = [];
+[ ['#F08A4B',-1.1], ['#FFF6E8',0.4], ['#E85A4F',1.0] ].forEach(([mau,x0],i)=>{
+  const k = new THREE.Group();
+  const than = new THREE.Mesh(new THREE.SphereGeometry(.22,12,9), vatLieu(mau,.6));
+  than.scale.set(1.7,.5,.55); k.add(than);
+  const duoi = new THREE.Mesh(new THREE.ConeGeometry(.12,.3,5), vatLieu(mau,.6));
+  duoi.rotation.z = Math.PI/2; duoi.position.x = -.42; duoi.scale.z=.4; k.add(duoi);
+  k.position.set(x0, .72, 0);
+  k.userData = {x0, pha: i*2.1, bk: .7 + (i%2)*.35};
+  beKoi.add(k); dsKoi.push(k);
+});
+beKoi.position.set(-26, 0, -20);
+theGioi.add(beKoi);
+
 function khomTre(){
   const g = new THREE.Group();
   for(let i=0;i<5;i++){
@@ -1484,6 +1672,8 @@ addEventListener('resize', ()=>{
 /* ---------- CHI TIẾT SINH ĐỘNG: bướm, chim, cánh hoa, vịt, chuồn chuồn ---------- */
 const sinhDong = new THREE.Group();
 theGioi.add(sinhDong);
+dsHac.forEach(h => sinhDong.add(h));
+dsCoiXay.forEach(g => sinhDong.add(g));
 
 // bươm bướm — cánh kép vỗ, lượn quanh vườn
 const BUOM_MAU = ['#F2A9B8','#B9A9F2','#F2D9A9','#A9E3F2','#F2A9E0','#C4E8B0','#F6C1CB'];
