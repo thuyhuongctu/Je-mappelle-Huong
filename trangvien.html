@@ -1400,8 +1400,15 @@ function datNgonNgu(l){
     b.mesh.material.needsUpdate = true;
   });
   if(dangMo && khuGan) moBang(khuGan);
+  try{ localStorage.setItem('huong_lang', l); }catch(e){}
+  // nhãn trợ năng song ngữ cho các nút HUD
+  const am = document.getElementById('nut-am-thanh'); if(am) am.setAttribute('aria-label', l==='vi'?'Âm thanh':'Sound');
+  const nx = document.getElementById('nut-xe'); if(nx) nx.setAttribute('aria-label', l==='vi'?'Đổi phương tiện':'Switch transport');
+  const nc = document.getElementById('nut-cham'); if(nc) nc.setAttribute('aria-label', l==='vi'?'Vào khu':'Enter area');
+  const bieu = document.getElementById('bieu-cam'); if(bieu) bieu.setAttribute('aria-label', l==='vi'?'Biểu cảm nhân vật':'Character expressions');
 }
 document.getElementById('nut-ngu').addEventListener('click', ()=> datNgonNgu(NG === 'vi' ? 'en' : 'vi'));
+(function(){var l='vi';try{l=localStorage.getItem('huong_lang')||'vi';}catch(e){}if(l==='en') datNgonNgu('en');})();
 
 // vào trang viên
 const cong = document.getElementById('cong');
