@@ -1416,7 +1416,7 @@ function datNgonNgu(l){
   const bieu = document.getElementById('bieu-cam'); if(bieu) bieu.setAttribute('aria-label', l==='vi'?'Biểu cảm nhân vật':'Character expressions');
 }
 document.getElementById('nut-ngu').addEventListener('click', ()=> datNgonNgu(NG === 'vi' ? 'en' : 'vi'));
-(function(){var l='vi';try{l=localStorage.getItem('huong_lang')||'vi';}catch(e){}if(l==='en') datNgonNgu('en');
+(function(){var l='vi';try{l=localStorage.getItem('huong_lang')||((/^en/i.test(navigator.language)?'en':'vi'));}catch(e){}if(l==='en') datNgonNgu('en');
   var a=document.getElementById('ng-vi'),b=document.getElementById('ng-en');
   if(a) a.addEventListener('click',()=>datNgonNgu('vi'));
   if(b) b.addEventListener('click',()=>datNgonNgu('en'));
