@@ -143,8 +143,13 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
   .hcm-q{font-family:var(--serif);font-size:1.16rem;line-height:1.55;font-style:italic;margin:.55rem 0 .45rem;color:var(--ink)}
   .hcm-a{font-size:.9rem;color:var(--muted)}
   .hcm-note{font-size:.92rem;color:var(--muted);margin:.75rem 0 0}
-  .hcm-fig{float:right;width:clamp(120px,24vw,220px);margin:4px 0 10px 16px;border-radius:12px;border:1px solid var(--line);box-shadow:var(--shadow)}
-  @media(max-width:560px){.hcm-fig{float:none;display:block;width:100%;margin:0 0 12px}}
+  /* Nền chìm Lăng Bác trong khối Nguồn cảm hứng */
+  .hcm{position:relative;overflow:hidden;
+    background:url('assets/img/dinhdoclap.webp') center 35%/cover no-repeat, linear-gradient(160deg,color-mix(in srgb,var(--accent) 9%,var(--surface)),var(--surface))}
+  .hcm::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(115deg,color-mix(in srgb,var(--surface) 82%,transparent) 0%,color-mix(in srgb,var(--surface) 62%,transparent) 42%,color-mix(in srgb,var(--surface) 36%,transparent) 100%);
+    -webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px);z-index:0}
+  .hcm>*{position:relative;z-index:1}
 
 /* ===== Bản đồ trang viên (hero hướng B) ===== */
 #bando{position:relative;width:100%;aspect-ratio:1376/768;border-radius:26px;overflow:hidden;
@@ -272,7 +277,6 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
 
   <section id="inspiration">
     <div class="hcm">
-      <img class="hcm-fig" src="assets/img/dinhdoclap.webp" alt="Quốc kỳ Việt Nam tung bay trước Lăng Chủ tịch Hồ Chí Minh giữa vườn hồng, nơi đọc bản tuyên ngôn độc lập 2/9/1945" loading="lazy">
       <span class="hcm-k">🪷 <span class="lang-vi">Nguồn cảm hứng</span><span class="lang-en">Inspiration</span></span>
       <blockquote class="hcm-q">
         <span class="lang-vi">&ldquo;Non sông Việt Nam có trở nên tươi đẹp hay không, dân tộc Việt Nam có bước tới đài vinh quang để sánh vai với các cường quốc năm châu hay không, chính là nhờ một phần lớn ở công học tập của các em.&rdquo;</span>
