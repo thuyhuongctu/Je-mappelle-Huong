@@ -310,6 +310,10 @@ body.cham #ban-do canvas{width:84px;height:84px}
       <div><b>E</b><span data-vi="vào khu" data-en="enter area">vào khu</span></div>
       <div><b>B</b><span data-vi="lên / xuống xe" data-en="bike on / off">lên / xuống xe</span></div>
     </div>
+    <div class="ngon-ngu-hop" style="display:flex;justify-content:center;gap:.4rem;margin:0 0 1.2rem">
+      <button type="button" id="ng-vi" onclick="datNgonNgu('vi')" style="border:1px solid #c9d6c3;border-radius:999px;padding:.35rem .9rem;font-weight:700;font-size:.8rem;cursor:pointer;background:#fff">VI</button>
+      <button type="button" id="ng-en" onclick="datNgonNgu('en')" style="border:1px solid #c9d6c3;border-radius:999px;padding:.35rem .9rem;font-weight:700;font-size:.8rem;cursor:pointer;background:transparent">EN</button>
+    </div>
     <button class="nut" id="nut-vao" data-vi="Bắt đầu tham quan" data-en="Start the tour">Bắt đầu tham quan</button>
     <div id="tai-tien"><i></i></div>
   </div>
@@ -1392,6 +1396,10 @@ function datNgonNgu(l){
     if(t !== undefined) el.innerHTML = t;
   });
   document.getElementById('nut-ngu').textContent = l === 'vi' ? 'EN' : 'VI';
+  const a = document.getElementById('ng-vi'), b = document.getElementById('ng-en');
+  if(a){a.style.background = l==='vi' ? '#E77E9A' : '#fff'; a.style.color = l==='vi' ? '#fff' : '#4E6B5C';}
+  if(b){b.style.background = l==='en' ? '#E77E9A' : '#fff'; b.style.color = l==='en' ? '#fff' : '#4E6B5C';}
+  try{localStorage.setItem('huong_lang', l);}catch(e){}
   const n = document.getElementById('nut-xe-may');
   n.textContent = dapXe ? (l==='vi'?'🚶 Đi bộ':'🚶 Walk') : (l==='vi'?'🚲 Đạp xe':'🚲 Cycle');
   bienBao.forEach(b=>{
@@ -1408,7 +1416,11 @@ function datNgonNgu(l){
   const bieu = document.getElementById('bieu-cam'); if(bieu) bieu.setAttribute('aria-label', l==='vi'?'Biểu cảm nhân vật':'Character expressions');
 }
 document.getElementById('nut-ngu').addEventListener('click', ()=> datNgonNgu(NG === 'vi' ? 'en' : 'vi'));
-(function(){var l='vi';try{l=localStorage.getItem('huong_lang')||'vi';}catch(e){}if(l==='en') datNgonNgu('en');})();
+(function(){var l='vi';try{l=localStorage.getItem('huong_lang')||'vi';}catch(e){}if(l==='en') datNgonNgu('en');
+  var a=document.getElementById('ng-vi'),b=document.getElementById('ng-en');
+  if(a) a.addEventListener('click',()=>datNgonNgu('vi'));
+  if(b) b.addEventListener('click',()=>datNgonNgu('en'));
+})();
 
 // vào trang viên
 const cong = document.getElementById('cong');
