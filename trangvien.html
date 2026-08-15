@@ -511,7 +511,10 @@ try{
     '<div class="cong-hop set" style="text-align:center"><h1>Trình duyệt chưa hỗ trợ 3D</h1><p class="phu">Trang viên cần WebGL. Bạn có thể xem bản trang học thuật thường.</p><a class="nut" href="index.html">Về trang chính</a></div>';
   throw e;
 }
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+// tier chất lượng theo thiết bị: mobile nhẹ hơn desktop
+const laMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || (innerWidth < 768);
+const tierMobile = laMobile ? (innerWidth < 400 ? 1 : 1.5) : Math.min(devicePixelRatio, 2);
+renderer.setPixelRatio(tierMobile);
 renderer.setSize(innerWidth, innerHeight);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -525,7 +528,8 @@ scene.add(new THREE.HemisphereLight(0xEAF6FF, 0x9CCB92, 1.0));
 const nang = new THREE.DirectionalLight(0xFFF3DC, 1.5);
 nang.position.set(24, 34, 18);
 nang.castShadow = true;
-nang.shadow.mapSize.set(2048,2048);
+nang.shadow.mapSize.set(laMobile ? 1024 : 2048, laMobile ? 1024 : 2048);
+nang.shadow.radius = laMobile ? 2 : 4;
 nang.shadow.camera.near = 5; nang.shadow.camera.far = 110;
 nang.shadow.camera.left=-52; nang.shadow.camera.right=52;
 nang.shadow.camera.top=52; nang.shadow.camera.bottom=-52;
@@ -1619,9 +1623,11 @@ document.getElementById('nut-vao').addEventListener('click', ()=>{
   setTimeout(()=>cong.remove(), 800);
 });
 let tienDo = 8;
+const thanhTien = document.querySelector('#tai-tien i');
 const nhipTai = setInterval(()=>{
   tienDo = Math.min(100, tienDo + 14);
-  document.querySelector('#tai-tien i').style.width = tienDo + '%';
+  if(thanhTien && thanhTien.isConnected) thanhTien.style.width = tienDo + '%';
+  else clearInterval(nhipTai);
   if(tienDo >= 100) clearInterval(nhipTai);
 }, 160);
 
@@ -2592,6 +2598,43 @@ function vong(){
   veBanDo();
   renderer.render(scene, camera);
 }
+
+/* ---------- 12. TỰ ĐIỀU CHỈNH CHẤT LƯỢNG THEO FPS (MOBILE) ---------- */
+var chatLuong = {
+  cuoi: performance.now(), khung: 0, fpsTB: 60,
+  buoc: tierMobile, toiThieu: laMobile ? 0.75 : 1,
+  demDoi: 0, onDinh: true
+};
+function tuDieuChinhChatLuong(){
+  var now = performance.now();
+  chatLuong.khung++;
+  var ms = now - chatLuong.cuoi;
+  if(ms < 1000) return;
+  chatLuong.fpsTB = Math.round(1000 * chatLuong.khung / ms);
+  chatLuong.khung = 0; chatLuong.cuoi = now;
+  if(chatLuong.fpsTB < 24 && chatLuong.buoc > chatLuong.toiThieu){
+    chatLuong.buoc = Math.max(chatLuong.toiThieu, chatLuong.buoc * .75);
+    renderer.setPixelRatio(chatLuong.buoc);
+    renderer.setSize(innerWidth, innerHeight);
+    chatLuong.demDoi = 0; chatLuong.onDinh = false;
+  } else if(chatLuong.fpsTB > 45 && chatLuong.buoc < tierMobile && chatLuong.onDinh){
+    chatLuong.demDoi++;
+    if(chatLuong.demDoi > 6){
+      chatLuong.buoc = Math.min(tierMobile, chatLuong.buoc * 1.25);
+      renderer.setPixelRatio(chatLuong.buoc);
+      renderer.setSize(innerWidth, innerHeight);
+    }
+  } else if(chatLuong.fpsTB < 24){
+    chatLuong.demDoi = 0;
+  } else {
+    chatLuong.demDoi = 0; chatLuong.onDinh = true;
+  }
+}
+var vongGoc = vong;
+vong = function(){
+  tuDieuChinhChatLuong();
+  vongGoc();
+};
 vong();
 </script>
 <script src="assets/js/music.js" defer></script>
