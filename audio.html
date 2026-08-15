@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>Hương AI — Phòng thu lời dẫn tour</title>
+<meta name="description" content="Phòng thu cá nhân: ghi âm hoặc tải lên lời dẫn tour cho Hương AI (tiếng Việt, tiếng Anh, tiếng Pháp), tải về theo đúng quy ước tên file.">
+<meta property="og:title" content="Huong AI — Tour Narration Studio">
+<meta property="og:description" content="Record or upload tour narration voice for Huong AI (Vietnamese, English, French), download with correct file names.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-blog.jpg">
+<meta property="og:url" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/audio.html">
+<meta property="og:site_name" content="Je m'appelle Hương · Lecturer &amp; Researcher">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{
+  --ink:#3b2e2a;--muted:#8a7a72;--surface:#fdf7f0;--accent:#d8616e;--line:#e8ded5;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--surface);color:var(--ink);font-family:var(--sans)}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:760px;margin:0 auto;padding:72px 20px 40px}
+.brand{display:block;text-align:center;margin-bottom:26px}
+.brand img{height:46px;width:auto;object-fit:contain}
+h1{font-family:var(--serif);font-weight:800;font-size:1.7rem;margin:0 0 4px;text-align:center}
+.sub{color:var(--muted);font-size:.9rem;text-align:center;margin:0 0 26px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px;margin:0 0 16px;box-shadow:0 8px 18px rgba(140,90,70,.07)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{font:700 .82rem var(--sans);border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);padding:9px 16px;cursor:pointer}
+button:hover{border-color:var(--accent);color:var(--accent)}
+button.big{background:var(--accent);color:#fff;border-color:var(--accent);padding:11px 22px;font-size:.95rem}
+button.big:hover{opacity:.88}
+button.on{background:#b43f4f;border-color:#b43f4f;color:#fff}
+select,input[type=text]{font:600 .82rem var(--sans);border:1px solid var(--line);border-radius:999px;padding:9px 14px;background:#fff;color:var(--ink)}
+input[type=text]{border-radius:10px;flex:1;min-width:170px}
+.tag{display:inline-block;background:#f3e7e0;color:var(--accent);border-radius:8px;font-weight:700;font-size:.75rem;padding:3px 9px}
+audio{width:100%;margin-top:10px}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.85rem}
+th,td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:middle}
+th{color:var(--muted);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em}
+.ok{color:#4a8a55;font-weight:700}.no{color:#b43f4f;font-weight:700}
+.note{color:var(--muted);font-size:.8rem;margin:6px 0 0}
+.footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:22px}
+html[lang="en"] .lang-vi{display:none}
+html:not([lang="en"]) .lang-en{display:none}
+html[lang="fr"] .lang-vi{display:none}
+html[lang="fr"] .lang-en{display:none}
+html:not([lang="fr"]) .lang-fr{display:none}
+.langtog{position:fixed;top:14px;right:14px;z-index:6;display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 6px 14px rgba(140,90,70,.1)}
+.langtog button{border:none;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:6px 11px}
+.langtog button.active{background:var(--accent);color:#fff}
+@media(max-width:560px){h1{font-size:1.35rem}.wrap{padding-top:66px}.row{gap:6px}}
+</style>
+</head>
+<body>
+<div class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></div>
+<div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Je m'appelle Hương · Lecturer &amp; Researcher"></a>
+  <h1><span class="lang-vi">🎙️ Phòng thu lời dẫn tour</span><span class="lang-en">🎙️ Tour Narration Studio</span><span class="lang-fr">🎙️ Studio de narration</span></h1>
+  <p class="sub"><span class="lang-vi">Ghi âm bằng micro hoặc tải file audio, đặt tên đúng quy ước, nghe lại và tải về</span><span class="lang-en">Record via microphone or upload audio, name it correctly, preview and download</span><span class="lang-fr">Enregistrez au micro ou téléchargez un fichier, nommez-le correctement, écoutez et téléchargez</span></p>
+
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <div>
+        <label class="tag"><span class="lang-vi">Khu</span><span class="lang-en">Area</span><span class="lang-fr">Étape</span></label>
+        <select id="khu">
+          <option value="chao">chao</option>
+          <option value="about">about</option>
+          <option value="inspiration">inspiration</option>
+          <option value="ecosystem">ecosystem</option>
+          <option value="gallery">gallery</option>
+          <option value="pubs">pubs</option>
+          <option value="teaching">teaching</option>
+          <option value="worlddata">worlddata</option>
+        </select>
+        <select id="nn">
+          <option value="vi">🇻🇳 vi</option><option value="en">🇬🇧 en</option><option value="fr">🇫🇷 fr</option>
+        </select>
+      </div>
+      <span class="tag" id="tenGoiY">chao_vi.mp3</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="row" style="gap:10px">
+      <button type="button" class="big" id="btnThu">🎤 <span class="lang-vi">Bắt đầu ghi âm</span><span class="lang-en">Start recording</span><span class="lang-fr">Démarrer l’enregistrement</span></button>
+      <button type="button" id="btnDung" disabled>⏹ <span class="lang-vi">Dừng</span><span class="lang-en">Stop</span><span class="lang-fr">Arrêter</span></button>
+      <label style="font:700 .82rem var(--sans)">📁 <input type="file" id="fileUp" accept="audio/*" style="display:none"><button type="button" id="btnTai">⬆️ <span class="lang-vi">Tải file lên</span><span class="lang-en">Upload file</span><span class="lang-fr">Téléverser</span></button></label>
+    </div>
+    <p class="note"><span class="lang-vi">⚠️ Trình duyệt web không thể tự ghi thẳng vào website — bản ghi sẽ được lưu trong trang để bạn nghe lại và tải về, rồi đưa file vào thư mục <code>assets/audio/tour/</code> của repo.</span><span class="lang-en">⚠️ A static website cannot save files by itself — recordings stay in the page for preview and download, then add the files to the <code>assets/audio/tour/</code> folder of the repo.</span><span class="lang-fr">⚠️ Un site statique ne peut pas enregistrer de fichier — les enregistrements restent dans la page pour écoute et téléchargement, puis ajoutez-les au dossier <code>assets/audio/tour/</code> du dépôt.</span></p>
+    <audio id="ngheLai" controls style="display:none"></audio>
+    <div class="row" id="hangTve" style="display:none;margin-top:10px">
+      <button type="button" id="btnTve">⬇️ <span class="lang-vi">Tải về đúng tên</span><span class="lang-en">Download with correct name</span><span class="lang-fr">Télécharger sous le bon nom</span></button>
+      <span class="tag" id="tenVe">—</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px;font-family:var(--serif)"><span class="lang-vi">📋 Danh sách lời dẫn (kiểm tra trước khi đưa lên repo)</span><span class="lang-en">📋 Narration checklist (verify before adding to the repo)</span><span class="lang-fr">📋 Liste des narrations (vérifiez avant d’ajouter au dépôt)</span></h3>
+    <table id="bang"></table>
+    <p class="note"><span class="lang-vi">Đuôi .mp3 là tiêu chuẩn web; nếu file gốc là .wav/.m4a, đổi đuôi khi tải về cũng được.</span><span class="lang-en">.mp3 is the web standard; renaming .wav/.m4a on download also works.</span><span class="lang-fr">.mp3 est le standard web ; renommer .wav/.m4a au téléchargement fonctionne aussi.</span></p>
+  </div>
+
+  <div class="footer">Je m'appelle Hương · Lecturer &amp; Researcher · <a href="index.html"><span class="lang-vi">Về trang chủ</span><span class="lang-en">Back to home</span><span class="lang-fr">Retour à l’accueil</span></a></div>
+</div>
+
+<script>(function(){
+  var khuSel=document.getElementById('khu'), nnSel=document.getElementById('nn'),
+      tenGoiY=document.getElementById('tenGoiY'), hangTve=document.getElementById('hangTve'),
+      tenVe=document.getElementById('tenVe'), ngLai=document.getElementById('ngheLai');
+  var KHU=['chao','about','inspiration','ecosystem','gallery','pubs','teaching','worlddata'];
+  var NN={vi:{kh:'Khu',nn:'Ngôn ngữ'},en:{kh:'Area',nn:'Language'},fr:{kh:'Étape',nn:'Langue'}};
+  function tenFile(){ return khuSel.value + '_' + nnSel.value + '.mp3'; }
+  function capNhatTen(){ tenGoiY.textContent = tenFile(); }
+  khuSel.addEventListener('change', capNhatTen); nnSel.addEventListener('change', capNhatTen); capNhatTen();
+
+  // Ghi âm
+  var thu=null, chunks=[], btnThu=document.getElementById('btnThu'), btnDung=document.getElementById('btnDung'), btnTai=document.getElementById('btnTai');
+  var blobHien=null;
+  function datBai(blob){
+    blobHien=blob;
+    ngLai.src = URL.createObjectURL(blob);
+    ngLai.style.display='block';
+    hangTve.style.display='flex';
+    tenVe.textContent = tenFile();
+  }
+  btnTai.addEventListener('click', function(){ document.getElementById('fileUp').click(); });
+  document.getElementById('fileUp').addEventListener('change', function(e){
+    var f=e.target.files[0]; if(!f) return;
+    // tự đoán khu_nn từ tên file
+    var m=f.name.toLowerCase().match(/^(chao|about|inspiration|ecosystem|gallery|pubs|teaching|worlddata)_(vi|en|fr)/);
+    if(m){ khuSel.value=m[1]; nnSel.value=m[2]; capNhatTen(); }
+    datBai(f);
+  });
+  btnThu.addEventListener('click', async function(){
+    try{
+      var stream = await navigator.mediaDevices.getUserMedia({audio:true});
+      thu = new MediaRecorder(stream, {mimeType: MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? 'audio/webm;codecs=opus' : 'audio/webm'});
+      chunks=[];
+      thu.ondataavailable = function(e){ if(e.data.size) chunks.push(e.data); };
+      thu.onstop = function(){
+        stream.getTracks().forEach(function(t){ t.stop(); });
+        datBai(new Blob(chunks, {type:'audio/webm'}));
+      };
+      thu.start();
+      btnThu.classList.add('on'); btnThu.disabled=true; btnDung.disabled=false;
+    }catch(err){
+      alert(lang()=== 'vi' ? 'Không truy cập được micro. Hãy cấp quyền micro cho trang.' : lang()==='fr' ? 'Micro indisponible. Autorisez l’accès au micro.' : 'Microphone not available. Please allow microphone access.');
+    }
+  });
+  btnDung.addEventListener('click', function(){ if(thu && thu.state!=='inactive') thu.stop(); thu=null; btnThu.classList.remove('on'); btnThu.disabled=false; btnDung.disabled=true; });
+  document.getElementById('btnTve').addEventListener('click', function(){
+    if(!blobHien) return;
+    var a=document.createElement('a');
+    a.href = URL.createObjectURL(blobHien);
+    a.download = tenFile();
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  });
+
+  // Bảng kiểm tra
+  function bang(){
+    var L = lang(); var t = NN[L] || NN.vi;
+    var html='<tr><th>File</th><th>'+t.kh+'</th><th>'+t.nn+'</th><th>Status</th></tr>';
+    KHU.forEach(function(k){ ['vi','en','fr'].forEach(function(n){
+      var f=k+'_'+n+'.mp3';
+      html+='<tr><td><b>'+f+'</b></td><td>'+khuNhan(k,L)+'</td><td>'+n.toUpperCase()+'</td><td class="no">—</td></tr>';
+    }); });
+    document.getElementById('bang').innerHTML = html;
+  }
+  function khuNhan(k,L){ var map={chao:'Greeting',about:'About',inspiration:'Inspiration',ecosystem:'Ecosystem',gallery:'Gallery',pubs:'Publications',teaching:'Teaching',worlddata:'World data'}; return map[k]||k; }
+
+  // Ngôn ngữ (cơ chế đồng bộ với trang chủ)
+  function lang(){ var l=document.documentElement.lang; return (l==='en'||l==='fr') ? l : 'vi'; }
+  var bt=document.querySelectorAll('.langtog button[data-lang]');
+  function set(l){ document.documentElement.setAttribute('lang',l); bt.forEach(function(x){ x.classList.toggle('active', x.getAttribute('data-lang')===l); }); try{localStorage.setItem('huong_lang',l);}catch(e){} bang(); }
+  bt.forEach(function(x){ x.addEventListener('click', function(){ set(x.getAttribute('data-lang')); }); });
+  var s='vi'; try{ s = localStorage.getItem('huong_lang') || (/^en/i.test(navigator.language) ? 'en' : (/^fr/i.test(navigator.language) ? 'fr' : 'vi')); }catch(e){}
+  set(s); bang();
+})();</script>
+</body>
+</html>
