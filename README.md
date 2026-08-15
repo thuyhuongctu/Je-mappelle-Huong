@@ -49,6 +49,14 @@ Repo cài sẵn bộ **skill MiniMax H3** (từ [thuyhuongctu/MiniMax-H3](https:
 
 Sinh video qua [hailuoai.video](https://hailuoai.video/tools/minimax-h3) hoặc [MiniMax API](https://platform.minimax.io/docs/api-reference/video-generation-v2-create).
 
+**Video dài / dựng phim tự động — [OpenMontage](https://github.com/calesthio/OpenMontage)** (AGPLv3, dùng như công cụ ngoài, không nhúng vào repo này): hệ thống sản xuất video tác tử với 13 dây chuyền (explainer hoạt hình, tài liệu montage, screen-demo, cinematic, clip-factory, lồng tiếng đa ngữ…), kết xuất bằng Remotion. Phiên làm việc sau chỉ cần clone rồi làm theo `AGENT_GUIDE.md` của nó:
+
+```bash
+GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/calesthio/openmontage
+```
+
+Yêu cầu: Python 3.10+, FFmpeg, Node 18+ (đều có sẵn trong môi trường Claude Code). API key tùy chọn — có sẵn lộ trình miễn phí (Piper TTS, Pexels, Archive.org). Fork của chủ repo: `thuyhuongctu/OpenMontage`.
+
 ## 🎨 Công cụ thiết kế / Design tooling
 
 Repo cài thêm skill **huashu-design** (MIT, từ [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)) trong `.claude/skills/huashu-design/` — làm prototype tương tác, slide deck HTML 1920×1080 (xuất PPTX/PDF), motion design xuất MP4/GIF, và chấm điểm thiết kế theo 5 tiêu chí. Quy tắc lõi: mọi thiết kế mới đều ra **3 hướng phác thảo** cho người dùng chọn trước khi thực hiện. Bản cài rút gọn (không kèm nhạc nền/demo nặng — xem `LOCAL-NOTE.md`).
