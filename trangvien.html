@@ -86,10 +86,12 @@ button{font-family:inherit;cursor:pointer;border:0}
 
 #hud-tren{top:0;left:0;right:0;display:flex;gap:.5rem;align-items:flex-start;padding:.7rem;flex-wrap:wrap}
 #hieu{
-  display:flex;align-items:center;gap:.5rem;padding:.45rem .8rem .45rem .5rem;border-radius:999px;
+  display:flex;align-items:center;gap:.5rem;padding:.45rem .8rem .45rem .45rem;border-radius:999px;
   background:rgba(255,251,244,.9);backdrop-filter:blur(10px);box-shadow:var(--bong);
   font-family:'Baloo 2';font-weight:800;font-size:.9rem;text-decoration:none;color:var(--muc);white-space:nowrap;
 }
+#logo-tv{width:44px;height:44px;border-radius:50%;flex:none;object-fit:contain;box-shadow:0 2px 8px rgba(90,50,50,.22)}
+#hieu img + i{display:none}
 #hieu i{
   width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;font-style:normal;font-size:.85rem;
   background:radial-gradient(circle at 32% 28%,#F8C0D2,var(--sen-sau));
@@ -229,6 +231,8 @@ body.cham #ban-do canvas{width:84px;height:84px}
 #toast-sen p{margin:0 0 18px;font:15px/1.6 system-ui,sans-serif;color:#6d5a52}
 #toast-sen button{border:none;border-radius:999px;padding:11px 26px;font:700 15px system-ui,sans-serif;
   background:#c4596b;color:#fff;cursor:pointer;box-shadow:0 6px 16px rgba(196,89,107,.45)}
+@media(max-width:720px){#logo-tv{width:36px;height:36px}}
+@media(max-width:420px){#logo-tv{width:30px;height:30px}}
 </style>
 
 <meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-trangvien.jpg">
@@ -250,7 +254,7 @@ body.cham #ban-do canvas{width:84px;height:84px}
 
 <!-- ============ HUD ============ -->
 <div class="hud" id="hud-tren">
-  <a href="index.html" id="hieu"><i>🪷</i><span data-vi="Trang viên Hương" data-en="Hương's Estate">Trang viên Hương</span></a>
+  <a href="index.html" id="hieu"><img src="assets/img/lr-seal-round.webp" alt="Logo LR — Je m'appelle Hương" id="logo-tv"><span data-vi="Trang viên Hương" data-en="Hương's Estate">Trang viên Hương</span></a>
   <div class="nhom">
     <button class="nut-nho" id="nut-xe-may" data-vi="🚲 Đạp xe" data-en="🚲 Cycle">🚲 Đạp xe</button>
     <button class="nut-nho" id="nut-thoi-khac" data-vi="🌇 Chiều" data-en="🌇 Sunset">🌇 Chiều</button>
@@ -1474,10 +1478,13 @@ addEventListener('keydown', e=>{
   if(e.key === 'e' || e.key === 'E'){ if(!dangMo && khuGan) moBang(khuGan); }
   if(e.key === 'b' || e.key === 'B'){ doiXe(); }
   if(e.key === 'Escape' && dangMo) dongBang();
+  const ki = parseInt(e.key);
+  if(ki >= 1 && ki <= 6 && diemKhu[ki-1]) diToiKhu(diemKhu[ki-1].khu);
   if([' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) e.preventDefault();
 });
 addEventListener('keyup', e=>{ phim[e.key.toLowerCase()] = false; });
 
+let tocDoAuto = 5.6;          // tốc độ tự đi: đi bộ — xem mục 10B để đổi khi đạp xe
 let gocMay = 0;              // yaw camera
 let keo = null;
 const canT = document.getElementById('can'), canNut = canT.querySelector('i');
@@ -1616,6 +1623,40 @@ document.getElementById('nut-ngu').addEventListener('click', ()=> datNgonNgu(NG 
   if(b) b.addEventListener('click',()=>datNgonNgu('en'));
 })();
 
+/* ---------- 10B. TỰ ĐI — DẪN NHÂN VẬT TỚI KHU ----------
+   Cách dùng:
+     · Phím 1–6: đi thẳng tới khu tương ứng
+     · Chạm vào chấm khu trên bản đồ: auto-walk tới khu đó
+     · Đến gần (~1.6m): tự mở bảng khu
+     · Đi bộ thường sẽ huỷ lệnh tự đi */
+let mucTieuDi = null;
+function diToiKhu(khu){
+  if(!khu || dangMo) return;
+  const r = Math.hypot(khu.vt[0]-nhanVat.position.x, khu.vt[2]-nhanVat.position.z);
+  if(r < 1.6){ moBang(khu); return; }
+  mucTieuDi = {khu: khu, x: khu.vt[0], z: khu.vt[2]};
+  phim['w']=phim['s']=phim['a']=phim['d']=false;
+  canVec.x = canVec.y = 0;
+}
+// click bản đồ nhỏ → auto-walk tới khu gần chấm chạm nhất
+(function(){
+  const el = document.getElementById('ban-do');
+  el.addEventListener('pointerdown', e=>{ e.stopPropagation(); });
+  el.addEventListener('click', e=>{
+    const rect = el.getBoundingClientRect();
+    const W = 220, R = W/2, TL = (R-14)/(BAN_KINH+6);
+    const cx = (e.clientX-rect.left)/rect.width*W;
+    const cy = (e.clientY-rect.top)/rect.height*W;
+    let best = null, bestD = 999;
+    diemKhu.forEach(k=>{
+      const px = R + k.x*TL, py = R + k.z*TL;
+      const d = Math.hypot(cx-px, cy-py);
+      if(d < bestD){ bestD = d; best = k; }
+    });
+    if(best && bestD < 20) diToiKhu(best.khu);
+  });
+})();
+
 // vào trang viên
 const cong = document.getElementById('cong');
 document.getElementById('nut-vao').addEventListener('click', ()=>{
@@ -1654,7 +1695,26 @@ function veBanDo(){
     bd.fillStyle = k.khu.mau;
     bd.beginPath(); bd.arc(px,py,8,0,7); bd.fill();
     bd.strokeStyle = '#FFF8EE'; bd.lineWidth = 2.5; bd.stroke();
+    // nhãn tên khu — bản đồ khám phá
+    bd.fillStyle = 'rgba(74,55,48,.95)';
+    bd.font = '600 11px "Baloo 2", system-ui';
+    bd.textAlign = 'left'; bd.textBaseline = 'middle';
+    bd.shadowColor = 'rgba(255,248,238,.9)'; bd.shadowBlur = 3;
+    const ten = (k.khu.ten && k.khu.ten[NG]) ? k.khu.ten[NG] : k.khu.id;
+    bd.fillText(ten, px + 11, py);
+    bd.shadowBlur = 0;
   });
+  // la bàn nhỏ — góc trái trên
+  bd.save(); bd.translate(24, 24);
+  bd.fillStyle = 'rgba(255,251,244,.85)';
+  bd.beginPath(); bd.arc(0,0,17,0,7); bd.fill();
+  bd.strokeStyle = 'rgba(74,55,48,.35)'; bd.lineWidth = 1;
+  bd.beginPath(); bd.moveTo(0,-12); bd.lineTo(0,12); bd.moveTo(-12,0); bd.lineTo(12,0); bd.stroke();
+  bd.fillStyle = '#C4596B';
+  bd.beginPath(); bd.moveTo(0,-9); bd.lineTo(4.5,1); bd.lineTo(-4.5,1); bd.closePath(); bd.fill();
+  bd.font = '800 9px "Baloo 2", system-ui'; bd.textAlign = 'center'; bd.textBaseline = 'top';
+  bd.fillStyle = 'rgba(74,55,48,.9)'; bd.fillText('N', 0, 4);
+  bd.restore();
   // nhân vật
   const px = R + nhanVat.position.x*TL, py = R + nhanVat.position.z*TL;
   bd.save(); bd.translate(px,py); bd.rotate(-nhanVat.rotation.y);
@@ -2449,6 +2509,32 @@ function vong(){
     if(phim['q']) gocMay += 1.6*dt;
     if(phim['e'] && false) {}
     ix += canVec.x; iz += canVec.y;
+    // đi bộ thường = huỷ lệnh tự đi
+    if(Math.hypot(ix,iz) > .06) mucTieuDi = null;
+  }
+
+  /* --- tự đi tới khu (auto-walk) --- */
+  if(mucTieuDi && !dangMo){
+    const ax = mucTieuDi.x - nhanVat.position.x;
+    const az = mucTieuDi.z - nhanVat.position.z;
+    const ad = Math.hypot(ax, az);
+    if(ad < 1.6){
+      const k = mucTieuDi.khu; mucTieuDi = null;
+      moBang(k);
+    }else{
+      // xoay camera theo hướng đích để đi thắng
+      const toc = dapXe ? tocDoAuto*2 : tocDoAuto;
+      const goc = Math.atan2(ax, az);
+      gocMay = goc; huong = goc; nhanVat.rotation.y = goc;
+      const dx = Math.sin(goc) * toc * dt;
+      const dz = Math.cos(goc) * toc * dt;
+      let nx = nhanVat.position.x + dx, nz = nhanVat.position.z + dz;
+      const rr = Math.hypot(nx, nz);
+      if(rr > BAN_KINH){ nx = nx/rr*BAN_KINH; nz = nz/rr*BAN_KINH; }
+      nhanVat.position.x = nx; nhanVat.position.z = nz;
+      dungYen = 0;
+      vTruoc += ((dapXe?11.5:4.6) - vTruoc) * Math.min(1, 8*dt);
+    }
   }
   const manh = Math.min(1, Math.hypot(ix,iz));
 
@@ -2638,5 +2724,6 @@ vong = function(){
 vong();
 </script>
 <script src="assets/js/music.js" defer></script>
+<script src="assets/js/dongho.js" defer></script>
 </body>
 </html>

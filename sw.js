@@ -1,5 +1,5 @@
 /* Service worker — Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v34';
+const CACHE = 'jshuong-v36';
 const CORE = [
   './',
   'index.html',
@@ -9,6 +9,7 @@ const CORE = [
   'blog.html',
   'assets/vendor/three-r128.min.js',
   'assets/js/huong3d.js',
+  'assets/js/dongho.js',
   'manifest.webmanifest',
   'assets/img/pro_aodai.png',
   'assets/img/lab_scene.jpg',
@@ -21,7 +22,7 @@ const CORE = [
   'assets/img/think_scene.jpg',
   'assets/img/huong_silver_tablet.webp',
   'assets/img/huong_silver_room.webp',
-  'assets/img/huong_xedap.webp',
+  'assets/img/huong_xedap_new.webp',
   'assets/img/huong_chi.webp',
   'assets/img/lr-je-mappelle-huong.webp',
   'assets/img/lr-seal-round.webp',
