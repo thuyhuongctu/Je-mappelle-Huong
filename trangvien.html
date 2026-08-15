@@ -1533,11 +1533,13 @@ function moBang(khu){
   man.classList.add('mo');
   document.getElementById('bang').scrollTop = 0;
   datBieuCam(khu.id === 'am-nhac' ? 'hat' : 'vui');
+  if (window.HUONG_MUSIC) HUONG_MUSIC.playNhacNen(khu.id);
 }
 function dongBang(){
   dangMo = false;
   man.classList.remove('mo');
   document.getElementById('noi-dung').querySelectorAll('audio').forEach(a=>a.pause());
+  if (window.HUONG_MUSIC) HUONG_MUSIC.dungNhacNen();
 }
 document.getElementById('dong').addEventListener('click', dongBang);
 man.addEventListener('click', e=>{ if(e.target === man) dongBang(); });
@@ -2514,5 +2516,6 @@ function vong(){
 }
 vong();
 </script>
+<script src="assets/js/music.js" defer></script>
 </body>
 </html>
