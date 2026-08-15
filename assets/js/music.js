@@ -81,6 +81,39 @@
   /* ---------- ENGINE ---------- */
   var audio = new Audio();
   audio.preload = 'metadata';
+
+  /* ---------- ANALYSER (cho visualizer 3D) ---------- */
+  var analyser = null;
+  var fftData = null;
+  try {
+    var Ctx = window.AudioContext || window.webkitAudioContext;
+    if (Ctx) {
+      var actx = new Ctx();
+      analyser = actx.createAnalyser();
+      analyser.fftSize = 64;   // 32 bins tần số
+      analyser.smoothingTimeConstant = 0.72;
+      actx.createMediaElementSource(audio).connect(analyser);
+      analyser.connect(actx.destination);
+      fftData = new Uint8Array(analyser.frequencyBinCount);
+    }
+  } catch (e) { analyser = null; }
+
+  function getFFT() {
+    if (!analyser || !fftData) return { bass: 0, mid: 0, treble: 0, wave: 0 };
+    analyser.getByteFrequencyData(fftData);
+    var n = fftData.length;
+    var bass = 0, mid = 0, treble = 0;
+    // bass: 4 bins đầu, mid: giữa, treble: 4 bins cuối
+    for (var i = 0; i < 4 && i < n; i++) bass += fftData[i];
+    for (var i = Math.floor(n * 0.3); i < Math.floor(n * 0.65); i++) mid += fftData[i];
+    for (var i = Math.max(4, n - 4); i < n; i++) treble += fftData[i];
+    return {
+      bass: bass / (4 * 255),
+      mid: mid / (Math.floor(n * 0.65) - Math.floor(n * 0.3)) / 255,
+      treble: treble / (4 * 255),
+      wave: (bass + mid + treble) / 3
+    };
+  }
   var vol = 0.75;
   try {
     var sv = parseFloat(localStorage.getItem('huong_music_vol'));
@@ -296,6 +329,8 @@
     stopAll: stopAll,
     playNhacNen: playNhacNen,
     dungNhacNen: dungNhacNen,
-    SONGS: SONGS
+    SONGS: SONGS,
+    getFFT: getFFT,
+    nhacDangPhat: function () { return !!(dangPhat && !audio.paused && audio.volume > 0.005); }
   };
 })();

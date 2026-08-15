@@ -1677,6 +1677,83 @@ theGioi.add(sinhDong);
 dsHac.forEach(h => sinhDong.add(h));
 dsCoiXay.forEach(g => sinhDong.add(g));
 
+/* ---------- NHAC QUANG — visualizer 3D theo nhịp bài hát ---------- */
+/* (a) 16 cột sóng hồng quanh ao sen đài phun, cao theo bass/mid/treble
+   (b) 40 đom đóm nhạc bay vòng quanh nhân vật, sáng theo nhịp
+   Hiệu ứng chỉ «sống» khi nhạc đang phát; về trạng thái yên tĩnh khi tắt */
+const nhacQuang = new THREE.Group();
+theGioi.add(nhacQuang);
+// aoPhun ở (-16,0,16), bán kính ao ~3.2 → vòng cột quanh ao
+const AO_TRUNG_TAM = new THREE.Vector3(-16, 0, 16);
+const NUM_COT = 16;
+const dsCotNhac = [];
+{
+  const vlCot = new THREE.MeshStandardMaterial({color:0xF5B7C4, roughness:.5, metalness:.25, transparent:true, opacity:.95});
+  for(let i=0;i<NUM_COT;i++){
+    const goc = (i/NUM_COT)*Math.PI*2;
+    const cot = new THREE.Mesh(new THREE.CylinderGeometry(.045,.045,1,8), vlCot);
+    cot.position.set(AO_TRUNG_TAM.x + Math.cos(goc)*3.4, .5, AO_TRUNG_TAM.z + Math.sin(goc)*3.4);
+    cot.userData.baseGoc = goc;
+    nhacQuang.add(cot);
+    dsCotNhac.push(cot);
+  }
+}
+// đom đóm nhạc
+const NUM_DOM = 40;
+const dsDomNhac = [];
+{
+  const vlDom = new THREE.MeshBasicMaterial({color:0xFFE3A3, transparent:true, opacity:.85});
+  for(let i=0;i<NUM_DOM;i++){
+    const m = new THREE.Mesh(new THREE.SphereGeometry(.045,8,6), vlDom);
+    m.userData.goc = Math.random()*Math.PI*2;
+    m.userData.bk = 4 + Math.random()*14;
+    m.userData.cao = .5 + Math.random()*2.2;
+    m.userData.toc = .25 + Math.random()*.45;
+    m.userData.pha = Math.random()*7;
+    nhacQuang.add(m);
+    dsDomNhac.push(m);
+  }
+}
+let nhacFFT = {bass:0,mid:0,treble:0,wave:0};
+
+function capNhatNhacQuang(t, dt){
+  // lấy nhịp từ music.js (nếu chưa load thì về 0)
+  const HM = window.HUONG_MUSIC;
+  const dangNghe = HM && typeof HM.nhacDangPhat === 'function' && HM.nhacDangPhat();
+  const fft = (HM && typeof HM.getFFT === 'function') ? HM.getFFT() : nhacFFT;
+  const mB = dangNghe ? fft.bass : 0, mT = dangNghe ? fft.treble : 0, mW = dangNghe ? fft.mid : 0;
+  // làm mượt
+  nhacFFT.bass += (mB - nhacFFT.bass) * Math.min(1, 9*dt);
+  nhacFFT.mid  += (mT - nhacFFT.mid)  * Math.min(1, 9*dt);
+  nhacFFT.treble += (mW - nhacFFT.treble) * Math.min(1, 9*dt);
+  const B = nhacFFT.bass, W = nhacFFT.mid;
+  // cột sóng quanh ao sen
+  dsCotNhac.forEach((cot,i)=>{
+    const goc = cot.userData.baseGoc;
+    // chiều cao theo nhịp: bass làm tất cả cao, mid thêm nhịp sóng chạy quanh vòng
+    const song = Math.sin(goc*6 - t*2.6 + W*Math.PI*4)*.5+.5;
+    const cao = .12 + B*2.6 + W*song*1.1;
+    const target = .25 + cao;
+    cot.scale.y += (target - cot.scale.y) * Math.min(1, 12*dt);
+    cot.position.y = .14 + cot.scale.y*.5;
+    // nghiêng nhẹ theo nhạc
+    cot.rotation.z = Math.sin(goc*3 + t*1.8)*B*.25;
+  });
+  // đom đóm nhạc quanh nhân vật
+  dsDomNhac.forEach(m=>{
+    const u = m.userData;
+    u.goc += u.toc*dt*(0.6 + B*2.4);
+    m.position.x = nhanVat.position.x + Math.cos(u.goc + u.pha)*u.bk*(0.85 + B*.3);
+    m.position.z = nhanVat.position.z + Math.sin(u.goc + u.pha)*u.bk*(0.85 + B*.3);
+    m.position.y = u.cao + Math.sin(t*1.4 + u.goc*2)*.35 + W*1.2;
+    // độ sáng theo nhịp
+    m.material.opacity = dangNghe ? Math.min(.95, .28 + W*1.6 + B*1.4) : .12 + Math.sin(t*1.1 + u.pha)*.08;
+    // đom đóm mờ hẳn khi xa ngoài bán kính vườn
+    const r = Math.hypot(m.position.x - nhanVat.position.x, m.position.z - nhanVat.position.z);
+    if(r > u.bk*1.05) m.material.opacity *= Math.max(0, 1-(r-u.bk*1.05)/6);
+  });
+}
+
 // bươm bướm — cánh kép vỗ, lượn quanh vườn
 const BUOM_MAU = ['#F2A9B8','#B9A9F2','#F2D9A9','#A9E3F2','#F2A9E0','#C4E8B0','#F6C1CB'];
 const dsBuom = [];
@@ -2509,6 +2586,7 @@ function vong(){
 
   capNhatSinhDong(t, dt);
   capNhatSinhDong2(t, dt);
+  capNhatNhacQuang(t, dt);
   if(window.__capNhatBoiCanh) window.__capNhatBoiCanh(t);
   capNhatSen(t, dt);
   veBanDo();
