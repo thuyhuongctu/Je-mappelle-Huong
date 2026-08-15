@@ -2267,6 +2267,11 @@ const MSG_TRA_LOI = {
   en:['Your message is lovely, I just read it 🌷','Thank you! Let me tell you more about the estate.','Have you seen the treasure chests in the Projects zone? The M-AIDA chest has a lovely blue gem!','The estate also has a glowing lotus pond, a koi pond and a windmill.','Reading lets the soul travel — do visit the Clay Library 📚','I am a lecturer and PhD candidate, always happy to make new friends!','I can chat in Vietnamese, English or French — try me!','Thanks for visiting my little estate 🌸'],
   fr:['Votre message est charmant, je viens de le lire 🌷','Merci ! Laissez-moi vous en dire plus sur le domaine.','Avez-vous vu les coffres au trésor dans la zone Projets ?','Le domaine a aussi un étang de lotus lumineux, un bassin de koïs et un moulin.','Lire fait voyager l’âme — visitez la Clay Library 📚','Je suis enseignante-chercheuse, toujours heureuse de me faire de nouveaux amis !','Je peux discuter en vietnamien, anglais ou français — essayez !','Merci d’avoir visité mon petit domaine 🌸']
 };
+const MSG_GOI_Y = {
+  vi:[['🌸 Chào Hương','Xin chào Hương!'],['🏡 Khu nào đẹp nhất?','Khu nào đẹp nhất?'],['📦 Kể chuyện dự án','Kể chuyện dự án đi!']],
+  en:[['🌸 Say hi','Hello Hương!'],['🏡 Best zone?','Which zone is the prettiest?'],['📦 Projects story','Tell me about your projects!']],
+  fr:[['🌸 Dire bonjour','Bonjour Hương !'],['🏡 Plus belle zone ?','Quelle zone est la plus jolie ?'],['📦 Histoire projets','Parlez-moi de vos projets !']]
+};
 let hudMsgMoi = false;
 function datHudMsg(){
   const hud = document.getElementById('hud-msg');
@@ -2308,12 +2313,15 @@ function dongHudMsg(){ hudMsgMoi = false; datHudMsg(); }
   hud.innerHTML = '<div class="hm-head"><b>Messenger · Hương</b>' +
     '<button class="hm-x" onclick="dongHudMsg()">✕</button></div>' +
     '<div id="hud-msg-khu"></div>' +
-    '<div class="hm-goi">' +
-    '<button class="hm-nut" onclick="msgGui(\'Xin chào Hương!\',\'phai\');setTimeout(msgTraLoi,900)">🌸 Chào Hương</button>' +
-    '<button class="hm-nut" onclick="msgGui(\'Khu nào đẹp nhất?\',\'phai\');setTimeout(msgTraLoi,900)">🏡 Khu nào đẹp nhất?</button>' +
-    '<button class="hm-nut" onclick="msgGui(\'Kể chuyện dự án đi!\',\'phai\');setTimeout(msgTraLoi,900)">📦 Kể chuyện dự án</button>' +
-    '</div>';
+    '<div class="hm-goi" id="hm-goi"></div>';
   document.body.appendChild(hud);
+  // nút gợi ý theo ngôn ngữ
+  (MSG_GOI_Y[NG] || MSG_GOI_Y.vi).forEach(g=>{
+    const b = document.createElement('button');
+    b.className = 'hm-nut'; b.textContent = g[0];
+    b.onclick = ()=>{ msgGui(g[1],'phai'); setTimeout(msgTraLoi, 900); };
+    hud.querySelector('.hm-goi').appendChild(b);
+  });
   // nút mở Messenger nổi
   const nut = document.createElement('button');
   nut.id = 'nut-msg'; nut.textContent = '✉';
