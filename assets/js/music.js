@@ -17,6 +17,7 @@
     track02:       { t: 'Đèn vẫn còn sáng',              f: A + 'track02-den-van-con-sang.mp3' },
     track03:       { t: 'The Lamp Still Burns',          f: A + 'track03.mp3' },
     track04:       { t: 'Hai Mươi Sáu Năm Sau',          f: A + 'track04-hai-muoi-sau-nam-sau.mp3' },
+    track05:       { t: 'Je m’appelle Hương',            f: A + 'track05.mp3' },
 
     // M-AIDA
     maida_official:        { t: 'M-AIDA · Official',           f: A + 'maida/maida_song_official.mp3' },
@@ -43,28 +44,30 @@
   };
 
   /* ---------- GỢI Ý THEO TÂM TRẠNG ---------- */
-  /* mood: 'buon' | 'vui' | 'binhthuong' */
+  /* mood: 'buon' | 'vui' | 'binhthuong'
+     Nguồn chính: Songbook «Je m'appelle Hương» (5 bài · 12 bản thu)
+     Bài M-AIDA / BizOn có sẵn làm bài bổ sung */
   var MOODS = {
     buon: {
       icon: '😢',
       vi: { tieude: 'Hôm nay có chút buồn?', noi: 'Để Hương hát một bài sưởi lòng nhé — nghe nhẹ, rồi ngày mai lại sáng.' },
       en: { tieude: 'A little sad today?', noi: 'Let Huong sing something warm — gentle listening, brighter tomorrow.' },
       fr: { tieude: 'Un peu triste aujourd\u2019hui ?', noi: 'Laissez Huong vous chanter une chanson chaleureuse \u2014 une \u00e9coute douce, demain sera plus lumineux.' },
-      bai: ['maida_monhistoire', 'track02', 'bizon_onreturn']
+      bai: ['track01', 'track02', 'official']
     },
     vui: {
       icon: '\u{1F60A}',
       vi: { tieude: 'Hôm nay thật vui!', noi: 'Nghe bài thư giãn thêm — để niềm vui chảy dài thêm chút nữa.' },
       en: { tieude: 'Happy today!', noi: 'Relax and let the joy flow a little longer.' },
       fr: { tieude: 'Heureux aujourd\u2019hui !', noi: 'D\u00e9tendez-vous et laissez la joie s\u2019\u00e9couler un peu plus longtemps.' },
-      bai: ['bizon_vudubebaycao', 'bizon_doiphusa', 'maida_heartbeat']
+      bai: ['track04', 'track05', 'track03']
     },
     binhthuong: {
       icon: '\u{1F60C}',
       vi: { tieude: 'Một ngày bình yên', noi: 'Bài mặc định trang chủ chọn cho bạn \u2014 nghe thoải mái nhé.' },
       en: { tieude: 'A peaceful day', noi: 'The homepage\u2019s default pick for you \u2014 enjoy.' },
       fr: { tieude: 'Une journ\u00e9e paisible', noi: 'Le choix par d\u00e9faut de la page d\u2019accueil pour vous \u2014 bonne \u00e9coute.' },
-      bai: ['official', 'maida_official', 'bizon_theme']
+      bai: ['official', 'track05', 'track01']
     }
   };
 
@@ -249,12 +252,12 @@
   /* ---------- NHAC NEN THEO KHU ---------- */
   /* khuId -> bài hát nền phù hợp bối cảnh */
   var NHAC_KHU = {
-    'hoc-thuat': 'maida_instrumental',   // trầm tĩnh, nghiên cứu
-    'du-an':      'bizon_batnghiep',     // khởi nghiệp, năng lượng
-    'thu-vien':   'maida_larecherche',   // tìm kiếm tri thức
-    'am-nhac':    'bizon_world_en',      // ca hát, thế giới
-    'bang-tin':   'maida_scholars',      // tin tức học thuật
-    'gioi-thieu': 'maida_brandpassport'  // mở đầu chuyến tham quan
+    'hoc-thuat': 'track02',               // Đèn vẫn còn sáng — trầm tĩnh, suy tưởng (khu học thuật)
+    'du-an':      'track04',               // Hai Mươi Sáu Năm Sau — hồi sinh, năng lượng tìm lại ước mơ (khu dự án)
+    'thu-vien':   'track01',               // Je voudrais te parler — nội tâm, đọc trong yên lặng (khu thư viện)
+    'am-nhac':    'track03',               // The Lamp Still Burns — ôm ấp, an ủi (khu âm nhạc)
+    'bang-tin':   'track05',               // Je m'appelle Hương — thông điệp tổng hợp (khu bảng tin)
+    'gioi-thieu': 'official'               // Je m'appelle Hương bản đầy đủ — mở đầu chuyến tham quan (khu giới thiệu)
   };
   var khuDangChoi = '';
 
