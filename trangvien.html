@@ -241,7 +241,7 @@ body.cham #ban-do canvas{width:84px;height:84px}
 @keyframes hm-vao{from{opacity:0;transform:translate(-50%,24px) scale(.94)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
 .hm-head{background:#7FC8B0;color:#fff;padding:.65rem 1rem;display:flex;align-items:center;justify-content:space-between;font-size:.92rem}
 .hm-x{background:rgba(255,255,255,.25);border:none;color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:.85rem}
-#hud-msg-khu{padding:.8rem .9rem .5rem;max-height:210px;overflow-y:auto;display:flex;flex-direction:column;gap:.5rem}
+#hud-msg-khu{padding:.8rem .9rem .5rem;max-height:240px;overflow-y:auto;display:flex;flex-direction:column;gap:.5rem}
 .hm-b{max-width:78%;padding:.55rem .85rem;border-radius:16px;font-size:.82rem;line-height:1.45}
 .hm-trai{background:#FFFFFF;border:2px solid #E9DFCE;align-self:flex-start;border-bottom-left-radius:4px;color:#4A3B36}
 .hm-phai{background:#F7C4CC;align-self:flex-end;border-bottom-right-radius:4px;color:#6B3A46}
@@ -249,14 +249,23 @@ body.cham #ban-do canvas{width:84px;height:84px}
 .hm-nut{background:#EBD9C4;color:#5C4A3E;border:2px solid #D8B98E;border-radius:999px;padding:.45rem .75rem;font-size:.75rem;cursor:pointer;font-family:system-ui,sans-serif}
 .hm-nut:hover{background:#F2A8C4}
 #nut-msg{position:fixed;right:16px;bottom:172px;width:52px;height:52px;border-radius:50%;border:none;
-  background:#7FC8B0;color:#fff;font-size:1.35rem;box-shadow:0 6px 20px rgba(70,130,110,.35);cursor:pointer;z-index:95}
+  background:#7FC8B0;color:#fff;font-size:1.35rem;box-shadow:0 6px 20px rgba(70,130,110,.35);cursor:pointer;z-index:95;
+  transition:bottom .3s ease}
 #nut-msg:hover{transform:scale(1.06)}
+#nut-msg.len{bottom:470px}
 /* --- HUD đọc sách --- */
 #hud-quote{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:#FFF8EE;
   border:3px solid #E8B84B;border-radius:22px;padding:.9rem 1.4rem;max-width:86vw;width:380px;
   font-family:Georgia,serif;font-style:italic;color:#6B4A2E;text-align:center;font-size:.95rem;
   box-shadow:0 10px 30px rgba(120,90,40,.25);z-index:96;display:none}
 #hud-quote.hien{display:block;animation:hm-vao .3s ease}
+@media(max-width:560px){
+  #hud-msg{width:320px;bottom:90px}
+  #hud-msg-khu{max-height:190px}
+  .hm-nut{font-size:.7rem;padding:.4rem .6rem}
+  #nut-msg.len{bottom:430px}
+  #hud-quote{width:330px;bottom:84px;font-size:.85rem}
+}
 </style>
 
 <meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-trangvien.jpg">
@@ -1691,6 +1700,7 @@ const oGoiY = document.getElementById('goi-y');
 const man = document.getElementById('man');
 
 function moBang(khu){
+  dongHudMsg();  // đóng khung chat khi mở bảng khu
   dangMo = true;
   document.getElementById('bang-ten').textContent = khu.ten[NG];
   document.getElementById('bang-phu').textContent = khu.phu[NG];
@@ -2303,9 +2313,12 @@ function msgTraLoi(){
 }
 function moHudMsg(){
   hudMsgMoi = true; datHudMsg();
+  const nm = document.getElementById('nut-msg'); if(nm) nm.classList.add('len');
   datBieuCam('vui');
 }
-function dongHudMsg(){ hudMsgMoi = false; datHudMsg(); }
+function dongHudMsg(){ hudMsgMoi = false; datHudMsg();
+  const nm = document.getElementById('nut-msg'); if(nm) nm.classList.remove('len');
+}
 // HUD Messenger HTML
 (function(){
   const hud = document.createElement('div');
