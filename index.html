@@ -155,6 +155,17 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
   @keyframes hcm-drift{from{background-position:center 35%}to{background-position:center 40%}}
   .hcm:hover{animation:hcm-drift 3s ease-in-out infinite alternate}
   @media(prefers-reduced-motion:reduce){.hcm,.hcm:hover{animation:none;transition:none}}
+  /* Hoa hồng bay quanh khối khi hover */
+  .hcm-hoa{position:absolute;width:26px;height:26px;object-fit:contain;opacity:0;pointer-events:none;z-index:2}
+  @keyframes hcm-hoa-fly{0%{transform:translate(0,16px) rotate(0deg) scale(.7);opacity:0}14%{opacity:.95}50%{opacity:.9}86%{opacity:.95}100%{transform:translate(10px,-26px) rotate(34deg) scale(1);opacity:0}}
+  .hcm:hover .hcm-hoa{animation:hcm-hoa-fly 2.6s ease-in-out infinite;animation-delay:var(--hd,0s);animation-iteration-count:2}
+  .hcm.hoa-chay .hcm-hoa{animation:hcm-hoa-fly 2.6s ease-in-out infinite;animation-delay:var(--hd,0s)}
+  .hcm-hoa[data-i="0"]{--hd:0s;top:6%;left:2%}
+  .hcm-hoa[data-i="1"]{--hd:.5s;top:60%;left:6%;width:20px;height:20px}
+  .hcm-hoa[data-i="2"]{--hd:1s;top:8%;right:4%;width:22px;height:22px}
+  .hcm-hoa[data-i="3"]{--hd:1.5s;top:64%;right:2%;width:18px;height:18px}
+  .hcm-hoa[data-i="4"]{--hd:2s;bottom:10%;left:38%;width:20px;height:20px}
+  @media(prefers-reduced-motion:reduce){.hcm:hover .hcm-hoa,.hcm.hoa-chay .hcm-hoa{animation:none;opacity:0}}
 
 /* ===== Bản đồ trang viên (hero hướng B) ===== */
 #bando{position:relative;width:100%;aspect-ratio:1376/768;border-radius:26px;overflow:hidden;
@@ -281,7 +292,13 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
   </section>
 
   <section id="inspiration">
-    <div class="hcm">
+    <div class="hcm" id="hcmBlock">
+      <img class="hcm-hoa" data-i="0" style="--hd:0s" src="assets/img/hoa_hong.webp" alt="" aria-hidden="true">
+      <img class="hcm-hoa" data-i="1" style="--hd:.5s" src="assets/img/hoa_hong.webp" alt="" aria-hidden="true">
+      <img class="hcm-hoa" data-i="2" style="--hd:1s" src="assets/img/hoa_hong.webp" alt="" aria-hidden="true">
+      <img class="hcm-hoa" data-i="3" style="--hd:1.5s" src="assets/img/hoa_hong.webp" alt="" aria-hidden="true">
+      <img class="hcm-hoa" data-i="4" style="--hd:2s" src="assets/img/hoa_hong.webp" alt="" aria-hidden="true">
+      <script>(function(){var b=document.getElementById('hcmBlock');if(b){var t=null;b.addEventListener('mouseenter',function(){clearTimeout(t);b.classList.add('hoa-chay')});b.addEventListener('mouseleave',function(){t=setTimeout(function(){b.classList.remove('hoa-chay')},3000)})}})();</script>
       <span class="hcm-k">🪷 <span class="lang-vi">Nguồn cảm hứng</span><span class="lang-en">Inspiration</span></span>
       <blockquote class="hcm-q">
         <span class="lang-vi">&ldquo;Non sông Việt Nam có trở nên tươi đẹp hay không, dân tộc Việt Nam có bước tới đài vinh quang để sánh vai với các cường quốc năm châu hay không, chính là nhờ một phần lớn ở công học tập của các em.&rdquo;</span>

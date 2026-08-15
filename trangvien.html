@@ -205,6 +205,13 @@ body.cham #ban-do canvas{width:84px;height:84px}
 .bai audio{width:100%;height:34px;margin-top:.5rem}
 .ngay{font-size:.7rem;font-weight:700;letter-spacing:.08em;color:var(--vang);text-transform:uppercase}
 .anh-nv{width:100%;max-width:210px;margin:0 auto 1rem;display:block;filter:drop-shadow(0 14px 24px rgba(120,80,60,.28))}
+/* Lưới ảnh khu Gallery */
+.anh-luoi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:.5rem}
+.anh-luoi figure{margin:0}
+.anh-luoi img{width:100%;height:190px;object-fit:cover;border-radius:16px;border:3px solid var(--kem);box-shadow:0 10px 22px rgba(150,95,75,.22);display:block;transition:transform .25s ease}
+.anh-luoi img:hover{transform:scale(1.03)}
+.anh-luoi figcaption{font-size:.76rem;color:var(--muc-nhat);margin-top:5px;text-align:center}
+@media(max-width:700px){.anh-luoi{grid-template-columns:repeat(2,1fr)}.anh-luoi img{height:170px}}
 #noi-dung::-webkit-scrollbar{width:0}
 
 @media (min-width:820px){
@@ -479,6 +486,31 @@ const KHU = [
         <a class="the" href="mailto:thuyhuongctu@gmail.com"><b>thuyhuongctu@gmail.com</b><span>Research and collaboration</span><em>Write →</em></a>
         <a class="the" href="https://github.com/thuyhuongctu" target="_blank" rel="noopener"><b>GitHub</b><span>Source code for the open projects</span><em>Open →</em></a>
         <a class="the" href="index.html"><b>Full academic site</b><span>The main site with publications, teaching and world data.</span><em>Back to main site →</em></a>`
+    }
+  },
+  {
+    id:'tranh-anh', icon:'🖼️', mau:'#D9749B', vt:[26,0,4],
+    ten:{vi:'Gallery · Chân dung', en:'Gallery · Portraits'},
+    phu:{vi:'Góc chân dung nghệ thuật', en:'Artistic portrait corner'},
+    html:{
+      vi:`<p>Bộ ảnh chân dung nghệ thuật — ánh chiều trên đồng sen, vườn hồng và hiên nhà gỗ.</p>
+        <div class="anh-luoi">
+          <figure><img src="assets/img/chan_dung_0_goc.webp" alt="Chân dung gốc · ánh chiều và hoa đại trắng" loading="lazy"><figcaption>Ánh chiều &amp; hoa đại trắng</figcaption></figure>
+          <figure><img src="assets/img/chan_dung_1_vuon_sen.webp" alt="Đứng giữa đồng sen cầm búp sen trắng" loading="lazy"><figcaption>Đồng sen chiều vàng</figcaption></figure>
+          <figure><img src="assets/img/chan_dung_2_doc_sach.webp" alt="Ngồi đọc sách bên bàn gỗ hiên nhà" loading="lazy"><figcaption>Bên trang sách, hiên nhà</figcaption></figure>
+          <figure><img src="assets/img/chan_dung_3_hoa_hong.webp" alt="Cầm hoa hồng trắng giữa vườn hồng" loading="lazy"><figcaption>Vườn hồng bình minh</figcaption></figure>
+          <figure><img src="assets/img/chan_dung_4_buoc_di.webp" alt="Đi trên lối đá mang giỏ hoa anthurium trắng" loading="lazy"><figcaption>Lối đá, giỏ hoa trắng</figcaption></figure>
+          <figure><img src="assets/img/chan_dung_5_hoang_hon.webp" alt="Ngồi hiên lúc hoàng hôn, tay chống cằm" loading="lazy"><figcaption>Hoàng hôn bên hiên</figcaption></figure>
+        </div>`,
+      en:`<p>Portrait series — golden light over the lotus pond, the rose garden and the wooden veranda.</p>
+        <div class="anh-luoi">
+          <figure><img src="assets/img/chan_dung_0_goc.webp" alt="Original portrait · afternoon light and white frangipani" loading="lazy"><figcaption>Afternoon light &amp; frangipani</figcaption></figure>
+          <figure><img src="assets/img/chan_dung_1_vuon_sen.webp" alt="Standing among lotus flowers holding a white lotus bud" loading="lazy"><figcaption>Golden lotus pond</figcaption></figure>
+          <figure><img src="assets/img/chan_dung_2_doc_sach.webp" alt="Reading at a wooden table on the veranda" loading="lazy"><figcaption>Pages and porch light</figcaption></figure>
+          <figure><img src="assets/img/chan_dung_3_hoa_hong.webp" alt="Holding a white rose in a rose garden" loading="lazy"><figcaption>First-light rose garden</figcaption></figure>
+          <figure><img src="assets/img/chan_dung_4_buoc_di.webp" alt="Walking a stone path carrying a basket of white anthuriums" loading="lazy"><figcaption>Stone path, basket of white blooms</figcaption></figure>
+          <figure><img src="assets/img/chan_dung_5_hoang_hon.webp" alt="Sitting on the veranda at dusk, chin on hand" loading="lazy"><figcaption>Dusk on the veranda</figcaption></figure>
+        </div>`
     }
   }
 ];
@@ -871,6 +903,26 @@ function dungKhu(khu){
     const chan = khoi(new THREE.CylinderGeometry(.2,.24,2.2,8), '#8A6A4A', .93);
     chan.position.set(-1.6,1.1,0); dt.add(chan);
     const chan2 = chan.clone(); chan2.position.x = 1.6; dt.add(chan2);
+  }
+  else if(khu.id === 'tranh-anh'){
+    // giá treo ảnh gỗ + hai khung tranh nghiêng
+    const gia = khoi(hopTron(4.8, .32, 1.6, .08), '#8A6A4A', .93);
+    gia.position.y = 1.4; dt.add(gia);
+    const cotG = khoi(new THREE.CylinderGeometry(.16,.16,2.9,8), '#8A6A4A', .93);
+    cotG.position.set(-2.2, 1.7, 0); dt.add(cotG);
+    const cotP = cotG.clone(); cotP.position.x = 2.2; dt.add(cotP);
+    const kh1 = khoi(hopTron(1.7, 2.2, .14, .06), '#FFF8EE', .94);
+    kh1.position.set(-1.0, 1.7, .45); kh1.rotation.y = -.18; kh1.rotation.x = -.06; dt.add(kh1);
+    const anh1 = khoi(hopTron(1.4, 1.9, .1, .04), khu.mau, .9);
+    anh1.position.set(-1.0, 1.72, .52); anh1.rotation.y = -.18; anh1.rotation.x = -.06; dt.add(anh1);
+    const kh2 = khoi(hopTron(1.7, 2.2, .14, .06), '#FFF8EE', .94);
+    kh2.position.set(1.0, 1.8, .4); kh2.rotation.y = .2; kh2.rotation.x = -.05; dt.add(kh2);
+    const anh2 = khoi(hopTron(1.4, 1.9, .1, .04), '#C4596B', .9);
+    anh2.position.set(1.0, 1.82, .47); anh2.rotation.y = .2; anh2.rotation.x = -.05; dt.add(anh2);
+    const hoa = khoi(new THREE.SphereGeometry(.24, 10, 8), '#F2A8C4', .92);
+    hoa.position.set(2.0, 1.6, -.15); dt.add(hoa);
+    const lan = khoi(new THREE.CylinderGeometry(.1,.1,.7,7), '#7FB88F', .9);
+    lan.position.set(2.0, 1.3, -.15); dt.add(lan);
   }
   else if(khu.id === 'gioi-thieu'){
     const than = khoi(hopTron(5.2, 3.2, 4.2, .28), '#FFF8EE', .94);
