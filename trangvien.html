@@ -381,14 +381,14 @@ const KHU = [
     ten:{vi:'Dự án mở', en:'Open Projects'},
     phu:{vi:'Xưởng bên sông · phần mềm có DOI', en:'Riverside workshop · DOI-registered software'},
     html:{
-      vi:`<p>Bốn phần mềm phục vụ nghiên cứu và giảng dạy, đều chạy thẳng trên trình duyệt.</p>
+      vi:`<p>Bốn phần mềm phục vụ nghiên cứu và giảng dạy, đều chạy thẳng trên trình duyệt — giữ trong kho báu dưới đây. <b>Chạm vào rương để mở nắp và ngắm viên ngọc của dự án.</b></p>
         <a class="the" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><b>M-AIDA</b><span>Trích xuất mức độ ảnh hưởng từ PDF bằng mô hình ngôn ngữ lớn, kiểm chứng con người 100%, khóa bất biến. Mã nguồn mở, có DOI Zenodo.</span><em>Xem dự án →</em></a>
         <a class="the" href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener"><b>BizOn · Bật Nghiệp</b><span>Game mô phỏng kinh doanh đất nặn 3D: 5 đội trên một "thị trường sống" đa tác tử AI, 6 vòng trên bản đồ Việt Nam, cố vấn AI Lumina. Kèm bản mở rộng GO GlObal.</span><em>Chơi thử →</em></a>
         <a class="the" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><b>EnQuiz</b><span>Ứng dụng ôn tập Khởi nghiệp: 300 câu theo 5 chương, thi thử đếm giờ, song ngữ, cài như ứng dụng (PWA), chạy offline.</span><em>Mở ứng dụng →</em></a>
         <a class="the" href="https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/" target="_blank" rel="noopener"><b>Trò Chơi Sử Việt</b><span>Vân Đồn (1149) — dựng thương cảng quốc tế đầu tiên của Đại Việt; Bắc Hải Đảo (1780) — phiêu lưu và hải chiến trên vịnh Bắc Bộ.</span><em>Vào cổng →</em></a>
         <h3>Nguyên tắc</h3>
         <p style="font-style:italic;color:var(--nhan)">“Máy đề xuất, người quyết định.”</p>`,
-      en:`<p>Four pieces of software for research and teaching, all running straight in the browser.</p>
+      en:`<p>Four pieces of software for research and teaching, all running straight in the browser — each kept in a treasure chest below. <b>Tap a chest to open the lid and admire its gem.</b></p>
         <a class="the" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><b>M-AIDA</b><span>LLM-assisted effect-size extraction from PDFs with 100% human verification and immutable locking. Open-source with a Zenodo DOI.</span><em>View project →</em></a>
         <a class="the" href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener"><b>BizOn</b><span>A 3D-claymorphism business simulation: five teams on one multi-agent AI living market, six rounds across a map of Vietnam, with the Lumina AI advisor. Ships with the GO GlObal expansion.</span><em>Play →</em></a>
         <a class="the" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><b>EnQuiz</b><span>Entrepreneurship revision app: 300 questions across 5 chapters, timed mock exams, bilingual, installable (PWA), fully offline.</span><em>Open app →</em></a>
@@ -977,6 +977,7 @@ function bienBaoTexture(khu){
 
 const bienBao = [];   // để vẽ lại khi đổi ngôn ngữ
 const diemKhu = [];   // {khu, pos}
+const rChau = [];     // Treasure Room — rương kho báu dự án
 
 function dungKhu(khu){
   const g = new THREE.Group();
@@ -1018,14 +1019,69 @@ function dungKhu(khu){
     can.position.set(2.3, 2.5, .7); can.rotation.set(.5,.4,.7); dt.add(can);
   }
   else if(khu.id === 'du-an'){
-    const banh = khoi(new THREE.TorusGeometry(1.5,.42,9,9), '#E8B84B', .85);
-    banh.position.y = 2.4; banh.rotation.x = Math.PI/2; dt.add(banh);
-    const truc = khoi(new THREE.CylinderGeometry(.3,.3,1.4,10), '#C99A2E', .9);
-    truc.position.y = 2.4; dt.add(truc);
-    const de = khoi(hopTron(3.4, 2.4, .5, .2), '#EFE3D0', .93);
-    de.rotation.x = -Math.PI/2; de.position.y = .25; dt.add(de);
-    const man = khoi(hopTron(3.0, 2.0, .3, .18), '#5C7FBF', .8);
-    man.position.set(0,1.2,-.9); man.rotation.x = -.35; dt.add(man);
+    /* ===== TREASURE ROOM — hầm kho báu dự án =====
+       1 rương mẹ trung tâm + 4 rương con (mỗi dự án một rương + một viên ngọc bay)
+       Click/tap vào rương → mở nắp, ngọc nảy + phát sáng, hiện bảng dự án */
+    function khoiVu(hop){
+      const geo = new THREE.SphereGeometry(1, 12, 8);
+      const m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({color:hop, roughness:.55, metalness:.3}));
+      return m;
+    }
+    function taoRuon(duongKinh, cao, mauThan, mauNap, viTriX, viTriZ, loai){
+      const g = new THREE.Group();
+      g.position.set(viTriX, .55, viTriZ);
+      // thân rương gỗ
+      const than = khoi(hopTron(duongKinh, cao*.72, duongKinh*.55, duongKinh*.12), mauThan, .92);
+      than.position.y = cao*.36; g.add(than);
+      // nắp vòm (hèm trên)
+      const nap = khoi(hopTron(duongKinh*.94, cao*.34, duongKinh*.5, duongKinh*.14), mauNap, .94);
+      nap.position.y = cao*.72 + cao*.17; g.add(nap);
+      // 2 hèm khóa vàng
+      [1,-1].forEach(s=>{
+        const hem = khoi(hopTron(.14, cao*.5, duongKinh*.18, .06), '#E8B84B', .7);
+        hem.position.set(s*duongKinh*.56, cao*.4, duongKinh*.02); g.add(hem);
+      });
+      // ổ khóa giữa thân
+      const khoa = khoiVu('#FFD27A');
+      khoa.scale.set(duongKinh*.16, .35, duongKinh*.16);
+      khoa.position.set(0, cao*.38, duongKinh*.30); g.add(khoa);
+      // viên ngọc bay (màu dự án) — treo phía trên nắp
+      const mauNgoc = loai === 'maida' ? '#7DB4FF' : loai === 'bizon' ? '#FFE08A' : loai === 'enquiz' ? '#8FD9A4' : '#F09BB4';
+      const ngocM = khoi(new THREE.SphereGeometry(duongKinh*.17, 12, 8), mauNgoc, .3);
+      ngocM.position.y = cao + .42; g.add(ngocM);
+      const phat = khoi(new THREE.SphereGeometry(duongKinh*.34, 10, 8), mauNgoc, .15);
+      phat.position.y = cao + .42; phat.material.opacity = .25; phat.material.transparent = true;
+      g.add(phat);
+      // đom đóm vàng quanh rương
+      const dsDom = [];
+      for(let i=0;i<6;i++){
+        const d = khoi(new THREE.SphereGeometry(.05, 6, 6), '#FFD27A', .5);
+        const a = i/6*Math.PI*2;
+        d.userData = {a: a, r: duongKinh*.85 + Math.random()*.4, y: .8+Math.random()*1.2, t: Math.random()*7};
+        dsDom.push(d);
+        g.add(d);
+      }
+      rChau.push({g, loai, cao, nap, ngoc: ngocM, phat, dom: dsDom});
+      return g;
+    }
+    // rương mẹ (giữ bánh răng + màn hình cũ ở giữa)
+    const me = taoRuon(2.0, 1.5, '#8A5A2B', '#F5C6B0', 0, 0, 'me');
+    dt.add(me);
+    // giữ vật phẩm cũ (bánh răng) trên rương mẹ — đặt phía sau
+    const banh = khoi(new THREE.TorusGeometry(.62,.17,9,9), '#E8B84B', .85);
+    banh.position.set(0, 2.05, -.45); banh.rotation.x = Math.PI/2; dt.add(banh);
+    // 4 rương con — một dự án một rương
+    dt.add(taoRuon(1.15, .95, '#5C7FBF', '#C9DEFF', -1.9, -1.9, 'maida'));      // M-AIDA: ngọc xanh
+    dt.add(taoRuon(1.15, .95, '#E8B84B', '#FFF1CC', 1.9, -1.9, 'bizon'));       // BizOn: ngọc vàng
+    dt.add(taoRuon(1.15, .95, '#7FB88F', '#D8F0DC', -1.9, 1.9, 'enquiz'));      // EnQuiz: ngọc lục
+    dt.add(taoRuon(1.15, .95, '#C4596B', '#F7D3D8', 1.9, 1.9, 'game'));         // Sử Việt: ngọc hồng
+    // đống cổ vật nhỏ (đĩa vàng) rải quanh rương mẹ
+    for(let i=0;i<5;i++){
+      const a = i/5*Math.PI*2;
+      const d = khoi(new THREE.CylinderGeometry(.12,.12,.04,12), '#FFD27A', .65);
+      d.position.set(Math.cos(a)*1.35, .06, Math.sin(a)*1.35);
+      d.rotation.z = Math.random()*.5-.25; dt.add(d);
+    }
   }
   else if(khu.id === 'thu-vien'){
     const ke = khoi(hopTron(4.4, 3.2, .8, .2), '#D8B98E', .93);
@@ -2027,6 +2083,82 @@ function capNhatSinhDong2(t, dt){
 }
 
 
+/* ---------- TREASURE ROOM — hoạt ảnh rương kho báu ----------
+   · Đom đóm vàng bay vòng quanh rương, ngọc xoay + nảy nhẹ, hào quang thở nhịp
+   · Click/tap rương → mở nắp vọt lên, nhảy mở bảng khu dự án tương ứng */
+const MAY_TREASURE = new THREE.Raycaster();
+const DU_AN_LOAI = {maida:'M-AIDA', bizon:'BizOn', enquiz:'EnQuiz', game:'Trò Chơi Sử Việt'};
+const DU_AN_URL = {
+  maida: 'https://thuyhuongctu.github.io/M-AIDA/',
+  bizon: 'https://thuyhuongctu.github.io/BizOn/',
+  enquiz: 'https://thuyhuongctu.github.io/EnQuiz/',
+  game: 'https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/'
+};
+let duoiClick = null;
+function capNhatKhoBau(t, dt){
+  rChau.forEach(rc=>{
+    // đom đóm vàng bay vòng
+    rc.dom.forEach(d=>{
+      const u = d.userData;
+      u.a += dt*1.1;
+      u.t += dt;
+      d.position.set(Math.cos(u.a)*u.r, u.y + Math.sin(u.t*2.4)*.18, Math.sin(u.a)*u.r);
+      d.material.opacity = .4 + Math.sin(u.t*3.5)*.4;
+    });
+    // ngọc xoay + nảy
+    if(rc.ngoc){
+      rc.ngoc.rotation.y += dt*1.8;
+      rc.ngoc.position.y = rc.cao + .42 + Math.sin(t*2 + rc.g.id*.7)*.12;
+    }
+    if(rc.phat){
+      rc.phat.scale.setScalar(1 + Math.sin(t*2.2 + rc.g.id)*.12);
+      rc.phat.material.opacity = .16 + Math.sin(t*2.2 + rc.g.id)*.1;
+    }
+    // nắp mở dần khi chọn (animation vọt mở nhanh rồi giữ)
+    if(rc.mo === 1){ rc.moT = (rc.moT||0) + dt; }
+    if(rc.mo === 1 && rc.nap){
+      const p = Math.min(1, rc.moT/0.45);
+      const ease = 1 - Math.pow(1-p, 3);
+      rc.nap.rotation.x = -ease*1.5;
+      rc.nap.position.y = rc.cao*.72 + rc.cao*.17 + ease*rc.cao*.3;
+      if(p >= 1){
+        rc.mo = 2; rc.moT = 0;
+        // mở bảng khu dự án
+        const k = KHU.find(kh=>kh.id==='du-an');
+        if(k && !dangMo) moBang(k);
+      }
+    }
+  });
+}
+// chọn rương: phân biệt click ngắn với kéo camera
+renderer.domElement.addEventListener('pointerdown', e=>{ duoiClick = {x:e.clientX, y:e.clientY, t:performance.now()}; });
+renderer.domElement.addEventListener('pointerup', e=>{
+  if(!duoiClick) return;
+  const dx = e.clientX - duoiClick.x, dy = e.clientY - duoiClick.y;
+  const quaNgan = Math.hypot(dx,dy) < 8 && performance.now() - duoiClick.t < 400;
+  duoiClick = null;
+  if(!quaNgan || dangMo || rChau.length === 0) return;
+  MAY_TREASURE.setFromCamera(
+    new THREE.Vector2((e.clientX/innerWidth)*2-1, -(e.clientY/innerHeight)*2+1), camera);
+  const tatCa = [];
+  rChau.forEach(rc=>{
+    rc.g.traverse(o=>{ if(o.isMesh) tatCa.push(o); });
+  });
+  const hit = MAY_TREASURE.intersectObjects(tatCa, false)[0];
+  if(!hit) return;
+  // tìm rương chứa mesh hit
+  let rcHit = null;
+  for(const rc of rChau){
+    let cur = hit.object; let found = false;
+    while(cur){ if(cur === rc.g){ found = true; break; } cur = cur.parent; }
+    if(found){ rcHit = rc; break; }
+  }
+  if(rcHit && rcHit.mo !== 1){
+    rcHit.mo = 1; rcHit.moT = 0;
+    datBieuCam('ngac');
+  }
+});
+
 /* ========== BỐI CẢNH THEO THỜI KHẮC — sáng / chiều / đêm ========== */
 const BC_CH = {
  sang:{
@@ -2676,6 +2808,7 @@ function vong(){
   bongHuong.scale.set(dapXe ? 1.55 : 1, dapXe ? 1.1 : 1, 1);
   bongHuong.material.opacity = dapXe ? .7 : .85;
 
+  capNhatKhoBau(t, dt);
   capNhatSinhDong(t, dt);
   capNhatSinhDong2(t, dt);
   capNhatNhacQuang(t, dt);
