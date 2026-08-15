@@ -233,6 +233,30 @@ body.cham #ban-do canvas{width:84px;height:84px}
   background:#c4596b;color:#fff;cursor:pointer;box-shadow:0 6px 16px rgba(196,89,107,.45)}
 @media(max-width:720px){#logo-tv{width:36px;height:36px}}
 @media(max-width:420px){#logo-tv{width:30px;height:30px}}
+/* --- Messenger Window HUD --- */
+#hud-msg{position:fixed;left:50%;bottom:105px;transform:translateX(-50%);width:350px;max-width:93vw;
+  background:#FFF8EE;border:3px solid #7FC8B0;border-radius:26px;box-shadow:0 10px 34px rgba(90,60,60,.22);
+  font-family:system-ui,sans-serif;z-index:96;display:none;overflow:hidden}
+#hud-msg.hien{display:block;animation:hm-vao .32s ease}
+@keyframes hm-vao{from{opacity:0;transform:translate(-50%,24px) scale(.94)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+.hm-head{background:#7FC8B0;color:#fff;padding:.65rem 1rem;display:flex;align-items:center;justify-content:space-between;font-size:.92rem}
+.hm-x{background:rgba(255,255,255,.25);border:none;color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:.85rem}
+#hud-msg-khu{padding:.8rem .9rem .5rem;max-height:210px;overflow-y:auto;display:flex;flex-direction:column;gap:.5rem}
+.hm-b{max-width:78%;padding:.55rem .85rem;border-radius:16px;font-size:.82rem;line-height:1.45}
+.hm-trai{background:#FFFFFF;border:2px solid #E9DFCE;align-self:flex-start;border-bottom-left-radius:4px;color:#4A3B36}
+.hm-phai{background:#F7C4CC;align-self:flex-end;border-bottom-right-radius:4px;color:#6B3A46}
+.hm-goi{padding:.45rem .7rem .7rem;display:flex;gap:.4rem;flex-wrap:wrap}
+.hm-nut{background:#EBD9C4;color:#5C4A3E;border:2px solid #D8B98E;border-radius:999px;padding:.45rem .75rem;font-size:.75rem;cursor:pointer;font-family:system-ui,sans-serif}
+.hm-nut:hover{background:#F2A8C4}
+#nut-msg{position:fixed;right:16px;bottom:172px;width:52px;height:52px;border-radius:50%;border:none;
+  background:#7FC8B0;color:#fff;font-size:1.35rem;box-shadow:0 6px 20px rgba(70,130,110,.35);cursor:pointer;z-index:95}
+#nut-msg:hover{transform:scale(1.06)}
+/* --- HUD đọc sách --- */
+#hud-quote{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:#FFF8EE;
+  border:3px solid #E8B84B;border-radius:22px;padding:.9rem 1.4rem;max-width:86vw;width:380px;
+  font-family:Georgia,serif;font-style:italic;color:#6B4A2E;text-align:center;font-size:.95rem;
+  box-shadow:0 10px 30px rgba(120,90,40,.25);z-index:96;display:none}
+#hud-quote.hien{display:block;animation:hm-vao .3s ease}
 </style>
 
 <meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-trangvien.jpg">
@@ -978,6 +1002,11 @@ function bienBaoTexture(khu){
 const bienBao = [];   // để vẽ lại khi đổi ngôn ngữ
 const diemKhu = [];   // {khu, pos}
 const rChau = [];     // Treasure Room — rương kho báu dự án
+const dsSachTV = [];  // Clay Library — sách rung nhẹ
+const dsTuongTV = []; // Clay Library — tượng đất nặn xoay
+const dsDotMsg = [];  // Messenger — 3 chấm "typing" nhịp gõ
+const dsMsgTV = [];   // Messenger — cửa sổ + bong bóng
+let denTV = new THREE.Mesh(new THREE.SphereGeometry(.01), new THREE.MeshBasicMaterial());
 
 function dungKhu(khu){
   const g = new THREE.Group();
@@ -1084,16 +1113,40 @@ function dungKhu(khu){
     }
   }
   else if(khu.id === 'thu-vien'){
-    const ke = khoi(hopTron(4.4, 3.2, .8, .2), '#D8B98E', .93);
-    ke.position.y = 1.9; dt.add(ke);
-    for(let i=0;i<10;i++){
-      const s = khoi(hopTron(.34, 1.1, .5, .05), ['#C4596B','#5C7FBF','#7FB88F','#E8B84B'][i%4], .9);
-      s.position.set(-1.8 + i*.4, 2.5 + (i%2?.05:0), .4);
-      s.rotation.z = (i%3===0) ? .22 : 0;
+    const ke = khoi(hopTron(4.8, 3.6, .9, .22), '#D8B98E', .93);
+    ke.position.y = 2.0; dt.add(ke);
+    const mauSach = ['#C4596B','#5C7FBF','#7FB88F','#E8B84B','#C99BD8','#F2A8C4'];
+    for(let i=0;i<18;i++){
+      const s = khoi(hopTron(.32, 1.15, .5, .05), mauSach[i%mauSach.length], .9);
+      const cot = Math.floor(i/9), hang = i%9;
+      s.position.set(-1.9 + cot*3.8, 2.6 + (hang%2?.06:0), .42);
+      s.rotation.z = (i%4===0) ? .22 : (i%4===2 ? -.14 : 0);
+      if(dsSachTV) dsSachTV.push(s);
       dt.add(s);
     }
-    const mai = khoi(new THREE.ConeGeometry(3.4, 1.6, 4), '#C4596B', .93);
-    mai.position.y = 4.3; mai.rotation.y = Math.PI/4; dt.add(mai);
+    // ghế lười đọc sách (half sphere nghiêng)
+    const ghe = khoi(new THREE.SphereGeometry(.75,14,10,0,Math.PI*2,0,Math.PI/2), '#C4596B', .85);
+    ghe.scale.set(1.25,1,.95); ghe.rotation.x = .35;
+    ghe.position.set(2.6,.42,.6); dt.add(ghe);
+    // đèn đọc sách (đế + cần cong + chụp vàng ấm)
+    const denChan = khoi(new THREE.CylinderGeometry(.35,.42,.22,10), '#E8B84B', .85);
+    denChan.position.set(-2.7,.11,.7); dt.add(denChan);
+    const denCan = khoi(new THREE.CylinderGeometry(.09,.09,1.9,7), '#E8B84B', .85);
+    denCan.position.set(-2.7,1.0,.7); dt.add(denCan);
+    const denChup = khoi(new THREE.SphereGeometry(.34,12,9), '#FFF1CC', .65);
+    denChup.position.set(-2.7,2.05,.7); dt.add(denChup);
+    if(denTV) denTV.position.set(-2.7,2.6,.9);
+    const anhTV = new THREE.PointLight(0xFFD98A, .85, 9);
+    anhTV.position.set(-2.7,2.5,.9); g.add(anhTV);
+    // thảm tròn dưới kệ
+    const tham = khoi(new THREE.CylinderGeometry(2.6,2.6,.08,24), '#E8DFA8', .95);
+    tham.position.y = .04; dt.add(tham);
+    // 3 tượng đất nặn trưng bày (sao, tim, cá)
+    const tuong = khoi(new THREE.OctahedronGeometry(.55,0), '#BFE3EE', .8);
+    tuong.position.set(1.4,1.35,.5); tuong.scale.set(1,1.25,.55); dt.add(tuong);
+    if(dsTuongTV) dsTuongTV.push(tuong);
+    const mai = khoi(new THREE.ConeGeometry(3.6, 1.6, 4), '#C4596B', .93);
+    mai.position.y = 4.5; mai.rotation.y = Math.PI/4; dt.add(mai);
   }
   else if(khu.id === 'am-nhac'){
     const buc = khoi(new THREE.CylinderGeometry(2.6,2.8,.6,20), '#F3DCE4', .94);
@@ -1123,6 +1176,54 @@ function dungKhu(khu){
     const chan = khoi(new THREE.CylinderGeometry(.2,.24,2.2,8), '#8A6A4A', .93);
     chan.position.set(-1.6,1.1,0); dt.add(chan);
     const chan2 = chan.clone(); chan2.position.x = 1.6; dt.add(chan2);
+
+    /* --- cửa sổ Messenger bằng đất nặn --- */
+    // cửa sổ Messenger: nghiêng ra ngoài khu để không bị biển che
+    const cuaG = new THREE.Group();
+    cuaG.position.set(0, 0, 4.6);  // phía trước biển chỉ đường (z=3.9) khi nhìn từ đường vào
+    // mặt trước (+z) tự hướng ra đường đi vào khu — không cần xoay
+    const cuaVi = khoi(hopTron(2.9, 3.4, .14, .26), '#7FC8B0', .85);
+    cuaVi.position.y = 2.45; cuaVi.userData.loai = 'msg'; cuaG.add(cuaVi);
+    const cuaNen = khoi(hopTron(2.6, 3.1, .12, .22), '#FFF8EE', .95);
+    cuaNen.position.set(0, 2.45, .14); cuaG.add(cuaNen);
+    // header pill xanh + avatar tròn
+    const cuaHdr = khoi(hopTron(2.2, .48, .14, .25), '#7FC8B0', .85);
+    cuaHdr.position.set(0, 3.7, .15); cuaG.add(cuaHdr);
+    const ava = khoi(new THREE.CylinderGeometry(.32,.32,.08,16), '#F8C0D2', .75);
+    ava.rotation.x = Math.PI/2; ava.position.set(-.78, 3.7, .26); cuaG.add(ava);
+    const avaVong = khoi(new THREE.TorusGeometry(.36,.07,6,16), '#FFF8EE', .75);
+    avaVong.rotation.y = Math.PI/2; avaVong.position.set(-.78, 3.7, .3); cuaG.add(avaVong);
+    // 3 chấm "typing" nhịp gõ
+    for(let i=0;i<3;i++){
+      const c = khoi(new THREE.SphereGeometry(.1,8,7), '#C4596B', .65);
+      c.position.set(.3 + i*.24, 3.7, .28);
+      if(dsDotMsg) dsDotMsg.push(c);
+      cuaG.add(c);
+    }
+    // bong bóng chat: 2 trái trắng + 1 phải hồng (so le)
+    const bb1 = khoi(hopTron(1.3, .6, .1, .2), '#FFFFFF', .93);
+    const bb1Vi = khoi(hopTron(1.38, .68, .05, .22), '#B5E0D2', .9);
+    bb1.position.set(-.5, 3.0, .2); bb1Vi.position.set(-.5, 3.0, .16); bb1.userData.loai = 'msg'; cuaG.add(bb1, bb1Vi);
+    const bb2 = khoi(hopTron(1.55, .6, .1, .2), '#FFFFFF', .93);
+    const bb2Vi = khoi(hopTron(1.63, .68, .05, .22), '#B5E0D2', .9);
+    bb2.position.set(-.3, 2.35, .2); bb2Vi.position.set(-.3, 2.35, .16); bb2.userData.loai = 'msg'; cuaG.add(bb2, bb2Vi);
+    const bb3 = khoi(hopTron(1.25, .6, .1, .2), '#F7C4CC', .9);
+    bb3.position.set(.7, 1.7, .2); bb3.userData.loai = 'msg'; cuaG.add(bb3);
+    // chấm "..." trên bong bóng
+    for(const bb of [bb1, bb3]){
+      for(let i=0;i<3;i++){
+        const d = khoi(new THREE.SphereGeometry(.055,6,5), '#C4596B', .8);
+        d.position.set(bb.position.x - .3 + i*.3, bb.position.y, bb.position.z + .1);
+        cuaG.add(d);
+      }
+    }
+    // chân đứng cửa sổ
+    const cotCua = khoi(new THREE.CylinderGeometry(.15,.19,1.4,8), '#7FC8B0', .85);
+    cotCua.position.set(0, .8, 0); cuaG.add(cotCua);
+    const chanCua = khoi(new THREE.CylinderGeometry(.65,.72,.15,12), '#7FC8B0', .85);
+    chanCua.position.y = .08; cuaG.add(chanCua);
+    dt.add(cuaG);
+    if(dsMsgTV) dsMsgTV.push({cuVi:cuaVi, bbs:[bb1,bb2,bb3]});
   }
   else if(khu.id === 'gioi-thieu'){
     const than = khoi(hopTron(5.2, 3.2, 4.2, .28), '#FFF8EE', .94);
@@ -2130,21 +2231,140 @@ function capNhatKhoBau(t, dt){
     }
   });
 }
-// chọn rương: phân biệt click ngắn với kéo camera
+
+/* --- Clay Library: sách rung nhẹ, tượng xoay, đèn nhấp nháy --- */
+function capNhatThuVien(t, dt){
+  dsSachTV.forEach((s,i)=>{
+    s.rotation.x = Math.sin(t*1.4 + i*1.7)*.045;
+    s.rotation.y = Math.sin(t*.9 + i)*.06;
+  });
+  dsTuongTV.forEach((u,i)=>{
+    u.rotation.y = t*.5 + i*2.1;
+    u.position.y = 1.35 + Math.sin(t*1.6 + i*2)*.05;
+  });
+  if(denTV) denTV.scale.setScalar(.9 + Math.sin(t*2.6)*.14);
+  // bong bóng Messenger nảy nhẹ
+  dsMsgTV.forEach(m=>{
+    m.bbs.forEach((b,i)=>{
+      b.position.y += Math.sin(t*1.9 + i*1.4)*.0014;
+    });
+    // 3 chấm "typing" nhịp gõ so le
+    dsDotMsg.forEach((c,i)=>{
+      c.position.y = 3.9 + Math.sin(t*5 + i*1.1)*.055;
+      c.scale.setScalar(.8 + Math.sin(t*5 + i*1.1)*.25);
+    });
+  });
+}
+
+/* --- Messenger Window: HUD tin nhắn --- */
+const MSG_KHUNG = {
+  vi:['Xin chào! Mình là Hương 🌸','Trang viên có 6 khu để khám phá — thử bấm phím 1 đến 6 nhé!','Mình rất vui được gặp bạn. Gửi cho mình một tin nhắn bất kỳ!'],
+  en:['Hello! I am Hương 🌸','The estate has 6 zones to explore — try keys 1 to 6!','So glad to meet you. Send me any message!'],
+  fr:['Bonjour ! Je suis Hương 🌸','Le domaine a 6 zones à explorer — essayez les touches 1 à 6 !','Très heureuse de vous rencontrer. Envoyez-moi un message !']
+};
+const MSG_TRA_LOI = {
+  vi:['Tin nhắn của bạn thật dễ thương, mình đã đọc rồi 🌷','Cảm ơn bạn! Mình sẽ kể thêm về trang viên này.','Bạn đã xem rương kho báu ở khu Dự án chưa? Rương M-AIDA ngọc xanh rất đẹp đó!','Trang viên còn có ao sen thắp đèn, bể koi và cối xay gió nữa.','Đọc sách giúp tâm hồn bay xa — bạn hãy ghé Clay Library nhé 📚','Mình là giảng viên và nghiên cứu sinh, rất thích kết bạn mới!','Tiếng Việt hay tiếng Anh mình đều trả lời được — thử xem!','Cảm ơn bạn đã ghé thăm trang viên của mình 🌸'],
+  en:['Your message is lovely, I just read it 🌷','Thank you! Let me tell you more about the estate.','Have you seen the treasure chests in the Projects zone? The M-AIDA chest has a lovely blue gem!','The estate also has a glowing lotus pond, a koi pond and a windmill.','Reading lets the soul travel — do visit the Clay Library 📚','I am a lecturer and PhD candidate, always happy to make new friends!','I can chat in Vietnamese, English or French — try me!','Thanks for visiting my little estate 🌸'],
+  fr:['Votre message est charmant, je viens de le lire 🌷','Merci ! Laissez-moi vous en dire plus sur le domaine.','Avez-vous vu les coffres au trésor dans la zone Projets ?','Le domaine a aussi un étang de lotus lumineux, un bassin de koïs et un moulin.','Lire fait voyager l’âme — visitez la Clay Library 📚','Je suis enseignante-chercheuse, toujours heureuse de me faire de nouveaux amis !','Je peux discuter en vietnamien, anglais ou français — essayez !','Merci d’avoir visité mon petit domaine 🌸']
+};
+let hudMsgMoi = false;
+function datHudMsg(){
+  const hud = document.getElementById('hud-msg');
+  if(!hud) return;
+  hud.classList.toggle('hien', hudMsgMoi);
+  const khu = document.getElementById('hud-msg-khu');
+  if(hudMsgMoi && khu && !khu.children.length){
+    MSG_KHUNG[NG].forEach((c,i)=>{
+      const b = document.createElement('div');
+      b.className = 'hm-b hm-trai'; b.textContent = c;
+      khu.appendChild(b);
+    });
+  }
+}
+function msgGui(txt, phia){
+  const khu = document.getElementById('hud-msg-khu');
+  if(!khu) return;
+  const b = document.createElement('div');
+  b.className = phia==='trai' ? 'hm-b hm-trai' : 'hm-b hm-phai';
+  b.textContent = txt;
+  khu.appendChild(b);
+  khu.scrollTop = khu.scrollHeight;
+  // giữ tối đa 10 tin
+  while(khu.children.length > 10) khu.removeChild(khu.firstChild);
+}
+function msgTraLoi(){
+  const nd = MSG_TRA_LOI[NG] || MSG_TRA_LOI.vi;
+  msgGui(nd[Math.floor(Math.random()*nd.length)], 'trai');
+}
+function moHudMsg(){
+  hudMsgMoi = true; datHudMsg();
+  datBieuCam('vui');
+}
+function dongHudMsg(){ hudMsgMoi = false; datHudMsg(); }
+// HUD Messenger HTML
+(function(){
+  const hud = document.createElement('div');
+  hud.id = 'hud-msg';
+  hud.innerHTML = '<div class="hm-head"><b>Messenger · Hương</b>' +
+    '<button class="hm-x" onclick="dongHudMsg()">✕</button></div>' +
+    '<div id="hud-msg-khu"></div>' +
+    '<div class="hm-goi">' +
+    '<button class="hm-nut" onclick="msgGui(\'Xin chào Hương!\',\'phai\');setTimeout(msgTraLoi,900)">🌸 Chào Hương</button>' +
+    '<button class="hm-nut" onclick="msgGui(\'Khu nào đẹp nhất?\',\'phai\');setTimeout(msgTraLoi,900)">🏡 Khu nào đẹp nhất?</button>' +
+    '<button class="hm-nut" onclick="msgGui(\'Kể chuyện dự án đi!\',\'phai\');setTimeout(msgTraLoi,900)">📦 Kể chuyện dự án</button>' +
+    '</div>';
+  document.body.appendChild(hud);
+  // nút mở Messenger nổi
+  const nut = document.createElement('button');
+  nut.id = 'nut-msg'; nut.textContent = '✉';
+  nut.onclick = ()=> moHudMsg();
+  document.body.appendChild(nut);
+})();
+
+/* --- HUD đọc sách Clay Library --- */
+const QUOTE_SACH = {
+  vi:['Một cuốn sách hay cho ta một điều tốt, một người bạn tốt cho ta một điều hay.','Sách là ngọn đèn bất diệt của trí tuệ con người.','Đọc sách là du hành mà không cần di chuyển.','Một trang sách hôm nay là một ngôi sao ngày mai.','Sáng tạo bắt đầu từ những trang sách đọc lúc còn bé.'],
+  en:['A good book gives us something good; a good friend gives us something great.','Books are the ever-burning lamps of accumulated wisdom.','Reading is travelling without moving.','One page today is a star tomorrow.','Creativity begins with childhood books.'],
+  fr:['Un bon livre nous donne quelque chose de bien.','Les livres sont les lampes toujours allumées de la sagesse.','Lire, c’est voyager sans bouger.','Une page aujourd’hui, une étoile demain.','La créativité commence avec les livres d’enfance.']
+};
+let hudQuoteHien = null, hudQuoteTO = null;
+function moHudQuote(){
+  const hud = document.getElementById('hud-quote');
+  if(!hud) return;
+  const qs = QUOTE_SACH[NG] || QUOTE_SACH.vi;
+  hud.querySelector('p').textContent = '\u201C' + qs[Math.floor(Math.random()*qs.length)] + '\u201D';
+  hud.classList.add('hien');
+  datBieuCam('thuong');
+  clearTimeout(hudQuoteTO);
+  hudQuoteTO = setTimeout(()=> hud.classList.remove('hien'), 3800);
+}
+(function(){
+  const hud = document.createElement('div');
+  hud.id = 'hud-quote';
+  hud.innerHTML = '<p></p>';
+  document.body.appendChild(hud);
+})();
+
+// chọn rương / cửa sổ Messenger / sách: phân biệt click ngắn với kéo camera
+const MAY_CHON = new THREE.Raycaster();
 renderer.domElement.addEventListener('pointerdown', e=>{ duoiClick = {x:e.clientX, y:e.clientY, t:performance.now()}; });
 renderer.domElement.addEventListener('pointerup', e=>{
   if(!duoiClick) return;
   const dx = e.clientX - duoiClick.x, dy = e.clientY - duoiClick.y;
   const quaNgan = Math.hypot(dx,dy) < 8 && performance.now() - duoiClick.t < 400;
   duoiClick = null;
-  if(!quaNgan || dangMo || rChau.length === 0) return;
-  MAY_TREASURE.setFromCamera(
+  if(!quaNgan || dangMo) return;
+  MAY_CHON.setFromCamera(
     new THREE.Vector2((e.clientX/innerWidth)*2-1, -(e.clientY/innerHeight)*2+1), camera);
   const tatCa = [];
   rChau.forEach(rc=>{
     rc.g.traverse(o=>{ if(o.isMesh) tatCa.push(o); });
   });
-  const hit = MAY_TREASURE.intersectObjects(tatCa, false)[0];
+  dsMsgTV.forEach(m=>{
+    m.bbs.forEach(b=> b.traverse(o=>{ if(o.isMesh) tatCa.push(o); }));
+  });
+  dsSachTV.forEach(s=> s.traverse(o=>{ if(o.isMesh) tatCa.push(o); }));
+  const hit = MAY_CHON.intersectObjects(tatCa, false)[0];
   if(!hit) return;
   // tìm rương chứa mesh hit
   let rcHit = null;
@@ -2156,6 +2376,24 @@ renderer.domElement.addEventListener('pointerup', e=>{
   if(rcHit && rcHit.mo !== 1){
     rcHit.mo = 1; rcHit.moT = 0;
     datBieuCam('ngac');
+    return;
+  }
+  // hit cửa sổ Messenger
+  if(dsMsgTV.length > 0){
+    let timThay = false;
+    dsMsgTV.forEach(m=>{
+      m.bbs.forEach(b=>{
+        let cur = hit.object; while(cur){ if(cur === b){ timThay = true; break; } cur = cur.parent; }
+      });
+    });
+    if(timThay){ moHudMsg(); return; }
+  }
+  // hit sách thư viện
+  if(dsSachTV.some(s=>{
+    let cur = hit.object; while(cur){ if(cur === s){ return true; } cur = cur.parent; }
+    return false;
+  })){
+    moHudQuote(); return;
   }
 });
 
@@ -2809,6 +3047,7 @@ function vong(){
   bongHuong.material.opacity = dapXe ? .7 : .85;
 
   capNhatKhoBau(t, dt);
+  capNhatThuVien(t, dt);
   capNhatSinhDong(t, dt);
   capNhatSinhDong2(t, dt);
   capNhatNhacQuang(t, dt);
