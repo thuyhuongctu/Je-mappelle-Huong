@@ -95,7 +95,12 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
 .dmnav .dmright a:hover{color:var(--accent);background-size:100% 1.5px}
 .dmnav .dmico{display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border-radius:50%;color:var(--muted);font-size:.9rem;text-decoration:none;transition:color .2s,background .2s}
 .dmnav .dmico:hover{color:var(--accent);background:var(--accent-soft)}
-@media(max-width:760px){.dmnav{padding:7px 10px;gap:6px}.dmnav .dmlabel small{display:none}.dmnav .dmlabel{font-size:.7rem}.dmnav .dmright a{font-size:.66rem;padding:5px 5px}.dmnav .dmico{width:28px;height:28px;font-size:.8rem}}
+@media(max-width:760px){.dmnav{padding:7px 10px;gap:6px;flex-wrap:nowrap}.dmnav .dmlabel small{display:none}.dmnav .dmlabel{font-size:.7rem}
+.dmnav .dmright{max-width:calc(100vw - 150px);flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.dmnav .dmright::-webkit-scrollbar{display:none}
+.dmnav .dmright a{font-size:.66rem;padding:5px 5px;white-space:nowrap;flex-shrink:0}
+.dmnav .dmico{width:28px;height:28px;font-size:.8rem;flex-shrink:0}
+.dmnav .hide-xs{display:none}}
 /* ===== DeepMind-style footer ===== */
 .dmfooter{background:linear-gradient(160deg,#26211f,#2e2724);color:#d8cdc7;padding:52px 24px 26px;margin-top:64px;border-radius:20px 20px 0 0}
 .dmfooter .dmf-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:28px;max-width:1100px;margin:0 auto}
@@ -124,10 +129,10 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
     <div class="dmright">
       <a href="index.html#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
       <a href="publications.html"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a>
-      <a href="index.html#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span></a>
-      <a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></a>
-      <a href="songbook.html">Songbook</a>
-      <a href="blog.html">Blog</a>
+      <a class="hide-xs" href="index.html#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span></a>
+      <a class="hide-xs" href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></a>
+      <a class="hide-xs" href="songbook.html">Songbook</a>
+      <a class="hide-xs" href="blog.html">Blog</a>
       <a href="trangvien.html">🌸 <span class="lang-vi">Trang viên</span><span class="lang-en">3D Garden</span></a>
       <a class="dmico" href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener" title="ORCID">🆔</a>
       <a class="dmico" href="https://github.com/thuyhuongctu" target="_blank" rel="noopener" title="GitHub">💻</a>
@@ -141,7 +146,7 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
 <a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo LR — Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
 <div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span><span class="lang-fr">◐ Clair / Sombre</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button></div>
 <div class="wrap">
-<nav class="sitenav" aria-label="Site"><a href="./"><span class="lang-vi">Trang chủ</span><span class="lang-en">Home</span><span class="lang-fr">Accueil</span></a><a href="./#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span><span class="lang-fr">À propos</span></a><a href="publications.html" class="here" aria-current="page"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></a><a href="./#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span><span class="lang-fr">Enseignement</span></a><a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><span class="lang-fr">Musique</span></a><a href="blog.html">Blog</a><a href="trangvien.html">🌸 <span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span><span class="lang-fr">Jardin 3D</span></a></nav>
+<nav class="sitenav" aria-label="Site"><a href="./"><span class="lang-vi">Trang chủ</span><span class="lang-en">Home</span><span class="lang-fr">Accueil</span></a><a href="./#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span><span class="lang-fr">À propos</span></a><a href="publications.html" class="here" aria-current="page"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></a><a href="./#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span><span class="lang-fr">Enseignement</span></a><a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><span class="lang-fr">Musique</span></a><a class="hide-xs" href="blog.html">Blog</a><a href="trangvien.html">🌸 <span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span><span class="lang-fr">Jardin 3D</span></a></nav>
 <header class="page">
   <div class="eyebrow" style="text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:700;color:var(--accent)"><span class="lang-vi">Hồ sơ học thuật</span><span class="lang-en">Academic profile</span><span class="lang-fr">Profil académique</span></div>
   <h1><span class="lang-vi">Công bố khoa học</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></h1>
@@ -277,9 +282,9 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
         <h4><span class="lang-vi">Trang này</span><span class="lang-en">Site</span></h4>
         <a href="index.html#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
         <a href="publications.html"><span class="lang-vi">Công bố khoa học</span><span class="lang-en">Publications</span></a>
-        <a href="index.html#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span></a>
+        <a class="hide-xs" href="index.html#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span></a>
         <a href="index.html#gallery"><span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Virtual character</span></a>
-        <a href="blog.html">Blog</a>
+        <a class="hide-xs" href="blog.html">Blog</a>
       </div>
       <div>
         <h4><span class="lang-vi">Dự án</span><span class="lang-en">Projects</span></h4>
