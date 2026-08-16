@@ -3400,6 +3400,12 @@ vong();
     }).catch(function(){});
   }
 })();
+
+  var REF_L={vi:'Làm mới',en:'Refresh',fr:'Rafraîchir'};
+  function updRefLabel(){var t=document.getElementById('nut-ref-t');if(t){var lg=(document.documentElement.getAttribute('lang')||'vi').slice(0,2);t.textContent=REF_L[lg]||REF_L.vi;}}
+  setInterval(updRefLabel,600);
+  try{new MutationObserver(updRefLabel).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(e){}
+  updRefLabel();
 </script>
 </body>
 </html>

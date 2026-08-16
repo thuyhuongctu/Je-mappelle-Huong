@@ -58,7 +58,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
 </style>
 </head>
 <body>
-<div class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button><button class="toprefresh" id="nut-ref" type="button" style="border:1px solid rgba(140,90,70,.3);border-radius:20px;background:#fff;box-shadow:0 6px 14px rgba(140,90,70,.1);font-size:.8rem;padding:5px 11px;cursor:pointer;color:#3a2f2a;font:700 .74rem system-ui;margin-right:8px"><span>⟳</span> <span class="lang-vi">Làm mới</span><span class="lang-en">Refresh</span></button></div>
+<div class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button><button class="toprefresh" id="nut-ref" type="button" style="border:1px solid rgba(140,90,70,.3);border-radius:20px;background:#fff;box-shadow:0 6px 14px rgba(140,90,70,.1);font-size:.8rem;padding:5px 11px;cursor:pointer;color:#3a2f2a;font:700 .74rem system-ui;margin-right:8px"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button></div>
 <div class="wrap">
   <a class="brand" href="index.html"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Je m'appelle Hương · Lecturer &amp; Researcher"></a>
   <h1><span class="lang-vi">🎙️ Phòng thu lời dẫn tour</span><span class="lang-en">🎙️ Tour Narration Studio</span><span class="lang-fr">🎙️ Studio de narration</span></h1>
@@ -227,6 +227,12 @@ html:not([lang="fr"]) .lang-fr{display:none}
     }).catch(function(){});
   }
 })();
+
+  var REF_L={vi:'Làm mới',en:'Refresh',fr:'Rafraîchir'};
+  function updRefLabel(){var t=document.getElementById('nut-ref-t');if(t){var lg=(document.documentElement.getAttribute('lang')||'vi').slice(0,2);t.textContent=REF_L[lg]||REF_L.vi;}}
+  setInterval(updRefLabel,600);
+  try{new MutationObserver(updRefLabel).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(e){}
+  updRefLabel();
 </script>
 </body>
 </html>

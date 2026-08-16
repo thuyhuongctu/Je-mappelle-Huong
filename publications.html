@@ -84,7 +84,7 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
 
 <a class="skip" href="#pub-list"><span class="lang-vi">Nhảy đến danh mục công bố</span><span class="lang-en">Skip to publications</span><span class="lang-fr">Aller aux publications</span></a>
 <a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo LR — Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
-<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span><span class="lang-fr">◐ Clair / Sombre</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span class="lang-vi">Làm mới</span><span class="lang-en">Refresh</span><span class="lang-fr">Rafraîchir</span></button></div>
+<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span><span class="lang-fr">◐ Clair / Sombre</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button></div>
 <div class="wrap">
 <nav class="sitenav" aria-label="Site"><a href="./"><span class="lang-vi">Trang chủ</span><span class="lang-en">Home</span><span class="lang-fr">Accueil</span></a><a href="./#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span><span class="lang-fr">À propos</span></a><a href="publications.html" class="here" aria-current="page"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></a><a href="./#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span><span class="lang-fr">Enseignement</span></a><a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><span class="lang-fr">Musique</span></a><a href="blog.html">Blog</a><a href="trangvien.html">🌸 <span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span><span class="lang-fr">Jardin 3D</span></a></nav>
 <header class="page">
@@ -274,5 +274,11 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
     }).catch(function(){});
   }
 })();
+
+  var REF_L={vi:'Làm mới',en:'Refresh',fr:'Rafraîchir'};
+  function updRefLabel(){var t=document.getElementById('nut-ref-t');if(t){var lg=(document.documentElement.getAttribute('lang')||'vi').slice(0,2);t.textContent=REF_L[lg]||REF_L.vi;}}
+  setInterval(updRefLabel,600);
+  try{new MutationObserver(updRefLabel).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(e){}
+  updRefLabel();
 </script>
 </body></html>

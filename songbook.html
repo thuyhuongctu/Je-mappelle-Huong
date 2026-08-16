@@ -89,7 +89,7 @@ footer a:hover{color:var(--accent)}
 <meta name="twitter:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-songbook.jpg">
 </head><body>
 <a class="brandmini" href="./" aria-label="Je suis Hương"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="mgHu" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9E3B4E"/><stop offset="1" stop-color="#C9A24B"/></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="7.5" fill="url(#mgHu)"/><g fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".95"><path d="M8 10 h8"/><path d="M8 14 h11"/><path d="M8 18 h6"/></g><g fill="#fff"><circle cx="16" cy="10" r="1.5"/><circle cx="19" cy="14" r="1.5"/><circle cx="14" cy="18" r="1.5"/></g><path d="M16 21.4 l3.4 2.4 l-3.4 2.4 l-3.4 -2.4 z" fill="#fff"/></svg><span>Je suis Hương</span></a>
-<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span class="lang-vi">Làm mới</span><span class="lang-en">Refresh</span><span class="lang-fr">Rafraîchir</span></button></div>
+<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button></div>
 
 <div class="wrap">
   <header class="page">
@@ -694,5 +694,11 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
     }).catch(function(){});
   }
 })();
+
+  var REF_L={vi:'Làm mới',en:'Refresh',fr:'Rafraîchir'};
+  function updRefLabel(){var t=document.getElementById('nut-ref-t');if(t){var lg=(document.documentElement.getAttribute('lang')||'vi').slice(0,2);t.textContent=REF_L[lg]||REF_L.vi;}}
+  setInterval(updRefLabel,600);
+  try{new MutationObserver(updRefLabel).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(e){}
+  updRefLabel();
 </script>
 </body></html>

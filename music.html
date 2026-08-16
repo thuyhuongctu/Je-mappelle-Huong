@@ -91,7 +91,7 @@ footer a:hover{color:var(--accent)}
 <meta name="twitter:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-music.jpg">
 </head><body>
 <a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo LR — Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
-<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span class="lang-vi">Làm mới</span><span class="lang-en">Refresh</span><span class="lang-fr">Rafraîchir</span></button></div>
+<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button></div>
 
 <div class="wrap">
   <img src="assets/img/creative_library.jpg" alt="Kho thư viện sáng tạo — nhân vật Hương AI ngồi trên mây giữa thư viện đất sét với các ô Music, Art, Code, Science, Design" style="display:block;width:100%;height:auto;border-radius:26px;border:5px solid var(--surface);box-shadow:var(--shadow);margin:6px 0 26px" loading="lazy">
@@ -188,5 +188,11 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
     }).catch(function(){});
   }
 })();
+
+  var REF_L={vi:'Làm mới',en:'Refresh',fr:'Rafraîchir'};
+  function updRefLabel(){var t=document.getElementById('nut-ref-t');if(t){var lg=(document.documentElement.getAttribute('lang')||'vi').slice(0,2);t.textContent=REF_L[lg]||REF_L.vi;}}
+  setInterval(updRefLabel,600);
+  try{new MutationObserver(updRefLabel).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(e){}
+  updRefLabel();
 </script>
 </body></html>

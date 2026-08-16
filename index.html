@@ -327,7 +327,7 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
   <img id="hg-img" src="assets/img/huong_chi.webp" alt="Hương AI đồng hành cùng bạn trên trang" fetchpriority="high">
   <div id="hg-bien" title="Bấm để đi tiếp mục kế"><span id="hg-ten"></span><small id="hg-phu"></small><button type="button" id="hg-loi" title="Nghe lời dẫn">🔊</button></div>
 </div>
-<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></span><a href="audio.html" class="topaudio" title="Phòng thu lời dẫn tour · Tour narration studio"><span>🎙️</span></a><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span class="lang-vi">Làm mới</span><span class="lang-en">Refresh</span><span class="lang-fr">Rafraîchir</span></button></div>
+<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></span><a href="audio.html" class="topaudio" title="Phòng thu lời dẫn tour · Tour narration studio"><span>🎙️</span></a><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button></div>
 <div class="wrap">
   <div id="bando" role="navigation" aria-label="Bản đồ trang viên">
     <img class="bd-map" src="assets/svg/vnmap.svg" alt="Bản đồ Việt Nam chìm trên trang viên" aria-hidden="true">
@@ -1069,5 +1069,11 @@ addEventListener('DOMContentLoaded', function(){
     }).catch(function(){});
   }
 })();
+
+  var REF_L={vi:'Làm mới',en:'Refresh',fr:'Rafraîchir'};
+  function updRefLabel(){var t=document.getElementById('nut-ref-t');if(t){var lg=(document.documentElement.getAttribute('lang')||'vi').slice(0,2);t.textContent=REF_L[lg]||REF_L.vi;}}
+  setInterval(updRefLabel,600);
+  try{new MutationObserver(updRefLabel).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(e){}
+  updRefLabel();
 </script>
 </body></html>

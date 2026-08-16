@@ -89,7 +89,7 @@ html[lang="fr"] .lang-en{display:none}
       <button type="button" data-lang="fr">🇫🇷 FR</button>
     </span>
     <button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span><span class="lang-fr">◐ Clair / Sombre</span></button>
-  <button type="button" id="nut-ref" style="border:1px solid var(--line);border-radius:999px;background:var(--surface);padding:5px 12px;cursor:pointer;font:700 .75rem system-ui;color:var(--ink)">⟳ Làm mới</button></div>
+  <button type="button" id="nut-ref" style="border:1px solid var(--line);border-radius:999px;background:var(--surface);padding:5px 12px;cursor:pointer;font:700 .75rem system-ui;color:var(--ink)">⟳ <span id="nut-ref-t">Làm mới</span></button></div>
 
   <header class="page">
     <div style="font:700 .72rem var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)"><span class="lang-vi">Album · Mini song-cycle</span><span class="lang-en">Album · Mini song-cycle</span><span class="lang-fr">Album · Mini song-cycle</span></div>
@@ -368,5 +368,11 @@ html[lang="fr"] .lang-en{display:none}
     }).catch(function(){});
   }
 })();
+
+  var REF_L={vi:'Làm mới',en:'Refresh',fr:'Rafraîchir'};
+  function updRefLabel(){var t=document.getElementById('nut-ref-t');if(t){var lg=(document.documentElement.getAttribute('lang')||'vi').slice(0,2);t.textContent=REF_L[lg]||REF_L.vi;}}
+  setInterval(updRefLabel,600);
+  try{new MutationObserver(updRefLabel).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(e){}
+  updRefLabel();
 </script>
 </body></html>
