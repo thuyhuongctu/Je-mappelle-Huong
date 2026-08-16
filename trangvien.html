@@ -1747,7 +1747,7 @@ Object.keys(DANG_ANH).forEach(k=>{
 const CAO_NV = 2.72;
 const CAO_XE = 2.60;   // dáng đạp xe gồm cả xe nên cao hơn
 const vlHuong = new THREE.MeshBasicMaterial({
-  map: DANG_TEX.chi, transparent:true, alphaTest:.12,
+  map: DANG_TEX['teo2'], transparent:true, alphaTest:.12,
   side: THREE.DoubleSide, toneMapped:false, depthWrite:true
 });
 const anhHuong = new THREE.Mesh(new THREE.PlaneGeometry(1,1), vlHuong);
