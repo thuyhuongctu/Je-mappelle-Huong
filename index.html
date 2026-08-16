@@ -14,7 +14,7 @@
 <meta property="og:description" content="Giảng viên · Nghiên cứu sinh tiến sĩ · Quốc tế hóa & hiệu quả doanh nghiệp ở châu Á.">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/">
-<meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/pro_aodai.png">
+<meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/pro_aodai.webp">
 <style>
 :root{--paper:#f9f1e6;--surface:#fffdf8;--ink:#463029;--muted:#8d7166;--line:#eddcc9;
 --accent:#c4596b;--accent-soft:#fae3e6;--gold:#b98a2e;--sky:#dde6f6;--mint:#cdeacf;
@@ -236,7 +236,7 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
    "jobTitle": "PhD Candidate & Lecturer, School of Economics, Can Tho University",
    "email": "mailto:thuyhuongctu@gmail.com",
    "url": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/",
-   "image": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/pro_aodai.png",
+   "image": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/pro_aodai.webp",
    "sameAs": [
     "https://orcid.org/0000-0002-7711-2487",
     "https://scholar.google.com/citations?user=jSvAVnsAAAAJ",
@@ -365,7 +365,7 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
 }
 </style></head><body>
   <div class="dmnav" id="dmnav">
-    <a class="dmlogo" href="index.html"><img src="assets/img/logo_seal.png" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
+    <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
     <div class="dmright">
       <a href="index.html#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
       <a href="publications.html"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a>
@@ -402,7 +402,7 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
     <div class="bd-mach"><span class="lang-vi">Bấm một biển — cô Hương đạp xe đến đó rồi mở khu cho bạn ↓</span><span class="lang-en">Click a sign — Hương rides there, then the page opens that area ↓</span></div>
   </div>
   <header class="hero">
-    <img class="portrait" src="assets/img/pro_aodai.png" alt="3D render portrait of Do Thuy Huong in a white ao dai" fetchpriority="high">
+    <img class="portrait" src="assets/img/pro_aodai.webp" alt="3D render portrait of Do Thuy Huong in a white ao dai" fetchpriority="high">
     <div>
       <div class="eyebrow"><span class="lang-vi">Nghiên cứu sinh tiến sĩ · Nhà nghiên cứu</span><span class="lang-en">PhD Candidate · Researcher</span></div>
       <h1><span class="lang-vi">Đỗ Thùy Hương</span><span class="lang-en">Do Thuy Huong</span></h1>
@@ -1193,6 +1193,64 @@ addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.reveal').forEach(function(el){onScroll();});
   var y=document.getElementById('dm-year');
   if(y){y.textContent=new Date().getFullYear()+' · '+(document.documentElement.getAttribute('lang')==='en'?'Je m\'appelle Hương website':'Website Je m\'appelle Hương');}
+})();
+</script>
+
+<script>
+/* UI sound: tiếng "ting" mềm khi hover menu/nút + "blip" khi chuyển trang (Web Audio, không file) */
+(function(){
+  try{
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var _ac=null;
+    function _g(){
+      if(!_ac){
+        try{_ac=new (window.AudioContext||window.webkitAudioContext)();}catch(e){return null;}
+      }
+      if(_ac.state==='suspended'){_ac.resume();}
+      return _ac;
+    }
+    function _tone(freq,dur,vol,type,slide){
+      var ac=_g();if(!ac)return;
+      try{
+        var o=ac.createOscillator(),gn=ac.createGain();
+        o.type=type||'sine';
+        o.frequency.setValueAtTime(freq,ac.currentTime);
+        if(slide){o.frequency.exponentialRampToValueAtTime(slide,ac.currentTime+dur*0.9);}
+        gn.gain.setValueAtTime(vol||0.05,ac.currentTime);
+        gn.gain.exponentialRampToValueAtTime(0.0001,ac.currentTime+dur);
+        o.connect(gn).connect(ac.destination);
+        o.start();o.stop(ac.currentTime+dur+0.02);
+      }catch(e){}
+    }
+    var last=0;
+    function hoverSnd(){
+      var now=performance.now();
+      if(now-last<120)return; // debounce 120ms
+      last=now;
+      _tone(1200+Math.random()*300,0.07,0.028,'sine');
+    }
+    document.querySelectorAll('nav a, .sitenav a, .dmnav a, .fnav a, button, [role=button], .tram, .bc-item').forEach(function(el){
+      el.addEventListener('mouseenter',hoverSnd,{passive:true});
+    });
+    // click chuyển trang: "whoosh" nhẹ
+    document.addEventListener('click',function(e){
+      var a=e.target.closest('a[href]');
+      if(a && a.getAttribute('href') && !a.getAttribute('href').startsWith('#') && !a.getAttribute('href').startsWith('javascript')){
+        try{
+          var ac=_g();
+          if(!ac)return;
+          var o=ac.createOscillator(),gn=ac.createGain();
+          o.type='triangle';
+          o.frequency.setValueAtTime(900,ac.currentTime);
+          o.frequency.exponentialRampToValueAtTime(340,ac.currentTime+0.18);
+          gn.gain.setValueAtTime(0.05,ac.currentTime);
+          gn.gain.exponentialRampToValueAtTime(0.0001,ac.currentTime+0.2);
+          o.connect(gn).connect(ac.destination);
+          o.start();o.stop(ac.currentTime+0.22);
+        }catch(err){}
+      }
+    },true);
+  }catch(e){}
 })();
 </script>
 </body></html>

@@ -125,7 +125,7 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
 }
 </style></head><body>
   <div class="dmnav" id="dmnav">
-    <a class="dmlogo" href="index.html"><img src="assets/img/logo_seal.png" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
+    <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
     <div class="dmright">
       <a href="index.html#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
       <a href="publications.html"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a>
@@ -398,6 +398,64 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
   document.querySelectorAll('.reveal').forEach(function(el){onScroll();});
   var y=document.getElementById('dm-year');
   if(y){y.textContent=new Date().getFullYear()+' · '+(document.documentElement.getAttribute('lang')==='en'?'Je m\'appelle Hương website':'Website Je m\'appelle Hương');}
+})();
+</script>
+
+<script>
+/* UI sound: tiếng "ting" mềm khi hover menu/nút + "blip" khi chuyển trang (Web Audio, không file) */
+(function(){
+  try{
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var _ac=null;
+    function _g(){
+      if(!_ac){
+        try{_ac=new (window.AudioContext||window.webkitAudioContext)();}catch(e){return null;}
+      }
+      if(_ac.state==='suspended'){_ac.resume();}
+      return _ac;
+    }
+    function _tone(freq,dur,vol,type,slide){
+      var ac=_g();if(!ac)return;
+      try{
+        var o=ac.createOscillator(),gn=ac.createGain();
+        o.type=type||'sine';
+        o.frequency.setValueAtTime(freq,ac.currentTime);
+        if(slide){o.frequency.exponentialRampToValueAtTime(slide,ac.currentTime+dur*0.9);}
+        gn.gain.setValueAtTime(vol||0.05,ac.currentTime);
+        gn.gain.exponentialRampToValueAtTime(0.0001,ac.currentTime+dur);
+        o.connect(gn).connect(ac.destination);
+        o.start();o.stop(ac.currentTime+dur+0.02);
+      }catch(e){}
+    }
+    var last=0;
+    function hoverSnd(){
+      var now=performance.now();
+      if(now-last<120)return; // debounce 120ms
+      last=now;
+      _tone(1200+Math.random()*300,0.07,0.028,'sine');
+    }
+    document.querySelectorAll('nav a, .sitenav a, .dmnav a, .fnav a, button, [role=button], .tram, .bc-item').forEach(function(el){
+      el.addEventListener('mouseenter',hoverSnd,{passive:true});
+    });
+    // click chuyển trang: "whoosh" nhẹ
+    document.addEventListener('click',function(e){
+      var a=e.target.closest('a[href]');
+      if(a && a.getAttribute('href') && !a.getAttribute('href').startsWith('#') && !a.getAttribute('href').startsWith('javascript')){
+        try{
+          var ac=_g();
+          if(!ac)return;
+          var o=ac.createOscillator(),gn=ac.createGain();
+          o.type='triangle';
+          o.frequency.setValueAtTime(900,ac.currentTime);
+          o.frequency.exponentialRampToValueAtTime(340,ac.currentTime+0.18);
+          gn.gain.setValueAtTime(0.05,ac.currentTime);
+          gn.gain.exponentialRampToValueAtTime(0.0001,ac.currentTime+0.2);
+          o.connect(gn).connect(ac.destination);
+          o.start();o.stop(ac.currentTime+0.22);
+        }catch(err){}
+      }
+    },true);
+  }catch(e){}
 })();
 </script>
 </body></html>
