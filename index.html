@@ -319,7 +319,62 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
  ]
 }
 </script>
-</head><body>
+<style>
+/* ===== DeepMind-style header ===== */
+.dmnav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:10px;padding:10px 16px;
+  background:color-mix(in srgb,var(--surface) 78%,transparent);backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);transition:padding .25s ease,box-shadow .25s ease}
+.dmnav.shrink{padding:6px 16px;box-shadow:0 2px 12px rgba(60,30,30,.12)}
+.dmnav .dmlogo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);line-height:0;flex-shrink:0}
+.dmnav .dmlogo img{height:30px;width:auto}
+.dmnav .dmlabel{font:600 .78rem/1 var(--serif);color:var(--ink);letter-spacing:.02em}
+.dmnav .dmlabel small{display:block;font:600 .56rem/1.2 var(--sans);color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-top:2px}
+.dmnav .dmright{margin-left:auto;display:flex;align-items:center;gap:6px;overflow-x:auto;max-width:calc(100vw - 170px)}
+.dmnav .dmright a{color:var(--ink);text-decoration:none;font:500 .76rem/1.4 var(--sans);padding:6px 8px;white-space:nowrap;
+  background-image:linear-gradient(var(--accent),var(--accent));background-size:0% 1.5px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .28s ease,color .2s}
+.dmnav .dmright a:hover{color:var(--accent);background-size:100% 1.5px}
+.dmnav .dmico{display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border-radius:50%;color:var(--muted);font-size:.9rem;text-decoration:none;transition:color .2s,background .2s}
+.dmnav .dmico:hover{color:var(--accent);background:var(--accent-soft)}
+@media(max-width:760px){.dmnav{padding:7px 10px;gap:6px}.dmnav .dmlabel small{display:none}.dmnav .dmlabel{font-size:.7rem}.dmnav .dmright a{font-size:.66rem;padding:5px 5px}.dmnav .dmico{width:28px;height:28px;font-size:.8rem}}
+/* ===== DeepMind-style footer ===== */
+.dmfooter{background:linear-gradient(160deg,#26211f,#2e2724);color:#d8cdc7;padding:52px 24px 26px;margin-top:64px;border-radius:20px 20px 0 0}
+.dmfooter .dmf-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:28px;max-width:1100px;margin:0 auto}
+.dmfooter h4{font:700 .78rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#efe6e2;margin:0 0 14px}
+.dmfooter p{font:.85rem/1.6 var(--sans);color:#b9aca5;margin:0}
+.dmfooter .dmf-tag{font:600 clamp(1.3rem,3.2vw,1.9rem)/1.25 var(--serif);color:#efe6e2;max-width:100%;margin:10px 0 6px}
+.dmfooter a{color:#b9aca5;text-decoration:none;font:.82rem/1.9 var(--sans);display:block}
+.dmfooter a:hover{color:#fff;text-decoration:underline}
+.dmfooter .dmf-ico{display:inline-flex;gap:8px;margin:16px 0 0}
+.dmfooter .dmf-ico a{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border:1px solid #4a413c;border-radius:50%;font-size:.85rem}
+.dmfooter .dmf-ico a:hover{background:#4a413c;text-decoration:none}
+.dmfooter .dmf-bottom{border-top:1px solid #40383320;margin-top:36px;padding-top:18px;display:flex;flex-wrap:wrap;gap:8px 24px;font:.76rem/1.6 var(--sans);color:#8f817a;max-width:1100px;margin-left:auto;margin-right:auto}
+.dmfooter .dmf-bottom span{white-space:nowrap}
+@media(max-width:820px){.dmfooter .dmf-grid{grid-template-columns:1fr 1fr;gap:22px 28px}}
+@media(max-width:480px){.dmfooter .dmf-grid{grid-template-columns:1fr}}
+/* ===== Hiệu ứng động ===== */
+@media(prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.on{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+  #bando{transition:transform .1s linear}
+}
+</style></head><body>
+  <div class="dmnav" id="dmnav">
+    <a class="dmlogo" href="index.html"><img src="assets/img/logo_seal.png" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
+    <div class="dmright">
+      <a href="index.html#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
+      <a href="publications.html"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a>
+      <a href="index.html#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span></a>
+      <a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></a>
+      <a href="songbook.html">Songbook</a>
+      <a href="blog.html">Blog</a>
+      <a href="trangvien.html">🌸 <span class="lang-vi">Trang viên</span><span class="lang-en">3D Garden</span></a>
+      <a class="dmico" href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener" title="ORCID">🆔</a>
+      <a class="dmico" href="https://github.com/thuyhuongctu" target="_blank" rel="noopener" title="GitHub">💻</a>
+      <a class="dmico" href="mailto:thuyhuongctu@gmail.com" title="Email">✉️</a>
+    </div>
+  </div>
+
 <a class="skip-link" href="#main">Skip to content</a>
 
 <a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo LR — Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
@@ -375,14 +430,14 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
     <a href="publications.html"><span class="lang-vi">Danh mục đầy đủ ↗</span><span class="lang-en">Full list ↗</span></a>
   </nav>
 
-  <section id="about">
+  <section class="reveal" id="about">
     <div class="shead"><h2><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></h2><span class="ln"></span></div>
     <img class="about-fig" src="assets/img/lab_scene.jpg" alt="3D render of Do Thuy Huong in a white ao dai working with holographic data dashboards in a research lab" loading="lazy">
     <p class="lead"><span class="lang-vi">Tôi là giảng viên và nghiên cứu sinh tiến sĩ ngành Quản trị kinh doanh, nghiên cứu về <b>quốc tế hóa và hiệu quả hoạt động kinh doanh của doanh nghiệp ở châu Á</b>. Công việc của tôi kết hợp kinh tế lượng doanh nghiệp (dữ liệu WBES, 50 nền kinh tế), phân tích tổng hợp, và phát triển công cụ AI hỗ trợ nghiên cứu có kiểm chứng con người.</span><span class="lang-en">I am a lecturer and PhD candidate in Business Administration, researching the <b>internationalization–firm performance relationship in Asia</b>. My work combines firm-level econometrics (WBES data, 50 economies), meta-analysis, and the development of human-verified AI research tools.</span></p>
     <div class="tags"><span><span class="lang-vi">Quốc tế hóa &amp; hiệu quả DN</span><span class="lang-en">Internationalization &amp; firm performance</span></span><span><span class="lang-vi">Phân tích tổng hợp</span><span class="lang-en">Meta-analysis</span></span><span><span class="lang-vi">Chấp nhận số (DAI)</span><span class="lang-en">Digital Adoption (DAI)</span></span><span><span class="lang-vi">Năng lực công nghệ (TCI)</span><span class="lang-en">Technological Capability (TCI)</span></span><span><span class="lang-vi">Thể chế &amp; ICRV</span><span class="lang-en">Institutions &amp; ICRV</span></span><span><span class="lang-vi">Kinh tế lượng doanh nghiệp</span><span class="lang-en">Firm-level econometrics</span></span></div>
   </section>
 
-  <section id="inspiration">
+  <section class="reveal" id="inspiration">
     <div class="hcm" id="hcmBlock">
       <span class="hcm-k">🪷 <span class="lang-vi">Nguồn cảm hứng</span><span class="lang-en">Inspiration</span></span>
       <blockquote class="hcm-q">
@@ -405,7 +460,7 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
   .gal figcaption{font-size:.74rem;color:var(--muted);text-align:center;padding:7px 2px 2px}
   @media (prefers-reduced-motion: no-preference){.gal figure{transition:transform .16s ease, box-shadow .16s ease}.gal figure:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(30,20,20,.14)}}
   </style>
-  <section id="ecosystem">
+  <section class="reveal" id="ecosystem">
     <div class="shead"><h2><span class="lang-vi">Hệ sinh thái số</span><span class="lang-en">Digital ecosystem</span></h2><span class="ln"></span></div>
     <p class="lead"><span class="lang-vi">Trang cá nhân này là cổng trung tâm kết nối các dự án số phục vụ nghiên cứu và giảng dạy của tôi: phần mềm luận án, trò chơi mô phỏng kinh doanh, ứng dụng ôn tập và cổng trò chơi lịch sử Việt Nam.</span><span class="lang-en">This homepage is the central hub linking my digital projects for research and teaching: dissertation software, a business-simulation game, a revision app and a Vietnamese-history game portal.</span></p>
     <div class="cards">
@@ -436,7 +491,7 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
     </div>
   </section>
 
-  <section id="gallery">
+  <section class="reveal" id="gallery">
     <div class="shead"><h2><span class="lang-vi">Nhân vật ảo Hương AI</span><span class="lang-en">Huong AI virtual character</span></h2><span class="ln"></span></div>
     <p class="lead" style="font-size:.95rem"><span class="lang-vi">Nhân vật ảo 3D trong tà áo dài trắng — gương mặt đại diện xuyên suốt hệ sinh thái số: dẫn tour bằng giọng nói trong EnQuiz, đồng hành trong M-AIDA và BizOn.</span><span class="lang-en">A 3D virtual character in a white áo dài — the face of the whole digital ecosystem: voice-guided tours in EnQuiz, a companion across M-AIDA and BizOn.</span></p>
     <div class="gal">
@@ -450,12 +505,12 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
     </div>
   </section>
 
-  <section id="pubs">
+  <section class="reveal" id="pubs">
     <div class="shead"><h2><span class="lang-vi">Công bố khoa học</span><span class="lang-en">Publications</span></h2><span class="ln"></span></div>
     <p style="font-size:.9rem;color:var(--muted);margin-top:6px"><span class="lang-vi">Xem đầy đủ danh mục công trình đã công bố trên <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID</a>. Các nghiên cứu trong khuôn khổ luận án đang phản biện sẽ được cập nhật khi được chấp nhận.</span><span class="lang-en">See the full list of published works on <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID</a>. Dissertation studies under review will be added once accepted.</span></p>
   </section>
 
-  <section id="teaching">
+  <section class="reveal" id="teaching">
     <div class="shead"><h2><span class="lang-vi">Giảng dạy &amp; dự án</span><span class="lang-en">Teaching &amp; Projects</span></h2><span class="ln"></span></div>
     <div class="cards">
       <div class="card feat">
@@ -540,7 +595,7 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
   @media (max-width:560px){.wd-cards{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}}
 </style>
 
-  <section id="worlddata">
+  <section class="reveal" id="worlddata">
     <img class="gh-banner gh-news" src="assets/img/research_map.jpg" alt="Academic Hub — bản đồ nghiên cứu quốc gia bằng đất sét: mạng lưới tỏa ra từ Cần Thơ (CTU) tới TP.HCM, Nha Trang, Đà Nẵng, Hà Nội, cùng Hoàng Sa và Trường Sa" loading="lazy">
     <div class="shead"><h2><span class="lang-vi">Dữ liệu thế giới</span><span class="lang-en">World data</span></h2><span class="ln"></span></div>
     <p class="wd-intro"><span class="lang-vi">Số liệu trực tiếp từ World Bank Open Data, các chỉ số phát triển tài chính, kinh tế và môi trường của những nền kinh tế xuất hiện trong luận án. Chọn chỉ số và quốc gia để so sánh.</span><span class="lang-en">Live figures from World Bank Open Data, financial-development, economic and environmental indicators for the economies studied in the dissertation. Pick an indicator and countries to compare.</span></p>
@@ -566,12 +621,52 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
 
   
 
-  <footer>
-    <span style="flex-basis:100%" class="fnav"><span class="fgroup"><span class="lang-vi">Trang này</span><span class="lang-en">This site</span></span><a href="#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a><a href="#ecosystem"><span class="lang-vi">Hệ sinh thái số</span><span class="lang-en">Ecosystem</span></a><a href="#gallery"><span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Virtual character</span></a><a href="#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span></a><a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></a><a href="quan-ly-songbook.html"><span class="lang-vi">Danh sách bài hát</span><span class="lang-en">Song catalog</span></a><a href="songbook.html"><span class="lang-vi">Songbook</span><span class="lang-en">Songbook</span></a><a href="trangvien.html"><span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span></a><a href="blog.html">Blog</a><a href="publications.html"><span class="lang-vi">Công bố khoa học</span><span class="lang-en">Publications</span></a></span>
-    <span style="flex-basis:100%" class="fnav"><span class="fgroup"><span class="lang-vi">Dự án</span><span class="lang-en">Projects</span></span><a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA ↗</a><a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn AI ↗</a><a href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener">EnQuiz ↗</a><a href="https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/" target="_blank" rel="noopener"><span class="lang-vi">Trò Chơi Sử Việt ↗</span><span class="lang-en">History Games ↗</span></a><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID ↗</a><a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener">GitHub ↗</a></span>
-    <span>© 2026 <span class="lang-vi">Đỗ Thùy Hương</span><span class="lang-en">Do Thuy Huong</span> · <span class="lang-vi">Cần Thơ, Việt Nam</span><span class="lang-en">Can Tho, Vietnam</span></span>
-    <span>thuyhuongctu@gmail.com</span>
-  </footer>
+  
+  <div class="dmfooter">
+    <div class="dmf-grid">
+      <div>
+        <a href="index.html" style="text-decoration:none"><span style="font:600 1rem/1 var(--serif);color:#efe6e2">Je m'appelle Hương</span></a>
+        <p class="dmf-tag"><span class="lang-vi">Nghiên cứu, giảng dạy và sáng tạo cùng AI.</span><span class="lang-en">Research, teaching and creativity with AI.</span></p>
+        <p><span class="lang-vi">PhD Candidate · Giảng viên, Đại học Cần Thơ — nghiên cứu quốc tế hóa và hiệu quả hoạt động doanh nghiệp ở châu Á.</span><span class="lang-en">PhD Candidate · Lecturer at Can Tho University — researching internationalization and firm performance in Asia.</span></p>
+        <div class="dmf-ico">
+          <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener" title="ORCID">🆔</a>
+          <a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener" title="GitHub">💻</a>
+          <a href="mailto:thuyhuongctu@gmail.com" title="Email">✉️</a>
+          <a href="trangvien.html" title="3D Garden">🌸</a>
+        </div>
+      </div>
+      <div>
+        <h4><span class="lang-vi">Trang này</span><span class="lang-en">Site</span></h4>
+        <a href="index.html#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
+        <a href="publications.html"><span class="lang-vi">Công bố khoa học</span><span class="lang-en">Publications</span></a>
+        <a href="index.html#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span></a>
+        <a href="index.html#gallery"><span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Virtual character</span></a>
+        <a href="blog.html">Blog</a>
+      </div>
+      <div>
+        <h4><span class="lang-vi">Dự án</span><span class="lang-en">Projects</span></h4>
+        <a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA ↗</a>
+        <a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn AI ↗</a>
+        <a href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener">EnQuiz ↗</a>
+        <a href="https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/" target="_blank" rel="noopener"><span class="lang-vi">Trò Chơi Sử Việt ↗</span><span class="lang-en">History Games ↗</span></a>
+        <a href="trangvien.html"><span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span></a>
+      </div>
+      <div>
+        <h4><span class="lang-vi">Kết nối</span><span class="lang-en">Connect</span></h4>
+        <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID ↗</a>
+        <a href="https://scholar.google.com/citations?user=thuyhuongctu" target="_blank" rel="noopener">Google Scholar ↗</a>
+        <a href="https://www.researchgate.net/profile/Thuy-Huong-Do-2" target="_blank" rel="noopener">ResearchGate ↗</a>
+        <a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="mailto:thuyhuongctu@gmail.com">thuyhuongctu@gmail.com</a>
+      </div>
+    </div>
+    <div class="dmf-bottom">
+      <span>© 2026 <span class="lang-vi">Đỗ Thùy Hương · Cần Thơ, Việt Nam</span><span class="lang-en">Do Thuy Huong · Can Tho, Vietnam</span></span>
+      <span><span class="lang-vi">Xây bằng HTML/CSS/JS thuần · PWA offline ·</span><span class="lang-en">Built with pure HTML/CSS/JS · PWA offline ·</span></span>
+      <span id="dm-year"></span>
+    </div>
+  </div>
+
 </div>
 <script>document.getElementById('tg').addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',c==='dark'?'light':'dark')});</script>
 <script>
@@ -1075,5 +1170,24 @@ addEventListener('DOMContentLoaded', function(){
   setInterval(updRefLabel,600);
   try{new MutationObserver(updRefLabel).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(e){}
   updRefLabel();
+</script>
+
+<script>
+/* DeepMind header: thu gọn khi cuộn + reveal-on-scroll + parallax nhẹ hero */
+(function(){
+  var nav=document.getElementById('dmnav');
+  function onScroll(){
+    if(nav){nav.classList.toggle('shrink',window.scrollY>24);}
+    var b=document.getElementById('bando');
+    if(b){b.style.transform='translateY('+Math.min(40,Math.max(0,window.scrollY*0.06))+'px) scale(1.02)';}
+    var rs=document.querySelectorAll('.reveal:not(.on)');
+    var vh=window.innerHeight;
+    rs.forEach(function(el){if(el.getBoundingClientRect().top<vh*0.88){el.classList.add('on');}});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  document.querySelectorAll('.reveal').forEach(function(el){onScroll();});
+  var y=document.getElementById('dm-year');
+  if(y){y.textContent=new Date().getFullYear()+' · '+(document.documentElement.getAttribute('lang')==='en'?'Je m\'appelle Hương website':'Website Je m\'appelle Hương');}
+})();
 </script>
 </body></html>
