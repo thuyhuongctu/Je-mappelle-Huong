@@ -40,7 +40,7 @@ select,input[type=text]{font:600 .82rem var(--sans);border:1px solid var(--line)
 input[type=text]{border-radius:10px;flex:1;min-width:170px}
 .tag{display:inline-block;background:#f3e7e0;color:var(--accent);border-radius:8px;font-weight:700;font-size:.75rem;padding:3px 9px}
 audio{width:100%;margin-top:10px}
-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.85rem}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.85rem;table-layout:fixed;word-wrap:break-word;overflow-wrap:break-word}
 th,td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:middle}
 th{color:var(--muted);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em}
 .ok{color:#4a8a55;font-weight:700}.no{color:#b43f4f;font-weight:700}
@@ -76,7 +76,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .dmnav .dmright{max-width:calc(100vw - 150px);flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
 .dmnav .dmright::-webkit-scrollbar{display:none}
 .dmnav .dmright a{font-size:.66rem;padding:5px 5px;white-space:nowrap;flex-shrink:0}
-.dmnav .dmico{width:28px;height:28px;font-size:.8rem;flex-shrink:0}.dmnav .dmico:last-child{display:none}
+.dmnav .dmico{width:28px;height:28px;font-size:.8rem;flex-shrink:0}.dmnav .dmico:last-child{display:none}.dmnav .dmright{min-width:0}
 .dmnav .hide-xs{display:none}}
 /* ===== DeepMind-style footer ===== */
 .dmfooter{background:linear-gradient(160deg,#26211f,#2e2724);color:#d8cdc7;padding:52px 24px 26px;margin-top:64px;border-radius:20px 20px 0 0}
