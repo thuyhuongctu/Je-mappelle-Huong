@@ -89,7 +89,7 @@ footer a:hover{color:var(--accent)}
 <meta name="twitter:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-songbook.jpg">
 </head><body>
 <a class="brandmini" href="./" aria-label="Je suis Hương"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="mgHu" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9E3B4E"/><stop offset="1" stop-color="#C9A24B"/></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="7.5" fill="url(#mgHu)"/><g fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".95"><path d="M8 10 h8"/><path d="M8 14 h11"/><path d="M8 18 h6"/></g><g fill="#fff"><circle cx="16" cy="10" r="1.5"/><circle cx="19" cy="14" r="1.5"/><circle cx="14" cy="18" r="1.5"/></g><path d="M16 21.4 l3.4 2.4 l-3.4 2.4 l-3.4 -2.4 z" fill="#fff"/></svg><span>Je suis Hương</span></a>
-<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button></div>
+<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span class="lang-vi">Làm mới</span><span class="lang-en">Refresh</span><span class="lang-fr">Rafraîchir</span></button></div>
 
 <div class="wrap">
   <header class="page">
@@ -649,4 +649,50 @@ document.querySelectorAll('audio').forEach(function(a){
 if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigator.serviceWorker.register('sw.js'); }); }
 </script>
 <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<script>
+/* Nút làm mới trang + tự phát hiện bản cập nhật PWA */
+(function(){
+  function doReload(){
+    if('serviceWorker' in navigator && navigator.serviceWorker.controller){
+      navigator.serviceWorker.getRegistrations().then(function(rs){
+        rs.forEach(function(r){r.unregister();});
+      }).catch(function(){});
+    }
+    // xóa cache tĩnh của app trước khi reload
+    if('caches' in window){
+      caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});});
+    }
+    setTimeout(function(){location.reload();},150);
+  }
+  var b=document.getElementById('nut-ref');
+  if(b){b.addEventListener('click',doReload);}
+  /* tự gợi ý làm mới khi có service worker mới */
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.addEventListener('controllerchange',function(){location.reload();});
+    var sv='/sw.js';
+    navigator.serviceWorker.register(sv).then(function(reg){
+      reg.addEventListener('updatefound',function(){
+        var nw=reg.installing;
+        if(!nw) return;
+        nw.addEventListener('statechange',function(){
+          if(nw.state==='installed' && navigator.serviceWorker.controller){
+            var note=document.createElement('button');
+            note.type='button';note.id='note-ref';
+            note.textContent=(document.documentElement.getAttribute('lang')==='fr')?
+              '⟳ Nouvelle version — actualiser ?':'⟳ '+(document.documentElement.getAttribute('lang')==='en'?
+              'New version available — refresh?':'⟳ Đã có bản cập nhật — làm mới?');
+            note.style.cssText='position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99;'+
+              'border:1px solid var(--accent,#b25d7d);border-radius:999px;background:#fff;color:#000;'+
+              'font:700 .8rem system-ui;padding:8px 18px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.15)';
+            note.addEventListener('click',function(){note.remove();doReload();});
+            document.body.appendChild(note);
+            setTimeout(function(){if(note.parentNode)note.remove();},30000);
+          }
+        });
+      });
+    }).catch(function(){});
+  }
+})();
+</script>
 </body></html>

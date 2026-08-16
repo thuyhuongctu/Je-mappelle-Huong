@@ -84,7 +84,7 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
 
 <a class="skip" href="#pub-list"><span class="lang-vi">Nhảy đến danh mục công bố</span><span class="lang-en">Skip to publications</span><span class="lang-fr">Aller aux publications</span></a>
 <a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo LR — Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
-<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span><span class="lang-fr">◐ Clair / Sombre</span></button></div>
+<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span><span class="lang-fr">◐ Clair / Sombre</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span class="lang-vi">Làm mới</span><span class="lang-en">Refresh</span><span class="lang-fr">Rafraîchir</span></button></div>
 <div class="wrap">
 <nav class="sitenav" aria-label="Site"><a href="./"><span class="lang-vi">Trang chủ</span><span class="lang-en">Home</span><span class="lang-fr">Accueil</span></a><a href="./#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span><span class="lang-fr">À propos</span></a><a href="publications.html" class="here" aria-current="page"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></a><a href="./#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span><span class="lang-fr">Enseignement</span></a><a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><span class="lang-fr">Musique</span></a><a href="blog.html">Blog</a><a href="trangvien.html">🌸 <span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span><span class="lang-fr">Jardin 3D</span></a></nav>
 <header class="page">
@@ -229,4 +229,50 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
   });
   filter('all');
 })();</script>
+
+<script>
+/* Nút làm mới trang + tự phát hiện bản cập nhật PWA */
+(function(){
+  function doReload(){
+    if('serviceWorker' in navigator && navigator.serviceWorker.controller){
+      navigator.serviceWorker.getRegistrations().then(function(rs){
+        rs.forEach(function(r){r.unregister();});
+      }).catch(function(){});
+    }
+    // xóa cache tĩnh của app trước khi reload
+    if('caches' in window){
+      caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});});
+    }
+    setTimeout(function(){location.reload();},150);
+  }
+  var b=document.getElementById('nut-ref');
+  if(b){b.addEventListener('click',doReload);}
+  /* tự gợi ý làm mới khi có service worker mới */
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.addEventListener('controllerchange',function(){location.reload();});
+    var sv='/sw.js';
+    navigator.serviceWorker.register(sv).then(function(reg){
+      reg.addEventListener('updatefound',function(){
+        var nw=reg.installing;
+        if(!nw) return;
+        nw.addEventListener('statechange',function(){
+          if(nw.state==='installed' && navigator.serviceWorker.controller){
+            var note=document.createElement('button');
+            note.type='button';note.id='note-ref';
+            note.textContent=(document.documentElement.getAttribute('lang')==='fr')?
+              '⟳ Nouvelle version — actualiser ?':'⟳ '+(document.documentElement.getAttribute('lang')==='en'?
+              'New version available — refresh?':'⟳ Đã có bản cập nhật — làm mới?');
+            note.style.cssText='position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99;'+
+              'border:1px solid var(--accent,#b25d7d);border-radius:999px;background:#fff;color:#000;'+
+              'font:700 .8rem system-ui;padding:8px 18px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.15)';
+            note.addEventListener('click',function(){note.remove();doReload();});
+            document.body.appendChild(note);
+            setTimeout(function(){if(note.parentNode)note.remove();},30000);
+          }
+        });
+      });
+    }).catch(function(){});
+  }
+})();
+</script>
 </body></html>

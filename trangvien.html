@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
+<style>#nut-ref{position:fixed;right:1.05rem;top:1.05rem;width:44px;height:44px;border-radius:50%;border:none;z-index:45;background:rgba(255,253,248,.92);box-shadow:0 4px 12px rgba(140,90,70,.18);cursor:pointer;font-size:1.2rem;color:#b25d7d;display:flex;align-items:center;justify-content:center}</style><style>
 /* ================= TOKEN — bảng màu đất sét pastel lấy từ banner Trang viên ============ */
 :root{
   --troi:#BFE3EE; --troi-sau:#8FC9DE;
@@ -281,7 +281,7 @@ body.cham #ban-do canvas{width:84px;height:84px}
 <meta name="twitter:description" content="3D clay world of Đỗ Thùy Hương: pedal through the lotus pond to the academic, open-projects, creative-library, music and news zones.">
 <meta name="twitter:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-trangvien.jpg">
 </head>
-<body>
+<body><button type="button" id="nut-ref" title="Làm mới trang · Refresh page">⟳</button>
 <a class="skip-link" href="#main">Skip to content</a>
 
 
@@ -3355,5 +3355,51 @@ vong();
 </script>
 <script src="assets/js/music.js" defer></script>
 <script src="assets/js/dongho.js" defer></script>
+
+<script>
+/* Nút làm mới trang + tự phát hiện bản cập nhật PWA */
+(function(){
+  function doReload(){
+    if('serviceWorker' in navigator && navigator.serviceWorker.controller){
+      navigator.serviceWorker.getRegistrations().then(function(rs){
+        rs.forEach(function(r){r.unregister();});
+      }).catch(function(){});
+    }
+    // xóa cache tĩnh của app trước khi reload
+    if('caches' in window){
+      caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});});
+    }
+    setTimeout(function(){location.reload();},150);
+  }
+  var b=document.getElementById('nut-ref');
+  if(b){b.addEventListener('click',doReload);}
+  /* tự gợi ý làm mới khi có service worker mới */
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.addEventListener('controllerchange',function(){location.reload();});
+    var sv='/sw.js';
+    navigator.serviceWorker.register(sv).then(function(reg){
+      reg.addEventListener('updatefound',function(){
+        var nw=reg.installing;
+        if(!nw) return;
+        nw.addEventListener('statechange',function(){
+          if(nw.state==='installed' && navigator.serviceWorker.controller){
+            var note=document.createElement('button');
+            note.type='button';note.id='note-ref';
+            note.textContent=(document.documentElement.getAttribute('lang')==='fr')?
+              '⟳ Nouvelle version — actualiser ?':'⟳ '+(document.documentElement.getAttribute('lang')==='en'?
+              'New version available — refresh?':'⟳ Đã có bản cập nhật — làm mới?');
+            note.style.cssText='position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99;'+
+              'border:1px solid var(--accent,#b25d7d);border-radius:999px;background:#fff;color:#000;'+
+              'font:700 .8rem system-ui;padding:8px 18px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.15)';
+            note.addEventListener('click',function(){note.remove();doReload();});
+            document.body.appendChild(note);
+            setTimeout(function(){if(note.parentNode)note.remove();},30000);
+          }
+        });
+      });
+    }).catch(function(){});
+  }
+})();
+</script>
 </body>
 </html>

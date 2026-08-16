@@ -58,7 +58,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
 </style>
 </head>
 <body>
-<div class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></div>
+<div class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button><button class="toprefresh" id="nut-ref" type="button" style="border:1px solid rgba(140,90,70,.3);border-radius:20px;background:#fff;box-shadow:0 6px 14px rgba(140,90,70,.1);font-size:.8rem;padding:5px 11px;cursor:pointer;color:#3a2f2a;font:700 .74rem system-ui;margin-right:8px"><span>⟳</span> <span class="lang-vi">Làm mới</span><span class="lang-en">Refresh</span></button></div>
 <div class="wrap">
   <a class="brand" href="index.html"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Je m'appelle Hương · Lecturer &amp; Researcher"></a>
   <h1><span class="lang-vi">🎙️ Phòng thu lời dẫn tour</span><span class="lang-en">🎙️ Tour Narration Studio</span><span class="lang-fr">🎙️ Studio de narration</span></h1>
@@ -182,5 +182,51 @@ html:not([lang="fr"]) .lang-fr{display:none}
   var s='vi'; try{ s = localStorage.getItem('huong_lang') || (/^en/i.test(navigator.language) ? 'en' : (/^fr/i.test(navigator.language) ? 'fr' : 'vi')); }catch(e){}
   set(s); bang();
 })();</script>
+
+<script>
+/* Nút làm mới trang + tự phát hiện bản cập nhật PWA */
+(function(){
+  function doReload(){
+    if('serviceWorker' in navigator && navigator.serviceWorker.controller){
+      navigator.serviceWorker.getRegistrations().then(function(rs){
+        rs.forEach(function(r){r.unregister();});
+      }).catch(function(){});
+    }
+    // xóa cache tĩnh của app trước khi reload
+    if('caches' in window){
+      caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});});
+    }
+    setTimeout(function(){location.reload();},150);
+  }
+  var b=document.getElementById('nut-ref');
+  if(b){b.addEventListener('click',doReload);}
+  /* tự gợi ý làm mới khi có service worker mới */
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.addEventListener('controllerchange',function(){location.reload();});
+    var sv='/sw.js';
+    navigator.serviceWorker.register(sv).then(function(reg){
+      reg.addEventListener('updatefound',function(){
+        var nw=reg.installing;
+        if(!nw) return;
+        nw.addEventListener('statechange',function(){
+          if(nw.state==='installed' && navigator.serviceWorker.controller){
+            var note=document.createElement('button');
+            note.type='button';note.id='note-ref';
+            note.textContent=(document.documentElement.getAttribute('lang')==='fr')?
+              '⟳ Nouvelle version — actualiser ?':'⟳ '+(document.documentElement.getAttribute('lang')==='en'?
+              'New version available — refresh?':'⟳ Đã có bản cập nhật — làm mới?');
+            note.style.cssText='position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99;'+
+              'border:1px solid var(--accent,#b25d7d);border-radius:999px;background:#fff;color:#000;'+
+              'font:700 .8rem system-ui;padding:8px 18px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.15)';
+            note.addEventListener('click',function(){note.remove();doReload();});
+            document.body.appendChild(note);
+            setTimeout(function(){if(note.parentNode)note.remove();},30000);
+          }
+        });
+      });
+    }).catch(function(){});
+  }
+})();
+</script>
 </body>
 </html>

@@ -89,7 +89,7 @@ html[lang="fr"] .lang-en{display:none}
       <button type="button" data-lang="fr">🇫🇷 FR</button>
     </span>
     <button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span><span class="lang-fr">◐ Clair / Sombre</span></button>
-  </div>
+  <button type="button" id="nut-ref" style="border:1px solid var(--line);border-radius:999px;background:var(--surface);padding:5px 12px;cursor:pointer;font:700 .75rem system-ui;color:var(--ink)">⟳ Làm mới</button></div>
 
   <header class="page">
     <div style="font:700 .72rem var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)"><span class="lang-vi">Album · Mini song-cycle</span><span class="lang-en">Album · Mini song-cycle</span><span class="lang-fr">Album · Mini song-cycle</span></div>
@@ -323,4 +323,50 @@ html[lang="fr"] .lang-en{display:none}
 })();
 </script>
 <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<script>
+/* Nút làm mới trang + tự phát hiện bản cập nhật PWA */
+(function(){
+  function doReload(){
+    if('serviceWorker' in navigator && navigator.serviceWorker.controller){
+      navigator.serviceWorker.getRegistrations().then(function(rs){
+        rs.forEach(function(r){r.unregister();});
+      }).catch(function(){});
+    }
+    // xóa cache tĩnh của app trước khi reload
+    if('caches' in window){
+      caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});});
+    }
+    setTimeout(function(){location.reload();},150);
+  }
+  var b=document.getElementById('nut-ref');
+  if(b){b.addEventListener('click',doReload);}
+  /* tự gợi ý làm mới khi có service worker mới */
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.addEventListener('controllerchange',function(){location.reload();});
+    var sv='/sw.js';
+    navigator.serviceWorker.register(sv).then(function(reg){
+      reg.addEventListener('updatefound',function(){
+        var nw=reg.installing;
+        if(!nw) return;
+        nw.addEventListener('statechange',function(){
+          if(nw.state==='installed' && navigator.serviceWorker.controller){
+            var note=document.createElement('button');
+            note.type='button';note.id='note-ref';
+            note.textContent=(document.documentElement.getAttribute('lang')==='fr')?
+              '⟳ Nouvelle version — actualiser ?':'⟳ '+(document.documentElement.getAttribute('lang')==='en'?
+              'New version available — refresh?':'⟳ Đã có bản cập nhật — làm mới?');
+            note.style.cssText='position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99;'+
+              'border:1px solid var(--accent,#b25d7d);border-radius:999px;background:#fff;color:#000;'+
+              'font:700 .8rem system-ui;padding:8px 18px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.15)';
+            note.addEventListener('click',function(){note.remove();doReload();});
+            document.body.appendChild(note);
+            setTimeout(function(){if(note.parentNode)note.remove();},30000);
+          }
+        });
+      });
+    }).catch(function(){});
+  }
+})();
+</script>
 </body></html>
