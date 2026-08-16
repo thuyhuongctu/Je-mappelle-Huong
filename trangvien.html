@@ -1092,6 +1092,7 @@ function __getAC(){
   return __ac;
 }
 function __tone(freq, dur, vol, type, slideTo, delay){
+  if(delay === undefined) delay = 0;
   const ac = __getAC(); if(!ac) return;
   const o = ac.createOscillator(), g = ac.createGain();
   o.type = type; o.frequency.setValueAtTime(freq, ac.currentTime + delay);
