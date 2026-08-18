@@ -1716,7 +1716,8 @@ duoiToc.scale.set(.9,1.7,.7); duoiToc.position.set(0,-.42,-.24);
 dau.add(duoiToc);
 
 nhanVat.scale.setScalar(CO_NV);
-nhanVat.position.set(0, 0, 6);
+nhanVat.position.set(28, 0, 38);   // góc đông-nam: nhìn chéo vào vườn
+nhanVat.rotation.y = -2.5066;     // mặt quay về trung tâm vườn (tây-bắc)
 nhanVat.traverse(o=>{ if(o.isMesh){ o.castShadow = true; } });
 
 /* ---------- 7b. NHÂN VẬT LÀ ẢNH THẬT CÔ HƯƠNG ----------
@@ -1865,7 +1866,9 @@ addEventListener('keydown', e=>{
 addEventListener('keyup', e=>{ phim[e.key.toLowerCase()] = false; });
 
 let tocDoAuto = 5.6;          // tốc độ tự đi: đi bộ — xem mục 10B để đổi khi đạp xe
-let gocMay = 0;              // yaw camera
+// camera khởi đầu đặt ngay tại đích (không lerp từ gốc) và lùi xa hơn lúc mở màn
+let xaDau = 16, tDau = 0;      // 16 đơn vị lúc đầu → dần thu về 8.2 sau ~2.5s
+let gocMay = 0.6350;       // yaw camera — phía sau lưng nhân vật, nhìn vào vườn
 let keo = null;
 const canT = document.getElementById('can'), canNut = canT.querySelector('i');
 let canVec = {x:0, y:0}, canId = null;
@@ -2079,11 +2082,15 @@ function veBanDo(){
     bd.strokeStyle = '#FFF8EE'; bd.lineWidth = 2.5; bd.stroke();
     // nhãn tên khu — bản đồ khám phá
     bd.fillStyle = 'rgba(74,55,48,.95)';
-    bd.font = '600 11px "Baloo 2", system-ui';
+    bd.font = '600 10px "Baloo 2", system-ui';
     bd.textAlign = 'left'; bd.textBaseline = 'middle';
     bd.shadowColor = 'rgba(255,248,238,.9)'; bd.shadowBlur = 3;
-    const ten = (k.khu.ten && k.khu.ten[NG]) ? k.khu.ten[NG] : k.khu.id;
-    bd.fillText(ten, px + 11, py);
+    // nhãn hiện khi người chơi đến gần khu (khám phá dần) — tránh chồng chữ
+    const dKhu = Math.hypot(k.x - nhanVat.position.x, k.z - nhanVat.position.z);
+    if(dKhu < 20 || k.khu._daMo){
+      const ten = (k.khu.ten && k.khu.ten[NG]) ? k.khu.ten[NG] : k.khu.id;
+      bd.fillText(ten, px + 11, py);
+    }
     bd.shadowBlur = 0;
   });
   // la bàn nhỏ — góc trái trên
@@ -2108,7 +2115,7 @@ function veBanDo(){
 
 /* ---------- 12. VÒNG LẶP ---------- */
 const dongHo = new THREE.Clock();
-let huong = 0;           // hướng nhân vật
+let huong = -2.5066;     // hướng nhân vật — mặt quay về trung tâm vườn
 let vTruoc = 0;          // vận tốc để nội suy hoạt ảnh
 const tamMay = new THREE.Vector3();
 
@@ -3274,10 +3281,12 @@ function vong(){
 
   /* --- máy quay bám sau lưng --- */
   const cao = dapXe ? 4.6 : 3.8;
-  const xa  = dapXe ? 10.5 : 8.2;
+  const xa  = dapXe ? 10.5 : Math.max(8.2, xaDau - Math.min(tDau, 2.5) * 3.2);
   tamMay.set(nhanVat.position.x, nhanVat.position.y + 1.9, nhanVat.position.z);
   const mx = tamMay.x + Math.sin(gocMay)*xa;
   const mz = tamMay.z + Math.cos(gocMay)*xa;
+  tDau += dt;
+  if(!camera.position.__dat){ camera.position.set(mx, tamMay.y + cao, mz); camera.position.__dat = true; }
   camera.position.lerp(new THREE.Vector3(mx, tamMay.y + cao, mz), Math.min(1, 6*dt));
   camera.lookAt(tamMay);
 
