@@ -8,7 +8,7 @@ The standalone academic homepage and central hub of a digital ecosystem for
 research, teaching and open educational software.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22003853.svg)](https://doi.org/10.5281/zenodo.22003853)
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Copyright](https://img.shields.io/badge/©%202026-all%20rights%20reserved-8d7166.svg)](#license-and-third-party-components)
 [![Site](https://img.shields.io/badge/site-live-2ea44f)](https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/)
 
 **[▶ Live site: thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026](https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/)**
@@ -196,22 +196,29 @@ resolves to the most recent release. Individual releases carry their own DOIs:
 
 ## License and third-party components
 
-The archived release is deposited on Zenodo under the
-[Creative Commons Attribution 4.0 International licence (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/):
-the material may be reused, adapted and redistributed provided that the author
-is credited.
+**© 2026 Đỗ Thùy Hương. All rights reserved.**
 
-Vendored and referenced third-party components retain their own licences:
+This work is published for reading, consultation and citation. It is **not**
+released under an open-source or open-content licence. No permission is granted
+to copy, redistribute, republish, modify, translate or reuse the site, its
+source code, its written content, its images, its recordings or the *Hương AI*
+character, in whole or in part, whether for commercial or non-commercial
+purposes, without the prior written permission of the author.
+
+Quotation for academic purposes, with attribution and a citation to the record
+below, is permitted under normal scholarly practice and applicable copyright
+exceptions.
+
+Permission requests: [thuyhuongctu@gmail.com](mailto:thuyhuongctu@gmail.com)
+
+Third-party components used by the site remain under their own licences and are
+not covered by the reservation above:
 
 | Component | Use | Licence |
 |---|---|---|
 | [three.js](https://threejs.org/) r128 | 3D scenes, vendored in `assets/vendor/` | MIT |
 | [huashu-design](https://github.com/alchaincyf/huashu-design) | Design skill, `.claude/skills/` | MIT |
 | [OpenMontage](https://github.com/calesthio/OpenMontage) | External video tool, not vendored | AGPL-3.0 |
-
-Portraits and illustrations of the *Hương AI* character, original recordings,
-and written content are works of the author and are covered by the same licence
-as the deposit.
 
 ## Author and contact
 
@@ -228,6 +235,6 @@ PhD candidate in Business Administration, Can Tho University
 
 <div align="center">
 
-© 2026 Đỗ Thùy Hương. Published under CC BY 4.0.
+© 2026 Đỗ Thùy Hương. All rights reserved.
 
 </div>

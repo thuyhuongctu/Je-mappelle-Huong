@@ -6,9 +6,11 @@
 # và Zenodo dùng nó khi lưu trữ mỗi bản phát hành (kể cả danh sách tác giả).
 cff-version: 1.2.0
 message: >-
-  If you use this work in research or teaching, please cite it as below. /
-  Nếu sử dụng công trình này trong nghiên cứu hoặc giảng dạy, xin trích dẫn
-  như bên dưới.
+  © 2026 Đỗ Thùy Hương. All rights reserved — see LICENSE. The work is
+  published for reading and citation, not for reuse. If you cite it, please
+  use the reference below. / Bản quyền © 2026 Đỗ Thùy Hương, bảo lưu mọi
+  quyền — xem tệp LICENSE. Công trình được công bố để đọc và trích dẫn,
+  không phát hành theo giấy phép mở. Xin trích dẫn như bên dưới.
 type: software
 title: "Je m'appelle Hương: personal academic homepage"
 abstract: >-
@@ -30,7 +32,6 @@ authors:
     affiliation: "Vinh Long University of Technology Education (VLUTE)"
 version: "1.0"
 date-released: 2026-08-18
-license: CC-BY-4.0
 repository-code: "https://github.com/thuyhuongctu/JESUISHUONG_WEBSITE_2026"
 url: "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/"
 # Concept DOI — represents every version and always resolves to the latest release.

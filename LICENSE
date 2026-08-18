@@ -1,0 +1,57 @@
+Copyright © 2026 Đỗ Thùy Hương (Do Thuy Huong). All rights reserved.
+Bản quyền © 2026 Đỗ Thùy Hương. Bảo lưu mọi quyền.
+
+ENGLISH
+
+This repository and the website it produces — including the source code, the
+written content, the design, the images and the "Hương AI" character artwork,
+the audio recordings, and the slide decks — are the copyrighted work of the
+author.
+
+The material is published so that it can be read, consulted and cited. It is
+NOT released under an open-source or open-content licence.
+
+No permission is granted to copy, redistribute, republish, mirror, modify,
+adapt, translate, or create derivative works from this material, in whole or in
+part, for commercial or non-commercial purposes, without the prior written
+permission of the author. Automated bulk collection of the material, and its
+use for training machine-learning models, are likewise not permitted without
+prior written permission.
+
+Quotation of short extracts for academic purposes, with attribution and a
+citation to the record identified in CITATION.cff, is permitted under normal
+scholarly practice and applicable copyright exceptions.
+
+Third-party components included in or used by this repository remain governed
+by their own licences and are not covered by the reservation above:
+
+  - three.js (r128), assets/vendor/three-r128.min.js — MIT Licence
+  - huashu-design, .claude/skills/huashu-design/ — MIT Licence
+  - MiniMax H3 skills, .claude/skills/ — see each skill's own terms
+
+Permission requests and enquiries: thuyhuongctu@gmail.com
+
+TIẾNG VIỆT
+
+Toàn bộ kho mã và trang web sinh ra từ kho mã này — bao gồm mã nguồn, nội dung
+chữ viết, thiết kế, hình ảnh và tạo hình nhân vật "Hương AI", các bản thu âm và
+bộ slide — là tác phẩm thuộc bản quyền của tác giả.
+
+Tài liệu được công bố để đọc, tham khảo và trích dẫn. Đây KHÔNG phải là tác
+phẩm phát hành theo giấy phép nguồn mở hay nội dung mở.
+
+Không cho phép sao chép, phát tán lại, đăng lại, tạo bản sao lưu công khai,
+sửa đổi, chuyển thể, dịch thuật hay tạo tác phẩm phái sinh từ tài liệu này, dù
+toàn bộ hay một phần, dù vì mục đích thương mại hay phi thương mại, nếu không
+có sự đồng ý trước bằng văn bản của tác giả. Việc thu thập tự động hàng loạt và
+sử dụng tài liệu để huấn luyện mô hình học máy cũng không được phép nếu chưa
+có sự đồng ý trước bằng văn bản.
+
+Việc trích dẫn đoạn ngắn cho mục đích học thuật, có ghi nguồn và trích dẫn theo
+thông tin trong tệp CITATION.cff, được phép theo thông lệ nghiên cứu và các
+ngoại lệ của luật bản quyền.
+
+Các thành phần của bên thứ ba đi kèm hoặc được sử dụng trong kho mã này vẫn
+tuân theo giấy phép riêng của chúng và không thuộc phạm vi bảo lưu nêu trên.
+
+Liên hệ xin phép sử dụng: thuyhuongctu@gmail.com
