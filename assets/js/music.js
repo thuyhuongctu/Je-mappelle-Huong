@@ -40,7 +40,11 @@
     bizon_world_fr:    { t: "BizOn · Hương et le monde",     f: A + 'bizon/huong-et-le-monde.mp3' },
     bizon_vnt:         { t: 'BizOn · Việt Nam Trong Tim',    f: A + 'bizon/viet-nam-trong-tim.mp3' },
     bizon_vudubebaycao:{ t: 'BizOn · Vừa Đủ Để Bay Cao',     f: A + 'bizon/vua-du-de-bay-cao.mp3' },
-    bizon_onreturn:    { t: 'BizOn · Hương on Return',       f: A + 'bizon/huong-on-return.mp3' }
+    bizon_onreturn:    { t: 'BizOn · Hương on Return',     f: A + 'bizon/huong-on-return.mp3' },
+
+    // Nhạc tần số thư giãn (solfeggio) — khuôn viên trang viên
+    tranquien_528:   { t: 'Trần viên · Sóng 528Hz',        f: A + 'solfeggio_528.mp3' },
+    tranquien_432:   { t: 'Trần viên · Sóng 432Hz',        f: A + 'solfeggio_432.mp3' }
   };
 
   /* ---------- GỢI Ý THEO TÂM TRẠNG ---------- */
@@ -270,7 +274,7 @@
       if (dangPhat && SONGS[dangPhat] && !audio.paused) {
         hien.innerHTML = '<div class="hm-dangphat">\uD83C\uDFB6 ' +
           SONGS[dangPhat].t +
-          (nhacNenActive ? ' <small>(nh\u1ea1c khu)</small>' : '') +
+          (nhacNenActive ? ' <small>(' + (khuDangChoi === '__khuon-vien__' ? 'nh\u1ea1c khu\u00f4n vi\u00ean' : 'nh\u1ea1c khu') + ')</small>' : '') +
           '<button id="hm-pause" title="D\u1eebng">\u23F8</button></div>';
         var pb = document.getElementById('hm-pause');
         if (pb) pb.addEventListener('click', stopAll);
@@ -291,9 +295,14 @@
     'am-nhac':    'track03',               // The Lamp Still Burns — ôm ấp, an ủi (khu âm nhạc)
     'bang-tin':   'track05',               // Je m'appelle Hương — thông điệp tổng hợp (khu bảng tin)
     'gioi-thieu': 'official',              // Je m'appelle Hương bản đầy đủ — mở đầu chuyến tham quan (khu giới thiệu)
-    'kho-tuong-lai': 'track05'             // Je m'appelle Hương — khép chuyến tham quan bằng bài chủ đề (kho tương lai)
+    'kho-tuong-lai': 'track05',             // Je m'appelle Hương — khép chuyến tham quan bằng bài chủ đề (kho tương lai)
+    'khuon-vien':  'tranquien_528'           // Sóng 528Hz — nhạc tần số thư giãn khi dạo ngoài khuôn viên
   };
   var khuDangChoi = '';
+
+  /* Nhạc tần số thư giãn xen kẽ 528Hz / 432Hz khi dạo ngoài khuôn viên */
+  var NHAC_KHUONVIEN = ['tranquien_528', 'tranquien_432'];
+  var kvChiSo = 0;
 
   function playNhacNen(khuId) {
     var key = NHAC_KHU[khuId];
@@ -302,6 +311,16 @@
     if (khuDangChoi === khuId && dangPhat === key && !audio.paused) return;
     playSong(key, { loop: true, vol: vol * 0.7 });
     khuDangChoi = khuId;
+  }
+
+  /* Nhạc tần số thư giãn (solfeggio) khi khách dạo ngoài khuôn viên — chưa vào khu nào */
+  function playNhacKhuonVien() {
+    if (!nhacNenActive) { nhacNenActive = true; khuDangChoi = '__khuon-vien__'; }
+    var key = NHAC_KHUONVIEN[kvChiSo % NHAC_KHUONVIEN.length];
+    if (khuDangChoi === '__khuon-vien__' && dangPhat === key && !audio.paused) return;
+    kvChiSo++;
+    playSong(key, { loop: true, vol: Math.min(vol * 0.45, 0.3) });
+    khuDangChoi = '__khuon-vien__';
   }
   function dungNhacNen() {
     nhacNenActive = false;
@@ -327,6 +346,7 @@
 
   window.HUONG_MUSIC = {
     playSong: playSong,
+    playNhacKhuonVien: playNhacKhuonVien,
     stopAll: stopAll,
     playNhacNen: playNhacNen,
     dungNhacNen: dungNhacNen,
