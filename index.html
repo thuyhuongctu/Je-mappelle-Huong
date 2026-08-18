@@ -169,6 +169,18 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
 :root[data-theme=dark] #bando{filter:saturate(.92) brightness(.9)}
 .bd-inner{position:absolute;inset:-6%;width:112%;height:112%;will-change:transform}
 .bd-map{position:absolute;right:3%;bottom:-6%;width:14%;opacity:.30;pointer-events:none;z-index:1;transform:rotate(8deg);filter:drop-shadow(0 3px 6px rgba(90,50,50,.25))}
+.bd-buom{position:absolute;z-index:2;pointer-events:none;font-size:clamp(.9rem,1.8vw,1.35rem);opacity:.9;
+  will-change:transform}
+@media(prefers-reduced-motion:no-preference){
+  .bd-buom{animation:buomDrift 9s ease-in-out infinite}
+  .bd-buom:nth-of-type(2){animation-duration:11s;animation-delay:-2.5s}
+  .bd-buom:nth-of-type(3){animation-duration:10s;animation-delay:-5s}
+  .bd-buom::after{content:"";display:block;animation:buomFlap .35s ease-in-out infinite alternate}
+  @keyframes buomDrift{0%{transform:translate(0,0) rotate(-6deg)}25%{transform:translate(22px,-14px) rotate(4deg)}
+    50%{transform:translate(-8px,-26px) rotate(-4deg)}75%{transform:translate(-24px,-8px) rotate(6deg)}100%{transform:translate(0,0) rotate(-6deg)}}
+  @keyframes buomFlap{from{transform:scaleX(1)}to{transform:scaleX(.65)}}
+}
+@media(prefers-reduced-motion:reduce){.bd-buom{display:none}}
 .bd-map img{display:block;width:100%;height:auto}
 @media(max-width:560px){.bd-map{width:26%;opacity:.22}}
 .tram{position:absolute;z-index:3;transform:translate(-50%,-50%);cursor:pointer;border:none;
@@ -427,8 +439,11 @@ body{padding-top:44px}}
   </header>
   <div id="bando" role="navigation" aria-label="Bản đồ trang viên">
     <img class="bd-map" src="assets/svg/vnmap.svg" alt="Bản đồ Việt Nam chìm trên trang viên" aria-hidden="true">
-    <button class="tram" style="left:19%;top:24%" data-den="#ecosystem">🚀 <span class="lang-vi">Hệ sinh thái</span><span class="lang-en">Ecosystem</span><small>Open Projects</small></button>
-    <button class="tram" style="left:81%;top:19%" data-den="publications.html">📚 <span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><small>Publications</small></button>
+    <span class="bd-buom" style="left:27%;top:35%" aria-hidden="true">🦋</span>
+    <span class="bd-buom" style="left:61%;top:40%" aria-hidden="true">🦋</span>
+    <span class="bd-buom" style="left:44%;top:30%" aria-hidden="true">🦋</span>
+    <button class="tram" style="left:14%;top:33%" data-den="#ecosystem">🚀 <span class="lang-vi">Hệ sinh thái</span><span class="lang-en">Ecosystem</span><small>Open Projects</small></button>
+    <button class="tram" style="left:84%;top:28%" data-den="publications.html">📚 <span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><small>Publications</small></button>
     <button class="tram" style="left:13%;top:48%" data-den="#about">🌸 <span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span><small>Academic Research</small></button>
     <button class="tram" style="left:87%;top:48%" data-den="music.html">🎵 <span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><small>Creative Library</small></button>
     <button class="tram" style="left:33%;top:76%" data-den="#teaching">🎓 <span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span><small>Lecture hall</small></button>
