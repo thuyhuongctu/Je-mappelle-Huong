@@ -23,7 +23,7 @@ html{scroll-behavior:smooth}
 h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
 a{color:var(--accent)}
 .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:700;color:var(--accent)}
-.brandmini{position:fixed;top:10px;left:12px;z-index:6;display:block;width:min(230px,calc(100vw - 190px));height:auto;text-decoration:none;line-height:0}
+.brandmini{position:fixed;top:10px;left:12px;z-index:6;display:none;width:min(230px,calc(100vw - 190px));height:auto;text-decoration:none;line-height:0}
 .brandmini img{display:block;width:100%;height:auto;object-fit:contain}
 @media(max-width:560px){.brandmini{top:9px;left:9px;width:160px}}
 .topctl{position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:6}
@@ -33,8 +33,10 @@ a{color:var(--accent)}
 .langtog button.active{background:var(--accent);color:#fff}
 html[lang="en"] .lang-vi{display:none}
 html:not([lang="en"]) .lang-en{display:none}
-header.page{margin-top:34px;border-bottom:2px solid var(--ink);padding-bottom:20px}
-header.page h1{font-size:clamp(1.7rem,5vw,2.4rem);margin:.15em 0}
+header.page{margin:40px 0 14px;text-align:center;border-bottom:none;padding-bottom:0;position:relative}
+header.page h1{font-size:clamp(1.7rem,5vw,2.5rem);margin:0 0 8px}
+.page-kicker{margin:0 0 6px;font:700 .7rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--mint,#cdeacf),var(--accent-soft),var(--sky,#dde6f6))}
 .sub{color:var(--muted)}
 section{margin-top:36px}
 .shead{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
@@ -155,7 +157,7 @@ footer a:hover{color:var(--accent)}
 <div class="wrap">
   <img src="assets/img/creative_library.jpg" alt="Kho thư viện sáng tạo — nhân vật Hương AI ngồi trên mây giữa thư viện đất sét với các ô Music, Art, Code, Science, Design" style="display:block;width:100%;height:auto;border-radius:26px;border:5px solid var(--surface);box-shadow:var(--shadow);margin:6px 0 26px" loading="lazy">
   <header class="page">
-    <div class="eyebrow"><span class="lang-vi">Kho nhạc cá nhân</span><span class="lang-en">Personal music</span></div>
+    <div class="page-kicker"><span class="lang-vi">Kho nhạc cá nhân</span><span class="lang-en">Personal music</span></div>
     <h1><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></h1>
     <p class="sub"><span class="lang-vi">Các sáng tác riêng của Đỗ Thùy Hương — tách khỏi kho nhạc của M-AIDA và BizOn. Nghe nhạc của các dự án tại <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Bài hát</a> và <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a>.</span><span class="lang-en">Personal compositions by Do Thuy Huong — separate from the M-AIDA and BizOn project libraries. Project music lives at <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Songs</a> and <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a>.</span></p>
   </header>
@@ -190,7 +192,7 @@ footer a:hover{color:var(--accent)}
       <div>
         <a href="index.html" style="text-decoration:none"><span style="font:600 1rem/1 var(--serif);color:#efe6e2">Je m'appelle Hương</span></a>
         <p class="dmf-tag"><span class="lang-vi">Nghiên cứu, giảng dạy và sáng tạo cùng AI.</span><span class="lang-en">Research, teaching and creativity with AI.</span></p>
-        <p><span class="lang-vi">PhD Candidate · Giảng viên, Đại học Cần Thơ — nghiên cứu quốc tế hóa và hiệu quả hoạt động doanh nghiệp ở châu Á.</span><span class="lang-en">PhD Candidate · Lecturer at Can Tho University — researching internationalization and firm performance in Asia.</span></p>
+        <p><span class="lang-vi">PhD Candidate · Researcher — researching internationalization and firm performance in Asia.</span><span class="lang-en">PhD Candidate · Researcher — researching internationalization and firm performance in Asia.</span></p>
         <div class="dmf-ico">
           <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener" title="ORCID">🆔</a>
           <a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener" title="GitHub">💻</a>

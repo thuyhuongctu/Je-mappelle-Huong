@@ -28,7 +28,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
 a{color:var(--accent)}
 .skip{position:absolute;left:-999px;top:0;background:var(--accent);color:#fff;padding:10px 16px;z-index:99}
 .skip:focus{left:12px;top:12px;border-radius:10px;text-decoration:none}
-.brandmini{position:fixed;top:10px;left:12px;z-index:6;display:block;width:min(230px,calc(100vw - 190px));height:auto;text-decoration:none;line-height:0}
+.brandmini{position:fixed;top:10px;left:12px;z-index:6;display:none;width:min(230px,calc(100vw - 190px));height:auto;text-decoration:none;line-height:0}
 .brandmini img{display:block;width:100%;height:auto;object-fit:contain}
 @media(max-width:560px){.brandmini{top:6px;left:6px;width:96px;background:rgba(255,253,248,.7);border-radius:14px;padding:3px 8px}}
 .topctl{position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:6}
@@ -43,10 +43,12 @@ html[lang="fr"] .lang-vi,html[lang="fr"] .lang-en{display:none}
 .sitenav a{font-size:.84rem;font-weight:600;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 17px;box-shadow:inset 0 2px 0 rgba(255,255,255,.55),0 5px 12px rgba(150,95,75,.12)}
 .sitenav a:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 .sitenav a.here{background:var(--accent);border-color:var(--accent);color:#fff}
-header.page{margin-top:18px;border-bottom:2px solid var(--ink);padding-bottom:20px;position:relative}
-header.page h1{font-size:clamp(1.7rem,5vw,2.4rem);margin:.15em 0}
+header.page{margin:40px 0 14px;text-align:center;border-bottom:none;padding-bottom:0;position:relative}
+header.page h1{font-size:clamp(1.7rem,5vw,2.5rem);margin:0 0 8px}
+.page-kicker{margin:0 0 6px;font:700 .7rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--mint,#cdeacf),var(--accent-soft),var(--sky,#dde6f6))}
 .sub{color:var(--muted)}
-header.page::after{content:"";position:absolute;left:8%;right:8%;bottom:0;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--accent-soft),var(--line),var(--accent-soft))}
+
 /* filters */
 .pub-filters{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 4px}
 .pub-filters button{font:600 .74rem var(--sans);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer;box-shadow:inset 0 2px 0 rgba(255,255,255,.5)}
@@ -147,7 +149,7 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
 <div class="wrap">
 <nav class="sitenav" aria-label="Site"><a href="./"><span class="lang-vi">Trang chủ</span><span class="lang-en">Home</span><span class="lang-fr">Accueil</span></a><a href="./#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span><span class="lang-fr">À propos</span></a><a href="publications.html" class="here" aria-current="page"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></a><a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><span class="lang-fr">Musique</span></a><a class="hide-xs" href="blog.html">Blog</a><a href="trangvien.html">🌸 <span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span><span class="lang-fr">Jardin 3D</span></a></nav>
 <header class="page">
-  <div class="eyebrow" style="text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:700;color:var(--accent)"><span class="lang-vi">Hồ sơ học thuật</span><span class="lang-en">Academic profile</span><span class="lang-fr">Profil académique</span></div>
+  <div class="page-kicker"><span class="lang-vi">Hồ sơ học thuật</span><span class="lang-en">Academic profile</span><span class="lang-fr">Profil académique</span></div>
   <h1><span class="lang-vi">Công bố khoa học</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></h1>
   <p class="sub"><span class="lang-vi">Danh mục đầy đủ các công trình đã công bố của Đỗ Thùy Hương — nghiên cứu sinh tiến sĩ, Trường Kinh tế, Đại học Cần Thơ. Nguồn: ORCID 0000-0002-7711-2487, khớp với Google Scholar.</span><span class="lang-en">Complete list of published works by Do Thuy Huong — PhD Candidate, School of Economics, Can Tho University. Source: ORCID 0000-0002-7711-2487, matching Google Scholar.</span><span class="lang-fr">Liste complète des travaux publiés de Do Thuy Huong — doctorante, École d'économie, Université de Cần Thơ. Source : ORCID 0000-0002-7711-2487, conforme à Google Scholar.</span></p>
 </header>
@@ -269,7 +271,7 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
       <div>
         <a href="index.html" style="text-decoration:none"><span style="font:600 1rem/1 var(--serif);color:#efe6e2">Je m'appelle Hương</span></a>
         <p class="dmf-tag"><span class="lang-vi">Nghiên cứu, giảng dạy và sáng tạo cùng AI.</span><span class="lang-en">Research, teaching and creativity with AI.</span></p>
-        <p><span class="lang-vi">PhD Candidate · Giảng viên, Đại học Cần Thơ — nghiên cứu quốc tế hóa và hiệu quả hoạt động doanh nghiệp ở châu Á.</span><span class="lang-en">PhD Candidate · Lecturer at Can Tho University — researching internationalization and firm performance in Asia.</span></p>
+        <p><span class="lang-vi">PhD Candidate · Researcher — researching internationalization and firm performance in Asia.</span><span class="lang-en">PhD Candidate · Researcher — researching internationalization and firm performance in Asia.</span></p>
         <div class="dmf-ico">
           <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener" title="ORCID">🆔</a>
           <a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener" title="GitHub">💻</a>

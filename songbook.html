@@ -23,7 +23,7 @@ html{scroll-behavior:smooth}
 h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
 a{color:var(--accent)}
 .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:700;color:var(--accent)}
-.brandmini{position:fixed;top:12px;left:14px;z-index:6;display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;color:var(--ink);font:800 1rem 'SFMono-Regular',ui-monospace,Menlo,Consolas,monospace}
+.brandmini{position:fixed;top:12px;left:14px;z-index:6;display:none;align-items:center;gap:.45rem;text-decoration:none;color:var(--ink);font:800 1rem 'SFMono-Regular',ui-monospace,Menlo,Consolas,monospace}
 .topctl{position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:6}
 .toggle{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 13px;font-size:.74rem;cursor:pointer;box-shadow:var(--shadow)}
 .langtog{display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
@@ -31,8 +31,10 @@ a{color:var(--accent)}
 .langtog button.active{background:var(--accent);color:#fff}
 html[lang="en"] .lang-vi{display:none}
 html:not([lang="en"]) .lang-en{display:none}
-header.page{margin-top:34px;border-bottom:2px solid var(--ink);padding-bottom:20px}
-header.page h1{font-size:clamp(1.7rem,5vw,2.4rem);margin:.15em 0}
+header.page{margin:40px 0 14px;text-align:center;border-bottom:none;padding-bottom:0;position:relative}
+header.page h1{font-size:clamp(1.7rem,5vw,2.5rem);margin:0 0 8px}
+.page-kicker{margin:0 0 6px;font:700 .7rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--mint,#cdeacf),var(--accent-soft),var(--sky,#dde6f6))}
 .sub{color:var(--muted)}
 section{margin-top:36px}
 .shead{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
@@ -152,7 +154,7 @@ footer a:hover{color:var(--accent)}
 
 <div class="wrap">
   <header class="page">
-    <div class="eyebrow"><span class="lang-vi">Album · Mini song-cycle</span><span class="lang-en">Album · Mini song-cycle</span></div>
+    <div class="page-kicker"><span class="lang-vi">Album · Mini song-cycle</span><span class="lang-en">Album · Mini song-cycle</span></div>
     <h1>Songbook «Je m'appelle Hương»</h1>
     <p class="sub"><span class="lang-vi"><i>La lampe, le fleuve et les couleurs</i> — 5 chương · 12 bản thu · Sáng tác 07–13/08/2026 · <a href="music.html">← Kho nhạc cá nhân</a></span><span class="lang-en"><i>La lampe, le fleuve et les couleurs</i> — 5 chapters · 12 recordings · Composed 7–13 Aug 2026 · <a href="music.html">← Personal music library</a></span></p>
   </header>
@@ -696,7 +698,7 @@ Papa… I found my way back. Pas vers hier. Vers moi.</p>
       <div>
         <a href="index.html" style="text-decoration:none"><span style="font:600 1rem/1 var(--serif);color:#efe6e2">Je m'appelle Hương</span></a>
         <p class="dmf-tag"><span class="lang-vi">Nghiên cứu, giảng dạy và sáng tạo cùng AI.</span><span class="lang-en">Research, teaching and creativity with AI.</span></p>
-        <p><span class="lang-vi">PhD Candidate · Giảng viên, Đại học Cần Thơ — nghiên cứu quốc tế hóa và hiệu quả hoạt động doanh nghiệp ở châu Á.</span><span class="lang-en">PhD Candidate · Lecturer at Can Tho University — researching internationalization and firm performance in Asia.</span></p>
+        <p><span class="lang-vi">PhD Candidate · Researcher — researching internationalization and firm performance in Asia.</span><span class="lang-en">PhD Candidate · Researcher — researching internationalization and firm performance in Asia.</span></p>
         <div class="dmf-ico">
           <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener" title="ORCID">🆔</a>
           <a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener" title="GitHub">💻</a>
