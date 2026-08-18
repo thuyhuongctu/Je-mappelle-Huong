@@ -27,9 +27,12 @@
 }</script>
 <style>
 :root{--paper:#fffdf9;--ink:#2e2724;--accent:#c1435b;--muted:#8a7468;--line:#e9ddd4;--serif:Georgia,'Times New Roman',serif;--sans:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+html[data-theme=dark]{--paper:#221a1f;--ink:#f1e4dd;--accent:#e8889b;--muted:#b89d93;--line:#45323a}
+html[lang="en"] .lang-vi{display:none}
+html[lang="vi"] .lang-en{display:none}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font:400 10.5pt/1.55 var(--sans);color:var(--ink);background:var(--paper)}
-.cv{max-width:210mm;margin:0 auto;padding:16mm 16mm 20mm;background:#fff;box-shadow:0 0 0 1px var(--line),0 10px 30px rgba(60,40,30,.08)}
+.cv{max-width:210mm;margin:0 auto;padding:16mm 16mm 20mm;background:var(--paper);box-shadow:0 0 0 1px var(--line),0 10px 30px rgba(60,40,30,.08)}
 header{border-bottom:2px solid var(--accent);padding-bottom:12px;margin-bottom:16px}
 h1{font:700 19pt var(--serif);color:var(--accent)}
 h1 small{font:400 10pt var(--sans);color:var(--muted);display:block;margin-top:2px}
@@ -44,9 +47,12 @@ h3{font:600 10.5pt var(--sans);margin:8px 0 2px}
 .venue{font-style:italic;color:var(--muted);font-size:9.5pt}
 .yr{font:600 9pt var(--sans);color:var(--accent)}
 a{color:var(--accent)}
-.tools{position:fixed;top:10px;right:12px;display:flex;gap:8px;z-index:50}
-.tools button{border:1px solid var(--line);border-radius:16px;background:#fff;color:var(--ink);font:600 8.5pt var(--sans);padding:6px 12px;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,30,.12)}
+.tools{position:fixed;top:10px;right:12px;display:flex;gap:8px;z-index:50;flex-wrap:wrap;justify-content:flex-end}
+.tools button{border:1px solid var(--line);border-radius:16px;background:#fff;color:var(--ink);font:600 8.5pt var(--sans);padding:6px 12px;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,30,.12);white-space:nowrap}
 .tools button:hover{border-color:var(--accent);color:var(--accent)}
+.tools button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+html[data-theme=dark] .tools button{background:#30232b}
+@media(max-width:640px){.tools{top:6px;right:6px;gap:6px}.tools button{padding:5px 9px;font-size:8pt}}
 @media(max-width:640px){.cv{padding:12mm 8mm 14mm}body{font-size:10pt}}
 @media print{
   @page{size:A4;margin:12mm 10mm}
@@ -61,17 +67,23 @@ a{color:var(--accent)}
 </head>
 <body>
 <div class="tools">
-  <button onclick="window.print()">🖨 In / Lưu PDF</button>
-  <button onclick="location.href='publications.html#main'">↩ Về trang Công bố</button>
+  <button onclick="window.print()"><span lang="vi">🖨 In / Lưu PDF</span><span lang="en">🖨 Print / Save PDF</span></button>
+  <button onclick="location.href='publications.html#main'"><span lang="vi">↩ Về trang Công bố</span><span lang="en">↩ Back to Publications</span></button>
+  <button id="cv-theme" type="button"><span lang="vi">◐ Sáng / Tối</span><span lang="en">◐ Light / Dark</span></button>
+  <span class="langtog" id="cv-lang">
+    <button type="button" data-lang="vi">🇻🇳 VI</button>
+    <button type="button" data-lang="en">🇬🇧 EN</button>
+  </span>
 </div>
+<script>(function(){var r=document.documentElement;var c=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');r.setAttribute('data-theme',c);var t=document.getElementById('cv-theme');if(t)t.addEventListener('click',function(){r.setAttribute('data-theme',r.getAttribute('data-theme')==='dark'?'light':'dark')});var b=document.querySelectorAll('#cv-lang button');function set(l){r.setAttribute('lang',l);b.forEach(function(x){x.classList.toggle('active',x.getAttribute('data-lang')===l);});try{localStorage.setItem('huong_lang',l);}catch(e){}}b.forEach(function(x){x.addEventListener('click',function(){set(x.getAttribute('data-lang'));});});try{set(localStorage.getItem('huong_lang')||((/^en/i.test(navigator.language))?'en':'vi'));}catch(e){set('vi');}})();</script>
 <div class="cv" id="main">
   <header>
     <h1>Do Thuy Huong · <span lang="vi">Đỗ Thùy Hương</span>
       <small>«Je m'appelle Hương» · Lecturer &amp; Researcher</small>
     </h1>
-    <div class="roles"><span lang="vi">Lecturer — Giảng viên · PhD Candidate — Nghiên cứu sinh tiến sĩ</span></div>
+    <div class="roles"><span class="lang-vi">Giảng viên · Nghiên cứu sinh tiến sĩ</span><span class="lang-en">Lecturer · PhD Candidate</span></div>
     <div class="contact">
-      School of Economics, Can Tho University, Viet Nam ·
+      <span class="lang-vi">Khoa Kinh tế, Đại học Cần Thơ, Việt Nam</span><span class="lang-en">School of Economics, Can Tho University, Viet Nam</span> ·
       <a href="mailto:thuyhuongctu@gmail.com">thuyhuongctu@gmail.com</a> ·
       <a href="https://scholar.google.com/citations?user=thuyhuongctu" target="_blank" rel="noopener">Google Scholar</a> ·
       <a href="https://www.researchgate.net/profile/Do-Thuy-Huong" target="_blank" rel="noopener">ResearchGate</a> ·
@@ -79,20 +91,20 @@ a{color:var(--accent)}
     </div>
   </header>
 
-  <h2><span lang="vi">Học vấn</span> · Education</h2>
+  <h2><span class="lang-vi">Học vấn</span><span class="lang-en">Education</span></h2>
   <h3>PhD in Business Administration <span class="venue">— Can Tho University (ongoing, supervision: Assoc. Prof. Dr. Phan Anh Tu)</span></h3>
-  <p class="venue"><span lang="vi">Luận án: chiến lược quốc tế hóa doanh nghiệp và hiệu quả hoạt động — phân tích tổng hợp đa quốc gia, dữ liệu World Bank.</span></p>
+  <p class="venue"><span class="lang-vi">Luận án: chiến lược quốc tế hóa doanh nghiệp và hiệu quả hoạt động — phân tích tổng hợp đa quốc gia, dữ liệu World Bank.</span><span class="lang-en">Dissertation: corporate internationalization strategy and firm performance — multi-country meta-analysis, World Bank data.</span></p>
 
-  <h2><span lang="vi">Vị trí hiện tại</span> · Current positions</h2>
+  <h2><span class="lang-vi">Vị trí hiện tại</span><span class="lang-en">Current positions</span></h2>
   <ul>
-    <li><span class="yr">2024–now</span> — Lecturer, School of Economics, Can Tho University, Viet Nam <span class="venue">(teaching entrepreneurship, international business, economics)</span></li>
+    <li><span class="yr">2024–now</span> — Lecturer, School of Economics, Can Tho University, Viet Nam <span class="venue"><span class="lang-vi">(giảng dạy khởi nghiệp, kinh doanh quốc tế, kinh tế học)</span><span class="lang-en">(teaching entrepreneurship, international business, economics)</span></span></li>
     <li><span class="yr">2024–now</span> — PhD Candidate, Can Tho University <span class="venue">(international business)</span></li>
   </ul>
 
-  <h2><span lang="vi">Hướng nghiên cứu</span> · Research interests</h2>
-  <p><span lang="vi">Quốc tế hóa doanh nghiệp · Hiệu quả hoạt động doanh nghiệp · Phân tích tổng hợp (meta-analysis) · AI trong giáo dục đại học · Khởi sự doanh nghiệp · Kinh tế phát triển (tài chính · kinh tế · ESG)</span></p>
+  <h2><span class="lang-vi">Hướng nghiên cứu</span><span class="lang-en">Research interests</span></h2>
+  <p><span class="lang-vi">Quốc tế hóa doanh nghiệp · Hiệu quả hoạt động doanh nghiệp · Phân tích tổng hợp (meta-analysis) · AI trong giáo dục đại học · Khởi sự doanh nghiệp · Kinh tế phát triển (tài chính · kinh tế · ESG)</span><span class="lang-en">Corporate internationalization · Firm performance · Meta-analysis · AI in higher education · Entrepreneurship · Development economics (finance · economy · ESG)</span></p>
 
-  <h2><span lang="vi">Công bố khoa học</span> · Publications <span class="venue">(19 works — full list with DOI at <a href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/publications.html" target="_blank" rel="noopener">publications.html</a>)</span></h2>
+  <h2><span class="lang-vi">Công bố khoa học</span><span class="lang-en">Publications</span> <span class="venue">(19 works — full list with DOI at <a href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/publications.html" target="_blank" rel="noopener">publications.html</a>)</span></h2>
   <ul>
     <li>Unveiling the impact of Chinese Manufacturing SMEs' Internationalization on Performance. <span class="venue">Journal of Finance and Accounting Research, 2026.</span></li>
     <li>Firm performance heterogeneity in emerging Asia. <span class="venue">Vietnam Economic &amp; Financial Review, 2026.</span></li>
@@ -106,18 +118,18 @@ a{color:var(--accent)}
     <li class="venue" lang="vi">… cùng 10 công trình khác (meta-analysis review, nghiên cứu FDI Việt Nam, du lịch sinh thái sông Mekong, giá trị tinh thần nơi công sở, AI trong giáo dục bản tiếng Việt) — xem danh mục đầy đủ tại publications.html.</li>
   </ul>
 
-  <h2><span lang="vi">Phần mềm &amp; hệ sinh thái số</span> · Software &amp; digital works</h2>
+  <h2><span class="lang-vi">Phần mềm &amp; hệ sinh thái số</span><span class="lang-en">Software &amp; digital works</span></h2>
   <ul>
     <li><b>EnQuiz</b> — bilingual offline-first quiz app for Entrepreneurship courses. Zenodo <a href="https://doi.org/10.5281/zenodo.21850735" target="_blank" rel="noopener">DOI: 10.5281/zenodo.21850735</a>; archived at Software Heritage; indexed on OpenAIRE.</li>
     <li><b>M-AIDA</b> and <b>BizOn</b> — open-source teaching tools, published on Zenodo with DOIs.</li>
     <li><b>«Je m'appelle Hương»</b> — personal academic website with 3D garden, multilingual AI tour guide (VI/EN/FR), open-source music catalogue and PWA offline support.</li>
   </ul>
 
-  <h2><span lang="vi">Ngôn ngữ</span> · Languages</h2>
-  <p><span lang="vi">Tiếng Việt (bản ngữ) · English (working) · Français (basic)</span></p>
+  <h2><span class="lang-vi">Ngôn ngữ</span><span class="lang-en">Languages</span></h2>
+  <p><span class="lang-vi">Tiếng Việt (bản ngữ) · Tiếng Anh (thành thạo) · Tiếng Pháp (cơ bản)</span><span class="lang-en">Vietnamese (native) · English (working) · French (basic)</span></p>
 
   <footer style="margin-top:18px;padding-top:8px;border-top:1px solid var(--line);font-size:8.5pt;color:var(--muted)">
-    <span lang="vi">Cập nhật: 08/2026 · CV này đồng bộ với danh mục công bố tại </span><a href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/publications.html">publications.html</a>.
+    <span class="lang-vi">Cập nhật: 08/2026 · CV này đồng bộ với danh mục công bố tại </span><span class="lang-en">Updated: 08/2026 · this CV is synchronized with the full publication list at </span><a href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/publications.html">publications.html</a>.
   </footer>
 </div>
 </body>
