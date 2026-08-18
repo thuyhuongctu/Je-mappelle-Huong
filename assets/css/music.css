@@ -1,55 +1,79 @@
 :root{--surface:#FFFBF4;--ink:#3b2e2a;--muted:#8a7a72;--line:#e8ded5;--accent:#d8616e;--accent-soft:rgba(216,97,110,.12)}
-/* ===== HUONG MUSIC — widget nhạc nổi theo tâm trạng ===== */
-#hm-widget { position: fixed; right: 1rem; bottom: 6.4rem; z-index: 95; }
+/* ===== HUONG MUSIC — widget đĩa nhạc mini + panel gọn ===== */
+#hm-widget { position: fixed; right: 1rem; bottom: 1rem; z-index: 95; }
 #hm-nut {
-  width: 58px; height: 58px; border-radius: 50%; border: 1px solid var(--line);
-  background: var(--surface); font-size: 1.4rem; cursor: pointer;
+  width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--line);
+  background: var(--surface); font-size: 1.25rem; cursor: pointer; position: relative;
   box-shadow: inset 0 2px 0 rgba(255,255,255,.55), 0 6px 16px rgba(150,95,75,.22);
-  transition: transform .25s ease;
-  animation: hmDong 2.6s ease-in-out infinite;
+  transition: transform .25s ease, box-shadow .25s ease;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
-@keyframes hmDong { 0%,100%{transform:scale(1) rotate(-3deg)} 50%{transform:scale(1.07) rotate(3deg)} }
-#hm-nut:hover { transform: scale(1.12); }
-#hm-widget.open #hm-nut { animation-play-state: paused; }
+#hm-nut:hover { transform: scale(1.08); }
+#hm-nut:active { transform: scale(.97); }
+/* đĩa quay khi phát nhạc */
+#hm-nut.hm-phat .hm-ico { animation: hmXoay 6s linear infinite; }
+@keyframes hmXoay { to { transform: rotate(360deg); } }
+.hm-ico { display: inline-block; line-height: 1; transition: transform .3s ease; }
+/* thanh nhịp nhảy trong nút */
+.hm-bar { position: absolute; inset: 0; display: none; align-items: flex-end; justify-content: center; gap: 3px; padding-bottom: 10px; }
+.hm-bar span { width: 4px; border-radius: 2px; background: var(--accent); transition: height .08s linear; }
+#hm-nut.hm-phat .hm-ico { display: none; }
+#hm-nut.hm-phat .hm-bar { display: flex; }
+/* badge "đang phát" nhỏ bên cạnh */
+#hm-widget .hm-badge {
+  position: absolute; top: -4px; right: -4px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent); border: 2px solid var(--surface); display: none;
+}
+#hm-widget .hm-badge.hm-co { display: block; animation: hmPulse 1.8s ease-in-out infinite; }
+@keyframes hmPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+
 #hm-panel {
-  position: absolute; bottom: 66px; right: 0; width: min(320px, calc(100vw - 2rem));
+  position: absolute; bottom: 60px; right: 0; width: min(330px, calc(100vw - 2rem));
   background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
   box-shadow: inset 0 2px 0 rgba(255,255,255,.55), 0 12px 32px rgba(120,60,60,.18);
-  padding: 14px 15px 12px; overflow: visible;
+  padding: 13px 14px 12px;
 }
 #hm-panel.hm-an { display: none; }
 .hm-tren { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .hm-tren b { font-family: var(--sans); font-size: .85rem; }
 #hm-dong { background: none; border: none; font-size: .9rem; cursor: pointer; color: var(--muted); }
-#hm-mood-chon { font-family: var(--sans); font-size: .74rem; color: var(--muted); margin-bottom: 7px; }
-.hm-moods { display: flex; flex-direction: column; gap: 9px; }
-.hm-mood { border: 1px solid var(--line); border-radius: 13px; padding: 8px 10px; background: rgba(255,255,255,.35); }
-.hm-mood > button { background: none; border: none; cursor: pointer; text-align: left; font-family: var(--sans); }
-.hm-face { font-size: 1.05rem; }
+#hm-mood-chon { font-family: var(--sans); font-size: .74rem; color: var(--muted); margin-bottom: 8px; }
+/* 3 khối tâm trạng xếp ngang — gọn, dễ chọn */
+.hm-moods { display: flex; flex-direction: column; gap: 8px; }
+.hm-mood { border: 1px solid var(--line); border-radius: 12px; padding: 7px 10px; background: rgba(255,255,255,.35); }
+.hm-mood > button {
+  background: none; border: none; cursor: pointer; text-align: left;
+  font-family: var(--sans); display: flex; align-items: center; gap: 6px; width: 100%;
+}
+.hm-face { font-size: 1rem; }
 .hm-tieude { font-weight: 700; font-size: .78rem; color: var(--ink); }
-.hm-noi { font-family: var(--sans); font-size: .66rem; color: var(--muted); margin: 1px 0 5px; line-height: 1.3; }
+.hm-noi { font-family: var(--sans); font-size: .64rem; color: var(--muted); margin: 0 0 6px; line-height: 1.3; }
 .hm-ds { display: flex; flex-wrap: wrap; gap: 5px; }
 .hm-bai {
-  font-family: var(--sans); font-size: .66rem; color: var(--ink);
+  font-family: var(--sans); font-size: .64rem; color: var(--ink);
   background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
-  padding: 4px 11px; cursor: pointer; box-shadow: inset 0 1.5px 0 rgba(255,255,255,.55);
+  padding: 4px 10px; cursor: pointer; box-shadow: inset 0 1.5px 0 rgba(255,255,255,.55);
 }
 .hm-bai:hover, .hm-bai.hm-dexuat { border-color: var(--accent); color: var(--accent); }
 .hm-dangphat {
-  margin-top: 9px; font-family: var(--sans); font-size: .72rem; font-weight: 600;
+  margin-top: 8px; font-family: var(--sans); font-size: .72rem; font-weight: 600;
   background: linear-gradient(90deg, var(--accent-soft), rgba(212,140,120,.12));
   border: 1px solid var(--accent); border-radius: 10px; padding: 6px 10px;
   display: flex; align-items: center; justify-content: space-between; gap: 8px;
 }
 .hm-dangphat small { font-weight: 400; opacity: .7; }
 .hm-dangphat button { background: none; border: none; cursor: pointer; font-size: .9rem; }
-.hm-volume { display: flex; align-items: center; gap: 7px; margin-top: 9px; font-size: .8rem; }
+.hm-volume { display: flex; align-items: center; gap: 7px; margin-top: 8px; font-size: .8rem; }
 .hm-volume input { flex: 1; accent-color: var(--accent); }
 .hm-volume span:last-child { font-family: var(--sans); font-size: .66rem; color: var(--muted); min-width: 28px; text-align: right; }
 @media (max-width: 560px) {
-  #hm-widget { right: auto; left: .6rem; bottom: 6.6rem; }
-  #hm-nut { width: 50px; height: 50px; font-size: 1.2rem; }
-  #hm-panel { bottom: 58px; right: auto; left: 0; width: min(290px, calc(100vw - 1.2rem)); }
+  #hm-widget { right: auto; left: .6rem; bottom: .8rem; }
+  #hm-nut { width: 46px; height: 46px; font-size: 1.15rem; }
+  #hm-panel { bottom: 54px; right: auto; left: 0; width: min(300px, calc(100vw - 1.2rem)); }
+  .hm-bar span { width: 3.5px; }
 }
-#hm-panel { max-height: 60vh; overflow-y: auto; }
-@media (prefers-reduced-motion: reduce) { #hm-nut { animation: none; } }
+#hm-panel { max-height: 62vh; overflow-y: auto; }
+@media (prefers-reduced-motion: reduce) { #hm-nut .hm-ico { animation: none; } #hm-badge { animation: none; } }
+
+/* trang vien: dock phải, nút nhạc nằm trên nut-cham */
+body.cham #hm-widget{ bottom:calc(1rem + 84px); }  /* trên nut-cham 76px + 8px gap, không chồng */

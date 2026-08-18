@@ -177,7 +177,11 @@
   function dungTaoWidget() {
     var html =
       '<div id="hm-widget">' +
-        '<button id="hm-nut" title="Nh\u1ea1c \u00b7 Music \u00b7 Musique" aria-label="M\u1edf panel nh\u1ea1c">\uD83C\uDFB5</button>' +
+        '<button id="hm-nut" title="Nh\u1ea1c \u00b7 Music \u00b7 Musique" aria-label="M\u1edf panel nh\u1ea1c">' +
+          '<span class="hm-ico">\uD83C\uDFB5</span>' +
+          '<span class="hm-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>' +
+        '</button>' +
+        '<span class="hm-badge" aria-hidden="true"></span>' +
         '<div id="hm-panel" class="hm-an">' +
           '<div class="hm-tren"><b id="hm-title">Nh\u1ea1c c\u1ee7a H\u01b0\u01a1ng</b><button id="hm-dong" aria-label="\u0110\u00f3ng">\u2715</button></div>' +
           '<div id="hm-mood-chon">' +
@@ -284,7 +288,31 @@
         hien.innerHTML = '';
       }
     }
+    /* đĩa quay + badge khi đang phát; dừng lại khi pause */
+    var nut = document.getElementById('hm-nut');
+    var badge = document.querySelector('#hm-widget .hm-badge');
+    if (nut) nut.classList.toggle('hm-phat', !audio.paused && dangPhat);
+    if (badge) badge.classList.toggle('hm-co', !audio.paused && dangPhat);
   }
+
+  /* nhịp thanh bar nhẹ trong nút nhạc (6 khung/giây — không tốn tài nguyên) */
+  var barTimer = null;
+  function batNhacQua() {
+    if (barTimer) return;
+    barTimer = setInterval(function () {
+      var bars = document.querySelectorAll('#hm-nut.hm-phat .hm-bar span');
+      if (!bars.length) return;
+      var f = getFFT ? getFFT() : null;
+      var base = f ? f.wave : 0;
+      bars.forEach(function (b, i) {
+        var h = f
+          ? 5 + (f.bass * (i % 2 === 0 ? 16 : 6) + f.mid * (i % 2 ? 12 : 4)) * 1.2 + Math.random() * 6
+          : 4 + Math.sin(Date.now() / 400 + i) * 3;
+        b.style.height = Math.min(22, Math.max(4, h)) + 'px';
+      });
+    }, 150);
+  }
+  batNhacQua();
 
   /* ---------- NHAC NEN THEO KHU ---------- */
   /* khuId -> bài hát nền phù hợp bối cảnh */

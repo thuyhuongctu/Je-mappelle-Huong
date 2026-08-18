@@ -173,7 +173,7 @@ button{font-family:inherit;cursor:pointer;border:0}
   box-shadow:0 7px 0 #B85C7E,0 14px 24px rgba(180,80,110,.35);
 }
 #nut-xe{
-  position:fixed;right:1rem;bottom:7.2rem;z-index:43;width:60px;height:60px;border-radius:50%;
+  position:fixed;right:1rem;bottom:calc(1rem + 84px + 54px);z-index:43;width:60px;height:60px;border-radius:50%;
   font-size:1.4rem;display:none;place-items:center;
   background:rgba(255,251,244,.92);box-shadow:var(--bong);
 }
@@ -280,6 +280,7 @@ body.cham #ban-do canvas{width:84px;height:84px}
   transition:bottom .3s ease}
 #nut-msg:hover{transform:scale(1.06)}
 #nut-msg.len{bottom:470px}
+body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important} /* dock phải: trên nut-xe, cách đều, tránh .len */
 /* --- HUD đọc sách --- */
 #hud-quote{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:#FFF8EE;
   border:3px solid #E8B84B;border-radius:22px;padding:.9rem 1.4rem;max-width:86vw;width:380px;
