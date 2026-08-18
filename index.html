@@ -1037,7 +1037,7 @@ if ('serviceWorker' in navigator) {
   const anh = document.getElementById('hg-img');
   const ten = document.getElementById('hg-ten');
   const phu = document.getElementById('hg-phu');
-  const XE = 'assets/img/huong_xedap_new.webp', CHI = 'assets/img/huong_chi.webp';
+  const XE = 'assets/img/huong_xedap_full.webp', CHI = 'assets/img/huong_chi.webp';
   const KHU = [
     ['about', {vi:'🌸 Giới thiệu',en:'🌸 About',fr:'🌸 À propos'}, {vi:'Bấm để đạp xe đi tiếp →',en:'Click to ride on →',fr:'Cliquez pour pédaler →'}, {vi:'Xin chào! Tôi là Hương AI, sẽ dẫn bạn thăm từng khu trên trang cá nhân này. Tôi là giảng viên và nghiên cứu sinh tiến sĩ tại Đại học Cần Thơ. Mời bạn đạp xe cùng tôi!',en:"Hello! I am Huong AI, your guide through this personal page. I am a lecturer and PhD candidate at Can Tho University. Let's ride together!",fr:"Bonjour ! Je suis Hương IA, votre guide sur cette page personnelle. Je suis enseignante-chercheuse à l'Université de Cần Thơ. Pédalons ensemble !"}],
     ['inspiration', {vi:'✨ Nguồn cảm hứng',en:'✨ Inspiration',fr:'✨ Inspiration'}, {vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'}, {vi:'Nơi lưu giữ câu nói của Chủ tịch Hồ Chí Minh gửi học sinh nhân ngày khai trường — nguồn cảm hứng cho mọi việc tôi làm.',en:"Home of President Ho Chi Minh's letter to students on the first school day — the inspiration behind everything I do.",fr:"La lettre du Président Hô Chi Minh aux élèves, le jour de la rentrée — l'inspiration de tout ce que je fais."}],
@@ -1147,7 +1147,7 @@ addEventListener('DOMContentLoaded', function(){
   if(!bd || typeof Huong3D === 'undefined') return;
   const co = Huong3D.gan({
     khung: bd, cao: .285, duong: .93, batDau: .5, zIndex: 2,
-    anh: { xedap: 'assets/img/huong_xedap_new.webp', chi: 'assets/img/huong_chi.webp' }
+    anh: { xedap: 'assets/img/huong_xedap_full.webp', chi: 'assets/img/huong_chi.webp' }
   });
   let dangChay = false;
   bd.querySelectorAll('.tram').forEach(t=>{
