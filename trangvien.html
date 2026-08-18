@@ -1127,6 +1127,19 @@ function sfxWhoosh(){
 }
 /* chuông gió khi chạm biển chỉ đường */
 function sfxBien(){ __tone(1046.5, .5, .07, 'sine'); __tone(1568, .55, .05, 'sine', 3136, .08); }
+
+/* ---- Giọng nói thật của Hương (voice) theo ngôn ngữ ---- */
+let huongAudio = null;
+function hatGiiong(kieu){
+  // kieu: 'welcome' | 'gioi-thieu' | ... map sang file assets/voice/voice_{kieu}_{NG}.mp3
+  if(!amBat) return;                 // tôn trọng trạng thái nút âm thanh
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(huongAudio){ try{huongAudio.pause();}catch(e){} }
+  const path = `assets/voice/voice_${kieu}_${NG}.mp3`;
+  huongAudio = new Audio(path);
+  huongAudio.volume = .85;
+  huongAudio.play().catch(()=>{});
+}
 // gắn vào các điểm tương tác
 (function ganSFX(){
   const hook = (sel, fn)=> document.querySelectorAll(sel).forEach(el=>{
@@ -1920,6 +1933,7 @@ const man = document.getElementById('man');
 
 function moBang(khu){
   sfxMoKhu();
+  hatGiiong(khu.id);
   dongHudMsg();  // đóng khung chat khi mở bảng khu
   dangMo = true;
   document.getElementById('bang-ten').textContent = khu.ten[NG];
@@ -2047,6 +2061,7 @@ function diToiKhu(khu){
 // vào trang viên
 const cong = document.getElementById('cong');
 document.getElementById('nut-vao').addEventListener('click', ()=>{
+  hatGiiong('welcome');
   cong.classList.add('tan');
   setTimeout(()=>cong.remove(), 800);
 });
