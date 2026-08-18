@@ -1,86 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Publications · Do Thuy Huong — Je m'appelle Hương</title>
-<meta name="description" content="Full list of scholarly publications by Do Thuy Huong with DOI links.">
-<link rel="canonical" href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/publications.html">
-<meta property="og:title" content="Publications · Do Thuy Huong — Je m'appelle Hương">
-<meta property="og:description" content="Full list of scholarly publications by Do Thuy Huong with DOI links.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/publications.html">
-<meta property="og:site_name" content="Je m'appelle Hương — Do Thuy Huong">
-<link rel="icon" href="favicon.ico" sizes="48x48">
+<!doctype html><html lang="vi" data-theme="light"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nhật ký sáng tạo · Do Thuy Huong</title>
+
+
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="theme-color" content="#f4efe9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171315" media="(prefers-color-scheme: dark)">
 <style>
 :root{--paper:#f9f1e6;--surface:#fffdf8;--ink:#463029;--muted:#8d7166;--line:#eddcc9;
---accent:#c4596b;--accent-soft:#fae3e6;--gold:#b98a2e;
+--accent:#c4596b;--accent-soft:#fae3e6;--gold:#a9781f;
 --serif:Georgia,"Iowan Old Style","Times New Roman",serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 --shadow:0 1px 2px rgba(30,20,20,.05),0 10px 30px rgba(30,20,20,.07)}
 @media(prefers-color-scheme:dark){:root{--paper:#251b21;--surface:#30232b;--ink:#f3e7e2;--muted:#b59d9b;--line:#453039;--accent:#e59aa8;--accent-soft:#3c2530;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4)}}
 :root[data-theme=dark]{--paper:#251b21;--surface:#30232b;--ink:#f3e7e2;--muted:#b59d9b;--line:#453039;--accent:#e59aa8;--accent-soft:#3c2530;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4)}
 :root[data-theme=light]{--paper:#f9f1e6;--surface:#fffdf8;--ink:#463029;--muted:#8d7166;--line:#eddcc9;--accent:#9e3b4e;--accent-soft:#f3e2e5}
 html{scroll-behavior:smooth}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6}
-.wrap{max-width:860px;margin:0 auto;padding:clamp(20px,4vw,48px) 18px}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:clamp(20px,4vw,48px)}
 h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
 a{color:var(--accent)}
-.skip{position:absolute;left:-999px;top:0;background:var(--accent);color:#fff;padding:10px 16px;z-index:99}
-.skip:focus{left:12px;top:12px;border-radius:10px;text-decoration:none}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:700;color:var(--accent)}
 .brandmini{position:fixed;top:10px;left:12px;z-index:6;display:none;width:min(230px,calc(100vw - 190px));height:auto;text-decoration:none;line-height:0}
 .brandmini img{display:block;width:100%;height:auto;object-fit:contain}
-@media(max-width:560px){.brandmini{top:6px;left:6px;width:96px;background:rgba(255,253,248,.7);border-radius:14px;padding:3px 8px}}
+@media(max-width:560px){.brandmini{top:9px;left:9px;width:160px}}
 .topctl{position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:6}
 .toggle{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 13px;font-size:.74rem;cursor:pointer;box-shadow:var(--shadow)}
 .langtog{display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
 .langtog button{border:none;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:6px 11px;cursor:pointer}
 .langtog button.active{background:var(--accent);color:#fff}
-html[lang="vi"] .lang-en,html[lang="vi"] .lang-fr{display:none}
-html[lang="en"] .lang-vi,html[lang="en"] .lang-fr{display:none}
-html[lang="fr"] .lang-vi,html[lang="fr"] .lang-en{display:none}
-.sitenav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:96px 0 6px;padding-bottom:18px;border-bottom:1px solid var(--line)}
-.sitenav a{font-size:.84rem;font-weight:600;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 17px;box-shadow:inset 0 2px 0 rgba(255,255,255,.55),0 5px 12px rgba(150,95,75,.12)}
-.sitenav a:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-.sitenav a.here{background:var(--accent);border-color:var(--accent);color:#fff}
+html[lang="en"] .lang-vi{display:none}
+html:not([lang="en"]) .lang-en{display:none}
 header.page{margin:40px 0 14px;text-align:center;border-bottom:none;padding-bottom:0;position:relative}
 header.page h1{font-size:clamp(1.7rem,5vw,2.5rem);margin:0 0 8px}
 .page-kicker{margin:0 0 6px;font:700 .7rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
 header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--mint,#cdeacf),var(--accent-soft),var(--sky,#dde6f6))}
 .sub{color:var(--muted)}
-
-/* filters */
-.pub-filters{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 4px}
-.pub-filters button{font:600 .74rem var(--sans);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer;box-shadow:inset 0 2px 0 rgba(255,255,255,.5)}
-.pub-filters button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.pub-count{font-size:.74rem;color:var(--muted);margin:8px 0 14px}
-/* pub list */
-.pub{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px 24px;box-shadow:inset 0 2px 0 rgba(255,255,255,.5),0 1px 2px rgba(30,20,20,.05),0 8px 24px rgba(30,20,20,.06);margin-bottom:14px;transition:transform .15s}
-.pub:hover{transform:translateY(-2px)}
-.pub-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.pub-year{font:700 .78rem var(--sans);color:var(--accent);letter-spacing:.05em}
-.pub-type{font:700 .62rem var(--sans);letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:2px 10px;color:#fff}
-.pub-type.pub-journal{background:#4e7a5f}
-.pub-type.pub-chapter{background:#b98a2e}
-.pub-type.pub-conf{background:#5f6e94}
-.pub-type.pub-preprint{background:#8a6fbf}
-.pub-type.pub-other{background:var(--muted)}
-.pub-title{font-size:clamp(1rem,2.6vw,1.16rem);line-height:1.35;margin:0 0 8px}
-.pub-venue{font-size:.84rem;color:var(--muted);overflow-wrap:anywhere;word-break:break-word;min-width:0}
-.pub-venue a{text-decoration:none;display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom;min-width:0}
-.pub-venue a:hover{text-decoration:underline}
-.pub-venue-na{opacity:.4}
-.academic-strip{background:var(--accent-soft);border:1px solid var(--line);border-radius:22px;padding:16px 20px;margin-bottom:22px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
-.academic-strip .as-item{font-size:.82rem;color:var(--ink)}
-.academic-strip b{font-family:var(--serif);font-size:1.05rem}
+section{margin-top:36px}
+.shead{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
+.shead h2{font-size:1.3rem}.shead .ln{flex:1;height:1px;background:var(--line)}
+.song{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.song-head{display:grid;grid-template-columns:130px 1fr;gap:18px;padding:20px 22px;align-items:center}
+@media(max-width:560px){.song-head{grid-template-columns:1fr;text-align:center;justify-items:center}}
+.cover{width:130px;height:130px;border-radius:12px;object-fit:cover;object-position:50% 12%;box-shadow:var(--shadow)}
+.song-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;line-height:1.25}
+.song-meta{font-size:.84rem;color:var(--muted);margin-top:4px}
+.song-desc{font-size:.92rem;color:var(--muted);margin-top:8px;max-width:58ch}
+.tracks{border-top:1px solid var(--line);padding:14px 22px 20px;display:flex;flex-direction:column;gap:14px}
+.track{display:flex;flex-direction:column;gap:6px}
+.track-name{font-size:.9rem;font-weight:600}
+.track-name .len{font-weight:400;color:var(--muted)}
+audio{width:100%;height:38px}
+.lyrics{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:26px clamp(20px,4vw,36px)}
+.lyrics h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:26px 0 8px;font-family:var(--sans);font-weight:700}
+.lyrics h3:first-child{margin-top:0}
+.lyrics h3 .note{text-transform:none;letter-spacing:0;color:var(--muted);font-weight:400;font-style:italic}
+.lyrics p{font-family:var(--serif);font-size:1.02rem;line-height:1.85;margin:0 0 4px;white-space:pre-line}
+.lyrics .refrain p{color:var(--accent)}
+.dedication{background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 8%,var(--surface)),var(--surface));border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:1.2rem 1.5rem;font-size:.95rem;color:var(--muted)}
+.dedication b{color:var(--ink)}
+.taglines{font-family:var(--serif);font-style:italic;text-align:center;color:var(--muted);line-height:1.9;margin:14px 0}
+.taglines b{color:var(--accent);font-style:normal}
+.motifs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.motifs span{font-size:.78rem;background:var(--accent-soft);color:var(--accent);padding:4px 11px;border-radius:20px}
+.tracklist{width:100%;border-collapse:collapse;font-size:.86rem;margin-top:6px}
+.tracklist th{font-family:var(--sans);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:2px solid var(--ink)}
+.tracklist td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+.tracklist td:first-child{font-family:var(--serif);font-weight:700;color:var(--accent);white-space:nowrap}
+.tracklist a{text-decoration:none;font-weight:600}
+.prod{font-size:.82rem;color:var(--muted);margin:6px 0 0;line-height:1.7}
+.prod b{color:var(--ink)}
+.keyline{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:.95rem;margin-top:6px}
+.norec{font-size:.85rem;color:var(--muted);font-style:italic;background:var(--accent-soft);border-radius:9px;padding:8px 14px;display:inline-block;margin-top:4px}
 footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
-footer a{color:var(--muted);text-decoration:none}
+footer a{color:var(--muted)}
 footer a:hover{color:var(--accent)}
-footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
-.skip-link{position:absolute;top:-48px;left:0;background:var(--accent,#a8394e);color:#fff;font-weight:700;padding:10px 18px;z-index:100;border-radius:0 0 10px 0;text-decoration:none}
-.skip-link:focus{top:0}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
+.skip-link{position:absolute;top:-52px;left:12px;background:#a8394e;color:#fff;font:700 .85rem sans-serif;padding:10px 16px;z-index:100;border-radius:0 0 10px 10px;text-decoration:none;transition:top .2s}.skip-link:focus{top:0;outline:3px solid #a8394e;outline-offset:2px}
+.jc-hero{text-align:center;padding:56px 20px 10px}
+.jc-kicker{font:600 .78rem/1 var(--sans);letter-spacing:.28em;color:var(--accent);text-transform:uppercase}
+.jc-title{font:700 clamp(1.6rem,4.5vw,2.6rem)/1.15 var(--serif);margin:14px auto 12px;max-width:900px}
+.jc-sub{font:1rem/1.8 var(--sans);color:var(--muted);max-width:820px;margin:0 auto}
+.jc-timeline{max-width:860px;margin:44px auto 0;padding:0 24px}
+.jc-item{position:relative;padding:0 0 40px 34px;border-left:2px solid var(--line);margin-left:6px}
+.jc-item::before{content:"";position:absolute;left:-8px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(193,67,91,.14)}
+.jc-date{font:700 .85rem/1 var(--sans);letter-spacing:.18em;color:var(--accent);margin-bottom:8px}
+.jc-item h3{font:700 1.12rem/1.45 var(--serif);margin:0 0 8px}
+.jc-item p{font:.95rem/1.8 var(--sans);color:var(--muted)}
+.jc-item p b{color:var(--ink)}
+.jc-item a{color:var(--accent);font-weight:600}
+.jc-note{margin:32px 24px 44px;padding:18px 22px;background:rgba(193,67,91,.07);border-radius:14px;font:.95rem/1.8 var(--sans);color:var(--ink)}
+@media (prefers-reduced-motion: reduce){.jc-item{opacity:1!important;transform:none!important}}
 </style>
+
+<meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-music.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Personal music library of Đỗ Thùy Hương — song-cycle La lampe, le fleuve et les couleurs">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Je m'appelle Hương — Đỗ Thùy Hương">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Music · Personal Music Library — Je suis Hương">
+<meta name="twitter:description" content="Personal music library of Đỗ Thùy Hương — Songbook «Je m'appelle Hương»: La lampe, le fleuve et les couleurs, a 5-chapter mini song-cycle.">
+<meta name="twitter:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-music.jpg">
 <style>
 /* ===== DeepMind-style header ===== */
 .dmnav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:10px;padding:10px 16px;
@@ -125,244 +150,13 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
   #bando{transition:transform .1s linear}
 }
-</style>  <meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-default.jpg">
-    <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "CollectionPage",
-      "name": "Publications · Do Thuy Huong",
-      "url": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/publications.html",
-      "description": "Full list of scholarly publications by Do Thuy Huong, PhD candidate at Can Tho University."
-    },
-    {
-      "@type": "ItemList",
-      "itemListElement": [
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Unveiling the impact of Chinese Manufacturing SMEs &#x27; Internationalization on Performance",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2026",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Firm performance heterogeneity in emerging Asia",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2026",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Institutional Completeness and the Internationalization–Performance Relationship: Capability Ceiling and Dual Substitution Evidence from Singapore",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2026",
-          "inLanguage": "en",
-          "identifier": "https://doi.org/10.2139/ssrn.6620124",
-          "url": "https://doi.org/10.2139/ssrn.6620124"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Nurturing the soul at work: spiritual values and psychological well-being in Vietnamese companies",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2025",
-          "inLanguage": "en",
-          "identifier": "https://doi.org/10.1080/13678868.2025.2549549",
-          "url": "https://doi.org/10.1080/13678868.2025.2549549"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Internationalization and Firm Performance of Firms in India: The Role of Top Management",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2025",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "TURNING IDYLLIC PANCHOR TOWN INTO A FUTURE RIVER TOURISM DESTINATION : WHAT DO THE LOCALS HAVE TO SAY ABOUT IT?",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2025",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "AI in Higher Education: Does AI Fear Hinder Learning Outcomes?",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2025",
-          "inLanguage": "en",
-          "identifier": "https://doi.org/10.1109/air63653.2024.00013",
-          "url": "https://doi.org/10.1109/air63653.2024.00013"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Solutions for Sustainable Development of the Supply Chain of Mud Crab in the Mekong Delta",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2025",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Internationalization and Firm Performance: A meta - analysis Review",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2024",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "AI in Higher Education: Does AI Fear Hinder Learning Outcomes?",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2024",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Nghiên cứu tác động của việc ứng dụng trí tuệ nhân tạo đến kết quả học tập của sinh viên ngành kinh tế Trường Đại học Sư phạm Kỹ thuật Vĩnh Long (MS: 2023.KT-L23)",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2024",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Các nhân tố tác động đến dòng vốn đầu tư trực tiếp nước ngoài vào Việt Nam giai đoạn từ năm 2013 đến năm 2022: Ứng dụng mô hình lực hấp dẫn",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2024",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Compassion, Self-Healing Psychological Well-being in the workplace: A study in Vietnam context",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2024",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Nghiên cứu tác động của khuyến mại ảo đến cảm nhận và hành vi của người tiêu dùng đối với các sàn thương mại điện tử ở Việt Nam (T2023-L30)",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2024",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "The Impact of the Covid-19 Pandemic on the Business Performance of Construction Industry Enterprises in Can Tho City",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2023",
-          "inLanguage": "en",
-          "identifier": "https://doi.org/10.55908/sdgs.v11i12.1751",
-          "url": "https://doi.org/10.55908/sdgs.v11i12.1751"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Internationalization and Turkish Manufacturing Firm Performance – Does Managerial Personality Matter?",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2021",
-          "inLanguage": "en",
-          "identifier": "https://doi.org/10.5772/intechopen.97432",
-          "url": "https://doi.org/10.5772/intechopen.97432"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "The Moderating Effects ofthe Manager’s Characteristics and Financial Obstacles On Internationalization andFirm Performance in Poland",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2021",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Tác động của khoảng cách, quy mô thị trường và dòng vốn FDI vào Việt Nam giai đoạn 2006-2015 ứng dụng mô hình lực hấp dẫn",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2020",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "The moderating effects of managers’ experience and gender on internationalization and firm performance of manufacturing enterprises in Turkey",
-          "author": {
-            "@type": "Person",
-            "name": "Do Thuy Huong"
-          },
-          "datePublished": "2020",
-          "inLanguage": "en",
-          "identifier": "https://doi.org/10.5267/j.ac.2020.9.006",
-          "url": "https://doi.org/10.5267/j.ac.2020.9.006"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Do Thuy Huong",
-      "alternateName": [
-        "Đỗ Thùy Hương",
-        "Thuy Huong Do"
-      ],
-      "jobTitle": "Lecturer and PhD Candidate",
-      "worksFor": {
-        "@type": "CollegeOrUniversity",
-        "name": "Can Tho University",
-        "url": "https://www.ctu.edu.vn/"
-      },
-      "url": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/publications.html",
-      "sameAs": [
-        "https://scholar.google.com/citations?user=jSvAVnsAAAAJ"
-      ]
-    }
-  ]
-}</script>
+</style><meta name="description" content="Nhật ký sáng tạo — hành trình xây M-AIDA, BizOn, EnQuiz, avatar Hương AI, MV Mekong Sunfire và trang viên 3D.">
+<meta property="og:title" content="Nhật ký sáng tạo · Do Thuy Huong">
+<meta property="og:description" content="Hành trình sáng tạo: từ bản phác đất sét đến phần mềm có DOI, từ avatar Hương AI đến MV Mekong Sunfire.">
+<meta property="og:url" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/journey.html">
+<meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-default.jpg">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/journey.html">
 </head><body>
   <div class="dmnav" id="dmnav">
     <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
@@ -379,133 +173,77 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
     </div>
   </div>
 
-<a class="skip-link" href="#main">Skip to content</a>
-
-<a class="skip" href="#pub-list"><span class="lang-vi">Nhảy đến danh mục công bố</span><span class="lang-en">Skip to publications</span><span class="lang-fr">Aller aux publications</span></a>
 <a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo LR — Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
-<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span><span class="lang-fr">◐ Clair / Sombre</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button><button class="toprefresh" id="nut-acm" type="button" title="Academic mode"><span>🎓</span> <span class="lang-vi">Học thuật</span><span class="lang-en">Academic</span><span class="lang-fr">Académique</span></button></div>
-<div class="wrap">
-<nav class="sitenav" aria-label="Site"><a href="./"><span class="lang-vi">Trang chủ</span><span class="lang-en">Home</span><span class="lang-fr">Accueil</span></a><a href="./#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span><span class="lang-fr">À propos</span></a><a href="publications.html" class="here" aria-current="page"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></a><a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><span class="lang-fr">Musique</span></a><a class="hide-xs" href="blog.html">Blog</a><a href="trangvien.html">🌸 <span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span><span class="lang-fr">Jardin 3D</span></a>
-    <a href="cv.html" title="Curriculum Vitae" style="font-weight:600"><span class="lang-vi">📄 CV</span><span class="lang-en">📄 CV</span><span class="lang-fr">📄 CV</span></a>
-    <a href="journey.html" title="Nhật ký sáng tạo"><span class="lang-vi">🌸 Nhật ký</span><span class="lang-en">🌸 Journal</span><span class="lang-fr">🌸 Journal</span></a></nav>
-<header class="page">
-  <div class="page-kicker"><span class="lang-vi">Hồ sơ học thuật</span><span class="lang-en">Academic profile</span><span class="lang-fr">Profil académique</span></div>
-  <h1><span class="lang-vi">Công bố khoa học</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></h1>
-  <p class="sub"><span class="lang-vi">Danh mục đầy đủ các công trình đã công bố của Đỗ Thùy Hương — nghiên cứu sinh tiến sĩ, Trường Kinh tế, Đại học Cần Thơ. Nguồn: ORCID 0000-0002-7711-2487, khớp với Google Scholar.</span><span class="lang-en">Complete list of published works by Do Thuy Huong — PhD Candidate, School of Economics, Can Tho University. Source: ORCID 0000-0002-7711-2487, matching Google Scholar.</span><span class="lang-fr">Liste complète des travaux publiés de Do Thuy Huong — doctorante, École d'économie, Université de Cần Thơ. Source : ORCID 0000-0002-7711-2487, conforme à Google Scholar.</span></p>
-</header>
-<div class="academic-strip">
-  <span class="as-item"><span class="lang-vi">📄 </span><b>19</b><span class="lang-vi"> công trình · </span><span class="lang-en"> works · </span><span class="lang-fr"> travaux</span></span>
-  <span class="as-item"><span class="lang-vi">🔗 </span><span class="lang-vi">DOI trực tiếp khi có · </span><span class="lang-en">Direct DOI links where available · </span><span class="lang-fr">Liens DOI directs lorsqu'ils existent</span></span>
-  <span class="as-item"><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener"><span class="lang-vi">🆔 ORCID đầy đủ ↗</span><span class="lang-en">🆔 Full ORCID record ↗</span><span class="lang-fr">🆔 Dossier ORCID complet ↗</span></a></span>
-  <span class="as-item"><a href="https://scholar.google.com/citations?user=jSvAVnsAAAAJ" target="_blank" rel="noopener"><span class="lang-vi">🎓 Google Scholar ↗</span><span class="lang-en">🎓 Google Scholar ↗</span><span class="lang-fr">🎓 Google Scholar ↗</span></a></span>
-  <span class="as-item"><a href="https://www.researchgate.net/profile/Do-Thuy-Huong" target="_blank" rel="noopener"><span class="lang-vi">CV &amp; bản PDF ↗</span><span class="lang-en">CV &amp; full texts ↗</span><span class="lang-fr">CV &amp; textes complets ↗</span></a></span>
-</div>
-<div class="pub-filters" role="group" aria-label="Lọc công bố">
-  <button type="button" class="active" data-f="all"><span class="lang-vi">Tất cả</span><span class="lang-en">All</span><span class="lang-fr">Tout</span></button>
-  <button type="button" data-f="Journal Article"><span class="lang-vi">Bài tạp chí</span><span class="lang-en">Journal articles</span><span class="lang-fr">Articles</span></button>
-  <button type="button" data-f="Book Chapter"><span class="lang-vi">Chương sách</span><span class="lang-en">Book chapters</span><span class="lang-fr">Chapitres</span></button>
-  <button type="button" data-f="Conference Paper"><span class="lang-vi">Hội nghị</span><span class="lang-en">Conferences</span><span class="lang-fr">Conférences</span></button>
-  <button type="button" data-f="Preprint"><span class="lang-vi">Preprint</span><span class="lang-en">Preprints</span><span class="lang-fr">Prépublications</span></button>
-</div>
-<div class="pub-count" id="pub-count"></div>
-<main id="main">
-<article class="pub" data-year="2026" data-type="Journal Article">
-      <div class="pub-head"><span class="pub-year">2026</span><span class="pub-type pub-journal">Journal Article</span></div>
-      <h3 class="pub-title">Unveiling the impact of Chinese Manufacturing SMEs &#x27; Internationalization on Performance</h3>
-      <div class="pub-venue">Journal of Finance and Accounting Research</div>
-    </article>
-<article class="pub" data-year="2026" data-type="Journal Article">
-      <div class="pub-head"><span class="pub-year">2026</span><span class="pub-type pub-journal">Journal Article</span></div>
-      <h3 class="pub-title">Firm performance heterogeneity in emerging Asia</h3>
-      <div class="pub-venue">Vietnam Economic &amp; Financial Review</div>
-    </article>
-<article class="pub" data-year="2026" data-type="Preprint / Working Paper">
-      <div class="pub-head"><span class="pub-year">2026</span><span class="pub-type pub-preprint">Preprint / Working Paper</span></div>
-      <h3 class="pub-title">Institutional Completeness and the Internationalization–Performance Relationship: Capability Ceiling and Dual Substitution Evidence from Singapore</h3>
-      <div class="pub-venue"><a href="https://doi.org/10.2139/ssrn.6620124" target="_blank" rel="noopener">DOI: 10.2139/ssrn.6620124</a></div>
-    </article>
-<article class="pub" data-year="2025" data-type="Journal Article">
-      <div class="pub-head"><span class="pub-year">2025</span><span class="pub-type pub-journal">Journal Article</span></div>
-      <h3 class="pub-title">Nurturing the soul at work: spiritual values and psychological well-being in Vietnamese companies</h3>
-      <div class="pub-venue">Human Resource Development International · <a href="https://doi.org/10.1080/13678868.2025.2549549" target="_blank" rel="noopener">DOI: 10.1080/13678868.2025.2549549</a></div>
-    </article>
-<article class="pub" data-year="2025" data-type="Book Chapter">
-      <div class="pub-head"><span class="pub-year">2025</span><span class="pub-type pub-chapter">Book Chapter</span></div>
-      <h3 class="pub-title">Internationalization and Firm Performance of Firms in India: The Role of Top Management</h3>
-      <div class="pub-venue">International Business Research - Traditional and Creative Approaches</div>
-    </article>
-<article class="pub" data-year="2025" data-type="Journal Article">
-      <div class="pub-head"><span class="pub-year">2025</span><span class="pub-type pub-journal">Journal Article</span></div>
-      <h3 class="pub-title">TURNING IDYLLIC PANCHOR TOWN INTO A FUTURE RIVER TOURISM DESTINATION : WHAT DO THE LOCALS HAVE TO SAY ABOUT IT?</h3>
-      <div class="pub-venue">https://journals.iium.edu.my/enmjournal/index.php/enmj/index</div>
-    </article>
-<article class="pub" data-year="2025" data-type="Journal Article">
-      <div class="pub-head"><span class="pub-year">2025</span><span class="pub-type pub-journal">Journal Article</span></div>
-      <h3 class="pub-title">AI in Higher Education: Does AI Fear Hinder Learning Outcomes?</h3>
-      <div class="pub-venue">2024 Artificial Intelligence Revolutions (AIR) · <a href="https://doi.org/10.1109/air63653.2024.00013" target="_blank" rel="noopener">DOI: 10.1109/air63653.2024.00013</a></div>
-    </article>
-<article class="pub" data-year="2025" data-type="Journal Article">
-      <div class="pub-head"><span class="pub-year">2025</span><span class="pub-type pub-journal">Journal Article</span></div>
-      <h3 class="pub-title">Solutions for Sustainable Development of the Supply Chain of Mud Crab in the Mekong Delta</h3>
-      <div class="pub-venue">Review of Finance</div>
-    </article>
-<article class="pub" data-year="2024" data-type="Conference Paper">
-      <div class="pub-head"><span class="pub-year">2024</span><span class="pub-type pub-conf">Conference Paper</span></div>
-      <h3 class="pub-title">Internationalization and Firm Performance: A meta - analysis Review</h3>
-      <div class="pub-venue">The Sixth International Conference on Sustainable development in Economics, Business, and Finance</div>
-    </article>
-<article class="pub" data-year="2024" data-type="Conference Paper">
-      <div class="pub-head"><span class="pub-year">2024</span><span class="pub-type pub-conf">Conference Paper</span></div>
-      <h3 class="pub-title">AI in Higher Education: Does AI Fear Hinder Learning Outcomes?</h3>
-      <div class="pub-venue">Artificial Intelligence Revolution 2024 (AIR)</div>
-    </article>
-<article class="pub" data-year="2024" data-type="Working Paper">
-      <div class="pub-head"><span class="pub-year">2024</span><span class="pub-type pub-other">Working Paper</span></div>
-      <h3 class="pub-title">Nghiên cứu tác động của việc ứng dụng trí tuệ nhân tạo đến kết quả học tập của sinh viên ngành kinh tế Trường Đại học Sư phạm Kỹ thuật Vĩnh Long (MS: 2023.KT-L23)</h3>
-      <div class="pub-venue"><span class="pub-venue-na">—</span></div>
-    </article>
-<article class="pub" data-year="2024" data-type="Journal Article">
-      <div class="pub-head"><span class="pub-year">2024</span><span class="pub-type pub-journal">Journal Article</span></div>
-      <h3 class="pub-title">Các nhân tố tác động đến dòng vốn đầu tư trực tiếp nước ngoài vào Việt Nam giai đoạn từ năm 2013 đến năm 2022: Ứng dụng mô hình lực hấp dẫn</h3>
-      <div class="pub-venue">Tạp chí Khoa học - VLUTE</div>
-    </article>
-<article class="pub" data-year="2024" data-type="Conference Paper">
-      <div class="pub-head"><span class="pub-year">2024</span><span class="pub-type pub-conf">Conference Paper</span></div>
-      <h3 class="pub-title">Compassion, Self-Healing Psychological Well-being in the workplace: A study in Vietnam context</h3>
-      <div class="pub-venue">European Academy of Management (EURAM)</div>
-    </article>
-<article class="pub" data-year="2024" data-type="Review">
-      <div class="pub-head"><span class="pub-year">2024</span><span class="pub-type pub-other">Review</span></div>
-      <h3 class="pub-title">Nghiên cứu tác động của khuyến mại ảo đến cảm nhận và hành vi của người tiêu dùng đối với các sàn thương mại điện tử ở Việt Nam (T2023-L30)</h3>
-      <div class="pub-venue">Can Tho University</div>
-    </article>
-<article class="pub" data-year="2023" data-type="Journal Article">
-      <div class="pub-head"><span class="pub-year">2023</span><span class="pub-type pub-journal">Journal Article</span></div>
-      <h3 class="pub-title">The Impact of the Covid-19 Pandemic on the Business Performance of Construction Industry Enterprises in Can Tho City</h3>
-      <div class="pub-venue">Journal of Law and Sustainable Development · <a href="https://doi.org/10.55908/sdgs.v11i12.1751" target="_blank" rel="noopener">DOI: 10.55908/sdgs.v11i12.1751</a></div>
-    </article>
-<article class="pub" data-year="2021" data-type="Book Chapter">
-      <div class="pub-head"><span class="pub-year">2021</span><span class="pub-type pub-chapter">Book Chapter</span></div>
-      <h3 class="pub-title">Internationalization and Turkish Manufacturing Firm Performance – Does Managerial Personality Matter?</h3>
-      <div class="pub-venue">Accounting and Finance Innovations · <a href="https://doi.org/10.5772/intechopen.97432" target="_blank" rel="noopener">DOI: 10.5772/intechopen.97432</a></div>
-    </article>
-<article class="pub" data-year="2021" data-type="Journal Article">
-      <div class="pub-head"><span class="pub-year">2021</span><span class="pub-type pub-journal">Journal Article</span></div>
-      <h3 class="pub-title">The Moderating Effects ofthe Manager’s Characteristics and Financial Obstacles On Internationalization andFirm Performance in Poland</h3>
-      <div class="pub-venue">PalArch&#x27;s Journal of Archaeology of Egypt/ Egyptology</div>
-    </article>
-<article class="pub" data-year="2020" data-type="Journal Article">
-      <div class="pub-head"><span class="pub-year">2020</span><span class="pub-type pub-journal">Journal Article</span></div>
-      <h3 class="pub-title">Tác động của khoảng cách, quy mô thị trường và dòng vốn FDI vào Việt Nam giai đoạn 2006-2015 ứng dụng mô hình lực hấp dẫn</h3>
-      <div class="pub-venue">Tạp chí Quản lý và Kinh tế quốc tế</div>
-    </article>
-<article class="pub" data-year="2020" data-type="Journal Article">
-      <div class="pub-head"><span class="pub-year">2020</span><span class="pub-type pub-journal">Journal Article</span></div>
-      <h3 class="pub-title">The moderating effects of managers’ experience and gender on internationalization and firm performance of manufacturing enterprises in Turkey</h3>
-      <div class="pub-venue">Accounting · <a href="https://doi.org/10.5267/j.ac.2020.9.006" target="_blank" rel="noopener">DOI: 10.5267/j.ac.2020.9.006</a></div>
-    </article>
-</main>
+<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button></div>
 
+<div class="wrap">
+  <img src="assets/img/creative_library.jpg" alt="Kho thư viện sáng tạo — nhân vật Hương AI ngồi trên mây giữa thư viện đất sét với các ô Music, Art, Code, Science, Design" style="display:block;width:100%;height:auto;border-radius:26px;border:5px solid var(--surface);box-shadow:var(--shadow);margin:6px 0 26px" loading="lazy">
+  <header class="page">
+    <div class="page-kicker"><span class="lang-vi">Kho nhạc cá nhân</span><span class="lang-en">Personal music</span></div>
+    <h1><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></h1>
+    <p class="sub"><span class="lang-vi">Các sáng tác riêng của Đỗ Thùy Hương — tách khỏi kho nhạc của M-AIDA và BizOn. Nghe nhạc của các dự án tại <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Bài hát</a> và <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a>.</span><span class="lang-en">Personal compositions by Do Thuy Huong — separate from the M-AIDA and BizOn project libraries. Project music lives at <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Songs</a> and <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a>.</span></p>
+  </header>
+
+  
+  <section class="jc-hero">
+    <p class="jc-kicker">CREATIVE JOURNAL · NHẬT KÝ SÁNG TẠO</p>
+    <h1 class="jc-title"><span class="lang-vi">Từ bản phác đất sét đến phần mềm có DOI</span><span class="lang-en">From clay sketches to software with a DOI</span></h1>
+    <p class="jc-sub"><span class="lang-vi">Mỗi món đồ trong hệ sinh thái «Je m'appelle Hương» đều bắt đầu từ một câu hỏi nhỏ, một bản phác nhanh, và rất nhiều lần thử-sai. Đây là những trang nhật ký công khai của hành trình đó.</span><span class="lang-en">Every item in the «Je m'appelle Hương» ecosystem started from a small question, a quick sketch, and a lot of trial and error. These are the open pages of that journey.</span></p>
+  </section>
+
+  <section class="jc-timeline">
+
+    <div class="jc-item">
+      <div class="jc-date">2024</div>
+      <h3><span class="lang-vi">Câu hỏi bắt đầu: làm sao dạy phân tích tổng hợp mà sinh viên không ngủ?</span><span class="lang-en">The opening question: how to teach meta-analysis without putting students to sleep?</span></h3>
+      <p><span class="lang-vi">Làm nghiên cứu sinh, tôi thấy một nghịch lý: meta-analysis gộp hàng trăm nghiên cứu, nhưng công cụ thì khô khan và chỉ dành cho chuyên gia. <b>M-AIDA</b> ra đời để lật ngược vấn đề — <i>để máy đọc, còn người quyết định</i>: sinh viên nhập dữ liệu, máy trích mức độ ảnh hưởng, người tự rút kết luận.</span><span class="lang-en">As a PhD candidate, I saw a paradox: meta-analysis combines hundreds of studies, yet its tools are dry and expert-only. <b>M-AIDA</b> flips it — <i>let the machine read, but let the human decide</i>: students enter the data, the tool extracts effect sizes, people draw their own conclusions.</span></p>
+    </div>
+
+    <div class="jc-item">
+      <div class="jc-date">2025</div>
+      <h3><span class="lang-vi">BizOn — lớp học khởi nghiệp thành bàn cờ đất sét</span><span class="lang-en">BizOn — an entrepreneurship class turned into a clay chessboard</span></h3>
+      <p><span class="lang-vi">Sinh viên thuộc lòng công thức hòa vốn nhưng chưa từng «sống» qua một quyết định kinh doanh. <b>BizOn Bật Nghiệp</b> dựng cả lớp học thành bàn cờ đất sét (claymorphism): mỗi nhóm là một tiệm, mỗi nước đi là một quý kinh doanh, rủi ro và may rủi được tung xúc xắc thật. Đồng sáng lập với PGS.TS. Phan Anh Tú. Phần game 3D sau này trở thành <b>Trang viên</b> của website này.</span><span class="lang-en">Students memorize breakeven formulas but never live through a business decision. <b>BizOn Bật Nghiệp</b> turns the class into a clay chessboard (claymorphism): each team runs a shop, each move is a business quarter, risk and luck roll like dice. Co-created with Assoc. Prof. Dr. Phan Anh Tu. The 3D game later became this website’s <b>Garden</b>.</span></p>
+    </div>
+
+    <div class="jc-item">
+      <div class="jc-date">08 · 2026</div>
+      <h3><span class="lang-vi">EnQuiz — ôn tập có DOI, chạy không cần mạng</span><span class="lang-en">EnQuiz — a quiz app with a DOI, working fully offline</span></h3>
+      <p><span class="lang-vi">Sinh viên Cần Thơ học phần lớn bằng điện thoại cũ, mạng chập chờn. <b>EnQuiz</b> được thiết kế offline-first: tải một lần, ôn mọi lúc, có luôn bộ thu âm hướng dẫn song ngữ. Ra mắt 09/08/2026 trên Zenodo, lưu trữ vĩnh viễn tại Software Heritage, lập chỉ mục OpenAIRE — <b>ba ngày sau: 101 lượt xem, 31 lượt tải</b>, nhanh nhất hệ sinh thái.</span><span class="lang-en">Can Tho students study mostly on older phones with flaky networks. <b>EnQuiz</b> is offline-first: download once, revise anytime, with a bilingual voice-over tour. Released on Zenodo Aug 9, 2026, permanently archived at Software Heritage, indexed on OpenAIRE — <b>three days later: 101 views, 31 downloads</b>, the fastest in the ecosystem.</span></p>
+    </div>
+
+    <div class="jc-item">
+      <div class="jc-date">2026</div>
+      <h3><span class="lang-vi">Hương AI — người dẫn tour tự làm bằng đất sét</span><span class="lang-en">Huong AI — a clay self-made tour guide</span></h3>
+      <p><span class="lang-vi">Avatar Hương AI bắt đầu từ một ý nghĩ vui: nếu nhân vật dẫn tour chính là tôi, thì website không chỉ giới thiệu nghiên cứu mà còn <i>thể hiện</i> người nghiên cứu. Mỗi tư thế (đạp xe, dùng laptop, chỉ đường, áo dài bạc) là một render riêng; giọng đọc ba thứ tiếng (VI/EN/FR) là giọng thật được thu âm tại trang <a href="audio.html">Thu âm</a> — chính chị cũng ghi âm tại đây.</span><span class="lang-en">The Huong AI avatar began as a playful idea: if the tour guide were me, the website would not only present research but <i>perform</i> the researcher. Each pose (cycling, laptop, wayfinding, silver áo dài) is a separate render; the three-language voice (VI/EN/FR) is real — recorded on the <a href="audio.html">Recording</a> page, where you can record yours too.</span></p>
+    </div>
+
+    <div class="jc-item">
+      <div class="jc-date">2026</div>
+      <h3><span class="lang-vi">MV «Mekong Sunfire» — điệp khúc trên sông Mekong</span><span class="lang-en">The «Mekong Sunfire» MV — a chorus over the Mekong</span></h3>
+      <p><span class="lang-vi">Bài «Bật Nghiệp» (BizOn) được remix thành «Mekong Sunfire»: điệp khúc cuối được cắt 15 giây, đưa vào bối cảnh hoàng hôn sông Mekong — ghe thuyền, chợ nổi, cầu gỗ — với nguyên tắc hợp đồng sáng tạo: <i>không chép lời hát, chỉ chữ thương hiệu; không lip-sync; không mặt bóng AI</i>. Ghi chú sản xuất đầy đủ nằm trong repo, công khai như mọi thứ ở đây.</span><span class="lang-en">The BizOn song «Bật Nghiệp» was remixed into «Mekong Sunfire»: the final chorus is cut to 15 seconds and staged at a Mekong sunset — boats, floating market, wooden bridge — under a creative contract: <i>no lyric transcription, brand typography only; no lip-sync; no AI-gloss faces</i>. Full production notes are open in the repo, like everything else here.</span></p>
+    </div>
+
+    <div class="jc-item">
+      <div class="jc-date">2026</div>
+      <h3><span class="lang-vi">Trang viên 3D — vườn học thuật có bản đồ</span><span class="lang-en">The 3D Garden — an academic garden with a map</span></h3>
+      <p><span class="lang-vi">Khuôn viên website ban đầu chỉ là một trang giới thiệu. Nó lớn dần thành thế giới 3D chạy trên Three.js: bảy khu (học thuật, dự án, thư viện, âm nhạc, bảng tin, giới thiệu, kho tương lai), bản đồ điều hướng «Đi đâu?», chế độ Tour tự động, nhạc tần số thư giãn 528Hz/432Hz, và bản đồ Việt Nam chìm có Hoàng Sa – Trường Sa trên mọi trang. Một người làm học thuật chơi Three.js — đó là chỗ nghiên cứu và cá tính gặp nhau.</span><span class="lang-en">The website began as a plain profile. It grew into a Three.js 3D world: seven zones (academics, projects, library, music, notice board, about, future vault), a «Go where?» navigation map, auto-tour mode, 528Hz/432Hz relaxation audio, and a sinking map of Viet Nam with the Hoàng Sa–Trường Sa islands on every page. A scholar playing Three.js — where research meets personality.</span></p>
+    </div>
+
+    <div class="jc-note">
+      <span class="lang-vi">🌱 Nhật ký này sẽ được viết tiếp cùng blog: mỗi cột mốc mới của EnQuiz, M-AIDA, BizOn, MV và trang viên sẽ thêm một trang tại đây. Nếu bạn là đồng sáng tạo (sinh viên, đồng nghiệp, chị cùng giảng dạy), hãy <a href="mailto:thuyhuongctu@gmail.com">gửi một dòng</a> — trang này thuộc về tất cả chúng ta.</span>
+      <span class="lang-en">🌱 This journal will keep being written alongside the blog: every new milestone of EnQuiz, M-AIDA, BizOn, the MV and the Garden adds a page here. If you co-created any of this (students, colleagues, fellow teachers), <a href="mailto:thuyhuongctu@gmail.com">send a line</a> — this page belongs to all of us.</span>
+    </div>
+
+  </section>
+
+  <section>
+    <div class="dedication">
+      <span class="lang-vi">🪷 <b>«Je m'appelle Hương — tu m'as donné ce nom.»</b> Bài hát nằm trong mạch sáng tác cá nhân cùng «Je m'appelle Hương and the World», nơi cái tên cha mẹ đặt trở thành ngọn đèn dẫn đường cho hành trình học thuật.</span>
+      <span class="lang-en">🪷 <b>"Je m'appelle Hương — you gave me this name."</b> The song belongs to the same personal thread as "Je m'appelle Hương and the World", where a given name becomes the lamp that lights an academic journey.</span>
+    </div>
+  </section>
+
+  
   <div class="dmfooter">
     <div class="dmf-grid">
       <div>
@@ -551,24 +289,19 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
   </div>
 
 </div>
+
 <script>document.getElementById('tg').addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',c==='dark'?'light':'dark')});</script>
-<script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="vi";try{s=localStorage.getItem("huong_lang")||(/^en/i.test(navigator.language)?"en":(/^fr/i.test(navigator.language)?"fr":"vi"));}catch(e){}set(s);})();
-(function(){
-  var arts=document.querySelectorAll('article.pub'), cnt=document.getElementById('pub-count');
-  function filter(f){
-    var n=0;arts.forEach(function(a){
-      if(f==='all'||a.getAttribute('data-type')===f||a.getAttribute('data-type').startsWith(f)){a.style.display='';n++;}else{a.style.display='none';}
-    });
-    cnt.textContent=n+' / '+arts.length;
-  }
-  document.querySelectorAll('.pub-filters button').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      document.querySelectorAll('.pub-filters button').forEach(function(x){x.classList.remove('active');});
-      btn.classList.add('active');filter(btn.getAttribute('data-f'));
-    });
+<script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="vi";try{s=localStorage.getItem("huong_lang")||((/^en/i.test(navigator.language)?"en":"vi"));}catch(e){}set(s);})();</script>
+<script>
+// Chỉ phát một bản tại một thời điểm
+document.querySelectorAll('audio').forEach(function(a){
+  a.addEventListener('play', function(){
+    document.querySelectorAll('audio').forEach(function(o){ if(o!==a) o.pause(); });
   });
-  filter('all');
-})();</script>
+});
+if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigator.serviceWorker.register('sw.js'); }); }
+</script>
+<script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 <script>
 /* Nút làm mới trang + tự phát hiện bản cập nhật PWA */
@@ -736,4 +469,4 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
   </g>
 <g class="lh" transform="translate(302.1,228.0)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(344.8,435.0)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(71.2,419.4)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(145.3,465.6)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g></svg></div></div>
 <script src="assets/js/music.js" defer></script>
-<script>(function(){var acm=document.getElementById("nut-acm");if(acm){acm.addEventListener("click",function(){try{localStorage.setItem("hocsuat","1")}catch(e){}window.location.href="publications.html#main"});}try{if(localStorage.getItem("hocsuat")==="1"){var r=document.getElementById("nut-ref")&&location.href;if(location.pathname.endsWith("index.html")||location.pathname.endsWith("/")){localStorage.removeItem("hocsuat");window.location.replace("publications.html#main")}}}catch(e){}})();</script></body></html>
+</body></html>
