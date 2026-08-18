@@ -1,3 +1,4 @@
+:root{--surface:#FFFBF4;--ink:#3b2e2a;--muted:#8a7a72;--line:#e8ded5;--accent:#d8616e;--accent-soft:rgba(216,97,110,.12)}
 /* ===== HUONG MUSIC — widget nhạc nổi theo tâm trạng ===== */
 #hm-widget { position: fixed; right: 1rem; bottom: 6.4rem; z-index: 95; }
 #hm-nut {
@@ -46,8 +47,9 @@
 .hm-volume input { flex: 1; accent-color: var(--accent); }
 .hm-volume span:last-child { font-family: var(--sans); font-size: .66rem; color: var(--muted); min-width: 28px; text-align: right; }
 @media (max-width: 560px) {
-  #hm-widget { right: .6rem; bottom: 6.6rem; }
+  #hm-widget { right: auto; left: .6rem; bottom: 6.6rem; }
   #hm-nut { width: 50px; height: 50px; font-size: 1.2rem; }
-  #hm-panel { bottom: 58px; width: min(290px, calc(100vw - 1.2rem)); }
+  #hm-panel { bottom: 58px; right: auto; left: 0; width: min(290px, calc(100vw - 1.2rem)); }
 }
+#hm-panel { max-height: 60vh; overflow-y: auto; }
 @media (prefers-reduced-motion: reduce) { #hm-nut { animation: none; } }

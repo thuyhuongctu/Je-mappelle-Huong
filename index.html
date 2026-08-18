@@ -224,7 +224,7 @@ body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repea
 .about-fig{border-radius:22px;border-width:4px}
 :focus-visible{outline:3px solid #c96a84;outline-offset:2px;border-radius:6px}
 </style>
-<style>.brandmini{position:fixed;top:10px;left:12px;z-index:6;display:block;width:min(230px,calc(100vw - 190px));height:auto;text-decoration:none;line-height:0}.brandmini img{display:block;width:100%;height:auto;object-fit:contain}@media(max-width:560px){.brandmini{top:6px;left:6px;width:96px;opacity:.97;background:rgba(255,253,248,.7);border-radius:14px;padding:3px 8px}}</style>
+<style>.brandmini{position:fixed;top:10px;left:12px;z-index:100;display:block;width:min(230px,calc(100vw - 190px));height:auto;text-decoration:none;line-height:0}.brandmini img{display:block;width:100%;height:auto;object-fit:contain}@media(max-width:560px){.brandmini{display:none}}</style>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -1250,4 +1250,6 @@ addEventListener('DOMContentLoaded', function(){
   }catch(e){}
 })();
 </script>
+<!-- Chữ ký brandmini chỉ hiện khi ở đầu trang, tránh đè lên nền khi cuộn -->
+<script>const bm=document.querySelector(".brandmini");if(bm){const t=()=>{if(window.scrollY>64){bm.style.opacity="0";bm.style.pointerEvents="none"}else{bm.style.opacity="";bm.style.pointerEvents="auto"}};t();window.addEventListener("scroll",t,{passive:true})}</script>
 </body></html>
