@@ -32,7 +32,7 @@ const CORE = [
   'assets/img/garden_hub.jpg',
   'assets/img/innovation_banner.jpg',
   'assets/img/creative_library.jpg',
-  'assets/img/research_map.jpg',
+  'assets/img/research_map.webp',
   'icons/icon-192.png',
   'icons/icon-512.png',
   'zenodo-stats.js',

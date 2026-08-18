@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 <title>Hương AI — Phòng thu lời dẫn tour</title>
-<meta name="description" content="Phòng thu cá nhân: ghi âm hoặc tải lên lời dẫn tour cho Hương AI (tiếng Việt, tiếng Anh, tiếng Pháp), tải về theo đúng quy ước tên file.">
+<meta name="description" content="Record or upload tour narration voice for Huong AI (VI/EN/FR) in the 3D garden.">
 <meta property="og:title" content="Huong AI — Tour Narration Studio">
-<meta property="og:description" content="Record or upload tour narration voice for Huong AI (Vietnamese, English, French), download with correct file names.">
+<meta property="og:description" content="Record or upload tour narration voice for Huong AI (VI/EN/FR) in the 3D garden.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-blog.jpg">
+<meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-default.jpg">
 <meta property="og:url" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/audio.html">
 <meta property="og:site_name" content="Je m'appelle Hương · Lecturer &amp; Researcher">
 <meta name="twitter:card" content="summary_large_image">
@@ -55,7 +55,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .langtog button{border:none;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:6px 11px}
 .langtog button.active{background:var(--accent);color:#fff}
 @media(max-width:560px){h1{font-size:1.35rem}.wrap{padding-top:66px}.row{gap:6px}}
-</style>
+.skip-link{position:absolute;top:-52px;left:12px;background:#a8394e;color:#fff;font:700 .85rem sans-serif;padding:10px 16px;z-index:100;border-radius:0 0 10px 10px;text-decoration:none;transition:top .2s}.skip-link:focus{top:0;outline:3px solid #a8394e;outline-offset:2px}</style>
 <style>
 /* ===== DeepMind-style header ===== */
 .dmnav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:10px;padding:10px 16px;
@@ -100,7 +100,8 @@ html:not([lang="fr"]) .lang-fr{display:none}
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
   #bando{transition:transform .1s linear}
 }
-</style></head>
+</style>  <link rel="canonical" href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/audio.html">
+</head>
 <body>
   <div class="dmnav" id="dmnav">
     <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
@@ -118,7 +119,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
   </div>
 
 <div class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button><button class="toprefresh" id="nut-ref" type="button" style="border:1px solid rgba(140,90,70,.3);border-radius:20px;background:#fff;box-shadow:0 6px 14px rgba(140,90,70,.1);font-size:.8rem;padding:5px 11px;cursor:pointer;color:#3a2f2a;font:700 .74rem system-ui;margin-right:8px"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button></div>
-<div class="wrap">
+<div class="wrap" id="main">
   <a class="brand" href="index.html"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Je m'appelle Hương · Lecturer &amp; Researcher"></a>
   <h1><span class="lang-vi">🎙️ Phòng thu lời dẫn tour</span><span class="lang-en">🎙️ Tour Narration Studio</span><span class="lang-fr">🎙️ Studio de narration</span></h1>
   <p class="sub"><span class="lang-vi">Ghi âm bằng micro hoặc tải file audio, đặt tên đúng quy ước, nghe lại và tải về</span><span class="lang-en">Record via microphone or upload audio, name it correctly, preview and download</span><span class="lang-fr">Enregistrez au micro ou téléchargez un fichier, nommez-le correctement, écoutez et téléchargez</span></p>
