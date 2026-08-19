@@ -146,17 +146,23 @@
     }, dt);
   }
 
+  // Mobile: AudioContext tạo lúc load sẽ ở trạng thái 'suspended'; resume trước mỗi lần phát
+  function resumeCtx() {
+    try { if (actx && actx.state === 'suspended') actx.resume(); } catch (e) { }
+  }
   function playSong(key, opts) {
     opts = opts || {};
     var song = SONGS[key];
     if (!song) return;
+    resumeCtx();
     var targetVol = typeof opts.vol !== 'undefined' ? opts.vol : vol;
     if (dangPhat === key && !audio.paused) return;
     audio.src = song.f;
     audio.loop = !!opts.loop;
-    audio.volume = 0.001;
+    // giữ volume hiện tại rồi fade nhẹ tới mức mong muốn — tránh ngắt quãng trên mobile khi bấm liên tục
+    if (audio.volume <= 0.005) audio.volume = Math.max(0.001, targetVol * 0.4);
     audio.play().then(function () {
-      fadeTo(Math.min(1, targetVol), 700);
+      fadeTo(Math.min(1, targetVol), 500);
     }).catch(function () { /* autoplay blocked — user click sau */ });
     dangPhat = key;
     capNhatUI();
@@ -365,6 +371,10 @@
   cssLink.href = 'assets/css/music.css';
   document.head.appendChild(cssLink);
 
+  /* tự động khôi phục AudioContext khi người dùng chạm trang (đặc biệt trên iOS/Android) */
+  ['pointerdown', 'touchstart', 'click', 'keydown'].forEach(function (ev) {
+    window.addEventListener(ev, function () { resumeCtx(); }, { passive: true, once: false });
+  });
   /* ---------- KHOI DONG ---------- */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', dungTaoWidget);
