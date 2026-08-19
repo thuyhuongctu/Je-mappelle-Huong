@@ -7,8 +7,8 @@
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<meta name="theme-color" content="#f9f1e6" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#251b21" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f4f6fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-title" content="Hương">
 <meta property="og:title" content="Đỗ Thùy Hương · Je suis Hương — Academic profile, research and the 3D Innovation Garden">
 <meta property="og:description" content="Academic website of Do Thuy Huong — lecturer and PhD candidate at Can Tho University: research, publications, songbook and an interactive 3D clay garden.">
@@ -16,22 +16,30 @@
 <meta property="og:url" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/">
 <meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-default.jpg">
 <style>
-:root{--paper:#f9f1e6;--surface:#fffdf8;--ink:#463029;--muted:#8d7166;--line:#eddcc9;
---accent:#c4596b;--accent-soft:#fae3e6;--gold:#b98a2e;--sky:#dde6f6;--mint:#cdeacf;
+:root{--paper:#f4f6fb;--surface:#ffffff;--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;
+--accent:#c4596b;--accent2:#4f6df5;--accent-soft:#fae3e6;--gold:#b98a2e;--sky:#eff4ff;--mint:#d7e9ff;
 --serif:Georgia,"Iowan Old Style","Times New Roman",serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
---pub:#3f9a68;--rev:#c1801a;--ms:#8a8f9a;--shadow:0 2px 3px rgba(150,95,75,.06),0 14px 34px rgba(150,95,75,.13)}
-@media(prefers-color-scheme:dark){:root{--paper:#251b21;--surface:#30232b;--ink:#f3e7e2;--muted:#b59d9b;--line:#453039;--accent:#e59aa8;--accent-soft:#3c2530;--sky:#2b2338;--mint:#2f4438;--shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px rgba(0,0,0,.42)}}
-:root[data-theme=dark]{--paper:#251b21;--surface:#30232b;--ink:#f3e7e2;--muted:#b59d9b;--line:#453039;--accent:#e59aa8;--accent-soft:#3c2530;--sky:#2b2338;--mint:#2f4438;--shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px rgba(0,0,0,.42)}
-:root[data-theme=light]{--paper:#f9f1e6;--surface:#fffdf8;--ink:#463029;--muted:#8d7166;--line:#eddcc9;--accent:#c4596b;--accent-soft:#fae3e6;--sky:#dde6f6;--mint:#cdeacf;--shadow:0 2px 3px rgba(150,95,75,.06),0 14px 34px rgba(150,95,75,.13)}
+--pub:#10b981;--rev:#c1801a;--ms:#8a8f9a;--glow:0 0 0 1px rgba(79,109,245,.25),0 12px 32px rgba(79,109,245,.12);
+--shadow:0 2px 3px rgba(30,41,59,.06),0 14px 34px rgba(79,109,245,.13)}
+@media(prefers-color-scheme:dark){:root{--paper:#0b1120;--surface:#111827;--ink:#e8eef8;--muted:#94a3b8;--line:#253044;--accent:#e8768a;--accent2:#6d8aff;--accent-soft:#1e293b;--sky:#151e32;--mint:#16324a;--glow:0 0 24px rgba(109,138,255,.28),0 0 0 1px rgba(109,138,255,.35);--shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px rgba(0,0,0,.42)}}
+:root[data-theme=dark]{--paper:#0b1120;--surface:#111827;--ink:#e8eef8;--muted:#94a3b8;--line:#253044;--accent:#e8768a;--accent2:#6d8aff;--accent-soft:#1e293b;--sky:#151e32;--mint:#16324a;--glow:0 0 24px rgba(109,138,255,.28),0 0 0 1px rgba(109,138,255,.35);--shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px rgba(0,0,0,.42)}
+:root[data-theme=light]{--paper:#f4f6fb;--surface:#ffffff;--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--accent:#c4596b;--accent2:#4f6df5;--accent-soft:#fae3e6;--sky:#eff4ff;--mint:#d7e9ff;--glow:0 0 0 1px rgba(79,109,245,.25),0 12px 32px rgba(79,109,245,.12);--shadow:0 2px 3px rgba(30,41,59,.06),0 14px 34px rgba(79,109,245,.13)}
 html{scroll-behavior:smooth}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
 .wrap{max-width:900px;margin:0 auto;padding:clamp(20px,4vw,48px)}
 h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
 a{color:var(--accent)}
 .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:700;color:var(--accent)}
-/* hero */
-.hero{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;border-bottom:2px solid var(--ink);padding-bottom:26px}
-@media(max-width:560px){.hero{grid-template-columns:1fr;text-align:center;justify-items:center}}
+/* hero — nền giao thoa xanh tech + hồng thương hiệu */
+.hero{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;border-bottom:2px solid var(--ink);padding-bottom:26px;
+background:linear-gradient(130deg,var(--sky) 0,var(--paper) 58%,#fbeaec 100%);border-radius:0 0 18px 18px;margin:-4px -8px 0;padding:20px 22px 26px}
+@media(max-width:560px){.hero{grid-template-columns:1fr;text-align:center;justify-items:center;border-radius:0 0 14px 14px;padding:16px 10px 22px}}
+/* dòng tín hiệu công nghệ dọc mép trên hero */
+.hero::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;
+background:linear-gradient(90deg,transparent,var(--accent2) 30%,#22d3ee 62%,transparent);opacity:.85}
+/* heading hero: chữ gradient thương hiệu → indigo → cyan */
+.hero h1 .techgrad,.techgrad{background:linear-gradient(92deg,var(--accent) 18%,var(--accent2) 58%,#22d3ee 92%);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(prefers-reduced-motion:reduce){.hero::before{display:none}}
 .portrait{width:150px;height:150px;border-radius:50%;object-fit:cover;box-shadow:var(--shadow);border:3px solid var(--surface)}
 .hero h1{font-size:clamp(1.8rem,5vw,2.7rem);line-height:1.08;margin:.15em 0}
 .roles{color:var(--muted);font-size:1.02rem}
@@ -133,8 +141,10 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
 .post-links a:hover{text-decoration:underline}
 /* Tin nổi bật — hệ sinh thái */
 .hl-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:0 0 18px}
-.hl-stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:14px;padding:13px 16px;box-shadow:var(--shadow);text-decoration:none;display:block;transition:transform .15s}
-.hl-stat:hover{transform:translateY(-2px)}
+.hl-stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:14px;padding:13px 16px;box-shadow:var(--shadow);text-decoration:none;display:block;transition:transform .15s,box-shadow .2s}
+.hl-stat:hover{transform:translateY(-2px);box-shadow:var(--glow)}
+/* dot terminal — chất phần mềm đang hoạt động */
+.dotlive{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--pub);margin-right:6px;vertical-align:middle;box-shadow:0 0 6px rgba(16,185,129,.7)}
 .hl-stat .hs-name{font-family:var(--sans);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--accent)}
 .hl-stat .hs-num{font-family:var(--serif);font-size:1.45rem;font-weight:700;color:var(--ink);margin:4px 0 1px}
 .hl-stat .hs-sub{font-size:.76rem;color:var(--muted)}
@@ -166,7 +176,7 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
 #bando{position:relative;width:100%;aspect-ratio:1376/768;border-radius:26px;overflow:hidden;
   border:5px solid var(--surface);box-shadow:var(--shadow);margin:0 0 26px;
   background:url('assets/img/garden_hub.webp') center/cover no-repeat}
-:root[data-theme=dark] #bando{filter:saturate(.92) brightness(.9)}
+:root[data-theme=dark] #bando{filter:saturate(.94) brightness(.78) contrast(1.03)}
 .bd-inner{position:absolute;inset:-6%;width:112%;height:112%;will-change:transform}
 .bd-map{position:absolute;right:3%;bottom:-6%;width:14%;opacity:.30;pointer-events:none;z-index:1;transform:rotate(8deg);filter:drop-shadow(0 3px 6px rgba(90,50,50,.25))}
 .bd-buom{position:absolute;z-index:2;pointer-events:none;font-size:clamp(.9rem,1.8vw,1.35rem);opacity:.9;
@@ -454,7 +464,7 @@ body{padding-top:44px}}
     <img class="portrait" src="assets/img/pro_aodai.webp" alt="3D render portrait of Do Thuy Huong in a white ao dai" fetchpriority="high">
     <div>
       <div class="eyebrow"><span class="lang-vi">Nghiên cứu sinh tiến sĩ · Nhà nghiên cứu</span><span class="lang-en">PhD Candidate · Researcher</span></div>
-      <h1><span class="lang-vi">Đỗ Thùy Hương</span><span class="lang-en">Do Thuy Huong</span></h1>
+      <h1><span class="techgrad"><span class="lang-vi">Đỗ Thùy Hương</span><span class="lang-en">Do Thuy Huong</span></span></h1>
       <div class="roles"><span class="lang-vi"><b>Nghiên cứu sinh tiến sĩ</b>, Trường Kinh tế, Đại học Cần Thơ<br>Hướng dẫn khoa học: PGS.TS. Phan Anh Tú</span><span class="lang-en"><b>PhD Candidate</b>, School of Economics, Can Tho University<br>Supervisor: Assoc. Prof. Dr. Phan Anh Tu</span></div>
       <div class="links">
         <a href="mailto:thuyhuongctu@gmail.com">✉ thuyhuongctu@gmail.com</a>
