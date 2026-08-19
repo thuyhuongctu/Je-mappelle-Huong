@@ -34,8 +34,7 @@ research, teaching and open educational software.
 ## Overview
 
 **Je m'appelle Hương** is the personal academic homepage of **Đỗ Thùy Hương**,
-lecturer at Vinh Long University of Technology Education (VLUTE) and PhD
-candidate in Business Administration at Can Tho University, whose research
+PhD candidate in Business Administration at Can Tho University, whose research
 concerns the relationship between internationalization and firm performance
 among enterprises in Asia.
 
@@ -55,10 +54,10 @@ toolchain, which is the property that makes the deposit useful in the long term.
 
 ## Tóm tắt tiếng Việt
 
-**Je m'appelle Hương** là trang học thuật cá nhân của **Đỗ Thùy Hương** — giảng
-viên Trường Đại học Sư phạm Kỹ thuật Vĩnh Long, nghiên cứu sinh tiến sĩ ngành
-Quản trị kinh doanh tại Trường Đại học Cần Thơ, nghiên cứu về quốc tế hóa và
-hiệu quả hoạt động kinh doanh của doanh nghiệp ở châu Á.
+**Je m'appelle Hương** là trang học thuật cá nhân của **Đỗ Thùy Hương** —
+nghiên cứu sinh tiến sĩ ngành Quản trị kinh doanh tại Trường Đại học Cần Thơ,
+nghiên cứu về quốc tế hóa và hiệu quả hoạt động kinh doanh của doanh nghiệp
+ở châu Á.
 
 Trang là cổng trung tâm của toàn bộ hệ sinh thái số: hồ sơ học thuật song ngữ,
 liên kết các dự án phần mềm mở đã có DOI, blog tin tức học thuật, quả cầu dữ
@@ -223,7 +222,6 @@ not covered by the reservation above:
 ## Author and contact
 
 **Đỗ Thùy Hương** (Do Thuy Huong)
-Lecturer, Vinh Long University of Technology Education (VLUTE)
 PhD candidate in Business Administration, Can Tho University
 
 - ORCID: [0000-0002-7711-2487](https://orcid.org/0000-0002-7711-2487)

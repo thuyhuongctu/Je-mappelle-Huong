@@ -14,8 +14,7 @@ message: >-
 type: software
 title: "Je m'appelle Hương: personal academic homepage"
 abstract: >-
-  The personal academic homepage of Đỗ Thùy Hương, lecturer at Vinh Long
-  University of Technology Education and PhD candidate in Business
+  The personal academic homepage of Đỗ Thùy Hương, PhD candidate in Business
   Administration at Can Tho University, researching the relationship between
   internationalization and firm performance among enterprises in Asia. The site
   presents a bilingual Vietnamese–English academic profile, links the author's
@@ -29,7 +28,7 @@ authors:
     given-names: "Thuy Huong"
     orcid: "https://orcid.org/0000-0002-7711-2487"
     email: "thuyhuongctu@gmail.com"
-    affiliation: "Vinh Long University of Technology Education (VLUTE)"
+    affiliation: "Can Tho University"
 version: "1.0"
 date-released: 2026-08-18
 repository-code: "https://github.com/thuyhuongctu/JESUISHUONG_WEBSITE_2026"
