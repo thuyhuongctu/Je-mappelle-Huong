@@ -1087,21 +1087,27 @@ if ('serviceWorker' in navigator) {
   }
   function tatTTS(){ if(dangDocTTS){ speechSynthesis.cancel(); dangDocTTS = false; if(LOI_BTN) LOI_BTN.textContent = '🔊'; } }
   function phatLoiDanh(){
-    // click loai 2 khi dang doc -> dung
+    // click loai 2 khi dang doc -> dung (TTS hoac audio)
     if(dangDocTTS && !baiDangPhat){ tatTTS(); return; }
+    if(baiDangPhat === AU_TOUR){ dungAuTour(); if(LOI_BTN) LOI_BTN.textContent = '🔊'; return; }
     if(hienTai < 0){ phatText({vi:'Xin chào! Tôi là Hương AI, sẽ dẫn bạn tham quan trang cá nhân này. Nhấn vào biển chỉ đường để cùng đạp xe đi từng khu nhé!', en:'Hello! I am Huong AI, your guide on this personal page. Click the sign to ride from area to area!', fr:'Bonjour ! Je suis Hương IA, votre guide sur cette page. Cliquez sur le panneau pour pédaler d’une étape à l’autre !'}); return; }
     const k = KHU[hienTai][4];
     if(k){ phatText(k); return; }
     const tenKhu = KHU[hienTai][1][ngonNgu()];
     phatText({vi:'Đang tham quan: ' + tenKhu, en:'Now visiting: ' + tenKhu, fr:'Visite en cours : ' + tenKhu});
   }
+  // Một audio duy nhất, phát lần lượt — tránh nhiều giọng đọc chồng lấp khi cuộn nhanh qua nhiều khu
+  const AU_TOUR = new Audio();
+  AU_TOUR.preload = 'none';
+  AU_TOUR.addEventListener('error', ()=>{ try{AU_TOUR.pause();}catch(e){} });
+  function dungAuTour(){ try{ AU_TOUR.pause(); AU_TOUR.currentTime = 0; }catch(e){} baiDangPhat = null; }
   function phatText(t){
     const l = ngonNgu();
     tatTTS();
-    if(baiDangPhat){ try{baiDangPhat.pause(); baiDangPhat = null;}catch(e){} }
+    dungAuTour();   // dừng hẳn file đang phát (dù ở giữa bài) trước khi phát bài mới
     const url = 'assets/audio/tour/' + (hienTai < 0 ? 'chao' : KHU[hienTai][0]) + '_' + l + '.mp3';
-    const au = new Audio(url);
-    au.play().then(()=>{ baiDangPhat = au; au.onended = ()=>{ baiDangPhat = null; if(LOI_BTN) LOI_BTN.textContent = '🔊'; }; if(LOI_BTN) LOI_BTN.textContent = '🔈'; }).catch(()=>{
+    AU_TOUR.src = url;
+    AU_TOUR.play().then(()=>{ baiDangPhat = AU_TOUR; AU_TOUR.onended = ()=>{ baiDangPhat = null; if(LOI_BTN) LOI_BTN.textContent = '🔊'; }; if(LOI_BTN) LOI_BTN.textContent = '🔈'; }).catch(()=>{
       if(!('speechSynthesis' in window)) return;
       const u = new SpeechSynthesisUtterance(t[l]);
       u.lang = MA_LANG[l];
@@ -1115,7 +1121,7 @@ if ('serviceWorker' in navigator) {
   }
   LOI_BTN.addEventListener('click', phatLoiDanh);
   // doi ngon ngu -> dung doc dang do va doc lai theo ngon ngu moi
-  new MutationObserver(()=>{ if(dangDocTTS){ tatTTS(); setTimeout(phatLoiDanh, 120); } }).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
+  new MutationObserver(()=>{ if(dangDocTTS || baiDangPhat === AU_TOUR){ tatTTS(); dungAuTour(); setTimeout(phatLoiDanh, 120); } }).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
   // theo dõi khu vực đang xem
   const io = new IntersectionObserver((es)=>{
     es.forEach(e=>{

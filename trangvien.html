@@ -3221,7 +3221,9 @@ function capNhatNutAm(){
   if(!n) return;
   const l = (typeof NG !== 'undefined' && NG === 'en') ? 'en' : 'vi';
   n.textContent = amBat ? '🔊' : '🔇';
-  n.title = amBat ? (l==='vi'?'Tắt âm thanh':'Mute') : (l==='vi'?'Bật âm thanh':'Unmute');
+  n.title = amBat
+    ? (l==='vi'?'Tắt tiếng hiệu ứng (chim, chuông gió). Nhạc nền: nút 🎵 góc phải dưới màn hình':'Mute sound effects (birds, chimes). Music: 🎵 button bottom-right')
+    : (l==='vi'?'Bật tiếng hiệu ứng (chim, chuông gió). Nhạc nền: nút 🎵 góc phải dưới màn hình':'Unmute sound effects (birds, chimes). Music: 🎵 button bottom-right');
 }
 (function(){
   const n = document.getElementById('nut-am-thanh');
