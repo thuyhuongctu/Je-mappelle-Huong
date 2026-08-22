@@ -17,6 +17,7 @@
     track02:       { t: 'Đèn vẫn còn sáng',              f: A + 'track02-den-van-con-sang.mp3' },
     track03:       { t: 'The Lamp Still Burns',          f: A + 'track03.mp3' },
     track04:       { t: 'Hai Mươi Sáu Năm Sau',          f: A + 'track04-hai-muoi-sau-nam-sau.mp3' },
+    track04_v2:    { t: 'Hai Mươi Sáu Năm Sau (v2)',     f: A + 'track04-26-nam-sau-v2.mp3', main: true },
     track05:       { t: 'Je m’appelle Hương',            f: A + 'track05.mp3' },
 
     // M-AIDA
@@ -71,7 +72,7 @@
       vi: { tieude: 'Một ngày bình yên', noi: 'Bài mặc định trang chủ chọn cho bạn \u2014 nghe thoải mái nhé.' },
       en: { tieude: 'A peaceful day', noi: 'The homepage\u2019s default pick for you \u2014 enjoy.' },
       fr: { tieude: 'Une journ\u00e9e paisible', noi: 'Le choix par d\u00e9faut de la page d\u2019accueil pour vous \u2014 bonne \u00e9coute.' },
-      bai: ['official', 'track05', 'track01']
+      bai: ['track04_v2', 'official', 'track05', 'track01']
     }
   };
 
