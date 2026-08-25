@@ -76,4 +76,4 @@
 @media (prefers-reduced-motion: reduce) { #hm-nut .hm-ico { animation: none; } #hm-badge { animation: none; } }
 
 /* trang vien: dock phải, nút nhạc nằm trên nut-cham */
-body.cham #hm-widget{ bottom:calc(1rem + 84px);  z-index:1010 !important; }  /* trên nut-cham 76px + 8px gap, không chồng */
+body.cham #hm-widget{ bottom:calc(1rem + 84px); left:.6rem; right:auto; z-index:1010 !important; }  /* trên nut-cham 76px + 8px gap, không chồng */

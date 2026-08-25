@@ -11,7 +11,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>#nut-ref{position:fixed;right:1.05rem;top:1.05rem;width:44px;height:44px;border-radius:50%;border:none;z-index:45;background:rgba(255,253,248,.92);box-shadow:0 4px 12px rgba(140,90,70,.18);cursor:pointer;font-size:1.2rem;color:#b25d7d;display:flex;align-items:center;justify-content:center}button{touch-action:manipulation;-webkit-tap-highlight-color:transparent;}</style><style>
+<style>#nut-ref{position:fixed;right:1.05rem;top:1.05rem;width:44px;height:44px;border-radius:50%;border:none;z-index:45;background:rgba(255,253,248,.92);box-shadow:0 4px 12px rgba(140,90,70,.18);cursor:pointer;font-size:1.2rem;color:#b25d7d;display:flex;align-items:center;justify-content:center}button{touch-action:manipulation;-webkit-tap-highlight-color:transparent;}.an-mobile { display: flex; }
+@media (max-width: 600px) { .an-mobile { display: none !important; } }
+</style><style>
 /* ================= TOKEN — bảng màu đất sét pastel lấy từ banner Trang viên ============ */
 :root{
   --troi:#BFE3EE; --troi-sau:#8FC9DE;
@@ -148,7 +150,7 @@ button{font-family:inherit;cursor:pointer;border:0}
 #bieu-cam button.bat{background:linear-gradient(150deg,#F8C0D2,var(--sen));transform:scale(1.1)}
 
 /* gợi ý vào khu */
-#goi-y{
+#goi-y{ z-index: 10002 !important; 
   position:fixed;left:50%;bottom:4.6rem;transform:translate(-50%,20px);z-index:44;
   display:flex;align-items:center;gap:.6rem;padding:.6rem 1.1rem;border-radius:999px;
   background:rgba(74,55,48,.92);color:#FFF8EE;font-size:.85rem;font-weight:500;white-space:nowrap;
@@ -166,18 +168,18 @@ button{font-family:inherit;cursor:pointer;border:0}
   position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;
   background:linear-gradient(150deg,#FFFBF4,#E7D3B9);box-shadow:0 6px 14px rgba(120,80,60,.3);
 }
-#nut-cham{
+#nut-cham{ z-index: 10005 !important;  z-index: 10000 !important; 
   position:fixed;right:1rem;bottom:1.3rem;z-index:43;width:76px;height:76px;border-radius:50%;
   font-size:1.7rem;display:none;place-items:center;
   background:linear-gradient(150deg,#F8C0D2,var(--sen-sau));color:#fff;
   box-shadow:0 7px 0 #B85C7E,0 14px 24px rgba(180,80,110,.35);
  z-index:1004; pointer-events:auto !important; }
-#nut-xe{
+#nut-xe{ z-index: 10005 !important; 
   position:fixed;right:1rem;bottom:calc(1rem + 84px + 54px);z-index:43;width:60px;height:60px;border-radius:50%;
   font-size:1.4rem;display:none;place-items:center;
   background:rgba(255,251,244,.92);box-shadow:var(--bong);
  z-index:1004; pointer-events:auto !important; }
-body.cham #can,body.cham #nut-cham,body.cham #nut-xe{display:grid z-index:1004; pointer-events:auto !important; }
+body.cham #can,body.cham #nut-cham,body.cham #nut-xe{ z-index: 10005 !important; display:grid z-index:1004; pointer-events:auto !important; }
 body.cham #bieu-cam{bottom:auto;top:3.6rem;left:.7rem;transform:none z-index:1002; pointer-events:none; }
 body.cham #ban-do{width:96px;height:96px;top:8.5rem z-index:1007; pointer-events:none; }
 body.cham #ban-do canvas{width:84px;height:84px pointer-events:none; }
@@ -294,6 +296,8 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important z-index:100
   #nut-msg.len{bottom:430px z-index:1004; pointer-events:auto !important; }
   #hud-quote{width:330px;bottom:84px;font-size:.85rem}
 }
+.an-mobile { display: flex; }
+@media (max-width: 600px) { .an-mobile { display: none !important; } }
 </style>
 
 <meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-trangvien.jpg">
@@ -343,6 +347,8 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important z-index:100
   }
   /* Đảm bảo canvas 3D nằm dưới cùng */
   #san { z-index: 0 !important; pointer-events: auto !important; }
+.an-mobile { display: flex; }
+@media (max-width: 600px) { .an-mobile { display: none !important; } }
 </style>
 </head>
 <body><button type="button" id="nut-ref" title="Làm mới trang · Refresh page">⟳</button>
@@ -415,7 +421,7 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important z-index:100
     <p class="phu" data-vi="Đi bộ hoặc đạp xe qua đồng sen, ghé từng khu: học thuật, dự án mở, thư viện sáng tạo, âm nhạc và bảng tin." data-en="Walk or cycle through the lotus fields and visit each area: research, open projects, the creative library, music and the noticeboard.">
       Đi bộ hoặc đạp xe qua đồng sen, ghé từng khu: học thuật, dự án mở, thư viện sáng tạo, âm nhạc và bảng tin.
     </p>
-    <div class="phim">
+    <div class="phim an-mobile">
       <div><b>W A S D</b><span data-vi="di chuyển" data-en="move">di chuyển</span></div>
       <div><b>← →</b><span data-vi="xoay góc nhìn" data-en="turn camera">xoay góc nhìn</span></div>
       <div><b>E</b><span data-vi="vào khu" data-en="enter area">vào khu</span></div>
@@ -3650,6 +3656,8 @@ vong();
 :root[data-motion="off"] .vnmark-bg .vn-light{animation:none;}
 @media(max-width:760px){.vnmark-bg{width:46vw;opacity:.22;}}
 @media(prefers-reduced-motion:reduce){.vnmark-bg .vn-light{animation:none;}}
+.an-mobile { display: flex; }
+@media (max-width: 600px) { .an-mobile { display: none !important; } }
 </style>
 <div id="vnmark" aria-hidden="true"><svg viewBox="-12 -46 604 650" xmlns="http://www.w3.org/2000/svg" overflow="visible">
   <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
