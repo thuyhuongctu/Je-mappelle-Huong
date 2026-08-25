@@ -1,0 +1,28 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>02-tac-gia</title><style>*{margin:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;background:linear-gradient(180deg,#dde6f6 0,#f9f1e6 460px);font-family:system-ui,sans-serif;color:#463029}
+.serif{font-family:Georgia,"Times New Roman",serif}
+em{font-style:italic;color:#c4596b}
+.clay{background:#fffdf8;border-radius:34px;box-shadow:inset 0 3px 0 rgba(255,255,255,.8),0 18px 46px rgba(150,95,75,.2)}
+.pill{display:inline-block;font-size:19px;font-weight:800;padding:8px 18px;border-radius:999px;background:#fae3e6;color:#a8394e;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6)}
+.pill.g{background:#cdeacf;color:#2e6b45}.pill.b{background:#dde6f6;color:#3d5a96}.pill.y{background:#f6e7c8;color:#8a621c}
+.kick{font-size:20px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#c4596b}
+h2.title{font-family:Georgia,serif;font-size:72px;margin-top:10px}
+.muted{color:#8d7166}
+</style></head><body>
+<div style="display:flex;height:100%;align-items:center;gap:70px;padding:0 110px">
+  <div style="flex:0 0 560px;text-align:center">
+    <img src="../../assets/img/pro_aodai.png" alt="" style="width:430px;height:430px;object-fit:cover;border-radius:50%;border:8px solid #fffdf8;box-shadow:0 24px 60px rgba(150,95,75,.3)">
+    <div style="margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <span class="pill b">ORCID 0000-0002-7711-2487</span><span class="pill y">github.com/thuyhuongctu</span>
+    </div>
+  </div>
+  <div>
+    <div class="kick">Người làm vườn</div>
+    <h2 class="serif" style="font-size:84px;margin-top:8px">Đỗ Thùy <em>Hương</em></h2>
+    <p style="margin-top:22px;font-size:30px;line-height:1.55;max-width:900px">Giảng viên đại học · <b>Nghiên cứu sinh tiến sĩ Quản trị kinh doanh</b> tại Trường Kinh tế, Đại học Cần Thơ.<br><span class="muted">Hướng dẫn khoa học: PGS.TS. Phan Anh Tú</span></p>
+    <p class="muted" style="margin-top:18px;font-size:26px;line-height:1.55;max-width:900px">Nghiên cứu quốc tế hóa &amp; hiệu quả doanh nghiệp ở châu Á; kết hợp kinh tế lượng doanh nghiệp, phân tích tổng hợp và công cụ AI có kiểm chứng con người.</p>
+    <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
+      <span class="pill">Quốc tế hóa &amp; hiệu quả DN</span><span class="pill g">Phân tích tổng hợp</span><span class="pill b">Chấp nhận số (DAI)</span><span class="pill y">Thể chế &amp; ICRV</span>
+    </div>
+  </div>
+</div></body></html>

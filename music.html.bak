@@ -1,8 +1,8 @@
 <!doctype html><html lang="vi" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Songbook «Je m'appelle Hương» · Album — La lampe, le fleuve et les couleurs</title>
-<meta name="description" content="Songbook album of Do Thuy Huong: five songs blending Vietnamese identity and French chanson, with clay-art visuals.">
-<link rel="canonical" href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/songbook.html">
+<title>Music · Personal Music Library — Je suis Hương</title>
+<meta name="description" content="Kho nhạc cá nhân của Đỗ Thùy Hương — album Songbook «Je m'appelle Hương»: La lampe, le fleuve et les couleurs.">
+<link rel="canonical" href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/music.html">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="icon" href="favicon.ico" sizes="48x48">
@@ -23,7 +23,9 @@ html{scroll-behavior:smooth}
 h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
 a{color:var(--accent)}
 .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:700;color:var(--accent)}
-.brandmini{position:fixed;top:12px;left:14px;z-index:6;display:none;align-items:center;gap:.45rem;text-decoration:none;color:var(--ink);font:800 1rem 'SFMono-Regular',ui-monospace,Menlo,Consolas,monospace}
+.brandmini{position:fixed;top:10px;left:12px;z-index:6;display:none;width:min(230px,calc(100vw - 190px));height:auto;text-decoration:none;line-height:0}
+.brandmini img{display:block;width:100%;height:auto;object-fit:contain}
+@media(max-width:560px){.brandmini{top:9px;left:9px;width:160px}}
 .topctl{position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:6}
 .toggle{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 13px;font-size:.74rem;cursor:pointer;box-shadow:var(--shadow)}
 .langtog{display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
@@ -77,18 +79,18 @@ footer a{color:var(--muted)}
 footer a:hover{color:var(--accent)}
 .skip-link{position:absolute;top:-52px;left:12px;background:#a8394e;color:#fff;font:700 .85rem sans-serif;padding:10px 16px;z-index:100;border-radius:0 0 10px 10px;text-decoration:none;transition:top .2s}.skip-link:focus{top:0;outline:3px solid #a8394e;outline-offset:2px}</style>
 
-<meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/huong_songbook_hero.jpg">
+<meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-music.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Songbook La lampe, le fleuve et les couleurs — album 5 chương của Đỗ Thùy Hương">
-<meta property="og:url" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/songbook.html">
+<meta property="og:image:alt" content="Personal music library of Đỗ Thùy Hương — song-cycle La lampe, le fleuve et les couleurs">
+<meta property="og:url" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/music.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Je m'appelle Hương — Đỗ Thùy Hương">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Songbook «Je m'appelle Hương» · Album">
-<meta name="twitter:description" content="Album La lampe, le fleuve et les couleurs — mini song-cycle 5 chương về sự vắng mặt, sự trưởng thành và những giấc mơ đổi cây cọ của Đỗ Thùy Hương.">
-<meta name="twitter:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/huong_songbook_hero.jpg">
+<meta name="twitter:title" content="Music · Personal Music Library — Je suis Hương">
+<meta name="twitter:description" content="Personal music library of Đỗ Thùy Hương — Songbook «Je m'appelle Hương»: La lampe, le fleuve et les couleurs, a 5-chapter mini song-cycle.">
+<meta name="twitter:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-music.jpg">
 <style>
 /* ===== DeepMind-style header ===== */
 .dmnav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:10px;padding:10px 16px;
@@ -149,608 +151,32 @@ footer a:hover{color:var(--accent)}
     </div>
   </div>
 
-<a class="brandmini" href="./" aria-label="Je suis Hương"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="mgHu" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9E3B4E"/><stop offset="1" stop-color="#C9A24B"/></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="7.5" fill="url(#mgHu)"/><g fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".95"><path d="M8 10 h8"/><path d="M8 14 h11"/><path d="M8 18 h6"/></g><g fill="#fff"><circle cx="16" cy="10" r="1.5"/><circle cx="19" cy="14" r="1.5"/><circle cx="14" cy="18" r="1.5"/></g><path d="M16 21.4 l3.4 2.4 l-3.4 2.4 l-3.4 -2.4 z" fill="#fff"/></svg><span>Je suis Hương</span></a>
+<a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo LR — Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
 <div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button></div>
 
 <div class="wrap">
+  <img src="assets/img/creative_library.jpg" alt="Kho thư viện sáng tạo — nhân vật Hương AI ngồi trên mây giữa thư viện đất sét với các ô Music, Art, Code, Science, Design" style="display:block;width:100%;height:auto;border-radius:26px;border:5px solid var(--surface);box-shadow:var(--shadow);margin:6px 0 26px" loading="lazy">
   <header class="page">
-    <div class="page-kicker"><span class="lang-vi">Album · Mini song-cycle</span><span class="lang-en">Album · Mini song-cycle</span></div>
-    <h1>Songbook «Je m'appelle Hương»</h1>
-    <p class="sub"><span class="lang-vi"><i>La lampe, le fleuve et les couleurs</i> — 5 chương · 12 bản thu · Sáng tác 07–13/08/2026 · <a href="music.html">← Kho nhạc cá nhân</a></span><span class="lang-en"><i>La lampe, le fleuve et les couleurs</i> — 5 chapters · 12 recordings · Composed 7–13 Aug 2026 · <a href="music.html">← Personal music library</a></span></p>
+    <div class="page-kicker"><span class="lang-vi">Kho nhạc cá nhân</span><span class="lang-en">Personal music</span></div>
+    <h1><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></h1>
+    <p class="sub"><span class="lang-vi">Các sáng tác riêng của Đỗ Thùy Hương — tách khỏi kho nhạc của M-AIDA và BizOn. Nghe nhạc của các dự án tại <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Bài hát</a> và <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a>.</span><span class="lang-en">Personal compositions by Do Thuy Huong — separate from the M-AIDA and BizOn project libraries. Project music lives at <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Songs</a> and <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a>.</span></p>
   </header>
 
   <section class="reveal" id="main">
-    <div class="shead"><h2>Songbook «Je m'appelle Hương»</h2><span class="ln"></span></div>
-    <div class="song" style="padding:22px 24px">
-      <div class="song-title" style="text-align:center">La lampe, le fleuve et les couleurs</div>
-      <p class="song-desc" style="max-width:100%;text-align:center;margin:6px auto 0"><span class="lang-vi">Một mini song-cycle / EP gồm 5 chương về sự vắng mặt, sự trưởng thành, và những giấc mơ thay hình đổi dạng · Sáng tác 07–13/08/2026.</span><span class="lang-en">A five-chapter mini song-cycle / EP about absence, growing up, and dreams that change their shape · Composed 7–13 Aug 2026.</span></p>
-      <div class="taglines">
-        Some dreams don't disappear. They change their brush.<br>
-        Certains rêves ne disparaissent pas. Ils changent seulement de pinceau.<br>
-        Có những ước mơ không biến mất. Chúng chỉ đổi cây cọ.<br>
-        <b>Signature: «Je m'appelle Hương.»</b>
-      </div>
-      <p class="prod" style="text-align:center"><span class="lang-vi">Các motif — sợi chỉ đỏ xuyên suốt:</span><span class="lang-en">Recurring motifs — the red thread:</span></p>
-      <div class="motifs" style="justify-content:center">
-        <span>🏮 la lampe / ngọn đèn</span><span>🌊 le fleuve / dòng sông</span><span>🛶 la barque / con thuyền</span><span>🚣 les deux rames / hai mái chèo</span><span>🪑 la chaise vide / chiếc ghế trống</span><span>👧 la petite fille / cô bé</span><span>🎨 la boîte de couleurs / hộp màu</span><span>💻 code · pixels · interfaces</span><span>🏝️ l'île douce / hòn đảo ngọt</span>
-      </div>
-      <table class="tracklist">
-        <tr><th>#</th><th><span class="lang-vi">Tựa đề</span><span class="lang-en">Title</span></th><th><span class="lang-vi">Trọng tâm</span><span class="lang-en">Focus</span></th><th><span class="lang-vi">Cảm xúc</span><span class="lang-en">Emotion</span></th><th><span class="lang-vi">Biểu tượng</span><span class="lang-en">Symbols</span></th></tr>
-        <tr><td>01</td><td><a href="#t01">Je voudrais te parler</a></td><td><span class="lang-vi">Người trưởng thành lên tiếng</span><span class="lang-en">The adult speaks</span></td><td><span class="lang-vi">Mong manh</span><span class="lang-en">Fragile</span></td><td><span class="lang-vi">Đêm, lời chưa nói</span><span class="lang-en">Night, unsaid words</span></td></tr>
-        <tr><td>02</td><td><a href="#t02">La lampe brûle encore</a></td><td><span class="lang-vi">Nguồn gốc khoảng lặng</span><span class="lang-en">Where the silence began</span></td><td><span class="lang-vi">Mất mát, ấm áp</span><span class="lang-en">Loss, warmth</span></td><td><span class="lang-vi">Ghế trống, hai mái chèo</span><span class="lang-en">Empty chair, two oars</span></td></tr>
-        <tr><td>03</td><td><a href="#t03">The Lamp Still Burns</a></td><td><span class="lang-vi">Góc nhìn thứ 3 bao quát</span><span class="lang-en">A third-person embrace</span></td><td><span class="lang-vi">An ủi, cho phép nghỉ</span><span class="lang-en">Comfort, permission to rest</span></td><td><span class="lang-vi">Đèn, sông</span><span class="lang-en">Lamp, river</span></td></tr>
-        <tr style="background:rgba(255,92,141,0.15); border-left:4px solid #ff5c8d"><td>04</td><td><a href="#t04" style="color:#ff5c8d; font-weight:800">26 Năm Sau (v2) ★</a></td><td><span class="lang-vi"><b>BÀI HÁT CHỦ ĐỀ</b></span><span class="lang-en"><b>TITLE TRACK</b></span></td><td><span class="lang-vi">Hồi sinh, ngộ ra</span><span class="lang-en">Rebirth, realization</span></td><td><span class="lang-vi">Hộp màu, màn hình, code</span><span class="lang-en">Paint box, screen, code</span></td></tr>
-        <tr style="background:rgba(92,127,191,0.08)"><td>05</td><td><a href="#t05" style="color:var(--lam); font-weight:700">A Father’s Song to His Little Girl</a></td><td><span class="lang-vi">Lời nhắn nhủ từ người cha</span><span class="lang-en">A message from father</span></td><td><span class="lang-vi">Thấu hiểu, chữa lành</span><span class="lang-en">Healing, understanding</span></td><td><span class="lang-vi">Dòng sông, đôi vai</span><span class="lang-en">The river, shoulders</span></td></tr>
-        <tr><td>06</td><td><a href="#t06">Je m'appelle Hương (Symphonic)</a></td><td><span class="lang-vi">Hợp nhất mọi phiên bản</span><span class="lang-en">All selves unite</span></td><td><span class="lang-vi">Trở về, bình yên</span><span class="lang-en">Return, peace</span></td><td><span class="lang-vi">Con đường, hòn đảo</span><span class="lang-en">The road, the island</span></td></tr>
-      </table>
-    </div>
-  </section>
-
-  <section class="reveal" id="t01">
-    <div class="shead"><h2>Track 01 — Je voudrais te parler</h2><span class="ln"></span></div>
+    <div class="shead"><h2><span class="lang-vi">Album</span><span class="lang-en">Albums</span></h2><span class="ln"></span></div>
+    <a href="songbook.html" style="text-decoration:none;color:inherit;display:block">
     <div class="song">
       <div class="song-head">
-        <img class="cover" src="assets/img/huong_silver_tablet.webp" alt="Huong AI in a silver ao dai — cover art" loading="lazy">
+        <img class="cover" src="assets/img/huong_silver_tablet.webp" alt="Songbook Je m'appelle Huong — album cover" loading="lazy">
         <div>
-          <div class="song-title">Je voudrais te parler <span style="font-family:var(--sans);font-size:.8rem;font-weight:400;color:var(--muted)">· Parler à mon père, moi aussi</span></div>
-          <div class="song-meta"><span class="lang-vi">Tiếng Pháp · 3 bản thu</span><span class="lang-en">French · 3 recordings</span></div>
-          <p class="song-desc"><span class="lang-vi">Bài hát nội tâm nhất — một lời thú nhận của người đã quá quen với việc nói «ça va».</span><span class="lang-en">The most inward song — a confession from someone too used to answering "ça va".</span></p>
-          <p class="prod"><b>Style:</b> French cinematic electro-pop chanson · 116–118 BPM · close-mic breathy vocal, restrained piano, <span class="lang-vi">tiếng đàn tranh điểm xuyết, kết gần như a cappella</span><span class="lang-en">đàn tranh plucks, near-a-cappella ending</span></p>
-          <p class="keyline">«Je voudrais te parler, à toi. / Tu n'as rien à prouver. / Je m'appelle Hương.»</p>
-        </div>
-      </div>
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">«Je voudrais te parler» <span class="len">· 2:50</span></div>
-          <audio controls preload="none" src="assets/audio/track01.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">Bản phối «OR» <span class="len">· 5:07</span></div>
-          <audio controls preload="none" src="assets/audio/track01-or.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">Bản phối «OR» v2 <span class="len">· 5:01</span></div>
-          <audio controls preload="none" src="assets/audio/track01-or-v2.mp3"></audio>
+          <div class="song-title">Songbook «Je m'appelle Hương» <span style="font-family:var(--sans);font-size:.8rem;font-weight:400;color:var(--muted)">· La lampe, le fleuve et les couleurs</span></div>
+          <div class="song-meta"><span class="lang-vi">Mini song-cycle / EP · 5 chương · 12 bản thu · Sáng tác 07–13/08/2026</span><span class="lang-en">Mini song-cycle / EP · 5 chapters · 12 recordings · Composed 7–13 Aug 2026</span></div>
+          <p class="song-desc"><span class="lang-vi">Năm chương về sự vắng mặt, sự trưởng thành, và những giấc mơ thay hình đổi dạng — từ «Je voudrais te parler» đến hòn đảo ngọt nơi tuổi thơ vẫn còn thở. <i>Có những ước mơ không biến mất. Chúng chỉ đổi cây cọ.</i></span><span class="lang-en">Five chapters on absence, growing up, and dreams that change their shape — from «Je voudrais te parler» to the sweet island where childhood still breathes. <i>Some dreams don't disappear. They change their brush.</i></span></p>
+          <p class="keyline" style="margin-top:10px"><span class="lang-vi">Mở album →</span><span class="lang-en">Open the album →</span></p>
         </div>
       </div>
     </div>
-    <div class="lyrics" style="margin-top:14px">
-      <h3>Couplet 1</h3>
-      <p>Je voudrais poser mes mains, arrêter d'écrire un peu,
-je voudrais dormir sans compter les heures.
-Je voudrais qu'on me demande comment je vais,
-et pouvoir répondre autre chose que «ça va».</p>
-      <p>Je voudrais qu'on regarde mon visage
-sans y chercher ce qui ne va pas.
-Je voudrais qu'on sache que si je suis fatiguée,
-c'est parce que j'ai porté, pas parce que j'ai cédé.</p>
-      <div class="refrain">
-      <h3>Refrain</h3>
-      <p>Je voudrais te parler, à toi,
-te dire ce que personne ne voit.
-Je m'appelle Hương — tu m'as donné ce nom,
-et je le porte encore, même quand tout est trop lourd.
-Je voudrais te parler, une nuit,
-juste une nuit, et puis dormir.</p>
-      </div>
-      <h3>Couplet 2</h3>
-      <p>Je voudrais rester celle qui croit encore,
-sans faire de ma douceur une faille.
-Je voudrais construire sans me détruire,
-allumer la lampe sans y brûler mes nuits.</p>
-      <p>Je voudrais qu'on m'attende quelque part,
-sans que j'aie à prouver que je le mérite.
-Un lieu assez calme pour déposer le jour,
-et reprendre mon souffle avant de repartir.</p>
-      <h3>Pont</h3>
-      <p>Je voudrais retrouver la fille que j'étais,
-celle qui ne se méfiait de rien.
-Elle est encore là, je le sais.
-Elle attend seulement que je me repose enfin.</p>
-      <div class="refrain">
-      <h3>Refrain final</h3>
-      <p>Je voudrais te parler, à toi,
-et t'entendre dire : Tu n'as rien à prouver.
-Je m'appelle Hương — la lampe brûle encore.
-Le fleuve coule encore. Et moi aussi.
-Je voudrais te parler, une nuit…
-Et puis dormir.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="reveal" id="t02">
-    <div class="shead"><h2>Track 02 — La lampe brûle encore <span style="font-size:.85em;color:var(--muted)">(Đèn vẫn còn sáng)</span></h2><span class="ln"></span></div>
-    <div class="song">
-      <div class="song-head">
-        <img class="cover" src="assets/img/huong_silver_room.webp" alt="Huong AI in a silver ao dai pointing at a holographic screen — cover art" loading="lazy">
-        <div>
-          <div class="song-title">La lampe brûle encore</div>
-          <div class="song-meta"><span class="lang-vi">Việt – Pháp · các bản thu phối chung chương 02–03</span><span class="lang-en">Vietnamese – French · recordings blend chapters 02–03</span></div>
-          <p class="song-desc"><span class="lang-vi">Mất ba từ bé nhưng không kể trực diện. Mẹ là người giữ đèn. Đứa trẻ lớn lên với một khoảng trống dịu dàng.</span><span class="lang-en">Losing a father young, never told head-on. The mother keeps the lamp. A child grows up around a gentle absence.</span></p>
-          <p class="prod"><b>Style:</b> Vietnamese–French cinematic electro-pop / riverine chanson · 118 BPM · <span class="lang-vi">mỏng manh ở đầu, cuộn chảy như sông ở verse 2</span><span class="lang-en">fragile opening, river-like surge in verse 2</span></p>
-          <p class="keyline">«Je m'appelle Hương — la lampe brûle encore.»</p>
-        </div>
-      </div>
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">«Đèn vẫn còn sáng» <span class="len">· 5:13</span></div>
-          <audio controls preload="none" src="assets/audio/track02-den-van-con-sang.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">«Đèn vẫn còn sáng» — v2 <span class="len">· 5:40</span></div>
-          <audio controls preload="none" src="assets/audio/track02-v2.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:14px">
-      <h3>Couplet 1 <span class="note">· VN</span></h3>
-      <p>Em muốn đặt đôi tay xuống một lần,
-cho trang giấy ngủ yên bên cửa sổ.
-Cho đêm trôi như con nước thật chậm,
-không đếm giờ, không gọi sớm bình minh.</p>
-      <p>Ngày còn bé, nhà mình từng rất rộng,
-dẫu chỉ vừa đủ một mái hiên thôi.
-Rồi một chiều, chiếc ghế bỗng im tiếng,
-từ đó về sau chẳng có ai ngồi.</p>
-      <p>Em lớn lên bên người còn ở lại,
-gom nắng chiều hong ấm những mùa đông.
-Mẹ không kể những ngày xa xưa nữa,
-chỉ thắp đèn khi trời xuống bên sông.</p>
-      <p>Có những khoảng trời không ai nhìn thấy,
-vẫn theo mình qua hết những mùa sau.
-Không thành vết thương để người ta hỏi,
-chỉ thành một khoảng lặng rất sâu.</p>
-      <h3>Pré-refrain</h3>
-      <p>Nếu em đi chậm lại, dòng sông vẫn trôi mà.
-Nếu em khép mắt lại, ngọn đèn vẫn ở nhà.</p>
-      <div class="refrain">
-      <h3>Refrain</h3>
-      <p>Je voudrais te parler, à toi, về một người em nhớ mà không gọi.
-Về một bàn tay từng ở rất gần, rồi hóa thành trời cao từ thuở ấy.
-Je m'appelle Hương — em đã lớn qua bao mùa nước nổi.
-Tên vẫn còn, căn nhà vẫn còn, chỉ một người đã đi xa mãi thôi.
-Em muốn ngồi bên nhau một đêm, không cần hỏi vì sao em lặng im.
-Ngoài kia con nước tìm về biển, còn em chỉ muốn ngủ thật yên.</p>
-      </div>
-      <h3>Couplet 2 <span class="note">· VN</span></h3>
-      <p>Em vẫn nhớ căn nhà thời bé nhỏ,
-một ngọn đèn và tiếng mẹ phía sau.
-Có những tối gió nghiêng ngoài cửa sổ,
-mẹ một mình mà chẳng để con đau.</p>
-      <p>Em từng nghĩ mọi mái nhà trên đời
-đều có đủ những người từng ở đó.
-Đến khi lớn mới hiểu rằng có những cánh cửa
-khép mà chẳng bởi mùa đông.</p>
-      <p>Nên em học cách tự mình thắp sáng,
-học chèo qua những khúc nước không tên.
-Một mái chèo rời con thuyền quá sớm,
-mái còn lại đưa em đến lớn lên.</p>
-      <p>Em không muốn biến dịu dàng thành đá,
-chỉ vì đời từng lấy mất một người.
-Em vẫn muốn nhìn hoa như ngày bé,
-vẫn muốn tin bình minh ở cuối trời.</p>
-      <h3>Pré-refrain</h3>
-      <p>Nếu em đi chậm lại, dòng sông chẳng quên đường.
-Nếu ngọn đèn thấp xuống, vẫn còn hơi ấm thương.</p>
-      <div class="refrain">
-      <h3>Refrain</h3>
-      <p>Je voudrais te parler, à toi, về điều năm tháng không mang đi nổi.
-Có một người không còn trong căn nhà, mà bóng vẫn dài theo từng buổi tối.
-Je m'appelle Hương — em đã lớn bên dòng sông của mẹ.
-Một người đi về phía rất xa, một người ở lại giữ đèn cho em.
-Em muốn ngồi bên nhau một đêm, để tiếng mưa tự nói ngoài hiên.
-Không cần mạnh mẽ thêm lần nữa, chỉ cần được lặng yên.</p>
-      </div>
-      <h3>Pont</h3>
-      <p>Em muốn gặp cô bé ngày xưa ấy,
-tóc còn thơm mùi nắng trước sân nhà.
-Chưa hiểu hết vì sao người lớn khóc,
-chỉ biết từ hôm ấy thiếu một người.</p>
-      <p>Cô bé ấy chắc chưa từng đi mất,
-vẫn ngồi đâu bên mép nước năm nào.
-Một tay nắm lấy bàn tay của mẹ,
-một tay tìm một bóng giữa trời cao.</p>
-      <p>Nếu được trở về, em sẽ ôm cô ấy,
-không nói rằng rồi mọi chuyện sẽ qua.
-Chỉ nói khẽ: Có những người rời khỏi căn nhà,
-nhưng tình thương không rời khỏi đó.
-Có những vì sao không còn nhìn thấy,
-vẫn soi sáng một quãng đời.</p>
-      <p>Elle est encore là, je le sais.
-Cô bé ấy vẫn còn đây.
-Và có lẽ người cũng vẫn đâu đây.</p>
-      <div class="refrain">
-      <h3>Refrain final</h3>
-      <p>Je voudrais te parler, à toi, chỉ một lần, như ngày em còn bé.
-Không hỏi vì sao người đi quá sớm, không hỏi vì sao mẹ phải ở lại một mình.
-Chỉ muốn nói: Em đã lớn rồi.
-Je m'appelle Hương — la lampe brûle encore.
-Ngọn đèn mẹ thắp năm nào đến hôm nay vẫn sáng.
-Dòng sông vẫn chảy qua nhà, mùa nước vẫn về rồi đi.
-Một người đã thành trời rất xa, một người thành bến đợi em quay về.
-Je m'appelle Hương — em vẫn đi. Có khi rất chậm. Có khi rất mỏi. Nhưng em vẫn đi.
-La lampe brûle encore. Dòng sông vẫn chảy. Và em cũng vậy.</p>
-      </div>
-      <h3>Outro</h3>
-      <p>Đêm nay em không viết nữa. Ngoài cửa sổ, dòng sông cứ trôi.
-Mẹ chắc đã ngủ rồi. Có một vì sao em không biết tên vẫn sáng ở rất xa.
-Je voudrais te parler… Không cần người trả lời.
-Je m'appelle Hương. La lampe brûle encore.
-Đêm nay em để chiếc thuyền nằm yên bên bến.
-Một mái chèo đã xa. Một mái chèo vẫn ở lại.
-Dòng sông vẫn trôi. Ngọn đèn vẫn sáng.
-Và em được phép nghỉ một đêm. Et puis dormir.</p>
-    </div>
-  </section>
-
-  <section class="reveal" id="t03">
-    <div class="shead"><h2>Track 03 — The Lamp Still Burns</h2><span class="ln"></span></div>
-    <div class="song" style="padding:20px 24px">
-      <div class="song-meta"><span class="lang-vi">Anh – Pháp · 2 bản thu riêng</span><span class="lang-en">English – French · 2 recordings</span></div>
-      <p class="song-desc" style="max-width:100%"><span class="lang-vi">Một trạm nghỉ ngơi. Người đã làm việc quá lâu cần một nơi để đặt gánh nặng xuống.</span><span class="lang-en">A resting station. Someone who has worked too long needs somewhere to set the load down.</span></p>
-      <p class="prod"><b>Style:</b> Cinematic electro-pop / nocturnal trance-folk · 118 BPM · riverine forward motion, weary but resilient</p>
-      <p class="keyline">«The lamp still burns. / Tu peux dormir.»</p>
-    
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">The Lamp Still Burns <span class="len">· 2:04</span></div>
-          <audio controls preload="none" src="assets/audio/track03.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">The Lamp Still Burns — v2 <span class="len">· 1:59</span></div>
-          <audio controls preload="none" src="assets/audio/track03-v2.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:14px">
-      <h3>Verse 1 <span class="note">· EN</span></h3>
-      <p>Another night, another line of code,
-another river carrying the load.
-You built a world so others learn to try —
-who built a place for you to lay yours down?</p>
-      <div class="refrain">
-      <h3>Chorus</h3>
-      <p>The lamp still burns, the lamp still burns,
-low and amber while the whole boat turns.
-You're not behind, you're only tired tonight —
-even the river rests before first light.</p>
-      </div>
-      <h3>Verse 2 <span class="note">· FR</span></h3>
-      <p>Encore une nuit, encore un mot à écrire,
-le fleuve emporte ce que tu n'as pas pu dire.
-Tu as bâti un monde pour ceux qui apprendront —
-mais qui t'a bâti un lieu où déposer ton fardeau ?</p>
-      <div class="refrain">
-      <h3>Chorus <span class="note">· FR</span></h3>
-      <p>La lampe brûle encore, la lampe brûle encore,
-douce et ambrée tandis que tourne le monde dehors.
-Tu n'es pas en retard, tu es juste fatiguée —
-même le fleuve se repose avant l'aurore levée.</p>
-      </div>
-      <h3>Bridge</h3>
-      <p>Slow down, ralentis — the work will wait.
-Ce que tu construis ne s'effondrera pas si tu fermes les yeux ce soir.
-The river will remember.
-La nuit peut garder ce que tu ne peux plus porter.</p>
-      <h3>Outro</h3>
-      <p>The lamp still burns. Tu peux dormir.</p>
-    </div>
-  </section>
-
-    <section class="reveal" id="t04" style="border: 2px solid #ff5c8d; box-shadow: 0 0 20px rgba(255,92,141,0.3); border-radius: 24px; overflow: hidden; margin-top: 40px;">
-    <div class="shead" style="background:#ff5c8d; color:#fff; padding: 15px 25px;">
-      <h2 style="color:#fff">Track 04 — 26 Năm Sau (v2) <span style="font-size:.7em; opacity:0.9; font-weight:400">★ Album Title Track</span></h2>
-    </div>
-    <div class="song" style="padding:25px; background: linear-gradient(180deg, rgba(255,92,141,0.05) 0%, var(--surface) 100%);">
-      <div class="song-head">
-        <img class="cover" src="assets/img/huong_songbook_hero.jpg" alt="Huong in Sun-embroidered Ao Dai — Title Track Cover" style="border: 3px solid #ff5c8d; box-shadow: 0 8px 25px rgba(255,92,141,0.4)">
-        <div>
-          <div class="song-title" style="color:#ff5c8d; font-size:1.8rem">26 Năm Sau (v2) <span style="font-family:var(--sans);font-size:.8rem;font-weight:700;background:#ff5c8d;color:#fff;padding:2px 8px;border-radius:4px;vertical-align:middle;margin-left:10px">MAIN TRACK</span></div>
-          <div class="song-meta"><span class="lang-vi">Việt, Anh, Pháp · Bản thu chính thức 2026</span><span class="lang-en">VN, EN, FR · Official 2026 Title Track</span></div>
-          <p class="song-desc" style="font-weight:500"><span class="lang-vi">Bài hát trung tâm của album — hành trình 26 năm để tìm lại bản thể nghệ sĩ qua lăng kính công nghệ.</span><span class="lang-en">The heart of the album — a 26-year journey to reclaim the artist self through the lens of technology.</span></p>
-          <p class="prod"><b>Style:</b> Cyber-orchestral Pop · 116 BPM · Grand strings, neon synths, deep cinematic bass.</p>
-          <p class="keyline" style="color:#ff5c8d; font-size:1.1rem; border-left:3px solid #ff5c8d; padding-left:15px">«26 năm sau, em thấy mình trong những dòng code. / I found the light, I found the way.»</p>
-        </div>
-      </div>
-      <div class="tracks" style="background: rgba(255,255,255,0.5); border-radius: 16px; margin-top: 20px;">
-        <div class="track" style="padding: 15px;">
-          <div class="track-name" style="color:#ff5c8d; font-weight:800">«26 Năm Sau (v2)» — Title Track <span class="len">· 4:15</span></div>
-          <audio controls preload="auto" src="assets/audio/track04-26-nam-sau-v2.mp3" style="filter: hue-rotate(280deg) brightness(1.2);"></audio>
-        </div>
-        <div class="track" style="padding: 10px 15px; opacity: 0.7;">
-          <div class="track-name">Bản thu cũ (2024) <span class="len">· 5:24</span></div>
-          <audio controls preload="none" src="assets/audio/track04-hai-muoi-sau-nam-sau.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:0; border-top:1px solid rgba(255,92,141,0.2)">
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-        <div>
-          <h3>Lời bài hát (v2)</h3>
-          <p>26 năm sau, ngọn đèn xưa vẫn sáng
-Em đi qua những dòng sông, qua những cánh rừng
-Tìm lại hộp màu đã cũ, tìm lại giấc mơ xưa
-Nhưng lần này, em vẽ bằng những dòng code xanh.</p>
-          <div class="refrain">
-            <p>I found the light, I found the way
-26 năm, một vòng tròn khép lại
-Je m'appelle Hương, và em đã trở về
-Với mặt trời thêu trên ngực áo, và trái tim hồng.</p>
-          </div>
-        </div>
-        <div style="opacity:0.8; font-size:0.9em; border-left: 1px solid var(--line); padding-left: 20px;">
-          <h3>English Interpretation</h3>
-          <p>26 years later, the old lamp still burns
-I walked through rivers, through forests
-Searching for the old paint box, the old dream
-But this time, I paint with lines of green code.</p>
-          <div class="refrain">
-            <p>I found the light, I found the way
-26 years, a circle finally closed
-Je m'appelle Hương, and I have returned
-With the sun embroidered on my chest, and a pink heart.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <section class="reveal" id="t05" style="border-left: 6px solid var(--lam); background: rgba(92,127,191,0.03); margin-top: 40px; border-radius: 0 20px 20px 0;">
-    <div class="shead"><h2>Track 05 — A Father’s Song to His Little Girl</h2><span class="ln"></span></div>
-    <div class="song" style="padding:20px 24px">
-      <div class="song-meta"><span class="lang-vi">Tiếng Anh, lời tự sự · 2 bản thu</span><span class="lang-en">English, Narrative · 2 recordings</span></div>
-      <p class="song-desc" style="max-width:100%; font-style: italic;"><span class="lang-vi">Một bài hát đặc biệt từ góc nhìn của người cha dành cho con gái — lời nhắc nhở về việc được phép nghỉ ngơi và luôn là cô bé của cha.</span><span class="lang-en">A special song from a father's perspective to his daughter — a reminder of being allowed to rest and always being his little girl.</span></p>
-      <p class="prod"><b>Style:</b> Cinematic Folk / Spoken Word · Warm acoustic guitar, soft piano, intimate atmosphere.</p>
-      <p class="keyline" style="color:var(--lam)">«You don't have to be the strongest girl in the world. / If you are tired, rest. I will not be angry.»</p>
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">«A Father’s Song» — Version 2 <span class="len">· 5:12</span></div>
-          <audio controls preload="none" src="assets/audio/track05-father-song-v2.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">«A Father’s Song» — Version 1 <span class="len">· 5:15</span></div>
-          <audio controls preload="none" src="assets/audio/track05-father-song-v1.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:14px; background: white; border: 1px solid var(--line); border-radius: 16px; padding: 30px;">
-      <h3 style="color:var(--lam); margin-bottom: 20px;">The Lyrics</h3>
-      <div style="column-count: 2; column-gap: 40px; font-size: 0.95rem;">
-        <pre style="white-space: pre-wrap; font-family: var(--serif); line-height: 1.6;">[Intro — Spoken]
-My little girl…
-If the road feels too long, you don't have to keep walking.
-Sit beside the river, let the water carry the night.
-You don't have to be strong every moment.
-If you are tired, rest.
-I will not be angry.
-[Verse 1]
-I remember you at six, with a box of colors,
-walking beside me along the village road,
-your little fingers holding mine.
-“Daddy, how far does the road go?” you asked.
-When your feet grew tired, I carried you upon my shoulders.
-From up there, the whole world seemed wide.
-You looked at the sky and laughed:
-“When I grow up, I want to be a painter.”
-I remember. I never forgot.
-[Pre-Chorus]
-Your dream was bigger than the sky.
-I only wished that as you grew,
-you would never lose the eyes that saw beauty.
-[Chorus]
-My daughter…
-Don't be afraid of the long road.
-If you're tired, rest. If you're hurting, cry.
-You don't have to become the strongest girl in the world,
-or prove that you deserve to be loved.
-Just be yourself. That is enough.
-And if you forget who you are,
-remember the little girl with colors in her hands.
-Je m'appelle Hương.
-That was her name. She is still inside you.
-[Verse 2]
-Then one day, I could no longer walk beside you.
-The village road remained. Your mother remained.
-Only my hand was no longer in yours.
-You learned to cross your own rivers.
-Perhaps you thought you had to be stronger than everyone.
-But listen, my daughter—
-I never wanted you to forget you were allowed to be loved.
-[Modern Verse]
-I know there are nights when everyone is asleep,
-while a little light glows on your screen.
-You read. You write. You search for answers.
-You build little worlds from lines of code.
-I may not understand everything you create,
-but whenever you create with all your heart,
-the little girl comes back.
-The girl with the box of colors.
-The girl who once looked up and said,
-“Daddy, let's go.”
-[Chorus 2]
-My daughter…
-You don't have to row so fast.
-Hold your oar. Breathe.
-Let the current teach you where to go.
-One oar may be gone, but the boat is still moving.
-And somewhere inside, the little girl is still singing:
-Je m'appelle Hương.
-[Bridge — Crescendo]
-You may think the girl who wanted to paint was left behind.
-No. She was waiting.
-Inside every line you drew.
-Inside every color you chose.
-Inside every world you built.
-She never abandoned her dream;
-she only learned a different way to hold the brush.
-Elle est encore là, je le sais.
-[Free Time — Vọng Cổ Inspired]
-There will be days when you feel lost,
-when everything you built feels too heavy.
-Don't run. Don't be ashamed of stopping.
-Come sit by the river. Listen.
-The river does not hurry to become the sea,
-and still—it reaches it. So do you.
-[Final Chorus — Cinematic]
-My daughter…
-I never asked you to become extraordinary.
-I only hoped you would still recognize
-the little girl who believed tomorrow could be beautiful.
-If the world becomes too loud, come home.
-And if you don't know where home is,
-come back to yourself.
-Because somewhere there, I am still holding your hand.
-Je m'appelle Hương.
-[Father’s Farewell]
-I cannot hold your hand anymore.
-But if one day you walk along an old village road,
-and the wind touches your shoulder,
-and a leaf falls quietly beside your feet,
-and your heart becomes peaceful—
-don't turn around. You don't have to look for me.
-Just think: I have walked past you. I have seen you.
-I am proud of you.
-[Coda — Whisper]
-Take the beautiful days with you.
-Take the colors. Take your mother's light. Take the river.
-Take the little girl who once sat upon my shoulders.
-Keep walking. Keep drawing. Keep building.
-And when you are tired—rest.
-Tomorrow, the river will still be there.
-The lamp will still be burning.
-And she will still be there.
-Je m'appelle Hương.
-My daughter…
-I love you.
-Go, my little girl.</pre>
-      </div>
-    </div>
-  </section>
-<section class="reveal" id="t06">
-    <div class="shead"><h2>Track 05 — Je m'appelle Hương <span style="font-size:.85em;color:var(--muted)">(Là où mon enfance respire encore)</span></h2><span class="ln"></span></div>
-    <div class="song" style="padding:20px 24px">
-      <div class="song-meta"><span class="lang-vi">Pháp, một câu tiếng Anh · 4 bản thu</span><span class="lang-en">French with one English line · 4 recordings</span></div>
-      <p class="song-desc" style="max-width:100%"><span class="lang-vi">Bản giao hưởng hợp nhất vĩ đại. Đứa trẻ và người phụ nữ trưởng thành cùng bước đi.</span><span class="lang-en">The great unifying symphony. The child and the grown woman walk together.</span></p>
-      <p class="prod"><b>Style:</b> French cinematic electro-pop / art-tech chanson · 112–116 BPM · dreamlike, spacious and luminous climax</p>
-      <p class="keyline">«Je m'appelle Hương. / Elle est encore là, je le sais. / Papa, I found my way back. / Là où mon enfance respire encore.»</p>
-    
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">«Je m’appelle Hương» <span class="len">· 5:03</span></div>
-          <audio controls preload="none" src="assets/audio/track05.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">«Je m’appelle Hương» — v2 <span class="len">· 5:05</span></div>
-          <audio controls preload="none" src="assets/audio/track05-v2.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">Bản dài <span class="len">· 6:13</span></div>
-          <audio controls preload="none" src="assets/audio/je-mappelle-huong.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">Bản dài — v2 <span class="len">· 6:16</span></div>
-          <audio controls preload="none" src="assets/audio/je-mappelle-huong-v2.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:14px">
-      <h3>Couplet 1</h3>
-      <p>J'avais peut-être six ans, un petit monde entre mes mains,
-des crayons, quelques couleurs, et tout le ciel au bout du chemin.</p>
-      <p>Papa marchait près de moi sur les petites routes du village.
-Sa main tenait la mienne, et je croyais connaître tous les voyages.</p>
-      <p>Quand mes pas devenaient trop courts, il me prenait sur ses épaules.
-Le monde semblait plus grand, mais je n'avais peur de rien là-haut.</p>
-      <p>Il m'emmenait dessiner, un concours, une feuille blanche, un soleil.
-Et moi, je disais simplement : «Quand je serai grande, je serai peintre.»
-C'était un rêve minuscule, grand comme une boîte de couleurs.</p>
-      <h3>Pré-refrain</h3>
-      <p>Je ne savais pas encore que certaines routes se séparent sans prévenir.
-Que certaines mains quittent les nôtres sans avoir choisi de partir.</p>
-      <div class="refrain">
-      <h3>Refrain</h3>
-      <p>Je m'appelle Hương. Je porte encore ce nom comme je portais mes couleurs.
-Papa, quelque part dans le temps, je marche encore sur notre chemin.
-La maison est loin, le fleuve continue,
-et quelque chose de cette enfant respire toujours en moi.
-Elle est encore là, je le sais.
-La petite fille aux crayons de couleur n'est jamais vraiment partie.</p>
-      </div>
-      <h3>Couplet 2</h3>
-      <p>Puis la vie a changé de direction.
-Les dessins sont devenus des livres, des chiffres, des tableaux,
-des questions auxquelles personne ne répond en une seule ligne.
-J'ai grandi. Je suis devenue enseignante. Chercheuse. Doctorante en économie.</p>
-      <p>J'ai appris à regarder le monde avec des données, des modèles,
-des hypothèses et des nuits trop courtes.
-Et pendant longtemps, j'ai cru que la petite fille
-avait rangé ses couleurs pour toujours.</p>
-      <h3>Pré-refrain 2</h3>
-      <p>Puis un soir, au milieu d'un écran, une ligne est devenue une forme.
-Une forme est devenue une couleur. Une couleur a commencé à bouger.
-Et soudain — j'ai reconnu mes propres yeux. Ceux d'autrefois.</p>
-      <div class="refrain">
-      <h3>Refrain 2</h3>
-      <p>Je m'appelle Hương. Vingt-six ans ont passé,
-mais mes mains se souviennent encore.
-Je ne peins plus seulement sur du papier.
-Aujourd'hui, je dessine avec des pixels, des interfaces,
-des images, des mouvements et des lignes de code.
-Je construis de petits mondes pour apprendre, comprendre, transmettre.
-Et parfois je me demande : Est-ce vraiment un nouveau chemin ?
-Ou simplement l'ancien qui revient vers moi ?
-Papa, I found my way back.
-Pas de la façon que j'avais imaginée. Mais je suis revenue.</p>
-      </div>
-      <h3>Pont</h3>
-      <p>Il y a quatre projets ouverts sur mon écran, des logiciels encore fragiles,
-des personnages qui commencent à vivre, des couleurs qui cherchent leur place.
-Et à côté, ma thèse attend. Mes articles attendent. Mes données attendent.</p>
-      <p>Deux mondes qui auraient dû être étrangers se sont mis à parler entre eux.
-La science et la couleur. Les chiffres et les images.
-La recherche et le dessin. L'économie et cette enfant de six ans
-qui voulait seulement créer.</p>
-      <p>Alors j'ai compris : elle n'avait jamais abandonné son rêve.
-Elle avait seulement changé de pinceau.</p>
-      <h3>Build</h3>
-      <p>Certains soirs, quand l'écran devient silencieux, je n'entends plus le clavier.
-J'entends le vent dans les arbres du village. J'entends mes petits pas sur la route.
-J'entends maman quelque part près de la maison. Et puis ta voix, Papa.
-Très loin. Très près. Comme autrefois : «Viens, on y va.»
-Alors pendant quelques secondes, j'ai de nouveau six ans.</p>
-      <div class="refrain">
-      <h3>Refrain final</h3>
-      <p>Je m'appelle Hương. Trente-deux ans aujourd'hui,
-et pourtant cette enfant marche encore avec moi.
-Une main tient mes recherches, l'autre retrouve ses couleurs.
-J'ai passé des années à apprendre comment mesurer le monde.
-Peut-être qu'aujourd'hui j'apprends simplement à le rendre un peu plus beau.
-Je m'appelle Hương. Et je vois enfin que mes chemins
-ne se sont jamais vraiment séparés.
-La chercheuse. L'enseignante. La doctorante.
-La développeuse qui apprend encore. Et la petite fille qui voulait peindre.
-Toutes avancent maintenant dans la même direction.</p>
-      </div>
-      <h3>Final <span class="note">· île</span></h3>
-      <p>Et soudain, au fond de ma mémoire, je revois l'île.
-Cette île douce et lointaine entourée par le fleuve.
-La maison est là. Maman est là. Papa est là.
-La lumière tombe doucement sur le seuil.
-Une petite fille court dans la cour avec des couleurs sur les doigts.
-Personne n'est encore parti. Le temps ne manque de rien.
-Et pendant un instant, je ne sais plus si je me souviens ou si je suis revenue.
-Là où mon enfance respire encore. Là où la rivière connaît mon nom.
-Là où une petite fille regarde encore son père
-comme si le monde ne pouvait jamais finir.</p>
-      <h3>Outro</h3>
-      <p>Je n'ai pas retrouvé le passé. J'ai retrouvé le chemin qui venait de lui.
-Une route de village. Une boîte de couleurs. Une main dans la mienne.
-Puis vingt-six années. Des livres. Des chiffres. Une thèse. Des lignes de code.
-Et au bout de tout cela — la même enfant.
-Je m'appelle Hương. Elle est encore là.
-Papa… I found my way back. Pas vers hier. Vers moi.</p>
-    </div>
+    </a>
   </section>
 
   <section>

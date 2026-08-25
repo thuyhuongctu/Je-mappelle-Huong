@@ -1,0 +1,23 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>04-he-sinh-thai</title><style>*{margin:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;background:linear-gradient(180deg,#dde6f6 0,#f9f1e6 460px);font-family:system-ui,sans-serif;color:#463029}
+.serif{font-family:Georgia,"Times New Roman",serif}
+em{font-style:italic;color:#c4596b}
+.clay{background:#fffdf8;border-radius:34px;box-shadow:inset 0 3px 0 rgba(255,255,255,.8),0 18px 46px rgba(150,95,75,.2)}
+.pill{display:inline-block;font-size:19px;font-weight:800;padding:8px 18px;border-radius:999px;background:#fae3e6;color:#a8394e;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6)}
+.pill.g{background:#cdeacf;color:#2e6b45}.pill.b{background:#dde6f6;color:#3d5a96}.pill.y{background:#f6e7c8;color:#8a621c}
+.kick{font-size:20px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#c4596b}
+h2.title{font-family:Georgia,serif;font-size:72px;margin-top:10px}
+.muted{color:#8d7166}
+</style></head><body>
+<div style="display:flex;height:100%">
+<div style="width:430px;padding:90px 0 0 84px">
+  <h2 class="serif" style="font-size:66px;line-height:1.12">Bốn công trình<br>trong <em>khu vườn</em></h2>
+  <p class="muted" style="margin-top:22px;font-size:23px;line-height:1.55;padding-right:40px">Tất cả mã nguồn mở, miễn phí trên GitHub Pages, có DOI Zenodo và lưu trữ vĩnh viễn tại Software Heritage.</p>
+  <span class="clay" style="display:inline-block;margin-top:34px;border-radius:999px;padding:12px 24px;font-size:19px;font-weight:700;color:#c4596b">📊 Số liệu Zenodo · 12/08/2026</span>
+</div>
+<div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:34px;padding:84px 84px 84px 40px">
+  <div class="clay" style="overflow:hidden;display:flex;flex-direction:column"><img src="../../assets/img/research_map.jpg" style="width:100%;height:200px;object-fit:cover"><div style="padding:22px 30px 26px;flex:1;display:flex;flex-direction:column"><h3 class="serif" style="font-size:33px">M-AIDA</h3><p class="muted" style="margin-top:6px;font-size:19px;line-height:1.45;flex:1">Trợ lý dữ liệu phân tích tổng hợp của luận án — kiểm chứng con người 100%.</p><div style="margin-top:12px;display:flex;gap:10px"><span class="pill">109 lượt xem</span><span class="pill g">5 lượt tải</span></div></div></div>
+  <div class="clay" style="overflow:hidden;display:flex;flex-direction:column"><img src="../../assets/img/innovation_banner.jpg" style="width:100%;height:200px;object-fit:cover"><div style="padding:22px 30px 26px;flex:1;display:flex;flex-direction:column"><h3 class="serif" style="font-size:33px">BizOn · Bật Nghiệp</h3><p class="muted" style="margin-top:6px;font-size:19px;line-height:1.45;flex:1">Game mô phỏng kinh doanh 3D — sinh viên khởi nghiệp trên bản đồ Việt Nam.</p><div style="margin-top:12px;display:flex;gap:10px"><span class="pill">70 lượt xem</span><span class="pill g">10 lượt tải</span></div></div></div>
+  <div class="clay" style="overflow:hidden;display:flex;flex-direction:column"><img src="../../assets/img/creative_library.jpg" style="width:100%;height:200px;object-fit:cover"><div style="padding:22px 30px 26px;flex:1;display:flex;flex-direction:column"><h3 class="serif" style="font-size:33px">EnQuiz</h3><p class="muted" style="margin-top:6px;font-size:19px;line-height:1.45;flex:1">Trắc nghiệm song ngữ offline-first — 101 lượt xem sau chưa đầy 3 ngày.</p><div style="margin-top:12px;display:flex;gap:10px"><span class="pill">101 lượt xem</span><span class="pill g">31 lượt tải</span></div></div></div>
+  <div class="clay" style="overflow:hidden;display:flex;flex-direction:column"><img src="../../assets/img/garden_hub.jpg" style="width:100%;height:200px;object-fit:cover"><div style="padding:22px 30px 26px;flex:1;display:flex;flex-direction:column"><h3 class="serif" style="font-size:33px">Games &amp; trang cá nhân</h3><p class="muted" style="margin-top:6px;font-size:19px;line-height:1.45;flex:1">Digital 2026 Games + trang PWA «Je m'appelle Hương» kết nối cả hệ sinh thái.</p><div style="margin-top:12px;display:flex;gap:10px"><span class="pill">464 commit · 8/2026</span></div></div></div>
+</div></div></body></html>

@@ -1,0 +1,126 @@
+<!doctype html><html lang="vi"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo A · Con đường xe đạp</title>
+<style>
+:root{--paper:#f9f1e6;--surface:#fffdf8;--ink:#463029;--muted:#8d7166;--line:#eddcc9;
+--accent:#c4596b;--accent-soft:#fae3e6;--mint:#cdeacf;
+--serif:Georgia,serif;--sans:system-ui,sans-serif;
+--shadow:0 2px 3px rgba(150,95,75,.06),0 14px 34px rgba(150,95,75,.13)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:var(--sans);line-height:1.6;
+/* bầu trời đổi theo hành trình: sớm → chiều → đêm */
+background:linear-gradient(180deg,#dde6f6 0%,#f9f1e6 18%,#fbe9d2 45%,#f6cfa8 62%,#caa0b8 82%,#584a78 100%)}
+.wrap{max-width:880px;margin:0 auto;padding:26px 24px 26px 120px}
+h1,h2{font-family:var(--serif);margin:0}
+/* con đường SVG dọc trang */
+#duong{position:absolute;left:0;top:0;width:110px;height:100%;pointer-events:none}
+#duong path{fill:none;stroke:#efdcc3;stroke-width:26;stroke-linecap:round}
+#duong path.vach{stroke:#fffdf8;stroke-width:2.5;stroke-dasharray:10 14}
+/* xe đạp bám đường */
+#xe{position:absolute;width:74px;left:0;top:0;z-index:5;transform:translate(-50%,-88%);
+  filter:drop-shadow(0 8px 9px rgba(90,50,50,.35));transition:transform .2s}
+/* biển khu vực trên đường */
+.bien{position:absolute;left:88px;transform:translateY(-50%);z-index:4;
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:7px 14px;
+  font:700 .78rem var(--sans);color:var(--accent);box-shadow:var(--shadow);white-space:nowrap}
+.bien::before{content:"";position:absolute;left:-14px;top:50%;width:14px;height:2px;background:var(--line)}
+/* nội dung */
+.hero{display:flex;gap:26px;align-items:center;padding:34px 0 10px}
+.hero img{width:130px;border-radius:50%;border:4px solid var(--surface);box-shadow:var(--shadow)}
+.hero h1{font-size:2.3rem}
+.hero p{color:var(--muted)}
+section{margin:38vh 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px 30px;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.5),var(--shadow)}
+.card h2{font-size:1.4rem;color:var(--accent);margin-bottom:8px}
+.card p{margin:.4em 0;font-size:.95rem}
+.kick{font:800 .68rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+section:nth-of-type(n+4) .card{background:rgba(255,253,248,.88)}
+footer{padding:60px 0 120px;color:#e8dff2;text-align:center;font-size:.85rem}
+</style></head><body>
+<svg id="duong" preserveAspectRatio="none"><path id="p1" d=""/><path id="p2" class="vach" d=""/></svg>
+<img id="xe" src="../assets/img/huong_xedap.webp" alt="Hương đạp xe dọc trang">
+
+<div class="wrap">
+  <header class="hero">
+    <img src="../assets/img/pro_aodai.png" alt="">
+    <div>
+      <div class="kick">Trang học thuật cá nhân · demo hướng A</div>
+      <h1>Đỗ Thùy Hương</h1>
+      <p>Cuộn xuống — cô Hương sẽ đạp xe dọc con đường, đưa bạn qua từng khu của trang.</p>
+    </div>
+  </header>
+
+  <section data-bien="🌸 Giới thiệu"><div class="card">
+    <h2>Giới thiệu</h2>
+    <p>Giảng viên · nghiên cứu sinh tiến sĩ Quản trị kinh doanh. Nghiên cứu quốc tế hóa &amp; hiệu quả doanh nghiệp ở châu Á.</p>
+  </div></section>
+
+  <section data-bien="🚀 Hệ sinh thái số"><div class="card">
+    <h2>Hệ sinh thái số</h2>
+    <p>M-AIDA · BizOn · EnQuiz · Games — bốn phần mềm mở có DOI, mỗi khu một trạm dừng trên đường.</p>
+  </div></section>
+
+  <section data-bien="📚 Công bố khoa học"><div class="card">
+    <h2>Công bố khoa học</h2>
+    <p>9 công bố 2020–2026, từ mô hình lực hấp dẫn FDI đến phân tích tổng hợp nền tảng luận án.</p>
+  </div></section>
+
+  <section data-bien="🎵 Âm nhạc"><div class="card">
+    <h2>Âm nhạc</h2>
+    <p>Trời ngả chiều — ghé kho nhạc cá nhân và album «Je m'appelle Hương».</p>
+  </div></section>
+
+  <section data-bien="📰 Blog · Tin tức"><div class="card">
+    <h2>Blog · Tin tức</h2>
+    <p>Về đêm, đèn lồng thắp lên — những bản tin Zenodo mới nhất chờ ở cuối đường.</p>
+  </div></section>
+
+  <footer>🌙 Cuối con đường · «Je m'appelle Hương»</footer>
+</div>
+
+<script>
+// dựng con đường lượn theo chiều cao thật của trang
+const svg = document.getElementById('duong');
+function veDuong(){
+  const H = document.documentElement.scrollHeight;
+  svg.setAttribute('viewBox', `0 0 110 ${H}`);
+  svg.style.height = H + 'px';
+  let d = `M 55 0`;
+  for(let y = 0; y < H; y += 420){
+    const x1 = 30 + (Math.sin(y*.004)*22|0), x2 = 80 - (Math.cos(y*.003)*22|0);
+    d += ` C ${x1} ${y+140}, ${x2} ${y+280}, 55 ${y+420}`;
+  }
+  document.getElementById('p1').setAttribute('d', d);
+  document.getElementById('p2').setAttribute('d', d);
+  // đặt biển cạnh mỗi section
+  document.querySelectorAll('section[data-bien]').forEach(sec=>{
+    let b = sec._bien;
+    if(!b){
+      b = document.createElement('div'); b.className = 'bien';
+      b.textContent = sec.dataset.bien;
+      document.body.appendChild(b); sec._bien = b;
+    }
+    b.style.top = (sec.offsetTop + 30) + 'px';
+  });
+}
+veDuong(); addEventListener('resize', veDuong);
+
+// xe bám theo đường theo tiến độ cuộn
+const xe = document.getElementById('xe'), p1 = document.getElementById('p1');
+let truocY = 0;
+function datXe(){
+  const L = p1.getTotalLength();
+  const tien = scrollY / (document.documentElement.scrollHeight - innerHeight);
+  const dLen = Math.min(L, Math.max(0, tien * L));
+  const pt = p1.getPointAtLength(dLen);
+  const pt2 = p1.getPointAtLength(Math.min(L, dLen + 6));
+  const goc = Math.atan2(pt2.x - pt.x, 8) * 40; // nghiêng theo hướng lượn
+  xe.style.left = pt.x + 'px';
+  xe.style.top = (pt.y) + 'px';
+  xe.style.transform = `translate(-50%,-88%) rotate(${goc}deg)`;
+}
+addEventListener('scroll', datXe, {passive:true});
+datXe();
+</script>
+</body></html>

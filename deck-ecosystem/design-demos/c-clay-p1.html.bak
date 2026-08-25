@@ -1,0 +1,20 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>C · Clay — Bìa</title><style>
+*{margin:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;position:relative;font-family:Georgia,"Times New Roman",serif}
+.bg{position:absolute;inset:0;background:url("../../assets/img/garden_hub.jpg") center/cover}
+.scrim{position:absolute;inset:auto 0 0 0;height:52%;background:linear-gradient(180deg,transparent,rgba(249,241,230,.96) 62%)}
+.card{position:absolute;left:50%;bottom:74px;transform:translateX(-50%);width:1250px;background:#fffdf8;border-radius:40px;padding:56px 70px 48px;text-align:center;box-shadow:inset 0 3px 0 rgba(255,255,255,.8),0 30px 70px rgba(150,95,75,.28)}
+h1{font-size:96px;color:#463029;letter-spacing:-.01em}
+h1 em{font-style:italic;color:#c4596b}
+.sub{margin-top:16px;font-family:system-ui,sans-serif;font-size:28px;color:#8d7166}
+.chips{margin-top:30px;display:flex;gap:16px;justify-content:center;font-family:system-ui,sans-serif}
+.chip{font-size:22px;font-weight:700;padding:12px 28px;border-radius:999px;box-shadow:inset 0 2px 0 rgba(255,255,255,.6),0 6px 16px rgba(150,95,75,.18)}
+.c1{background:#fae3e6;color:#a8394e}.c2{background:#cdeacf;color:#2e6b45}.c3{background:#dde6f6;color:#3d5a96}.c4{background:#f6e7c8;color:#8a621c}
+</style></head><body>
+<div class="bg"></div><div class="scrim"></div>
+<div class="card">
+  <h1>Je m'appelle <em>Hương</em></h1>
+  <p class="sub">Khu vườn tri thức số từ Cần Thơ — luận án tiến sĩ &amp; bốn phần mềm mở</p>
+  <div class="chips"><span class="chip c1">🌸 Nghiên cứu</span><span class="chip c2">🎮 BizOn</span><span class="chip c3">📚 EnQuiz</span><span class="chip c4">🎵 Âm nhạc</span></div>
+</div>
+</body></html>

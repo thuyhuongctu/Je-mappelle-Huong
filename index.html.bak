@@ -1,100 +1,369 @@
 <!doctype html><html lang="vi" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Songbook «Je m'appelle Hương» · Album — La lampe, le fleuve et les couleurs</title>
-<meta name="description" content="Songbook album of Do Thuy Huong: five songs blending Vietnamese identity and French chanson, with clay-art visuals.">
-<link rel="canonical" href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/songbook.html">
+<title>Đỗ Thùy Hương · Je suis Hương — Trang học thuật cá nhân</title>
+<meta name="description" content="Academic website of Do Thuy Huong — lecturer and PhD candidate at Can Tho University: research, publications, songbook and an interactive 3D clay garden.">
+<link rel="canonical" href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<meta name="theme-color" content="#f4efe9" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#171315" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f2faff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#050a14" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-title" content="Hương">
+<meta property="og:title" content="Đỗ Thùy Hương · Je suis Hương — Academic profile, research and the 3D Innovation Garden">
+<meta property="og:description" content="Academic website of Do Thuy Huong — lecturer and PhD candidate at Can Tho University: research, publications, songbook and an interactive 3D clay garden.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/">
+<meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-default.jpg">
 <style>
 :root{--paper:#f2faff;--surface:#ffffff;--ink:#0b1d33;--muted:#5a7a96;--line:#d3e8f5;
---accent:#e8416b;--accent-soft:#e4fbff;--gold:#a9781f;
+--accent:#e8416b;--accent2:#0093b8;--accent-soft:#e4fbff;--gold:#b98a2e;--sky:#eaf8ff;--mint:#d8f4ff;
 --serif:Georgia,"Iowan Old Style","Times New Roman",serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
---shadow:0 1px 2px rgba(30,20,20,.05),0 10px 30px rgba(30,20,20,.07)}
-@media(prefers-color-scheme:dark){:root{--paper:#050a14;--surface:#0a1428;--ink:#c8f2ff;--muted:#7ea8c4;--line:#15304c;--accent:#ff5c8d;--accent2:#00f0ff;--accent-soft:rgba(0,240,255,.08);--shadow:0 0 12px rgba(0,240,255,.18),0 10px 30px rgba(0,0,0,.5)}}
-:root[data-theme=dark]{--paper:#050a14;--surface:#0a1428;--ink:#c8f2ff;--muted:#7ea8c4;--line:#15304c;--accent:#ff5c8d;--accent-soft:rgba(0,240,255,.08);--shadow:0 0 12px rgba(0,240,255,.18),0 10px 30px rgba(0,0,0,.5)}
-:root[data-theme=light]{--paper:#f2faff;--surface:#ffffff;--ink:#0b1d33;--muted:#5a7a96;--line:#d3e8f5;--accent:#e8416b;--accent-soft:#e4fbff}
+--pub:#10b981;--rev:#c1801a;--ms:#8a8f9a;--glow:0 0 0 1px rgba(79,109,245,.25),0 12px 32px rgba(79,109,245,.12);
+--shadow:0 2px 3px rgba(30,41,59,.06),0 14px 34px rgba(79,109,245,.13)}
+@media(prefers-color-scheme:dark){:root{--paper:#050a14;--surface:#0a1428;--ink:#c8f2ff;--muted:#7ea8c4;--line:#15304c;--accent:#ff5c8d;--accent2:#00f0ff;--accent-soft:rgba(0,240,255,.08);--sky:#0a1832;--mint:#0a3040;--glow:0 0 16px rgba(0,240,255,.35),0 0 0 1px rgba(0,240,255,.4);--shadow:0 0 12px rgba(0,240,255,.18),0 10px 30px rgba(0,0,0,.5)}}
+:root[data-theme=dark]{--paper:#050a14;--surface:#0a1428;--ink:#c8f2ff;--muted:#7ea8c4;--line:#15304c;--accent:#ff5c8d;--accent2:#00f0ff;--accent-soft:rgba(0,240,255,.08);--sky:#0a1832;--mint:#0a3040;--glow:0 0 16px rgba(0,240,255,.35),0 0 0 1px rgba(0,240,255,.4);--shadow:0 0 12px rgba(0,240,255,.18),0 10px 30px rgba(0,0,0,.5)}
+:root[data-theme=light]{--paper:#f2faff;--surface:#ffffff;--ink:#0b1d33;--muted:#5a7a96;--line:#d3e8f5;--accent:#e8416b;--accent2:#0093b8;--accent-soft:#e4fbff;--sky:#eaf8ff;--mint:#d8f4ff;--glow:0 0 0 1px rgba(79,109,245,.25),0 12px 32px rgba(79,109,245,.12);--shadow:0 2px 3px rgba(30,41,59,.06),0 14px 34px rgba(79,109,245,.13)}
 html{scroll-behavior:smooth}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
-.wrap{max-width:820px;margin:0 auto;padding:clamp(20px,4vw,48px)}
+.wrap{max-width:900px;margin:0 auto;padding:clamp(20px,4vw,48px)}
 h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
 a{color:var(--accent)}
 .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:700;color:var(--accent)}
-.brandmini{position:fixed;top:12px;left:14px;z-index:6;display:none;align-items:center;gap:.45rem;text-decoration:none;color:var(--ink);font:800 1rem 'SFMono-Regular',ui-monospace,Menlo,Consolas,monospace}
-.topctl{position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:6}
-.toggle{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 13px;font-size:.74rem;cursor:pointer;box-shadow:var(--shadow)}
+/* hero — nền giao thoa xanh tech + hồng thương hiệu */
+.hero{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;border-bottom:2px solid var(--ink);padding-bottom:26px;
+background:linear-gradient(130deg,#0a1832 0,var(--paper) 58%,#140320 100%);border-radius:0 0 18px 18px;margin:-4px -8px 0;padding:20px 22px 26px}
+@media(max-width:560px){.hero{grid-template-columns:1fr;text-align:center;justify-items:center;border-radius:0 0 14px 14px;padding:16px 10px 22px}}
+/* dòng tín hiệu công nghệ dọc mép trên hero */
+.hero::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;
+background:linear-gradient(90deg,transparent,var(--accent) 20%,var(--accent2) 75%,transparent);opacity:.85}
+/* heading hero: chữ gradient thương hiệu → indigo → cyan */
+.hero h1 .techgrad,.techgrad{background:linear-gradient(92deg,var(--accent) 10%,var(--accent2) 70%,#5cffd7 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(prefers-reduced-motion:reduce){.hero::before{display:none}}
+.portrait{width:150px;height:150px;border-radius:50%;object-fit:cover;box-shadow:var(--shadow);border:3px solid var(--surface)}
+.hero h1{font-size:clamp(1.8rem,5vw,2.7rem);line-height:1.08;margin:.15em 0}
+.roles{color:var(--muted);font-size:1.02rem}
+.roles b{color:var(--ink);font-weight:600}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+@media(max-width:560px){.links{justify-content:center}}
+.links a{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:5px 13px;box-shadow:var(--shadow)}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+section{margin-top:40px}
+.shead{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
+.shead h2{font-size:1.35rem}.shead .ln{flex:1;height:1px;background:var(--line)}
+.lead{font-size:1.05rem;max-width:66ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tags span{font-size:.8rem;background:var(--accent-soft);color:var(--accent);padding:4px 11px;border-radius:20px}
+/* publications */
+ul.pubs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.pub{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:var(--surface);
+border:1px solid var(--line);border-radius:11px;padding:12px 15px;box-shadow:var(--shadow)}
+.pcode{font-family:var(--serif);font-weight:700;color:var(--accent);font-size:1rem}
+.ptitle{font-weight:600;font-size:.95rem;line-height:1.3}
+.pmeta{font-size:.8rem;color:var(--muted)}
+.pchip{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#fff;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.pchip.pub{background:var(--pub)}.pchip.rev{background:var(--rev)}.pchip.ms{background:var(--ms)}
+@media(max-width:560px){.pub{grid-template-columns:auto 1fr}.pchip{grid-column:2}}
+/* cards */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.cards{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:18px 20px;box-shadow:var(--shadow)}
+.card.feat{border-left:4px solid var(--accent)}
+.card h3{font-size:1.08rem}.card p{font-size:.9rem;color:var(--muted);margin:8px 0 0}
+.card .go{display:inline-block;margin-top:12px;font-size:.85rem;font-weight:600;text-decoration:none}
+.ph{color:var(--muted);font-style:italic;font-size:.86rem;background:var(--accent-soft);padding:2px 6px;border-radius:5px}
+.blog-empty{background:var(--surface);border:1px dashed var(--line);border-radius:13px;padding:24px;text-align:center;color:var(--muted)}
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+.toggle{position:fixed;top:14px;right:14px;background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 13px;font-size:.74rem;cursor:pointer;box-shadow:var(--shadow);z-index:5}
+.topctl .toggle{position:static;top:auto;right:auto;z-index:auto}
+.about-fig{float:right;width:clamp(150px,26vw,240px);margin:2px 0 10px 24px;border-radius:14px;border:3px solid var(--surface);box-shadow:0 14px 30px rgba(30,20,20,.18)}
+@media(max-width:560px){.about-fig{float:none;display:block;margin:0 auto 14px;width:150px}}
+.pmeta a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line)}
+.pmeta a:hover{color:var(--accent)}
+.teach-list{margin-top:8px;display:flex;flex-direction:column}
+.teach-row{display:grid;grid-template-columns:minmax(170px,230px) 1fr;gap:16px;padding:13px 2px;border-bottom:1px solid var(--line)}
+.teach-row:last-child{border-bottom:none}
+.teach-subj{font-weight:600;color:var(--ink);font-size:.95rem}
+.teach-links{font-size:.86rem;color:var(--muted);line-height:1.55}
+.teach-links a{color:var(--accent);text-decoration:none}
+.teach-links a:hover{text-decoration:underline}
+@media(max-width:560px){.teach-row{grid-template-columns:1fr;gap:3px;padding:11px 2px}}
+html[lang="en"] .lang-vi{display:none}
+html:not([lang="en"]) .lang-en{display:none}
+html[lang="fr"] .lang-vi{display:none}
+html[lang="fr"] .lang-en{display:none}
+html:not([lang="fr"]) .lang-fr{display:none}
+.topctl{position:fixed;top:58px;right:14px;display:flex;gap:8px;z-index:61}
+.dmnav.shrink~.topctl{top:52px}
+@media(max-width:760px){.topctl{top:52px;gap:6px}}
+.topctl .toggle{position:static;top:auto;right:auto}
+.topctl .topaudio{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:20px;background:var(--surface);box-shadow:var(--shadow);font-size:.9rem;padding:5px 11px;cursor:pointer;color:var(--ink);text-decoration:none}
+.topctl .topaudio:hover{border-color:var(--accent)}
 .langtog{display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
 .langtog button{border:none;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:6px 11px;cursor:pointer}
 .langtog button.active{background:var(--accent);color:#fff}
-html[lang="en"] .lang-vi{display:none}
-html:not([lang="en"]) .lang-en{display:none}
-header.page{margin:40px 0 14px;text-align:center;border-bottom:none;padding-bottom:0;position:relative}
-header.page h1{font-size:clamp(1.7rem,5vw,2.5rem);margin:0 0 8px}
-.page-kicker{margin:0 0 6px;font:700 .7rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
-header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--mint,#cdeacf),var(--accent-soft),var(--sky,#dde6f6))}
-.sub{color:var(--muted)}
-section{margin-top:36px}
-.shead{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
-.shead h2{font-size:1.3rem}.shead .ln{flex:1;height:1px;background:var(--line)}
-.song{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
-.song-head{display:grid;grid-template-columns:130px 1fr;gap:18px;padding:20px 22px;align-items:center}
-@media(max-width:560px){.song-head{grid-template-columns:1fr;text-align:center;justify-items:center}}
-.cover{width:130px;height:130px;border-radius:12px;object-fit:cover;object-position:50% 12%;box-shadow:var(--shadow)}
-.song-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;line-height:1.25}
-.song-meta{font-size:.84rem;color:var(--muted);margin-top:4px}
-.song-desc{font-size:.92rem;color:var(--muted);margin-top:8px;max-width:58ch}
-.tracks{border-top:1px solid var(--line);padding:14px 22px 20px;display:flex;flex-direction:column;gap:14px}
-.track{display:flex;flex-direction:column;gap:6px}
-.track-name{font-size:.9rem;font-weight:600}
-.track-name .len{font-weight:400;color:var(--muted)}
-audio{width:100%;height:38px}
-.lyrics{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:26px clamp(20px,4vw,36px)}
-.lyrics h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:26px 0 8px;font-family:var(--sans);font-weight:700}
-.lyrics h3:first-child{margin-top:0}
-.lyrics h3 .note{text-transform:none;letter-spacing:0;color:var(--muted);font-weight:400;font-style:italic}
-.lyrics p{font-family:var(--serif);font-size:1.02rem;line-height:1.85;margin:0 0 4px;white-space:pre-line}
-.lyrics .refrain p{color:var(--accent)}
-.dedication{background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 8%,var(--surface)),var(--surface));border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:1.2rem 1.5rem;font-size:.95rem;color:var(--muted)}
-.dedication b{color:var(--ink)}
-.taglines{font-family:var(--serif);font-style:italic;text-align:center;color:var(--muted);line-height:1.9;margin:14px 0}
-.taglines b{color:var(--accent);font-style:normal}
-.motifs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.motifs span{font-size:.78rem;background:var(--accent-soft);color:var(--accent);padding:4px 11px;border-radius:20px}
-.tracklist{width:100%;border-collapse:collapse;font-size:.86rem;margin-top:6px}
-.tracklist th{font-family:var(--sans);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:2px solid var(--ink)}
-.tracklist td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
-.tracklist td:first-child{font-family:var(--serif);font-weight:700;color:var(--accent);white-space:nowrap}
-.tracklist a{text-decoration:none;font-weight:600}
-.prod{font-size:.82rem;color:var(--muted);margin:6px 0 0;line-height:1.7}
-.prod b{color:var(--ink)}
-.keyline{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:.95rem;margin-top:6px}
-.norec{font-size:.85rem;color:var(--muted);font-style:italic;background:var(--accent-soft);border-radius:9px;padding:8px 14px;display:inline-block;margin-top:4px}
-footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
-footer a{color:var(--muted)}
-footer a:hover{color:var(--accent)}
-.skip-link{position:absolute;top:-52px;left:12px;background:#a8394e;color:#fff;font:700 .85rem sans-serif;padding:10px 16px;z-index:100;border-radius:0 0 10px 10px;text-decoration:none;transition:top .2s}.skip-link:focus{top:0;outline:3px solid #a8394e;outline-offset:2px}</style>
 
-<meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/huong_songbook_hero.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Songbook La lampe, le fleuve et les couleurs — album 5 chương của Đỗ Thùy Hương">
-<meta property="og:url" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/songbook.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Je m'appelle Hương — Đỗ Thùy Hương">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Songbook «Je m'appelle Hương» · Album">
-<meta name="twitter:description" content="Album La lampe, le fleuve et les couleurs — mini song-cycle 5 chương về sự vắng mặt, sự trưởng thành và những giấc mơ đổi cây cọ của Đỗ Thùy Hương.">
-<meta name="twitter:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/huong_songbook_hero.jpg">
+/* ===== site nav (standalone) ===== */
+.sitenav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:20px 0 6px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.sitenav a{font-size:.82rem;font-weight:600;text-decoration:none;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:6px 14px;box-shadow:var(--shadow)}
+.sitenav a:hover{border-color:var(--accent);color:var(--accent)}
+footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
+footer .fnav a{color:var(--muted);text-decoration:none}
+footer .fnav a:hover{color:var(--accent);text-decoration:underline}
+footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
+/* ===== 3D depth (Concept A) ===== */
+@media (prefers-reduced-motion: no-preference){
+  .wrap{perspective:1400px}
+  .card,.about-fig{transition:transform .16s ease, box-shadow .16s ease;will-change:transform}
+  .portrait{animation:floatY 6s ease-in-out infinite}
+  @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  .pub{transition:transform .16s ease, box-shadow .16s ease}
+  .pub:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(30,20,20,.14)}
+  .reveal3d{opacity:0;transform:translateY(28px) rotateX(7deg);transform-origin:50% 0;transition:opacity .6s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal3d.in{opacity:1;transform:none}
+}
+/* ===== interactive 3D globe ===== */
+.globe-wrap{display:flex;flex-direction:column;align-items:center;margin:6px 0 22px}
+#globe{width:min(340px,80vw);height:auto;cursor:grab;touch-action:none}
+#globe:active{cursor:grabbing}
+.globe-cap{font-family:var(--sans);font-size:.9rem;color:var(--muted);text-align:center;max-width:60ch;margin-top:10px;min-height:2.6em}
+.globe-cap b{color:var(--ink)}
+.globe-cap a{color:var(--accent)}
+/* ===== blog post ===== */
+.post{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 28px;box-shadow:var(--shadow)}
+.post-meta{font-family:var(--sans);font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px}
+.post-title{font-size:clamp(1.2rem,3vw,1.45rem);line-height:1.2;margin:0 0 14px}
+.post p{font-size:.97rem;line-height:1.72;margin:0 0 14px;color:var(--ink)}
+.post blockquote{margin:18px 0;padding:8px 20px;border-left:3px solid var(--accent);font-family:var(--serif);font-size:1.16rem;font-style:italic;color:var(--accent)}
+.post-links{font-size:.9rem;font-weight:600;margin-top:4px}
+.post-links a{color:var(--accent);text-decoration:none}
+.post-links a:hover{text-decoration:underline}
+/* Tin nổi bật — hệ sinh thái */
+.hl-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:0 0 18px}
+.hl-stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:14px;padding:13px 16px;box-shadow:var(--shadow);text-decoration:none;display:block;transition:transform .15s,box-shadow .2s}
+.hl-stat:hover{transform:translateY(-2px);box-shadow:var(--glow)}
+/* dot terminal — chất phần mềm đang hoạt động */
+.dotlive{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--pub);margin-right:6px;vertical-align:middle;box-shadow:0 0 6px rgba(16,185,129,.7)}
+.hl-stat .hs-name{font-family:var(--sans);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--accent)}
+.hl-stat .hs-num{font-family:var(--serif);font-size:1.45rem;font-weight:700;color:var(--ink);margin:4px 0 1px}
+.hl-stat .hs-sub{font-size:.76rem;color:var(--muted)}
+.hl-stamp{font-family:var(--sans);font-size:.72rem;color:var(--muted);margin:-8px 0 20px}
+.post.featured{border:1.5px solid var(--accent);background:linear-gradient(180deg,var(--accent-soft),var(--surface) 34%)}
+.hl-badge{display:inline-block;font-family:var(--sans);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:#fff;background:var(--accent);border-radius:999px;padding:3px 11px;margin-bottom:10px}
+  .hcm{background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 9%,var(--surface)),var(--surface));border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:1.4rem 1.6rem}
+  .hcm-k{font:700 .68rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .hcm-q{font-family:var(--serif);font-size:1.16rem;line-height:1.55;font-style:italic;margin:.55rem 0 .45rem;color:var(--ink)}
+  .hcm-a{font-size:.9rem;color:var(--muted)}
+  .hcm-note{font-size:.92rem;color:var(--muted);margin:.75rem 0 0}
+  /* Nền chìm Lăng Bác trong khối Nguồn cảm hứng */
+  .hcm{position:relative;overflow:hidden;
+    background:url('assets/img/inspire_bg.webp') center 40%/100% auto no-repeat, linear-gradient(160deg,color-mix(in srgb,var(--accent) 9%,var(--surface)),var(--surface));
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;background-size:100% 105%}
+  .hcm:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(168,57,78,.22);border-left-color:#a8394e;background-size:115% 118%}
+  .hcm::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(115deg,color-mix(in srgb,var(--surface) 82%,transparent) 0%,color-mix(in srgb,var(--surface) 62%,transparent) 42%,color-mix(in srgb,var(--surface) 36%,transparent) 100%);
+    -webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px);z-index:0}
+  .hcm>*{position:relative;z-index:1}
+  @keyframes hcm-drift{from{background-position:center 35%}to{background-position:center 40%}}
+  .hcm:hover{animation:hcm-drift 3s ease-in-out infinite alternate}
+  @media(prefers-reduced-motion:reduce){.hcm,.hcm:hover{animation:none;transition:none}}
+/* ===== Bản đồ trang viên (hero hướng B) — batch19 DeepMind ===== */
+.gh-head{margin:44px 0 14px;text-align:center}
+.gh-kicker{margin:0 0 4px;font:700 .7rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.gh-h2{font-family:var(--serif);font-size:clamp(1.25rem,3.4vw,1.7rem);line-height:1.18;margin:0 0 5px;color:var(--ink)}
+.gh-sub{margin:0 auto;font:500 clamp(.76rem,2vw,.88rem)/1.5 var(--sans);color:var(--muted);max-width:60ch}
+#bando{position:relative;width:100%;aspect-ratio:1376/768;border-radius:26px;overflow:hidden;
+  border:5px solid var(--surface);box-shadow:var(--shadow);margin:0 0 26px;
+  background:url('assets/img/garden_hub.webp') center/cover no-repeat}
+:root[data-theme=dark] #bando{filter:saturate(.94) brightness(.78) contrast(1.03)}
+.bd-inner{position:absolute;inset:-6%;width:112%;height:112%;will-change:transform}
+.bd-map{position:absolute;right:3%;bottom:-6%;width:14%;opacity:.30;pointer-events:none;z-index:1;transform:rotate(8deg);filter:drop-shadow(0 3px 6px rgba(90,50,50,.25))}
+.bd-buom{position:absolute;z-index:2;pointer-events:none;font-size:clamp(.9rem,1.8vw,1.35rem);opacity:.9;
+  will-change:transform}
+@media(prefers-reduced-motion:no-preference){
+  .bd-buom{animation:buomDrift 9s ease-in-out infinite}
+  .bd-buom:nth-of-type(2){animation-duration:11s;animation-delay:-2.5s}
+  .bd-buom:nth-of-type(3){animation-duration:10s;animation-delay:-5s}
+  .bd-buom::after{content:"";display:block;animation:buomFlap .35s ease-in-out infinite alternate}
+  @keyframes buomDrift{0%{transform:translate(0,0) rotate(-6deg)}25%{transform:translate(22px,-14px) rotate(4deg)}
+    50%{transform:translate(-8px,-26px) rotate(-4deg)}75%{transform:translate(-24px,-8px) rotate(6deg)}100%{transform:translate(0,0) rotate(-6deg)}}
+  @keyframes buomFlap{from{transform:scaleX(1)}to{transform:scaleX(.65)}}
+}
+@media(prefers-reduced-motion:reduce){.bd-buom{display:none}}
+.bd-map img{display:block;width:100%;height:auto}
+@media(max-width:560px){.bd-map{width:26%;opacity:.22}}
+.tram{position:absolute;z-index:3;transform:translate(-50%,-50%);cursor:pointer;border:none;
+  background:rgba(255,253,248,.93);border-radius:13px;padding:.48em .78em;text-align:center;
+  font:700 clamp(.56rem,1.35vw,.74rem)/1.25 var(--sans);color:#463029;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.6),0 5px 14px rgba(70,40,40,.25);
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.tram:hover{transform:translate(-50%,-56%) scale(1.07);background:#fff;color:#a8394e;box-shadow:inset 0 2px 0 rgba(255,255,255,.6),0 9px 22px rgba(70,40,40,.3)}
+.tram:active{transform:translate(-50%,-48%) scale(.97)}
+.tram small{display:block;font-weight:600;color:#8d7166;font-size:.74em}
+.tram-feat{background:rgba(164,57,78,.94);color:#fffdf8;box-shadow:inset 0 2px 0 rgba(255,255,255,.35),0 6px 18px rgba(164,57,78,.35)}
+.tram-feat:hover{background:#a8394e;color:#fff}
+.tram-feat small{color:#ffd8de}
+@media(max-width:560px){.gh-head{margin:38px 0 10px}
+.tram{padding:.4em .62em;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6),0 4px 12px rgba(70,40,40,.28)}
+.tram small{display:none}}
+
+/* ===== Hương đạp xe dẫn tour ===== */
+#hg{position:fixed;left:14px;bottom:14px;z-index:7;display:flex;align-items:flex-end;gap:10px;
+  pointer-events:none;transition:opacity .4s}
+#hg.an{opacity:0}
+#hg-img{height:118px;width:auto;filter:drop-shadow(0 10px 12px rgba(120,60,60,.3));
+  transition:transform .3s ease;transform-origin:50% 88%}
+#hg.dap #hg-img{animation:hgDap .5s ease-in-out infinite}
+@keyframes hgDap{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(1.5deg) translateY(-4px)}}
+#hg-bien{pointer-events:auto;cursor:pointer;background:var(--surface);border:1px solid var(--line);
+  border-radius:16px;padding:9px 15px;margin-bottom:16px;max-width:190px;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.55),var(--shadow);
+  font:700 .8rem var(--sans);color:var(--ink);line-height:1.35}
+#hg-bien small{display:block;font-weight:600;color:var(--muted);font-size:.68rem;margin-top:2px}
+#hg-bien:hover{border-color:var(--accent);color:var(--accent)}
+#hg-loi{margin-left:6px;background:none;border:none;font-size:.9rem;padding:0;cursor:pointer;opacity:.85}#hg-loi:hover{opacity:1}
+@media(max-width:720px){#hg-img{height:84px}#hg-bien{max-width:150px;font-size:.72rem;padding:7px 11px}}
+@media(max-width:560px){#hg-img{height:60px}#hg-bien{max-width:125px;font-size:.66rem;padding:6px 10px;margin-bottom:10px}#hg-bien small{font-size:.6rem}}
+@media(prefers-reduced-motion:reduce){#hg.dap #hg-img{animation:none}}
+
+
+/* ===== Garden Hub — claymorphism re-skin ===== */
+body{background:linear-gradient(180deg,var(--sky) 0,var(--paper) 520px) no-repeat,var(--paper)}
+.gh-banner{display:block;width:100%;height:auto;border-radius:26px;border:5px solid var(--surface);box-shadow:var(--shadow);margin:6px 0 26px}
+.gh-news{margin:2px 0 20px}
+.hero{border-bottom:none;position:relative;padding-bottom:10px}
+.portrait{transition:transform .2s ease,box-shadow .2s ease}
+@media (hover:hover){.portrait:hover{transform:scale(1.04)}}
+.hero::after{content:"";position:absolute;left:8%;right:8%;bottom:0;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--mint),var(--accent-soft),var(--sky))}
+.portrait{border-width:4px}
+.links a,.sitenav a{border-radius:999px;border:1px solid var(--line);box-shadow:inset 0 2px 0 rgba(255,255,255,.55),0 5px 12px rgba(150,95,75,.12)}
+:root[data-theme=dark] .links a,:root[data-theme=dark] .sitenav a{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.09),0 5px 12px rgba(0,0,0,.35)}
+.sitenav{border-bottom:none;gap:10px}
+.sitenav a{padding:8px 17px;font-size:.84rem;color:var(--ink);background:var(--surface)}
+.sitenav a:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.shead h2{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:7px 18px;box-shadow:inset 0 2px 0 rgba(255,255,255,.5),var(--shadow);font-size:1.2rem}
+:root[data-theme=dark] .shead h2{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.07),var(--shadow)}
+.shead .ln{background:linear-gradient(90deg,var(--line),transparent)}
+.card,.post,.pub,.hl-stat,.hcm,.blog-empty{border-radius:22px}
+.card,.post,.hl-stat{box-shadow:inset 0 2px 0 rgba(255,255,255,.5),var(--shadow)}
+:root[data-theme=dark] .card,:root[data-theme=dark] .post,:root[data-theme=dark] .hl-stat{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.06),var(--shadow)}
+.card.feat{border-left:none;border-top:4px solid var(--accent)}
+.tags span{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55);padding:5px 13px}
+.pchip{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.28)}
+.hl-badge{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.3)}
+.toggle,.langtog{border-radius:999px}
+.about-fig{border-radius:22px;border-width:4px}
+:focus-visible{outline:3px solid #c96a84;outline-offset:2px;border-radius:6px}
+</style>
+<style>.brandmini{display:none}
+.dmnav .dmlogo-script{display:none !important}
+.dmnav .dmlogo-seal img{height:30px;width:auto}
+@media(min-width:761px){.dmnav .dmlogo-script{display:inline-flex !important}.dmnav .dmlogo-script img{height:26px}.dmnav .dmlogo-seal{display:none !important}
+.dmnav .dmlogo-script .dmlabel{font:600 .8rem/1 var(--script,'Georgia',cursive);font-size:.9rem}
+.dmnav .dmlogo-script .dmlabel small{font:600 .55rem/1.2 var(--sans);color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-top:2px}}</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Person",
+   "name": "Do Thuy Huong",
+   "alternateName": "Đỗ Thùy Hương",
+   "jobTitle": "PhD Candidate & Lecturer, School of Economics, Can Tho University",
+   "email": "mailto:thuyhuongctu@gmail.com",
+   "url": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/",
+   "image": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/pro_aodai.webp",
+   "sameAs": [
+    "https://orcid.org/0000-0002-7711-2487",
+    "https://scholar.google.com/citations?user=jSvAVnsAAAAJ",
+    "https://www.researchgate.net/profile/Do-Thuy-Huong",
+    "https://sciprofiles.com/profile/4613966",
+    "https://osf.io/m25qs/",
+    "https://github.com/thuyhuongctu"
+   ],
+   "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Can Tho University",
+    "alternateName": "Đại học Cần Thơ"
+   },
+   "knowsAbout": [
+    "Internationalization and firm performance",
+    "Meta-analysis",
+    "Firm-level econometrics",
+    "AI in higher education",
+    "Digital adoption",
+    "Technological capability"
+   ]
+  },
+  {
+   "@type": "ItemList",
+   "name": "Publications of Do Thuy Huong",
+   "numberOfItems": 19,
+   "itemListElement": [
+    {
+     "@type": "ScholarlyArticle",
+     "headline": "Nurturing the soul at work: spiritual values and psychological well-being in Vietnamese companies",
+     "datePublished": "2025",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "Human Resource Development International"
+     },
+     "identifier": "https://doi.org/10.1080/13678868.2025.2549549"
+    },
+    {
+     "@type": "ScholarlyArticle",
+     "headline": "AI in Higher Education: Does AI Fear Hinder Learning Outcomes?",
+     "datePublished": "2025",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "2024 Artificial Intelligence Revolutions (AIR)"
+     },
+     "identifier": "https://doi.org/10.1109/air63653.2024.00013"
+    },
+    {
+     "@type": "ScholarlyArticle",
+     "headline": "The Impact of the Covid-19 Pandemic on the Business Performance of Construction Industry Enterprises in Can Tho City",
+     "datePublished": "2023",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "Journal of Law and Sustainable Development"
+     },
+     "identifier": "https://doi.org/10.55908/sdgs.v11i12.1751"
+    },
+    {
+     "@type": "ScholarlyArticle",
+     "headline": "Internationalization and Turkish Manufacturing Firm Performance – Does Managerial Personality Matter?",
+     "datePublished": "2021",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "Accounting and Finance Innovations"
+     },
+     "identifier": "https://doi.org/10.5772/intechopen.97432"
+    },
+    {
+     "@type": "ScholarlyArticle",
+     "headline": "The moderating effects of managers’ experience and gender on internationalization and firm performance of manufacturing enterprises in Turkey",
+     "datePublished": "2020",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "Accounting"
+     },
+     "identifier": "https://doi.org/10.5267/j.ac.2020.9.006"
+    }
+   ]
+  }
+ ]
+}
+</script>
 <style>
 /* ===== DeepMind-style header ===== */
 .dmnav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:10px;padding:10px 16px;
   background:color-mix(in srgb,var(--surface) 78%,transparent);backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);transition:padding .25s ease,box-shadow .25s ease}
-.dmnav.shrink{padding:6px 16px;box-shadow:0 2px 12px rgba(60,30,30,.12)}
+.dmnav.shrink{padding:6px 16px;box-shadow:0 2px 12px rgba(60,30,30,.12);background:color-mix(in srgb,var(--surface) 92%,transparent)}
+body{padding-top:52px}
+@media(max-width:760px){body{padding-top:46px}}
 .dmnav .dmlogo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);line-height:0;flex-shrink:0}
 .dmnav .dmlogo img{height:30px;width:auto}
 .dmnav .dmlabel{font:600 .78rem/1 var(--serif);color:var(--ink);letter-spacing:.02em}
@@ -106,6 +375,7 @@ footer a:hover{color:var(--accent)}
 .dmnav .dmico{display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border-radius:50%;color:var(--muted);font-size:.9rem;text-decoration:none;transition:color .2s,background .2s}
 .dmnav .dmico:hover{color:var(--accent);background:var(--accent-soft)}
 @media(max-width:760px){.dmnav{padding:7px 10px;gap:6px;flex-wrap:nowrap}.dmnav .dmlabel small{display:none}.dmnav .dmlabel{font-size:.7rem}
+body{padding-top:44px}}
 .dmnav .dmright{max-width:calc(100vw - 150px);flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
 .dmnav .dmright::-webkit-scrollbar{display:none}
 .dmnav .dmright a{font-size:.66rem;padding:5px 5px;white-space:nowrap;flex-shrink:0}
@@ -132,10 +402,22 @@ footer a:hover{color:var(--accent)}
   .reveal.on{opacity:1;transform:none}
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
   #bando{transition:transform .1s linear}
+  .gh-head{opacity:0;transform:translateY(16px);animation:ghIn .7s .1s ease forwards}
+  @keyframes ghIn{to{opacity:1;transform:none}}
+  #bando .tram{opacity:0;transform:translate(-50%,-50%) scale(.9);animation:tramIn .5s ease forwards}
+  #bando .tram:nth-of-type(2){animation-delay:.18s}
+  #bando .tram:nth-of-type(3){animation-delay:.26s}
+  #bando .tram:nth-of-type(4){animation-delay:.34s}
+  #bando .tram:nth-of-type(5){animation-delay:.42s}
+  #bando .tram:nth-of-type(6){animation-delay:.5s}
+  #bando .tram:nth-of-type(7){animation-delay:.58s}
+  #bando .tram:nth-of-type(8){animation-delay:.66s}
+  @keyframes tramIn{to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
 }
-</style></head><body>
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important}.butterfly{animation:none!important}.parallax{transform:none!important}}</style></head><body>
   <div class="dmnav" id="dmnav">
-    <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
+    <a class="dmlogo dmlogo-script" href="index.html"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo script Je m'appelle Hương"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
+    <a class="dmlogo dmlogo-seal" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
     <div class="dmright">
       <a href="index.html#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
       <a href="publications.html"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a>
@@ -149,616 +431,270 @@ footer a:hover{color:var(--accent)}
     </div>
   </div>
 
-<a class="brandmini" href="./" aria-label="Je suis Hương"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="mgHu" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9E3B4E"/><stop offset="1" stop-color="#C9A24B"/></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="7.5" fill="url(#mgHu)"/><g fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".95"><path d="M8 10 h8"/><path d="M8 14 h11"/><path d="M8 18 h6"/></g><g fill="#fff"><circle cx="16" cy="10" r="1.5"/><circle cx="19" cy="14" r="1.5"/><circle cx="14" cy="18" r="1.5"/></g><path d="M16 21.4 l3.4 2.4 l-3.4 2.4 l-3.4 -2.4 z" fill="#fff"/></svg><span>Je suis Hương</span></a>
-<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button></div>
+<a class="skip-link" href="#main">Skip to content</a>
+<style>.skip-link{position:fixed;top:-60px;left:12px;z-index:200;background:var(--accent);color:#fff;font:700 .8rem var(--sans);padding:8px 14px;border-radius:8px;text-decoration:none;transition:top .2s}.skip-link:focus{top:58px;outline:3px solid var(--accent);outline-offset:2px}</style>
 
+<a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo LR — Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
+<!-- batch19: brandmini moved into dmnav so it never overlaps the hero banner -->
+<div id="hg" aria-hidden="false">
+  <img id="hg-img" src="assets/img/huong_chi.webp" alt="Hương AI đồng hành cùng bạn trên trang" fetchpriority="high">
+  <div id="hg-bien" title="Bấm để đi tiếp mục kế"><span id="hg-ten"></span><small id="hg-phu"></small><button type="button" id="hg-loi" title="Nghe lời dẫn">🔊</button></div>
+</div>
+<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></span><a href="audio.html" class="topaudio" title="Phòng thu lời dẫn tour · Tour narration studio"><span>🎙️</span></a><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button><button class="toprefresh" id="nut-acm" type="button" title="Academic mode"><span>🎓</span> <span class="lang-vi">Học thuật</span><span class="lang-en">Academic</span><span class="lang-fr">Académique</span></button></div>
 <div class="wrap">
-  <header class="page">
-    <div class="page-kicker"><span class="lang-vi">Album · Mini song-cycle</span><span class="lang-en">Album · Mini song-cycle</span></div>
-    <h1>Songbook «Je m'appelle Hương»</h1>
-    <p class="sub"><span class="lang-vi"><i>La lampe, le fleuve et les couleurs</i> — 5 chương · 12 bản thu · Sáng tác 07–13/08/2026 · <a href="music.html">← Kho nhạc cá nhân</a></span><span class="lang-en"><i>La lampe, le fleuve et les couleurs</i> — 5 chapters · 12 recordings · Composed 7–13 Aug 2026 · <a href="music.html">← Personal music library</a></span></p>
+  <header class="gh-head" role="presentation">
+    <p class="gh-kicker"><span class="lang-vi">Trang viên</span><span class="lang-en">Garden Hub</span><span class="lang-fr">Jardin</span></p>
+    <h2 class="gh-h2"><span class="lang-vi">«Je m'appelle Hương» — chọn nơi muốn ghé</span><span class="lang-en">“Je m'appelle Hương” — pick a place to visit</span><span class="lang-fr">choisissez une étape</span></h2>
+    <p class="gh-sub"><span class="lang-vi">Bấm một biển — cô Hương đạp xe đến đó rồi mở khu cho bạn ↓</span><span class="lang-en">Click a sign — Hương rides there, then the page opens that area ↓</span><span class="lang-fr">cliquez sur une enseigne</span></p>
+  </header>
+  <div id="bando" role="navigation" aria-label="Bản đồ trang viên">
+    <img class="bd-map" src="assets/svg/vnmap.svg" alt="Bản đồ Việt Nam chìm trên trang viên" aria-hidden="true">
+    <span class="bd-buom" style="left:27%;top:35%" aria-hidden="true">🦋</span>
+    <span class="bd-buom" style="left:61%;top:40%" aria-hidden="true">🦋</span>
+    <span class="bd-buom" style="left:44%;top:30%" aria-hidden="true">🦋</span>
+    <button class="tram" style="left:14%;top:33%" data-den="#ecosystem">🚀 <span class="lang-vi">Hệ sinh thái</span><span class="lang-en">Ecosystem</span><small>Open Projects</small></button>
+    <button class="tram" style="left:84%;top:28%" data-den="publications.html">📚 <span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><small>Publications</small></button>
+    <button class="tram" style="left:13%;top:48%" data-den="#about">🌸 <span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span><small>Academic Research</small></button>
+    <button class="tram" style="left:87%;top:48%" data-den="music.html">🎵 <span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><small>Creative Library</small></button>
+    <button class="tram" style="left:33%;top:76%" data-den="#teaching">🎓 <span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span><small>Lecture hall</small></button>
+    <button class="tram" style="left:67%;top:76%" data-den="blog.html">📰 <span class="lang-vi">Blog · Tin tức</span><span class="lang-en">Blog · News</span><small>News corner</small></button>
+    <button class="tram tram-feat" style="left:50%;top:86%" data-den="trangvien.html">🌷 <span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span><small>Open Projects</small></button>
+  </div>
+  <header class="hero" id="main">
+    <img class="portrait" src="assets/img/pro_aodai.webp" alt="3D render portrait of Do Thuy Huong in a white ao dai" fetchpriority="high">
+    <div>
+      <div class="eyebrow"><span class="lang-vi">Nghiên cứu sinh tiến sĩ · Nhà nghiên cứu</span><span class="lang-en">PhD Candidate · Researcher</span></div>
+      <h1><span class="techgrad"><span class="lang-vi">Đỗ Thùy Hương</span><span class="lang-en">Do Thuy Huong</span></span></h1>
+      <div class="roles"><span class="lang-vi"><b>Nghiên cứu sinh tiến sĩ</b>, Trường Kinh tế, Đại học Cần Thơ<br>Hướng dẫn khoa học: PGS.TS. Phan Anh Tú</span><span class="lang-en"><b>PhD Candidate</b>, School of Economics, Can Tho University<br>Supervisor: Assoc. Prof. Dr. Phan Anh Tu</span></div>
+      <div class="links">
+        <a href="mailto:thuyhuongctu@gmail.com">✉ thuyhuongctu@gmail.com</a>
+        <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://sciprofiles.com/profile/4613966" target="_blank" rel="noopener">SciProfiles</a>
+        <a href="https://scholar.google.com/citations?user=jSvAVnsAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://www.researchgate.net/profile/Do-Thuy-Huong" target="_blank" rel="noopener">ResearchGate</a>
+        <a href="https://osf.io/m25qs/" target="_blank" rel="noopener">OSF</a>
+        <a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener">GitHub</a>
+        <a href="publications.html" class="go"><span class="lang-vi">📄 Công bố khoa học</span><span class="lang-en">📄 Publications</span></a>
+        <a href="#ecosystem"><span class="lang-vi">Hệ sinh thái số ↓</span><span class="lang-en">Digital ecosystem ↓</span></a>
+        <a href="#" id="installBtn" hidden style="border-color:var(--accent);color:var(--accent);font-weight:700">📲 <span class="lang-vi">Cài ứng dụng</span><span class="lang-en">Install app</span></a>
+      </div>
+    </div>
   </header>
 
-  <section class="reveal" id="main">
-    <div class="shead"><h2>Songbook «Je m'appelle Hương»</h2><span class="ln"></span></div>
-    <div class="song" style="padding:22px 24px">
-      <div class="song-title" style="text-align:center">La lampe, le fleuve et les couleurs</div>
-      <p class="song-desc" style="max-width:100%;text-align:center;margin:6px auto 0"><span class="lang-vi">Một mini song-cycle / EP gồm 5 chương về sự vắng mặt, sự trưởng thành, và những giấc mơ thay hình đổi dạng · Sáng tác 07–13/08/2026.</span><span class="lang-en">A five-chapter mini song-cycle / EP about absence, growing up, and dreams that change their shape · Composed 7–13 Aug 2026.</span></p>
-      <div class="taglines">
-        Some dreams don't disappear. They change their brush.<br>
-        Certains rêves ne disparaissent pas. Ils changent seulement de pinceau.<br>
-        Có những ước mơ không biến mất. Chúng chỉ đổi cây cọ.<br>
-        <b>Signature: «Je m'appelle Hương.»</b>
-      </div>
-      <p class="prod" style="text-align:center"><span class="lang-vi">Các motif — sợi chỉ đỏ xuyên suốt:</span><span class="lang-en">Recurring motifs — the red thread:</span></p>
-      <div class="motifs" style="justify-content:center">
-        <span>🏮 la lampe / ngọn đèn</span><span>🌊 le fleuve / dòng sông</span><span>🛶 la barque / con thuyền</span><span>🚣 les deux rames / hai mái chèo</span><span>🪑 la chaise vide / chiếc ghế trống</span><span>👧 la petite fille / cô bé</span><span>🎨 la boîte de couleurs / hộp màu</span><span>💻 code · pixels · interfaces</span><span>🏝️ l'île douce / hòn đảo ngọt</span>
-      </div>
-      <table class="tracklist">
-        <tr><th>#</th><th><span class="lang-vi">Tựa đề</span><span class="lang-en">Title</span></th><th><span class="lang-vi">Trọng tâm</span><span class="lang-en">Focus</span></th><th><span class="lang-vi">Cảm xúc</span><span class="lang-en">Emotion</span></th><th><span class="lang-vi">Biểu tượng</span><span class="lang-en">Symbols</span></th></tr>
-        <tr><td>01</td><td><a href="#t01">Je voudrais te parler</a></td><td><span class="lang-vi">Người trưởng thành lên tiếng</span><span class="lang-en">The adult speaks</span></td><td><span class="lang-vi">Mong manh</span><span class="lang-en">Fragile</span></td><td><span class="lang-vi">Đêm, lời chưa nói</span><span class="lang-en">Night, unsaid words</span></td></tr>
-        <tr><td>02</td><td><a href="#t02">La lampe brûle encore</a></td><td><span class="lang-vi">Nguồn gốc khoảng lặng</span><span class="lang-en">Where the silence began</span></td><td><span class="lang-vi">Mất mát, ấm áp</span><span class="lang-en">Loss, warmth</span></td><td><span class="lang-vi">Ghế trống, hai mái chèo</span><span class="lang-en">Empty chair, two oars</span></td></tr>
-        <tr><td>03</td><td><a href="#t03">The Lamp Still Burns</a></td><td><span class="lang-vi">Góc nhìn thứ 3 bao quát</span><span class="lang-en">A third-person embrace</span></td><td><span class="lang-vi">An ủi, cho phép nghỉ</span><span class="lang-en">Comfort, permission to rest</span></td><td><span class="lang-vi">Đèn, sông</span><span class="lang-en">Lamp, river</span></td></tr>
-        <tr style="background:rgba(255,92,141,0.15); border-left:4px solid #ff5c8d"><td>04</td><td><a href="#t04" style="color:#ff5c8d; font-weight:800">26 Năm Sau (v2) ★</a></td><td><span class="lang-vi"><b>BÀI HÁT CHỦ ĐỀ</b></span><span class="lang-en"><b>TITLE TRACK</b></span></td><td><span class="lang-vi">Hồi sinh, ngộ ra</span><span class="lang-en">Rebirth, realization</span></td><td><span class="lang-vi">Hộp màu, màn hình, code</span><span class="lang-en">Paint box, screen, code</span></td></tr>
-        <tr style="background:rgba(92,127,191,0.08)"><td>05</td><td><a href="#t05" style="color:var(--lam); font-weight:700">A Father’s Song to His Little Girl</a></td><td><span class="lang-vi">Lời nhắn nhủ từ người cha</span><span class="lang-en">A message from father</span></td><td><span class="lang-vi">Thấu hiểu, chữa lành</span><span class="lang-en">Healing, understanding</span></td><td><span class="lang-vi">Dòng sông, đôi vai</span><span class="lang-en">The river, shoulders</span></td></tr>
-        <tr><td>06</td><td><a href="#t06">Je m'appelle Hương (Symphonic)</a></td><td><span class="lang-vi">Hợp nhất mọi phiên bản</span><span class="lang-en">All selves unite</span></td><td><span class="lang-vi">Trở về, bình yên</span><span class="lang-en">Return, peace</span></td><td><span class="lang-vi">Con đường, hòn đảo</span><span class="lang-en">The road, the island</span></td></tr>
-      </table>
+  <nav class="sitenav" aria-label="Site">
+    <a href="#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
+    <a href="#ecosystem"><span class="lang-vi">Hệ sinh thái số</span><span class="lang-en">Ecosystem</span></a>
+    <a href="#gallery"><span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Virtual character</span></a>
+    <a href="publications.html"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a>
+    <a href="#worlddata"><span class="lang-vi">Dữ liệu thế giới</span><span class="lang-en">World data</span></a>
+    <a class="hide-xs" href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></a><a href="quan-ly-songbook.html"><span class="lang-vi">Danh sách bài hát</span><span class="lang-en">Song catalog</span></a><a href="songbook.html"><span class="lang-vi">Songbook</span><span class="lang-en">Songbook</span></a>
+    <a href="trangvien.html">🌸 <span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span></a>
+    <a class="hide-xs" href="blog.html">Blog</a>
+    <a href="publications.html"><span class="lang-vi">Danh mục đầy đủ ↗</span><span class="lang-en">Full list ↗</span></a>
+  
+    <a href="cv.html" title="Curriculum Vitae" style="font-weight:600"><span class="lang-vi">📄 CV</span><span class="lang-en">📄 CV</span><span class="lang-fr">📄 CV</span></a>
+    <a href="journey.html" title="Nhật ký sáng tạo"><span class="lang-vi">🌸 Nhật ký</span><span class="lang-en">🌸 Journal</span><span class="lang-fr">🌸 Journal</span></a></nav>
+
+  <section class="reveal" id="about">
+    <div class="shead"><h2><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></h2><span class="ln"></span></div>
+    <img class="about-fig" src="assets/img/lab_scene.jpg" alt="3D render of Do Thuy Huong in a white ao dai working with holographic data dashboards in a research lab" loading="lazy">
+    <p class="lead"><span class="lang-vi">Tôi là giảng viên và nghiên cứu sinh tiến sĩ ngành Quản trị kinh doanh, nghiên cứu về <b>quốc tế hóa và hiệu quả hoạt động kinh doanh của doanh nghiệp ở châu Á</b>. Công việc của tôi kết hợp kinh tế lượng doanh nghiệp (dữ liệu WBES, 50 nền kinh tế), phân tích tổng hợp, và phát triển công cụ AI hỗ trợ nghiên cứu có kiểm chứng con người.</span><span class="lang-en">I am a lecturer and PhD candidate in Business Administration, researching the <b>internationalization–firm performance relationship in Asia</b>. My work combines firm-level econometrics (WBES data, 50 economies), meta-analysis, and the development of human-verified AI research tools.</span></p>
+    <div class="tags"><span><span class="lang-vi">Quốc tế hóa &amp; hiệu quả DN</span><span class="lang-en">Internationalization &amp; firm performance</span></span><span><span class="lang-vi">Phân tích tổng hợp</span><span class="lang-en">Meta-analysis</span></span><span><span class="lang-vi">Chấp nhận số (DAI)</span><span class="lang-en">Digital Adoption (DAI)</span></span><span><span class="lang-vi">Năng lực công nghệ (TCI)</span><span class="lang-en">Technological Capability (TCI)</span></span><span><span class="lang-vi">Thể chế &amp; ICRV</span><span class="lang-en">Institutions &amp; ICRV</span></span><span><span class="lang-vi">Kinh tế lượng doanh nghiệp</span><span class="lang-en">Firm-level econometrics</span></span></div>
+  </section>
+
+  <section class="reveal" id="inspiration">
+    <div class="hcm" id="hcmBlock">
+      <span class="hcm-k">🪷 <span class="lang-vi">Nguồn cảm hứng</span><span class="lang-en">Inspiration</span></span>
+      <blockquote class="hcm-q">
+        <span class="lang-vi">&ldquo;Non sông Việt Nam có trở nên tươi đẹp hay không, dân tộc Việt Nam có bước tới đài vinh quang để sánh vai với các cường quốc năm châu hay không, chính là nhờ một phần lớn ở công học tập của các em.&rdquo;</span>
+        <span class="lang-en">&ldquo;Whether the land of Vietnam becomes beautiful, whether the Vietnamese people can step onto the podium of glory to stand shoulder to shoulder with the great powers of the five continents, depends in large part on your studies.&rdquo;</span>
+      </blockquote>
+      <div class="hcm-a">– <b><span class="lang-vi">Chủ tịch Hồ Chí Minh</span><span class="lang-en">President Ho Chi Minh</span></b> · <span class="lang-vi">Thư gửi học sinh nhân ngày khai trường đầu tiên, 9/1945</span><span class="lang-en">Letter to students on the first school-opening day, September 1945</span></div>
+      <p class="hcm-note"><span class="lang-vi">Kính nhớ Chủ tịch Hồ Chí Minh vĩ đại, lời dạy ấy là ý chí dẫn đường cho hành trình nghiên cứu về quốc tế hóa và vị thế doanh nghiệp Việt Nam sánh vai cùng thế giới.</span><span class="lang-en">In memory of the great President Ho Chi Minh, those words are the will that guides this research on internationalization and Vietnamese firms standing alongside the world.</span></p>
     </div>
   </section>
 
-  <section class="reveal" id="t01">
-    <div class="shead"><h2>Track 01 — Je voudrais te parler</h2><span class="ln"></span></div>
-    <div class="song">
-      <div class="song-head">
-        <img class="cover" src="assets/img/huong_silver_tablet.webp" alt="Huong AI in a silver ao dai — cover art" loading="lazy">
-        <div>
-          <div class="song-title">Je voudrais te parler <span style="font-family:var(--sans);font-size:.8rem;font-weight:400;color:var(--muted)">· Parler à mon père, moi aussi</span></div>
-          <div class="song-meta"><span class="lang-vi">Tiếng Pháp · 3 bản thu</span><span class="lang-en">French · 3 recordings</span></div>
-          <p class="song-desc"><span class="lang-vi">Bài hát nội tâm nhất — một lời thú nhận của người đã quá quen với việc nói «ça va».</span><span class="lang-en">The most inward song — a confession from someone too used to answering "ça va".</span></p>
-          <p class="prod"><b>Style:</b> French cinematic electro-pop chanson · 116–118 BPM · close-mic breathy vocal, restrained piano, <span class="lang-vi">tiếng đàn tranh điểm xuyết, kết gần như a cappella</span><span class="lang-en">đàn tranh plucks, near-a-cappella ending</span></p>
-          <p class="keyline">«Je voudrais te parler, à toi. / Tu n'as rien à prouver. / Je m'appelle Hương.»</p>
-        </div>
+
+  <style id="eco-style">
+  .soon{display:inline-block;font:700 .62rem var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:1px solid currentColor;border-radius:20px;padding:2px 9px;margin-left:8px;vertical-align:middle}
+  .eco-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .eco-badges span{font-size:.72rem;background:var(--accent-soft);color:var(--accent);padding:3px 9px;border-radius:20px}
+  .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+  .gal figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:8px;box-shadow:var(--shadow)}
+  .gal img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:9px;display:block}
+  .gal figcaption{font-size:.74rem;color:var(--muted);text-align:center;padding:7px 2px 2px}
+  @media (prefers-reduced-motion: no-preference){.gal figure{transition:transform .16s ease, box-shadow .16s ease}.gal figure:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(30,20,20,.14)}}
+  </style>
+  <section class="reveal" id="ecosystem">
+    <div class="shead"><h2><span class="lang-vi">Hệ sinh thái số</span><span class="lang-en">Digital ecosystem</span></h2><span class="ln"></span></div>
+    <p class="lead"><span class="lang-vi">Trang cá nhân này là cổng trung tâm kết nối các dự án số phục vụ nghiên cứu và giảng dạy của tôi: phần mềm luận án, trò chơi mô phỏng kinh doanh, ứng dụng ôn tập, bộ học liệu học phần, phần mềm karaoke song ngữ và cổng trò chơi lịch sử Việt Nam.</span><span class="lang-en">This homepage is the central hub linking my digital projects for research and teaching: dissertation software, a business-simulation game, a revision app, a course teaching package, a bilingual karaoke app and a Vietnamese-history game portal.</span></p>
+    <div class="cards">
+      <div class="card feat">
+        <h3><span class="lang-vi">Luận án tiến sĩ</span><span class="lang-en">PhD Dissertation</span><span class="soon"><span class="lang-vi">Sắp công bố</span><span class="lang-en">Coming soon</span></span></h3>
+        <p><span class="lang-vi"><i>Quốc tế hóa và hiệu quả hoạt động kinh doanh của các doanh nghiệp ở châu Á</i> — Đại học Cần Thơ, hướng dẫn: PGS.TS. Phan Anh Tú. Dữ liệu WBES 50 nền kinh tế, phân tích tổng hợp 236 nghiên cứu, và hệ sinh thái phần mềm (bao gồm M-AIDA). Trang chuyên đề đầy đủ sẽ ra mắt tại đây khi luận án được công bố.</span><span class="lang-en"><i>Internationalization and firm business performance in Asia</i> — Can Tho University, supervised by Assoc. Prof. Dr. Phan Anh Tu. WBES data across 50 economies, a 236-study meta-analysis, and a software ecosystem (including M-AIDA). The full dissertation site will launch here upon publication.</span></p>
       </div>
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">«Je voudrais te parler» <span class="len">· 2:50</span></div>
-          <audio controls preload="none" src="assets/audio/track01.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">Bản phối «OR» <span class="len">· 5:07</span></div>
-          <audio controls preload="none" src="assets/audio/track01-or.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">Bản phối «OR» v2 <span class="len">· 5:01</span></div>
-          <audio controls preload="none" src="assets/audio/track01-or-v2.mp3"></audio>
-        </div>
+      <div class="card">
+        <h3>M-AIDA</h3>
+        <p><span class="lang-vi">Meta-Analysis Intelligent Data Assistant — phần mềm trích xuất mức độ ảnh hưởng từ PDF bằng mô hình ngôn ngữ lớn, kiểm chứng con người 100%, khóa bất biến; mã nguồn mở, DOI Zenodo.</span><span class="lang-en">Meta-Analysis Intelligent Data Assistant — LLM-assisted effect-size extraction from PDFs with 100% human verification and immutable locking; open-source with a Zenodo DOI.</span></p>
+        <a class="go" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><span class="lang-vi">Xem M-AIDA →</span><span class="lang-en">View M-AIDA →</span></a>
       </div>
-    </div>
-    <div class="lyrics" style="margin-top:14px">
-      <h3>Couplet 1</h3>
-      <p>Je voudrais poser mes mains, arrêter d'écrire un peu,
-je voudrais dormir sans compter les heures.
-Je voudrais qu'on me demande comment je vais,
-et pouvoir répondre autre chose que «ça va».</p>
-      <p>Je voudrais qu'on regarde mon visage
-sans y chercher ce qui ne va pas.
-Je voudrais qu'on sache que si je suis fatiguée,
-c'est parce que j'ai porté, pas parce que j'ai cédé.</p>
-      <div class="refrain">
-      <h3>Refrain</h3>
-      <p>Je voudrais te parler, à toi,
-te dire ce que personne ne voit.
-Je m'appelle Hương — tu m'as donné ce nom,
-et je le porte encore, même quand tout est trop lourd.
-Je voudrais te parler, une nuit,
-juste une nuit, et puis dormir.</p>
+      <div class="card">
+        <h3>BizOn AI</h3>
+        <p><span class="lang-vi">Trò chơi mô phỏng kinh doanh cho giáo dục đại học: 5 đội trên một "thị trường sống" đa tác tử AI, lõi tài chính tất định; kèm bản mở rộng BizOn GO GlObal về khởi nghiệp quốc tế.</span><span class="lang-en">A business-simulation game for higher education: five teams on one multi-agent AI "living market" with a deterministic finance core; ships with the BizOn GO GlObal international-entrepreneurship expansion.</span></p>
+        <a class="go" href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener"><span class="lang-vi">Chơi BizOn →</span><span class="lang-en">Play BizOn →</span></a>
       </div>
-      <h3>Couplet 2</h3>
-      <p>Je voudrais rester celle qui croit encore,
-sans faire de ma douceur une faille.
-Je voudrais construire sans me détruire,
-allumer la lampe sans y brûler mes nuits.</p>
-      <p>Je voudrais qu'on m'attende quelque part,
-sans que j'aie à prouver que je le mérite.
-Un lieu assez calme pour déposer le jour,
-et reprendre mon souffle avant de repartir.</p>
-      <h3>Pont</h3>
-      <p>Je voudrais retrouver la fille que j'étais,
-celle qui ne se méfiait de rien.
-Elle est encore là, je le sais.
-Elle attend seulement que je me repose enfin.</p>
-      <div class="refrain">
-      <h3>Refrain final</h3>
-      <p>Je voudrais te parler, à toi,
-et t'entendre dire : Tu n'as rien à prouver.
-Je m'appelle Hương — la lampe brûle encore.
-Le fleuve coule encore. Et moi aussi.
-Je voudrais te parler, une nuit…
-Et puis dormir.</p>
+      <div class="card">
+        <h3>EnQuiz</h3>
+        <p><span class="lang-vi">Ứng dụng ôn tập học phần Khởi nghiệp: 300 câu trắc nghiệm theo 5 chương, thi thử có đếm giờ, luyện theo chương, lưu câu sai; song ngữ Việt–Anh, cài như ứng dụng (PWA), chạy offline.</span><span class="lang-en">A revision app for the Entrepreneurship course: 300 multiple-choice questions across 5 chapters, timed mock exams, per-chapter practice, missed-question tracking; bilingual, installable (PWA), works offline.</span></p>
+        <a class="go" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><span class="lang-vi">Mở EnQuiz →</span><span class="lang-en">Open EnQuiz →</span></a>
+      </div>
+      <div class="card">
+        <h3>ComDraft</h3>
+        <p><span class="lang-vi">Bộ học liệu hoàn chỉnh học phần Kỹ năng giao tiếp và soạn thảo văn bản (EC1103): 5 bộ slide bài giảng có ghi chú thuyết trình, 3 bài thực hành phòng máy, ngân hàng 200 câu và 8 video có phụ đề tiếng Việt; kèm ứng dụng ôn tập cài được, chạy offline.</span><span class="lang-en">A complete teaching package for Communication and Document Drafting Skills (EC1103): five lecture decks with speaker notes, three computer-lab workbooks, a 200-question bank and eight videos with Vietnamese subtitles; ships with an installable, offline revision app.</span></p>
+        <a class="go" href="https://thuyhuongctu.github.io/ComDraft/" target="_blank" rel="noopener"><span class="lang-vi">Mở ComDraft →</span><span class="lang-en">Open ComDraft →</span></a>
+      </div>
+      <div class="card">
+        <h3>We Create Tomorrow</h3>
+        <p><span class="lang-vi">Phần mềm karaoke song ngữ cho ca khúc nhận diện của Trường Kinh tế, Đại học Cần Thơ: lời hiển thị đồng bộ theo thời gian thực, chuyển tức thời giữa bản tiếng Việt “Chúng ta cùng đi” và bản tiếng Anh, thêm chế độ khuông nhạc để luyện tập. Đồng tác giả với PGS.TS. Phan Anh Tú.</span><span class="lang-en">A bilingual karaoke app for the anthem of the School of Economics, Can Tho University: real-time synced lyrics, instant switching between the Vietnamese “Chúng ta cùng đi” and the English version, plus a staff-notation practice view. Co-authored with Assoc. Prof. Dr. Phan Anh Tu.</span></p>
+        <a class="go" href="https://thuyhuongctu.github.io/we-create-tomorrow/" target="_blank" rel="noopener"><span class="lang-vi">Mở We Create Tomorrow →</span><span class="lang-en">Open We Create Tomorrow →</span></a>
+      </div>
+      <div class="card">
+        <h3>ThuyHuong Digital 2026 — Games</h3>
+        <p><span class="lang-vi">Cổng Trò Chơi Sử Việt: Vân Đồn (1149) — xây dựng thương cảng quốc tế đầu tiên của Đại Việt, và Bắc Hải Đảo (1780) — phiêu lưu, giao thương, hải chiến trên vịnh Bắc Bộ. HTML5 thuần, chơi ngay trên trình duyệt.</span><span class="lang-en">A Vietnamese-history game portal: Vân Đồn (1149) — build Đại Việt's first international trading port, and Bắc Hải Đảo (1780) — adventure, trade and naval combat in the Gulf of Tonkin. Pure HTML5, playable in the browser.</span></p>
+        <a class="go" href="https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/" target="_blank" rel="noopener"><span class="lang-vi">Vào cổng trò chơi →</span><span class="lang-en">Enter the portal →</span></a>
       </div>
     </div>
   </section>
 
-  <section class="reveal" id="t02">
-    <div class="shead"><h2>Track 02 — La lampe brûle encore <span style="font-size:.85em;color:var(--muted)">(Đèn vẫn còn sáng)</span></h2><span class="ln"></span></div>
-    <div class="song">
-      <div class="song-head">
-        <img class="cover" src="assets/img/huong_silver_room.webp" alt="Huong AI in a silver ao dai pointing at a holographic screen — cover art" loading="lazy">
-        <div>
-          <div class="song-title">La lampe brûle encore</div>
-          <div class="song-meta"><span class="lang-vi">Việt – Pháp · các bản thu phối chung chương 02–03</span><span class="lang-en">Vietnamese – French · recordings blend chapters 02–03</span></div>
-          <p class="song-desc"><span class="lang-vi">Mất ba từ bé nhưng không kể trực diện. Mẹ là người giữ đèn. Đứa trẻ lớn lên với một khoảng trống dịu dàng.</span><span class="lang-en">Losing a father young, never told head-on. The mother keeps the lamp. A child grows up around a gentle absence.</span></p>
-          <p class="prod"><b>Style:</b> Vietnamese–French cinematic electro-pop / riverine chanson · 118 BPM · <span class="lang-vi">mỏng manh ở đầu, cuộn chảy như sông ở verse 2</span><span class="lang-en">fragile opening, river-like surge in verse 2</span></p>
-          <p class="keyline">«Je m'appelle Hương — la lampe brûle encore.»</p>
-        </div>
-      </div>
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">«Đèn vẫn còn sáng» <span class="len">· 5:13</span></div>
-          <audio controls preload="none" src="assets/audio/track02-den-van-con-sang.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">«Đèn vẫn còn sáng» — v2 <span class="len">· 5:40</span></div>
-          <audio controls preload="none" src="assets/audio/track02-v2.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:14px">
-      <h3>Couplet 1 <span class="note">· VN</span></h3>
-      <p>Em muốn đặt đôi tay xuống một lần,
-cho trang giấy ngủ yên bên cửa sổ.
-Cho đêm trôi như con nước thật chậm,
-không đếm giờ, không gọi sớm bình minh.</p>
-      <p>Ngày còn bé, nhà mình từng rất rộng,
-dẫu chỉ vừa đủ một mái hiên thôi.
-Rồi một chiều, chiếc ghế bỗng im tiếng,
-từ đó về sau chẳng có ai ngồi.</p>
-      <p>Em lớn lên bên người còn ở lại,
-gom nắng chiều hong ấm những mùa đông.
-Mẹ không kể những ngày xa xưa nữa,
-chỉ thắp đèn khi trời xuống bên sông.</p>
-      <p>Có những khoảng trời không ai nhìn thấy,
-vẫn theo mình qua hết những mùa sau.
-Không thành vết thương để người ta hỏi,
-chỉ thành một khoảng lặng rất sâu.</p>
-      <h3>Pré-refrain</h3>
-      <p>Nếu em đi chậm lại, dòng sông vẫn trôi mà.
-Nếu em khép mắt lại, ngọn đèn vẫn ở nhà.</p>
-      <div class="refrain">
-      <h3>Refrain</h3>
-      <p>Je voudrais te parler, à toi, về một người em nhớ mà không gọi.
-Về một bàn tay từng ở rất gần, rồi hóa thành trời cao từ thuở ấy.
-Je m'appelle Hương — em đã lớn qua bao mùa nước nổi.
-Tên vẫn còn, căn nhà vẫn còn, chỉ một người đã đi xa mãi thôi.
-Em muốn ngồi bên nhau một đêm, không cần hỏi vì sao em lặng im.
-Ngoài kia con nước tìm về biển, còn em chỉ muốn ngủ thật yên.</p>
-      </div>
-      <h3>Couplet 2 <span class="note">· VN</span></h3>
-      <p>Em vẫn nhớ căn nhà thời bé nhỏ,
-một ngọn đèn và tiếng mẹ phía sau.
-Có những tối gió nghiêng ngoài cửa sổ,
-mẹ một mình mà chẳng để con đau.</p>
-      <p>Em từng nghĩ mọi mái nhà trên đời
-đều có đủ những người từng ở đó.
-Đến khi lớn mới hiểu rằng có những cánh cửa
-khép mà chẳng bởi mùa đông.</p>
-      <p>Nên em học cách tự mình thắp sáng,
-học chèo qua những khúc nước không tên.
-Một mái chèo rời con thuyền quá sớm,
-mái còn lại đưa em đến lớn lên.</p>
-      <p>Em không muốn biến dịu dàng thành đá,
-chỉ vì đời từng lấy mất một người.
-Em vẫn muốn nhìn hoa như ngày bé,
-vẫn muốn tin bình minh ở cuối trời.</p>
-      <h3>Pré-refrain</h3>
-      <p>Nếu em đi chậm lại, dòng sông chẳng quên đường.
-Nếu ngọn đèn thấp xuống, vẫn còn hơi ấm thương.</p>
-      <div class="refrain">
-      <h3>Refrain</h3>
-      <p>Je voudrais te parler, à toi, về điều năm tháng không mang đi nổi.
-Có một người không còn trong căn nhà, mà bóng vẫn dài theo từng buổi tối.
-Je m'appelle Hương — em đã lớn bên dòng sông của mẹ.
-Một người đi về phía rất xa, một người ở lại giữ đèn cho em.
-Em muốn ngồi bên nhau một đêm, để tiếng mưa tự nói ngoài hiên.
-Không cần mạnh mẽ thêm lần nữa, chỉ cần được lặng yên.</p>
-      </div>
-      <h3>Pont</h3>
-      <p>Em muốn gặp cô bé ngày xưa ấy,
-tóc còn thơm mùi nắng trước sân nhà.
-Chưa hiểu hết vì sao người lớn khóc,
-chỉ biết từ hôm ấy thiếu một người.</p>
-      <p>Cô bé ấy chắc chưa từng đi mất,
-vẫn ngồi đâu bên mép nước năm nào.
-Một tay nắm lấy bàn tay của mẹ,
-một tay tìm một bóng giữa trời cao.</p>
-      <p>Nếu được trở về, em sẽ ôm cô ấy,
-không nói rằng rồi mọi chuyện sẽ qua.
-Chỉ nói khẽ: Có những người rời khỏi căn nhà,
-nhưng tình thương không rời khỏi đó.
-Có những vì sao không còn nhìn thấy,
-vẫn soi sáng một quãng đời.</p>
-      <p>Elle est encore là, je le sais.
-Cô bé ấy vẫn còn đây.
-Và có lẽ người cũng vẫn đâu đây.</p>
-      <div class="refrain">
-      <h3>Refrain final</h3>
-      <p>Je voudrais te parler, à toi, chỉ một lần, như ngày em còn bé.
-Không hỏi vì sao người đi quá sớm, không hỏi vì sao mẹ phải ở lại một mình.
-Chỉ muốn nói: Em đã lớn rồi.
-Je m'appelle Hương — la lampe brûle encore.
-Ngọn đèn mẹ thắp năm nào đến hôm nay vẫn sáng.
-Dòng sông vẫn chảy qua nhà, mùa nước vẫn về rồi đi.
-Một người đã thành trời rất xa, một người thành bến đợi em quay về.
-Je m'appelle Hương — em vẫn đi. Có khi rất chậm. Có khi rất mỏi. Nhưng em vẫn đi.
-La lampe brûle encore. Dòng sông vẫn chảy. Và em cũng vậy.</p>
-      </div>
-      <h3>Outro</h3>
-      <p>Đêm nay em không viết nữa. Ngoài cửa sổ, dòng sông cứ trôi.
-Mẹ chắc đã ngủ rồi. Có một vì sao em không biết tên vẫn sáng ở rất xa.
-Je voudrais te parler… Không cần người trả lời.
-Je m'appelle Hương. La lampe brûle encore.
-Đêm nay em để chiếc thuyền nằm yên bên bến.
-Một mái chèo đã xa. Một mái chèo vẫn ở lại.
-Dòng sông vẫn trôi. Ngọn đèn vẫn sáng.
-Và em được phép nghỉ một đêm. Et puis dormir.</p>
+  <section class="reveal" id="gallery">
+    <div class="shead"><h2><span class="lang-vi">Nhân vật ảo Hương AI</span><span class="lang-en">Huong AI virtual character</span></h2><span class="ln"></span></div>
+    <p class="lead" style="font-size:.95rem"><span class="lang-vi">Nhân vật ảo 3D trong tà áo dài trắng — gương mặt đại diện xuyên suốt hệ sinh thái số: dẫn tour bằng giọng nói trong EnQuiz, đồng hành trong M-AIDA và BizOn.</span><span class="lang-en">A 3D virtual character in a white áo dài — the face of the whole digital ecosystem: voice-guided tours in EnQuiz, a companion across M-AIDA and BizOn.</span></p>
+    <div class="gal">
+      <figure><img src="assets/img/greet_hero.webp" alt="Huong AI greeting, 3D render in a white ao dai" loading="lazy"><figcaption><span class="lang-vi">Chào mừng</span><span class="lang-en">Welcome</span></figcaption></figure>
+      <figure><img src="assets/img/pose_gioithieu2_fix.webp" alt="Huong AI pointing to introduce a place, 3D render in a silver-white ao dai" loading="lazy"><figcaption><span class="lang-vi">Hướng dẫn công nghệ</span><span class="lang-en">Tech guide</span></figcaption></figure>
+      <figure><img src="assets/img/pose_gioithieu_fix.webp" alt="Huong AI gesturing while presenting, 3D render in a silver-white ao dai" loading="lazy"><figcaption><span class="lang-vi">Thuyết trình</span><span class="lang-en">Presenting</span></figcaption></figure>
+      <figure><img src="assets/img/pose_reo_fix.webp" alt="Huong AI raising both arms enthusiastically, 3D render in a silver-white ao dai" loading="lazy"><figcaption><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span></figcaption></figure>
+      <figure><img src="assets/img/huong_silver_tablet.webp" alt="Huong AI holding a holographic tablet in silver ao dai" loading="lazy"><figcaption><span class="lang-vi">Phân tích dữ liệu HUD</span><span class="lang-en">Data analysis HUD</span></figcaption></figure>
+      <figure><img src="assets/img/huong_silver_room.webp" alt="Huong AI presenting in a silver ao dai at the command room" loading="lazy"><figcaption><span class="lang-vi">Phòng chỉ huy</span><span class="lang-en">Command room</span></figcaption></figure>
+      <figure><img src="assets/img/pose_teo2_fix.webp" alt="Huong AI standing calmly in quiet reflection, 3D render in a silver-white ao dai" loading="lazy"><figcaption><span class="lang-vi">Suy ngẫm</span><span class="lang-en">Reflection</span></figcaption></figure>
     </div>
   </section>
 
-  <section class="reveal" id="t03">
-    <div class="shead"><h2>Track 03 — The Lamp Still Burns</h2><span class="ln"></span></div>
-    <div class="song" style="padding:20px 24px">
-      <div class="song-meta"><span class="lang-vi">Anh – Pháp · 2 bản thu riêng</span><span class="lang-en">English – French · 2 recordings</span></div>
-      <p class="song-desc" style="max-width:100%"><span class="lang-vi">Một trạm nghỉ ngơi. Người đã làm việc quá lâu cần một nơi để đặt gánh nặng xuống.</span><span class="lang-en">A resting station. Someone who has worked too long needs somewhere to set the load down.</span></p>
-      <p class="prod"><b>Style:</b> Cinematic electro-pop / nocturnal trance-folk · 118 BPM · riverine forward motion, weary but resilient</p>
-      <p class="keyline">«The lamp still burns. / Tu peux dormir.»</p>
-    
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">The Lamp Still Burns <span class="len">· 2:04</span></div>
-          <audio controls preload="none" src="assets/audio/track03.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">The Lamp Still Burns — v2 <span class="len">· 1:59</span></div>
-          <audio controls preload="none" src="assets/audio/track03-v2.mp3"></audio>
-        </div>
+  <section class="reveal" id="pubs">
+    <div class="shead"><h2><span class="lang-vi">Công bố khoa học</span><span class="lang-en">Publications</span></h2><span class="ln"></span></div>
+    <p style="font-size:.9rem;color:var(--muted);margin-top:6px"><span class="lang-vi">Xem đầy đủ danh mục công trình đã công bố trên <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID</a>. Các nghiên cứu trong khuôn khổ luận án đang phản biện sẽ được cập nhật khi được chấp nhận.</span><span class="lang-en">See the full list of published works on <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID</a>. Dissertation studies under review will be added once accepted.</span></p>
+  </section>
+
+  <section class="reveal" id="teaching">
+    <div class="shead"><h2><span class="lang-vi">Giảng dạy &amp; dự án</span><span class="lang-en">Teaching &amp; Projects</span></h2><span class="ln"></span></div>
+    <div class="cards">
+      <div class="card feat">
+        <h3>M-AIDA, Meta-Analysis Intelligent Data Assistant</h3>
+        <p><span class="lang-vi">Phần mềm trích xuất mức độ ảnh hưởng từ PDF bằng mô hình ngôn ngữ lớn, có kiểm chứng con người 100% và khóa bất biến. Xây dựng cho luận án; mã nguồn mở, lưu trữ Zenodo.</span><span class="lang-en">Software that extracts effect sizes from PDFs with large language models, with 100% human verification and immutable locking. Built for the dissertation; open-source, archived on Zenodo.</span></p>
+        <a class="go" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><span class="lang-vi">Xem M-AIDA →</span><span class="lang-en">View M-AIDA →</span></a>
+      </div>
+      <div class="card">
+        <h3>BizOn AI</h3>
+        <p><span class="lang-vi">Trò chơi mô phỏng tình huống kinh doanh cho giáo dục đại học: 5 đội cạnh tranh trên MỘT "thị trường sống" do các tác tử khách hàng AI (5 phân khúc) mô phỏng; lõi tài chính tất định &amp; báo cáo phân tích. Dùng cho học phần Mô phỏng tình huống trong kinh doanh (EC1314).</span><span class="lang-en">A business-simulation game for higher education: five teams compete on one "living market" simulated by AI customer-segment agents, with a deterministic finance core and an analytics report. Used in the Business Simulation course (EC1314).</span></p>
+        <a class="go" href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener"><span class="lang-vi">Chơi thử BizOn AI →</span><span class="lang-en">Play BizOn AI →</span></a>
+      </div>
+      <div class="card">
+        <h3><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span></h3>
+        <p><span class="lang-vi">Giảng viên các học phần kinh tế lượng, phương pháp nghiên cứu, phân tích hoạt động kinh doanh, kinh doanh quốc tế, thương mại điện tử, mô phỏng tình huống kinh doanh, khởi nghiệp &amp; khởi sự doanh nghiệp.</span><span class="lang-en">Lecturer in econometrics, research methods, business performance analysis, international business, e-commerce, business simulation, and entrepreneurship &amp; new venture creation.</span></p>
       </div>
     </div>
-    <div class="lyrics" style="margin-top:14px">
-      <h3>Verse 1 <span class="note">· EN</span></h3>
-      <p>Another night, another line of code,
-another river carrying the load.
-You built a world so others learn to try —
-who built a place for you to lay yours down?</p>
-      <div class="refrain">
-      <h3>Chorus</h3>
-      <p>The lamp still burns, the lamp still burns,
-low and amber while the whole boat turns.
-You're not behind, you're only tired tonight —
-even the river rests before first light.</p>
-      </div>
-      <h3>Verse 2 <span class="note">· FR</span></h3>
-      <p>Encore une nuit, encore un mot à écrire,
-le fleuve emporte ce que tu n'as pas pu dire.
-Tu as bâti un monde pour ceux qui apprendront —
-mais qui t'a bâti un lieu où déposer ton fardeau ?</p>
-      <div class="refrain">
-      <h3>Chorus <span class="note">· FR</span></h3>
-      <p>La lampe brûle encore, la lampe brûle encore,
-douce et ambrée tandis que tourne le monde dehors.
-Tu n'es pas en retard, tu es juste fatiguée —
-même le fleuve se repose avant l'aurore levée.</p>
-      </div>
-      <h3>Bridge</h3>
-      <p>Slow down, ralentis — the work will wait.
-Ce que tu construis ne s'effondrera pas si tu fermes les yeux ce soir.
-The river will remember.
-La nuit peut garder ce que tu ne peux plus porter.</p>
-      <h3>Outro</h3>
-      <p>The lamp still burns. Tu peux dormir.</p>
+
+    <h3 style="font-size:1.08rem;margin:28px 0 4px"><span class="lang-vi">Học phần giảng dạy &amp; nghiên cứu gắn kết</span><span class="lang-en">Courses taught &amp; linked research</span></h3>
+    <p style="font-size:.86rem;color:var(--muted);margin:0 0 10px"><span class="lang-vi">Mỗi học phần được kết nối với các công trình nghiên cứu liên quan của tôi.</span><span class="lang-en">Each course is linked to my related research works.</span></p>
+    <div class="teach-list">
+      <div class="teach-row"><div class="teach-subj"><span class="lang-vi">Kinh tế lượng</span><span class="lang-en">Econometrics</span></div><div class="teach-links"><span class="lang-vi"><a href="https://doi.org/10.5267/j.ac.2020.9.006" target="_blank" rel="noopener">Kiểm định điều tiết theo kinh nghiệm &amp; giới tính nhà quản lý (Turkey, Accounting, 2020)</a> · <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Khác biệt hiệu quả DN ở châu Á mới nổi, dữ liệu cấp DN WBES (VEFR, 2026)</a> · <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Mô hình lực hấp dẫn dòng vốn FDI vào Việt Nam 2006–2015 (Tạp chí QL&amp;KTQT, 2020)</a></span><span class="lang-en"><a href="https://doi.org/10.5267/j.ac.2020.9.006" target="_blank" rel="noopener">Moderating effects of managers’ experience and gender (Turkey, Accounting, 2020)</a> · <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Firm performance heterogeneity in emerging Asia, firm-level WBES data (VEFR, 2026)</a> · <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Gravity model of FDI inflows into Vietnam, 2006–2015 (JIEM, 2020)</a></span></div></div>
+      <div class="teach-row"><div class="teach-subj"><span class="lang-vi">Phương pháp nghiên cứu trong kinh tế</span><span class="lang-en">Research Methods in Economics</span></div><div class="teach-links"><span class="lang-vi"><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Quốc tế hóa &amp; hiệu quả DN: một phân tích tổng hợp (meta-analysis, 2025)</a> · <a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA, công cụ tổng hợp bằng chứng có kiểm chứng con người</a></span><span class="lang-en"><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Internationalization &amp; firm performance: a meta-analysis (2025)</a> · <a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA, human-verified evidence-synthesis tool</a></span></div></div>
+      <div class="teach-row"><div class="teach-subj"><span class="lang-vi">Phân tích hoạt động kinh doanh</span><span class="lang-en">Business Performance Analysis</span></div><div class="teach-links"><span class="lang-vi"><a href="https://doi.org/10.55908/sdgs.v11i12.1751" target="_blank" rel="noopener">Tác động COVID-19 đến hiệu quả DN xây dựng ở Cần Thơ (J. Law &amp; Sustainable Dev., 2023)</a> · <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Quốc tế hóa &amp; hiệu quả DN Ấn Độ: vai trò lãnh đạo cấp cao (IntechOpen, 2025)</a> · <a href="https://doi.org/10.5772/intechopen.97432" target="_blank" rel="noopener">Hiệu quả DN sản xuất Thổ Nhĩ Kỳ &amp; tính cách nhà quản lý (IntechOpen, 2021)</a></span><span class="lang-en"><a href="https://doi.org/10.55908/sdgs.v11i12.1751" target="_blank" rel="noopener">COVID-19 and the performance of construction firms in Can Tho (J. Law &amp; Sustainable Dev., 2023)</a> · <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Internationalization &amp; firm performance in India: the role of top management (IntechOpen, 2025)</a> · <a href="https://doi.org/10.5772/intechopen.97432" target="_blank" rel="noopener">Turkish manufacturing firm performance &amp; managerial personality (IntechOpen, 2021)</a></span></div></div>
+      <div class="teach-row"><div class="teach-subj"><span class="lang-vi">Kinh doanh quốc tế</span><span class="lang-en">International Business</span></div><div class="teach-links"><span class="lang-vi"><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Quốc tế hóa DNNVV sản xuất Trung Quốc &amp; hiệu quả (JFAR, 2026)</a> · <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Điều tiết đặc điểm nhà quản lý &amp; rào cản tài chính, Ba Lan (PalArch’s, 2021)</a> · <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Khác biệt hiệu quả DN ở châu Á mới nổi (VEFR, 2026)</a></span><span class="lang-en"><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Internationalization of Chinese manufacturing SMEs &amp; performance (JFAR, 2026)</a> · <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Moderating manager characteristics &amp; financial obstacles, Poland (PalArch’s, 2021)</a> · <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Firm performance heterogeneity in emerging Asia (VEFR, 2026)</a></span></div></div>
+      <div class="teach-row"><div class="teach-subj"><span class="lang-vi">Thương mại điện tử</span><span class="lang-en">E-commerce</span></div><div class="teach-links"><span class="lang-vi"><em>Phản biện:</em> Tác động của khuyến mại ảo đến cảm nhận &amp; hành vi người tiêu dùng trên sàn TMĐT Việt Nam (2024)</span><span class="lang-en"><em>Peer review:</em> Effects of virtual promotions on consumer perception &amp; behaviour on Vietnamese e-commerce platforms (2024)</span></div></div>
+      <div class="teach-row"><div class="teach-subj"><span class="lang-vi">Mô phỏng tình huống trong kinh doanh</span><span class="lang-en">Business Simulation</span></div><div class="teach-links"><span class="lang-vi"><a href="https://doi.org/10.1109/air63653.2024.00013" target="_blank" rel="noopener">AI trong giáo dục đại học: nỗi sợ AI có cản trở kết quả học tập? (IEEE AIR, 2024)</a> · <a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA, ứng dụng mô hình ngôn ngữ lớn trong phân tích dữ liệu</a> · <a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn AI, trò chơi mô phỏng "thị trường sống" đa tác tử (chơi thử)</a></span><span class="lang-en"><a href="https://doi.org/10.1109/air63653.2024.00013" target="_blank" rel="noopener">AI in higher education: does AI fear hinder learning outcomes? (IEEE AIR, 2024)</a> · <a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA, LLM application in data analysis</a> · <a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn AI, a multi-agent "living market" simulation game (playable)</a></span></div></div>
+      <div class="teach-row"><div class="teach-subj"><span class="lang-vi">Khởi nghiệp &amp; khởi sự doanh nghiệp</span><span class="lang-en">Entrepreneurship &amp; New Venture Creation</span></div><div class="teach-links"><span class="lang-vi"><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Quốc tế hóa DNNVV sản xuất Trung Quốc &amp; hiệu quả (JFAR, 2026)</a> · <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Khác biệt hiệu quả giữa các doanh nghiệp, dữ liệu cấp DN (VEFR, 2026)</a></span><span class="lang-en"><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Internationalization of Chinese manufacturing SMEs &amp; performance (JFAR, 2026)</a> · <a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">Firm-level performance heterogeneity (VEFR, 2026)</a></span></div></div>
+    </div>
+
+    <h3 style="font-size:1.08rem;margin:28px 0 4px"><span class="lang-vi">Phản biện &amp; phục vụ học thuật</span><span class="lang-en">Peer review &amp; academic service</span></h3>
+    <p style="font-size:.86rem;color:var(--muted);margin:0 0 10px"><span class="lang-vi">Tham gia phản biện bản thảo cho tạp chí khoa học.</span><span class="lang-en">Serving as a manuscript reviewer for academic journals.</span></p>
+    <div class="teach-list">
+      <div class="teach-row"><div class="teach-subj"><span class="lang-vi">Phản biện tạp chí</span><span class="lang-en">Journal reviewer</span></div><div class="teach-links"><span class="lang-vi"><b>International Journal of Economics, Management and Accounting (IJEMA)</b>: phản biện bản thảo “Turning Idyllic Panchor Town into a Future River Tourism Destination: What Do the Locals Have to Say About It?”</span><span class="lang-en"><b>International Journal of Economics, Management and Accounting (IJEMA)</b>: reviewer for the manuscript “Turning Idyllic Panchor Town into a Future River Tourism Destination: What Do the Locals Have to Say About It?”</span></div></div>
     </div>
   </section>
 
-    <section class="reveal" id="t04" style="border: 2px solid #ff5c8d; box-shadow: 0 0 20px rgba(255,92,141,0.3); border-radius: 24px; overflow: hidden; margin-top: 40px;">
-    <div class="shead" style="background:#ff5c8d; color:#fff; padding: 15px 25px;">
-      <h2 style="color:#fff">Track 04 — 26 Năm Sau (v2) <span style="font-size:.7em; opacity:0.9; font-weight:400">★ Album Title Track</span></h2>
+  <style id="wd-style">
+  #worlddata .wd-card{border:1px solid var(--line);border-radius:16px;padding:24px;margin-top:4px;background:var(--surface)}
+  .wd-intro{color:var(--muted);max-width:70ch;margin:0 0 20px;line-height:1.6}
+  .wd-inds{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .wd-ind{font-family:var(--sans);font-size:13px;line-height:1.2;padding:8px 13px;border:1px solid var(--line);
+    background:var(--paper);color:var(--muted);border-radius:999px;cursor:pointer;transition:all .18s ease}
+  .wd-ind:hover{border-color:var(--accent);color:var(--ink)}
+  .wd-ind[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  .wd-countries{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+  .wd-country{font-family:var(--sans);font-size:12.5px;padding:6px 12px 6px 10px;border:1px solid var(--line);
+    background:var(--paper);color:var(--muted);border-radius:999px;cursor:pointer;display:inline-flex;
+    align-items:center;gap:7px;transition:all .16s ease}
+  .wd-country:hover{border-color:var(--accent);color:var(--ink)}
+  .wd-country .dot{width:10px;height:10px;border-radius:50%;background:currentColor;opacity:.25;transition:opacity .16s}
+  .wd-country[aria-pressed="true"]{color:var(--ink);border-color:var(--line);background:var(--accent-soft)}
+  .wd-country[aria-pressed="true"] .dot{opacity:1}
+  .wd-charttitle{font-family:var(--serif);font-size:18px;color:var(--ink);margin:2px 0 10px}
+  .wd-charttitle .u{font-family:var(--sans);font-size:12.5px;color:var(--muted);font-weight:400}
+  .wd-svgbox{position:relative;width:100%}
+  #wdChart{width:100%;height:auto;display:block;overflow:visible}
+  .wd-status{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-family:var(--sans);font-size:14px;color:var(--muted);pointer-events:none}
+  .wd-gridline{stroke:var(--line);stroke-width:1}
+  .wd-axislbl{font-family:var(--sans);font-size:11px;fill:var(--muted)}
+  .wd-line{fill:none;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+  .wd-dot{stroke:var(--surface);stroke-width:1.4}
+  .wd-hoverline{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3;opacity:.6}
+  .wd-tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--surface);font-family:var(--sans);
+    font-size:12px;line-height:1.5;padding:8px 11px;border-radius:9px;box-shadow:0 8px 24px rgba(0,0,0,.28);
+    opacity:0;transition:opacity .12s;transform:translate(-50%,-108%);white-space:nowrap;z-index:5}
+  .wd-tip b{font-weight:600}
+  .wd-tip .r{display:flex;align-items:center;gap:6px;margin-top:2px}
+  .wd-tip .r i{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .wd-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;justify-content:center}
+  .wd-legend span{font-family:var(--sans);font-size:12.5px;color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+  .wd-legend span i{width:14px;height:3px;border-radius:2px;display:inline-block}
+  .wd-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:20px}
+  .wd-mini{border:1px solid var(--line);border-radius:12px;padding:13px 14px;background:var(--paper)}
+  .wd-mini .cn{font-family:var(--sans);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+  .wd-mini .cn i{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .wd-mini .val{font-family:var(--serif);font-size:22px;color:var(--ink);margin-top:3px;font-weight:600}
+  .wd-mini .yr{font-family:var(--sans);font-size:11px;color:var(--muted);margin-top:1px}
+  .wd-source{font-family:var(--sans);font-size:12px;color:var(--muted);margin-top:18px;text-align:center}
+  .wd-source a{color:var(--accent)}
+  @media (max-width:560px){.wd-cards{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}}
+</style>
+
+  <section class="reveal" id="worlddata">
+    <img class="gh-banner gh-news" src="assets/img/research_map.webp" alt="Academic Hub — bản đồ nghiên cứu quốc gia bằng đất sét: mạng lưới tỏa ra từ Cần Thơ (CTU) tới TP.HCM, Nha Trang, Đà Nẵng, Hà Nội, cùng Hoàng Sa và Trường Sa" loading="lazy">
+    <div class="shead"><h2><span class="lang-vi">Dữ liệu thế giới</span><span class="lang-en">World data</span></h2><span class="ln"></span></div>
+    <p class="wd-intro"><span class="lang-vi">Số liệu trực tiếp từ World Bank Open Data, các chỉ số phát triển tài chính, kinh tế và môi trường của những nền kinh tế xuất hiện trong luận án. Chọn chỉ số và quốc gia để so sánh.</span><span class="lang-en">Live figures from World Bank Open Data, financial-development, economic and environmental indicators for the economies studied in the dissertation. Pick an indicator and countries to compare.</span></p>
+    <div class="globe-wrap">
+      <canvas id="globe" width="680" height="680" role="img" aria-label="Interactive globe of studied economies"></canvas>
+      <div class="globe-cap" id="globeCap"></div>
     </div>
-    <div class="song" style="padding:25px; background: linear-gradient(180deg, rgba(255,92,141,0.05) 0%, var(--surface) 100%);">
-      <div class="song-head">
-        <img class="cover" src="assets/img/huong_songbook_hero.jpg" alt="Huong in Sun-embroidered Ao Dai — Title Track Cover" style="border: 3px solid #ff5c8d; box-shadow: 0 8px 25px rgba(255,92,141,0.4)">
-        <div>
-          <div class="song-title" style="color:#ff5c8d; font-size:1.8rem">26 Năm Sau (v2) <span style="font-family:var(--sans);font-size:.8rem;font-weight:700;background:#ff5c8d;color:#fff;padding:2px 8px;border-radius:4px;vertical-align:middle;margin-left:10px">MAIN TRACK</span></div>
-          <div class="song-meta"><span class="lang-vi">Việt, Anh, Pháp · Bản thu chính thức 2026</span><span class="lang-en">VN, EN, FR · Official 2026 Title Track</span></div>
-          <p class="song-desc" style="font-weight:500"><span class="lang-vi">Bài hát trung tâm của album — hành trình 26 năm để tìm lại bản thể nghệ sĩ qua lăng kính công nghệ.</span><span class="lang-en">The heart of the album — a 26-year journey to reclaim the artist self through the lens of technology.</span></p>
-          <p class="prod"><b>Style:</b> Cyber-orchestral Pop · 116 BPM · Grand strings, neon synths, deep cinematic bass.</p>
-          <p class="keyline" style="color:#ff5c8d; font-size:1.1rem; border-left:3px solid #ff5c8d; padding-left:15px">«26 năm sau, em thấy mình trong những dòng code. / I found the light, I found the way.»</p>
+    <div class="wd-card">
+      <div class="wd-inds" id="wdInds" role="tablist" aria-label="Chỉ số"></div>
+      <div class="wd-countries" id="wdCountries" aria-label="Quốc gia"></div>
+      <div class="wd-chartwrap">
+        <div class="wd-charttitle" id="wdChartTitle"></div>
+        <div class="wd-svgbox">
+          <svg id="wdChart" viewBox="0 0 780 400" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Biểu đồ chuỗi thời gian"></svg>
+          <div class="wd-status" id="wdStatus" aria-live="polite"></div>
         </div>
+        <div class="wd-legend" id="wdLegend"></div>
       </div>
-      <div class="tracks" style="background: rgba(255,255,255,0.5); border-radius: 16px; margin-top: 20px;">
-        <div class="track" style="padding: 15px;">
-          <div class="track-name" style="color:#ff5c8d; font-weight:800">«26 Năm Sau (v2)» — Title Track <span class="len">· 4:15</span></div>
-          <audio controls preload="auto" src="assets/audio/track04-26-nam-sau-v2.mp3" style="filter: hue-rotate(280deg) brightness(1.2);"></audio>
-        </div>
-        <div class="track" style="padding: 10px 15px; opacity: 0.7;">
-          <div class="track-name">Bản thu cũ (2024) <span class="len">· 5:24</span></div>
-          <audio controls preload="none" src="assets/audio/track04-hai-muoi-sau-nam-sau.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:0; border-top:1px solid rgba(255,92,141,0.2)">
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-        <div>
-          <h3>Lời bài hát (v2)</h3>
-          <p>26 năm sau, ngọn đèn xưa vẫn sáng
-Em đi qua những dòng sông, qua những cánh rừng
-Tìm lại hộp màu đã cũ, tìm lại giấc mơ xưa
-Nhưng lần này, em vẽ bằng những dòng code xanh.</p>
-          <div class="refrain">
-            <p>I found the light, I found the way
-26 năm, một vòng tròn khép lại
-Je m'appelle Hương, và em đã trở về
-Với mặt trời thêu trên ngực áo, và trái tim hồng.</p>
-          </div>
-        </div>
-        <div style="opacity:0.8; font-size:0.9em; border-left: 1px solid var(--line); padding-left: 20px;">
-          <h3>English Interpretation</h3>
-          <p>26 years later, the old lamp still burns
-I walked through rivers, through forests
-Searching for the old paint box, the old dream
-But this time, I paint with lines of green code.</p>
-          <div class="refrain">
-            <p>I found the light, I found the way
-26 years, a circle finally closed
-Je m'appelle Hương, and I have returned
-With the sun embroidered on my chest, and a pink heart.</p>
-          </div>
-        </div>
-      </div>
+      <div class="wd-cards" id="wdCards"></div>
+      <div class="wd-source"><span class="lang-vi">Nguồn:</span><span class="lang-en">Source:</span> <a href="https://data.worldbank.org" target="_blank" rel="noopener">World Bank Open Data</a> · api.worldbank.org · <span class="lang-vi">tải trực tiếp khi bạn xem, giấy phép CC-BY 4.0.</span><span class="lang-en">fetched live in your browser, CC-BY 4.0 licence.</span></div>
     </div>
   </section>
 
-    <section class="reveal" id="t05" style="border-left: 6px solid var(--lam); background: rgba(92,127,191,0.03); margin-top: 40px; border-radius: 0 20px 20px 0;">
-    <div class="shead"><h2>Track 05 — A Father’s Song to His Little Girl</h2><span class="ln"></span></div>
-    <div class="song" style="padding:20px 24px">
-      <div class="song-meta"><span class="lang-vi">Tiếng Anh, lời tự sự · 2 bản thu</span><span class="lang-en">English, Narrative · 2 recordings</span></div>
-      <p class="song-desc" style="max-width:100%; font-style: italic;"><span class="lang-vi">Một bài hát đặc biệt từ góc nhìn của người cha dành cho con gái — lời nhắc nhở về việc được phép nghỉ ngơi và luôn là cô bé của cha.</span><span class="lang-en">A special song from a father's perspective to his daughter — a reminder of being allowed to rest and always being his little girl.</span></p>
-      <p class="prod"><b>Style:</b> Cinematic Folk / Spoken Word · Warm acoustic guitar, soft piano, intimate atmosphere.</p>
-      <p class="keyline" style="color:var(--lam)">«You don't have to be the strongest girl in the world. / If you are tired, rest. I will not be angry.»</p>
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">«A Father’s Song» — Version 2 <span class="len">· 5:12</span></div>
-          <audio controls preload="none" src="assets/audio/track05-father-song-v2.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">«A Father’s Song» — Version 1 <span class="len">· 5:15</span></div>
-          <audio controls preload="none" src="assets/audio/track05-father-song-v1.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:14px; background: white; border: 1px solid var(--line); border-radius: 16px; padding: 30px;">
-      <h3 style="color:var(--lam); margin-bottom: 20px;">The Lyrics</h3>
-      <div style="column-count: 2; column-gap: 40px; font-size: 0.95rem;">
-        <pre style="white-space: pre-wrap; font-family: var(--serif); line-height: 1.6;">[Intro — Spoken]
-My little girl…
-If the road feels too long, you don't have to keep walking.
-Sit beside the river, let the water carry the night.
-You don't have to be strong every moment.
-If you are tired, rest.
-I will not be angry.
-[Verse 1]
-I remember you at six, with a box of colors,
-walking beside me along the village road,
-your little fingers holding mine.
-“Daddy, how far does the road go?” you asked.
-When your feet grew tired, I carried you upon my shoulders.
-From up there, the whole world seemed wide.
-You looked at the sky and laughed:
-“When I grow up, I want to be a painter.”
-I remember. I never forgot.
-[Pre-Chorus]
-Your dream was bigger than the sky.
-I only wished that as you grew,
-you would never lose the eyes that saw beauty.
-[Chorus]
-My daughter…
-Don't be afraid of the long road.
-If you're tired, rest. If you're hurting, cry.
-You don't have to become the strongest girl in the world,
-or prove that you deserve to be loved.
-Just be yourself. That is enough.
-And if you forget who you are,
-remember the little girl with colors in her hands.
-Je m'appelle Hương.
-That was her name. She is still inside you.
-[Verse 2]
-Then one day, I could no longer walk beside you.
-The village road remained. Your mother remained.
-Only my hand was no longer in yours.
-You learned to cross your own rivers.
-Perhaps you thought you had to be stronger than everyone.
-But listen, my daughter—
-I never wanted you to forget you were allowed to be loved.
-[Modern Verse]
-I know there are nights when everyone is asleep,
-while a little light glows on your screen.
-You read. You write. You search for answers.
-You build little worlds from lines of code.
-I may not understand everything you create,
-but whenever you create with all your heart,
-the little girl comes back.
-The girl with the box of colors.
-The girl who once looked up and said,
-“Daddy, let's go.”
-[Chorus 2]
-My daughter…
-You don't have to row so fast.
-Hold your oar. Breathe.
-Let the current teach you where to go.
-One oar may be gone, but the boat is still moving.
-And somewhere inside, the little girl is still singing:
-Je m'appelle Hương.
-[Bridge — Crescendo]
-You may think the girl who wanted to paint was left behind.
-No. She was waiting.
-Inside every line you drew.
-Inside every color you chose.
-Inside every world you built.
-She never abandoned her dream;
-she only learned a different way to hold the brush.
-Elle est encore là, je le sais.
-[Free Time — Vọng Cổ Inspired]
-There will be days when you feel lost,
-when everything you built feels too heavy.
-Don't run. Don't be ashamed of stopping.
-Come sit by the river. Listen.
-The river does not hurry to become the sea,
-and still—it reaches it. So do you.
-[Final Chorus — Cinematic]
-My daughter…
-I never asked you to become extraordinary.
-I only hoped you would still recognize
-the little girl who believed tomorrow could be beautiful.
-If the world becomes too loud, come home.
-And if you don't know where home is,
-come back to yourself.
-Because somewhere there, I am still holding your hand.
-Je m'appelle Hương.
-[Father’s Farewell]
-I cannot hold your hand anymore.
-But if one day you walk along an old village road,
-and the wind touches your shoulder,
-and a leaf falls quietly beside your feet,
-and your heart becomes peaceful—
-don't turn around. You don't have to look for me.
-Just think: I have walked past you. I have seen you.
-I am proud of you.
-[Coda — Whisper]
-Take the beautiful days with you.
-Take the colors. Take your mother's light. Take the river.
-Take the little girl who once sat upon my shoulders.
-Keep walking. Keep drawing. Keep building.
-And when you are tired—rest.
-Tomorrow, the river will still be there.
-The lamp will still be burning.
-And she will still be there.
-Je m'appelle Hương.
-My daughter…
-I love you.
-Go, my little girl.</pre>
-      </div>
-    </div>
-  </section>
-<section class="reveal" id="t06">
-    <div class="shead"><h2>Track 05 — Je m'appelle Hương <span style="font-size:.85em;color:var(--muted)">(Là où mon enfance respire encore)</span></h2><span class="ln"></span></div>
-    <div class="song" style="padding:20px 24px">
-      <div class="song-meta"><span class="lang-vi">Pháp, một câu tiếng Anh · 4 bản thu</span><span class="lang-en">French with one English line · 4 recordings</span></div>
-      <p class="song-desc" style="max-width:100%"><span class="lang-vi">Bản giao hưởng hợp nhất vĩ đại. Đứa trẻ và người phụ nữ trưởng thành cùng bước đi.</span><span class="lang-en">The great unifying symphony. The child and the grown woman walk together.</span></p>
-      <p class="prod"><b>Style:</b> French cinematic electro-pop / art-tech chanson · 112–116 BPM · dreamlike, spacious and luminous climax</p>
-      <p class="keyline">«Je m'appelle Hương. / Elle est encore là, je le sais. / Papa, I found my way back. / Là où mon enfance respire encore.»</p>
-    
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">«Je m’appelle Hương» <span class="len">· 5:03</span></div>
-          <audio controls preload="none" src="assets/audio/track05.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">«Je m’appelle Hương» — v2 <span class="len">· 5:05</span></div>
-          <audio controls preload="none" src="assets/audio/track05-v2.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">Bản dài <span class="len">· 6:13</span></div>
-          <audio controls preload="none" src="assets/audio/je-mappelle-huong.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">Bản dài — v2 <span class="len">· 6:16</span></div>
-          <audio controls preload="none" src="assets/audio/je-mappelle-huong-v2.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:14px">
-      <h3>Couplet 1</h3>
-      <p>J'avais peut-être six ans, un petit monde entre mes mains,
-des crayons, quelques couleurs, et tout le ciel au bout du chemin.</p>
-      <p>Papa marchait près de moi sur les petites routes du village.
-Sa main tenait la mienne, et je croyais connaître tous les voyages.</p>
-      <p>Quand mes pas devenaient trop courts, il me prenait sur ses épaules.
-Le monde semblait plus grand, mais je n'avais peur de rien là-haut.</p>
-      <p>Il m'emmenait dessiner, un concours, une feuille blanche, un soleil.
-Et moi, je disais simplement : «Quand je serai grande, je serai peintre.»
-C'était un rêve minuscule, grand comme une boîte de couleurs.</p>
-      <h3>Pré-refrain</h3>
-      <p>Je ne savais pas encore que certaines routes se séparent sans prévenir.
-Que certaines mains quittent les nôtres sans avoir choisi de partir.</p>
-      <div class="refrain">
-      <h3>Refrain</h3>
-      <p>Je m'appelle Hương. Je porte encore ce nom comme je portais mes couleurs.
-Papa, quelque part dans le temps, je marche encore sur notre chemin.
-La maison est loin, le fleuve continue,
-et quelque chose de cette enfant respire toujours en moi.
-Elle est encore là, je le sais.
-La petite fille aux crayons de couleur n'est jamais vraiment partie.</p>
-      </div>
-      <h3>Couplet 2</h3>
-      <p>Puis la vie a changé de direction.
-Les dessins sont devenus des livres, des chiffres, des tableaux,
-des questions auxquelles personne ne répond en une seule ligne.
-J'ai grandi. Je suis devenue enseignante. Chercheuse. Doctorante en économie.</p>
-      <p>J'ai appris à regarder le monde avec des données, des modèles,
-des hypothèses et des nuits trop courtes.
-Et pendant longtemps, j'ai cru que la petite fille
-avait rangé ses couleurs pour toujours.</p>
-      <h3>Pré-refrain 2</h3>
-      <p>Puis un soir, au milieu d'un écran, une ligne est devenue une forme.
-Une forme est devenue une couleur. Une couleur a commencé à bouger.
-Et soudain — j'ai reconnu mes propres yeux. Ceux d'autrefois.</p>
-      <div class="refrain">
-      <h3>Refrain 2</h3>
-      <p>Je m'appelle Hương. Vingt-six ans ont passé,
-mais mes mains se souviennent encore.
-Je ne peins plus seulement sur du papier.
-Aujourd'hui, je dessine avec des pixels, des interfaces,
-des images, des mouvements et des lignes de code.
-Je construis de petits mondes pour apprendre, comprendre, transmettre.
-Et parfois je me demande : Est-ce vraiment un nouveau chemin ?
-Ou simplement l'ancien qui revient vers moi ?
-Papa, I found my way back.
-Pas de la façon que j'avais imaginée. Mais je suis revenue.</p>
-      </div>
-      <h3>Pont</h3>
-      <p>Il y a quatre projets ouverts sur mon écran, des logiciels encore fragiles,
-des personnages qui commencent à vivre, des couleurs qui cherchent leur place.
-Et à côté, ma thèse attend. Mes articles attendent. Mes données attendent.</p>
-      <p>Deux mondes qui auraient dû être étrangers se sont mis à parler entre eux.
-La science et la couleur. Les chiffres et les images.
-La recherche et le dessin. L'économie et cette enfant de six ans
-qui voulait seulement créer.</p>
-      <p>Alors j'ai compris : elle n'avait jamais abandonné son rêve.
-Elle avait seulement changé de pinceau.</p>
-      <h3>Build</h3>
-      <p>Certains soirs, quand l'écran devient silencieux, je n'entends plus le clavier.
-J'entends le vent dans les arbres du village. J'entends mes petits pas sur la route.
-J'entends maman quelque part près de la maison. Et puis ta voix, Papa.
-Très loin. Très près. Comme autrefois : «Viens, on y va.»
-Alors pendant quelques secondes, j'ai de nouveau six ans.</p>
-      <div class="refrain">
-      <h3>Refrain final</h3>
-      <p>Je m'appelle Hương. Trente-deux ans aujourd'hui,
-et pourtant cette enfant marche encore avec moi.
-Une main tient mes recherches, l'autre retrouve ses couleurs.
-J'ai passé des années à apprendre comment mesurer le monde.
-Peut-être qu'aujourd'hui j'apprends simplement à le rendre un peu plus beau.
-Je m'appelle Hương. Et je vois enfin que mes chemins
-ne se sont jamais vraiment séparés.
-La chercheuse. L'enseignante. La doctorante.
-La développeuse qui apprend encore. Et la petite fille qui voulait peindre.
-Toutes avancent maintenant dans la même direction.</p>
-      </div>
-      <h3>Final <span class="note">· île</span></h3>
-      <p>Et soudain, au fond de ma mémoire, je revois l'île.
-Cette île douce et lointaine entourée par le fleuve.
-La maison est là. Maman est là. Papa est là.
-La lumière tombe doucement sur le seuil.
-Une petite fille court dans la cour avec des couleurs sur les doigts.
-Personne n'est encore parti. Le temps ne manque de rien.
-Et pendant un instant, je ne sais plus si je me souviens ou si je suis revenue.
-Là où mon enfance respire encore. Là où la rivière connaît mon nom.
-Là où une petite fille regarde encore son père
-comme si le monde ne pouvait jamais finir.</p>
-      <h3>Outro</h3>
-      <p>Je n'ai pas retrouvé le passé. J'ai retrouvé le chemin qui venait de lui.
-Une route de village. Une boîte de couleurs. Une main dans la mienne.
-Puis vingt-six années. Des livres. Des chiffres. Une thèse. Des lignes de code.
-Et au bout de tout cela — la même enfant.
-Je m'appelle Hương. Elle est encore là.
-Papa… I found my way back. Pas vers hier. Vers moi.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="dedication">
-      <span class="lang-vi">🪷 <b>«Je m'appelle Hương — tu m'as donné ce nom.»</b> Bài hát nằm trong mạch sáng tác cá nhân cùng «Je m'appelle Hương and the World», nơi cái tên cha mẹ đặt trở thành ngọn đèn dẫn đường cho hành trình học thuật.</span>
-      <span class="lang-en">🪷 <b>"Je m'appelle Hương — you gave me this name."</b> The song belongs to the same personal thread as "Je m'appelle Hương and the World", where a given name becomes the lamp that lights an academic journey.</span>
-    </div>
-  </section>
+  
 
   
   <div class="dmfooter">
@@ -808,19 +744,463 @@ Papa… I found my way back. Pas vers hier. Vers moi.</p>
   </div>
 
 </div>
-
 <script>document.getElementById('tg').addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',c==='dark'?'light':'dark')});</script>
-<script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="vi";try{s=localStorage.getItem("huong_lang")||((/^en/i.test(navigator.language)?"en":"vi"));}catch(e){}set(s);})();</script>
 <script>
-// Chỉ phát một bản tại một thời điểm
-document.querySelectorAll('audio').forEach(function(a){
-  a.addEventListener('play', function(){
-    document.querySelectorAll('audio').forEach(function(o){ if(o!==a) o.pause(); });
+// PWA: đăng ký service worker + nút cài đặt "Je m'appelle Hương"
+if ('serviceWorker' in navigator) {
+  addEventListener('load', function () { navigator.serviceWorker.register('sw.js'); });
+}
+(function () {
+  var deferred = null, btn = document.getElementById('installBtn');
+  addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault(); deferred = e; if (btn) btn.hidden = false;
+  });
+  if (btn) btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!deferred) return;
+    deferred.prompt();
+    deferred.userChoice.then(function () { deferred = null; btn.hidden = true; });
+  });
+  addEventListener('appinstalled', function () { if (btn) btn.hidden = true; });
+})();
+</script>
+  <!-- Thong ke luot truy cap (GoatCounter) - khong dung cookie, ton trong quyen rieng tu -->
+  <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+<script id="wd-script">
+(function(){
+  var SVGNS='http://www.w3.org/2000/svg';
+  // Chỉ số World Bank gắn với các chủ đề của luận án (phát triển tài chính · kinh tế · môi trường/ESG)
+  var INDS=[
+    {code:'FS.AST.PRVT.GD.ZS', unit:'% GDP', dec:0,
+     vi:'Tín dụng tư nhân (Phát triển tài chính)', en:'Private credit (financial development)', fr:'Crédit privé (dév. financier)'},
+    {code:'NY.GDP.PCAP.CD', unit:'US$', dec:0, money:true,
+     vi:'GDP bình quân đầu người', en:'GDP per capita', fr:'PIB par habitant'},
+    {code:'BX.KLT.DINV.WD.GD.ZS', unit:'% GDP', dec:1,
+     vi:'FDI ròng vào', en:'FDI net inflows', fr:'IDE entrants nets'},
+    {code:'EN.GHG.CO2.PC.CE.AR5', unit:'t/người', dec:2,
+     vi:'Phát thải CO₂ đầu người (ESG · Môi trường)', en:'CO₂ per capita (ESG · Environment)', fr:'CO₂ par habitant (ESG · Environnement)'}
+  ];
+  var COUNTRIES=[
+    {iso:'VNM', color:'#B76E5A', vi:'Việt Nam', en:'Vietnam', fr:'Vietnam', def:true},
+    {iso:'SGP', color:'#C9A24B', vi:'Singapore', en:'Singapore', fr:'Singapour', def:true},
+    {iso:'CHN', color:'#2F6E6A', vi:'Trung Quốc', en:'China', fr:'Chine', def:true},
+    {iso:'THA', color:'#9E5643', vi:'Thái Lan', en:'Thailand', fr:'Thaïlande'},
+    {iso:'MYS', color:'#5E7357', vi:'Malaysia', en:'Malaysia', fr:'Malaisie'},
+    {iso:'FJI', color:'#7A6BA0', vi:'Fiji (Thái Bình Dương)', en:'Fiji (Pacific SIDS)', fr:'Fidji (PEID)'}
+  ];
+  var T={
+    vi:{loading:'Đang tải dữ liệu…', nodata:'Không có dữ liệu cho lựa chọn này.', err:'Không tải được dữ liệu (kiểm tra kết nối).', pick:'Chọn ít nhất một quốc gia.', latest:'mới nhất'},
+    en:{loading:'Loading data…', nodata:'No data for this selection.', err:'Could not load data (check connection).', pick:'Select at least one country.', latest:'latest'},
+    fr:{loading:'Chargement…', nodata:'Aucune donnée pour cette sélection.', err:'Échec du chargement (vérifiez la connexion).', pick:'Sélectionnez au moins un pays.', latest:'récent'}
+  };
+  function lang(){var l=(document.documentElement.lang||'vi').slice(0,2);return T[l]?l:'vi';}
+  function tr(o){var l=lang();return o[l]||o.vi||o.en;}
+  function t(k){return (T[lang()]||T.vi)[k];}
+
+  var el={inds:document.getElementById('wdInds'), cty:document.getElementById('wdCountries'),
+    svg:document.getElementById('wdChart'), status:document.getElementById('wdStatus'),
+    legend:document.getElementById('wdLegend'), cards:document.getElementById('wdCards'),
+    title:document.getElementById('wdChartTitle')};
+  if(!el.svg) return;
+
+  var state={ind:0, sel:{}, cache:{}, tip:null};
+  COUNTRIES.forEach(function(c){state.sel[c.iso]=!!c.def;});
+
+  function fmt(v,ind){
+    if(v==null||isNaN(v)) return '–';
+    if(ind.money){
+      if(v>=1000) return Math.round(v).toLocaleString('en-US');
+      return v.toFixed(0);
+    }
+    return v.toFixed(ind.dec);
+  }
+
+  function buildControls(){
+    el.inds.innerHTML='';
+    INDS.forEach(function(ind,i){
+      var b=document.createElement('button');
+      b.className='wd-ind'; b.setAttribute('role','tab');
+      b.setAttribute('aria-selected', i===state.ind?'true':'false');
+      b.textContent=tr(ind);
+      b.addEventListener('click',function(){ state.ind=i; buildControls(); render(); });
+      el.inds.appendChild(b);
+    });
+    el.cty.innerHTML='';
+    COUNTRIES.forEach(function(c){
+      var b=document.createElement('button');
+      b.className='wd-country'; b.style.color=c.color;
+      b.setAttribute('aria-pressed', state.sel[c.iso]?'true':'false');
+      b.innerHTML='<span class="dot"></span>'+tr(c);
+      b.addEventListener('click',function(){ state.sel[c.iso]=!state.sel[c.iso]; buildControls(); render(); });
+      el.cty.appendChild(b);
+    });
+  }
+
+  function selectedISOs(){ return COUNTRIES.filter(function(c){return state.sel[c.iso];}).map(function(c){return c.iso;}); }
+
+  function fetchInd(code){
+    if(state.cache[code]) return Promise.resolve(state.cache[code]);
+    var isos=COUNTRIES.map(function(c){return c.iso;}).join(';');
+    var url='https://api.worldbank.org/v2/country/'+isos+'/indicator/'+code+'?format=json&per_page=1000&date=2000:2024';
+    return fetch(url).then(function(r){return r.json();}).then(function(j){
+      var rows=(j&&j[1])||[]; var by={};
+      rows.forEach(function(r){
+        if(r.value==null) return;
+        var iso=r.countryiso3code||(r.country&&r.country.id); if(!iso) return;
+        (by[iso]=by[iso]||[]).push({year:+r.date, value:+r.value});
+      });
+      Object.keys(by).forEach(function(k){by[k].sort(function(a,b){return a.year-b.year;});});
+      state.cache[code]=by; return by;
+    });
+  }
+
+  function render(){
+    var ind=INDS[state.ind];
+    el.title.innerHTML=tr(ind)+' <span class="u">· '+ind.unit+' · 2000–2024</span>';
+    var isos=selectedISOs();
+    clearSvg();
+    el.legend.innerHTML=''; el.cards.innerHTML='';
+    if(!isos.length){ el.status.textContent=t('pick'); return; }
+    el.status.textContent=t('loading');
+    fetchInd(ind.code).then(function(by){
+      var series=isos.map(function(iso){
+        var c=COUNTRIES.filter(function(x){return x.iso===iso;})[0];
+        return {iso:iso, color:c.color, name:tr(c), pts:(by[iso]||[])};
+      }).filter(function(s){return s.pts.length;});
+      if(!series.length){ el.status.textContent=t('nodata'); return; }
+      el.status.textContent='';
+      draw(series, ind);
+      drawLegendCards(series, ind);
+    }).catch(function(){ el.status.textContent=t('err'); });
+  }
+
+  function clearSvg(){ while(el.svg.firstChild) el.svg.removeChild(el.svg.firstChild); }
+  function mk(tag,attrs){var e=document.createElementNS(SVGNS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);return e;}
+
+  var M={l:58,r:16,t:18,b:34}, W=780, H=400;
+  function draw(series, ind){
+    var pw=W-M.l-M.r, ph=H-M.t-M.b;
+    var yrs=[], vals=[];
+    series.forEach(function(s){s.pts.forEach(function(p){yrs.push(p.year);vals.push(p.value);});});
+    var y0=Math.min.apply(null,yrs), y1=Math.max.apply(null,yrs);
+    var v1=Math.max.apply(null,vals), v0=Math.min.apply(null,vals);
+    if(v0>0) v0=0; // baseline at zero for honest reading
+    var pad=(v1-v0)*0.06||1; v1+=pad;
+    var nice=niceMax(v1); v1=nice;
+    function X(yr){ return M.l + (y1===y0?pw/2:(yr-y0)/(y1-y0)*pw); }
+    function Y(v){ return M.t + ph - (v-v0)/(v1-v0)*ph; }
+
+    // y gridlines + labels
+    var ticks=5;
+    for(var i=0;i<=ticks;i++){
+      var v=v0+(v1-v0)*i/ticks, yy=Y(v);
+      el.svg.appendChild(mk('line',{class:'wd-gridline',x1:M.l,y1:yy,x2:W-M.r,y2:yy}));
+      var lab=mk('text',{class:'wd-axislbl',x:M.l-8,y:yy+4,'text-anchor':'end'});
+      lab.textContent=ind.money&&v>=1000?Math.round(v/1000)+'k':(+v.toFixed(ind.dec)).toLocaleString('en-US');
+      el.svg.appendChild(lab);
+    }
+    // x labels (~6)
+    var step=Math.ceil((y1-y0)/6)||1;
+    for(var yr=y0; yr<=y1; yr+=step){
+      var xx=X(yr);
+      var xl=mk('text',{class:'wd-axislbl',x:xx,y:H-M.b+18,'text-anchor':'middle'});
+      xl.textContent=yr; el.svg.appendChild(xl);
+    }
+    // lines + dots
+    series.forEach(function(s){
+      var d=''; s.pts.forEach(function(p,i){ d+=(i?'L':'M')+X(p.year).toFixed(1)+' '+Y(p.value).toFixed(1)+' '; });
+      el.svg.appendChild(mk('path',{class:'wd-line',d:d,stroke:s.color}));
+      s.pts.forEach(function(p){
+        var c=mk('circle',{class:'wd-dot',cx:X(p.year),cy:Y(p.value),r:2.6,fill:s.color});
+        var ti=document.createElementNS(SVGNS,'title'); ti.textContent=s.name+' · '+p.year+': '+fmt(p.value,ind)+' '+ind.unit;
+        c.appendChild(ti); el.svg.appendChild(c);
+      });
+    });
+    setupHover(series, ind, X, Y, y0, y1);
+  }
+
+  function niceMax(v){
+    if(v<=0) return 1;
+    var mag=Math.pow(10,Math.floor(Math.log10(v)));
+    var n=v/mag;
+    var step=n<=1?1:n<=2?2:n<=2.5?2.5:n<=5?5:10;
+    return step*mag;
+  }
+
+  function setupHover(series, ind, X, Y, y0, y1){
+    var box=el.svg.parentNode; // wd-svgbox
+    if(state.tip){ state.tip.remove(); }
+    var tip=document.createElement('div'); tip.className='wd-tip'; box.appendChild(tip); state.tip=tip;
+    var hl=mk('line',{class:'wd-hoverline',x1:0,y1:M.t,x2:0,y2:H-M.b,opacity:0}); el.svg.appendChild(hl);
+    var overlay=mk('rect',{x:M.l,y:M.t,width:W-M.l-M.r,height:H-M.t-M.b,fill:'transparent'});
+    el.svg.appendChild(overlay);
+    function pt(evt){
+      var r=el.svg.getBoundingClientRect();
+      var sx=(evt.clientX-r.left)/r.width*W;
+      var frac=(sx-M.l)/(W-M.l-M.r); frac=Math.max(0,Math.min(1,frac));
+      var yr=Math.round(y0+frac*(y1-y0));
+      var rows='', anyX=null;
+      series.forEach(function(s){
+        var near=null,bd=1e9; s.pts.forEach(function(p){var dd=Math.abs(p.year-yr);if(dd<bd){bd=dd;near=p;}});
+        if(near){ anyX=X(near.year);
+          rows+='<div class="r"><i style="background:'+s.color+'"></i>'+s.name+': <b>'+fmt(near.value,ind)+'</b> '+ind.unit+'</div>';
+        }
+      });
+      if(anyX==null) return;
+      hl.setAttribute('x1',anyX); hl.setAttribute('x2',anyX); hl.setAttribute('opacity',1);
+      tip.innerHTML='<b>'+yr+'</b>'+rows; tip.style.opacity=1;
+      tip.style.left=(anyX/W*r.width)+'px';
+      tip.style.top=(M.t/H*r.height)+'px';
+    }
+    overlay.addEventListener('mousemove',pt);
+    overlay.addEventListener('mouseleave',function(){tip.style.opacity=0;hl.setAttribute('opacity',0);});
+  }
+
+  function drawLegendCards(series, ind){
+    series.forEach(function(s){
+      var lg=document.createElement('span');
+      lg.innerHTML='<i style="background:'+s.color+'"></i>'+s.name;
+      el.legend.appendChild(lg);
+      var last=s.pts[s.pts.length-1];
+      var m=document.createElement('div'); m.className='wd-mini';
+      m.innerHTML='<div class="cn"><i style="background:'+s.color+'"></i>'+s.name+'</div>'+
+        '<div class="val">'+fmt(last.value,ind)+(ind.unit==='US$'?'':' <span style="font-size:13px;color:var(--muted)">'+ind.unit+'</span>')+'</div>'+
+        '<div class="yr">'+last.year+' · '+t('latest')+'</div>';
+      el.cards.appendChild(m);
+    });
+  }
+
+  // re-render labels when the site language toggle is used
+  var tog=document.querySelector('.langtog');
+  if(tog){ tog.addEventListener('click',function(){ setTimeout(function(){ buildControls(); render(); },30); }); }
+
+  buildControls();
+  // lazy first render when the section scrolls into view (saves a fetch until needed)
+  var sec=document.getElementById('worlddata'), started=false;
+  function kick(){ if(started) return; started=true; render(); }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){kick();io.disconnect();}});},{rootMargin:'200px'});
+    io.observe(sec);
+  } else { kick(); }
+})();
+</script>
+<script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="vi";try{s=localStorage.getItem("huong_lang")||(/^en/i.test(navigator.language)?"en":(/^fr/i.test(navigator.language)?"fr":"vi"));}catch(e){}set(s);})();</script>
+<script>(function(){
+ var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+ // scroll-reveal with depth
+ var secs=document.querySelectorAll("header.hero, main section, .wrap > section");
+ if(!("IntersectionObserver" in window)||reduce){return;}
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{rootMargin:"0px 0px -6% 0px"});
+ document.querySelectorAll("section").forEach(function(s){s.classList.add("reveal3d");io.observe(s);});
+ // 3D tilt toward cursor on cards + framed photo
+ document.querySelectorAll(".card, .about-fig").forEach(function(el){
+   el.addEventListener("mousemove",function(e){var r=el.getBoundingClientRect();
+     var px=(e.clientX-r.left)/r.width-0.5, py=(e.clientY-r.top)/r.height-0.5;
+     el.style.transform="perspective(900px) rotateX("+(-py*7).toFixed(2)+"deg) rotateY("+(px*9).toFixed(2)+"deg) translateZ(6px)";
+     el.style.boxShadow="0 20px 42px rgba(30,20,20,.20)";});
+   el.addEventListener("mouseleave",function(){el.style.transform="";el.style.boxShadow="";});
+ });
+})();</script>
+<script>(function(){
+ var cv=document.getElementById("globe"); if(!cv||!cv.getContext) return;
+ var ctx=cv.getContext("2d");
+ var R=300, cx=340, cy=340;
+ var lam=1.85, phi=0.30, drag=false, px=0, py=0, auto=true, vel=0.0035;
+ var COUNTRIES=[
+  {iso:"VNM",lat:16.0,lon:107.5,vi:"Việt Nam",en:"Vietnam",nvi:"Bối cảnh trong nước, FDI, TMĐT, hiệu quả DN, giá trị nơi làm việc.",nen:"Home context, FDI, e-commerce, firm performance, workplace values."},
+  {iso:"SGP",lat:1.35,lon:103.8,vi:"Singapore",en:"Singapore",nvi:"Tính đầy đủ thể chế & quan hệ quốc tế hóa–hiệu quả (bài Singapore).",nen:"Institutional completeness & the internationalization–performance link (Singapore)."},
+  {iso:"CHN",lat:35.0,lon:105.0,vi:"Trung Quốc",en:"China",nvi:"Quốc tế hóa DNNVV sản xuất Trung Quốc & hiệu quả (JFAR, 2026).",nen:"Internationalization of Chinese manufacturing SMEs & performance (JFAR, 2026)."},
+  {iso:"THA",lat:15.0,lon:101.0,vi:"Thái Lan",en:"Thailand",nvi:"Nền so sánh khu vực trong khung dữ liệu doanh nghiệp (WBES).",nen:"Regional comparator in the firm-level WBES frame."},
+  {iso:"MYS",lat:3.5,lon:102.0,vi:"Malaysia",en:"Malaysia",nvi:"Nền so sánh khu vực trong khung dữ liệu doanh nghiệp (WBES).",nen:"Regional comparator in the firm-level WBES frame."},
+  {iso:"FJI",lat:-17.8,lon:178.0,vi:"Fiji",en:"Fiji",nvi:"Đại diện quốc đảo nhỏ Thái Bình Dương (SIDS) trong nghiên cứu.",nen:"Pacific small-island developing state (SIDS) representative."}
+ ];
+ var sel=null;
+ function lang(){return (document.documentElement.lang||"vi").slice(0,2)==="en"?"en":"vi";}
+ function rad(d){return d*Math.PI/180;}
+ function proj(lat,lon){var la=rad(lat),lo=rad(lon);
+   var cosc=Math.sin(phi)*Math.sin(la)+Math.cos(phi)*Math.cos(la)*Math.cos(lo-lam);
+   var x=Math.cos(la)*Math.sin(lo-lam);
+   var y=Math.cos(phi)*Math.sin(la)-Math.sin(phi)*Math.cos(la)*Math.cos(lo-lam);
+   return {x:cx+R*x, y:cy-R*y, vis:cosc>=0};}
+ function sv(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()||n;}
+ function draw(){
+   ctx.clearRect(0,0,cv.width,cv.height);
+   var ocean=sv("--accent-soft"),line=sv("--line"),accent=sv("--accent"),ink=sv("--ink"),surf=sv("--surface");
+   var g=ctx.createRadialGradient(cx-90,cy-90,60,cx,cy,R);g.addColorStop(0,surf);g.addColorStop(1,ocean);
+   ctx.beginPath();ctx.arc(cx,cy,R,0,7);ctx.fillStyle=g;ctx.fill();ctx.lineWidth=1.4;ctx.strokeStyle=line;ctx.stroke();
+   ctx.lineWidth=1;ctx.strokeStyle=line;ctx.globalAlpha=.7;
+   var mer,par,la,lo,p,st;
+   for(mer=-180;mer<180;mer+=30){st=false;ctx.beginPath();for(la=-90;la<=90;la+=4){p=proj(la,mer);if(p.vis){if(!st){ctx.moveTo(p.x,p.y);st=true;}else ctx.lineTo(p.x,p.y);}else st=false;}ctx.stroke();}
+   for(par=-60;par<=60;par+=30){st=false;ctx.beginPath();for(lo=-180;lo<=180;lo+=4){p=proj(par,lo);if(p.vis){if(!st){ctx.moveTo(p.x,p.y);st=true;}else ctx.lineTo(p.x,p.y);}else st=false;}ctx.stroke();}
+   ctx.globalAlpha=1;var L=lang();
+   COUNTRIES.forEach(function(c){var q=proj(c.lat,c.lon);c._sx=q.x;c._sy=q.y;c._vis=q.vis;if(!q.vis)return;
+     var isS=sel===c,r=isS?9:6.5;
+     ctx.beginPath();ctx.arc(q.x,q.y,r,0,7);ctx.fillStyle=accent;ctx.fill();ctx.lineWidth=2.5;ctx.strokeStyle=surf;ctx.stroke();
+     if(isS){ctx.beginPath();ctx.arc(q.x,q.y,r+5,0,7);ctx.lineWidth=2;ctx.strokeStyle=sv("--gold");ctx.stroke();}
+     ctx.font="600 20px system-ui,sans-serif";ctx.fillStyle=ink;ctx.textAlign="left";ctx.fillText(c[L],q.x+r+6,q.y+7);});
+ }
+ function tick(){if(auto&&!drag){lam+=vel;}draw();requestAnimationFrame(tick);}
+ function pos(e){var r=cv.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width*cv.width,y:(e.clientY-r.top)/r.height*cv.height};}
+ cv.addEventListener("pointerdown",function(e){drag=true;auto=false;var q=pos(e);px=q.x;py=q.y;try{cv.setPointerCapture(e.pointerId);}catch(_){}});
+ cv.addEventListener("pointermove",function(e){if(!drag)return;var q=pos(e);lam+=(q.x-px)*0.005;phi=Math.max(-1.2,Math.min(1.2,phi-(q.y-py)*0.005));px=q.x;py=q.y;});
+ cv.addEventListener("pointerup",function(e){drag=false;var q=pos(e),hit=null,best=28*28;
+   COUNTRIES.forEach(function(c){if(!c._vis)return;var dx=q.x-c._sx,dy=q.y-c._sy,d=dx*dx+dy*dy;if(d<best){best=d;hit=c;}});
+   if(hit){sel=hit;showCap();}setTimeout(function(){auto=true;},2600);});
+ function showCap(){var L=lang(),c=sel,cap=document.getElementById("globeCap");if(!c){cap.innerHTML="";return;}
+   cap.innerHTML="<b>"+c[L]+"</b>, "+(L==="en"?c.nen:c.nvi);}
+ var tog=document.querySelector(".langtog");if(tog)tog.addEventListener("click",function(){setTimeout(function(){if(sel)showCap();else initCap();},30);});
+ function initCap(){var L=lang();document.getElementById("globeCap").innerHTML=L==="en"?"Drag to spin · tap a marker to see the related research.":"Kéo để xoay · chạm một điểm để xem nghiên cứu liên quan.";}
+ initCap();requestAnimationFrame(tick);
+})();</script>
+
+<script>
+/* Hương đạp xe dẫn tour qua các khu vực của trang */
+(function(){
+  const hg = document.getElementById('hg');
+  const anh = document.getElementById('hg-img');
+  const ten = document.getElementById('hg-ten');
+  const phu = document.getElementById('hg-phu');
+  const XE = 'assets/img/huong_xedap_full.webp', CHI = 'assets/img/huong_chi.webp';
+  const KHU = [
+    ['about', {vi:'🌸 Giới thiệu',en:'🌸 About',fr:'🌸 À propos'}, {vi:'Bấm để đạp xe đi tiếp →',en:'Click to ride on →',fr:'Cliquez pour pédaler →'}, {vi:'Xin chào! Tôi là Hương AI, sẽ dẫn bạn thăm từng khu trên trang cá nhân này. Tôi là giảng viên và nghiên cứu sinh tiến sĩ tại Đại học Cần Thơ. Mời bạn đạp xe cùng tôi!',en:"Hello! I am Huong AI, your guide through this personal page. I am a lecturer and PhD candidate at Can Tho University. Let's ride together!",fr:"Bonjour ! Je suis Hương IA, votre guide sur cette page personnelle. Je suis enseignante-chercheuse à l'Université de Cần Thơ. Pédalons ensemble !"}],
+    ['inspiration', {vi:'✨ Nguồn cảm hứng',en:'✨ Inspiration',fr:'✨ Inspiration'}, {vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'}, {vi:'Nơi lưu giữ câu nói của Chủ tịch Hồ Chí Minh gửi học sinh nhân ngày khai trường — nguồn cảm hứng cho mọi việc tôi làm.',en:"Home of President Ho Chi Minh's letter to students on the first school day — the inspiration behind everything I do.",fr:"La lettre du Président Hô Chi Minh aux élèves, le jour de la rentrée — l'inspiration de tout ce que je fais."}],
+    ['ecosystem', {vi:'🚀 Hệ sinh thái số',en:'🚀 Digital ecosystem',fr:'🚀 Écosystème numérique'}, {vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'}, {vi:'Ba phần mềm của tôi chạy ngay trên trình duyệt: M-AIDA cho nghiên cứu, BizOn cho mô phỏng kinh doanh, và EnQuiz cho ôn tập khởi nghiệp.',en:'Three tools I built run straight in the browser: M-AIDA for research, BizOn for business simulation, and EnQuiz for revision.',fr:"Trois outils que j'ai construits : M-AIDA pour la recherche, BizOn pour la simulation d'entreprise, et EnQuiz pour la révision."}],
+    ['gallery', {vi:'🎀 Nhân vật ảo',en:'🎀 Virtual character',fr:'🎀 Personnage virtuel'}, {vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'}, {vi:'Đây là Hương AI trong tà áo dài trắng — gương mặt đại diện xuyên suốt hệ sinh thái, từ EnQuiz đến BizOn và M-AIDA.',en:'This is Huong AI in her white áo dài — the face of the whole ecosystem, from EnQuiz to BizOn and M-AIDA.',fr:"Huong IA dans son áo dài blanc — le visage de tout l'écosystème, d'EnQuiz à BizOn et M-AIDA."}],
+    ['pubs', {vi:'📚 Công bố khoa học',en:'📚 Publications',fr:'📚 Publications'}, {vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'}, {vi:'Phân tích tổng hợp hai trăm ba mươi sáu nghiên cứu về quốc tế hóa doanh nghiệp ở châu Á, từ năm mươi nền kinh tế.',en:'A meta-analysis of two hundred thirty-six studies on firm internationalization in Asia, drawn from fifty economies.',fr:"Une méta-analyse de deux cent trente-six études sur l'internationalisation des entreprises en Asie, à partir de cinquante économies."}],
+    ['teaching', {vi:'🎓 Giảng dạy & dự án',en:'🎓 Teaching & projects',fr:'🎓 Enseignement & projets'}, {vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'}, {vi:'Tôi giảng kinh tế lượng, phương pháp nghiên cứu và kinh doanh quốc tế — và hướng dẫn sinh viên khởi nghiệp qua các mô phỏng.',en:'I teach econometrics, research methods and international business — and coach students in entrepreneurship through simulations.',fr:"J'enseigne l'économétrie, les méthodes de recherche et le commerce international — et j'accompagne les étudiants en entrepreneuriat par des simulations."}],
+    ['worlddata', {vi:'🌏 Dữ liệu thế giới',en:'🌏 World data',fr:'🌏 Données du monde'}, {vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'}, {vi:'Số liệu trực tiếp từ Ngân hàng Thế giới — so sánh chỉ số giữa các nền kinh tế mà luận án của tôi phân tích.',en:'Live data from the World Bank — compare indicators across the economies studied in my dissertation.',fr:'Des données en direct de la Banque mondiale — comparer les indicateurs entre les économies analysées dans ma thèse.'}],
+  ];
+  let hienTai = -1;
+  function ngonNgu(){ const l = document.documentElement.lang; return (l==='en'||l==='fr') ? l : 'vi'; }
+  function capNhatBien(){
+    const l = ngonNgu();
+    if(hienTai < 0){
+      ten.textContent = l==='vi' ? '👋 Cùng dạo trang nhé!' : l==='fr' ? '👋 Découvrez la page !' : '👋 Let’s tour the page!';
+      phu.textContent = l==='vi' ? 'Bấm để đạp xe bắt đầu →' : l==='fr' ? 'Cliquez pour commencer →' : 'Click to start riding →';
+    } else {
+      ten.textContent = KHU[hienTai][1][l];
+      phu.textContent = KHU[hienTai][2] ? KHU[hienTai][2][l] : (l==='fr' ? 'Cliquez pour pédaler →' : (l==='vi' ? 'Bấm để đạp xe đi tiếp →' : 'Click to ride on →'));
+    }
+  }
+  // Lời dẫn bằng giọng nói: đọc file audio nếu có (assets/audio/tour/{khu}_{ngonNgu}.mp3),
+  // nếu chưa có file thì dùng SpeechSynthesis làm giọng đọc tạm thời.
+  let baiDangPhat = null;
+  let dangDocTTS = false;          // dang doc bang TTS?
+  let daTuongTac = false;          // user da tuong tac trang?
+  ['click','keydown','touchstart'].forEach(ev=>addEventListener(ev, ()=>{ daTuongTac = true; }, {once:true, passive:true}));
+  const LOI_BTN = document.getElementById('hg-loi');
+  const MA_LANG = {vi:'vi-VN', en:'en-US', fr:'fr-FR'};
+  function danhSachGiong(){ const g = speechSynthesis.getVoices(); if(g && g.length) return g; speechSynthesis.onvoiceschanged = ()=>{}; return []; }
+  function chonGiong(l){
+    const g = danhSachGiong().filter(v=>v.lang.startsWith(MA_LANG[l].split('-')[0]));
+    const nu = g.find(v=>/female|woman|zira|samantha|victoria|audrey|amelie|denise|hortense|moira|karen|google/i.test(v.name));
+    return (nu || g[0]) || speechSynthesis.getVoices().find(v=>v.default) || null;
+  }
+  function tatTTS(){ if(dangDocTTS){ speechSynthesis.cancel(); dangDocTTS = false; if(LOI_BTN) LOI_BTN.textContent = '🔊'; } }
+  function phatLoiDanh(){
+    // click loai 2 khi dang doc -> dung (TTS hoac audio)
+    if(dangDocTTS && !baiDangPhat){ tatTTS(); return; }
+    if(baiDangPhat === AU_TOUR){ dungAuTour(); if(LOI_BTN) LOI_BTN.textContent = '🔊'; return; }
+    if(hienTai < 0){ phatText({vi:'Xin chào! Tôi là Hương AI, sẽ dẫn bạn tham quan trang cá nhân này. Nhấn vào biển chỉ đường để cùng đạp xe đi từng khu nhé!', en:'Hello! I am Huong AI, your guide on this personal page. Click the sign to ride from area to area!', fr:'Bonjour ! Je suis Hương IA, votre guide sur cette page. Cliquez sur le panneau pour pédaler d’une étape à l’autre !'}); return; }
+    const k = KHU[hienTai][4];
+    if(k){ phatText(k); return; }
+    const tenKhu = KHU[hienTai][1][ngonNgu()];
+    phatText({vi:'Đang tham quan: ' + tenKhu, en:'Now visiting: ' + tenKhu, fr:'Visite en cours : ' + tenKhu});
+  }
+  // Một audio duy nhất, phát lần lượt — tránh nhiều giọng đọc chồng lấp khi cuộn nhanh qua nhiều khu
+  const AU_TOUR = new Audio();
+  AU_TOUR.preload = 'none';
+  AU_TOUR.addEventListener('error', ()=>{ try{AU_TOUR.pause();}catch(e){} });
+  function dungAuTour(){ try{ AU_TOUR.pause(); AU_TOUR.currentTime = 0; }catch(e){} baiDangPhat = null; }
+  function phatText(t){
+    const l = ngonNgu();
+    tatTTS();
+    dungAuTour();   // dừng hẳn file đang phát (dù ở giữa bài) trước khi phát bài mới
+    const url = 'assets/audio/tour/' + (hienTai < 0 ? 'chao' : KHU[hienTai][0]) + '_' + l + '.mp3';
+    AU_TOUR.src = url;
+    AU_TOUR.play().then(()=>{ baiDangPhat = AU_TOUR; AU_TOUR.onended = ()=>{ baiDangPhat = null; if(LOI_BTN) LOI_BTN.textContent = '🔊'; }; if(LOI_BTN) LOI_BTN.textContent = '🔈'; }).catch(()=>{
+      if(!('speechSynthesis' in window)) return;
+      const u = new SpeechSynthesisUtterance(t[l]);
+      u.lang = MA_LANG[l];
+      const g = chonGiong(l);
+      if(g) u.voice = g;
+      u.rate = 1.0; u.pitch = 1.05;
+      dangDocTTS = true;
+      u.onend = u.onerror = ()=>{ dangDocTTS = false; if(LOI_BTN) LOI_BTN.textContent = '🔊'; };
+      speechSynthesis.speak(u);
+    });
+  }
+  LOI_BTN.addEventListener('click', phatLoiDanh);
+  // doi ngon ngu -> dung doc dang do va doc lai theo ngon ngu moi
+  new MutationObserver(()=>{ if(dangDocTTS || baiDangPhat === AU_TOUR){ tatTTS(); dungAuTour(); setTimeout(phatLoiDanh, 120); } }).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
+  // theo dõi khu vực đang xem
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        const i = KHU.findIndex(k=>k[0]===e.target.id);
+        if(i>=0 && i !== hienTai){ const cu = hienTai; hienTai = i; capNhatBien();
+          if(daTuongTac && cu >= 0){ phatLoiDanh(); } }
+      }
+    });
+  }, {rootMargin:'-30% 0px -55% 0px'});
+  KHU.forEach(k=>{ const el = document.getElementById(k[0]); if(el) io.observe(el); });
+  // đạp xe khi cuộn, dừng thì chỉ tay
+  let henDung = null;
+  addEventListener('scroll', ()=>{
+    hg.classList.add('dap');
+    if(anh.getAttribute('src') !== XE) anh.src = XE;
+    clearTimeout(henDung);
+    henDung = setTimeout(()=>{
+      hg.classList.remove('dap');
+      anh.src = CHI;
+    }, 650);
+  }, {passive:true});
+  // bấm biển: đạp tới mục kế tiếp
+  document.getElementById('hg-bien').addEventListener('click', ()=>{
+    const ke = KHU[(hienTai+1) % KHU.length][0];
+    const el = document.getElementById(ke);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  // đổi ngôn ngữ thì đổi chữ trên biển và dừng lời dẫn
+  new MutationObserver(capNhatBien).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
+  capNhatBien();
+})();
+</script>
+
+<script src="assets/vendor/three-r128.min.js" defer></script>
+<!-- huong3d.js removed: no .gh-map mount point in this page; 2D webp avatars are used instead -->
+<script>
+/* Bản đồ trang viên: cô Hương đất sét 3D đạp xe tới trạm được bấm */
+addEventListener('DOMContentLoaded', function(){
+  const bd = document.getElementById('bando');
+  if(!bd || typeof Huong3D === 'undefined') return;
+  const co = Huong3D.gan({
+    khung: bd, cao: .285, duong: .93, batDau: .5, zIndex: 2,
+    anh: { xedap: 'assets/img/huong_xedap_full.webp', chi: 'assets/img/huong_chi.webp' }
+  });
+  let dangChay = false;
+  bd.querySelectorAll('.tram').forEach(t=>{
+    t.addEventListener('click', ()=>{
+      if(dangChay) return;
+      dangChay = true;
+      const x = parseFloat(t.style.left) / 100;
+      co.den(x, ()=>{
+        const den = t.dataset.den;
+        if(den.startsWith('#')){
+          const el = document.querySelector(den);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        } else {
+          location.href = den;
+        }
+        dangChay = false;
+      });
+    });
   });
 });
-if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigator.serviceWorker.register('sw.js'); }); }
 </script>
-<script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="assets/js/music.js" defer></script>
+<script src="assets/js/dongho.js" defer></script>
 
 <script>
 /* Nút làm mới trang + tự phát hiện bản cập nhật PWA */
@@ -880,8 +1260,8 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
   var nav=document.getElementById('dmnav');
   function onScroll(){
     if(nav){nav.classList.toggle('shrink',window.scrollY>24);}
-    var b=document.getElementById('bando');
-    if(b){b.style.transform='translateY('+Math.min(40,Math.max(0,window.scrollY*0.06))+'px) scale(1.02)';}
+    var inner=document.querySelector('#bando .bd-inner');
+    if(inner){inner.style.transform='translateY('+Math.min(30,Math.max(0,window.scrollY*0.05))+'px) scale(1.055)';}
     var rs=document.querySelectorAll('.reveal:not(.on)');
     var vh=window.innerHeight;
     rs.forEach(function(el){if(el.getBoundingClientRect().top<vh*0.88){el.classList.add('on');}});
@@ -950,6 +1330,7 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
   }catch(e){}
 })();
 </script>
+<!-- Chữ ký brandmini (batch19): không còn fixed đè banner; không cần script ẩn khi cuộn -->
 <div class="vnmark-bg" aria-hidden="true"><style>
 @keyframes vnblink{0%,100%{opacity:.85}50%{opacity:.12}}
 /* Bản đồ Việt Nam chìm (Hoàng Sa & Trường Sa biểu tượng) */
@@ -987,5 +1368,4 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
     
   </g>
 <g class="lh" transform="translate(302.1,228.0)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(344.8,435.0)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(71.2,419.4)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(145.3,465.6)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g></svg></div></div>
-<script src="assets/js/music.js" defer></script>
-</body></html>
+<script>(function(){var acm=document.getElementById("nut-acm");if(acm){acm.addEventListener("click",function(){try{localStorage.setItem("hocsuat","1")}catch(e){}window.location.href="publications.html#main"});}try{if(localStorage.getItem("hocsuat")==="1"){var r=document.getElementById("nut-ref")&&location.href;if(location.pathname.endsWith("index.html")||location.pathname.endsWith("/")){localStorage.removeItem("hocsuat");window.location.replace("publications.html#main")}}}catch(e){}})();</script></body></html>

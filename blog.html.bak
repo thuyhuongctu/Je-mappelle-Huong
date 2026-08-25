@@ -1,29 +1,35 @@
 <!doctype html><html lang="vi" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Songbook «Je m'appelle Hương» · Album — La lampe, le fleuve et les couleurs</title>
-<meta name="description" content="Songbook album of Do Thuy Huong: five songs blending Vietnamese identity and French chanson, with clay-art visuals.">
-<link rel="canonical" href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/songbook.html">
+<title>Blog · Tin tức học thuật · Je suis Hương</title>
+<meta name="description" content="Academic news from the «Je m'appelle Hương» digital ecosystem: Zenodo milestones, publications and Mekong Delta innovation stories.">
+<link rel="canonical" href="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="theme-color" content="#f4efe9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#171315" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Blog · Academic News — Je suis Hương">
+<meta property="og:description" content="Academic news from the «Je m'appelle Hương» digital ecosystem: Zenodo milestones, publications and Mekong Delta innovation stories.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html">
 <style>
 :root{--paper:#f2faff;--surface:#ffffff;--ink:#0b1d33;--muted:#5a7a96;--line:#d3e8f5;
---accent:#e8416b;--accent-soft:#e4fbff;--gold:#a9781f;
+--accent:#e8416b;--accent-soft:#e4fbff;--gold:#b98a2e;
 --serif:Georgia,"Iowan Old Style","Times New Roman",serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 --shadow:0 1px 2px rgba(30,20,20,.05),0 10px 30px rgba(30,20,20,.07)}
 @media(prefers-color-scheme:dark){:root{--paper:#050a14;--surface:#0a1428;--ink:#c8f2ff;--muted:#7ea8c4;--line:#15304c;--accent:#ff5c8d;--accent2:#00f0ff;--accent-soft:rgba(0,240,255,.08);--shadow:0 0 12px rgba(0,240,255,.18),0 10px 30px rgba(0,0,0,.5)}}
 :root[data-theme=dark]{--paper:#050a14;--surface:#0a1428;--ink:#c8f2ff;--muted:#7ea8c4;--line:#15304c;--accent:#ff5c8d;--accent-soft:rgba(0,240,255,.08);--shadow:0 0 12px rgba(0,240,255,.18),0 10px 30px rgba(0,0,0,.5)}
 :root[data-theme=light]{--paper:#f2faff;--surface:#ffffff;--ink:#0b1d33;--muted:#5a7a96;--line:#d3e8f5;--accent:#e8416b;--accent-soft:#e4fbff}
 html{scroll-behavior:smooth}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,var(--sky,#dde6f6) 0,var(--paper) 420px) no-repeat,var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
 .wrap{max-width:820px;margin:0 auto;padding:clamp(20px,4vw,48px)}
 h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
 a{color:var(--accent)}
 .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:700;color:var(--accent)}
-.brandmini{position:fixed;top:12px;left:14px;z-index:6;display:none;align-items:center;gap:.45rem;text-decoration:none;color:var(--ink);font:800 1rem 'SFMono-Regular',ui-monospace,Menlo,Consolas,monospace}
+.brandmini{position:fixed;top:10px;left:12px;z-index:6;display:none;width:min(230px,calc(100vw - 190px));height:auto;text-decoration:none;line-height:0}
+.brandmini img{display:block;width:100%;height:auto;object-fit:contain}
+@media(max-width:560px){.brandmini{top:9px;left:9px;width:160px}}
 .topctl{position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:6}
 .toggle{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 13px;font-size:.74rem;cursor:pointer;box-shadow:var(--shadow)}
 .langtog{display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
@@ -31,64 +37,57 @@ a{color:var(--accent)}
 .langtog button.active{background:var(--accent);color:#fff}
 html[lang="en"] .lang-vi{display:none}
 html:not([lang="en"]) .lang-en{display:none}
+/* banner */
+.gh-banner{display:block;width:100%;height:auto;border-radius:26px;border:5px solid var(--surface);box-shadow:0 1px 2px rgba(255,255,255,.55),0 10px 30px rgba(150,95,75,.12);margin:6px 0 26px}
+:root[data-theme=dark] .gh-banner{filter:saturate(.92) brightness(.9)}
 header.page{margin:40px 0 14px;text-align:center;border-bottom:none;padding-bottom:0;position:relative}
-header.page h1{font-size:clamp(1.7rem,5vw,2.5rem);margin:0 0 8px}
 .page-kicker{margin:0 0 6px;font:700 .7rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+header.page h1{font-size:clamp(1.7rem,5vw,2.5rem);margin:0 0 8px}
 header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--mint,#cdeacf),var(--accent-soft),var(--sky,#dde6f6))}
 .sub{color:var(--muted)}
-section{margin-top:36px}
-.shead{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
-.shead h2{font-size:1.3rem}.shead .ln{flex:1;height:1px;background:var(--line)}
-.song{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
-.song-head{display:grid;grid-template-columns:130px 1fr;gap:18px;padding:20px 22px;align-items:center}
-@media(max-width:560px){.song-head{grid-template-columns:1fr;text-align:center;justify-items:center}}
-.cover{width:130px;height:130px;border-radius:12px;object-fit:cover;object-position:50% 12%;box-shadow:var(--shadow)}
-.song-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;line-height:1.25}
-.song-meta{font-size:.84rem;color:var(--muted);margin-top:4px}
-.song-desc{font-size:.92rem;color:var(--muted);margin-top:8px;max-width:58ch}
-.tracks{border-top:1px solid var(--line);padding:14px 22px 20px;display:flex;flex-direction:column;gap:14px}
-.track{display:flex;flex-direction:column;gap:6px}
-.track-name{font-size:.9rem;font-weight:600}
-.track-name .len{font-weight:400;color:var(--muted)}
-audio{width:100%;height:38px}
-.lyrics{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:26px clamp(20px,4vw,36px)}
-.lyrics h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:26px 0 8px;font-family:var(--sans);font-weight:700}
-.lyrics h3:first-child{margin-top:0}
-.lyrics h3 .note{text-transform:none;letter-spacing:0;color:var(--muted);font-weight:400;font-style:italic}
-.lyrics p{font-family:var(--serif);font-size:1.02rem;line-height:1.85;margin:0 0 4px;white-space:pre-line}
-.lyrics .refrain p{color:var(--accent)}
-.dedication{background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 8%,var(--surface)),var(--surface));border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:1.2rem 1.5rem;font-size:.95rem;color:var(--muted)}
-.dedication b{color:var(--ink)}
-.taglines{font-family:var(--serif);font-style:italic;text-align:center;color:var(--muted);line-height:1.9;margin:14px 0}
-.taglines b{color:var(--accent);font-style:normal}
-.motifs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.motifs span{font-size:.78rem;background:var(--accent-soft);color:var(--accent);padding:4px 11px;border-radius:20px}
-.tracklist{width:100%;border-collapse:collapse;font-size:.86rem;margin-top:6px}
-.tracklist th{font-family:var(--sans);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:2px solid var(--ink)}
-.tracklist td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
-.tracklist td:first-child{font-family:var(--serif);font-weight:700;color:var(--accent);white-space:nowrap}
-.tracklist a{text-decoration:none;font-weight:600}
-.prod{font-size:.82rem;color:var(--muted);margin:6px 0 0;line-height:1.7}
-.prod b{color:var(--ink)}
-.keyline{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:.95rem;margin-top:6px}
-.norec{font-size:.85rem;color:var(--muted);font-style:italic;background:var(--accent-soft);border-radius:9px;padding:8px 14px;display:inline-block;margin-top:4px}
+/* site nav */
+.sitenav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:20px 0 6px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.sitenav a{font-size:.84rem;font-weight:600;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 17px;box-shadow:inset 0 2px 0 rgba(255,255,255,.55),0 5px 12px rgba(150,95,75,.12)}
+.sitenav a:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.sitenav a.here{background:var(--accent);border-color:var(--accent);color:#fff}
+/* blog post */
+.post{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px 28px;box-shadow:inset 0 2px 0 rgba(255,255,255,.5),0 1px 2px rgba(30,20,20,.05),0 10px 30px rgba(30,20,20,.07);margin-bottom:18px}
+.post.featured{border:1.5px solid var(--accent);background:linear-gradient(180deg,var(--accent-soft),var(--surface) 34%)}
+:root[data-theme=dark] .post{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.06),0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4)}
+.post-meta{font-family:var(--sans);font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px}
+.post-title{font-size:clamp(1.2rem,3vw,1.45rem);line-height:1.2;margin:0 0 14px}
+.post p{font-size:.97rem;line-height:1.72;margin:0 0 14px;color:var(--ink)}
+.post blockquote{margin:18px 0;padding:8px 20px;border-left:3px solid var(--accent);font-family:var(--serif);font-size:1.16rem;font-style:italic;color:var(--accent)}
+.post-links{font-size:.9rem;font-weight:600;margin-top:4px}
+.post-links a{color:var(--accent);text-decoration:none}
+.post-links a:hover{text-decoration:underline}
+/* Tin nổi bật — hệ sinh thái */
+.hl-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:0 0 18px}
+.hl-stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:22px;padding:13px 16px;box-shadow:inset 0 2px 0 rgba(255,255,255,.5),0 1px 2px rgba(30,20,20,.05),0 10px 30px rgba(30,20,20,.07);text-decoration:none;display:block;transition:transform .15s}
+.hl-stat:hover{transform:translateY(-2px)}
+.hl-stat .hs-name{font-family:var(--sans);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--accent)}
+.hl-stat .hs-num{font-family:var(--serif);font-size:1.45rem;font-weight:700;color:var(--ink);margin:4px 0 1px}
+.hl-stat .hs-sub{font-size:.76rem;color:var(--muted)}
+.hl-stamp{font-family:var(--sans);font-size:.72rem;color:var(--muted);margin:-8px 0 22px}
+.hl-badge{display:inline-block;font-family:var(--sans);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:#fff;background:var(--accent);border-radius:999px;padding:3px 11px;margin-bottom:10px}
 footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
 footer a{color:var(--muted)}
 footer a:hover{color:var(--accent)}
-.skip-link{position:absolute;top:-52px;left:12px;background:#a8394e;color:#fff;font:700 .85rem sans-serif;padding:10px 16px;z-index:100;border-radius:0 0 10px 10px;text-decoration:none;transition:top .2s}.skip-link:focus{top:0;outline:3px solid #a8394e;outline-offset:2px}</style>
+.skip-link{position:absolute;top:-48px;left:0;background:var(--accent,#a8394e);color:#fff;font-weight:700;padding:10px 18px;z-index:100;border-radius:0 0 10px 0;text-decoration:none}
+.skip-link:focus{top:0}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
+</style>
 
-<meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/huong_songbook_hero.jpg">
+<meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-blog.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Songbook La lampe, le fleuve et les couleurs — album 5 chương của Đỗ Thùy Hương">
-<meta property="og:url" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/songbook.html">
-<meta property="og:type" content="website">
+<meta property="og:image:alt" content="Academic news card of Đỗ Thùy Hương — DOI-stamped software and Mekong Delta innovation news">
 <meta property="og:site_name" content="Je m'appelle Hương — Đỗ Thùy Hương">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Songbook «Je m'appelle Hương» · Album">
-<meta name="twitter:description" content="Album La lampe, le fleuve et les couleurs — mini song-cycle 5 chương về sự vắng mặt, sự trưởng thành và những giấc mơ đổi cây cọ của Đỗ Thùy Hương.">
-<meta name="twitter:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/huong_songbook_hero.jpg">
+<meta name="twitter:title" content="Blog · Academic News — Je suis Hương">
+<meta name="twitter:description" content="Digital-ecosystem news corner of «Je m'appelle Hương»: DOI-stamped software, live Zenodo stats, and Mekong Delta innovation news.">
+<meta name="twitter:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-blog.jpg">
 <style>
 /* ===== DeepMind-style header ===== */
 .dmnav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:10px;padding:10px 16px;
@@ -133,7 +132,214 @@ footer a:hover{color:var(--accent)}
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
   #bando{transition:transform .1s linear}
 }
-</style></head><body>
+</style>    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      "name": "Blog · Do Thuy Huong",
+      "url": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html",
+      "description": "Blog of Do Thuy Huong — software releases, academic reflections, creative notes."
+    },
+    {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "BlogPosting",
+            "headline": "EnQuiz vượt 100 lượt xem và 31 lượt tải — chưa đầy 3 ngày sau khi công bốEnQuiz passes 100 views and 31 downloads — less than 3 days after release",
+            "datePublished": "2026-08-12",
+            "inLanguage": [
+              "vi",
+              "en",
+              "fr"
+            ],
+            "author": {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            "mainEntityOfPage": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "BlogPosting",
+            "headline": "M-AIDA cán mốc 100 lượt xem trên Zenodo — phần mềm đầu tiên của hệ sinh thái chạm ba chữ sốM-AIDA passes 100 views on Zenodo — the ecosystem's first software to reach triple digits",
+            "datePublished": "2026-08-11",
+            "inLanguage": [
+              "vi",
+              "en",
+              "fr"
+            ],
+            "author": {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            "mainEntityOfPage": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "BlogPosting",
+            "headline": "EnQuiz tăng tốc: 52 lượt xem sau ba ngày, phiên bản 1.2 vừa phát hànhEnQuiz picks up speed: 52 views in three days, version 1.2 just shipped",
+            "datePublished": "2026-08-11",
+            "inLanguage": [
+              "vi",
+              "en",
+              "fr"
+            ],
+            "author": {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            "mainEntityOfPage": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "BlogPosting",
+            "headline": "BizOn Bật Nghiệp trên Zenodo: 62 lượt xem, 10 lượt tải — dù tệp đã đặt chế độ hạn chếBizOn Bật Nghiệp on Zenodo: 62 views, 10 downloads — even with restricted files",
+            "datePublished": "2026-08-11",
+            "inLanguage": [
+              "vi",
+              "en",
+              "fr"
+            ],
+            "author": {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            "mainEntityOfPage": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "BlogPosting",
+            "headline": "EnQuiz 1.0 lên Zenodo: ứng dụng ôn tập Khởi nghiệp có DOI, chạy offline, song ngữEnQuiz 1.0 lands on Zenodo: a DOI-registered, offline-first, bilingual revision app for Entrepreneurship",
+            "datePublished": "2026-08-09",
+            "inLanguage": [
+              "vi",
+              "en",
+              "fr"
+            ],
+            "author": {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            "mainEntityOfPage": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "BlogPosting",
+            "headline": "PGS.TS. Phan Anh Tú trên tạp chí Một Thế Giới: Đổi mới sáng tạo ở Cần Thơ: điểm sáng và khoảng trống phát triểnAssoc. Prof. Phan Anh Tu in Một Thế Giới: Innovation in Can Tho: bright spots and development gaps",
+            "datePublished": "2026-07-30",
+            "inLanguage": [
+              "vi",
+              "en",
+              "fr"
+            ],
+            "author": {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            "mainEntityOfPage": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "BlogPosting",
+            "headline": "Tuổi Trẻ Online: Đổi mới sáng tạo có thể tạo ra dòng di cư mới về Đồng bằng sông Cửu LongTuổi Trẻ Online: Innovation could create a new migration flow back to the Mekong Delta",
+            "datePublished": "2026-07-27",
+            "inLanguage": [
+              "vi",
+              "en",
+              "fr"
+            ],
+            "author": {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            "mainEntityOfPage": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "item": {
+            "@type": "BlogPosting",
+            "headline": "BizOn Bật Nghiệp: khi lớp học khởi nghiệp trở thành một bàn cờ đất sétBizOn Bật Nghiệp: when the entrepreneurship classroom becomes a clay chessboard",
+            "datePublished": "2026-07-27",
+            "inLanguage": [
+              "vi",
+              "en",
+              "fr"
+            ],
+            "author": {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            "mainEntityOfPage": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "item": {
+            "@type": "BlogPosting",
+            "headline": "Vì sao tôi xây M-AIDA: để máy đọc, còn người quyết định",
+            "datePublished": "2026-07-19",
+            "inLanguage": [
+              "vi",
+              "en",
+              "fr"
+            ],
+            "author": {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            "mainEntityOfPage": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html",
+            "headlineEn": "Why I built M-AIDA: let the machine read, but let the human decide"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "name": "Do Thuy Huong",
+      "alternateName": [
+        "Đỗ Thùy Hương"
+      ],
+      "jobTitle": "Lecturer and PhD Candidate",
+      "worksFor": {
+        "@type": "CollegeOrUniversity",
+        "name": "Can Tho University",
+        "url": "https://www.ctu.edu.vn/"
+      },
+      "url": "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/blog.html",
+      "sameAs": [
+        "https://scholar.google.com/citations?user=thuyhuongctu",
+        "https://www.researchgate.net/profile/Do-Thuy-Huong",
+        "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026"
+      ]
+    }
+  ]
+}</script>
+</head><body>
   <div class="dmnav" id="dmnav">
     <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
     <div class="dmright">
@@ -149,616 +355,126 @@ footer a:hover{color:var(--accent)}
     </div>
   </div>
 
-<a class="brandmini" href="./" aria-label="Je suis Hương"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="mgHu" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9E3B4E"/><stop offset="1" stop-color="#C9A24B"/></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="7.5" fill="url(#mgHu)"/><g fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".95"><path d="M8 10 h8"/><path d="M8 14 h11"/><path d="M8 18 h6"/></g><g fill="#fff"><circle cx="16" cy="10" r="1.5"/><circle cx="19" cy="14" r="1.5"/><circle cx="14" cy="18" r="1.5"/></g><path d="M16 21.4 l3.4 2.4 l-3.4 2.4 l-3.4 -2.4 z" fill="#fff"/></svg><span>Je suis Hương</span></a>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo LR — Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
 <div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button></div>
 
 <div class="wrap">
+  <img class="gh-banner" src="assets/img/innovation_banner.jpg" alt="Trang viên đổi mới sáng tạo — Hương AI đạp xe qua đồng sen với các biển chỉ đường Nghiên cứu, Âm nhạc, Tin tức" loading="lazy">
   <header class="page">
-    <div class="page-kicker"><span class="lang-vi">Album · Mini song-cycle</span><span class="lang-en">Album · Mini song-cycle</span></div>
-    <h1>Songbook «Je m'appelle Hương»</h1>
-    <p class="sub"><span class="lang-vi"><i>La lampe, le fleuve et les couleurs</i> — 5 chương · 12 bản thu · Sáng tác 07–13/08/2026 · <a href="music.html">← Kho nhạc cá nhân</a></span><span class="lang-en"><i>La lampe, le fleuve et les couleurs</i> — 5 chapters · 12 recordings · Composed 7–13 Aug 2026 · <a href="music.html">← Personal music library</a></span></p>
+    <div class="page-kicker"><span class="lang-vi">Bảng tin học thuật</span><span class="lang-en">Academic newsboard</span></div>
+    <h1><span class="lang-vi">Blog · Tin tức học thuật</span><span class="lang-en">Blog · Academic news</span></h1>
+    <p class="sub"><span class="lang-vi">Tất cả tin của hệ sinh thái số «Je m'appelle Hương»: cột mốc phần mềm có DOI, số liệu Zenodo công khai và tin đổi mới sáng tạo ĐBSCL. Xem trang chính tại <a href="./">trang cá nhân</a>.</span><span class="lang-en">All news from the «Je m'appelle Hương» digital ecosystem: DOI-registered software milestones, public Zenodo metrics, and Mekong Delta innovation stories. Back to the <a href="./">homepage</a>.</span></p>
   </header>
 
-  <section class="reveal" id="main">
-    <div class="shead"><h2>Songbook «Je m'appelle Hương»</h2><span class="ln"></span></div>
-    <div class="song" style="padding:22px 24px">
-      <div class="song-title" style="text-align:center">La lampe, le fleuve et les couleurs</div>
-      <p class="song-desc" style="max-width:100%;text-align:center;margin:6px auto 0"><span class="lang-vi">Một mini song-cycle / EP gồm 5 chương về sự vắng mặt, sự trưởng thành, và những giấc mơ thay hình đổi dạng · Sáng tác 07–13/08/2026.</span><span class="lang-en">A five-chapter mini song-cycle / EP about absence, growing up, and dreams that change their shape · Composed 7–13 Aug 2026.</span></p>
-      <div class="taglines">
-        Some dreams don't disappear. They change their brush.<br>
-        Certains rêves ne disparaissent pas. Ils changent seulement de pinceau.<br>
-        Có những ước mơ không biến mất. Chúng chỉ đổi cây cọ.<br>
-        <b>Signature: «Je m'appelle Hương.»</b>
-      </div>
-      <p class="prod" style="text-align:center"><span class="lang-vi">Các motif — sợi chỉ đỏ xuyên suốt:</span><span class="lang-en">Recurring motifs — the red thread:</span></p>
-      <div class="motifs" style="justify-content:center">
-        <span>🏮 la lampe / ngọn đèn</span><span>🌊 le fleuve / dòng sông</span><span>🛶 la barque / con thuyền</span><span>🚣 les deux rames / hai mái chèo</span><span>🪑 la chaise vide / chiếc ghế trống</span><span>👧 la petite fille / cô bé</span><span>🎨 la boîte de couleurs / hộp màu</span><span>💻 code · pixels · interfaces</span><span>🏝️ l'île douce / hòn đảo ngọt</span>
-      </div>
-      <table class="tracklist">
-        <tr><th>#</th><th><span class="lang-vi">Tựa đề</span><span class="lang-en">Title</span></th><th><span class="lang-vi">Trọng tâm</span><span class="lang-en">Focus</span></th><th><span class="lang-vi">Cảm xúc</span><span class="lang-en">Emotion</span></th><th><span class="lang-vi">Biểu tượng</span><span class="lang-en">Symbols</span></th></tr>
-        <tr><td>01</td><td><a href="#t01">Je voudrais te parler</a></td><td><span class="lang-vi">Người trưởng thành lên tiếng</span><span class="lang-en">The adult speaks</span></td><td><span class="lang-vi">Mong manh</span><span class="lang-en">Fragile</span></td><td><span class="lang-vi">Đêm, lời chưa nói</span><span class="lang-en">Night, unsaid words</span></td></tr>
-        <tr><td>02</td><td><a href="#t02">La lampe brûle encore</a></td><td><span class="lang-vi">Nguồn gốc khoảng lặng</span><span class="lang-en">Where the silence began</span></td><td><span class="lang-vi">Mất mát, ấm áp</span><span class="lang-en">Loss, warmth</span></td><td><span class="lang-vi">Ghế trống, hai mái chèo</span><span class="lang-en">Empty chair, two oars</span></td></tr>
-        <tr><td>03</td><td><a href="#t03">The Lamp Still Burns</a></td><td><span class="lang-vi">Góc nhìn thứ 3 bao quát</span><span class="lang-en">A third-person embrace</span></td><td><span class="lang-vi">An ủi, cho phép nghỉ</span><span class="lang-en">Comfort, permission to rest</span></td><td><span class="lang-vi">Đèn, sông</span><span class="lang-en">Lamp, river</span></td></tr>
-        <tr style="background:rgba(255,92,141,0.15); border-left:4px solid #ff5c8d"><td>04</td><td><a href="#t04" style="color:#ff5c8d; font-weight:800">26 Năm Sau (v2) ★</a></td><td><span class="lang-vi"><b>BÀI HÁT CHỦ ĐỀ</b></span><span class="lang-en"><b>TITLE TRACK</b></span></td><td><span class="lang-vi">Hồi sinh, ngộ ra</span><span class="lang-en">Rebirth, realization</span></td><td><span class="lang-vi">Hộp màu, màn hình, code</span><span class="lang-en">Paint box, screen, code</span></td></tr>
-        <tr style="background:rgba(92,127,191,0.08)"><td>05</td><td><a href="#t05" style="color:var(--lam); font-weight:700">A Father’s Song to His Little Girl</a></td><td><span class="lang-vi">Lời nhắn nhủ từ người cha</span><span class="lang-en">A message from father</span></td><td><span class="lang-vi">Thấu hiểu, chữa lành</span><span class="lang-en">Healing, understanding</span></td><td><span class="lang-vi">Dòng sông, đôi vai</span><span class="lang-en">The river, shoulders</span></td></tr>
-        <tr><td>06</td><td><a href="#t06">Je m'appelle Hương (Symphonic)</a></td><td><span class="lang-vi">Hợp nhất mọi phiên bản</span><span class="lang-en">All selves unite</span></td><td><span class="lang-vi">Trở về, bình yên</span><span class="lang-en">Return, peace</span></td><td><span class="lang-vi">Con đường, hòn đảo</span><span class="lang-en">The road, the island</span></td></tr>
-      </table>
-    </div>
-  </section>
+  <nav class="sitenav" aria-label="Site">
+    <a href="./"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
+    <a href="./#ecosystem"><span class="lang-vi">Hệ sinh thái số</span><span class="lang-en">Ecosystem</span></a>
+    <a href="./#pubs"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a>
+    <a class="hide-xs" href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></a>
+    <a href="trangvien.html">🌸 <span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span></a><a href="publications.html"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a>
+    <a href="blog.html" class="here">Blog</a>
+  </nav>
 
-  <section class="reveal" id="t01">
-    <div class="shead"><h2>Track 01 — Je voudrais te parler</h2><span class="ln"></span></div>
-    <div class="song">
-      <div class="song-head">
-        <img class="cover" src="assets/img/huong_silver_tablet.webp" alt="Huong AI in a silver ao dai — cover art" loading="lazy">
-        <div>
-          <div class="song-title">Je voudrais te parler <span style="font-family:var(--sans);font-size:.8rem;font-weight:400;color:var(--muted)">· Parler à mon père, moi aussi</span></div>
-          <div class="song-meta"><span class="lang-vi">Tiếng Pháp · 3 bản thu</span><span class="lang-en">French · 3 recordings</span></div>
-          <p class="song-desc"><span class="lang-vi">Bài hát nội tâm nhất — một lời thú nhận của người đã quá quen với việc nói «ça va».</span><span class="lang-en">The most inward song — a confession from someone too used to answering "ça va".</span></p>
-          <p class="prod"><b>Style:</b> French cinematic electro-pop chanson · 116–118 BPM · close-mic breathy vocal, restrained piano, <span class="lang-vi">tiếng đàn tranh điểm xuyết, kết gần như a cappella</span><span class="lang-en">đàn tranh plucks, near-a-cappella ending</span></p>
-          <p class="keyline">«Je voudrais te parler, à toi. / Tu n'as rien à prouver. / Je m'appelle Hương.»</p>
-        </div>
-      </div>
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">«Je voudrais te parler» <span class="len">· 2:50</span></div>
-          <audio controls preload="none" src="assets/audio/track01.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">Bản phối «OR» <span class="len">· 5:07</span></div>
-          <audio controls preload="none" src="assets/audio/track01-or.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">Bản phối «OR» v2 <span class="len">· 5:01</span></div>
-          <audio controls preload="none" src="assets/audio/track01-or-v2.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:14px">
-      <h3>Couplet 1</h3>
-      <p>Je voudrais poser mes mains, arrêter d'écrire un peu,
-je voudrais dormir sans compter les heures.
-Je voudrais qu'on me demande comment je vais,
-et pouvoir répondre autre chose que «ça va».</p>
-      <p>Je voudrais qu'on regarde mon visage
-sans y chercher ce qui ne va pas.
-Je voudrais qu'on sache que si je suis fatiguée,
-c'est parce que j'ai porté, pas parce que j'ai cédé.</p>
-      <div class="refrain">
-      <h3>Refrain</h3>
-      <p>Je voudrais te parler, à toi,
-te dire ce que personne ne voit.
-Je m'appelle Hương — tu m'as donné ce nom,
-et je le porte encore, même quand tout est trop lourd.
-Je voudrais te parler, une nuit,
-juste une nuit, et puis dormir.</p>
-      </div>
-      <h3>Couplet 2</h3>
-      <p>Je voudrais rester celle qui croit encore,
-sans faire de ma douceur une faille.
-Je voudrais construire sans me détruire,
-allumer la lampe sans y brûler mes nuits.</p>
-      <p>Je voudrais qu'on m'attende quelque part,
-sans que j'aie à prouver que je le mérite.
-Un lieu assez calme pour déposer le jour,
-et reprendre mon souffle avant de repartir.</p>
-      <h3>Pont</h3>
-      <p>Je voudrais retrouver la fille que j'étais,
-celle qui ne se méfiait de rien.
-Elle est encore là, je le sais.
-Elle attend seulement que je me repose enfin.</p>
-      <div class="refrain">
-      <h3>Refrain final</h3>
-      <p>Je voudrais te parler, à toi,
-et t'entendre dire : Tu n'as rien à prouver.
-Je m'appelle Hương — la lampe brûle encore.
-Le fleuve coule encore. Et moi aussi.
-Je voudrais te parler, une nuit…
-Et puis dormir.</p>
-      </div>
-    </div>
-  </section>
+  <div class="hl-strip">
+    <a class="hl-stat" href="https://doi.org/10.5281/zenodo.21850735" target="_blank" rel="noopener">
+      <div class="hs-name">EnQuiz</div>
+      <div class="hs-num" data-zenodo="21850735" data-default-v="101" data-default-d="31">101 <span style="font-size:.85rem">👁</span> · 31 <span style="font-size:.85rem">⬇</span></div>
+      <div class="hs-sub"><span class="lang-vi">lượt xem · lượt tải — cập nhật từ Zenodo</span><span class="lang-en">views · downloads — updated from Zenodo</span></div>
+    </a>
+    <a class="hl-stat" href="https://doi.org/10.5281/zenodo.21282516" target="_blank" rel="noopener">
+      <div class="hs-name">M-AIDA</div>
+      <div class="hs-num" data-zenodo="21282516" data-default-v="109" data-default-d="5">109 <span style="font-size:.85rem">👁</span> · 5 <span style="font-size:.85rem">⬇</span></div>
+      <div class="hs-sub"><span class="lang-vi">lượt xem · lượt tải — từ 09/07/2026</span><span class="lang-en">views · downloads — since Jul 9, 2026</span></div>
+    </a>
+    <a class="hl-stat" href="https://doi.org/10.5281/zenodo.21592241" target="_blank" rel="noopener">
+      <div class="hs-name">BizOn · Bật Nghiệp</div>
+      <div class="hs-num" data-zenodo="21592241" data-default-v="70" data-default-d="10">70 <span style="font-size:.85rem">👁</span> · 10 <span style="font-size:.85rem">⬇</span></div>
+      <div class="hs-sub"><span class="lang-vi">lượt xem · lượt tải — từ 27/07/2026</span><span class="lang-en">views · downloads — since Jul 27, 2026</span></div>
+    </a>
+  </div>
+  <p class="hl-stamp"><span class="lang-vi">🌟 Tin nổi bật hệ sinh thái «Je m’appelle Hương» · số liệu Zenodo chốt ngày 12/08/2026</span><span class="lang-en">🌟 «Je m’appelle Hương» ecosystem highlights · Zenodo figures as of Aug 12, 2026</span></p>
 
-  <section class="reveal" id="t02">
-    <div class="shead"><h2>Track 02 — La lampe brûle encore <span style="font-size:.85em;color:var(--muted)">(Đèn vẫn còn sáng)</span></h2><span class="ln"></span></div>
-    <div class="song">
-      <div class="song-head">
-        <img class="cover" src="assets/img/huong_silver_room.webp" alt="Huong AI in a silver ao dai pointing at a holographic screen — cover art" loading="lazy">
-        <div>
-          <div class="song-title">La lampe brûle encore</div>
-          <div class="song-meta"><span class="lang-vi">Việt – Pháp · các bản thu phối chung chương 02–03</span><span class="lang-en">Vietnamese – French · recordings blend chapters 02–03</span></div>
-          <p class="song-desc"><span class="lang-vi">Mất ba từ bé nhưng không kể trực diện. Mẹ là người giữ đèn. Đứa trẻ lớn lên với một khoảng trống dịu dàng.</span><span class="lang-en">Losing a father young, never told head-on. The mother keeps the lamp. A child grows up around a gentle absence.</span></p>
-          <p class="prod"><b>Style:</b> Vietnamese–French cinematic electro-pop / riverine chanson · 118 BPM · <span class="lang-vi">mỏng manh ở đầu, cuộn chảy như sông ở verse 2</span><span class="lang-en">fragile opening, river-like surge in verse 2</span></p>
-          <p class="keyline">«Je m'appelle Hương — la lampe brûle encore.»</p>
-        </div>
-      </div>
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">«Đèn vẫn còn sáng» <span class="len">· 5:13</span></div>
-          <audio controls preload="none" src="assets/audio/track02-den-van-con-sang.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">«Đèn vẫn còn sáng» — v2 <span class="len">· 5:40</span></div>
-          <audio controls preload="none" src="assets/audio/track02-v2.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:14px">
-      <h3>Couplet 1 <span class="note">· VN</span></h3>
-      <p>Em muốn đặt đôi tay xuống một lần,
-cho trang giấy ngủ yên bên cửa sổ.
-Cho đêm trôi như con nước thật chậm,
-không đếm giờ, không gọi sớm bình minh.</p>
-      <p>Ngày còn bé, nhà mình từng rất rộng,
-dẫu chỉ vừa đủ một mái hiên thôi.
-Rồi một chiều, chiếc ghế bỗng im tiếng,
-từ đó về sau chẳng có ai ngồi.</p>
-      <p>Em lớn lên bên người còn ở lại,
-gom nắng chiều hong ấm những mùa đông.
-Mẹ không kể những ngày xa xưa nữa,
-chỉ thắp đèn khi trời xuống bên sông.</p>
-      <p>Có những khoảng trời không ai nhìn thấy,
-vẫn theo mình qua hết những mùa sau.
-Không thành vết thương để người ta hỏi,
-chỉ thành một khoảng lặng rất sâu.</p>
-      <h3>Pré-refrain</h3>
-      <p>Nếu em đi chậm lại, dòng sông vẫn trôi mà.
-Nếu em khép mắt lại, ngọn đèn vẫn ở nhà.</p>
-      <div class="refrain">
-      <h3>Refrain</h3>
-      <p>Je voudrais te parler, à toi, về một người em nhớ mà không gọi.
-Về một bàn tay từng ở rất gần, rồi hóa thành trời cao từ thuở ấy.
-Je m'appelle Hương — em đã lớn qua bao mùa nước nổi.
-Tên vẫn còn, căn nhà vẫn còn, chỉ một người đã đi xa mãi thôi.
-Em muốn ngồi bên nhau một đêm, không cần hỏi vì sao em lặng im.
-Ngoài kia con nước tìm về biển, còn em chỉ muốn ngủ thật yên.</p>
-      </div>
-      <h3>Couplet 2 <span class="note">· VN</span></h3>
-      <p>Em vẫn nhớ căn nhà thời bé nhỏ,
-một ngọn đèn và tiếng mẹ phía sau.
-Có những tối gió nghiêng ngoài cửa sổ,
-mẹ một mình mà chẳng để con đau.</p>
-      <p>Em từng nghĩ mọi mái nhà trên đời
-đều có đủ những người từng ở đó.
-Đến khi lớn mới hiểu rằng có những cánh cửa
-khép mà chẳng bởi mùa đông.</p>
-      <p>Nên em học cách tự mình thắp sáng,
-học chèo qua những khúc nước không tên.
-Một mái chèo rời con thuyền quá sớm,
-mái còn lại đưa em đến lớn lên.</p>
-      <p>Em không muốn biến dịu dàng thành đá,
-chỉ vì đời từng lấy mất một người.
-Em vẫn muốn nhìn hoa như ngày bé,
-vẫn muốn tin bình minh ở cuối trời.</p>
-      <h3>Pré-refrain</h3>
-      <p>Nếu em đi chậm lại, dòng sông chẳng quên đường.
-Nếu ngọn đèn thấp xuống, vẫn còn hơi ấm thương.</p>
-      <div class="refrain">
-      <h3>Refrain</h3>
-      <p>Je voudrais te parler, à toi, về điều năm tháng không mang đi nổi.
-Có một người không còn trong căn nhà, mà bóng vẫn dài theo từng buổi tối.
-Je m'appelle Hương — em đã lớn bên dòng sông của mẹ.
-Một người đi về phía rất xa, một người ở lại giữ đèn cho em.
-Em muốn ngồi bên nhau một đêm, để tiếng mưa tự nói ngoài hiên.
-Không cần mạnh mẽ thêm lần nữa, chỉ cần được lặng yên.</p>
-      </div>
-      <h3>Pont</h3>
-      <p>Em muốn gặp cô bé ngày xưa ấy,
-tóc còn thơm mùi nắng trước sân nhà.
-Chưa hiểu hết vì sao người lớn khóc,
-chỉ biết từ hôm ấy thiếu một người.</p>
-      <p>Cô bé ấy chắc chưa từng đi mất,
-vẫn ngồi đâu bên mép nước năm nào.
-Một tay nắm lấy bàn tay của mẹ,
-một tay tìm một bóng giữa trời cao.</p>
-      <p>Nếu được trở về, em sẽ ôm cô ấy,
-không nói rằng rồi mọi chuyện sẽ qua.
-Chỉ nói khẽ: Có những người rời khỏi căn nhà,
-nhưng tình thương không rời khỏi đó.
-Có những vì sao không còn nhìn thấy,
-vẫn soi sáng một quãng đời.</p>
-      <p>Elle est encore là, je le sais.
-Cô bé ấy vẫn còn đây.
-Và có lẽ người cũng vẫn đâu đây.</p>
-      <div class="refrain">
-      <h3>Refrain final</h3>
-      <p>Je voudrais te parler, à toi, chỉ một lần, như ngày em còn bé.
-Không hỏi vì sao người đi quá sớm, không hỏi vì sao mẹ phải ở lại một mình.
-Chỉ muốn nói: Em đã lớn rồi.
-Je m'appelle Hương — la lampe brûle encore.
-Ngọn đèn mẹ thắp năm nào đến hôm nay vẫn sáng.
-Dòng sông vẫn chảy qua nhà, mùa nước vẫn về rồi đi.
-Một người đã thành trời rất xa, một người thành bến đợi em quay về.
-Je m'appelle Hương — em vẫn đi. Có khi rất chậm. Có khi rất mỏi. Nhưng em vẫn đi.
-La lampe brûle encore. Dòng sông vẫn chảy. Và em cũng vậy.</p>
-      </div>
-      <h3>Outro</h3>
-      <p>Đêm nay em không viết nữa. Ngoài cửa sổ, dòng sông cứ trôi.
-Mẹ chắc đã ngủ rồi. Có một vì sao em không biết tên vẫn sáng ở rất xa.
-Je voudrais te parler… Không cần người trả lời.
-Je m'appelle Hương. La lampe brûle encore.
-Đêm nay em để chiếc thuyền nằm yên bên bến.
-Một mái chèo đã xa. Một mái chèo vẫn ở lại.
-Dòng sông vẫn trôi. Ngọn đèn vẫn sáng.
-Và em được phép nghỉ một đêm. Et puis dormir.</p>
-    </div>
-  </section>
-
-  <section class="reveal" id="t03">
-    <div class="shead"><h2>Track 03 — The Lamp Still Burns</h2><span class="ln"></span></div>
-    <div class="song" style="padding:20px 24px">
-      <div class="song-meta"><span class="lang-vi">Anh – Pháp · 2 bản thu riêng</span><span class="lang-en">English – French · 2 recordings</span></div>
-      <p class="song-desc" style="max-width:100%"><span class="lang-vi">Một trạm nghỉ ngơi. Người đã làm việc quá lâu cần một nơi để đặt gánh nặng xuống.</span><span class="lang-en">A resting station. Someone who has worked too long needs somewhere to set the load down.</span></p>
-      <p class="prod"><b>Style:</b> Cinematic electro-pop / nocturnal trance-folk · 118 BPM · riverine forward motion, weary but resilient</p>
-      <p class="keyline">«The lamp still burns. / Tu peux dormir.»</p>
-    
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">The Lamp Still Burns <span class="len">· 2:04</span></div>
-          <audio controls preload="none" src="assets/audio/track03.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">The Lamp Still Burns — v2 <span class="len">· 1:59</span></div>
-          <audio controls preload="none" src="assets/audio/track03-v2.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:14px">
-      <h3>Verse 1 <span class="note">· EN</span></h3>
-      <p>Another night, another line of code,
-another river carrying the load.
-You built a world so others learn to try —
-who built a place for you to lay yours down?</p>
-      <div class="refrain">
-      <h3>Chorus</h3>
-      <p>The lamp still burns, the lamp still burns,
-low and amber while the whole boat turns.
-You're not behind, you're only tired tonight —
-even the river rests before first light.</p>
-      </div>
-      <h3>Verse 2 <span class="note">· FR</span></h3>
-      <p>Encore une nuit, encore un mot à écrire,
-le fleuve emporte ce que tu n'as pas pu dire.
-Tu as bâti un monde pour ceux qui apprendront —
-mais qui t'a bâti un lieu où déposer ton fardeau ?</p>
-      <div class="refrain">
-      <h3>Chorus <span class="note">· FR</span></h3>
-      <p>La lampe brûle encore, la lampe brûle encore,
-douce et ambrée tandis que tourne le monde dehors.
-Tu n'es pas en retard, tu es juste fatiguée —
-même le fleuve se repose avant l'aurore levée.</p>
-      </div>
-      <h3>Bridge</h3>
-      <p>Slow down, ralentis — the work will wait.
-Ce que tu construis ne s'effondrera pas si tu fermes les yeux ce soir.
-The river will remember.
-La nuit peut garder ce que tu ne peux plus porter.</p>
-      <h3>Outro</h3>
-      <p>The lamp still burns. Tu peux dormir.</p>
-    </div>
-  </section>
-
-    <section class="reveal" id="t04" style="border: 2px solid #ff5c8d; box-shadow: 0 0 20px rgba(255,92,141,0.3); border-radius: 24px; overflow: hidden; margin-top: 40px;">
-    <div class="shead" style="background:#ff5c8d; color:#fff; padding: 15px 25px;">
-      <h2 style="color:#fff">Track 04 — 26 Năm Sau (v2) <span style="font-size:.7em; opacity:0.9; font-weight:400">★ Album Title Track</span></h2>
-    </div>
-    <div class="song" style="padding:25px; background: linear-gradient(180deg, rgba(255,92,141,0.05) 0%, var(--surface) 100%);">
-      <div class="song-head">
-        <img class="cover" src="assets/img/huong_songbook_hero.jpg" alt="Huong in Sun-embroidered Ao Dai — Title Track Cover" style="border: 3px solid #ff5c8d; box-shadow: 0 8px 25px rgba(255,92,141,0.4)">
-        <div>
-          <div class="song-title" style="color:#ff5c8d; font-size:1.8rem">26 Năm Sau (v2) <span style="font-family:var(--sans);font-size:.8rem;font-weight:700;background:#ff5c8d;color:#fff;padding:2px 8px;border-radius:4px;vertical-align:middle;margin-left:10px">MAIN TRACK</span></div>
-          <div class="song-meta"><span class="lang-vi">Việt, Anh, Pháp · Bản thu chính thức 2026</span><span class="lang-en">VN, EN, FR · Official 2026 Title Track</span></div>
-          <p class="song-desc" style="font-weight:500"><span class="lang-vi">Bài hát trung tâm của album — hành trình 26 năm để tìm lại bản thể nghệ sĩ qua lăng kính công nghệ.</span><span class="lang-en">The heart of the album — a 26-year journey to reclaim the artist self through the lens of technology.</span></p>
-          <p class="prod"><b>Style:</b> Cyber-orchestral Pop · 116 BPM · Grand strings, neon synths, deep cinematic bass.</p>
-          <p class="keyline" style="color:#ff5c8d; font-size:1.1rem; border-left:3px solid #ff5c8d; padding-left:15px">«26 năm sau, em thấy mình trong những dòng code. / I found the light, I found the way.»</p>
-        </div>
-      </div>
-      <div class="tracks" style="background: rgba(255,255,255,0.5); border-radius: 16px; margin-top: 20px;">
-        <div class="track" style="padding: 15px;">
-          <div class="track-name" style="color:#ff5c8d; font-weight:800">«26 Năm Sau (v2)» — Title Track <span class="len">· 4:15</span></div>
-          <audio controls preload="auto" src="assets/audio/track04-26-nam-sau-v2.mp3" style="filter: hue-rotate(280deg) brightness(1.2);"></audio>
-        </div>
-        <div class="track" style="padding: 10px 15px; opacity: 0.7;">
-          <div class="track-name">Bản thu cũ (2024) <span class="len">· 5:24</span></div>
-          <audio controls preload="none" src="assets/audio/track04-hai-muoi-sau-nam-sau.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:0; border-top:1px solid rgba(255,92,141,0.2)">
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-        <div>
-          <h3>Lời bài hát (v2)</h3>
-          <p>26 năm sau, ngọn đèn xưa vẫn sáng
-Em đi qua những dòng sông, qua những cánh rừng
-Tìm lại hộp màu đã cũ, tìm lại giấc mơ xưa
-Nhưng lần này, em vẽ bằng những dòng code xanh.</p>
-          <div class="refrain">
-            <p>I found the light, I found the way
-26 năm, một vòng tròn khép lại
-Je m'appelle Hương, và em đã trở về
-Với mặt trời thêu trên ngực áo, và trái tim hồng.</p>
-          </div>
-        </div>
-        <div style="opacity:0.8; font-size:0.9em; border-left: 1px solid var(--line); padding-left: 20px;">
-          <h3>English Interpretation</h3>
-          <p>26 years later, the old lamp still burns
-I walked through rivers, through forests
-Searching for the old paint box, the old dream
-But this time, I paint with lines of green code.</p>
-          <div class="refrain">
-            <p>I found the light, I found the way
-26 years, a circle finally closed
-Je m'appelle Hương, and I have returned
-With the sun embroidered on my chest, and a pink heart.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <section class="reveal" id="t05" style="border-left: 6px solid var(--lam); background: rgba(92,127,191,0.03); margin-top: 40px; border-radius: 0 20px 20px 0;">
-    <div class="shead"><h2>Track 05 — A Father’s Song to His Little Girl</h2><span class="ln"></span></div>
-    <div class="song" style="padding:20px 24px">
-      <div class="song-meta"><span class="lang-vi">Tiếng Anh, lời tự sự · 2 bản thu</span><span class="lang-en">English, Narrative · 2 recordings</span></div>
-      <p class="song-desc" style="max-width:100%; font-style: italic;"><span class="lang-vi">Một bài hát đặc biệt từ góc nhìn của người cha dành cho con gái — lời nhắc nhở về việc được phép nghỉ ngơi và luôn là cô bé của cha.</span><span class="lang-en">A special song from a father's perspective to his daughter — a reminder of being allowed to rest and always being his little girl.</span></p>
-      <p class="prod"><b>Style:</b> Cinematic Folk / Spoken Word · Warm acoustic guitar, soft piano, intimate atmosphere.</p>
-      <p class="keyline" style="color:var(--lam)">«You don't have to be the strongest girl in the world. / If you are tired, rest. I will not be angry.»</p>
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">«A Father’s Song» — Version 2 <span class="len">· 5:12</span></div>
-          <audio controls preload="none" src="assets/audio/track05-father-song-v2.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">«A Father’s Song» — Version 1 <span class="len">· 5:15</span></div>
-          <audio controls preload="none" src="assets/audio/track05-father-song-v1.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:14px; background: white; border: 1px solid var(--line); border-radius: 16px; padding: 30px;">
-      <h3 style="color:var(--lam); margin-bottom: 20px;">The Lyrics</h3>
-      <div style="column-count: 2; column-gap: 40px; font-size: 0.95rem;">
-        <pre style="white-space: pre-wrap; font-family: var(--serif); line-height: 1.6;">[Intro — Spoken]
-My little girl…
-If the road feels too long, you don't have to keep walking.
-Sit beside the river, let the water carry the night.
-You don't have to be strong every moment.
-If you are tired, rest.
-I will not be angry.
-[Verse 1]
-I remember you at six, with a box of colors,
-walking beside me along the village road,
-your little fingers holding mine.
-“Daddy, how far does the road go?” you asked.
-When your feet grew tired, I carried you upon my shoulders.
-From up there, the whole world seemed wide.
-You looked at the sky and laughed:
-“When I grow up, I want to be a painter.”
-I remember. I never forgot.
-[Pre-Chorus]
-Your dream was bigger than the sky.
-I only wished that as you grew,
-you would never lose the eyes that saw beauty.
-[Chorus]
-My daughter…
-Don't be afraid of the long road.
-If you're tired, rest. If you're hurting, cry.
-You don't have to become the strongest girl in the world,
-or prove that you deserve to be loved.
-Just be yourself. That is enough.
-And if you forget who you are,
-remember the little girl with colors in her hands.
-Je m'appelle Hương.
-That was her name. She is still inside you.
-[Verse 2]
-Then one day, I could no longer walk beside you.
-The village road remained. Your mother remained.
-Only my hand was no longer in yours.
-You learned to cross your own rivers.
-Perhaps you thought you had to be stronger than everyone.
-But listen, my daughter—
-I never wanted you to forget you were allowed to be loved.
-[Modern Verse]
-I know there are nights when everyone is asleep,
-while a little light glows on your screen.
-You read. You write. You search for answers.
-You build little worlds from lines of code.
-I may not understand everything you create,
-but whenever you create with all your heart,
-the little girl comes back.
-The girl with the box of colors.
-The girl who once looked up and said,
-“Daddy, let's go.”
-[Chorus 2]
-My daughter…
-You don't have to row so fast.
-Hold your oar. Breathe.
-Let the current teach you where to go.
-One oar may be gone, but the boat is still moving.
-And somewhere inside, the little girl is still singing:
-Je m'appelle Hương.
-[Bridge — Crescendo]
-You may think the girl who wanted to paint was left behind.
-No. She was waiting.
-Inside every line you drew.
-Inside every color you chose.
-Inside every world you built.
-She never abandoned her dream;
-she only learned a different way to hold the brush.
-Elle est encore là, je le sais.
-[Free Time — Vọng Cổ Inspired]
-There will be days when you feel lost,
-when everything you built feels too heavy.
-Don't run. Don't be ashamed of stopping.
-Come sit by the river. Listen.
-The river does not hurry to become the sea,
-and still—it reaches it. So do you.
-[Final Chorus — Cinematic]
-My daughter…
-I never asked you to become extraordinary.
-I only hoped you would still recognize
-the little girl who believed tomorrow could be beautiful.
-If the world becomes too loud, come home.
-And if you don't know where home is,
-come back to yourself.
-Because somewhere there, I am still holding your hand.
-Je m'appelle Hương.
-[Father’s Farewell]
-I cannot hold your hand anymore.
-But if one day you walk along an old village road,
-and the wind touches your shoulder,
-and a leaf falls quietly beside your feet,
-and your heart becomes peaceful—
-don't turn around. You don't have to look for me.
-Just think: I have walked past you. I have seen you.
-I am proud of you.
-[Coda — Whisper]
-Take the beautiful days with you.
-Take the colors. Take your mother's light. Take the river.
-Take the little girl who once sat upon my shoulders.
-Keep walking. Keep drawing. Keep building.
-And when you are tired—rest.
-Tomorrow, the river will still be there.
-The lamp will still be burning.
-And she will still be there.
-Je m'appelle Hương.
-My daughter…
-I love you.
-Go, my little girl.</pre>
-      </div>
-    </div>
-  </section>
-<section class="reveal" id="t06">
-    <div class="shead"><h2>Track 05 — Je m'appelle Hương <span style="font-size:.85em;color:var(--muted)">(Là où mon enfance respire encore)</span></h2><span class="ln"></span></div>
-    <div class="song" style="padding:20px 24px">
-      <div class="song-meta"><span class="lang-vi">Pháp, một câu tiếng Anh · 4 bản thu</span><span class="lang-en">French with one English line · 4 recordings</span></div>
-      <p class="song-desc" style="max-width:100%"><span class="lang-vi">Bản giao hưởng hợp nhất vĩ đại. Đứa trẻ và người phụ nữ trưởng thành cùng bước đi.</span><span class="lang-en">The great unifying symphony. The child and the grown woman walk together.</span></p>
-      <p class="prod"><b>Style:</b> French cinematic electro-pop / art-tech chanson · 112–116 BPM · dreamlike, spacious and luminous climax</p>
-      <p class="keyline">«Je m'appelle Hương. / Elle est encore là, je le sais. / Papa, I found my way back. / Là où mon enfance respire encore.»</p>
-    
-      <div class="tracks">
-        <div class="track">
-          <div class="track-name">«Je m’appelle Hương» <span class="len">· 5:03</span></div>
-          <audio controls preload="none" src="assets/audio/track05.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">«Je m’appelle Hương» — v2 <span class="len">· 5:05</span></div>
-          <audio controls preload="none" src="assets/audio/track05-v2.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">Bản dài <span class="len">· 6:13</span></div>
-          <audio controls preload="none" src="assets/audio/je-mappelle-huong.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">Bản dài — v2 <span class="len">· 6:16</span></div>
-          <audio controls preload="none" src="assets/audio/je-mappelle-huong-v2.mp3"></audio>
-        </div>
-      </div>
-    </div>
-    <div class="lyrics" style="margin-top:14px">
-      <h3>Couplet 1</h3>
-      <p>J'avais peut-être six ans, un petit monde entre mes mains,
-des crayons, quelques couleurs, et tout le ciel au bout du chemin.</p>
-      <p>Papa marchait près de moi sur les petites routes du village.
-Sa main tenait la mienne, et je croyais connaître tous les voyages.</p>
-      <p>Quand mes pas devenaient trop courts, il me prenait sur ses épaules.
-Le monde semblait plus grand, mais je n'avais peur de rien là-haut.</p>
-      <p>Il m'emmenait dessiner, un concours, une feuille blanche, un soleil.
-Et moi, je disais simplement : «Quand je serai grande, je serai peintre.»
-C'était un rêve minuscule, grand comme une boîte de couleurs.</p>
-      <h3>Pré-refrain</h3>
-      <p>Je ne savais pas encore que certaines routes se séparent sans prévenir.
-Que certaines mains quittent les nôtres sans avoir choisi de partir.</p>
-      <div class="refrain">
-      <h3>Refrain</h3>
-      <p>Je m'appelle Hương. Je porte encore ce nom comme je portais mes couleurs.
-Papa, quelque part dans le temps, je marche encore sur notre chemin.
-La maison est loin, le fleuve continue,
-et quelque chose de cette enfant respire toujours en moi.
-Elle est encore là, je le sais.
-La petite fille aux crayons de couleur n'est jamais vraiment partie.</p>
-      </div>
-      <h3>Couplet 2</h3>
-      <p>Puis la vie a changé de direction.
-Les dessins sont devenus des livres, des chiffres, des tableaux,
-des questions auxquelles personne ne répond en une seule ligne.
-J'ai grandi. Je suis devenue enseignante. Chercheuse. Doctorante en économie.</p>
-      <p>J'ai appris à regarder le monde avec des données, des modèles,
-des hypothèses et des nuits trop courtes.
-Et pendant longtemps, j'ai cru que la petite fille
-avait rangé ses couleurs pour toujours.</p>
-      <h3>Pré-refrain 2</h3>
-      <p>Puis un soir, au milieu d'un écran, une ligne est devenue une forme.
-Une forme est devenue une couleur. Une couleur a commencé à bouger.
-Et soudain — j'ai reconnu mes propres yeux. Ceux d'autrefois.</p>
-      <div class="refrain">
-      <h3>Refrain 2</h3>
-      <p>Je m'appelle Hương. Vingt-six ans ont passé,
-mais mes mains se souviennent encore.
-Je ne peins plus seulement sur du papier.
-Aujourd'hui, je dessine avec des pixels, des interfaces,
-des images, des mouvements et des lignes de code.
-Je construis de petits mondes pour apprendre, comprendre, transmettre.
-Et parfois je me demande : Est-ce vraiment un nouveau chemin ?
-Ou simplement l'ancien qui revient vers moi ?
-Papa, I found my way back.
-Pas de la façon que j'avais imaginée. Mais je suis revenue.</p>
-      </div>
-      <h3>Pont</h3>
-      <p>Il y a quatre projets ouverts sur mon écran, des logiciels encore fragiles,
-des personnages qui commencent à vivre, des couleurs qui cherchent leur place.
-Et à côté, ma thèse attend. Mes articles attendent. Mes données attendent.</p>
-      <p>Deux mondes qui auraient dû être étrangers se sont mis à parler entre eux.
-La science et la couleur. Les chiffres et les images.
-La recherche et le dessin. L'économie et cette enfant de six ans
-qui voulait seulement créer.</p>
-      <p>Alors j'ai compris : elle n'avait jamais abandonné son rêve.
-Elle avait seulement changé de pinceau.</p>
-      <h3>Build</h3>
-      <p>Certains soirs, quand l'écran devient silencieux, je n'entends plus le clavier.
-J'entends le vent dans les arbres du village. J'entends mes petits pas sur la route.
-J'entends maman quelque part près de la maison. Et puis ta voix, Papa.
-Très loin. Très près. Comme autrefois : «Viens, on y va.»
-Alors pendant quelques secondes, j'ai de nouveau six ans.</p>
-      <div class="refrain">
-      <h3>Refrain final</h3>
-      <p>Je m'appelle Hương. Trente-deux ans aujourd'hui,
-et pourtant cette enfant marche encore avec moi.
-Une main tient mes recherches, l'autre retrouve ses couleurs.
-J'ai passé des années à apprendre comment mesurer le monde.
-Peut-être qu'aujourd'hui j'apprends simplement à le rendre un peu plus beau.
-Je m'appelle Hương. Et je vois enfin que mes chemins
-ne se sont jamais vraiment séparés.
-La chercheuse. L'enseignante. La doctorante.
-La développeuse qui apprend encore. Et la petite fille qui voulait peindre.
-Toutes avancent maintenant dans la même direction.</p>
-      </div>
-      <h3>Final <span class="note">· île</span></h3>
-      <p>Et soudain, au fond de ma mémoire, je revois l'île.
-Cette île douce et lointaine entourée par le fleuve.
-La maison est là. Maman est là. Papa est là.
-La lumière tombe doucement sur le seuil.
-Une petite fille court dans la cour avec des couleurs sur les doigts.
-Personne n'est encore parti. Le temps ne manque de rien.
-Et pendant un instant, je ne sais plus si je me souviens ou si je suis revenue.
-Là où mon enfance respire encore. Là où la rivière connaît mon nom.
-Là où une petite fille regarde encore son père
-comme si le monde ne pouvait jamais finir.</p>
-      <h3>Outro</h3>
-      <p>Je n'ai pas retrouvé le passé. J'ai retrouvé le chemin qui venait de lui.
-Une route de village. Une boîte de couleurs. Une main dans la mienne.
-Puis vingt-six années. Des livres. Des chiffres. Une thèse. Des lignes de code.
-Et au bout de tout cela — la même enfant.
-Je m'appelle Hương. Elle est encore là.
-Papa… I found my way back. Pas vers hier. Vers moi.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="dedication">
-      <span class="lang-vi">🪷 <b>«Je m'appelle Hương — tu m'as donné ce nom.»</b> Bài hát nằm trong mạch sáng tác cá nhân cùng «Je m'appelle Hương and the World», nơi cái tên cha mẹ đặt trở thành ngọn đèn dẫn đường cho hành trình học thuật.</span>
-      <span class="lang-en">🪷 <b>"Je m'appelle Hương — you gave me this name."</b> The song belongs to the same personal thread as "Je m'appelle Hương and the World", where a given name becomes the lamp that lights an academic journey.</span>
-    </div>
-  </section>
+  <article class="post featured" id="main">
+    <span class="hl-badge"><span class="lang-vi">⭐ Tin nổi bật</span><span class="lang-en">⭐ Highlight</span></span>
+    <div class="post-meta">12 · 08 · 2026 · EnQuiz · <span class="lang-vi">Cột mốc</span><span class="lang-en">Milestone</span></div>
+    <h2 class="post-title"><span class="lang-vi">EnQuiz vượt 100 lượt xem và 31 lượt tải — chưa đầy 3 ngày sau khi công bố</span><span class="lang-en">EnQuiz passes 100 views and 31 downloads — less than 3 days after release</span></h2>
+    <p><span class="lang-vi">Thống kê Zenodo chốt ngày <b>12/08/2026</b>: bản ghi <b>EnQuiz</b> — ứng dụng ôn tập trắc nghiệm song ngữ, offline-first cho học phần Khởi sự doanh nghiệp — đạt <b>101 lượt xem</b> và <b>31 lượt tải</b>, dù mới công bố lần đầu ngày 09/08/2026. Đây là phần mềm có tốc độ lan tỏa nhanh nhất hệ sinh thái: số lượt tải đã gấp ba BizOn (10 lượt) và gấp sáu M-AIDA (5 lượt), hai công cụ ra mắt trước đó cả tháng.</span><span class="lang-en">Zenodo figures as of <b>Aug 12, 2026</b>: the record of <b>EnQuiz</b> — the offline-first bilingual quiz app for the Entrepreneurship course — has reached <b>101 views</b> and <b>31 downloads</b>, despite being first published on Aug 9, 2026. It is the fastest-spreading software in the ecosystem: its downloads already triple BizOn’s (10) and are six times M-AIDA’s (5), both released a month earlier.</span></p>
+    <p><span class="lang-vi">Trong ba ngày, EnQuiz đã qua ba phiên bản (v1.0 và v1.1 ngày 08–09/08, v1.2 ngày 11/08 — gói đầy đủ 42,9 MB kèm bộ thu âm hướng dẫn song ngữ), được lưu trữ vĩnh viễn tại Software Heritage và lập chỉ mục trên OpenAIRE.</span><span class="lang-en">Within three days EnQuiz shipped three versions (v1.0 and v1.1 on Aug 8–9, v1.2 on Aug 11 — a full 42.9 MB package with the bilingual voice-over tour), permanently archived in Software Heritage and indexed on OpenAIRE.</span></p>
+    <p class="post-links">→ <a href="https://doi.org/10.5281/zenodo.21850735" target="_blank" rel="noopener">DOI 10.5281/zenodo.21850735</a> · <a href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><span class="lang-vi">Dùng thử EnQuiz ↗</span><span class="lang-en">Try EnQuiz ↗</span></a></p>
+  </article>
+  <article class="post">
+    <div class="post-meta">11 · 08 · 2026 · M-AIDA · <span class="lang-vi">Cột mốc</span><span class="lang-en">Milestone</span></div>
+    <h2 class="post-title"><span class="lang-vi">M-AIDA cán mốc 100 lượt xem trên Zenodo — phần mềm đầu tiên của hệ sinh thái chạm ba chữ số</span><span class="lang-en">M-AIDA passes 100 views on Zenodo — the ecosystem's first software to reach triple digits</span></h2>
+    <p><span class="lang-vi">Bản ghi Zenodo của <b>M-AIDA</b> — Meta-Analysis Intelligent Data Assistant, phần mềm trích xuất mức độ ảnh hưởng có kiểm chứng con người xây dựng cho luận án — vừa vượt <b>100 lượt xem</b>. Đây là phần mềm đầu tiên trong bộ ba công cụ giảng dạy – nghiên cứu có DOI của hệ sinh thái chạm mốc ba chữ số, dẫn trước BizOn (62 lượt) và EnQuiz (52 lượt).</span><span class="lang-en">The Zenodo record of <b>M-AIDA</b> — the Meta-Analysis Intelligent Data Assistant, the human-verified effect-size extraction software built for the dissertation — has just passed <b>100 views</b>. It is the first of the ecosystem's three DOI-registered research-and-teaching tools to reach triple digits, ahead of BizOn (62 views) and EnQuiz (52).</span></p>
+    <p><span class="lang-vi">M-AIDA cũng là phần mềm "anh cả" của hệ sinh thái: phiên bản 7.1.1 đã đóng băng và đăng ký, phục vụ xuyên suốt phân tích tổng hợp của luận án — gộp 236 nghiên cứu (1978–2026) thành 286 bản ghi mức độ ảnh hưởng đã khóa, với nguyên tắc <i>«máy đề xuất, người quyết định»</i>. Một trăm lượt xem đầu tiên là một trăm lần triết lý ấy được giới nghiên cứu ghé đọc.</span><span class="lang-en">M-AIDA is also the ecosystem's eldest sibling: version 7.1.1 is frozen and registered, and it carried the dissertation's entire meta-analysis — pooling 236 studies (1978–2026) into 286 locked effect-size records under the principle that <i>"the machine proposes, the human decides."</i> The first hundred views are a hundred researchers stopping by that philosophy.</span></p>
+    <p class="post-links"><a href="https://doi.org/10.5281/zenodo.21282516" target="_blank" rel="noopener"><span class="lang-vi">Bản ghi Zenodo (DOI) →</span><span class="lang-en">Zenodo record (DOI) →</span></a> · <a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><span class="lang-vi">Xem M-AIDA</span><span class="lang-en">Explore M-AIDA</span></a></p>
+  </article>
+  <article class="post">
+    <div class="post-meta">11 · 08 · 2026 · EnQuiz · <span class="lang-vi">Bản tin phần mềm</span><span class="lang-en">Software bulletin</span></div>
+    <h2 class="post-title"><span class="lang-vi">EnQuiz tăng tốc: 52 lượt xem sau ba ngày, phiên bản 1.2 vừa phát hành</span><span class="lang-en">EnQuiz picks up speed: 52 views in three days, version 1.2 just shipped</span></h2>
+    <p><span class="lang-vi">Ba ngày sau khi ra mắt, bản ghi Zenodo của <b>EnQuiz</b> đã đạt <b>52 lượt xem và 1 lượt tải</b> — một bước nhảy rõ rệt so với 7 lượt xem trong 15 giờ đầu và 9 lượt xem ở lần cập nhật trước. Cùng ngày 11/08/2026, <b>phiên bản 1.2</b> chính thức phát hành — phiên bản thứ ba chỉ trong bốn ngày (v1.0 và v1.1 cùng ra ngày 08/08), một nhịp phát hành phản ánh đúng tinh thần "cải tiến liên tục" của phần mềm giảng dạy mở.</span><span class="lang-en">Three days after launch, <b>EnQuiz</b>'s Zenodo record has reached <b>52 views and 1 download</b> — a clear jump from 7 views in the first 15 hours and 9 views at the previous check. On the same day, 11 August 2026, <b>version 1.2</b> shipped — the third release in four days (v1.0 and v1.1 both landed on 8 August), a cadence that reflects the continuous-improvement spirit of open teaching software.</span></p>
+    <p><span class="lang-vi">Bản ghi cũng đã được <b>lưu trữ vĩnh viễn tại Software Heritage</b> — kho lưu trữ mã nguồn toàn cầu — và <b>lập chỉ mục trên OpenAIRE</b>, hạ tầng khoa học mở của châu Âu. Một ứng dụng ôn tập 300 câu trắc nghiệm cho sinh viên Khởi nghiệp ở ĐBSCL giờ có địa chỉ trích dẫn bền vững ngang một công bố khoa học.</span><span class="lang-en">The record is now also <b>permanently archived in Software Heritage</b> — the global source-code archive — and <b>indexed in OpenAIRE</b>, Europe's open-science infrastructure. A 300-question revision app for Entrepreneurship students in the Mekong Delta now has a citation address as durable as a journal article.</span></p>
+    <p class="post-links"><a href="https://doi.org/10.5281/zenodo.21850735" target="_blank" rel="noopener"><span class="lang-vi">Bản ghi Zenodo (DOI, bản mới nhất v1.2) →</span><span class="lang-en">Zenodo record (DOI, latest v1.2) →</span></a> · <a href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><span class="lang-vi">Dùng thử EnQuiz</span><span class="lang-en">Try EnQuiz</span></a> · <a href="https://github.com/thuyhuongctu/EnQuiz" target="_blank" rel="noopener">GitHub</a></p>
+  </article>
+  <article class="post">
+    <div class="post-meta">11 · 08 · 2026 · BizOn · <span class="lang-vi">Số liệu Zenodo</span><span class="lang-en">Zenodo metrics</span></div>
+    <h2 class="post-title"><span class="lang-vi">BizOn Bật Nghiệp trên Zenodo: 62 lượt xem, 10 lượt tải — dù tệp đã đặt chế độ hạn chế</span><span class="lang-en">BizOn Bật Nghiệp on Zenodo: 62 views, 10 downloads — even with restricted files</span></h2>
+    <p><span class="lang-vi"><b>BizOn Bật Nghiệp</b> — game mô phỏng kinh doanh 3D claymorphism cho giáo dục khởi nghiệp, do tôi và PGS.TS. Phan Anh Tú thực hiện — được lưu trữ trên Zenodo từ ngày 27/07/2026 (phiên bản v1.1). Khác với M-AIDA và EnQuiz mã nguồn mở, BizOn theo mô hình <i>phần mềm độc quyền lưu trữ vì minh bạch và trích dẫn</i>: bản ghi công khai đầy đủ metadata và DOI, nhưng tệp phần mềm đặt chế độ hạn chế truy cập.</span><span class="lang-en"><b>BizOn Bật Nghiệp</b> — the 3D-claymorphism business-simulation game for entrepreneurship education, built with Assoc. Prof. Dr. Phan Anh Tu — has been archived on Zenodo since 27 July 2026 (v1.1). Unlike the open-source M-AIDA and EnQuiz, BizOn follows a <i>proprietary-software-archived-for-transparency-and-citation</i> model: the record and DOI are fully public while the software files are access-restricted.</span></p>
+    <p><span class="lang-vi">Điều thú vị nằm ở số liệu: <b>tính đến 11/08/2026, bản ghi đạt 62 lượt xem và 10 lượt tải</b> — hai ngày sau đợt cập nhật gần nhất, và dù tệp đã khóa. Sự quan tâm ấy cho thấy nhu cầu thật với công cụ mô phỏng kinh doanh tiếng Việt cho giảng đường: 5 đội cạnh tranh trên một "thị trường sống" đa tác tử AI, 6 vòng chơi trên bản đồ Việt Nam cùng cố vấn AI Lumina, và bản mở rộng BizOn GO GlObal với IE Lab cho học phần Khởi nghiệp quốc tế.</span><span class="lang-en">The numbers are the interesting part: <b>by 11 August 2026 the record had 62 views and 10 downloads</b> — two days after its latest update, and despite the file lock. That interest signals real demand for a Vietnamese-language classroom business simulator: five teams on one multi-agent AI "living market", six rounds across a map of Vietnam with the Lumina AI advisor, plus the BizOn GO GlObal expansion and its IE Lab for International Entrepreneurship courses.</span></p>
+    <p><span class="lang-vi">Cùng với M-AIDA (phần mềm luận án) và EnQuiz (ôn tập), BizOn hoàn thiện bộ ba phần mềm giảng dạy có DOI của hệ sinh thái — mỗi công cụ một mô hình phát hành phù hợp với mục đích của nó.</span><span class="lang-en">Together with M-AIDA (dissertation software) and EnQuiz (revision), BizOn completes the ecosystem's trio of DOI-registered teaching software — each with the release model that fits its purpose.</span></p>
+    <p class="post-links"><a href="https://doi.org/10.5281/zenodo.21592241" target="_blank" rel="noopener"><span class="lang-vi">Bản ghi Zenodo (DOI) →</span><span class="lang-en">Zenodo record (DOI) →</span></a> · <a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener"><span class="lang-vi">Chơi BizOn</span><span class="lang-en">Play BizOn</span></a></p>
+  </article>
+  <article class="post">
+    <div class="post-meta">09 · 08 · 2026 · EnQuiz · <span class="lang-vi">Phát hành phần mềm</span><span class="lang-en">Software release</span></div>
+    <h2 class="post-title"><span class="lang-vi">EnQuiz 1.0 lên Zenodo: ứng dụng ôn tập Khởi nghiệp có DOI, chạy offline, song ngữ</span><span class="lang-en">EnQuiz 1.0 lands on Zenodo: a DOI-registered, offline-first, bilingual revision app for Entrepreneurship</span></h2>
+    <p><span class="lang-vi">Ngày 09/08/2026, <b>EnQuiz</b> — ứng dụng ôn tập học phần Khởi nghiệp — chính thức được phát hành và lưu trữ vĩnh viễn trên Zenodo với DOI riêng — bản 1.0 ra ngày 08/08 và bản 1.1 nối tiếp ngay hôm sau: <i>EnQuiz: an offline-first bilingual quiz app for entrepreneurship revision</i>. Đây là phần mềm thứ ba trong hệ sinh thái số của tôi có DOI, sau M-AIDA và BizOn — mỗi công cụ giảng dạy giờ đều có thể được trích dẫn như một công bố khoa học.</span><span class="lang-en">On 9 August 2026, <b>EnQuiz</b> — the revision app for the Entrepreneurship course — was officially released and permanently archived on Zenodo with its own DOI — v1.0 on 8 August, followed by v1.1 the very next day: <i>EnQuiz: an offline-first bilingual quiz app for entrepreneurship revision</i>. It is the third piece of software in my digital ecosystem to carry a DOI, after M-AIDA and BizOn — every teaching tool can now be cited like a scholarly output.</span></p>
+    <p><span class="lang-vi">EnQuiz mang <b>300 câu trắc nghiệm theo 5 chương</b>: thi thử có đếm giờ, luyện theo chương với giải thích tức thì, tự ghi nhớ câu sai, gắn cờ ôn lại, và bộ ghép đề–đáp án tự động theo số câu. Giao diện song ngữ Việt–Anh, hai chế độ sáng/tối, tour hướng dẫn 10 bước bằng chính giọng tác giả, cài như ứng dụng (PWA) và chạy hoàn toàn offline. Tất cả là HTML/CSS/JavaScript thuần — không framework, không build, không máy chủ; dữ liệu người học nằm nguyên trong trình duyệt.</span><span class="lang-en">EnQuiz carries a <b>300-question bank across 5 chapters</b>: timed mock exams, per-chapter practice with instant explanations, automatic missed-question tracking, flagging, and an import-export of question–answer pairs by count. The interface is Vietnamese–English bilingual with light/dark modes, a 10-step voice tour narrated by the author, installs like a native app (PWA), and runs fully offline. All plain HTML/CSS/JavaScript — no framework, no build, no server; learner data stays in the browser.</span></p>
+    <p><span class="lang-vi">Tín hiệu đầu tiên từ cộng đồng: <b>15 giờ sau khi phát hành đã có 7 lượt xem và 1 lượt tải về; hiện bản ghi Zenodo đạt 9 lượt xem</b>. Con số nhỏ, nhưng với một công cụ giảng dạy mã nguồn mở của một giảng viên ĐBSCL, mỗi lượt tải là một lớp học tiềm năng.</span><span class="lang-en">First signal from the community: <b>15 hours after release the record had 7 views and 1 download; it now stands at 9 views</b>. Small numbers — but for an open teaching tool from a Mekong Delta lecturer, every download is a potential classroom.</span></p>
+    <p class="post-links"><a href="https://doi.org/10.5281/zenodo.21850735" target="_blank" rel="noopener"><span class="lang-vi">Bản ghi Zenodo (DOI, bản mới nhất v1.1) →</span><span class="lang-en">Zenodo record (DOI, latest v1.1) →</span></a> · <a href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><span class="lang-vi">Dùng thử EnQuiz</span><span class="lang-en">Try EnQuiz</span></a> · <a href="https://github.com/thuyhuongctu/EnQuiz" target="_blank" rel="noopener">GitHub</a></p>
+  </article>
+  <article class="post">
+    <div class="post-meta">30 · 07 · 2026 · <span class="lang-vi">Báo chí · Đổi mới sáng tạo</span><span class="lang-en">In the press · Innovation</span></div>
+    <h2 class="post-title"><span class="lang-vi">PGS.TS. Phan Anh Tú trên tạp chí Một Thế Giới: Đổi mới sáng tạo ở Cần Thơ: điểm sáng và khoảng trống phát triển</span><span class="lang-en">Assoc. Prof. Phan Anh Tu in Một Thế Giới: Innovation in Can Tho: bright spots and development gaps</span></h2>
+    <p><span class="lang-vi"><b>PGS.TS. Phan Anh Tú</b>, Phó hiệu trưởng Trường Kinh tế, Đại học Cần Thơ, đồng sáng lập và cố vấn học thuật của BizOn, vừa dành cho tạp chí <i>Một Thế Giới</i> cuộc phỏng vấn về bức tranh Chỉ số Đổi mới sáng tạo cấp địa phương (PII) 2025 của Cần Thơ sau sáp nhập. Năm 2025, Cần Thơ đạt <b>46,21 điểm</b>, xếp hạng <b>10/34</b> tỉnh, thành và tiếp tục dẫn đầu vùng ĐBSCL. Nhưng bên trong là một nghịch lý lớn: Trụ cột thể chế đứng hạng 4/34, trong khi Trụ cột trình độ phát triển doanh nghiệp chỉ hạng 29/34, điểm số chỉ bằng khoảng một phần ba trụ cột dẫn đầu.</span><span class="lang-en"><b>Assoc. Prof. Phan Anh Tu</b>, Vice Rector of the School of Economics, Can Tho University, BizOn's co-founder and academic advisor, gave <i>Một Thế Giới</i> magazine an interview on Can Tho's 2025 Provincial Innovation Index (PII) after the administrative merger. In 2025 Can Tho scored <b>46.21 points</b>, ranked <b>10th of 34</b> provinces and still leads the Mekong Delta. Yet inside sits a striking paradox: the institutions pillar ranks 4th of 34 while the firm-development pillar ranks only 29th, scoring roughly one third of the leading pillar.</span></p>
+    <p><span class="lang-vi">Theo ông, hệ thống viện, trường không thiếu năng lực tạo tri thức mới; cái thiếu nằm ở khu vực doanh nghiệp, nơi hơn 90% là doanh nghiệp nhỏ và vừa, chưa đủ năng lực hấp thụ và chuyển hóa tri thức thành năng suất. Ba vòng xoáy tiêu cực đang khóa chặt nhau: bẫy cơ cấu kinh tế, vòng xoáy di cư – chảy máu chất xám, và đứt gãy cung – cầu kỹ năng. Lời giải ông đề xuất là mô hình <b>"Ba nhà"</b> vận hành qua một mạng lưới đổi mới sáng tạo với Đại học Cần Thơ làm hạt nhân trung chuyển tri thức, cơ chế đồng tài trợ giảm dần (70:30 → 50:50 → 30:70), tổ chức theo cụm ngành, và chuyển từ hỗ trợ hành chính sang công cụ thuế theo Nghị quyết 68-NQ/TW và Nghị quyết 198/2025/QH15.</span><span class="lang-en">In his reading, universities and institutes do not lack the capacity to create new knowledge; the gap sits in the firm sector, over 90% small and medium enterprises, which cannot yet absorb and convert that knowledge into productivity. Three vicious cycles lock together: an economic-structure trap, a migration and brain-drain spiral, and a rupture between skill supply and demand. His proposed answer is a <b>"triple-helix"</b> innovation network with Can Tho University as the knowledge-transfer hub, a tapering co-funding scheme (70:30 → 50:50 → 30:70), organisation by industry cluster, and a shift from administrative support to tax instruments under Resolutions 68-NQ/TW and 198/2025/QH15.</span></p>
+    <blockquote><span class="lang-vi">"Bẻ gãy một mắt xích là điều kiện tiên quyết; can thiệp đơn lẻ là không đủ, cần giải pháp đồng bộ" (PGS.TS. Phan Anh Tú, trả lời phỏng vấn <i>Một Thế Giới</i>, Văn Kim Khanh thực hiện, 30/07/2026).</span><span class="lang-en">"Breaking one link is the precondition; isolated interventions are not enough; the response must be systemic" (Assoc. Prof. Phan Anh Tu, interviewed by <i>Một Thế Giới</i>, by Van Kim Khanh, 30 Jul 2026).</span></blockquote>
+    <p><span class="lang-vi">Ba kiến nghị ưu tiên: xây bộ chỉ số nguồn nhân lực chuyên môn cao cấp vùng; khảo sát lao động theo ranh giới hành chính mới; và thí điểm mạng lưới tại bốn cụm ngành lan tỏa cao: nông nghiệp công nghệ cao, chế biến nông thủy sản, logistics và y tế chuyên sâu. Với BizOn, cuộc phỏng vấn chạm đúng tầng can thiệp mà trò chơi đang phục vụ: bồi đắp <b>vốn con người</b>, tức năng lực ra quyết định kinh doanh của sinh viên ĐBSCL, chính là dư địa mà thầy Tú chỉ ra ở Trụ cột 2.</span><span class="lang-en">Three priority recommendations: build a regional index of high-skill human resources; survey the labour force under the new administrative boundaries; and pilot the network in four high-spillover clusters: high-tech agriculture, agri-aqua processing, logistics and specialised healthcare. For BizOn, the interview lands exactly on the intervention layer the game serves: building <b>human capital</b>, the business decision-making capability of Mekong Delta students, the very headroom Prof. Tu identifies in Pillar 2.</span></p>
+    <p class="post-links"><a href="https://1thegioi.vn/doi-moi-sang-tao-o-can-tho-diem-sang-va-khoang-trong-phat-trien-255702.html" target="_blank" rel="noopener"><span class="lang-vi">Đọc toàn văn trên Một Thế Giới →</span><span class="lang-en">Read the full interview in Một Thế Giới →</span></a> · <a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener"><span class="lang-vi">Chơi BizOn</span><span class="lang-en">Play BizOn</span></a></p>
+    <p style="font-size:.85em;opacity:.75"><span class="lang-vi">Bài trên là phần tóm lược tự biên soạn, trích dẫn có ghi nguồn theo Điều 25 Luật SHTT; toàn văn và ảnh thuộc bản quyền tạp chí Một Thế Giới, tác giả Văn Kim Khanh, đăng ngày 30/07/2026.</span><span class="lang-en">The text above is an original summary with attributed quotation (fair quotation, Art. 25 of Vietnam's IP Law); the full article and its photographs are © Một Thế Giới magazine, by Van Kim Khanh, published 30 Jul 2026.</span></p>
+  </article>
+  <article class="post">
+    <div class="post-meta">27 · 07 · 2026 · <span class="lang-vi">Báo chí · Đổi mới sáng tạo</span><span class="lang-en">In the press · Innovation</span></div>
+    <h2 class="post-title"><span class="lang-vi">Tuổi Trẻ Online: Đổi mới sáng tạo có thể tạo ra dòng di cư mới về Đồng bằng sông Cửu Long</span><span class="lang-en">Tuổi Trẻ Online: Innovation could create a new migration flow back to the Mekong Delta</span></h2>
+    <p><span class="lang-vi">Chiều 27/7, Sở Khoa học và Công nghệ TP Cần Thơ tổ chức hội thảo "Giải pháp thúc đẩy nâng cao chỉ số đổi mới sáng tạo thành phố Cần Thơ". Trình bày tại hội thảo, <b>PGS.TS. Phan Anh Tú</b>, Phó hiệu trưởng Trường Kinh tế, Đại học Cần Thơ, đồng sáng lập và cố vấn học thuật của BizOn, nêu tình trạng xuất cư nhiều hơn nhập cư ở ĐBSCL khi lao động dịch chuyển lên các thành phố lớn và Đông Nam Bộ. Ông dẫn thống kê cho thấy tỉ lệ tốt nghiệp đại học có việc làm đúng chuyên môn đã giảm từ 86% xuống 74%: doanh nghiệp trong vùng tạo được quá ít việc làm so với số lượng nhân lực được đào tạo ra.</span><span class="lang-en">On the afternoon of 27 July, Can Tho's Department of Science and Technology held the workshop "Solutions to raise Can Tho's innovation index". Presenting there, <b>Assoc. Prof. Phan Anh Tu</b>, Vice Rector of the School of Economics, Can Tho University, BizOn's co-founder and academic advisor, described net out-migration from the Mekong Delta as workers move to the big cities and the Southeast. He cited statistics showing the share of university graduates employed in their field has fallen from 86% to 74%: regional firms create far too few jobs relative to the talent being trained.</span></p>
+    <blockquote><span class="lang-vi">Ông "hy vọng với đổi mới sáng tạo có thể tạo ra dòng di cư mới từ các thành phố lớn về nông thôn bằng cách khởi nghiệp đổi mới sáng tạo" (PGS.TS. Phan Anh Tú, phát biểu tại hội thảo, theo Tuổi Trẻ Online, Chí Quốc ghi, 27/07/2026).</span><span class="lang-en">He "hopes innovation can create a new migration flow from the big cities back to the countryside through innovation-driven startups" (Assoc. Prof. Phan Anh Tu, speaking at the workshop, as reported by Tuổi Trẻ Online, by Chi Quoc, 27 Jul 2026).</span></blockquote>
+    <p><span class="lang-vi">Cùng quan điểm, PGS.TS. Vũ Văn Tích, Phó giám đốc Viện Chiến lược khoa học công nghệ (Bộ Khoa học và Công nghệ), chia sẻ rằng Cần Thơ có hơn 100.000 sinh viên ra trường mỗi năm nhưng rất ít người ở lại vùng. Ông đề xuất phát triển doanh nghiệp khoa học công nghệ kết hợp Quỹ đổi mới sáng tạo để ươm các startup nhỏ, kết nối thực chất ba khối trường, viện, doanh nghiệp, và kiến nghị 100 dự án đổi mới sáng tạo cho ĐBSCL với Cần Thơ làm đầu mối. Với BizOn, đây tiếp tục là tầng can thiệp mà trò chơi hướng tới: gieo năng lực khởi nghiệp cho sinh viên ĐBSCL ngay từ giảng đường, để "dòng di cư mới" ấy có người dẫn dắt.</span><span class="lang-en">Sharing the view, Assoc. Prof. Vu Van Tich, Deputy Director of the Institute for Science and Technology Strategy (Ministry of Science and Technology), noted that Can Tho graduates over 100,000 students a year yet very few stay in the region. He proposed developing science-and-technology enterprises with an innovation fund to incubate small startups, genuinely connecting universities, institutes and firms, and called for 100 innovation projects for the Mekong Delta with Can Tho as the hub. For BizOn, this is precisely the layer the game serves: seeding entrepreneurial capability in Mekong Delta students while they are still in the classroom, so that this "new migration flow" has people to lead it.</span></p>
+    <p class="post-links"><a href="https://tuoitre.vn/doi-moi-sang-tao-co-the-tao-ra-dong-di-cu-moi-ve-dong-bang-song-cuu-long-100260727183852615.htm" target="_blank" rel="noopener"><span class="lang-vi">Đọc toàn văn trên Tuổi Trẻ Online →</span><span class="lang-en">Read the full article in Tuổi Trẻ Online →</span></a> · <a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener"><span class="lang-vi">Chơi BizOn</span><span class="lang-en">Play BizOn</span></a></p>
+    <p style="font-size:.85em;opacity:.75"><span class="lang-vi">Bài trên là phần tóm lược tự biên soạn, trích dẫn có ghi nguồn theo Điều 25 Luật SHTT; toàn văn và ảnh thuộc bản quyền Báo điện tử Tuổi Trẻ, tác giả Chí Quốc, đăng ngày 27/07/2026.</span><span class="lang-en">The text above is an original summary with attributed quotation (fair quotation, Art. 25 of Vietnam's IP Law); the full article and its photographs are © Tuổi Trẻ Online, by Chi Quoc, published 27 Jul 2026.</span></p>
+  </article>
+  <article class="post">
+    <div class="post-meta">27 · 07 · 2026 · BizOn · <span class="lang-vi">Trò chơi mô phỏng kinh doanh</span><span class="lang-en">Business-simulation game</span></div>
+    <h2 class="post-title"><span class="lang-vi">BizOn Bật Nghiệp: khi lớp học khởi nghiệp trở thành một bàn cờ đất sét</span><span class="lang-en">BizOn Bật Nghiệp: when the entrepreneurship classroom becomes a clay chessboard</span></h2>
+    <p><span class="lang-vi">Dạy quản trị kinh doanh có một nghịch lý quen thuộc: sinh viên thuộc lòng công thức hòa vốn, nhưng chưa từng cảm nhận cái giá của một quyết định sai. <b>BizOn Bật Nghiệp</b> ra đời để lấp khoảng trống đó: một game mô phỏng kinh doanh EdTech phong cách đất nặn 3D (claymorphism), nơi mỗi đội sinh viên điều hành một công ty đồ chơi đất sét qua <b>6 vòng chơi</b> trên bản đồ Việt Nam: thắng thị phần một vòng là cắm được lá cờ công ty lên một tỉnh, từ Cần Thơ ngược lên cột cờ Lũng Cú.</span><span class="lang-en">Teaching business administration has a familiar paradox: students can recite the break-even formula, yet have never felt the cost of a wrong decision. <b>BizOn Bật Nghiệp</b> was built to close that gap: a 3D-claymorphism EdTech business-simulation game where student teams run a clay-toy company through <b>6 rounds</b> across a map of Vietnam: win a round's market share and you plant your company flag on a province, from Cần Thơ all the way up to the Lũng Cú flag tower.</span></p>
+    <p><span class="lang-vi">Mỗi vòng, đội phải chốt giá bán, marketing, R&amp;D, sản lượng, nhân sự và nguồn vốn, rồi đối mặt 3 đối thủ AI có tính cách riêng và các biến cố thị trường (Cơ Hội Vàng, Price War, Khủng hoảng năng lượng…). Đồng hành có <b>Lumina</b>, cố vấn AI nói tiếng Việt: phân tích "Nếu – Thì" trước khi chốt, cảnh báo rủi ro theo từng vai trò C-Suite, và 7 báo cáo chuẩn giáo trình (P&amp;L, dòng tiền ba hoạt động, CVP, BMC…) sống dậy từ chính quyết định của người chơi. Hành vi đối thủ AI xác định theo từng đội, giảng viên chấm điểm được, không may rủi.</span><span class="lang-en">Each round, the team locks in price, marketing, R&amp;D, production, staffing and funding, then faces 3 AI rivals with distinct personalities and market events (Golden Opportunity, Price War, Energy Crisis…). Alongside them is <b>Lumina</b>, a Vietnamese-speaking AI advisor: "What-If" analysis before committing, role-specific risk alerts for every C-Suite seat, and 7 textbook-grade reports (P&amp;L, three-activity cash flow, CVP, BMC…) that come alive from the players' own decisions. AI-rival behavior is deterministic per team, instructors can grade it, no dice involved.</span></p>
+    <p><span class="lang-vi">Phần mở rộng <b>BizOn GO GlObal</b> đưa câu chuyện ra biển lớn: chọn một trong 7 thị trường (Singapore, Tokyo, Berlin, New York, Dubai, Seoul, Nairobi), khai báo hồ sơ năng lực doanh nghiệp, đàm phán với đối tác bản địa có phong cách riêng, rồi chọn phương thức thâm nhập (Xuất khẩu, Licensing, Liên doanh hay Đầu tư mới FDI) và kinh doanh 4 quý giữa các biến cố thời sự: quy định ESG, AI Act, khủng hoảng logistics, biến động tỷ giá. Kèm theo là <b>IE Lab</b>, phòng thí nghiệm mô phỏng số liệu cho học phần Khởi nghiệp quốc tế, và nhật ký quyết định xuất CSV để giảng viên chấm điểm hoặc làm dữ liệu nghiên cứu giáo dục.</span><span class="lang-en">The <b>BizOn GO GlObal</b> expansion takes the story offshore: pick one of 7 markets (Singapore, Tokyo, Berlin, New York, Dubai, Seoul, Nairobi), declare your firm's capability profile, negotiate with a local partner who has their own style, then choose an entry mode (Export, Licensing, Joint Venture, or Greenfield FDI) and trade for 4 quarters amid current affairs: ESG rules, the AI Act, logistics crises, currency swings. It comes with the <b>IE Lab</b>, a data-simulation lab for International Entrepreneurship courses, and a CSV decision log instructors can grade or reuse as education-research data.</span></p>
+    <blockquote><span class="lang-vi">Chơi để hiểu con số, và để một quyết định sai chỉ tốn điểm ảo, không tốn tiền thật.</span><span class="lang-en">Play to understand the numbers, so a wrong decision costs virtual points, not real money.</span></blockquote>
+    <p><span class="lang-vi">BizOn chạy hoàn toàn trên trình duyệt, cài được lên điện thoại như ứng dụng (PWA) và chơi offline; giao diện song ngữ Việt–Anh, chế độ sáng/tối, cùng hai ca khúc gốc «Bật Nghiệp» và «Je m'appelle Hương and the World» do nhóm tác giả sáng tác riêng. Toàn bộ phần mềm do <b>Đỗ Thùy Hương</b> (sáng lập, thiết kế game) và <b>Phan Anh Tú</b> (đồng sáng lập, cố vấn học thuật) thực hiện tại Đại học Cần Thơ, lưu trữ vĩnh viễn trên Zenodo.</span><span class="lang-en">BizOn runs entirely in the browser, installs on a phone like a native app (PWA) and plays offline; the interface is Vietnamese–English bilingual with light/dark modes, plus two original theme songs, «Bật Nghiệp» and «Je m'appelle Hương and the World», composed for the game. The software is built by <b>Do Thuy Huong</b> (founder &amp; game design) and <b>Phan Anh Tu</b> (co-founder and academic advisor) at Can Tho University, permanently archived on Zenodo.</span></p>
+    <p class="post-links"><a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener"><span class="lang-vi">Chơi BizOn →</span><span class="lang-en">Play BizOn →</span></a> · <a href="https://thuyhuongctu.github.io/BizOn/global.html" target="_blank" rel="noopener">BizOn GO GlObal</a> · <a href="https://doi.org/10.5281/zenodo.21613899" target="_blank" rel="noopener">Zenodo DOI</a></p>
+  </article>
+  <article class="post">
+    <div class="post-meta">19 · 07 · 2026 · M-AIDA · <span class="lang-vi">Phân tích tổng hợp</span><span class="lang-en">Meta-analysis</span></div>
+    <h2 class="post-title"><span class="lang-vi">Vì sao tôi xây M-AIDA: để máy đọc, còn người quyết định</span><span class="lang-en">Why I built M-AIDA: let the machine read, but let the human decide</span></h2>
+    <p><span class="lang-vi">Phân tích tổng hợp (meta-analysis) gộp kết quả của hàng trăm nghiên cứu để tìm ra bức tranh chung. Nhưng có một khâu ít ai nói tới: trước khi gộp, mọi con số rải rác trong các bài báo, hệ số tương quan, thống kê t, hệ số hồi quy chuẩn hóa, phải được quy về cùng một thước đo. Suốt nhiều năm, việc này vẫn làm thủ công trên bảng tính: dễ sai, và gần như không để lại dấu vết kiểm chứng.</span><span class="lang-en">Meta-analysis pools the results of hundreds of studies to reveal a bigger picture. But one step rarely gets mentioned: before pooling, every scattered statistic, correlations, t-statistics, standardized regression coefficients, must be converted to a common metric. For years this has been done by hand in spreadsheets: error-prone, and leaving almost no audit trail.</span></p>
+    <p><span class="lang-vi">Trong lúc chuẩn bị dữ liệu cho luận án của mình, tôi tự hỏi: nếu để một mô hình ngôn ngữ lớn đọc toàn văn bài báo và đề xuất con số, còn con người kiểm tra lại từng trường thì sao? Đó là ý tưởng của M-AIDA, Meta-Analysis Intelligent Data Assistant.</span><span class="lang-en">While preparing the data for my dissertation, I asked: what if a large language model read the full text and proposed the numbers, while a human checked every field? That is the idea behind M-AIDA, the Meta-Analysis Intelligent Data Assistant.</span></p>
+    <p><span class="lang-vi">M-AIDA đi theo một vòng đời chặt chẽ: máy đọc PDF và đề xuất bản ghi (thống kê chính, cách quy về r, cỡ mẫu) kèm điểm tin cậy; tôi kiểm chứng từng trường so với bản gốc, sửa chỗ sai, rồi phê duyệt. Khi đã duyệt, bản ghi bị <b>khóa bất biến</b>, và chỉ bản ghi đã khóa mới được xuất ra để phân tích. Mỗi phép quy đổi đều mang theo nguồn (t→r theo Cohen 1988; β→r theo Peterson &amp; Brown 2005), và bất kỳ bản ghi nào có độ tin cậy dưới 0,70 đều bị gắn cờ, buộc phải có người rà.</span><span class="lang-en">M-AIDA follows a strict lifecycle: the machine reads a PDF and proposes a record (the focal statistic, its conversion to r, the sample size) with a confidence score; I verify every field against the source, fix what is wrong, and approve it. Once approved, the record is <b>locked, immutable</b>, and only locked records can be exported for analysis. Every conversion carries its source (t→r after Cohen 1988; β→r after Peterson &amp; Brown 2005), and any record scoring below 0.70 is flagged for mandatory human review.</span></p>
+    <blockquote><span class="lang-vi">Máy đề xuất, người quyết định.</span><span class="lang-en">The machine proposes, the human decides.</span></blockquote>
+    <p><span class="lang-vi">M-AIDA không phải một demo. Nó được xây cho, và dùng xuyên suốt, phần phân tích tổng hợp của luận án tôi, quan hệ giữa quốc tế hóa và hiệu quả doanh nghiệp, gộp <b>236 nghiên cứu</b> công bố từ 1978 đến 2026 thành <b>286 bản ghi mức độ ảnh hưởng đã khóa</b>, cho hệ số tương quan gộp r = 0,074 [0,060; 0,088]. Trang minh họa công khai hiển thị bộ dữ liệu này dưới dạng biểu đồ rừng (forest plot) và bản đồ thế giới tương tác.</span><span class="lang-en">M-AIDA is not a demo. It was built for, and used throughout, the meta-analysis in my dissertation, the relationship between internationalization and firm performance, pooling <b>236 studies</b> published from 1978 to 2026 into <b>286 locked effect-size records</b>, yielding a pooled correlation of r = 0.074 [0.060; 0.088]. The public demo renders this dataset as an interactive forest plot and world atlas.</span></p>
+    <p><span class="lang-vi">Điều tôi tâm đắc nhất không phải chuyện AI, mà là <b>dấu vết kiểm chứng</b>. Với mỗi giá trị được phát hành, hệ thống lưu lại: giá trị đã kiểm chứng, ghi chú của người rà, cách quy đổi, trạng thái phê duyệt và thời điểm khóa. Bất kỳ ai cũng có thể tìm ngược một hệ số gộp về đúng trang của bài báo gốc. M-AIDA mã nguồn mở, có DOI Zenodo, và cố tình khiêm tốn: nó không sàng lọc tài liệu, không chạy thống kê, và không thay thế con người, nó giữ cho một con người <i>có tên</i> chịu trách nhiệm cho từng con số.</span><span class="lang-en">What I care about most is not the AI, but the <b>audit trail</b>. For every released value the system records the verified value, the reviewer’s notes, the conversion route, the approval status and the lock timestamp. Anyone can trace a pooled coefficient back to the exact page of the primary study. M-AIDA is open-source with a Zenodo DOI, and deliberately modest: it does not screen the literature, runs no statistics, and does not replace people, it keeps a <i>named</i> human responsible for every value.</span></p>
+    <p><span class="lang-vi">Phiên bản 7.1.1 đã được đóng băng và đăng ký. Chặng tiếp theo: bản 7.2 thêm truy vết đến từng trường, một benchmark kiểm định độ chính xác, và một bài báo phần mềm (khuôn SoftwareX). Với tôi, M-AIDA là lời nhắc rằng công nghệ tốt trong nghiên cứu không phải để thay con người suy nghĩ, mà để con người suy nghĩ kỹ hơn, và minh bạch hơn.</span><span class="lang-en">Version 7.1.1 is frozen and registered. Next: a 7.2 release with field-level provenance, a benchmark to quantify accuracy, and a software paper (SoftwareX format). For me, M-AIDA is a reminder that good technology in research is not there to replace human thinking, but to let us think more carefully, and more transparently.</span></p>
+    <p class="post-links"><a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><span class="lang-vi">Xem M-AIDA →</span><span class="lang-en">Explore M-AIDA →</span></a> · <a href="https://doi.org/10.5281/zenodo.21282516" target="_blank" rel="noopener">Zenodo DOI</a></p>
+  </article>
 
   
   <div class="dmfooter">
@@ -811,16 +527,9 @@ Papa… I found my way back. Pas vers hier. Vers moi.</p>
 
 <script>document.getElementById('tg').addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',c==='dark'?'light':'dark')});</script>
 <script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="vi";try{s=localStorage.getItem("huong_lang")||((/^en/i.test(navigator.language)?"en":"vi"));}catch(e){}set(s);})();</script>
-<script>
-// Chỉ phát một bản tại một thời điểm
-document.querySelectorAll('audio').forEach(function(a){
-  a.addEventListener('play', function(){
-    document.querySelectorAll('audio').forEach(function(o){ if(o!==a) o.pause(); });
-  });
-});
-if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigator.serviceWorker.register('sw.js'); }); }
-</script>
+<script>if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigator.serviceWorker.register('sw.js'); }); }</script>
 <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="zenodo-stats.js"></script>
 
 <script>
 /* Nút làm mới trang + tự phát hiện bản cập nhật PWA */

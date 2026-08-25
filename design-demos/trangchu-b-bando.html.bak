@@ -1,0 +1,84 @@
+<!doctype html><html lang="vi"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo B · Bản đồ trang viên</title>
+<style>
+:root{--paper:#f9f1e6;--surface:#fffdf8;--ink:#463029;--muted:#8d7166;--line:#eddcc9;
+--accent:#c4596b;--sans:system-ui,sans-serif;--serif:Georgia,serif;
+--shadow:0 2px 3px rgba(150,95,75,.06),0 14px 34px rgba(150,95,75,.13)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6}
+/* ---- màn bản đồ ---- */
+#bando{position:relative;height:100vh;min-height:560px;overflow:hidden;
+  background:url('../assets/img/garden_hub.jpg') center/cover no-repeat}
+#bando::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 62%,rgba(70,48,41,.35))}
+.tieude{position:absolute;top:26px;left:50%;transform:translateX(-50%);z-index:3;
+  background:rgba(255,253,248,.94);border-radius:999px;padding:10px 26px;
+  font:700 1.05rem var(--serif);color:var(--accent);box-shadow:var(--shadow);white-space:nowrap}
+/* biển các khu trên bản đồ */
+.tram{position:absolute;z-index:3;transform:translate(-50%,-50%);cursor:pointer;border:none;
+  background:rgba(255,253,248,.95);border-radius:14px;padding:9px 15px;
+  font:700 .8rem var(--sans);color:var(--ink);box-shadow:0 6px 18px rgba(70,40,40,.3);
+  transition:transform .15s}
+.tram:hover{transform:translate(-50%,-50%) scale(1.08);color:var(--accent)}
+.tram small{display:block;font-weight:600;color:var(--muted);font-size:.66rem}
+/* xe đạp chạy trên bản đồ */
+#xe{position:absolute;z-index:4;width:92px;left:50%;top:78%;transform:translate(-50%,-90%);
+  transition:left 1.6s cubic-bezier(.45,.05,.35,1), top 1.6s cubic-bezier(.45,.05,.35,1);
+  filter:drop-shadow(0 10px 12px rgba(60,30,30,.45))}
+#xe.chay{animation:nhun .4s ease-in-out infinite}
+@keyframes nhun{0%,100%{margin-top:0}50%{margin-top:-6px}}
+#xe.lat{transform:translate(-50%,-90%) scaleX(-1)}
+.huongdan{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:3;
+  color:#fff8ef;font-size:.85rem;text-shadow:0 2px 8px rgba(60,30,30,.6)}
+/* ---- nội dung bên dưới ---- */
+.wrap{max-width:860px;margin:0 auto;padding:40px 24px}
+section{margin:70px 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px 30px;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.5),var(--shadow)}
+.card h2{font-family:var(--serif);color:var(--accent);margin:0 0 8px;font-size:1.4rem}
+</style></head><body>
+
+<div id="bando">
+  <div class="tieude">🌸 Trang viên «Je m'appelle Hương» — chọn nơi muốn ghé</div>
+  <button class="tram" style="left:17%;top:56%" data-khu="gioithieu">🌸 Giới thiệu<small>Academic Research</small></button>
+  <button class="tram" style="left:38%;top:38%" data-khu="hesinh">🚀 Hệ sinh thái<small>Open Projects</small></button>
+  <button class="tram" style="left:63%;top:40%" data-khu="congbo">📚 Công bố<small>Publications</small></button>
+  <button class="tram" style="left:82%;top:58%" data-khu="amnhac">🎵 Âm nhạc<small>Creative Library</small></button>
+  <button class="tram" style="left:50%;top:82%" data-khu="blog">📰 Blog · Tin tức<small>News corner</small></button>
+  <img id="xe" src="../assets/img/huong_xedap.webp" alt="Hương đạp xe trên bản đồ">
+  <div class="huongdan">Bấm một biển — cô Hương sẽ đạp xe đến đó rồi mở khu cho bạn ↓</div>
+</div>
+
+<div class="wrap">
+  <section id="gioithieu"><div class="card"><h2>🌸 Giới thiệu</h2><p>Giảng viên · NCS tiến sĩ QTKD — quốc tế hóa &amp; hiệu quả doanh nghiệp ở châu Á.</p></div></section>
+  <section id="hesinh"><div class="card"><h2>🚀 Hệ sinh thái số</h2><p>M-AIDA · BizOn · EnQuiz · Games — bốn phần mềm mở có DOI Zenodo.</p></div></section>
+  <section id="congbo"><div class="card"><h2>📚 Công bố khoa học</h2><p>9 công bố 2020–2026 trên các tạp chí và chương sách quốc tế.</p></div></section>
+  <section id="amnhac"><div class="card"><h2>🎵 Âm nhạc</h2><p>Kho nhạc cá nhân và album «Je m'appelle Hương» — 5 chương, 7 bản thu.</p></div></section>
+  <section id="blog"><div class="card"><h2>📰 Blog · Tin tức</h2><p>Bản tin Zenodo: EnQuiz 101 lượt xem, M-AIDA 109, BizOn 70.</p></div></section>
+</div>
+
+<script>
+const xe = document.getElementById('xe');
+let dangChay = false;
+document.querySelectorAll('.tram').forEach(t=>{
+  t.addEventListener('click', ()=>{
+    if(dangChay) return;
+    dangChay = true;
+    const r = t.getBoundingClientRect(), b = document.getElementById('bando').getBoundingClientRect();
+    const dx = (r.left + r.width/2 - b.left) / b.width * 100;
+    const dy = (r.top + r.height/2 - b.top) / b.height * 100;
+    // lật xe theo hướng chạy
+    const hienX = parseFloat(xe.style.left || '50');
+    xe.classList.toggle('lat', dx < hienX);
+    xe.classList.add('chay');
+    xe.style.left = dx + '%';
+    xe.style.top = Math.min(86, dy + 9) + '%';
+    setTimeout(()=>{
+      xe.classList.remove('chay');
+      document.getElementById(t.dataset.khu).scrollIntoView({behavior:'smooth'});
+      dangChay = false;
+    }, 1700);
+  });
+});
+</script>
+</body></html>

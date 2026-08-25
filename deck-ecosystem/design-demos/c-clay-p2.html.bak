@@ -1,0 +1,30 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>C · Clay — Hệ sinh thái</title><style>
+*{margin:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;background:linear-gradient(180deg,#dde6f6 0,#f9f1e6 420px);font-family:system-ui,sans-serif;color:#463029;display:flex}
+.side{width:430px;padding:90px 0 0 84px}
+.side h2{font-family:Georgia,serif;font-size:66px;line-height:1.12}
+.side h2 em{font-style:italic;color:#c4596b}
+.side p{margin-top:22px;font-size:23px;line-height:1.55;color:#8d7166;padding-right:40px}
+.stamp{margin-top:34px;display:inline-block;background:#fffdf8;border-radius:999px;padding:12px 24px;font-size:19px;font-weight:700;color:#c4596b;box-shadow:inset 0 2px 0 rgba(255,255,255,.7),0 6px 16px rgba(150,95,75,.16)}
+.grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:34px;padding:84px 84px 84px 40px}
+.card{background:#fffdf8;border-radius:34px;overflow:hidden;box-shadow:inset 0 3px 0 rgba(255,255,255,.8),0 18px 46px rgba(150,95,75,.2);display:flex;flex-direction:column}
+.card img{width:100%;height:200px;object-fit:cover}
+.body{padding:22px 30px 26px;flex:1;display:flex;flex-direction:column}
+.body h3{font-family:Georgia,serif;font-size:33px}
+.body p{margin-top:6px;font-size:19px;line-height:1.45;color:#8d7166;flex:1}
+.row{margin-top:12px;display:flex;gap:10px}
+.pill{font-size:18px;font-weight:800;padding:7px 16px;border-radius:999px;background:#fae3e6;color:#a8394e;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6)}
+.pill.alt{background:#cdeacf;color:#2e6b45}
+</style></head><body>
+<div class="side">
+  <h2>Bốn công trình<br>trong <em>khu vườn</em></h2>
+  <p>Tất cả mã nguồn mở, miễn phí trên GitHub Pages, có DOI Zenodo và lưu trữ vĩnh viễn tại Software Heritage.</p>
+  <span class="stamp">📊 Số liệu Zenodo · 12/08/2026</span>
+</div>
+<div class="grid">
+  <div class="card"><img src="../../assets/img/research_map.jpg" alt=""><div class="body"><h3>M-AIDA</h3><p>Trợ lý dữ liệu phân tích tổng hợp của luận án — kiểm chứng con người 100%.</p><div class="row"><span class="pill">109 lượt xem</span><span class="pill alt">5 lượt tải</span></div></div></div>
+  <div class="card"><img src="../../assets/img/innovation_banner.jpg" alt=""><div class="body"><h3>BizOn · Bật Nghiệp</h3><p>Game mô phỏng kinh doanh 3D — sinh viên khởi nghiệp trên bản đồ Việt Nam.</p><div class="row"><span class="pill">70 lượt xem</span><span class="pill alt">10 lượt tải</span></div></div></div>
+  <div class="card"><img src="../../assets/img/creative_library.jpg" alt=""><div class="body"><h3>EnQuiz</h3><p>Trắc nghiệm song ngữ offline-first — 101 lượt xem sau chưa đầy 3 ngày.</p><div class="row"><span class="pill">101 lượt xem</span><span class="pill alt">31 lượt tải</span></div></div></div>
+  <div class="card"><img src="../../assets/img/garden_hub.jpg" alt=""><div class="body"><h3>Games &amp; trang cá nhân</h3><p>Digital 2026 Games + trang PWA «Je m'appelle Hương» kết nối cả hệ sinh thái.</p><div class="row"><span class="pill">464 commit · 8/2026</span></div></div></div>
+</div>
+</body></html>

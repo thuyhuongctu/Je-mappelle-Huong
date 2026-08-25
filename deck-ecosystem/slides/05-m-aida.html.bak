@@ -1,0 +1,21 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>05-m-aida</title><style>*{margin:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;background:linear-gradient(180deg,#dde6f6 0,#f9f1e6 460px);font-family:system-ui,sans-serif;color:#463029}
+.serif{font-family:Georgia,"Times New Roman",serif}
+em{font-style:italic;color:#c4596b}
+.clay{background:#fffdf8;border-radius:34px;box-shadow:inset 0 3px 0 rgba(255,255,255,.8),0 18px 46px rgba(150,95,75,.2)}
+.pill{display:inline-block;font-size:19px;font-weight:800;padding:8px 18px;border-radius:999px;background:#fae3e6;color:#a8394e;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6)}
+.pill.g{background:#cdeacf;color:#2e6b45}.pill.b{background:#dde6f6;color:#3d5a96}.pill.y{background:#f6e7c8;color:#8a621c}
+.kick{font-size:20px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#c4596b}
+h2.title{font-family:Georgia,serif;font-size:72px;margin-top:10px}
+.muted{color:#8d7166}
+</style></head><body>
+<div style="padding:76px 110px 0;display:flex;justify-content:space-between;align-items:flex-end">
+  <div><div class="kick">Phần mềm nghiên cứu · DOI 10.5281/zenodo.21282516</div><h2 class="title">M-AIDA — <em>máy đề xuất, người quyết định</em></h2></div>
+  <span class="pill" style="font-size:22px;padding:12px 26px">109 lượt xem · 5 lượt tải</span>
+</div>
+<div style="display:flex;gap:44px;padding:44px 110px 0">
+  <div class="clay" style="flex:1;padding:36px 42px"><h3 class="serif" style="font-size:36px">Trích xuất bằng LLM</h3><p class="muted" style="margin-top:10px;font-size:23px;line-height:1.55">Đọc PDF học thuật, đề xuất mức độ ảnh hưởng qua bộ chuyển đổi mô hình ngôn ngữ trung lập nhà cung cấp.</p></div>
+  <div class="clay" style="flex:1;padding:36px 42px"><h3 class="serif" style="font-size:36px">Kiểm chứng con người 100%</h3><p class="muted" style="margin-top:10px;font-size:23px;line-height:1.55">Bảng điều khiển để nghiên cứu viên chính duyệt từng bản ghi — không số liệu nào vào phân tích mà chưa qua mắt người.</p></div>
+  <div class="clay" style="flex:1;padding:36px 42px"><h3 class="serif" style="font-size:36px">Khóa bất biến</h3><p class="muted" style="margin-top:10px;font-size:23px;line-height:1.55">Dữ liệu chốt được đóng băng phiên bản 7.1.1, xuất bản Zenodo, phục vụ xuyên suốt luận án — tái lập được.</p></div>
+</div>
+<p class="muted" style="padding:40px 110px 0;font-size:23px">🌐 thuyhuongctu.github.io/M-AIDA · Phần mềm đầu tiên của hệ sinh thái vượt 100 lượt xem trên Zenodo</p></body></html>
