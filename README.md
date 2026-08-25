@@ -73,6 +73,8 @@ build, chạy trên GitHub Pages.
 | 🧩 **M-AIDA** | Meta-Analysis Intelligent Data Assistant: human-verified extraction of effect sizes for meta-analysis | [Site](https://thuyhuongctu.github.io/M-AIDA/) | — |
 | 🎲 **BizOn AI** | Multi-agent "living market" business simulation game for higher education | [Site](https://thuyhuongctu.github.io/BizOn/) | — |
 | 📝 **EnQuiz** | Bilingual revision app for an entrepreneurship course (300 questions, installable, offline) | [Site](https://thuyhuongctu.github.io/EnQuiz/) | [10.5281/zenodo.21850735](https://doi.org/10.5281/zenodo.21850735) |
+| 📚 **ComDraft** | Teaching package for the course Communication and Document Drafting Skills: five lecture decks, three computer-lab workbooks, a 200-question bank, eight subtitled videos and an offline revision app | [Site](https://thuyhuongctu.github.io/ComDraft/) | [10.5281/zenodo.22003676](https://doi.org/10.5281/zenodo.22003676) |
+| 🎵 **We Create Tomorrow** | Bilingual karaoke app for the anthem of the School of Economics, Can Tho University; co-authored with Assoc. Prof. Dr. Phan Anh Tu | [Site](https://thuyhuongctu.github.io/we-create-tomorrow/) | [10.5281/zenodo.22080061](https://doi.org/10.5281/zenodo.22080061) |
 | 🎮 **ThuyHuong Digital 2026 — Games** | Vietnamese history game portal: Vân Đồn (1149), Bắc Hải Đảo (1780, 2D and 3D), Chợ Nổi (19th century) | [Site](https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/) | [10.5281/zenodo.21850564](https://doi.org/10.5281/zenodo.21850564) |
 
 ## Site contents
