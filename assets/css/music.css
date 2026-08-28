@@ -67,13 +67,13 @@
 .hm-volume input { flex: 1; accent-color: var(--accent); }
 .hm-volume span:last-child { font-family: var(--sans); font-size: .66rem; color: var(--muted); min-width: 28px; text-align: right; }
 @media (max-width: 560px) {
-  #hm-widget{ right: auto; left: .6rem; bottom: .8rem;  z-index:1010 !important; }
+  #hm-widget{ right: auto; left: 50%; transform: translateX(-50%); bottom: 0.8rem; z-index:9000 !important; }
   #hm-nut { width: 46px; height: 46px; font-size: 1.15rem; }
-  #hm-panel{ bottom: 54px; right: auto; left: 0; width: min(300px, calc(100vw - 1.2rem));  z-index:1010 !important; }
+  #hm-panel{ bottom: 54px; right: auto; left: 50%; transform: translateX(-50%); width: min(300px, calc(100vw - 1.2rem)); z-index:9000 !important; }
   .hm-bar span { width: 3.5px; }
 }
 #hm-panel{ max-height: 62vh; overflow-y: auto;  z-index:1010 !important; }
 @media (prefers-reduced-motion: reduce) { #hm-nut .hm-ico { animation: none; } #hm-badge { animation: none; } }
 
 /* trang vien: dock phải, nút nhạc nằm trên nut-cham */
-body.cham #hm-widget{ bottom:calc(1rem + 84px); left:.6rem; right:auto; z-index:1010 !important; }  /* trên nut-cham 76px + 8px gap, không chồng */
+body.cham #hm-widget{ bottom: 0.8rem; left: 50%; transform: translateX(-50%); right: auto; z-index: 9000 !important; }

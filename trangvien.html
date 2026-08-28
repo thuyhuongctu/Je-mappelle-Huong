@@ -85,8 +85,8 @@ button{font-family:inherit;cursor:pointer;border:0}
 #tai-tien i{display:block;height:100%;width:8%;border-radius:99px;background:linear-gradient(90deg,var(--sen),var(--vang),var(--dong-sau));transition:width .4s}
 
 /* ================= HUD ================= */
-.hud{position:fixed;z-index:40;pointer-events:none z-index:1000; pointer-events:none; }
-.hud > *{pointer-events:auto pointer-events:auto !important; }
+.hud{position:fixed;z-index:9500;z-index:1000; pointer-events:none; }
+.hud > *{pointer-events:auto !important; }
 
 #hud-tren{top:0;left:0;right:0;display:flex;gap:.5rem;align-items:flex-start;padding:.7rem;flex-wrap:wrap}
 #hieu{
@@ -104,13 +104,13 @@ button{font-family:inherit;cursor:pointer;border:0}
 
 /* bản đồ nhỏ */
 #ban-do{
-  position:fixed;right:.7rem;top:3.6rem;z-index:40;width:126px;height:126px;border-radius:50%;
+  position:fixed;right:.7rem;top:3.6rem;z-index:9500;width:126px;height:126px;border-radius:50%;
   background:rgba(255,251,244,.85);backdrop-filter:blur(8px);box-shadow:var(--bong);
   display:grid;place-items:center;cursor:pointer;transition:opacity .3s, transform .25s;
- z-index:1007; pointer-events:none; }
+ z-index:9400; pointer-events:none; }
 #ban-do:hover{transform:scale(1.05)}
 /* bảng chọn điểm đến */
-#bd-thang{position:fixed;right:.7rem;top:3.6rem;z-index:41;width:126px z-index:1008; pointer-events:auto !important; }
+#bd-thang{position:fixed;right:.7rem;top:3.6rem;z-index:41;width:126px z-index:9401; pointer-events:auto !important; }
 #bd-dau{display:flex;align-items:center;gap:.3rem;padding:.42rem .6rem;border-radius:999px;margin-top:.45rem;
   background:rgba(255,251,244,.92);backdrop-filter:blur(10px);box-shadow:var(--bong);border:none;cursor:pointer;
   font:700 .78rem "Baloo 2",system-ui;color:#4E6B5C;width:100%;}
@@ -161,27 +161,27 @@ button{font-family:inherit;cursor:pointer;border:0}
 
 /* điều khiển cảm ứng */
 #can{
-  position:fixed;left:1rem;bottom:1rem;z-index:43;width:124px;height:124px;border-radius:50%;
+  position:fixed;left:1rem;bottom:1rem;z-index:9100;width:124px;height:124px;border-radius:50%;
   background:rgba(255,251,244,.55);box-shadow:var(--bong);display:none;touch-action:none;
- touch-action:none; overflow:hidden; pointer-events:auto !important; z-index:1005; }
+ touch-action:none; overflow:hidden; pointer-events:auto !important; z-index:9100; }
 #can i{
   position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;
   background:linear-gradient(150deg,#FFFBF4,#E7D3B9);box-shadow:0 6px 14px rgba(120,80,60,.3);
 }
-#nut-cham{ z-index: 10005 !important;  z-index: 10000 !important; 
+#nut-cham{ z-index:9200;  z-index: 10000 !important; 
   position:fixed;right:1rem;bottom:1.3rem;z-index:43;width:76px;height:76px;border-radius:50%;
   font-size:1.7rem;display:none;place-items:center;
   background:linear-gradient(150deg,#F8C0D2,var(--sen-sau));color:#fff;
   box-shadow:0 7px 0 #B85C7E,0 14px 24px rgba(180,80,110,.35);
- z-index:1004; pointer-events:auto !important; }
+ z-index:9200; pointer-events:auto !important; }
 #nut-xe{ z-index: 10005 !important; 
   position:fixed;right:1rem;bottom:calc(1rem + 84px + 54px);z-index:43;width:60px;height:60px;border-radius:50%;
   font-size:1.4rem;display:none;place-items:center;
   background:rgba(255,251,244,.92);box-shadow:var(--bong);
- z-index:1004; pointer-events:auto !important; }
-body.cham #can,body.cham #nut-cham,body.cham #nut-xe{ z-index: 10005 !important; display:grid z-index:1004; pointer-events:auto !important; }
+ z-index:9200; pointer-events:auto !important; }
+body.cham #can,body.cham #nut-cham,body.cham #nut-xe{ z-index: 10005 !important; display:grid; z-index:9200 !important; pointer-events:auto !important; }
 body.cham #bieu-cam{bottom:auto;top:3.6rem;left:.7rem;transform:none z-index:1002; pointer-events:none; }
-body.cham #ban-do{width:96px;height:96px;top:8.5rem z-index:1007; pointer-events:none; }
+body.cham #ban-do{width:96px;height:96px;top:8.5rem z-index:9400; pointer-events:none; }
 body.cham #ban-do canvas{width:84px;height:84px pointer-events:none; }
 
 /* ================= BẢNG NỘI DUNG ================= */
@@ -252,7 +252,7 @@ body.cham #ban-do canvas{width:84px;height:84px pointer-events:none; }
 #hud-sen{position:fixed;left:14px;top:64px;z-index:8;background:rgba(255,253,248,.92);border-radius:999px;
   padding:8px 16px;font:700 15px/1 system-ui,sans-serif;color:#a8394e;
   box-shadow:0 4px 14px rgba(150,95,75,.25);pointer-events:none z-index:1001; }
-#toast-sen{position:fixed;inset:0;display:none;place-items:center;z-index:40;background:rgba(40,25,35,.45) z-index:1030; pointer-events:none; }
+#toast-sen{position:fixed;inset:0;display:none;place-items:center;z-index:9500;background:rgba(40,25,35,.45) z-index:1030; pointer-events:none; }
 #toast-sen.hien{display:grid}
 #toast-sen .hop{background:#fffdf8;border-radius:26px;padding:34px 40px;text-align:center;max-width:420px;
   box-shadow:0 24px 60px rgba(40,20,30,.4)}
@@ -279,10 +279,10 @@ body.cham #ban-do canvas{width:84px;height:84px pointer-events:none; }
 .hm-nut:hover{background:#F2A8C4}
 #nut-msg{position:fixed;right:16px;bottom:172px;width:52px;height:52px;border-radius:50%;border:none;
   background:#7FC8B0;color:#fff;font-size:1.35rem;box-shadow:0 6px 20px rgba(70,130,110,.35);cursor:pointer;z-index:95;
-  transition:bottom .3s ease z-index:1004; pointer-events:auto !important; }
+  transition:bottom .3s ease z-index:9200; pointer-events:auto !important; }
 #nut-msg:hover{transform:scale(1.06)}
-#nut-msg.len{bottom:470px z-index:1004; pointer-events:auto !important; }
-body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important z-index:1004; pointer-events:auto !important; } /* dock phải: trên nut-xe, cách đều, tránh .len */
+#nut-msg.len{bottom:470px z-index:9200; pointer-events:auto !important; }
+body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important z-index:9200; pointer-events:auto !important; } /* dock phải: trên nut-xe, cách đều, tránh .len */
 /* --- HUD đọc sách --- */
 #hud-quote{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:#FFF8EE;
   border:3px solid #E8B84B;border-radius:22px;padding:.9rem 1.4rem;max-width:86vw;width:380px;
@@ -293,7 +293,7 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important z-index:100
   #hud-msg{width:320px;bottom:90px}
   #hud-msg-khu{max-height:190px}
   .hm-nut{font-size:.7rem;padding:.4rem .6rem}
-  #nut-msg.len{bottom:430px z-index:1004; pointer-events:auto !important; }
+  #nut-msg.len{bottom:430px z-index:9200; pointer-events:auto !important; }
   #hud-quote{width:330px;bottom:84px;font-size:.85rem}
 }
 .an-mobile { display: flex; }
@@ -1843,7 +1843,7 @@ Object.keys(DANG_ANH).forEach(k=>{
 const CAO_NV = 2.72;
 const CAO_XE = 2.60;   // dáng đạp xe gồm cả xe nên cao hơn
 const vlHuong = new THREE.MeshBasicMaterial({
-  map: DANG_TEX['teo2'], transparent:true, alphaTest:.02,
+  map: DANG_TEX['teo2'], transparent:true, alphaTest:.05,
   side: THREE.DoubleSide, toneMapped:false, depthWrite:true
 });
 const anhHuong = new THREE.Mesh(new THREE.PlaneGeometry(1,1), vlHuong);
@@ -3534,7 +3534,7 @@ function vong(){
   const caoNV  = dapXe ? CAO_XE : CAO_NV;
   const chanNV = dapXe ? .02 + Math.abs(Math.sin(t*7))*.03 : nhanVat.position.y;
   const rongNV = caoNV * (DANG_TL[dangHienTai] || .4);
-  anhHuong.position.set(nhanVat.position.x, chanNV + caoNV*.5, nhanVat.position.z);
+  anhHuong.position.set(nhanVat.position.x, chanNV + caoNV*.5 + 0.05, nhanVat.position.z);
   anhHuong.quaternion.copy(camera.quaternion);
   anhHuong.rotateZ(Math.sin(t*(dapXe?3.2:1.4)) * (dapXe?.02:.012));  // nhún nhẹ
   const lech = Math.sin(nhanVat.rotation.y - gocMay);
