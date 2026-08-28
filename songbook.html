@@ -499,11 +499,15 @@ With the sun embroidered on my chest, and a pink heart.</p>
     <section class="reveal" id="t05" style="border-left: 6px solid var(--lam); background: rgba(92,127,191,0.03); margin-top: 40px; border-radius: 0 20px 20px 0;">
     <div class="shead"><h2>Track 05 — A Father’s Song to His Little Girl</h2><span class="ln"></span></div>
     <div class="song" style="padding:20px 24px">
-      <div class="song-meta"><span class="lang-vi">Tiếng Anh, lời tự sự · 2 bản thu</span><span class="lang-en">English, Narrative · 2 recordings</span></div>
+      <div class="song-meta"><span class="lang-vi">Tiếng Việt & Anh, lời tự sự · 3 bản thu</span><span class="lang-en">Vietnamese & English, Narrative · 3 recordings</span></div>
       <p class="song-desc" style="max-width:100%; font-style: italic;"><span class="lang-vi">Một bài hát đặc biệt từ góc nhìn của người cha dành cho con gái — lời nhắc nhở về việc được phép nghỉ ngơi và luôn là cô bé của cha.</span><span class="lang-en">A special song from a father's perspective to his daughter — a reminder of being allowed to rest and always being his little girl.</span></p>
       <p class="prod"><b>Style:</b> Cinematic Folk / Spoken Word · Warm acoustic guitar, soft piano, intimate atmosphere.</p>
       <p class="keyline" style="color:var(--lam)">«You don't have to be the strongest girl in the world. / If you are tired, rest. I will not be angry.»</p>
       <div class="tracks">
+        <div class="track">
+          <div class="track-name">«Ba gọi con về» (Vietnamese) <span class="len">· 5:52</span></div>
+          <audio controls preload="none" src="assets/audio/songbook/track05_vi.mp3"></audio>
+        </div>
         <div class="track">
           <div class="track-name">«A Father’s Song» — Version 2 <span class="len">· 5:12</span></div>
           <audio controls preload="none" src="assets/audio/track05-father-song-v2.mp3"></audio>
@@ -816,6 +820,11 @@ Papa… I found my way back. Pas vers hier. Vers moi.</p>
 document.querySelectorAll('audio').forEach(function(a){
   a.addEventListener('play', function(){
     document.querySelectorAll('audio').forEach(function(o){ if(o!==a) o.pause(); });
+  });
+  a.addEventListener('ended', function(){
+    var audios = Array.from(document.querySelectorAll('audio'));
+    var next = audios[audios.indexOf(a) + 1];
+    if(next) next.play();
   });
 });
 if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigator.serviceWorker.register('sw.js'); }); }

@@ -19,6 +19,7 @@
     track04:       { t: 'Hai Mươi Sáu Năm Sau',          f: A + 'track04-hai-muoi-sau-nam-sau.mp3' },
     track04_v2:    { t: 'Hai Mươi Sáu Năm Sau (v2)',     f: A + 'track04-26-nam-sau-v2.mp3', main: true },
     track05:       { t: 'Je m’appelle Hương',            f: A + 'track05.mp3' },
+    track05_vi:    { t: 'Ba gọi con về (Vietnamese)',    f: A + 'songbook/track05_vi.mp3' },
 
     // M-AIDA
     maida_official:        { t: 'M-AIDA · Official',           f: A + 'maida/maida_song_official.mp3' },
@@ -65,14 +66,14 @@
       vi: { tieude: 'Hôm nay thật vui!', noi: 'Nghe bài thư giãn thêm — để niềm vui chảy dài thêm chút nữa.' },
       en: { tieude: 'Happy today!', noi: 'Relax and let the joy flow a little longer.' },
       fr: { tieude: 'Heureux aujourd\u2019hui !', noi: 'D\u00e9tendez-vous et laissez la joie s\u2019\u00e9couler un peu plus longtemps.' },
-      bai: ['track04', 'track05', 'track03']
+      bai: ['track04', 'track05', 'track05_vi', 'track03']
     },
     binhthuong: {
-      icon: '\u{1F60C}',
-      vi: { tieude: 'Một ngày bình yên', noi: 'Bài mặc định trang chủ chọn cho bạn \u2014 nghe thoải mái nhé.' },
-      en: { tieude: 'A peaceful day', noi: 'The homepage\u2019s default pick for you \u2014 enjoy.' },
-      fr: { tieude: 'Une journ\u00e9e paisible', noi: 'Le choix par d\u00e9faut de la page d\u2019accueil pour vous \u2014 bonne \u00e9coute.' },
-      bai: ['track04_v2', 'official', 'track05', 'track01']
+      icon: '😌',
+      vi: { tieude: 'Một ngày bình yên', noi: 'Bài mặc định trang chủ chọn cho bạn — nghe thoải mái nhé.' },
+      en: { tieude: 'A peaceful day', noi: 'The homepage’s default pick for you — enjoy.' },
+      fr: { tieude: 'Une journée paisible', noi: 'Le choix par défaut de la page d’accueil pour vous — bonne écoute.' },
+      bai: ['track04_v2', 'official', 'track05_vi', 'track05', 'track01']
     }
   };
 
@@ -126,6 +127,7 @@
   } catch (e) { }
   audio.volume = vol;
   var dangPhat = '';   // key bài đang phát
+  var dangMood = '';   // mood hiện tại để tự động chuyển bài
   var fader = null;    // interval fade
   var nhacNenActive = false;
   var nhapVi_widget = null;
@@ -166,8 +168,35 @@
       fadeTo(Math.min(1, targetVol), 500);
     }).catch(function () { /* autoplay blocked — user click sau */ });
     dangPhat = key;
+    // nếu bài hát thuộc mood đang chọn, giữ mood đó để tự động chuyển bài
+    if (dangMood && MOODS[dangMood].bai.indexOf(key) === -1) {
+      dangMood = ''; // bài mới không thuộc mood cũ
+    }
     capNhatUI();
   }
+
+  // Tự động chuyển bài khi kết thúc
+  audio.addEventListener('ended', function () {
+    if (audio.loop) return;
+    
+    var ds = [];
+    if (dangMood && MOODS[dangMood]) {
+      ds = MOODS[dangMood].bai;
+    } else {
+      // nếu không trong mood, lấy danh sách bài official/songbook làm mặc định
+      ds = ['track04_v2', 'official', 'track05', 'track01', 'track02', 'track03'];
+    }
+    
+    var idx = ds.indexOf(dangPhat);
+    var tiep = ds[(idx + 1) % ds.length];
+    
+    // Đợi 1 giây rồi phát bài tiếp theo
+    setTimeout(function () {
+      if (audio.paused && dangPhat) {
+        playSong(tiep, { loop: false });
+      }
+    }, 1500);
+  });
 
   function stopAll() {
     if (dangPhat) {
@@ -252,7 +281,10 @@
           var b = document.createElement('button');
           b.className = 'hm-bai' + (i === 0 ? ' hm-dexuat' : '');
           b.textContent = SONGS[bk].t;
-          b.addEventListener('click', function () { playSong(bk, { loop: false }); });
+          b.addEventListener('click', function () { 
+            dangMood = mk; // ghi nhớ mood khi chọn bài từ mood
+            playSong(bk, { loop: false }); 
+          });
           ds.appendChild(b);
         });
         moodsEl.appendChild(wrap);
@@ -275,7 +307,9 @@
     nhapVi_widget = {
       capNhat: capNhatUI,
       playNen: playNhacNen,
-      dungNen: dungNhacNen
+      dungNen: dungNhacNen,
+      getVolume: function() { return vol; },
+      isPaused: function() { return audio.paused; }
     };
   }
 
