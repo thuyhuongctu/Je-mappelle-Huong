@@ -15,7 +15,7 @@
   #nut-msg{right:var(--pad);bottom:calc(var(--safe-bottom) + 71px);width:46px;height:46px;z-index:10040!important}
   #hm-widget{left:50%;right:auto;bottom:calc(var(--safe-bottom) + 62px);transform:translateX(-50%);z-index:10040!important}
   #hm-widget #hm-nut{width:42px;height:42px}
-  #th-story-huong,#th-story-quest{display:none!important}
+  #th-story-huong{display:none!important}#th-story-quest{display:flex!important;left:12px;top:108px;right:auto;bottom:auto;max-width:46vw;font-size:9px;padding:8px 10px}
   .th-side-actions{left:196px;right:var(--pad);bottom:calc(var(--safe-bottom) + 72px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;z-index:10050!important}
   .th-side-actions .th-side-btn,.th-side-actions .th-mini-btn{min-width:0;width:100%;justify-content:center;padding:8px 4px;font-size:9px;line-height:1.05;white-space:nowrap}
   .th-side-actions .th-side-btn strong,.th-side-actions .th-mini-btn strong{min-width:16px;height:16px;font-size:9px}
