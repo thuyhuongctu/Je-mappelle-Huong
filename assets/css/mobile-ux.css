@@ -1,0 +1,32 @@
+/* Mobile UX pass for the original Trang viên 3D: one control per safe zone, no floating HUD collisions. */
+@media (max-width:700px){
+  :root{--safe-bottom:env(safe-area-inset-bottom,0px);--pad:12px;--control:52px}
+  body{overflow:hidden}
+  #hud-sen{left:var(--pad);top:64px;font-size:11px;padding:6px 9px}
+  #bd-thang{right:var(--pad);top:58px;width:112px}
+  #ban-do{right:var(--pad);top:137px;width:82px;height:82px}
+  #ban-do canvas{width:72px;height:72px}
+  #bieu-cam{left:50%;bottom:calc(var(--safe-bottom) + 12px);transform:translateX(-50%);gap:4px;padding:5px 7px;z-index:10020!important}
+  #bieu-cam button{width:34px;height:34px;font-size:16px}
+  #can{left:var(--pad);bottom:calc(var(--safe-bottom) + 12px);width:112px!important;height:112px!important;border-radius:50%;z-index:10030!important}
+  #can i{width:48px!important;height:48px!important}
+  #nut-xe{left:136px;right:auto;bottom:calc(var(--safe-bottom) + 17px);width:46px;height:46px;z-index:10040!important}
+  #nut-cham{right:var(--pad);bottom:calc(var(--safe-bottom) + 17px);width:46px;height:46px;z-index:10040!important}
+  #nut-msg{right:var(--pad);bottom:calc(var(--safe-bottom) + 71px);width:46px;height:46px;z-index:10040!important}
+  #hm-widget{left:50%;right:auto;bottom:calc(var(--safe-bottom) + 62px);transform:translateX(-50%);z-index:10040!important}
+  #hm-widget #hm-nut{width:42px;height:42px}
+  #th-story-huong,#th-story-quest{display:none!important}
+  .th-side-actions{left:196px;right:var(--pad);bottom:calc(var(--safe-bottom) + 72px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;z-index:10050!important}
+  .th-side-actions .th-side-btn,.th-side-actions .th-mini-btn{min-width:0;width:100%;justify-content:center;padding:8px 4px;font-size:9px;line-height:1.05;white-space:nowrap}
+  .th-side-actions .th-side-btn strong,.th-side-actions .th-mini-btn strong{min-width:16px;height:16px;font-size:9px}
+  #goi-y{bottom:calc(var(--safe-bottom) + 128px);max-width:74vw;z-index:10045!important}
+  #th-pickup{bottom:calc(var(--safe-bottom) + 182px);max-width:88vw;white-space:nowrap;z-index:10060!important}
+  #th-play-hint{top:108px;max-width:88vw;text-align:center;z-index:10055!important}
+  #hud-quote{bottom:calc(var(--safe-bottom) + 226px);max-width:88vw}
+  #hud-msg{bottom:calc(var(--safe-bottom) + 218px);max-width:88vw}
+  #toast-sen{padding-bottom:calc(var(--safe-bottom) + 12px)}
+  .th-panel-backdrop,.th-story-backdrop{padding:12px;align-items:end}
+  .th-panel,.th-story-card{max-height:78vh;overflow:auto;border-radius:22px 22px 14px 14px}
+}
+@media (max-width:380px){#can{left:8px;width:98px!important;height:98px!important}.th-side-actions{left:168px;right:8px}.th-side-actions .th-side-btn,.th-side-actions .th-mini-btn{font-size:8px;padding-inline:2px}#nut-xe{left:114px;width:42px;height:42px}#nut-cham,#nut-msg{right:8px;width:42px;height:42px}}
+@media (orientation:landscape) and (max-height:520px){#bieu-cam{display:none}#can{transform:scale(.82);transform-origin:bottom left}#th-pickup{bottom:76px}.th-side-actions{bottom:68px}.th-side-actions .th-side-btn,.th-side-actions .th-mini-btn{padding:6px 4px}}
