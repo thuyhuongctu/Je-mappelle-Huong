@@ -1,0 +1,16 @@
+/* Original Trang viên 3D extension: versioned local progress registry and mobile-friendly resume/reset controls. */
+(function(){
+  'use strict';
+  const KEY='th_estate_save_v1';
+  const keys=['th_play_found','th_side_done','th_items','th_mini_best','th_mini_reward','th_story_progress','th_story_trust','th_sound_enabled','huong_music_vol','huong_lang'];
+  function read(){const out={version:1,savedAt:null,playFound:[],sideDone:[],items:[],best:0,reward:null,storyProgress:0,storyTrust:12,sound:null,volume:null,language:null};try{const old=JSON.parse(localStorage.getItem(KEY)||'null');if(old&&old.version===1)Object.assign(out,old);const arr=(k)=>{try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return[]}};out.playFound=arr('th_play_found');out.sideDone=arr('th_side_done');out.items=arr('th_items');out.best=Number(localStorage.getItem('th_mini_best')||out.best||0);out.reward=localStorage.getItem('th_mini_reward')||out.reward;out.storyProgress=Number(localStorage.getItem('th_story_progress')||out.storyProgress||0);out.storyTrust=Number(localStorage.getItem('th_story_trust')||out.storyTrust||12);out.sound=localStorage.getItem('th_sound_enabled');out.volume=localStorage.getItem('huong_music_vol');out.language=localStorage.getItem('huong_lang');out.savedAt=out.savedAt||new Date().toISOString();}catch(e){}return out}
+  function hasProgress(s){return s.playFound.length||s.sideDone.length||s.items.length||s.best||s.reward||s.storyProgress>0}
+  function save(){const s=read();s.savedAt=new Date().toISOString();try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}update(s);return s}
+  function clear(){keys.forEach(k=>localStorage.removeItem(k));localStorage.removeItem(KEY);location.reload()}
+  function format(date){if(!date)return 'No saved journey yet';const d=new Date(date);return isNaN(d)?'Saved journey ready':'Saved '+d.toLocaleString(undefined,{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}
+  function mount(){const start=document.getElementById('nut-vao');if(!start)return;let box=document.getElementById('th-save-controls');if(!box){box=document.createElement('div');box.id='th-save-controls';start.insertAdjacentElement('afterend',box)}const s=read();box.innerHTML='<div class="th-save-state">'+(hasProgress(s)?'✦ '+format(s.savedAt):'Your journey will save on this device')+'</div>'+(hasProgress(s)?'<div class="th-save-actions"><button id="th-save-continue" type="button">Continue journey</button><button id="th-save-reset" type="button">New journey</button></div>':'');if(hasProgress(s)){document.getElementById('th-save-continue').onclick=()=>{save();start.click()};document.getElementById('th-save-reset').onclick=()=>{if(confirm('Start a new journey and clear this device save?'))clear()}}}
+  function update(s){const node=document.querySelector('.th-save-state');if(node)node.textContent=hasProgress(s)?'✦ '+format(s.savedAt):'Your journey will save on this device'}
+  window.TH_SAVE={read,save,clear,hasProgress};
+  window.addEventListener('th:progress-changed',save);window.addEventListener('storage',()=>update(read()));
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{mount();save()});else{mount();save()}
+})();

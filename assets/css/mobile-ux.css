@@ -30,3 +30,12 @@
 }
 @media (max-width:380px){#can{left:8px;width:98px!important;height:98px!important}.th-side-actions{left:168px;right:8px}.th-side-actions .th-side-btn,.th-side-actions .th-mini-btn{font-size:8px;padding-inline:2px}#nut-xe{left:114px;width:42px;height:42px}#nut-cham,#nut-msg{right:8px;width:42px;height:42px}}
 @media (orientation:landscape) and (max-height:520px){#bieu-cam{display:none}#can{transform:scale(.82);transform-origin:bottom left}#th-pickup{bottom:76px}.th-side-actions{bottom:68px}.th-side-actions .th-side-btn,.th-side-actions .th-mini-btn{padding:6px 4px}}
+
+/* Save-state controls: keep resume actions inside the start card and below the primary CTA. */
+#th-save-controls{margin:10px auto 0;max-width:300px;text-align:center;color:#8b6a81;font-size:10px}
+.th-save-state{min-height:16px;line-height:1.35}
+.th-save-actions{display:flex;gap:7px;margin-top:7px;justify-content:center}
+.th-save-actions button{min-height:36px;padding:7px 10px;border:1px solid rgba(190,92,128,.28);border-radius:999px;background:rgba(255,255,255,.72);color:#9c4e70;font:700 10px 'Be Vietnam Pro',sans-serif;touch-action:manipulation}
+.th-save-actions button:first-child{background:#cb6b91;color:#fff;border-color:#cb6b91}
+.th-save-actions button:active{transform:translateY(1px)}
+@media(max-width:700px){#th-save-controls{max-width:86vw}.th-save-actions button{min-height:40px;padding-inline:13px;font-size:10px}}
