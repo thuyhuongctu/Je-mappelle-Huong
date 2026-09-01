@@ -16,8 +16,8 @@
   #hm-widget{left:50%;right:auto;bottom:calc(var(--safe-bottom) + 62px);transform:translateX(-50%);z-index:10040!important}
   #hm-widget #hm-nut{width:42px;height:42px}
   #th-story-huong{display:none!important}#th-story-quest{display:flex!important;left:12px;top:108px;right:auto;bottom:auto;max-width:46vw;font-size:9px;padding:8px 10px}
-  .th-side-actions{left:196px;right:var(--pad);bottom:calc(var(--safe-bottom) + 72px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;z-index:10050!important}
-  .th-side-actions .th-side-btn,.th-side-actions .th-mini-btn{min-width:0;width:100%;justify-content:center;padding:8px 4px;font-size:9px;line-height:1.05;white-space:nowrap}
+  .th-side-actions{left:126px;right:var(--pad);bottom:calc(var(--safe-bottom) + 72px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;z-index:10050!important}
+  .th-side-actions .th-side-btn,.th-side-actions .th-mini-btn{min-width:0;width:100%;justify-content:center;padding:8px 3px;font-size:9px;line-height:1.05;white-space:nowrap}
   .th-side-actions .th-side-btn strong,.th-side-actions .th-mini-btn strong{min-width:16px;height:16px;font-size:9px}
   #goi-y{bottom:calc(var(--safe-bottom) + 128px);max-width:74vw;z-index:10045!important}
   #th-pickup{bottom:calc(var(--safe-bottom) + 182px);max-width:88vw;white-space:nowrap;z-index:10060!important}
@@ -28,8 +28,8 @@
   .th-panel-backdrop,.th-story-backdrop{padding:12px;align-items:end}
   .th-panel,.th-story-card{max-height:78vh;overflow:auto;border-radius:22px 22px 14px 14px}
 }
-@media (max-width:380px){#can{left:8px;width:98px!important;height:98px!important}.th-side-actions{left:168px;right:8px}.th-side-actions .th-side-btn,.th-side-actions .th-mini-btn{font-size:8px;padding-inline:2px}#nut-xe{left:114px;width:42px;height:42px}#nut-cham,#nut-msg{right:8px;width:42px;height:42px}}
-@media (orientation:landscape) and (max-height:520px){#bieu-cam{display:none}#can{transform:scale(.82);transform-origin:bottom left}#th-pickup{bottom:76px}.th-side-actions{bottom:68px}.th-side-actions .th-side-btn,.th-side-actions .th-mini-btn{padding:6px 4px}}
+@media (max-width:380px){#can{left:8px;width:98px!important;height:98px!important}.th-side-actions{left:126px;right:8px;gap:4px}.th-side-actions .th-side-btn,.th-side-actions .th-mini-btn{font-size:8px;padding-inline:2px}.th-npc-dock{left:8px;right:8px}.th-npc-chip{padding-inline:7px}#nut-xe{left:114px;width:42px;height:42px}#nut-cham,#nut-msg{right:8px;width:42px;height:42px}}
+@media (orientation:landscape) and (max-height:520px){#bieu-cam{display:none}#can{transform:scale(.82);transform-origin:bottom left}#th-pickup{bottom:76px}.th-side-actions{left:120px;right:12px;bottom:68px}.th-side-actions .th-side-btn,.th-side-actions .th-mini-btn{padding:6px 4px}.th-npc-dock{bottom:124px}}
 
 /* Save-state controls: keep resume actions inside the start card and below the primary CTA. */
 #th-save-controls{margin:10px auto 0;max-width:300px;text-align:center;color:#8b6a81;font-size:10px}
