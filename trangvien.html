@@ -2014,8 +2014,8 @@ if(matchMedia('(pointer:coarse)').matches) document.body.classList.add('cham');
 const oGoiY = document.getElementById('goi-y');
 const man = document.getElementById('man');
 
-const moBangGoc = moBang;
-function moBang(khu){
+// Giữ hàm mở bảng gốc riêng để wrapper tour không tự gọi đệ quy.
+function moBangGoc(khu){
   sfxMoKhu();
   hatGiiong(khu.id);
   dongHudMsg();  // đóng khung chat khi mở bảng khu
