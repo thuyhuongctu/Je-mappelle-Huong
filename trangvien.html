@@ -2178,18 +2178,49 @@ bdDau = document.getElementById('bd-dau');
 bdChon = document.getElementById('bd-chon');
 bdTrangThai = document.getElementById('bd-trang-thai');
 banDangMo = false; tourDangChay = false; tourChiSo = 0;
-
+const TOUR_PREF_KEY = 'th_tour_preferences_v1';
+let tourTocDo = 'normal';
+let tourFavorites = [];
+try{
+  const pref = JSON.parse(localStorage.getItem(TOUR_PREF_KEY) || '{}');
+  if(['slow','normal','fast'].includes(pref.speed)) tourTocDo = pref.speed;
+  if(Array.isArray(pref.favorites)) tourFavorites = pref.favorites.filter(Boolean);
+}catch(e){}
+const TOUR_SPEEDS = {slow:3.6, normal:5.6, fast:8.2};
+function luuTourPrefs(){
+  try{localStorage.setItem(TOUR_PREF_KEY, JSON.stringify({speed:tourTocDo, favorites:tourFavorites}));}catch(e){}
+}
+function danhSachTour(){
+  const fav = diemKhu.filter(k=>tourFavorites.includes(k.khu.id));
+  return fav.length ? fav : diemKhu;
+}
 function veBdChon(){
-  bdChon.querySelectorAll('.khu-chon, #bd-tour, #bd-huy').forEach(n=>n.remove());
+  bdChon.querySelectorAll('.khu-chon, #bd-tour, #bd-huy, #bd-tour-settings').forEach(n=>n.remove());
   diemKhu.forEach(k=>{
     const b = document.createElement('button');
     b.type = 'button'; b.className = 'khu-chon' + (mucTieuDi && mucTieuDi.khu.id===k.khu.id ? ' dang-di' : '');
     b.dataset.khu = k.khu.id; b.setAttribute('role','listitem');
     const ten = (k.khu.ten && k.khu.ten[NG]) ? k.khu.ten[NG] : k.khu.id;
-    b.innerHTML = '<span class="dot" style="background:'+k.khu.mau+'"></span><span class="icon">'+(k.khu.icon||'')+'</span><span class="ten">'+ten+'</span>';
-    b.addEventListener('click', ()=>{ diToiKhu(k.khu); dongBdChon(); });
+    const yeuThich = tourFavorites.includes(k.khu.id);
+    b.innerHTML = '<span class="dot" style="background:'+k.khu.mau+'"></span><span class="icon">'+(k.khu.icon||'')+'</span><span class="ten">'+ten+'</span><span class="favorite" aria-label="'+(yeuThich?'Bỏ yêu thích':'Thêm yêu thích')+'">'+(yeuThich?'★':'☆')+'</span>';
+    b.addEventListener('click', e=>{
+      if(e.target.closest('.favorite')){
+        e.stopPropagation();
+        tourFavorites = yeuThich ? tourFavorites.filter(id=>id!==k.khu.id) : [...tourFavorites, k.khu.id];
+        luuTourPrefs(); veBdChon(); return;
+      }
+      diToiKhu(k.khu); dongBdChon();
+    });
     bdChon.insertBefore(b, bdTrangThai);
   });
+  const settings = document.createElement('div');
+  settings.id = 'bd-tour-settings'; settings.className = 'bd-tour-settings';
+  settings.innerHTML = '<div class="bd-tour-label">'+(NG==='vi'?'Tùy chỉnh tour':'Tour settings')+'</div><div class="bd-tour-speed" role="group" aria-label="Tour speed"></div><div class="bd-tour-fav-note">'+(tourFavorites.length ? (NG==='vi'?tourFavorites.length+' điểm yêu thích':' '+tourFavorites.length+' favorite stops') : (NG==='vi'?'Chưa chọn điểm yêu thích · tour đi toàn bộ':'No favorites · tour visits all'))+'</div>';
+  const speedWrap = settings.querySelector('.bd-tour-speed');
+  [['slow','🐢 '+(NG==='vi'?'Chậm':'Slow')],['normal','◉ '+(NG==='vi'?'Vừa':'Normal')],['fast','⚡ '+(NG==='vi'?'Nhanh':'Fast')]].forEach(([key,label])=>{
+    const speedBtn=document.createElement('button'); speedBtn.type='button'; speedBtn.className=key===tourTocDo?'active':''; speedBtn.textContent=label; speedBtn.addEventListener('click',e=>{e.stopPropagation();tourTocDo=key;luuTourPrefs();veBdChon();}); speedWrap.appendChild(speedBtn);
+  });
+  bdChon.appendChild(settings);
   const tourBtn = document.createElement('button');
   tourBtn.type = 'button'; tourBtn.id = 'bd-tour'; tourBtn.className = tourDangChay ? 'dang-tour' : '';
   tourBtn.setAttribute('data-vi','🗺 Tour quanh vườn'); tourBtn.setAttribute('data-en','🗺 Tour the estate');
@@ -2230,8 +2261,9 @@ function huyTour(){
 function diChuyenTour(){
   if(!tourDangChay) return;
   let diem = null;
-  for(let i = tourChiSo; i < diemKhu.length; i++){
-    const k = diemKhu[i];
+  const stops = danhSachTour();
+  for(let i = tourChiSo; i < stops.length; i++){
+    const k = stops[i];
     const d = Math.hypot(k.x - nhanVat.position.x, k.z - nhanVat.position.z);
     if(d >= 3.2){ tourChiSo = i; diem = k; break; }
   }
@@ -2261,7 +2293,7 @@ function moBang(khu){
   moBangGoc(khu);
   if(tourDangChay){
     tourChiSo++;
-    setTimeout(diChuyenTour, 5500);
+    setTimeout(diChuyenTour, Math.max(2600, 5500 * (5.6 / TOUR_SPEEDS[tourTocDo])));
   }
 }
 // đi bộ tay huỷ lệnh tự đi (như cũ) — hook thêm cập nhật trạng thái
@@ -3415,7 +3447,7 @@ function vong(){
       moBang(k);
     }else{
       // xoay camera theo hướng đích để đi thắng
-      const toc = dapXe ? tocDoAuto*2 : tocDoAuto;
+      const toc = dapXe ? TOUR_SPEEDS[tourTocDo]*2 : TOUR_SPEEDS[tourTocDo];
       const goc = Math.atan2(ax, az);
       gocMay = goc; huong = goc; nhanVat.rotation.y = goc;
       const dx = Math.sin(goc) * toc * dt;

@@ -39,3 +39,14 @@
 .th-save-actions button:first-child{background:#cb6b91;color:#fff;border-color:#cb6b91}
 .th-save-actions button:active{transform:translateY(1px)}
 @media(max-width:700px){#th-save-controls{max-width:86vw}.th-save-actions button{min-height:40px;padding-inline:13px;font-size:10px}}
+
+/* Tour customization: keep preferences readable without competing with mobile controls. */
+.bd-tour-settings{margin:.45rem 0;padding:.55rem .65rem;border:1px solid rgba(74,55,48,.16);border-radius:.9rem;background:rgba(255,251,240,.88);color:#4A3730}
+.bd-tour-label{font:700 .68rem/1.2 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}
+.bd-tour-speed{display:grid;grid-template-columns:repeat(3,1fr);gap:.3rem}
+.bd-tour-speed button{min-height:38px;border:1px solid rgba(74,55,48,.18);border-radius:.65rem;background:#fff8e9;color:#4A3730;font:700 .67rem/1 system-ui,sans-serif;padding:.35rem .25rem;touch-action:manipulation}
+.bd-tour-speed button.active{background:#5C7F62;color:#fff;border-color:#5C7F62;box-shadow:0 3px 0 rgba(74,55,48,.12)}
+.bd-tour-fav-note{margin-top:.38rem;font:600 .66rem/1.3 system-ui,sans-serif;opacity:.72}
+.khu-chon{position:relative}
+.khu-chon .favorite{margin-left:auto;min-width:28px;min-height:28px;display:grid;place-items:center;color:#D98C4A;font-size:1rem;line-height:1;touch-action:manipulation}
+@media(max-width:380px){.bd-tour-settings{padding:.48rem}.bd-tour-speed button{font-size:.59rem;min-height:36px}.bd-tour-fav-note{font-size:.6rem}}
