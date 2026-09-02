@@ -1,0 +1,21 @@
+/* Onboarding for the original Trang viên 3D: one clear first action, progressive disclosure after Start. */
+#th-onboarding-guide{display:none;position:fixed;left:50%;bottom:24px;z-index:10070;width:min(360px,calc(100vw - 32px));transform:translateX(-50%) translateY(12px);padding:14px 48px 14px 16px;border:1px solid rgba(92,127,95,.2);border-radius:16px;background:rgba(255,252,242,.96);box-shadow:0 12px 30px rgba(67,53,42,.16);color:#4A3730;opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s ease}
+#th-onboarding-guide.show{display:block;opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.th-guide-kicker{margin-bottom:4px;color:#5C7F62;font:800 10px/1.1 system-ui,sans-serif;letter-spacing:.12em}
+#th-guide-title{display:block;font:800 20px/1.05 'Baloo 2',system-ui,sans-serif;color:#7a405f}
+#th-guide-copy{margin:6px 0 10px;font:600 12px/1.45 'Be Vietnam Pro',system-ui,sans-serif;color:#6f5a51}
+#th-guide-next{min-height:38px;padding:8px 16px;border:0;border-radius:999px;background:#5C7F62;color:#fff;font:800 11px system-ui,sans-serif;cursor:pointer;touch-action:manipulation}
+#th-guide-help{position:absolute;right:12px;top:12px;width:30px;height:30px;border:1px solid rgba(92,127,95,.3);border-radius:50%;background:#fff8e9;color:#5C7F62;font:800 14px system-ui,sans-serif;cursor:pointer}
+body:not(.tour-started) #bd-thang,body:not(.tour-started) #ban-do,body:not(.tour-started) #bieu-cam,body:not(.tour-started) #can,body:not(.tour-started) #nut-xe,body:not(.tour-started) #nut-cham,body:not(.tour-started) #goi-y,body:not(.tour-started) #hud-sen,body:not(.tour-started) #th-play-hint,body:not(.tour-started) #th-story-quest,body:not(.tour-started) #th-story-npcs,body:not(.tour-started) #th-side-actions,body:not(.tour-started) #th-pickup,body:not(.tour-started) #th-achievement-open{display:none!important}
+@media(max-width:700px){#th-onboarding-guide{bottom:calc(env(safe-area-inset-bottom,0px) + 18px);width:calc(100vw - 24px);padding:13px 44px 13px 14px}#th-guide-title{font-size:18px}#th-guide-copy{font-size:11px}}
+
+/* Before Start, keep only orientation, language and help; reveal gameplay controls after entry. */
+body:not(.tour-started) #nut-xe-may,body:not(.tour-started) #nut-thoi-khac,body:not(.tour-started) #nut-am-thanh,body:not(.tour-started) #nut-ngu,body:not(.tour-started) #nut-msg,body:not(.tour-started) #hm-widget,body:not(.tour-started) #dongho-nut{display:none!important}
+.th-start-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:14px 0 16px;text-align:left}
+.th-start-step{padding:9px 8px;border-radius:12px;background:rgba(255,255,255,.55);color:#6f5a51;font:600 10px/1.3 'Be Vietnam Pro',system-ui,sans-serif}
+.th-start-step b{display:block;margin-bottom:3px;color:#5C7F62;font:800 11px/1 system-ui,sans-serif}
+@media(max-width:700px){.th-start-steps{gap:5px;margin:12px 0 14px}.th-start-step{padding:8px 6px;font-size:9px}.th-start-step b{font-size:10px}}
+
+/* During the first three guide steps, reduce the scene to its essential controls. */
+body.onboarding-active #th-story-npcs,body.onboarding-active #th-side-actions,body.onboarding-active #th-story-quest,body.onboarding-active #th-story-huong,body.onboarding-active #nut-msg,body.onboarding-active #hm-widget,body.onboarding-active #dongho-nut,body.onboarding-active #bieu-cam{display:none!important}
+body.onboarding-active #th-play-hint{display:block!important;top:92px;max-width:78vw}
