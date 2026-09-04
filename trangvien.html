@@ -3631,55 +3631,58 @@ function vong(){
   renderer.render(scene, camera);
 }
 
-/* ---------- 13. ÂM THANH MÔI TRƯỜNG (CHIM HÓT, SUỐI CHẢY) ---------- */
-var amChim, amSuoi;
-var amThanhSanSang = false;
-
-function khoiTaoAmThanhMoiTruong() {
-  if (amThanhSanSang) return;
-  
-  amChim = new Audio('assets/audio/ambient/birds.mp3');
-  amChim.loop = true;
-  amChim.volume = 0;
-  
-  amSuoi = new Audio('assets/audio/ambient/stream.mp3');
-  amSuoi.loop = true;
-  amSuoi.volume = 0;
-  
-  amThanhSanSang = true;
+/* ---------- 13. ÂM THANH MÔI TRƯỜNG THEO KHU VỰC ---------- */
+/*
+ * Dùng chung birds.mp3 và stream.mp3 đã được khởi tạo ở amKhoiTao().
+ * Mỗi vùng có một "điểm nghe": vườn trung tâm, hồ nước và sảnh chính.
+ * Âm lượng chỉ thay đổi theo khoảng cách, không tạo thêm Audio instance nên
+ * không bị chồng lấp khi người dùng đi bộ, đạp xe hoặc mở bảng nội dung.
+ */
+const AM_VUNG = {
+  vuon: {x:0, z:0, banKinh:46},
+  ho: {x:-16, z:16, banKinh:18},
+  sanh: {x:0, z:-6, banKinh:13}
+};
+function amDoGan(x, z, vung){
+  const d = Math.hypot(x-vung.x, z-vung.z);
+  return Math.max(0, 1 - Math.min(1, d / vung.banKinh));
 }
-
-function capNhatAmThanhMoiTruong(t, dt) {
-  if (!amThanhSanSang) return;
-  
-  // Chỉ phát khi không tắt tiếng (dựa vào volume của HUONG_MUSIC nếu có)
-  var vGoc = (window.HUONG_MUSIC && window.HUONG_MUSIC.getVolume) ? window.HUONG_MUSIC.getVolume() : 0.5;
-  var dangTat = (window.HUONG_MUSIC && window.HUONG_MUSIC.isPaused && window.HUONG_MUSIC.isPaused());
-  
-  if (dangTat) {
-    if (amChim.volume > 0) amChim.volume = Math.max(0, amChim.volume - dt);
-    if (amSuoi.volume > 0) amSuoi.volume = Math.max(0, amSuoi.volume - dt);
-    if (amChim.volume === 0 && !amChim.paused) amChim.pause();
-    if (amSuoi.volume === 0 && !amSuoi.paused) amSuoi.pause();
+function amDatMuc(k, mucTieu, dt){
+  const au = ambientAudio[k];
+  if(!au) return;
+  const heSo = Math.min(1, Math.max(.08, dt * 2.6));
+  au.volume += (mucTieu - au.volume) * heSo;
+  if(!amBat && au.volume < .004){ au.volume = 0; if(!au.paused) au.pause(); }
+}
+function capNhatAmThanhMoiTruong(t, dt){
+  if(!window.__amSanSang || !ambientAudio) return;
+  const x = nhanVat.position.x, z = nhanVat.position.z;
+  if(!amBat){
+    amDatMuc('birds', 0, dt);
+    amDatMuc('stream', 0, dt);
     return;
   }
+  const vuon = amDoGan(x, z, AM_VUNG.vuon);
+  const ho = amDoGan(x, z, AM_VUNG.ho);
+  const sanh = amDoGan(x, z, AM_VUNG.sanh);
 
-  if (amChim.paused) amChim.play().catch(()=>{});
-  if (amSuoi.paused) amSuoi.play().catch(()=>{});
+  // Khu vườn: chim rõ hơn; càng gần hồ thì nền nước càng hiện diện.
+  const chimMuc = Math.min(.28, .045 + vuon*.20 + sanh*.035);
+  const nuocMuc = Math.min(.20, .018 + ho*.15);
+  amDatMuc('birds', chimMuc, dt);
+  amDatMuc('stream', nuocMuc, dt);
+  if(amNut.nuoc){
+    const nuocSynth = .012 + ho*.065;
+    amNut.nuoc.gain.setTargetAtTime(nuocSynth, amCtx.currentTime, .18);
+  }
 
-  // Âm thanh suối to hơn khi ở gần hồ (tâm 0,0)
-  var dHo = Math.hypot(nhanVat.position.x, nhanVat.position.z);
-  var vSuoiTarget = Math.max(0.05, (1 - Math.min(1, dHo / 30)) * 0.4) * vGoc;
-  amSuoi.volume += (vSuoiTarget - amSuoi.volume) * Math.min(1, 2 * dt);
-
-  // Âm thanh chim hót to hơn khi ở gần các khu vườn (có cây)
-  var vChimTarget = 0.2 * vGoc;
-  amChim.volume += (vChimTarget - amChim.volume) * Math.min(1, 2 * dt);
+  // Sảnh chính: hạ bớt thiên nhiên và giữ một nền gió rất nhẹ, như hiên mở.
+  if(amNut.gio){
+    const gioCoSo = thoiKhac === 'dem' ? .028 : .05;
+    const gioMuc = gioCoSo * (1 - sanh*.38);
+    amNut.gio.gain.setTargetAtTime(gioMuc, amCtx.currentTime, .18);
+  }
 }
-
-// Kích hoạt âm thanh khi người dùng tương tác lần đầu
-document.addEventListener('click', khoiTaoAmThanhMoiTruong, { once: true });
-document.addEventListener('touchstart', khoiTaoAmThanhMoiTruong, { once: true });
 
 /* ---------- 12. TỰ ĐIỀU CHỈNH CHẤT LƯỢNG THEO FPS (MOBILE) ---------- */
 var chatLuong = {

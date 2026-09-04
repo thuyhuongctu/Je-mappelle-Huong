@@ -19,7 +19,7 @@
     track04:       { t: 'Hai Mươi Sáu Năm Sau',          f: A + 'track04-hai-muoi-sau-nam-sau.mp3' },
     track04_v2:    { t: 'Hai Mươi Sáu Năm Sau (v2)',     f: A + 'track04-26-nam-sau-v2.mp3', main: true },
     track05:       { t: 'Je m’appelle Hương',            f: A + 'track05.mp3' },
-    track05_vi:    { t: 'Ba gọi con về (Vietnamese)',    f: A + 'songbook/track05_vi.mp3' },
+    track05_vi:    { t: 'Ba gọi con về (Vietnamese)',    f: A + 'track05-father-song-vi.mp3' },
 
     // M-AIDA
     maida_official:        { t: 'M-AIDA · Official',           f: A + 'maida/maida_song_official.mp3' },

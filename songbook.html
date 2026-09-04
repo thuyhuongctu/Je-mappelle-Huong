@@ -133,6 +133,17 @@ footer a:hover{color:var(--accent)}
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
   #bando{transition:transform .1s linear}
 }
+/* Bilingual Lyrics Layout */
+.bilingual-lyrics { display: flex; gap: 40px; }
+.lyric-panel { flex: 1; min-width: 0; }
+.lyric-pre { white-space: pre-wrap; font-family: var(--serif); line-height: 1.7; font-size: 0.98rem; color: var(--ink); margin: 0; }
+.lyric-panel h3 { color: var(--lam); margin-bottom: 15px; font-size: 0.85rem; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+@media (max-width: 850px) {
+  .bilingual-lyrics { flex-direction: column; gap: 30px; }
+  .bilingual-lyrics-shell { padding: 20px !important; }
+  .lyric-panel { border-bottom: 1px dashed var(--line); padding-bottom: 20px; }
+  .lyric-panel:last-child { border-bottom: none; }
+}
 </style></head><body>
   <div class="dmnav" id="dmnav">
     <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
@@ -506,7 +517,7 @@ With the sun embroidered on my chest, and a pink heart.</p>
       <div class="tracks">
         <div class="track">
           <div class="track-name">«Ba gọi con về» (Vietnamese) <span class="len">· 5:52</span></div>
-          <audio controls preload="none" src="assets/audio/songbook/track05_vi.mp3"></audio>
+          <audio controls preload="none" src="assets/audio/track05-father-song-vi.mp3"></audio>
         </div>
         <div class="track">
           <div class="track-name">«A Father’s Song» — Version 2 <span class="len">· 5:12</span></div>
@@ -518,116 +529,222 @@ With the sun embroidered on my chest, and a pink heart.</p>
         </div>
       </div>
     </div>
-    <div class="lyrics" style="margin-top:14px; background: white; border: 1px solid var(--line); border-radius: 16px; padding: 30px;">
-      <h3 style="color:var(--lam); margin-bottom: 20px;">The Lyrics</h3>
-      <div style="column-count: 2; column-gap: 40px; font-size: 0.95rem;">
-        <pre style="white-space: pre-wrap; font-family: var(--serif); line-height: 1.6;">[Intro — Spoken]
+    <div class="lyrics bilingual-lyrics-shell" id="t05-lyrics" style="margin-top:14px; background: white; border: 1px solid var(--line); border-radius: 16px; padding: 30px;" aria-labelledby="t05-lyrics-title">
+      <div class="bilingual-lyrics">
+        <section class="lyric-panel" lang="vi" aria-labelledby="t05-lyrics-title-vi">
+          <h3 id="t05-lyrics-title-vi">Lời bài hát <span class="note">· Tiếng Việt</span></h3>
+          <pre class="lyric-pre">[Mở đầu — lời nói]
+Con à. Nếu một ngày con mỏi quá, thì đừng cố đi thêm.
+Đời người đâu phải con nước, lúc nào cũng phải xuôi về phía trước.
+Có những bến mình cần ghé lại, có những đêm con chỉ cần ngủ một giấc thật yên.
+Ba không còn ở bên để nắm tay con qua những con đường làng năm ấy.
+Nhưng con đừng nghĩ ba chưa từng nhìn thấy con lớn.
+Ba vẫn ở đó, trong những điều con tưởng mình đã quên.
+
+[Khổ 1]
+Ngày ấy con còn bé xíu, tay ôm hộp màu mắt ngước nhìn trời.
+Ba dắt con qua con đường đất nhỏ.
+Con đi bên ba mà cứ hỏi mãi: “Ba ơi, bao giờ con mới lớn?”
+Ba cười: “Lớn để làm gì hả con?”
+“Con muốn làm họa sĩ.”
+Ba đâu biết một câu nói nhỏ của con ngày ấy sẽ đi cùng con qua cả một đời.
+Có những buổi chiều ba cõng con trên vai,
+con ngồi trên đó mà tưởng như mình chạm được tới mây.
+Ba chỉ mong sau này con lớn lên, dù đời có đưa con đi đâu,
+con vẫn giữ được đôi mắt biết nhìn thấy cái đẹp.
+
+[Điệp khúc]
+Con ơi, đừng sợ con đường dài.
+Nếu mỏi thì cứ nghỉ. Nếu buồn thì cứ khóc.
+Nếu có ngày con chẳng biết mình đang đi về đâu,
+thì cứ đứng lại bên dòng sông, nghe nước chảy rồi hãy bước tiếp.
+Ba không cần con phải trở thành người giỏi nhất.
+Ba chỉ mong con đừng đánh mất mình trong lúc cố trở thành một người nào đó.
+Con cứ là con. Vậy là đủ rồi.
+
+[Khổ 2]
+Rồi một ngày ba không còn đưa con đi nữa.
+Con đường làng vẫn đó, mái nhà vẫn đó, mẹ vẫn ở bên con.
+Chỉ có bàn tay ba không còn nằm trong bàn tay con.
+Con lớn lên tự học cách đi qua những mùa nước nổi,
+tự học cách che mưa, tự học cách đứng dậy khi không còn một bờ vai để tựa vào.
+Có lẽ con đã nghĩ mình phải mạnh mẽ hơn người khác.
+Nhưng con à, ba chưa bao giờ muốn con phải mạnh mẽ
+đến mức quên mất mình cũng cần được yêu thương.
+
+[Đoạn về hiện tại]
+Ba biết có những đêm con ngồi một mình bên ánh sáng màn hình.
+Ngoài kia người ta ngủ hết rồi, mà những câu hỏi trong đầu con vẫn chưa chịu ngủ.
+Con học, con viết, con nghiên cứu.
+Con xây những thế giới bằng những dòng chữ nhỏ trên màn hình.
+Ba không hiểu hết những điều con đang làm, nhưng ba hiểu một điều:
+Mỗi lần con làm một điều gì đó bằng tất cả tấm lòng,
+thì cô bé ngày xưa lại bước ra từ trong con.
+Cô bé cầm hộp màu, cô bé đứng bên con đường làng,
+cô bé chờ ba nói: “Đi thôi con.”
+Vậy nên nếu một ngày con tìm lại được màu sắc, đừng sợ.
+Nếu một ngày con muốn vẽ lại thì cứ vẽ.
+Nếu một ngày con muốn xây một thế giới mới thì cứ xây.
+Đừng nghĩ rằng con đã đi quá xa khỏi giấc mơ ngày bé.
+Con không đi xa đâu, con chỉ đi một vòng thật lớn để trở về với chính mình.
+Cô bé ấy vẫn còn ở đó. Ba thấy. Ba biết.
+
+[Lời nhắn]
+Con có nhớ không?
+Ngày ba cõng con trên vai,
+con chỉ vào khoảng trời trước mặt rồi nói:
+“Ba ơi, trời rộng quá.”
+Ba khi ấy chỉ cười.
+Ba biết sau này con sẽ đi rất xa —
+xa khỏi con đường làng, xa khỏi mái nhà,
+xa khỏi những ngày thơ bé.
+
+Con sẽ tự mình đi qua nhiều dòng sông
+mà ba không thể chèo cùng.
+Nhưng con à, nếu có lúc nào con thấy mình lạc giữa dòng,
+hãy nhớ: con không cần phải chèo thật nhanh.
+Chỉ cần đừng buông mái chèo.
+
+[Điệp khúc cuối]
+Ba không muốn con trở thành một người phi thường.
+Ba chỉ mong khi con đứng trước gương,
+con vẫn nhận ra cô bé năm nào —
+cô bé từng tin vào màu sắc,
+từng tin vào những điều đẹp đẽ,
+từng tin rằng ngày mai sẽ là một ngày rực sáng.
+Đừng đánh mất cô bé ấy, con nhé.
+Nếu đời làm con mỏi, hãy về nhà.
+Nếu không còn biết nhà ở đâu,
+hãy về với chính mình.
+Vì nơi đó ba vẫn còn ở đó.
+
+[Lời từ biệt]
+Ba không thể nắm tay con nữa.
+Nhưng nếu một ngày con bước qua một con đường làng,
+gió chạm vào vai con, một chiếc lá rơi xuống bên chân,
+và con bỗng thấy lòng mình bình yên,
+thì cứ nghĩ rằng ba vừa đi ngang qua.
+Không cần quay lại tìm.
+Ba chỉ muốn con biết ba vẫn nhìn thấy con.
+Cứ đi đi con. Cứ vẽ đi con.
+Cứ xây những điều con tin là đẹp.
+
+[Đoạn kết — thì thầm]
+Và nếu mệt, thì nghỉ.
+Ngày mai dòng sông vẫn còn đó,
+mẹ vẫn còn đó, và cô bé trong con vẫn còn đó.
+Ngọn đèn vẫn sẽ cháy.
+Ba yêu con.
+Đi đi, cô bé của ba.</pre>
+        </section>
+        <section class="lyric-panel" lang="en" aria-labelledby="t05-lyrics-title">
+          <h3 id="t05-lyrics-title">The Lyrics <span class="note">· English</span></h3>
+          <pre class="lyric-pre">[Intro — Spoken]
 My little girl…
 If the road feels too long, you don't have to keep walking.
 Sit beside the river, let the water carry the night.
-You don't have to be strong every moment.
-If you are tired, rest.
-I will not be angry.
+Don't worry about the distance.
+The boat is small, but the heart is wide.
+I am no longer there to hold your hand through those village roads.
+But don't think I never saw you grow.
+I am still there, in the things you thought you forgot.
+
 [Verse 1]
-I remember you at six, with a box of colors,
-walking beside me along the village road,
-your little fingers holding mine.
-“Daddy, how far does the road go?” you asked.
-When your feet grew tired, I carried you upon my shoulders.
-From up there, the whole world seemed wide.
-You looked at the sky and laughed:
-“When I grow up, I want to be a painter.”
-I remember. I never forgot.
-[Pre-Chorus]
-Your dream was bigger than the sky.
-I only wished that as you grew,
-you would never lose the eyes that saw beauty.
+You were so small then, holding your color box, looking at the sky.
+I led you through the small dirt road.
+You walked beside me and kept asking, "Daddy, when will I grow up?"
+I smiled, "What for, my child?"
+"I want to be an artist."
+I didn't know that one small sentence would stay with you for a lifetime.
+There were afternoons I carried you on my shoulders,
+you sat there thinking you could touch the clouds.
+I only hoped that as you grew, no matter where life took you,
+you would keep those eyes that know how to see beauty.
+
 [Chorus]
 My daughter…
 Don't be afraid of the long road.
 If you're tired, rest. If you're hurting, cry.
-You don't have to become the strongest girl in the world,
-or prove that you deserve to be loved.
+If there's a day you don't know where you're going,
+stand by the river, listen to the water, then keep moving.
+I don't need you to be the best.
+I only hope you don't lose yourself while trying to become someone else.
 Just be yourself. That is enough.
-And if you forget who you are,
-remember the little girl with colors in her hands.
-Je m'appelle Hương.
-That was her name. She is still inside you.
+
 [Verse 2]
 Then one day, I could no longer walk beside you.
 The village road remained. Your mother remained.
 Only my hand was no longer in yours.
-You learned to cross your own rivers.
+You learned to cross your own rivers,
+learned to shelter from the rain, learned to stand up when there was no shoulder to lean on.
 Perhaps you thought you had to be stronger than everyone.
-But listen, my daughter—
-I never wanted you to forget you were allowed to be loved.
+But listen, my daughter—I never wanted you to be so strong
+that you forgot you were allowed to be loved.
+
 [Modern Verse]
-I know there are nights when everyone is asleep,
-while a little light glows on your screen.
-You read. You write. You search for answers.
-You build little worlds from lines of code.
-I may not understand everything you create,
-but whenever you create with all your heart,
+I know there are nights when you sit alone by the screen light.
+Everyone else is asleep, but the questions in your head won't sleep.
+You study, you write, you research.
+You build worlds with small lines of text on the screen.
+I don't understand everything you do, but I understand one thing:
+Every time you do something with all your heart,
 the little girl comes back.
-The girl with the box of colors.
-The girl who once looked up and said,
-“Daddy, let's go.”
-[Chorus 2]
-My daughter…
-You don't have to row so fast.
-Hold your oar. Breathe.
-Let the current teach you where to go.
-One oar may be gone, but the boat is still moving.
-And somewhere inside, the little girl is still singing:
-Je m'appelle Hương.
-[Bridge — Crescendo]
-You may think the girl who wanted to paint was left behind.
-No. She was waiting.
-Inside every line you drew.
-Inside every color you chose.
-Inside every world you built.
-She never abandoned her dream;
-she only learned a different way to hold the brush.
-Elle est encore là, je le sais.
-[Free Time — Vọng Cổ Inspired]
-There will be days when you feel lost,
-when everything you built feels too heavy.
-Don't run. Don't be ashamed of stopping.
-Come sit by the river. Listen.
-The river does not hurry to become the sea,
-and still—it reaches it. So do you.
-[Final Chorus — Cinematic]
-My daughter…
-I never asked you to become extraordinary.
-I only hoped you would still recognize
-the little girl who believed tomorrow could be beautiful.
-If the world becomes too loud, come home.
-And if you don't know where home is,
-come back to yourself.
-Because somewhere there, I am still holding your hand.
-Je m'appelle Hương.
-[Father’s Farewell]
-I cannot hold your hand anymore.
-But if one day you walk along an old village road,
-and the wind touches your shoulder,
-and a leaf falls quietly beside your feet,
-and your heart becomes peaceful—
-don't turn around. You don't have to look for me.
-Just think: I have walked past you. I have seen you.
-I am proud of you.
-[Coda — Whisper]
-Take the beautiful days with you.
-Take the colors. Take your mother's light. Take the river.
-Take the little girl who once sat upon my shoulders.
-Keep walking. Keep drawing. Keep building.
-And when you are tired—rest.
-Tomorrow, the river will still be there.
-The lamp will still be burning.
-And she will still be there.
-Je m'appelle Hương.
-My daughter…
+The girl with the color box, the girl on the village road,
+the girl waiting for me to say, "Let's go, my child."
+So if one day you find the colors again, don't be afraid.
+If one day you want to paint again, just paint.
+If one day you want to build a new world, just build.
+Don't think you've gone too far from your childhood dream.
+You haven't gone far, you just took a long circle to return to yourself.
+She is still there. I see. I know.
+
+[Message]
+Do you remember?
+The day I carried you on my shoulders,
+you pointed at the sky and said, "Daddy, it's so wide."
+I only smiled then.
+I knew then you would go very far—
+far from the village road, far from home,
+far from those childhood days.
+
+You will cross many rivers on your own
+that I cannot row with you.
+But my child, if you ever feel lost in the current,
+remember: you don't have to row so fast.
+Just don't let go of the oar.
+
+[Final Chorus]
+I don't want you to be extraordinary.
+I only hope when you stand before the mirror,
+you still recognize the girl from years ago—
+the girl who believed in colors,
+believed in beautiful things,
+believed that tomorrow would be a bright day.
+Don't lose her, my child.
+If life makes you tired, come home.
+If you no longer know where home is,
+return to yourself.
+Because I am still there.
+
+[Farewell]
+I can no longer hold your hand.
+But if one day you walk through a village road,
+the wind touches your shoulder, a leaf falls by your feet,
+and you suddenly feel peace in your heart,
+then just think that I just passed by.
+No need to turn back and look.
+I just want you to know I still see you.
+Go, my child. Paint, my child.
+Build what you believe is beautiful.
+
+[Ending — Whisper]
+And if you're tired, rest.
+Tomorrow the river will still be there,
+your mother will still be there, and the little girl inside you will still be there.
+The lamp will still burn.
 I love you.
-Go, my little girl.</pre>
+Go, my daughter.</pre>
+        </section>
       </div>
     </div>
   </section>
@@ -896,7 +1013,20 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
     rs.forEach(function(el){if(el.getBoundingClientRect().top<vh*0.88){el.classList.add('on');}});
   }
   window.addEventListener('scroll',onScroll,{passive:true});
-  document.querySelectorAll('.reveal').forEach(function(el){onScroll();});
+  document.querySelectorAll('.reveal').forEach(function(){onScroll();});
+  function revealHash(){
+    var id=decodeURIComponent((location.hash||'').slice(1));
+    if(!id)return;
+    var target=document.getElementById(id);
+    if(!target)return;
+    var section=target.closest ? target.closest('section.reveal') : null;
+    if(section)section.classList.add('on');
+    target.classList.add('on');
+    onScroll();
+    setTimeout(function(){target.scrollIntoView({block:'start'});onScroll();},80);
+  }
+  window.addEventListener('hashchange',revealHash);
+  revealHash();
   var y=document.getElementById('dm-year');
   if(y){y.textContent=new Date().getFullYear()+' · '+(document.documentElement.getAttribute('lang')==='en'?'Je m\'appelle Hương website':'Website Je m\'appelle Hương');}
 })();
@@ -937,6 +1067,17 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
     }
     document.querySelectorAll('nav a, .sitenav a, .dmnav a, .fnav a, button, [role=button], .tram, .bc-item').forEach(function(el){
       el.addEventListener('mouseenter',hoverSnd,{passive:true});
+    });
+    // Chỉ phát một bản tại một thời điểm + tự động chuyển bài
+    document.querySelectorAll('audio').forEach(function(a){
+      a.addEventListener('play', function(){
+        document.querySelectorAll('audio').forEach(function(o){ if(o!==a) o.pause(); });
+      });
+      a.addEventListener('ended', function(){
+        var audios = Array.from(document.querySelectorAll('audio'));
+        var next = audios[audios.indexOf(a) + 1];
+        if(next) next.play();
+      });
     });
     // click chuyển trang: "whoosh" nhẹ
     document.addEventListener('click',function(e){
