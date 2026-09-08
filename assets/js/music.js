@@ -1,5 +1,5 @@
 /* ============================================================
-   HUONG MUSIC — hệ thống âm nhạc «Je suis Hương»
+   HUONG MUSIC - hệ thống âm nhạc «Je suis Hương»
    (1) Nút nhạc nổi: gợi ý bài hát theo tâm trạng (buồn/vui/bình thường)
    (2) Nhạc nền theo bối cảnh từng khu trong trang viên 3D
    Bài hát: songbook assets/audio/*, M-AIDA assets/audio/maida/*,
@@ -11,7 +11,7 @@
   /* ---------- DANH SÁCH BÀI HÁT ---------- */
   var A = 'assets/audio/';
   var SONGS = {
-    // Songbook gốc — trang chủ chọn mặc định
+    // Songbook gốc - trang chủ chọn mặc định
     official:      { t: 'Je m’appelle Hương',            f: A + 'track05.mp3' },
     track01:       { t: 'Je voudrais te parler',         f: A + 'track01.mp3' },
     track02:       { t: 'Đèn vẫn còn sáng',              f: A + 'track02-den-van-con-sang.mp3' },
@@ -44,7 +44,7 @@
     bizon_vudubebaycao:{ t: 'BizOn · Vừa Đủ Để Bay Cao',     f: A + 'bizon/vua-du-de-bay-cao.mp3' },
     bizon_onreturn:    { t: 'BizOn · Hương on Return',     f: A + 'bizon/huong-on-return.mp3' },
 
-    // Nhạc tần số thư giãn (solfeggio) — khuôn viên trang viên
+    // Nhạc tần số thư giãn (solfeggio) - khuôn viên trang viên
     tranquien_528:   { t: 'Trần viên · Sóng 528Hz',        f: A + 'solfeggio_528.mp3' },
     tranquien_432:   { t: 'Trần viên · Sóng 432Hz',        f: A + 'solfeggio_432.mp3' }
   };
@@ -56,23 +56,23 @@
   var MOODS = {
     buon: {
       icon: '😢',
-      vi: { tieude: 'Hôm nay có chút buồn?', noi: 'Để Hương hát một bài sưởi lòng nhé — nghe nhẹ, rồi ngày mai lại sáng.' },
-      en: { tieude: 'A little sad today?', noi: 'Let Huong sing something warm — gentle listening, brighter tomorrow.' },
+      vi: { tieude: 'Hôm nay có chút buồn?', noi: 'Để Hương hát một bài sưởi lòng nhé - nghe nhẹ, rồi ngày mai lại sáng.' },
+      en: { tieude: 'A little sad today?', noi: 'Let Huong sing something warm - gentle listening, brighter tomorrow.' },
       fr: { tieude: 'Un peu triste aujourd\u2019hui ?', noi: 'Laissez Huong vous chanter une chanson chaleureuse \u2014 une \u00e9coute douce, demain sera plus lumineux.' },
       bai: ['track01', 'track02', 'official']
     },
     vui: {
       icon: '\u{1F60A}',
-      vi: { tieude: 'Hôm nay thật vui!', noi: 'Nghe bài thư giãn thêm — để niềm vui chảy dài thêm chút nữa.' },
+      vi: { tieude: 'Hôm nay thật vui!', noi: 'Nghe bài thư giãn thêm - để niềm vui chảy dài thêm chút nữa.' },
       en: { tieude: 'Happy today!', noi: 'Relax and let the joy flow a little longer.' },
       fr: { tieude: 'Heureux aujourd\u2019hui !', noi: 'D\u00e9tendez-vous et laissez la joie s\u2019\u00e9couler un peu plus longtemps.' },
       bai: ['track04', 'track05', 'track05_vi', 'track03']
     },
     binhthuong: {
       icon: '😌',
-      vi: { tieude: 'Một ngày bình yên', noi: 'Bài mặc định trang chủ chọn cho bạn — nghe thoải mái nhé.' },
-      en: { tieude: 'A peaceful day', noi: 'The homepage’s default pick for you — enjoy.' },
-      fr: { tieude: 'Une journée paisible', noi: 'Le choix par défaut de la page d’accueil pour vous — bonne écoute.' },
+      vi: { tieude: 'Một ngày bình yên', noi: 'Bài mặc định trang chủ chọn cho bạn - nghe thoải mái nhé.' },
+      en: { tieude: 'A peaceful day', noi: 'The homepage’s default pick for you - enjoy.' },
+      fr: { tieude: 'Une journée paisible', noi: 'Le choix par défaut de la page d’accueil pour vous - bonne écoute.' },
       bai: ['track04_v2', 'official', 'track05_vi', 'track05', 'track01']
     }
   };
@@ -162,11 +162,11 @@
     if (dangPhat === key && !audio.paused) return;
     audio.src = song.f;
     audio.loop = !!opts.loop;
-    // giữ volume hiện tại rồi fade nhẹ tới mức mong muốn — tránh ngắt quãng trên mobile khi bấm liên tục
+    // giữ volume hiện tại rồi fade nhẹ tới mức mong muốn - tránh ngắt quãng trên mobile khi bấm liên tục
     if (audio.volume <= 0.005) audio.volume = Math.max(0.001, targetVol * 0.4);
     audio.play().then(function () {
       fadeTo(Math.min(1, targetVol), 500);
-    }).catch(function () { /* autoplay blocked — user click sau */ });
+    }).catch(function () { /* autoplay blocked - user click sau */ });
     dangPhat = key;
     // nếu bài hát thuộc mood đang chọn, giữ mood đó để tự động chuyển bài
     if (dangMood && MOODS[dangMood].bai.indexOf(key) === -1) {
@@ -178,7 +178,7 @@
   // Tự động chuyển bài khi kết thúc
   audio.addEventListener('ended', function () {
     if (audio.loop) return;
-    
+
     var ds = [];
     if (dangMood && MOODS[dangMood]) {
       ds = MOODS[dangMood].bai;
@@ -186,10 +186,10 @@
       // nếu không trong mood, lấy danh sách bài official/songbook làm mặc định
       ds = ['track04_v2', 'official', 'track05', 'track01', 'track02', 'track03'];
     }
-    
+
     var idx = ds.indexOf(dangPhat);
     var tiep = ds[(idx + 1) % ds.length];
-    
+
     // Đợi 1 giây rồi phát bài tiếp theo
     setTimeout(function () {
       if (audio.paused && dangPhat) {
@@ -281,9 +281,9 @@
           var b = document.createElement('button');
           b.className = 'hm-bai' + (i === 0 ? ' hm-dexuat' : '');
           b.textContent = SONGS[bk].t;
-          b.addEventListener('click', function () { 
+          b.addEventListener('click', function () {
             dangMood = mk; // ghi nhớ mood khi chọn bài từ mood
-            playSong(bk, { loop: false }); 
+            playSong(bk, { loop: false });
           });
           ds.appendChild(b);
         });
@@ -336,7 +336,7 @@
     if (badge) badge.classList.toggle('hm-co', !audio.paused && dangPhat);
   }
 
-  /* nhịp thanh bar nhẹ trong nút nhạc (6 khung/giây — không tốn tài nguyên) */
+  /* nhịp thanh bar nhẹ trong nút nhạc (6 khung/giây - không tốn tài nguyên) */
   var barTimer = null;
   function batNhacQua() {
     if (barTimer) return;
@@ -358,14 +358,14 @@
   /* ---------- NHAC NEN THEO KHU ---------- */
   /* khuId -> bài hát nền phù hợp bối cảnh */
   var NHAC_KHU = {
-    'hoc-thuat': 'track02',               // Đèn vẫn còn sáng — trầm tĩnh, suy tưởng (khu học thuật)
-    'du-an':      'track04',               // Hai Mươi Sáu Năm Sau — hồi sinh, năng lượng tìm lại ước mơ (khu dự án)
-    'thu-vien':   'track01',               // Je voudrais te parler — nội tâm, đọc trong yên lặng (khu thư viện)
-    'am-nhac':    'track03',               // The Lamp Still Burns — ôm ấp, an ủi (khu âm nhạc)
-    'bang-tin':   'track05',               // Je m'appelle Hương — thông điệp tổng hợp (khu bảng tin)
-    'gioi-thieu': 'official',              // Je m'appelle Hương bản đầy đủ — mở đầu chuyến tham quan (khu giới thiệu)
-    'kho-tuong-lai': 'track05',             // Je m'appelle Hương — khép chuyến tham quan bằng bài chủ đề (kho tương lai)
-    'khuon-vien':  'tranquien_528'           // Sóng 528Hz — nhạc tần số thư giãn khi dạo ngoài khuôn viên
+    'hoc-thuat': 'track02',               // Đèn vẫn còn sáng - trầm tĩnh, suy tưởng (khu học thuật)
+    'du-an':      'track04',               // Hai Mươi Sáu Năm Sau - hồi sinh, năng lượng tìm lại ước mơ (khu dự án)
+    'thu-vien':   'track01',               // Je voudrais te parler - nội tâm, đọc trong yên lặng (khu thư viện)
+    'am-nhac':    'track03',               // The Lamp Still Burns - ôm ấp, an ủi (khu âm nhạc)
+    'bang-tin':   'track05',               // Je m'appelle Hương - thông điệp tổng hợp (khu bảng tin)
+    'gioi-thieu': 'official',              // Je m'appelle Hương bản đầy đủ - mở đầu chuyến tham quan (khu giới thiệu)
+    'kho-tuong-lai': 'track05',             // Je m'appelle Hương - khép chuyến tham quan bằng bài chủ đề (kho tương lai)
+    'khuon-vien':  'tranquien_528'           // Sóng 528Hz - nhạc tần số thư giãn khi dạo ngoài khuôn viên
   };
   var khuDangChoi = '';
 
@@ -382,7 +382,7 @@
     khuDangChoi = khuId;
   }
 
-  /* Nhạc tần số thư giãn (solfeggio) khi khách dạo ngoài khuôn viên — chưa vào khu nào */
+  /* Nhạc tần số thư giãn (solfeggio) khi khách dạo ngoài khuôn viên - chưa vào khu nào */
   function playNhacKhuonVien() {
     if (!nhacNenActive) { nhacNenActive = true; khuDangChoi = '__khuon-vien__'; }
     var key = NHAC_KHUONVIEN[kvChiSo % NHAC_KHUONVIEN.length];

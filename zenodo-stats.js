@@ -1,4 +1,4 @@
-/* zenodo-stats.js — cập nhật số lượt xem/lượt tải của thẻ thống kê Zenodo theo dữ liệu live.
+/* zenodo-stats.js - cập nhật số lượt xem/lượt tải của thẻ thống kê Zenodo theo dữ liệu live.
    Website tĩnh: gọi Zenodo REST API trực tiếp từ trình duyệt (API công khai, CORS mở).
    Nếu gọi thất bại (mạng, rate limit), giữ nguyên số liệu tĩnh đã ghi trong HTML. */
 (function () {

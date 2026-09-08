@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-<title>Hương AI — Phòng thu lời dẫn tour</title>
+<title>Hương AI - Phòng thu lời dẫn tour</title>
 <meta name="description" content="Record or upload tour narration voice for Huong AI (VI/EN/FR) in the 3D garden.">
-<meta property="og:title" content="Huong AI — Tour Narration Studio">
+<meta property="og:title" content="Huong AI - Tour Narration Studio">
 <meta property="og:description" content="Record or upload tour narration voice for Huong AI (VI/EN/FR) in the 3D garden.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/assets/img/og-default.jpg">
@@ -152,11 +152,11 @@ html:not([lang="fr"]) .lang-fr{display:none}
       <button type="button" id="btnDung" disabled>⏹ <span class="lang-vi">Dừng</span><span class="lang-en">Stop</span><span class="lang-fr">Arrêter</span></button>
       <label style="font:700 .82rem var(--sans)">📁 <input type="file" id="fileUp" accept="audio/*" style="display:none"><button type="button" id="btnTai">⬆️ <span class="lang-vi">Tải file lên</span><span class="lang-en">Upload file</span><span class="lang-fr">Téléverser</span></button></label>
     </div>
-    <p class="note"><span class="lang-vi">⚠️ Trình duyệt web không thể tự ghi thẳng vào website — bản ghi sẽ được lưu trong trang để bạn nghe lại và tải về, rồi đưa file vào thư mục <code>assets/audio/tour/</code> của repo.</span><span class="lang-en">⚠️ A static website cannot save files by itself — recordings stay in the page for preview and download, then add the files to the <code>assets/audio/tour/</code> folder of the repo.</span><span class="lang-fr">⚠️ Un site statique ne peut pas enregistrer de fichier — les enregistrements restent dans la page pour écoute et téléchargement, puis ajoutez-les au dossier <code>assets/audio/tour/</code> du dépôt.</span></p>
+    <p class="note"><span class="lang-vi">⚠️ Trình duyệt web không thể tự ghi thẳng vào website - bản ghi sẽ được lưu trong trang để bạn nghe lại và tải về, rồi đưa file vào thư mục <code>assets/audio/tour/</code> của repo.</span><span class="lang-en">⚠️ A static website cannot save files by itself - recordings stay in the page for preview and download, then add the files to the <code>assets/audio/tour/</code> folder of the repo.</span><span class="lang-fr">⚠️ Un site statique ne peut pas enregistrer de fichier - les enregistrements restent dans la page pour écoute et téléchargement, puis ajoutez-les au dossier <code>assets/audio/tour/</code> du dépôt.</span></p>
     <audio id="ngheLai" controls style="display:none"></audio>
     <div class="row" id="hangTve" style="display:none;margin-top:10px">
       <button type="button" id="btnTve">⬇️ <span class="lang-vi">Tải về đúng tên</span><span class="lang-en">Download with correct name</span><span class="lang-fr">Télécharger sous le bon nom</span></button>
-      <span class="tag" id="tenVe">—</span>
+      <span class="tag" id="tenVe"> - </span>
     </div>
   </div>
 
@@ -228,7 +228,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
     var html='<tr><th>File</th><th>'+t.kh+'</th><th>'+t.nn+'</th><th>Status</th></tr>';
     KHU.forEach(function(k){ ['vi','en','fr'].forEach(function(n){
       var f=k+'_'+n+'.mp3';
-      html+='<tr><td><b>'+f+'</b></td><td>'+khuNhan(k,L)+'</td><td>'+n.toUpperCase()+'</td><td class="no">—</td></tr>';
+      html+='<tr><td><b>'+f+'</b></td><td>'+khuNhan(k,L)+'</td><td>'+n.toUpperCase()+'</td><td class="no"> - </td></tr>';
     }); });
     document.getElementById('bang').innerHTML = html;
   }
@@ -273,8 +273,8 @@ html:not([lang="fr"]) .lang-fr{display:none}
             var note=document.createElement('button');
             note.type='button';note.id='note-ref';
             note.textContent=(document.documentElement.getAttribute('lang')==='fr')?
-              '⟳ Nouvelle version — actualiser ?':'⟳ '+(document.documentElement.getAttribute('lang')==='en'?
-              'New version available — refresh?':'⟳ Đã có bản cập nhật — làm mới?');
+              '⟳ Nouvelle version - actualiser ?':'⟳ '+(document.documentElement.getAttribute('lang')==='en'?
+              'New version available - refresh?':'⟳ Đã có bản cập nhật - làm mới?');
             note.style.cssText='position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99;'+
               'border:1px solid var(--accent,#b25d7d);border-radius:999px;background:#fff;color:#000;'+
               'font:700 .8rem system-ui;padding:8px 18px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.15)';
