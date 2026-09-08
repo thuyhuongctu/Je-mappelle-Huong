@@ -1,5 +1,5 @@
 :root{--surface:#FFFBF4;--ink:#3b2e2a;--muted:#8a7a72;--line:#e8ded5;--accent:#d8616e;--accent-soft:rgba(216,97,110,.12)}
-/* ===== HUONG MUSIC — widget đĩa nhạc mini + panel gọn ===== */
+/* ===== HUONG MUSIC - widget đĩa nhạc mini + panel gọn ===== */
 #hm-widget{ position: fixed; right: 1rem; bottom: 1rem; z-index: 95;  z-index:1010 !important; }
 #hm-nut {
   width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--line);
@@ -38,7 +38,7 @@
 .hm-tren b { font-family: var(--sans); font-size: .85rem; }
 #hm-dong { background: none; border: none; font-size: .9rem; cursor: pointer; color: var(--muted); }
 #hm-mood-chon { font-family: var(--sans); font-size: .74rem; color: var(--muted); margin-bottom: 8px; }
-/* 3 khối tâm trạng xếp ngang — gọn, dễ chọn */
+/* 3 khối tâm trạng xếp ngang - gọn, dễ chọn */
 .hm-moods { display: flex; flex-direction: column; gap: 8px; }
 .hm-mood { border: 1px solid var(--line); border-radius: 12px; padding: 7px 10px; background: rgba(255,255,255,.35); }
 .hm-mood > button {

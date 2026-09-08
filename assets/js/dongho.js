@@ -1,5 +1,5 @@
 /* ============================================================
-   ĐỒNG HỒ MÚI GIỜ — Việt Nam (ICT +7) & Pháp (CET/CEST)
+   ĐỒNG HỒ MÚI GIỜ - Việt Nam (ICT +7) & Pháp (CET/CEST)
    Widget nổi góc phải dưới, dùng Intl.DateTimeFormat (không CDN).
    Cập nhật mỗi 30s; đổi ngôn ngữ theo huong_lang (vi/en/fr).
    ============================================================ */
@@ -39,7 +39,7 @@
     var w = document.createElement('div');
     w.id = 'dongho-widget';
     w.setAttribute('role','status');
-    w.setAttribute('aria-label', 'World clock — Vietnam and France');
+    w.setAttribute('aria-label', 'World clock - Vietnam and France');
     w.innerHTML =
       '<button type="button" id="dongho-nut" aria-label="Toggle world clock">🕐</button>' +
       '<div id="dongho-panel" class="an">' +

@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ================= TOKEN — bảng màu đất sét pastel lấy từ banner Trang viên ============ */
+/* ================= TOKEN - bảng màu đất sét pastel lấy từ banner Trang viên ============ */
 :root{
   --troi:#BFE3EE; --troi-sau:#8FC9DE;
   --dong:#A9DDA0; --dong-sau:#7CC183;
@@ -255,8 +255,8 @@ body.cham #ban-do canvas{width:84px;height:84px}
     <div class="bang-dau">
       <div class="bang-icon" id="bang-icon">🪷</div>
       <div>
-        <h2 id="bang-ten">—</h2>
-        <p id="bang-phu">—</p>
+        <h2 id="bang-ten"> - </h2>
+        <p id="bang-phu"> - </p>
       </div>
       <button id="dong" aria-label="Đóng">✕</button>
     </div>
@@ -285,9 +285,9 @@ body.cham #ban-do canvas{width:84px;height:84px}
 <script src="../assets/vendor/three-r128.min.js"></script>
 <script>
 /* ==========================================================================
-   TRANG VIÊN ĐỔI MỚI SÁNG TẠO — thế giới 3D đất sét
+   TRANG VIÊN ĐỔI MỚI SÁNG TẠO - thế giới 3D đất sét
    Nhân vật: Hương AI · áo dài trắng, tóc nâu hạt dẻ, huy hiệu cờ Tổ quốc
-   Giữ nguyên tạo hình — biểu cảm thay đổi theo ngữ cảnh và theo lựa chọn.
+   Giữ nguyên tạo hình - biểu cảm thay đổi theo ngữ cảnh và theo lựa chọn.
    ========================================================================== */
 
 /* ---------- 1. NỘI DUNG CÁC KHU (song ngữ) ---------- */
@@ -298,14 +298,14 @@ const KHU = [
     phu:{vi:'Giảng đường sen · Đại học Cần Thơ', en:'Lotus hall · Can Tho University'},
     html:{
       vi:`<p><b>Nghiên cứu sinh tiến sĩ</b>, Trường Kinh tế, Đại học Cần Thơ. Hướng dẫn khoa học: <b>PGS.TS. Phan Anh Tú</b>.</p>
-        <p>Hướng nghiên cứu chính: <b>quốc tế hóa và hiệu quả hoạt động kinh doanh của doanh nghiệp ở châu Á</b> — kết hợp kinh tế lượng doanh nghiệp, phân tích tổng hợp và công cụ AI có kiểm chứng con người.</p>
+        <p>Hướng nghiên cứu chính: <b>quốc tế hóa và hiệu quả hoạt động kinh doanh của doanh nghiệp ở châu Á</b> - kết hợp kinh tế lượng doanh nghiệp, phân tích tổng hợp và công cụ AI có kiểm chứng con người.</p>
         <div class="hang">
           <div class="o"><b>50</b><span>nền kinh tế WBES</span></div>
           <div class="o"><b>236</b><span>nghiên cứu gộp</span></div>
           <div class="o"><b>286</b><span>bản ghi đã khóa</span></div>
           <div class="o"><b>0,074</b><span>r gộp</span></div>
         </div>
-        <p style="font-size:.85rem;color:var(--muc-nhat)">Hệ số tương quan gộp r = 0,074 [0,060; 0,088], từ 236 nghiên cứu công bố 1978–2026.</p>
+        <p style="font-size:.85rem;color:var(--muc-nhat)">Hệ số tương quan gộp r = 0,074 [0,060; 0,088], từ 236 nghiên cứu công bố 1978 - 2026.</p>
         <h3>Chủ đề</h3>
         <div><span class="nhan-nho">Quốc tế hóa &amp; hiệu quả DN</span><span class="nhan-nho">Phân tích tổng hợp</span><span class="nhan-nho">Chấp nhận số (DAI)</span><span class="nhan-nho">Năng lực công nghệ (TCI)</span><span class="nhan-nho">Thể chế &amp; ICRV</span><span class="nhan-nho">Kinh tế lượng doanh nghiệp</span></div>
         <h3>Hồ sơ khoa học</h3>
@@ -316,14 +316,14 @@ const KHU = [
         <h3>Giảng dạy</h3>
         <p>Kinh tế lượng · Phương pháp nghiên cứu · Phân tích hoạt động kinh doanh · Kinh doanh quốc tế · Thương mại điện tử · Mô phỏng tình huống kinh doanh · Khởi nghiệp.</p>`,
       en:`<p><b>PhD Candidate</b>, School of Economics, Can Tho University. Supervisor: <b>Assoc. Prof. Dr. Phan Anh Tu</b>.</p>
-        <p>Core line of work: <b>internationalization and firm performance in Asia</b> — firm-level econometrics, meta-analysis, and human-verified AI research tools.</p>
+        <p>Core line of work: <b>internationalization and firm performance in Asia</b> - firm-level econometrics, meta-analysis, and human-verified AI research tools.</p>
         <div class="hang">
           <div class="o"><b>50</b><span>WBES economies</span></div>
           <div class="o"><b>236</b><span>studies pooled</span></div>
           <div class="o"><b>286</b><span>locked records</span></div>
           <div class="o"><b>0.074</b><span>pooled r</span></div>
         </div>
-        <p style="font-size:.85rem;color:var(--muc-nhat)">Pooled correlation r = 0.074 [0.060; 0.088], from 236 studies published 1978–2026.</p>
+        <p style="font-size:.85rem;color:var(--muc-nhat)">Pooled correlation r = 0.074 [0.060; 0.088], from 236 studies published 1978 - 2026.</p>
         <h3>Topics</h3>
         <div><span class="nhan-nho">Internationalization &amp; performance</span><span class="nhan-nho">Meta-analysis</span><span class="nhan-nho">Digital Adoption (DAI)</span><span class="nhan-nho">Technological Capability (TCI)</span><span class="nhan-nho">Institutions &amp; ICRV</span><span class="nhan-nho">Firm-level econometrics</span></div>
         <h3>Scholarly profiles</h3>
@@ -344,14 +344,14 @@ const KHU = [
         <a class="the" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><b>M-AIDA</b><span>Trích xuất mức độ ảnh hưởng từ PDF bằng mô hình ngôn ngữ lớn, kiểm chứng con người 100%, khóa bất biến. Mã nguồn mở, có DOI Zenodo.</span><em>Xem dự án →</em></a>
         <a class="the" href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener"><b>BizOn · Bật Nghiệp</b><span>Game mô phỏng kinh doanh đất nặn 3D: 5 đội trên một "thị trường sống" đa tác tử AI, 6 vòng trên bản đồ Việt Nam, cố vấn AI Lumina. Kèm bản mở rộng GO GlObal.</span><em>Chơi thử →</em></a>
         <a class="the" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><b>EnQuiz</b><span>Ứng dụng ôn tập Khởi nghiệp: 300 câu theo 5 chương, thi thử đếm giờ, song ngữ, cài như ứng dụng (PWA), chạy offline.</span><em>Mở ứng dụng →</em></a>
-        <a class="the" href="https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/" target="_blank" rel="noopener"><b>Trò Chơi Sử Việt</b><span>Vân Đồn (1149) — dựng thương cảng quốc tế đầu tiên của Đại Việt; Bắc Hải Đảo (1780) — phiêu lưu và hải chiến trên vịnh Bắc Bộ.</span><em>Vào cổng →</em></a>
+        <a class="the" href="https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/" target="_blank" rel="noopener"><b>Trò Chơi Sử Việt</b><span>Vân Đồn (1149) - dựng thương cảng quốc tế đầu tiên của Đại Việt; Bắc Hải Đảo (1780) - phiêu lưu và hải chiến trên vịnh Bắc Bộ.</span><em>Vào cổng →</em></a>
         <h3>Nguyên tắc</h3>
         <p style="font-style:italic;color:var(--nhan)">“Máy đề xuất, người quyết định.”</p>`,
       en:`<p>Four pieces of software for research and teaching, all running straight in the browser.</p>
         <a class="the" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><b>M-AIDA</b><span>LLM-assisted effect-size extraction from PDFs with 100% human verification and immutable locking. Open-source with a Zenodo DOI.</span><em>View project →</em></a>
         <a class="the" href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener"><b>BizOn</b><span>A 3D-claymorphism business simulation: five teams on one multi-agent AI living market, six rounds across a map of Vietnam, with the Lumina AI advisor. Ships with the GO GlObal expansion.</span><em>Play →</em></a>
         <a class="the" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><b>EnQuiz</b><span>Entrepreneurship revision app: 300 questions across 5 chapters, timed mock exams, bilingual, installable (PWA), fully offline.</span><em>Open app →</em></a>
-        <a class="the" href="https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/" target="_blank" rel="noopener"><b>Vietnamese History Games</b><span>Vân Đồn (1149) — build Đại Việt's first international trading port; Bắc Hải Đảo (1780) — adventure and naval combat in the Gulf of Tonkin.</span><em>Enter portal →</em></a>
+        <a class="the" href="https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/" target="_blank" rel="noopener"><b>Vietnamese History Games</b><span>Vân Đồn (1149) - build Đại Việt's first international trading port; Bắc Hải Đảo (1780) - adventure and naval combat in the Gulf of Tonkin.</span><em>Enter portal →</em></a>
         <h3>Principle</h3>
         <p style="font-style:italic;color:var(--nhan)">“The machine proposes, the human decides.”</p>`
     }
@@ -362,15 +362,15 @@ const KHU = [
     phu:{vi:'Nhà sàn tri thức · slide, sổ nhạc, tư liệu', en:'Stilt house · decks, songbook, materials'},
     html:{
       vi:`<p>Kho tư liệu sáng tạo của hệ sinh thái: bộ trình chiếu, sổ nhạc, tư liệu MV và các bộ kỹ năng dựng nội dung.</p>
-        <a class="the" href="deck-ecosystem/index.html"><b>Bộ slide hệ sinh thái</b><span>“Je m'appelle Hương” — 10 slide giới thiệu luận án, M-AIDA, BizOn, EnQuiz và âm nhạc. Có bản PDF kèm theo.</span><em>Mở bộ slide →</em></a>
-        <a class="the" href="songbook.html"><b>Songbook «La lampe, le fleuve et les couleurs»</b><span>Mini song-cycle 5 chương, 7 bản thu, sáng tác 07–10/08/2026. Trọn bộ lời và ghi chú sáng tác.</span><em>Mở sổ nhạc →</em></a>
+        <a class="the" href="deck-ecosystem/index.html"><b>Bộ slide hệ sinh thái</b><span>“Je m'appelle Hương” - 10 slide giới thiệu luận án, M-AIDA, BizOn, EnQuiz và âm nhạc. Có bản PDF kèm theo.</span><em>Mở bộ slide →</em></a>
+        <a class="the" href="songbook.html"><b>Songbook «La lampe, le fleuve et les couleurs»</b><span>Mini song-cycle 5 chương, 7 bản thu, sáng tác 07 - 10/08/2026. Trọn bộ lời và ghi chú sáng tác.</span><em>Mở sổ nhạc →</em></a>
         <a class="the" href="deck-ecosystem/Je-mappelle-Huong-Ecosystem-Deck.pdf"><b>Bản PDF trình chiếu</b><span>Tải về để trình bày hội thảo hoặc bảo vệ chuyên đề.</span><em>Tải PDF →</em></a>
         <a class="the" href="index.html#worlddata"><b>Dữ liệu thế giới</b><span>Số liệu trực tiếp từ World Bank Open Data cho các nền kinh tế trong luận án, chọn chỉ số và quốc gia để so sánh.</span><em>Xem bảng dữ liệu →</em></a>
         <h3>Giấy phép</h3>
         <p style="font-size:.86rem;color:var(--muc-nhat)">Phần mềm mở theo giấy phép công bố kèm DOI Zenodo. Nhạc và lời: tác giả giữ bản quyền.</p>`,
       en:`<p>The ecosystem's creative archive: presentation decks, the songbook, music-video materials and content-production skill kits.</p>
-        <a class="the" href="deck-ecosystem/index.html"><b>Ecosystem deck</b><span>“Je m'appelle Hương” — ten slides covering the dissertation, M-AIDA, BizOn, EnQuiz and the music. A PDF is included.</span><em>Open deck →</em></a>
-        <a class="the" href="songbook.html"><b>Songbook «La lampe, le fleuve et les couleurs»</b><span>A five-chapter mini song-cycle, seven recordings, composed 7–10 Aug 2026. Full lyrics and composition notes.</span><em>Open songbook →</em></a>
+        <a class="the" href="deck-ecosystem/index.html"><b>Ecosystem deck</b><span>“Je m'appelle Hương” - ten slides covering the dissertation, M-AIDA, BizOn, EnQuiz and the music. A PDF is included.</span><em>Open deck →</em></a>
+        <a class="the" href="songbook.html"><b>Songbook «La lampe, le fleuve et les couleurs»</b><span>A five-chapter mini song-cycle, seven recordings, composed 7 - 10 Aug 2026. Full lyrics and composition notes.</span><em>Open songbook →</em></a>
         <a class="the" href="deck-ecosystem/Je-mappelle-Huong-Ecosystem-Deck.pdf"><b>Deck as PDF</b><span>Download for conference talks or seminar defences.</span><em>Download PDF →</em></a>
         <a class="the" href="index.html#worlddata"><b>World data</b><span>Live World Bank Open Data for the economies studied in the dissertation; pick an indicator and countries to compare.</span><em>View data →</em></a>
         <h3>Licence</h3>
@@ -382,20 +382,20 @@ const KHU = [
     ten:{vi:'Âm nhạc', en:'Music'},
     phu:{vi:'Sân khấu tre bên đầm sen', en:'Bamboo stage by the lotus pond'},
     html:{
-      vi:`<p>Các sáng tác riêng — nghe ngay tại đây, hoặc mở trang nhạc đầy đủ có lời và ghi chú.</p>
+      vi:`<p>Các sáng tác riêng - nghe ngay tại đây, hoặc mở trang nhạc đầy đủ có lời và ghi chú.</p>
         <div class="bai"><b>Parler à mon père</b><span>Chương mở đầu của song-cycle</span><audio controls preload="none" src="assets/audio/parler-a-mon-pere.mp3"></audio></div>
-        <div class="bai"><b>La lampe brûle encore</b><span>Ngọn đèn vẫn cháy — bản thu 3</span><audio controls preload="none" src="assets/audio/la-lampe-brule-encore-3.mp3"></audio></div>
+        <div class="bai"><b>La lampe brûle encore</b><span>Ngọn đèn vẫn cháy - bản thu 3</span><audio controls preload="none" src="assets/audio/la-lampe-brule-encore-3.mp3"></audio></div>
         <div class="bai"><b>Đèn còn sáng · remix</b><span>Bản tiếng Việt</span><audio controls preload="none" src="assets/audio/den-con-sang-remix3.mp3"></audio></div>
         <div class="bai"><b>Mekong Sunfire · hook 15s</b><span>Trích đoạn MV</span><audio controls preload="none" src="docs/mv/mekong-sunfire-hook-15s.mp3"></audio></div>
         <a class="the" href="music.html"><b>Trang âm nhạc đầy đủ</b><span>7 bản thu, 5 chương, lời và ghi chú sáng tác.</span><em>Mở trang nhạc →</em></a>
-        <p style="font-style:italic;color:var(--nhan);text-align:center;margin-top:1rem">🪷 «Je m'appelle Hương — tu m'as donné ce nom.»</p>`,
-      en:`<p>Personal compositions — listen here, or open the full music page with lyrics and notes.</p>
+        <p style="font-style:italic;color:var(--nhan);text-align:center;margin-top:1rem">🪷 «Je m'appelle Hương - tu m'as donné ce nom.»</p>`,
+      en:`<p>Personal compositions - listen here, or open the full music page with lyrics and notes.</p>
         <div class="bai"><b>Parler à mon père</b><span>Opening chapter of the song-cycle</span><audio controls preload="none" src="assets/audio/parler-a-mon-pere.mp3"></audio></div>
-        <div class="bai"><b>La lampe brûle encore</b><span>The lamp still burns — take 3</span><audio controls preload="none" src="assets/audio/la-lampe-brule-encore-3.mp3"></audio></div>
+        <div class="bai"><b>La lampe brûle encore</b><span>The lamp still burns - take 3</span><audio controls preload="none" src="assets/audio/la-lampe-brule-encore-3.mp3"></audio></div>
         <div class="bai"><b>Đèn còn sáng · remix</b><span>Vietnamese version</span><audio controls preload="none" src="assets/audio/den-con-sang-remix3.mp3"></audio></div>
         <div class="bai"><b>Mekong Sunfire · 15s hook</b><span>Music-video excerpt</span><audio controls preload="none" src="docs/mv/mekong-sunfire-hook-15s.mp3"></audio></div>
         <a class="the" href="music.html"><b>Full music page</b><span>Seven recordings, five chapters, lyrics and composition notes.</span><em>Open music page →</em></a>
-        <p style="font-style:italic;color:var(--nhan);text-align:center;margin-top:1rem">🪷 «Je m'appelle Hương — you gave me this name.»</p>`
+        <p style="font-style:italic;color:var(--nhan);text-align:center;margin-top:1rem">🪷 «Je m'appelle Hương - you gave me this name.»</p>`
     }
   },
   {
@@ -424,20 +424,20 @@ const KHU = [
     html:{
       vi:`<img class="anh-nv" src="assets/img/pro_aodai.png" alt="Đỗ Thùy Hương trong tà áo dài trắng" onerror="this.style.display='none'">
         <p>Tôi là giảng viên và nghiên cứu sinh tiến sĩ ngành Quản trị kinh doanh tại Trường Kinh tế, Đại học Cần Thơ. Công việc của tôi kết hợp kinh tế lượng doanh nghiệp, phân tích tổng hợp, và phát triển công cụ AI hỗ trợ nghiên cứu có kiểm chứng con người.</p>
-        <p>Trang viên này là phiên bản đi được của hệ sinh thái số ấy: mỗi khu là một phần công việc, và nhân vật hướng dẫn — <b>Hương AI</b> trong tà áo dài trắng — cũng chính là gương mặt đại diện xuyên suốt M-AIDA, BizOn và EnQuiz.</p>
+        <p>Trang viên này là phiên bản đi được của hệ sinh thái số ấy: mỗi khu là một phần công việc, và nhân vật hướng dẫn - <b>Hương AI</b> trong tà áo dài trắng - cũng chính là gương mặt đại diện xuyên suốt M-AIDA, BizOn và EnQuiz.</p>
         <h3>🪷 Nguồn cảm hứng</h3>
         <p style="font-style:italic">“Non sông Việt Nam có trở nên tươi đẹp hay không, dân tộc Việt Nam có bước tới đài vinh quang để sánh vai với các cường quốc năm châu hay không, chính là nhờ một phần lớn ở công học tập của các em.”</p>
-        <p style="font-size:.82rem;color:var(--muc-nhat)">— Chủ tịch Hồ Chí Minh, Thư gửi học sinh nhân ngày khai trường đầu tiên, 9/1945.</p>
+        <p style="font-size:.82rem;color:var(--muc-nhat)"> -  Chủ tịch Hồ Chí Minh, Thư gửi học sinh nhân ngày khai trường đầu tiên, 9/1945.</p>
         <h3>Liên hệ</h3>
         <a class="the" href="mailto:thuyhuongctu@gmail.com"><b>thuyhuongctu@gmail.com</b><span>Thư nghiên cứu và hợp tác</span><em>Gửi thư →</em></a>
         <a class="the" href="https://github.com/thuyhuongctu" target="_blank" rel="noopener"><b>GitHub</b><span>Mã nguồn các dự án mở</span><em>Mở →</em></a>
         <a class="the" href="index.html"><b>Trang học thuật đầy đủ</b><span>Bản trang chính có công bố, giảng dạy và dữ liệu thế giới.</span><em>Về trang chính →</em></a>`,
       en:`<img class="anh-nv" src="assets/img/pro_aodai.png" alt="Do Thuy Huong in a white áo dài" onerror="this.style.display='none'">
         <p>I am a lecturer and PhD candidate in Business Administration at the School of Economics, Can Tho University. My work combines firm-level econometrics, meta-analysis, and the development of human-verified AI research tools.</p>
-        <p>This estate is a walkable version of that digital ecosystem: each area is a part of the work, and the guide — <b>Hương AI</b> in her white áo dài — is the same face that appears across M-AIDA, BizOn and EnQuiz.</p>
+        <p>This estate is a walkable version of that digital ecosystem: each area is a part of the work, and the guide - <b>Hương AI</b> in her white áo dài - is the same face that appears across M-AIDA, BizOn and EnQuiz.</p>
         <h3>🪷 Inspiration</h3>
         <p style="font-style:italic">“Whether the land of Vietnam becomes beautiful, whether the Vietnamese people can step onto the podium of glory to stand shoulder to shoulder with the great powers of the five continents, depends in large part on your studies.”</p>
-        <p style="font-size:.82rem;color:var(--muc-nhat)">— President Ho Chi Minh, Letter to students on the first school-opening day, September 1945.</p>
+        <p style="font-size:.82rem;color:var(--muc-nhat)"> -  President Ho Chi Minh, Letter to students on the first school-opening day, September 1945.</p>
         <h3>Contact</h3>
         <a class="the" href="mailto:thuyhuongctu@gmail.com"><b>thuyhuongctu@gmail.com</b><span>Research and collaboration</span><em>Write →</em></a>
         <a class="the" href="https://github.com/thuyhuongctu" target="_blank" rel="noopener"><b>GitHub</b><span>Source code for the open projects</span><em>Open →</em></a>
@@ -536,7 +536,7 @@ const theGioi = new THREE.Group();
 scene.add(theGioi);
 const BAN_KINH = 52;   // giới hạn đi lại
 
-// 5.1 mặt đất — đồng lúa pastel
+// 5.1 mặt đất - đồng lúa pastel
 const dat = new THREE.Mesh(new THREE.CircleGeometry(BAN_KINH+16, 72), vatLieu('#A9DDA0', .98));
 dat.rotation.x = -Math.PI/2;
 dat.receiveShadow = true;
@@ -616,7 +616,7 @@ for(let i=0;i<11;i++){
   theGioi.add(c); may.push(c);
 }
 
-// 5.6 cỏ lúa — InstancedMesh cho nhẹ
+// 5.6 cỏ lúa - InstancedMesh cho nhẹ
 (function coLua(){
   const hh = new THREE.ConeGeometry(.16, 1.1, 4);
   const im = new THREE.InstancedMesh(hh, vatLieu('#7CC183', .98), 900);
@@ -945,17 +945,17 @@ function veMat(bc){
   };
 
   switch(bc){
-    case 'reo':                                   // reo lên — như khi đạp xe
+    case 'reo':                                   // reo lên - như khi đạp xe
       may(74,86,-.18); may(182,86,.18);
       mat(70,'to'); mat(186,'to');
       mieng.ha(30,26);
       break;
-    case 'ngac':                                  // ngạc nhiên — tới gần một khu
+    case 'ngac':                                  // ngạc nhiên - tới gần một khu
       may(74,80,-.3); may(182,80,.3);
       mat(70,'to'); mat(186,'to');
       mieng.ha(15,19);
       break;
-    case 'suytu':                                 // suy tư — đứng yên lâu
+    case 'suytu':                                 // suy tư - đứng yên lâu
       may(74,94,.16); may(182,90,-.05);
       mat(72,'lim'); mat(188,'lim');
       mieng.thang();
@@ -970,22 +970,22 @@ function veMat(bc){
       mat(70,'nham'); mat(186,'nham');
       mieng.ha(22,30);
       break;
-    case 'tutin':                                 // tự tin — khi trình bày
+    case 'tutin':                                 // tự tin - khi trình bày
       may(74,96,-.06); may(182,82,.20);
       mat(70,'lim'); mat(186,'');
       mieng.mim();
       break;
-    case 'quyettam':                              // quyết tâm — khi vào khu nghiên cứu
+    case 'quyettam':                              // quyết tâm - khi vào khu nghiên cứu
       may(74,98,.30); may(182,98,-.30);
       mat(70,''); mat(186,'');
       mieng.nghiem();
       break;
-    case 'thuong':                                // thương mến — hồ sen, âm nhạc
+    case 'thuong':                                // thương mến - hồ sen, âm nhạc
       may(74,86,-.16); may(182,86,.16);
       mat(70,'tim'); mat(186,'tim');
       mieng.ha(24,20);
       break;
-    default:                                      // vui — mặc định
+    default:                                      // vui - mặc định
       may(74,90,-.12); may(182,90,.12);
       mat(70,''); mat(186,'');
       mieng.cuoi();
@@ -1433,7 +1433,7 @@ addEventListener('resize', ()=>{
 const sinhDong = new THREE.Group();
 theGioi.add(sinhDong);
 
-// bươm bướm — cánh kép vỗ, lượn quanh vườn
+// bươm bướm - cánh kép vỗ, lượn quanh vườn
 const BUOM_MAU = ['#F2A9B8','#B9A9F2','#F2D9A9','#A9E3F2','#F2A9E0','#C4E8B0','#F6C1CB'];
 const dsBuom = [];
 BUOM_MAU.forEach((mau,i)=>{
@@ -1451,7 +1451,7 @@ BUOM_MAU.forEach((mau,i)=>{
   sinhDong.add(g); dsBuom.push(g);
 });
 
-// đàn chim én — bóng sẫm chữ V vỗ cánh, bay vòng trên cao
+// đàn chim én - bóng sẫm chữ V vỗ cánh, bay vòng trên cao
 const dsChim = [];
 for(let i=0;i<5;i++){
   const g = new THREE.Group();
@@ -1467,7 +1467,7 @@ for(let i=0;i<5;i++){
   sinhDong.add(g); dsChim.push(g);
 }
 
-// cánh hoa sen rơi — chao nghiêng, chạm đất lại bay lên
+// cánh hoa sen rơi - chao nghiêng, chạm đất lại bay lên
 const dsCanh = [];
 {
   const vl = new THREE.MeshStandardMaterial({color:new THREE.Color('#F5B7C4'), roughness:.75, metalness:0,
@@ -1480,7 +1480,7 @@ const dsCanh = [];
   }
 }
 
-// vịt bầu đất sét — trôi dọc dải sông, lắc lư theo sóng
+// vịt bầu đất sét - trôi dọc dải sông, lắc lư theo sóng
 const dsVit = [];
 function conVit(mauThan, mauMo){
   const g = new THREE.Group();
@@ -1499,7 +1499,7 @@ function conVit(mauThan, mauMo){
   sinhDong.add(v); dsVit.push(v);
 });
 
-// chuồn chuồn ớt — thân mảnh, cánh rung nhanh, đảo gần mép sông
+// chuồn chuồn ớt - thân mảnh, cánh rung nhanh, đảo gần mép sông
 const dsChuon = [];
 [['#E85A4F',-8,11],['#5FA8E8',22,17]].forEach(([mau,cx,cz],i)=>{
   const g = new THREE.Group();
@@ -1555,7 +1555,7 @@ function capNhatSinhDong(t, dt){
 
 
 /* ---------- SINH ĐỘNG ĐỢT 2: cá chép nhảy, đèn lồng, ong mật ---------- */
-// cá chép — thi thoảng phóng vọt khỏi mặt sông theo cung tròn
+// cá chép - thi thoảng phóng vọt khỏi mặt sông theo cung tròn
 const dsCa = [];
 [['#F08A4B',-20,13.5,6.5,0],['#E85A4F',6,12,8,2.6],['#FFF3E0',34,15,7,4.4]].forEach(([mau,cx,cz,chuKy,tre])=>{
   const g = new THREE.Group();
@@ -1569,7 +1569,7 @@ const dsCa = [];
   sinhDong.add(g); dsCa.push(g);
 });
 
-// đèn lồng hồng — cột gỗ kem, lồng đèn đung đưa theo gió
+// đèn lồng hồng - cột gỗ kem, lồng đèn đung đưa theo gió
 const dsLong = [];
 [[3.2,.5],[-3.2,9],[3.2,20],[-3.2,29]].forEach(([lx,lz],i)=>{
   const cum = new THREE.Group();
@@ -1594,7 +1594,7 @@ const dsLong = [];
   sinhDong.add(cum); dsLong.push(cum);
 });
 
-// ong mật — vo ve vòng nhỏ quanh các khóm hoa
+// ong mật - vo ve vòng nhỏ quanh các khóm hoa
 const dsOng = [];
 [[-8,-2],[10,4],[-14,12]].forEach(([ox,oz],i)=>{
   const g = new THREE.Group();

@@ -7,7 +7,7 @@
     {id:'library',zone:'Creative Library',icon:'📚',title:'Clay Spine',copy:'Locate the clay book with the vermilion spine and record its first sentence.',reward:'Clay Bookmark',item:'bookmark',itemIcon:'🔖',itemDesc:'A warm clay marker for the page where curiosity begins.',rarity:'COMMON'},
     {id:'music',zone:'Music',icon:'🎵',title:'The Missing Note',copy:'Listen at the music dock and find the note that completes the lotus melody.',reward:'Lotus Chime',item:'chime',itemIcon:'🎐',itemDesc:'A soft chime tuned to the estate’s calmest hour.',rarity:'RARE'},
     {id:'news',zone:'Noticeboard',icon:'📰',title:'Pin the Good News',copy:'Choose one notice that should stay visible for the next traveler.',reward:'Golden Pin',item:'pin',itemIcon:'📌',itemDesc:'A golden pin for ideas worth keeping in public view.',rarity:'COMMON'},
-    {id:'future',zone:'Future',icon:'🔮',title:'Leave a Door Open',copy:'Place one promise for a future chapter at the empty gate.',reward:'Future Key',item:'key',itemIcon:'🗝️',itemDesc:'A key with no lock yet — and therefore many possible doors.',rarity:'LEGENDARY'}
+    {id:'future',zone:'Future',icon:'🔮',title:'Leave a Door Open',copy:'Place one promise for a future chapter at the empty gate.',reward:'Future Key',item:'key',itemIcon:'🗝️',itemDesc:'A key with no lock yet - and therefore many possible doors.',rarity:'LEGENDARY'}
   ];
   let done=JSON.parse(localStorage.getItem('th_side_done')||'[]'); let items=JSON.parse(localStorage.getItem('th_items')||'[]');
   const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

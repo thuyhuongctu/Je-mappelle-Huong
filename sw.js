@@ -1,4 +1,4 @@
-/* Service worker — Je m'appelle Hương (trang học thuật cá nhân) */
+/* Service worker - Je m'appelle Hương (trang học thuật cá nhân) */
 const CACHE = 'jshuong-v44';
 const CORE = [
   './',
