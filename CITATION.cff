@@ -31,8 +31,8 @@ authors:
     affiliation: "Can Tho University"
 version: "1.0"
 date-released: 2026-08-18
-repository-code: "https://github.com/thuyhuongctu/JESUISHUONG_WEBSITE_2026"
-url: "https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/"
+repository-code: "https://github.com/thuyhuongctu/Je-mappelle-Huong"
+url: "https://thuyhuongctu.github.io/Je-mappelle-Huong/"
 # Concept DOI — represents every version and always resolves to the latest release.
 doi: 10.5281/zenodo.22003853
 keywords:

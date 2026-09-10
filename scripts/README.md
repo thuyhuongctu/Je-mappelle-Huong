@@ -42,5 +42,5 @@ còn chấp nhận tại `…/sitemap.xml`. Để đối chiếu:
 
 ```bash
 python3 -c "import xml.etree.ElementTree as t; t.parse('sitemap.xml'); print('XML hợp lệ')"
-curl -s https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/sitemap.xml | head -20
+curl -s https://thuyhuongctu.github.io/Je-mappelle-Huong/sitemap.xml | head -20
 ```
