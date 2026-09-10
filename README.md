@@ -9,9 +9,9 @@ research, teaching and open educational software.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22003853.svg)](https://doi.org/10.5281/zenodo.22003853)
 [![Copyright](https://img.shields.io/badge/©%202026-all%20rights%20reserved-8d7166.svg)](#license-and-third-party-components)
-[![Site](https://img.shields.io/badge/site-live-2ea44f)](https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/)
+[![Site](https://img.shields.io/badge/site-live-2ea44f)](https://thuyhuongctu.github.io/Je-mappelle-Huong/)
 
-**[▶ Live site: thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026](https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/)**
+**[▶ Live site: thuyhuongctu.github.io/Je-mappelle-Huong](https://thuyhuongctu.github.io/Je-mappelle-Huong/)**
 
 </div>
 
@@ -127,8 +127,8 @@ build, chạy trên GitHub Pages.
 ## Running locally and deployment
 
 ```bash
-git clone https://github.com/thuyhuongctu/JESUISHUONG_WEBSITE_2026.git
-cd JESUISHUONG_WEBSITE_2026
+git clone https://github.com/thuyhuongctu/Je-mappelle-Huong.git
+cd Je-mappelle-Huong
 python3 -m http.server 8000     # then open http://localhost:8000
 ```
 
