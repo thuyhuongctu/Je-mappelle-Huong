@@ -246,6 +246,8 @@ body.cham #ban-do canvas{width:84px;height:84px pointer-events:none; }
 .bai audio{width:100%;height:34px;margin-top:.5rem}
 .ngay{font-size:.7rem;font-weight:700;letter-spacing:.08em;color:var(--vang);text-transform:uppercase}
 .anh-nv{width:100%;max-width:210px;margin:0 auto 1rem;display:block;filter:drop-shadow(0 14px 24px rgba(120,80,60,.28))}
+.tv-anh{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem;margin:0 0 1rem}
+.tv-anh img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;border-radius:12px;display:block}
 #noi-dung::-webkit-scrollbar{width:0}
 
 @media (min-width:820px){
@@ -543,14 +545,16 @@ const KHU = [
     ten:{vi:'Thư viện sáng tạo', en:'Library'},
     phu:{vi:'Nhà sàn tri thức · slide, sổ nhạc, tư liệu', en:'Stilt house · decks, songbook, materials'},
     html:{
-      vi:`<p>Kho tư liệu sáng tạo của hệ sinh thái: bộ trình chiếu, sổ nhạc, tư liệu MV và các bộ kỹ năng dựng nội dung.</p>
+      vi:`<div class="tv-anh"><img src="assets/img/xuonggom_1.webp" alt="Hương AI ngắm một tượng gốm nhỏ trong xưởng" loading="lazy"><img src="assets/img/xuonggom_2.webp" alt="Hương AI xếp các tượng đất nhỏ vào thùng gỗ bên bờ sông" loading="lazy"><img src="assets/img/xuonggom_3.webp" alt="Hương AI bên kệ tượng gốm, dòng sông phía sau" loading="lazy"></div>
+        <p>Kho tư liệu sáng tạo của hệ sinh thái: bộ trình chiếu, sổ nhạc, tư liệu MV và các bộ kỹ năng dựng nội dung.</p>
         <a class="the" href="deck-ecosystem/index.html"><b>Bộ slide hệ sinh thái</b><span>“Je m'appelle Hương” - 10 slide giới thiệu luận án, M-AIDA, BizOn, EnQuiz và âm nhạc. Có bản PDF kèm theo.</span><em>Mở bộ slide →</em></a>
         <a class="the" href="songbook.html"><b>Songbook «La lampe, le fleuve et les couleurs»</b><span>Mini song-cycle 5 chương, 7 bản thu, sáng tác 07 - 10/08/2026. Trọn bộ lời và ghi chú sáng tác.</span><em>Mở sổ nhạc →</em></a>
         <a class="the" href="deck-ecosystem/Je-mappelle-Huong-Ecosystem-Deck.pdf"><b>Bản PDF trình chiếu</b><span>Tải về để trình bày hội thảo hoặc bảo vệ chuyên đề.</span><em>Tải PDF →</em></a>
         <a class="the" href="index.html#worlddata"><b>Dữ liệu thế giới</b><span>Số liệu trực tiếp từ World Bank Open Data cho các nền kinh tế trong luận án, chọn chỉ số và quốc gia để so sánh.</span><em>Xem bảng dữ liệu →</em></a>
         <h3>Giấy phép</h3>
         <p style="font-size:.86rem;color:var(--muc-nhat)">Phần mềm mở theo giấy phép công bố kèm DOI Zenodo. Nhạc và lời: tác giả giữ bản quyền.</p>`,
-      en:`<p>The ecosystem's creative archive: presentation decks, the songbook, music-video materials and content-production skill kits.</p>
+      en:`<div class="tv-anh"><img src="assets/img/xuonggom_1.webp" alt="Huong AI admiring a small pottery figurine in a workshop" loading="lazy"><img src="assets/img/xuonggom_2.webp" alt="Huong AI arranging small clay figurines in a wooden crate by the river" loading="lazy"><img src="assets/img/xuonggom_3.webp" alt="Huong AI beside shelves of pottery figurines with the river behind" loading="lazy"></div>
+        <p>The ecosystem's creative archive: presentation decks, the songbook, music-video materials and content-production skill kits.</p>
         <a class="the" href="deck-ecosystem/index.html"><b>Ecosystem deck</b><span>“Je m'appelle Hương” - ten slides covering the dissertation, M-AIDA, BizOn, EnQuiz and the music. A PDF is included.</span><em>Open deck →</em></a>
         <a class="the" href="songbook.html"><b>Songbook «La lampe, le fleuve et les couleurs»</b><span>A five-chapter mini song-cycle, seven recordings, composed 7 - 10 Aug 2026. Full lyrics and composition notes.</span><em>Open songbook →</em></a>
         <a class="the" href="deck-ecosystem/Je-mappelle-Huong-Ecosystem-Deck.pdf"><b>Deck as PDF</b><span>Download for conference talks or seminar defences.</span><em>Download PDF →</em></a>
