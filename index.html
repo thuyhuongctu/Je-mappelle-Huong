@@ -94,9 +94,9 @@ html:not([lang="en"]) .lang-en{display:none}
 html[lang="fr"] .lang-vi{display:none}
 html[lang="fr"] .lang-en{display:none}
 html:not([lang="fr"]) .lang-fr{display:none}
-.topctl{position:fixed;top:58px;right:14px;display:flex;gap:8px;z-index:61}
+.topctl{position:fixed;top:58px;right:14px;display:flex;gap:8px;z-index:61;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 24px)}
 .dmnav.shrink~.topctl{top:52px}
-@media(max-width:760px){.topctl{top:52px;gap:6px}}
+@media(max-width:760px){.topctl{top:52px;gap:6px}.wrap{padding-top:96px}}
 .topctl .toggle{position:static;top:auto;right:auto}
 .topctl .topaudio{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:20px;background:var(--surface);box-shadow:var(--shadow);font-size:.9rem;padding:5px 11px;cursor:pointer;color:var(--ink);text-decoration:none}
 .topctl .topaudio:hover{border-color:var(--accent)}
