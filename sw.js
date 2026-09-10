@@ -1,5 +1,5 @@
 /* Service worker - Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v45';
+const CACHE = 'jshuong-v46';
 const CORE = [
   './',
   'index.html',
@@ -12,6 +12,7 @@ const CORE = [
   'assets/js/huong3d.js',
   'assets/js/dongho.js',
   'assets/js/music.js',
+  'assets/js/clayhub.js',
   'manifest.webmanifest',
   'assets/img/pro_aodai.png',
   'assets/img/lab_scene.jpg',
