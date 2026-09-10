@@ -31,7 +31,8 @@ a{color:var(--accent)}
 .brandmini{position:fixed;top:10px;left:12px;z-index:6;display:none;width:min(230px,calc(100vw - 190px));height:auto;text-decoration:none;line-height:0}
 .brandmini img{display:block;width:100%;height:auto;object-fit:contain}
 @media(max-width:560px){.brandmini{top:6px;left:6px;width:96px;background:rgba(255,253,248,.7);border-radius:14px;padding:3px 8px}}
-.topctl{position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:6}
+.topctl{position:fixed;top:58px;right:14px;display:flex;gap:8px;z-index:61;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 24px)}
+@media(max-width:760px){.topctl{top:52px;gap:6px}}
 .toggle{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 13px;font-size:.74rem;cursor:pointer;box-shadow:var(--shadow)}
 .langtog{display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
 .langtog button{border:none;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:6px 11px;cursor:pointer}
