@@ -54,7 +54,7 @@ jobs:
       - name: Verify generated sitemap is valid XML
         run: |
           python3 -c "import xml.etree.ElementTree as t; t.parse('sitemap.xml'); print('sitemap.xml hop le')"
-          curl -sSf https://thuyhuongctu.github.io/JESUISHUONG_WEBSITE_2026/sitemap.xml >/dev/null && \
+          curl -sSf https://thuyhuongctu.github.io/Je-mappelle-Huong/sitemap.xml >/dev/null && \
             echo "sitemap hien tai tren GitHub Pages van truy cap duoc (doi chieu)" || true
 
       - name: Write commit message file

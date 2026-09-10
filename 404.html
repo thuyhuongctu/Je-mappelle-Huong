@@ -1,0 +1,71 @@
+<!doctype html><html lang="vi" data-theme="light"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Không tìm thấy trang · Je m'appelle Hương</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="192x192" href="/Je-mappelle-Huong/icons/icon-192.png">
+<link rel="icon" href="/Je-mappelle-Huong/favicon.ico" sizes="48x48">
+<script>
+/* Cứu các URL cũ / gõ sai hoa-thường: đưa về đúng trang trong Je-mappelle-Huong,
+ * KHÔNG bao giờ rơi về trang 404 gốc của tên miền (vốn chuyển hướng sang BizOn). */
+(function(){
+  var BASE = '/Je-mappelle-Huong/';
+  var PAGES = ['index.html','publications.html','cv.html','music.html','songbook.html',
+               'audio.html','blog.html','journey.html','trangvien.html','quan-ly-songbook.html'];
+  var p = location.pathname;
+  // Tên repo cũ hoặc sai hoa/thường của tên repo hiện tại → giữ nguyên phần đuôi
+  var m = p.match(/^\/(?:JESUISHUONG_WEBSITE_2026|je-mappelle-huong)(\/.*)?$/i);
+  if (m) {
+    var tail = m[1] || '/';
+    if (tail !== '/' ) {
+      var page = tail.replace(/^\//,'').split(/[?#]/)[0];
+      var hit = PAGES.filter(function(x){ return x.toLowerCase() === page.toLowerCase(); })[0];
+      location.replace(BASE + (hit || '') + location.search + location.hash);
+      return;
+    }
+    location.replace(BASE);
+    return;
+  }
+  // Trang con gõ sai hoa/thường ngay trong site
+  var m2 = p.match(/^\/Je-mappelle-Huong\/(.+)$/);
+  if (m2) {
+    var page2 = m2[1].split(/[?#]/)[0];
+    var hit2 = PAGES.filter(function(x){ return x.toLowerCase() === page2.toLowerCase() && x !== page2; })[0];
+    if (hit2) { location.replace(BASE + hit2 + location.search + location.hash); }
+  }
+})();
+</script>
+<style>
+:root{--paper:#f2faff;--surface:#ffffff;--ink:#0b1d33;--muted:#5a7a96;--line:#d3e8f5;
+--accent:#e8416b;--accent2:#0093b8;--accent-soft:#e4fbff;
+--serif:Georgia,"Iowan Old Style","Times New Roman",serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+--shadow:0 2px 3px rgba(30,41,59,.06),0 14px 34px rgba(79,109,245,.13)}
+@media(prefers-color-scheme:dark){:root{--paper:#050a14;--surface:#0a1428;--ink:#c8f2ff;--muted:#7ea8c4;--line:#15304c;--accent:#ff5c8d;--accent2:#00f0ff;--accent-soft:rgba(0,240,255,.08);--shadow:0 0 12px rgba(0,240,255,.18),0 10px 30px rgba(0,0,0,.5)}}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;
+min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{max-width:560px;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:clamp(24px,5vw,44px);text-align:center}
+.code{font-family:var(--serif);font-size:3.2rem;font-weight:600;background:linear-gradient(92deg,var(--accent) 10%,var(--accent2) 80%);-webkit-background-clip:text;background-clip:text;color:transparent;margin:0}
+h1{font-family:var(--serif);font-size:1.3rem;font-weight:600;margin:.4em 0 .2em}
+p{color:var(--muted);font-size:.95rem;margin:.4em 0}
+.links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px}
+.links a{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;text-decoration:none;color:var(--ink);
+background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:6px 14px}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+.links a.home{background:var(--accent);color:#fff;border-color:var(--accent)}
+.links a.home:hover{opacity:.9;color:#fff}
+</style>
+</head>
+<body>
+<main class="card">
+  <p class="code">404</p>
+  <h1>Không tìm thấy trang này</h1>
+  <p>Đường dẫn bạn mở không tồn tại hoặc đã được đổi tên. Mời bạn quay về trang học thuật cá nhân của Đỗ Thùy Hương.</p>
+  <p lang="en">This page does not exist or has moved. Please return to Do Thuy Huong's personal academic site.</p>
+  <nav class="links">
+    <a class="home" href="/Je-mappelle-Huong/">🏠 Trang chủ · Home</a>
+    <a href="/Je-mappelle-Huong/publications.html">📚 Công bố · Publications</a>
+    <a href="/Je-mappelle-Huong/blog.html">📰 Blog</a>
+    <a href="/Je-mappelle-Huong/music.html">🎵 Âm nhạc · Music</a>
+    <a href="/Je-mappelle-Huong/trangvien.html">🌷 Trang viên 3D · 3D Garden</a>
+  </nav>
+</main>
+</body></html>
