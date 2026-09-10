@@ -24,7 +24,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
 a{color:var(--accent)}
 .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:700;color:var(--accent)}
 .brandmini{position:fixed;top:12px;left:14px;z-index:6;display:none;align-items:center;gap:.45rem;text-decoration:none;color:var(--ink);font:800 1rem 'SFMono-Regular',ui-monospace,Menlo,Consolas,monospace}
-.topctl{position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:6}
+.topctl{position:fixed;top:58px;right:14px;display:flex;gap:8px;z-index:61;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 24px)}
+@media(max-width:760px){.topctl{top:52px;gap:6px}}
 .toggle{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 13px;font-size:.74rem;cursor:pointer;box-shadow:var(--shadow)}
 .langtog{display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
 .langtog button{border:none;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:6px 11px;cursor:pointer}
