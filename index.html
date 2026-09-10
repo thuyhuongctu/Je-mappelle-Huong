@@ -177,6 +177,12 @@ footer .fgroup{font-weight:700;color:var(--ink);margin-right:2px}
   border:5px solid var(--surface);box-shadow:var(--shadow);margin:0 0 26px;
   background:url('assets/img/garden_hub.webp') center/cover no-repeat}
 :root[data-theme=dark] #bando{filter:saturate(.94) brightness(.78) contrast(1.03)}
+/* Cảnh đất sét 3D động: nằm dưới các nút trạm, mờ dần vào khi dựng xong;
+   không có WebGL hoặc lỗi thì ảnh nền tĩnh phía trên vẫn hiển thị như cũ */
+#bd-3d{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:0;transition:opacity .9s ease}
+#bd-3d.on{opacity:1}
+/* cảnh 3D tự đổi ngày/đêm nên khi nó chạy thì bỏ filter tối của dark mode */
+:root[data-theme=dark] #bando:has(#bd-3d.on){filter:none}
 .bd-inner{position:absolute;inset:-6%;width:112%;height:112%;will-change:transform}
 .bd-map{position:absolute;right:3%;bottom:-6%;width:14%;opacity:.30;pointer-events:none;z-index:1;transform:rotate(8deg);filter:drop-shadow(0 3px 6px rgba(90,50,50,.25))}
 .bd-buom{position:absolute;z-index:2;pointer-events:none;font-size:clamp(.9rem,1.8vw,1.35rem);opacity:.9;
@@ -1169,6 +1175,7 @@ if ('serviceWorker' in navigator) {
 </script>
 
 <script src="assets/vendor/three-r128.min.js" defer></script>
+<script src="assets/js/clayhub.js" defer></script>
 <!-- huong3d.js removed: no .gh-map mount point in this page; 2D webp avatars are used instead -->
 <script>
 /* Bản đồ trang viên: cô Hương đất sét 3D đạp xe tới trạm được bấm */
