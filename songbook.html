@@ -171,6 +171,31 @@ footer a:hover{color:var(--accent)}
 .lyrics-open .lyrics-toggle::after { content: '−'; }
 .lyrics-toggle:hover { color: var(--accent); }
 .lyrics-toggle:focus-visible { outline: 3px solid color-mix(in srgb, var(--lam) 42%, transparent); outline-offset: 4px; border-radius: 4px; }
+
+/* One-click playback for each song section. */
+.shead { gap: 12px; }
+.track-quickplay {
+  appearance: none;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--lam);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--lam);
+  cursor: pointer;
+  font: 700 .76rem/1 var(--sans);
+  padding: 9px 13px;
+  white-space: nowrap;
+}
+.track-quickplay:hover, .track-quickplay.is-playing { background: var(--lam); color: #fff; }
+.track-quickplay:focus-visible { outline: 3px solid color-mix(in srgb, var(--lam) 42%, transparent); outline-offset: 3px; }
+.track-quickplay .play-icon { font-size: .9rem; }
+@media (max-width: 560px) {
+  .shead { align-items: flex-start; flex-wrap: wrap; }
+  .track-quickplay { margin-left: auto; }
+}
 </style></head><body>
   <div class="dmnav" id="dmnav">
     <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
@@ -1196,6 +1221,63 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
       button.querySelector('.lang-vi').textContent = open ? 'Ẩn lời bài hát' : 'Hiện lời bài hát';
       button.querySelector('.lang-en').textContent = open ? 'Hide lyrics' : 'Show lyrics';
     });
+  });
+})();
+</script>
+
+<script>
+/* Songbook UX: play the main recording of each song with one click. */
+(function(){
+  var sections = document.querySelectorAll('section[id^="t"]');
+  var players = [];
+  var labels = {
+    playVi: 'Phát bài hát', playEn: 'Play song',
+    pauseVi: 'Tạm dừng', pauseEn: 'Pause'
+  };
+  function setLabel(button, playing){
+    button.querySelector('.play-icon').textContent = playing ? '❚❚' : '▶';
+    button.querySelector('.lang-vi').textContent = playing ? labels.pauseVi : labels.playVi;
+    button.querySelector('.lang-en').textContent = playing ? labels.pauseEn : labels.playEn;
+    button.classList.toggle('is-playing', playing);
+    button.setAttribute('aria-pressed', String(playing));
+  }
+  function resetOthers(current){
+    players.forEach(function(item){
+      if(item.audio !== current){
+        item.audio.pause();
+        setLabel(item.button, false);
+      }
+    });
+  }
+  sections.forEach(function(section){
+    var audio = section.querySelector('.tracks audio');
+    var heading = section.querySelector('.shead');
+    if(!audio || !heading) return;
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'track-quickplay';
+    button.title = 'Phát bản thu đầu tiên của bài hát';
+    button.setAttribute('aria-pressed', 'false');
+    button.innerHTML = '<span class="play-icon" aria-hidden="true">▶</span><span class="lang-vi">Phát bài hát</span><span class="lang-en">Play song</span>';
+    heading.appendChild(button);
+    var item = {audio: audio, button: button};
+    players.push(item);
+    button.addEventListener('click', function(){
+      if(audio.paused){
+        resetOthers(audio);
+        audio.play().catch(function(){});
+      } else {
+        audio.pause();
+      }
+    });
+    audio.addEventListener('play', function(){
+      resetOthers(audio);
+      setLabel(button, true);
+    });
+    audio.addEventListener('pause', function(){
+      if(audio.ended || audio.paused) setLabel(button, false);
+    });
+    audio.addEventListener('ended', function(){ setLabel(button, false); });
   });
 })();
 </script>
