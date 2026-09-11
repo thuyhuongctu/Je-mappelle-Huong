@@ -226,6 +226,33 @@ footer a:hover{color:var(--accent)}
 @media (prefers-reduced-motion: reduce) {
   .audio-visualizer i { animation: none; height: 9px; }
 }
+
+/* Playback modes for the Song Book player. */
+.playback-modes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 18px 0 24px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+.playback-modes-label { color: var(--muted); font: 700 .76rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
+.playback-mode {
+  appearance: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font: 700 .78rem/1 var(--sans);
+  padding: 8px 12px;
+}
+.playback-mode:hover, .playback-mode[aria-pressed="true"] { border-color: var(--lam); background: var(--lam); color: #fff; }
+.playback-mode:focus-visible { outline: 3px solid color-mix(in srgb, var(--lam) 42%, transparent); outline-offset: 3px; }
+@media (max-width: 560px) { .playback-modes-label { width: 100%; } }
 </style></head><body>
   <div class="dmnav" id="dmnav">
     <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
@@ -1020,11 +1047,6 @@ document.querySelectorAll('audio').forEach(function(a){
   a.addEventListener('play', function(){
     document.querySelectorAll('audio').forEach(function(o){ if(o!==a) o.pause(); });
   });
-  a.addEventListener('ended', function(){
-    var audios = Array.from(document.querySelectorAll('audio'));
-    var next = audios[audios.indexOf(a) + 1];
-    if(next) next.play();
-  });
 });
 if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigator.serviceWorker.register('sw.js'); }); }
 </script>
@@ -1154,11 +1176,6 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
     document.querySelectorAll('audio').forEach(function(a){
       a.addEventListener('play', function(){
         document.querySelectorAll('audio').forEach(function(o){ if(o!==a) o.pause(); });
-      });
-      a.addEventListener('ended', function(){
-        var audios = Array.from(document.querySelectorAll('audio'));
-        var next = audios[audios.indexOf(a) + 1];
-        if(next) next.play();
       });
     });
     // click chuyển trang: "whoosh" nhẹ
@@ -1309,6 +1326,55 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
     });
     audio.addEventListener('ended', function(){ setLabel(button, false); });
   });
+})();
+</script>
+
+<script>
+/* Songbook UX: loop the current recording or shuffle through all recordings. */
+(function(){
+  var audios = Array.from(document.querySelectorAll('audio'));
+  var state = {loop: false, shuffle: false};
+  var panel = document.createElement('div');
+  panel.className = 'playback-modes';
+  panel.setAttribute('aria-label', 'Playback modes');
+  panel.innerHTML = '<span class="playback-modes-label"><span class="lang-vi">Chế độ phát</span><span class="lang-en">Playback</span></span>' +
+    '<button type="button" class="playback-mode" data-mode="loop" aria-pressed="false"><span class="lang-vi">↻ Lặp lại</span><span class="lang-en">↻ Loop</span></button>' +
+    '<button type="button" class="playback-mode" data-mode="shuffle" aria-pressed="false"><span class="lang-vi">⤨ Ngẫu nhiên</span><span class="lang-en">⤨ Shuffle</span></button>';
+  var anchor = document.querySelector('#main');
+  if(anchor) anchor.parentNode.insertBefore(panel, anchor);
+  function updateButtons(){
+    panel.querySelector('[data-mode="loop"]').setAttribute('aria-pressed', String(state.loop));
+    panel.querySelector('[data-mode="shuffle"]').setAttribute('aria-pressed', String(state.shuffle));
+  }
+  panel.querySelectorAll('.playback-mode').forEach(function(button){
+    button.addEventListener('click', function(){
+      var mode = button.getAttribute('data-mode');
+      state[mode] = !state[mode];
+      if(state[mode]) state[mode === 'loop' ? 'shuffle' : 'loop'] = false;
+      updateButtons();
+    });
+  });
+  function playNext(current){
+    if(!audios.length) return false;
+    if(state.loop){
+      current.currentTime = 0;
+      current.play().catch(function(){});
+      return true;
+    }
+    if(state.shuffle){
+      var choices = audios.filter(function(audio){ return audio !== current; });
+      var next = choices[Math.floor(Math.random() * choices.length)] || current;
+      next.play().catch(function(){});
+      return true;
+    }
+    var nextSequential = audios[audios.indexOf(current) + 1];
+    if(nextSequential){ nextSequential.play().catch(function(){}); return true; }
+    return false;
+  }
+  audios.forEach(function(audio){
+    audio.addEventListener('ended', function(){ playNext(audio); });
+  });
+  updateButtons();
 })();
 </script>
 </body></html>
