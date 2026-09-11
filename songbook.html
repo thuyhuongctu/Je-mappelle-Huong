@@ -145,6 +145,32 @@ footer a:hover{color:var(--accent)}
   .lyric-panel { border-bottom: 1px dashed var(--line); padding-bottom: 20px; }
   .lyric-panel:last-child { border-bottom: none; }
 }
+
+/* Lyrics are opt-in: keep the songbook compact until a reader asks to see them. */
+.lyrics.lyrics-collapsed > :not(.lyrics-toggle) { display: none; }
+.lyrics.lyrics-open > :not(.lyrics-toggle) { display: revert; }
+.lyrics-toggle {
+  appearance: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--lam);
+  cursor: pointer;
+  font: 700 .82rem/1.3 var(--sans);
+  letter-spacing: .08em;
+  padding: 0 0 12px;
+  text-align: left;
+  text-transform: uppercase;
+}
+.lyrics-toggle::after { content: '＋'; font-size: 1.1rem; line-height: 1; }
+.lyrics-open .lyrics-toggle::after { content: '−'; }
+.lyrics-toggle:hover { color: var(--accent); }
+.lyrics-toggle:focus-visible { outline: 3px solid color-mix(in srgb, var(--lam) 42%, transparent); outline-offset: 4px; border-radius: 4px; }
 </style></head><body>
   <div class="dmnav" id="dmnav">
     <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
@@ -1139,4 +1165,38 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
   </g>
 <g class="lh" transform="translate(302.1,228.0)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(344.8,435.0)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(71.2,419.4)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(145.3,465.6)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g></svg></div></div>
 <script src="assets/js/music.js" defer></script>
+
+<script>
+/* Songbook UX: lyrics stay hidden until the reader explicitly opens a track. */
+(function(){
+  var blocks = document.querySelectorAll('.lyrics');
+  blocks.forEach(function(block, index){
+    block.classList.add('lyrics-collapsed');
+    var button = document.createElement('button');
+    var id = block.id || ('lyrics-' + (index + 1));
+    block.id = id;
+    button.type = 'button';
+    button.className = 'lyrics-toggle';
+    button.setAttribute('aria-controls', id + '-content');
+    button.setAttribute('aria-expanded', 'false');
+    button.innerHTML = '<span class="lang-vi">Hiện lời bài hát</span><span class="lang-en">Show lyrics</span>';
+    var content = document.createElement('div');
+    content.id = id + '-content';
+    content.className = 'lyrics-content';
+    while (block.firstChild) {
+      var child = block.firstChild;
+      if (child !== button) content.appendChild(child);
+    }
+    block.appendChild(button);
+    block.appendChild(content);
+    button.addEventListener('click', function(){
+      var open = block.classList.toggle('lyrics-open');
+      block.classList.toggle('lyrics-collapsed', !open);
+      button.setAttribute('aria-expanded', String(open));
+      button.querySelector('.lang-vi').textContent = open ? 'Ẩn lời bài hát' : 'Hiện lời bài hát';
+      button.querySelector('.lang-en').textContent = open ? 'Hide lyrics' : 'Show lyrics';
+    });
+  });
+})();
+</script>
 </body></html>
