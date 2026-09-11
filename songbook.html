@@ -253,6 +253,41 @@ footer a:hover{color:var(--accent)}
 .playback-mode:hover, .playback-mode[aria-pressed="true"] { border-color: var(--lam); background: var(--lam); color: #fff; }
 .playback-mode:focus-visible { outline: 3px solid color-mix(in srgb, var(--lam) 42%, transparent); outline-offset: 3px; }
 @media (max-width: 560px) { .playback-modes-label { width: 100%; } }
+
+/* Song search across track titles, metadata and lyrics. */
+.song-search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 18px 0 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+.song-search-label { color: var(--muted); font: 700 .76rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.song-search input {
+  min-width: 0;
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: .92rem/1.2 var(--sans);
+  padding: 9px 13px;
+}
+.song-search input:focus { outline: 3px solid color-mix(in srgb, var(--lam) 35%, transparent); outline-offset: 2px; border-color: var(--lam); }
+.song-search-clear { display: none; appearance: none; border: 0; background: transparent; color: var(--muted); cursor: pointer; font: 700 .82rem/1 var(--sans); padding: 7px; }
+.song-search-clear:hover { color: var(--accent); }
+.song-search.has-query .song-search-clear { display: inline-block; }
+.song-search-status { margin: 0 0 18px; color: var(--muted); font: .82rem/1.4 var(--sans); }
+.song-search-status:empty { display: none; }
+.song-search-empty { display: none; margin: 18px 0; padding: 22px; border: 1px dashed var(--line); border-radius: 14px; color: var(--muted); text-align: center; }
+@media (max-width: 560px) {
+  .song-search { align-items: stretch; flex-wrap: wrap; }
+  .song-search-label { width: 100%; }
+  .song-search input { flex-basis: calc(100% - 42px); }
+}
 </style></head><body>
   <div class="dmnav" id="dmnav">
     <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
@@ -1375,6 +1410,57 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
     audio.addEventListener('ended', function(){ playNext(audio); });
   });
   updateButtons();
+})();
+</script>
+
+<script>
+/* Songbook UX: search track titles and full lyric text, including accent-free matches. */
+(function(){
+  var tracks = Array.from(document.querySelectorAll('section[id^="t"]'));
+  if(!tracks.length) return;
+  var panel = document.createElement('div');
+  panel.className = 'song-search';
+  panel.setAttribute('role', 'search');
+  panel.innerHTML = '<label class="song-search-label" for="song-search-input"><span class="lang-vi">Tìm bài hát</span><span class="lang-en">Search songs</span></label>' +
+    '<input id="song-search-input" type="search" autocomplete="off" placeholder="Tên bài hoặc lời bài hát…" aria-describedby="song-search-status">' +
+    '<button type="button" class="song-search-clear" aria-label="Xóa tìm kiếm">✕</button>';
+  var status = document.createElement('p');
+  status.id = 'song-search-status';
+  status.className = 'song-search-status';
+  var empty = document.createElement('p');
+  empty.className = 'song-search-empty';
+  empty.innerHTML = '<span class="lang-vi">Không tìm thấy bài hát phù hợp.</span><span class="lang-en">No matching songs found.</span>';
+  var anchor = document.querySelector('#main');
+  if(!anchor) return;
+  anchor.parentNode.insertBefore(panel, anchor);
+  anchor.parentNode.insertBefore(status, anchor);
+  anchor.parentNode.insertBefore(empty, anchor);
+  var input = panel.querySelector('input');
+  var clear = panel.querySelector('.song-search-clear');
+  function normalize(value){
+    return value.toLocaleLowerCase('vi').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
+  }
+  var indexed = tracks.map(function(section){ return {section: section, text: normalize(section.textContent || '')}; });
+  function apply(){
+    var query = normalize(input.value.trim());
+    var matches = 0;
+    indexed.forEach(function(item){
+      var visible = !query || item.text.indexOf(query) !== -1;
+      item.section.style.display = visible ? '' : 'none';
+      if(visible) matches += 1;
+    });
+    panel.classList.toggle('has-query', Boolean(query));
+    empty.style.display = query && !matches ? 'block' : 'none';
+    if(!query){ status.textContent = ''; }
+    else {
+      var vi = matches === 1 ? '1 bài hát phù hợp' : matches + ' bài hát phù hợp';
+      var en = matches === 1 ? '1 matching song' : matches + ' matching songs';
+      status.innerHTML = '<span class="lang-vi">' + vi + '</span><span class="lang-en">' + en + '</span>';
+    }
+  }
+  input.addEventListener('input', apply);
+  clear.addEventListener('click', function(){ input.value = ''; apply(); input.focus(); });
+  apply();
 })();
 </script>
 </body></html>
