@@ -196,6 +196,36 @@ footer a:hover{color:var(--accent)}
   .shead { align-items: flex-start; flex-wrap: wrap; }
   .track-quickplay { margin-left: auto; }
 }
+
+/* Animated equalizer shown while a song is playing. */
+.audio-visualizer {
+  display: none;
+  align-items: center;
+  gap: 2px;
+  height: 15px;
+  margin-left: 2px;
+}
+.track-quickplay.is-playing .audio-visualizer { display: inline-flex; }
+.audio-visualizer i {
+  display: block;
+  width: 3px;
+  height: 5px;
+  border-radius: 3px;
+  background: currentColor;
+  transform-origin: center;
+  animation: audio-wave .72s ease-in-out infinite alternate;
+}
+.audio-visualizer i:nth-child(2) { animation-delay: -.48s; }
+.audio-visualizer i:nth-child(3) { animation-delay: -.24s; }
+.audio-visualizer i:nth-child(4) { animation-delay: -.6s; }
+.audio-visualizer i:nth-child(5) { animation-delay: -.12s; }
+@keyframes audio-wave {
+  from { height: 4px; opacity: .55; }
+  to { height: 15px; opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .audio-visualizer i { animation: none; height: 9px; }
+}
 </style></head><body>
   <div class="dmnav" id="dmnav">
     <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
@@ -1258,7 +1288,7 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
     button.className = 'track-quickplay';
     button.title = 'Phát bản thu đầu tiên của bài hát';
     button.setAttribute('aria-pressed', 'false');
-    button.innerHTML = '<span class="play-icon" aria-hidden="true">▶</span><span class="lang-vi">Phát bài hát</span><span class="lang-en">Play song</span>';
+    button.innerHTML = '<span class="play-icon" aria-hidden="true">▶</span><span class="audio-visualizer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="lang-vi">Phát bài hát</span><span class="lang-en">Play song</span>';
     heading.appendChild(button);
     var item = {audio: audio, button: button};
     players.push(item);
