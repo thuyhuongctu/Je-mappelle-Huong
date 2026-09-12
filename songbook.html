@@ -288,6 +288,66 @@ footer a:hover{color:var(--accent)}
   .song-search-label { width: 100%; }
   .song-search input { flex-basis: calc(100% - 42px); }
 }
+
+/* Bonus Track 07: a quiet blue sky / doorstep atmosphere. */
+#t07.bonus-track {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-left-color: #557bb8 !important;
+  background: linear-gradient(135deg, rgba(219,232,255,.9), rgba(255,248,239,.94) 52%, rgba(244,211,194,.82)) !important;
+  box-shadow: 0 18px 45px rgba(83,112,170,.16), inset 0 1px 0 rgba(255,255,255,.85);
+}
+#t07.bonus-track::before,
+#t07.bonus-track::after {
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  content: '';
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: .72;
+  transition: opacity .8s ease, transform 1.2s ease;
+}
+#t07.bonus-track::before {
+  width: 360px;
+  height: 220px;
+  top: -100px;
+  right: -70px;
+  background: radial-gradient(ellipse, rgba(255,255,255,.9), rgba(185,211,255,0) 70%);
+}
+#t07.bonus-track::after {
+  width: 420px;
+  height: 180px;
+  bottom: -120px;
+  left: -80px;
+  background: radial-gradient(ellipse, rgba(232,168,153,.42), rgba(232,168,153,0) 72%);
+}
+#t07.bonus-track:has(.track-quickplay.is-playing)::before {
+  opacity: 1;
+  animation: bonus-sky-drift 7s ease-in-out infinite alternate;
+}
+#t07.bonus-track:has(.track-quickplay.is-playing)::after {
+  opacity: .9;
+  transform: translate(35px, -18px) scale(1.08);
+  animation: bonus-evening-glow 5s ease-in-out infinite alternate;
+}
+#t07.bonus-track > * { position: relative; z-index: 1; }
+#t07.bonus-track .shead h2 { color: #3e5f9b; }
+#t07.bonus-track .song { background: rgba(255,255,255,.33); border-radius: 14px; }
+#t07.bonus-track .lyrics { background: rgba(255,255,255,.64); }
+@keyframes bonus-sky-drift {
+  from { transform: translate3d(-12px, 8px, 0) scale(.96); }
+  to { transform: translate3d(18px, -4px, 0) scale(1.08); }
+}
+@keyframes bonus-evening-glow {
+  from { transform: translate3d(-10px, 8px, 0) scale(.94); }
+  to { transform: translate3d(28px, -16px, 0) scale(1.1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #t07.bonus-track:has(.track-quickplay.is-playing)::before,
+  #t07.bonus-track:has(.track-quickplay.is-playing)::after { animation: none; }
+}
 </style></head><body>
   <div class="dmnav" id="dmnav">
     <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
@@ -1018,7 +1078,7 @@ Je m'appelle Hương. Elle est encore là.
 Papa… I found my way back. Pas vers hier. Vers moi.</p>
     </div>
   </section>
-<section class="reveal" id="t07" style="border-left: 6px solid var(--accent); background: rgba(168,57,78,0.04); margin-top: 40px; border-radius: 0 20px 20px 0;">
+<section class="reveal bonus-track" id="t07" style="border-left: 6px solid var(--accent); background: rgba(168,57,78,0.04); margin-top: 40px; border-radius: 0 20px 20px 0;">
     <div class="shead"><h2>Bonus Track 07 - Le ciel que tu gardes <span style="font-size:.78em;color:var(--muted)">(Une lettre restée sur le seuil)</span></h2><span class="ln"></span></div>
     <div class="song" style="padding:20px 24px">
       <div class="song-meta"><span class="lang-vi">Bonus track · Ngoại truyện · Tiếng Pháp · 1 bản thu</span><span class="lang-en">Bonus track · Epilogue · French · 1 recording</span></div>
