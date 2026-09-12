@@ -171,9 +171,6 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .vsr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .tile video{display:block;width:100%;height:auto;margin:0 0 13px;border-radius:12px;background:#0e0c0b}
 /* anh nhan vat trong the du an: nen dat set nhat, anh trong suot dat len */
-.pthumb{margin:0 0 13px;border:1px solid var(--line);border-radius:12px;overflow:hidden;
-  background:radial-gradient(120% 100% at 30% 14%,var(--surface),var(--sunk))}
-.pthumb img{display:block;width:100%;height:auto;max-height:270px;object-fit:contain}
 
 /* ===== sections ========================================================== */
 section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
@@ -611,10 +608,13 @@ footer.wrap{position:relative;overflow:hidden}
         <a class="go" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><span class="lang-vi">Mở EnQuiz ↗</span><span class="lang-en">Open EnQuiz ↗</span><span class="lang-fr">Ouvrir EnQuiz ↗</span></a>
       </div>
       <div class="tile">
-        <figure class="pthumb">
+        <button class="vthumb" type="button" data-vid="assets/video/comdraft-promo.mp4" data-poster="assets/img/comdraft-app.webp">
           <img src="assets/img/comdraft-app.webp" width="1080" height="578" loading="lazy" decoding="async"
                alt="The ComDraft app: a dark interface with the chapter menu on the left, the Communication and Document Drafting Skills title, and the clay figure in a cream ao dai standing on a map of Vietnam">
-        </figure>
+          <span class="vplay" aria-hidden="true">▶</span>
+          <span class="vlen" aria-hidden="true">0:10</span>
+          <span class="vsr"><span class="lang-vi">Xem giới thiệu ComDraft</span><span class="lang-en">Watch the ComDraft intro</span><span class="lang-fr">Voir la présentation de ComDraft</span></span>
+        </button>
         <h3>ComDraft</h3>
         <p><span class="lang-vi">Bộ học liệu học phần EC1103: 5 bộ slide có ghi chú, 3 bài thực hành phòng máy, ngân hàng 200 câu và 8 video phụ đề tiếng Việt.</span><span class="lang-en">A complete teaching package for EC1103: five lecture decks with notes, three lab workbooks, a 200-question bank and eight subtitled videos.</span><span class="lang-fr">Ensemble pédagogique pour EC1103 : cinq diaporamas, trois TP, 200 questions, huit vidéos sous-titrées.</span></p>
         <a class="go" href="https://thuyhuongctu.github.io/ComDraft/" target="_blank" rel="noopener"><span class="lang-vi">Mở ComDraft ↗</span><span class="lang-en">Open ComDraft ↗</span><span class="lang-fr">Ouvrir ComDraft ↗</span></a>
@@ -757,6 +757,8 @@ footer.wrap{position:relative;overflow:hidden}
       nut.replaceWith(v);
       v.addEventListener('play', function(){
         if(dangPhat && dangPhat !== v){ try{ dangPhat.pause(); }catch(e){} }
+        /* nhac nen cua nut nhac noi cung phai im: clip nay co tieng that */
+        try{ var M=window.HUONG_MUSIC; if(M && M.nhacDangPhat && M.nhacDangPhat()) M.stopAll(); }catch(e2){}
         dangPhat = v;
       });
       v.play().catch(function(){ /* trinh duyet chan thi nguoi xem bam nut tren thanh dieu khien */ });
