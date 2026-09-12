@@ -91,14 +91,17 @@ html:not([lang="fr"]) .lang-fr{display:none}
 
 /* ===== dai phim dau trang: clip la co, tu phat, khong tieng =============
    Chieu cao co gioi han de ten nguoi van nam trong man hinh dau tien. */
-.herofilm{position:relative;height:clamp(186px,32vh,340px);margin:14px 0 0;border-radius:22px;overflow:hidden;
+.herofilm{position:relative;aspect-ratio:16/9;margin:14px 0 0;border-radius:22px;overflow:hidden;
   border:1px solid var(--line);box-shadow:var(--press),var(--lift);background:var(--sunk)}
-.herofilm img,.herofilm video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+/* contain, khong cover: thu nho cho vua khung chu khong cat mat phan nao cua hinh */
+.herofilm img,.herofilm video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+/* man hinh thap: ha chieu cao va van giu tron hinh (co vien giay hai ben) */
+@media(max-height:700px) and (min-width:721px){.herofilm{aspect-ratio:auto;height:46vh}}
 .herofilm video{opacity:0;transition:opacity .9s ease}
 .herofilm.dangchay video{opacity:1}
 .herofilm::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(28,24,20,.14),transparent 42%,rgba(28,24,20,.2))}
-@media(max-width:560px){.herofilm{border-radius:18px;height:clamp(168px,26vh,240px)}}
+@media(max-width:560px){.herofilm{border-radius:18px}}
 
 /* ===== hero: name, one sentence, three ways to reach the work =========== */
 .hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(20px,4vw,40px);align-items:center;
@@ -138,6 +141,23 @@ html:not([lang="fr"]) .lang-fr{display:none}
 @media(max-width:720px){.heroart{justify-self:center;max-width:306px}}
 @media(max-width:560px){.heroart{max-width:250px}.avatar{width:54px;height:54px}}
 
+/* ===== clip gioi thieu trong the du an =================================
+   Bam moi phat, vi cac clip nay co tieng - khong tu chay khi mo trang.
+   Anh nen hien tron khung (height:auto), khong cat. */
+.vthumb{position:relative;display:block;width:100%;margin:0 0 13px;padding:0;border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;background:var(--sunk);cursor:pointer}
+/* Anh nen hien tron; clip doc (ban ghi man hinh dien thoai) chi bi thu nho
+   cho vua chieu cao toi da de the du an khong cao lech nhau, khong bi cat. */
+.vthumb img{display:block;width:100%;height:auto;max-height:270px;object-fit:contain}
+.vthumb:hover{border-color:var(--clay)}
+.vplay{position:absolute;inset:0;display:grid;place-items:center;font:400 1.5rem/1 var(--sans);color:#fff;
+  text-shadow:0 2px 12px rgba(0,0,0,.55);background:linear-gradient(180deg,rgba(28,24,20,.04),rgba(28,24,20,.34))}
+.vlen{position:absolute;right:8px;bottom:8px;background:rgba(28,24,20,.74);color:#fff;
+  font:600 .68rem var(--sans);padding:2px 7px;border-radius:6px}
+/* nhan cho trinh doc man hinh, khong chiem cho tren hinh */
+.vsr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.tile video{display:block;width:100%;height:auto;margin:0 0 13px;border-radius:12px;background:#0e0c0b}
+
 /* ===== sections ========================================================== */
 section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 .shead{margin:0 0 18px}
@@ -147,7 +167,8 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 .lead{max-width:64ch;margin:0 0 16px}
 /* dai anh trong mot muc: hinh rong, chu thich nho ben duoi */
 .band{margin:20px 0 0}
-.band img{display:block;width:100%;height:clamp(150px,24vw,240px);object-fit:cover;object-position:50% 42%;
+/* anh hien tron, cao tu ty le that - khong cat mat gi */
+.band img{display:block;width:100%;height:auto;
   border-radius:var(--r);border:1px solid var(--line);box-shadow:var(--press),var(--lift)}
 .band figcaption{margin:8px 2px 0;font-size:.8rem;line-height:1.5;color:var(--muted)}
 .qa{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:18px 0 0}
@@ -533,16 +554,34 @@ footer.wrap{position:relative;overflow:hidden}
     </div>
     <div class="grid">
       <div class="tile">
+        <button class="vthumb" type="button" data-vid="assets/video/maida-demo.mp4" data-poster="assets/img/maida-demo-poster.webp">
+          <img src="assets/img/maida-demo-poster.webp" loading="lazy" decoding="async" alt="Screen recording of the M-AIDA story map: 70 of 236 studies come from East Asia, with the world map filling in from 1980 to 2026">
+          <span class="vplay" aria-hidden="true">▶</span>
+          <span class="vlen" aria-hidden="true">0:27</span>
+          <span class="vsr"><span class="lang-vi">Xem M-AIDA chạy</span><span class="lang-en">Watch M-AIDA running</span><span class="lang-fr">Voir M-AIDA en action</span></span>
+        </button>
         <h3>M-AIDA</h3>
         <p><span class="lang-vi">Trích xuất mức độ ảnh hưởng từ PDF bằng mô hình ngôn ngữ lớn, kiểm chứng con người 100%, khóa bất biến. Mã nguồn mở, lưu trữ Zenodo.</span><span class="lang-en">Effect-size extraction from PDFs with large language models, 100% human verification and immutable locking. Open-source, archived on Zenodo.</span><span class="lang-fr">Extraction des tailles d'effet depuis des PDF, vérifiée à 100 % par l'humain. Libre, archivé sur Zenodo.</span></p>
         <a class="go" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><span class="lang-vi">Mở M-AIDA ↗</span><span class="lang-en">Open M-AIDA ↗</span><span class="lang-fr">Ouvrir M-AIDA ↗</span></a>
       </div>
       <div class="tile">
+        <button class="vthumb" type="button" data-vid="assets/video/bizon-intro.mp4" data-poster="assets/img/bizon-intro-poster.webp">
+          <img src="assets/img/bizon-intro-poster.webp" loading="lazy" decoding="async" alt="Clay-modelled opening of BizOn: a boy rowing a wooden boat on a Mekong branch at sunset">
+          <span class="vplay" aria-hidden="true">▶</span>
+          <span class="vlen" aria-hidden="true">0:10</span>
+          <span class="vsr"><span class="lang-vi">Xem giới thiệu BizOn</span><span class="lang-en">Watch the BizOn intro</span><span class="lang-fr">Voir la présentation de BizOn</span></span>
+        </button>
         <h3>BizOn AI</h3>
         <p><span class="lang-vi">Trò chơi mô phỏng kinh doanh cho đại học: năm đội trên một thị trường đa tác tử, lõi tài chính tất định. Dùng trong học phần EC1314.</span><span class="lang-en">A business-simulation game for higher education: five teams on one multi-agent market with a deterministic finance core. Used in EC1314.</span><span class="lang-fr">Jeu de simulation d'entreprise : cinq équipes, marché multi-agents, cœur financier déterministe.</span></p>
         <a class="go" href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener"><span class="lang-vi">Mở BizOn ↗</span><span class="lang-en">Open BizOn ↗</span><span class="lang-fr">Ouvrir BizOn ↗</span></a>
       </div>
       <div class="tile">
+        <button class="vthumb" type="button" data-vid="assets/video/enquiz-intro.mp4" data-poster="assets/img/enquiz-intro-poster.webp">
+          <img src="assets/img/enquiz-intro-poster.webp" loading="lazy" decoding="async" alt="Opening of the EnQuiz introduction: Do Thuy Huong presenting a start-up dashboard in an entrepreneurship class">
+          <span class="vplay" aria-hidden="true">▶</span>
+          <span class="vlen" aria-hidden="true">0:22</span>
+          <span class="vsr"><span class="lang-vi">Xem giới thiệu EnQuiz</span><span class="lang-en">Watch the EnQuiz intro</span><span class="lang-fr">Voir la présentation de EnQuiz</span></span>
+        </button>
         <h3>EnQuiz</h3>
         <p><span class="lang-vi">Ứng dụng ôn tập học phần Khởi nghiệp: 300 câu theo 5 chương, thi thử có đếm giờ, lưu câu sai; song ngữ, cài được, chạy offline.</span><span class="lang-en">A revision app for the Entrepreneurship course: 300 questions across 5 chapters, timed mock exams, missed-question tracking; bilingual, installable, offline.</span><span class="lang-fr">Application de révision : 300 questions, examens chronométrés, bilingue, hors ligne.</span></p>
         <a class="go" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><span class="lang-vi">Mở EnQuiz ↗</span><span class="lang-en">Open EnQuiz ↗</span><span class="lang-fr">Ouvrir EnQuiz ↗</span></a>
@@ -658,6 +697,31 @@ footer.wrap{position:relative;overflow:hidden}
   },{rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
   setTimeout(function(){document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});},2500);
+})();
+</script>
+<script>
+/* ---- clip gioi thieu trong the du an ----
+   Cac clip nay co tieng nen chi phat khi nguoi xem bam vao: cu chi cua ho
+   la thu cho phep tieng. Mot lan bam thi doi anh nen thanh the video that,
+   va dung clip khac dang chay de khong co hai tieng cung luc. */
+(function(){
+  var dangPhat = null;
+  document.querySelectorAll('.vthumb').forEach(function(nut){
+    nut.addEventListener('click', function(){
+      var v = document.createElement('video');
+      v.src = nut.getAttribute('data-vid');
+      v.poster = nut.getAttribute('data-poster');
+      v.controls = true;
+      v.playsInline = true;
+      v.preload = 'auto';
+      nut.replaceWith(v);
+      v.addEventListener('play', function(){
+        if(dangPhat && dangPhat !== v){ try{ dangPhat.pause(); }catch(e){} }
+        dangPhat = v;
+      });
+      v.play().catch(function(){ /* trinh duyet chan thi nguoi xem bam nut tren thanh dieu khien */ });
+    });
+  });
 })();
 </script>
 <script>
