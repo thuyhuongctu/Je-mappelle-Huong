@@ -21,6 +21,7 @@
     track05:       { t: 'Je m’appelle Hương',            f: A + 'track05.mp3' },
     track05_vi:    { t: 'Ba gọi con về (Vietnamese)',    f: A + 'track05-father-song-vi.mp3' },
     mekong_sunfire:{ t: 'Mekong Sunfire',                 f: A + 'mekong-sunfire.mp3' },
+    mekong_rise:   { t: 'Mekong Sunfire · Rise With The River', f: A + 'mekong-sunfire-rise-with-the-river.mp3' },
 
     // M-AIDA
     maida_official:        { t: 'M-AIDA · Official',           f: A + 'maida/maida_song_official.mp3' },
@@ -67,7 +68,7 @@
       vi: { tieude: 'Hôm nay thật vui!', noi: 'Nghe bài thư giãn thêm - để niềm vui chảy dài thêm chút nữa.' },
       en: { tieude: 'Happy today!', noi: 'Relax and let the joy flow a little longer.' },
       fr: { tieude: 'Heureux aujourd\u2019hui !', noi: 'D\u00e9tendez-vous et laissez la joie s\u2019\u00e9couler un peu plus longtemps.' },
-      bai: ['track04', 'mekong_sunfire', 'track05', 'track05_vi', 'track03']
+      bai: ['track04', 'mekong_rise', 'mekong_sunfire', 'track05', 'track05_vi', 'track03']
     },
     binhthuong: {
       icon: '😌',
