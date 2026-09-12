@@ -25,6 +25,9 @@
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --lift:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09);
   --press:inset 0 2px 0 rgba(255,255,255,.72),inset 0 -2px 0 rgba(120,85,60,.06);
+  /* Ten goi chung cua ca site, de doan CSS chep tu trang khac sang van dung mau. */
+  --accent:var(--clay);--accent-soft:var(--clay-soft);--accent2:var(--river);--gold:var(--amber);
+  --shadow:var(--lift);--text:var(--ink);
   --w:860px;--r:16px}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){
   --paper:#17130f;--surface:#201914;--sunk:#120e0b;
@@ -102,6 +105,16 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .herofilm::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(28,24,20,.14),transparent 42%,rgba(28,24,20,.2))}
 @media(max-width:560px){.herofilm{border-radius:18px}}
+/* Nut tieng cua dai phim. Trinh duyet chi cho tu chay khi khong co tieng, nen clip
+   mo ra van tat tieng va chi bat khi nguoi xem bam - cu chi cua ho la thu cho phep.
+   Vung cham 44px theo WCAG 2.2 SC 2.5.8; nut nam goc phai duoi nen khong che ten. */
+.filmsound{position:absolute;right:10px;bottom:10px;z-index:2;display:inline-flex;align-items:center;gap:7px;
+  min-height:44px;padding:0 14px;border:1px solid rgba(255,255,255,.5);border-radius:999px;cursor:pointer;
+  background:rgba(28,24,20,.62);color:#fff;font:600 .76rem var(--sans);backdrop-filter:blur(4px)}
+.filmsound:hover{background:rgba(28,24,20,.78)}
+.filmsound .fsico{font-size:1rem;line-height:1}
+@media(max-width:560px){.filmsound{right:8px;bottom:8px;padding:0 12px;font-size:.72rem}
+  .filmsound .fslabel{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}}
 
 /* ===== hero: name, one sentence, three ways to reach the work =========== */
 .hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(20px,4vw,40px);align-items:center;
@@ -158,9 +171,6 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .vsr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .tile video{display:block;width:100%;height:auto;margin:0 0 13px;border-radius:12px;background:#0e0c0b}
 /* anh nhan vat trong the du an: nen dat set nhat, anh trong suot dat len */
-.pthumb{margin:0 0 13px;border:1px solid var(--line);border-radius:12px;overflow:hidden;
-  background:radial-gradient(120% 100% at 30% 14%,var(--surface),var(--sunk))}
-.pthumb img{display:block;width:100%;height:auto;max-height:270px;object-fit:contain}
 
 /* ===== sections ========================================================== */
 section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
@@ -331,6 +341,9 @@ footer.wrap{position:relative;overflow:hidden}
  ]
 }
 </script>
+<script>/* Lua chon sang/toi dung chung ca site (khoa huong_theme). Dat trong <head>
+   de trang khong nhay mau khi tai. */
+(function(){try{var s=localStorage.getItem('huong_theme');if(s)document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script>
 </head><body>
 <a class="skip" href="#main"><span class="lang-vi">Tới nội dung</span><span class="lang-en">Skip to content</span><span class="lang-fr">Aller au contenu</span></a>
 
@@ -376,6 +389,10 @@ footer.wrap{position:relative;overflow:hidden}
     <img src="assets/img/hero-co-poster.webp" width="854" height="480" fetchpriority="high"
          alt="Do Thuy Huong in a white ao dai holding the Vietnamese flag on a riverbank lined with clay pots at sunset">
     <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+    <button class="filmsound" id="filmsound" type="button" hidden aria-pressed="false">
+      <span class="fsico" aria-hidden="true">🔇</span>
+      <span class="fslabel"><span class="lang-vi">Bật tiếng</span><span class="lang-en">Sound on</span><span class="lang-fr">Activer le son</span></span>
+    </button>
   </figure>
 
   <div class="hero">
@@ -409,7 +426,7 @@ footer.wrap{position:relative;overflow:hidden}
     </div>
     <figure class="heroart">
       <div id="claysan">
-        <img class="claypost" src="assets/img/hero-clay.webp" width="660" height="660" decoding="async"
+        <img class="claypost" src="assets/img/hero-clay.webp" width="542" height="542" decoding="async"
              alt="Clay desk: a raised relief map of Vietnam on a clay dish, with a small lotus, a wax seal and a stack of paper">
       </div>
       <figcaption class="artcap"><span class="lang-vi">Việt Nam · WBES · 50 nền kinh tế</span><span class="lang-en">Vietnam · WBES · 50 economies</span><span class="lang-fr">Vietnam · WBES · 50 économies</span></figcaption>
@@ -429,7 +446,7 @@ footer.wrap{position:relative;overflow:hidden}
     </p>
 
     <figure class="band">
-      <img src="assets/img/research-port.webp" width="1400" height="800" loading="lazy" decoding="async"
+      <img src="assets/img/research-port.webp" width="1400" height="788" loading="lazy" decoding="async"
            alt="A container ship at a Vietnamese port at sunrise, with crates stencilled Vietnamese origin on the quay">
       <figcaption>
         <span class="lang-vi">Quốc tế hóa nhìn từ cảng: xuất khẩu là bước đi ra ngoài đầu tiên của phần lớn doanh nghiệp trong dữ liệu WBES.</span>
@@ -591,10 +608,13 @@ footer.wrap{position:relative;overflow:hidden}
         <a class="go" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><span class="lang-vi">Mở EnQuiz ↗</span><span class="lang-en">Open EnQuiz ↗</span><span class="lang-fr">Ouvrir EnQuiz ↗</span></a>
       </div>
       <div class="tile">
-        <figure class="pthumb">
-          <img src="assets/img/comdraft-character.webp" loading="lazy" decoding="async"
-               alt="ComDraft character: a clay figure of Do Thuy Huong in a cream ao dai embroidered with a gold sunrise, drafting on a tablet">
-        </figure>
+        <button class="vthumb" type="button" data-vid="assets/video/comdraft-promo.mp4" data-poster="assets/img/comdraft-app.webp">
+          <img src="assets/img/comdraft-app.webp" width="1080" height="578" loading="lazy" decoding="async"
+               alt="The ComDraft app: a dark interface with the chapter menu on the left, the Communication and Document Drafting Skills title, and the clay figure in a cream ao dai standing on a map of Vietnam">
+          <span class="vplay" aria-hidden="true">▶</span>
+          <span class="vlen" aria-hidden="true">0:10</span>
+          <span class="vsr"><span class="lang-vi">Xem giới thiệu ComDraft</span><span class="lang-en">Watch the ComDraft intro</span><span class="lang-fr">Voir la présentation de ComDraft</span></span>
+        </button>
         <h3>ComDraft</h3>
         <p><span class="lang-vi">Bộ học liệu học phần EC1103: 5 bộ slide có ghi chú, 3 bài thực hành phòng máy, ngân hàng 200 câu và 8 video phụ đề tiếng Việt.</span><span class="lang-en">A complete teaching package for EC1103: five lecture decks with notes, three lab workbooks, a 200-question bank and eight subtitled videos.</span><span class="lang-fr">Ensemble pédagogique pour EC1103 : cinq diaporamas, trois TP, 200 questions, huit vidéos sous-titrées.</span></p>
         <a class="go" href="https://thuyhuongctu.github.io/ComDraft/" target="_blank" rel="noopener"><span class="lang-vi">Mở ComDraft ↗</span><span class="lang-en">Open ComDraft ↗</span><span class="lang-fr">Ouvrir ComDraft ↗</span></a>
@@ -737,6 +757,8 @@ footer.wrap{position:relative;overflow:hidden}
       nut.replaceWith(v);
       v.addEventListener('play', function(){
         if(dangPhat && dangPhat !== v){ try{ dangPhat.pause(); }catch(e){} }
+        /* nhac nen cua nut nhac noi cung phai im: clip nay co tieng that */
+        try{ var M=window.HUONG_MUSIC; if(M && M.nhacDangPhat && M.nhacDangPhat()) M.stopAll(); }catch(e2){}
         dangPhat = v;
       });
       v.play().catch(function(){ /* trinh duyet chan thi nguoi xem bam nut tren thanh dieu khien */ });
@@ -747,13 +769,53 @@ footer.wrap{position:relative;overflow:hidden}
 <script>
 /* ---- dai phim dau trang ----
    Anh tinh hien ngay; tep mp4 chi tai khi dai phim vao khung nhin, va bo han
-   khi nguoi dung tat hieu ung hoac may dang tiet kiem du lieu. Clip khong co
-   track am thanh nen khong can nut tat tieng. */
+   khi nguoi dung tat hieu ung hoac may dang tiet kiem du lieu.
+   Clip co mot doan nhac cua chinh tac gia (hook «Mekong Sunfire»). Trinh duyet
+   chi cho tu chay khi khong co tieng, nen clip mo ra van tat tieng va chi bat
+   khi nguoi xem bam nut - cu chi cua ho la thu cho phep tieng. Bat tieng clip
+   thi dung nhac nen, va nguoc lai, de khong bao gio co hai nguon tieng. */
 (function(){
   var box=document.querySelector('.herofilm');
   if(!box) return;
   var v=box.querySelector('video');
   if(!v) return;
+  var nut=document.getElementById('filmsound');
+  var ico=nut&&nut.querySelector('.fsico');
+  function nhac(){ return window.HUONG_MUSIC; }
+  function veNut(){
+    if(!nut) return;
+    var tat=v.muted;
+    nut.setAttribute('aria-pressed', tat?'false':'true');
+    if(ico) ico.textContent = tat?'🔇':'🔊';
+    nut.querySelectorAll('.fslabel span').forEach(function(sp,i){
+      sp.textContent = tat ? ['Bật tiếng','Sound on','Activer le son'][i]
+                           : ['Tắt tiếng','Sound off','Couper le son'][i];
+    });
+  }
+  if(nut){
+    nut.addEventListener('click',function(){
+      v.muted = !v.muted;
+      if(!v.muted){
+        /* mot nguon tieng mot luc: tat nhac nen truoc khi clip len tieng */
+        try{ var M=nhac(); if(M&&M.dungNhacNen) M.dungNhacNen(); if(M&&M.stopAll) M.stopAll(); }catch(e){}
+        v.play().catch(function(){});
+      }
+      veNut();
+    });
+  }
+  /* Nhac nen bat len thi clip tro lai im lang. music.js phat nhac bang mot the
+     Audio roi ngoai DOM nen su kien 'play' cua no khong noi len document; no bao
+     bang su kien rieng 'huong-nhac'. Van nghe ca 'play' cho cac the trong trang. */
+  function imLang(){ if(!v.muted){ v.muted=true; veNut(); } }
+  document.addEventListener('huong-nhac',function(e){
+    if(e.detail && e.detail.trangthai==='play') imLang();
+  });
+  document.addEventListener('play',function(e){
+    var m=e.target;
+    if(m===v || !m || !(m.tagName==='AUDIO'||m.tagName==='VIDEO')) return;
+    imLang();
+  },true);
+
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   try{
     var m=navigator.connection||{};
@@ -761,10 +823,16 @@ footer.wrap{position:relative;overflow:hidden}
     if(/(^|-)(2g|slow-2g|3g)$/.test(m.effectiveType||'')) return;
   }catch(e){}
   var daNap=false;
+  /* Hien nut tieng ngay khi clip nap duoc du de phat - khong doi play() thanh cong,
+     vi neu trinh duyet chan ca video tat tieng thi nguoi xem van can mot cach bat. */
+  v.addEventListener('loadeddata',function(){ if(nut){ nut.hidden=false; veNut(); } });
   function chay(){
     if(!daNap){ daNap=true; v.src='assets/video/hero-co.mp4'; }
     var p=v.play();
-    if(p && p.then) p.then(function(){ box.classList.add('dangchay'); }).catch(function(){});
+    if(p && p.then) p.then(function(){
+      box.classList.add('dangchay');
+      if(nut){ nut.hidden=false; veNut(); }
+    }).catch(function(){});
   }
   function dung(){ try{ v.pause(); }catch(e2){} }
   if('IntersectionObserver' in window){
@@ -813,5 +881,9 @@ footer.wrap{position:relative;overflow:hidden}
   else addEventListener('load',batDau);
 })();
 </script>
+<script>/* Nut nhac noi cua trang chu: cung mot he thong voi cac trang khac
+   (assets/js/music.js tu chen CSS va tu dung widget). Nhac chi phat khi nguoi
+   xem bam - khong bao gio tu chay - va bat nhac thi dai phim dau trang tu tat tieng. */</script>
+<script src="assets/js/music.js" defer></script>
 <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body></html>
