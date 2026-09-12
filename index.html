@@ -90,7 +90,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
 @media(max-width:400px){.mark b{font-size:.84rem}}
 
 /* ===== hero: name, one sentence, three ways to reach the work =========== */
-.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(20px,4vw,40px);align-items:start;
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(20px,4vw,40px);align-items:center;
   padding-block:clamp(30px,6vw,54px) clamp(24px,4vw,38px)}
 @media(max-width:720px){.hero{grid-template-columns:1fr;gap:24px}}
 .eyebrow{font:700 .68rem var(--sans);letter-spacing:.17em;text-transform:uppercase;color:var(--clay);margin:0 0 10px}
@@ -108,9 +108,24 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .btn.primary{background:var(--clay);border-color:var(--clay);color:#fff;box-shadow:inset 0 2px 0 rgba(255,255,255,.22),var(--lift)}
 .btn.primary:hover{background:#ad4e2f;color:#fff}
 :root[data-theme=dark] .btn.primary,:root:not([data-theme=light]) .btn.primary{color:#1c1814}
-.portrait{width:100%;height:auto;max-width:272px;aspect-ratio:1/1;object-fit:cover;background:#f2ede2;
-  border-radius:18px;border:1px solid var(--line);box-shadow:var(--lift)}
-@media(max-width:720px){.portrait{max-width:200px}}
+/* chan dung nho dat canh ten - giu mat nguoi o dau trang */
+.byline{display:flex;align-items:center;gap:13px;margin:0 0 14px}
+.byline .eyebrow{margin:0}
+.avatar{width:62px;height:62px;flex:none;border-radius:50%;object-fit:cover;background:var(--sunk);
+  border:1px solid var(--line);box-shadow:var(--lift)}
+/* khoi dat set 3D: cai dia tren ban lam viec */
+.heroart{position:relative;width:100%;max-width:348px;justify-self:end;border-radius:24px;overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--press),var(--lift);
+  background:radial-gradient(118% 96% at 28% 16%,var(--surface) 8%,var(--sunk))}
+#claysan{position:relative;width:100%;aspect-ratio:1/1}
+.claycanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.claypost{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s ease}
+#claysan.co-3d .claypost{opacity:0}
+.artcap{position:absolute;left:0;right:0;bottom:0;margin:0;padding:26px 14px 10px;
+  font:600 .64rem var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--muted);text-align:center;
+  background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--sunk) 82%,transparent))}
+@media(max-width:720px){.heroart{justify-self:center;max-width:306px}}
+@media(max-width:560px){.heroart{max-width:250px}.avatar{width:54px;height:54px}}
 
 /* ===== sections ========================================================== */
 section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
@@ -172,10 +187,22 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 .note cite{font-style:normal;font-size:.83rem;color:var(--muted)}
 
 /* footer */
-footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;font-size:.85rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 46px;font-size:.85rem;color:var(--muted)}
 .fnav{display:flex;flex-wrap:wrap;gap:0 18px;margin:0 0 10px;padding:0;list-style:none}
 .fnav a{text-decoration:none;color:var(--ink);display:inline-block;padding-block:6px}
 .fnav a:hover{color:var(--clay)}
+/* ===== hinh chim: duong vien Viet Nam o chan trang ======================
+   Dung mask nen net ban do lay mau tu token, tu doi theo che do sang/toi.
+   Trinh duyet khong ho tro mask thi khong hien - chi la hinh trang tri. */
+footer.wrap{position:relative;overflow:hidden}
+.vnmark{display:none}
+@supports ((mask-image:url(x)) or (-webkit-mask-image:url(x))){
+  .vnmark{display:block;position:absolute;right:2px;bottom:2px;width:117px;height:132px;
+    pointer-events:none;background:var(--clay);opacity:.34;
+    -webkit-mask:url('assets/img/vn-outline.svg') right bottom/contain no-repeat;
+            mask:url('assets/img/vn-outline.svg') right bottom/contain no-repeat}
+  @media(max-width:560px){.vnmark{width:98px;height:111px;opacity:.28}}
+}
 .fbot{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.78rem}
 
 /* very little movement */
@@ -304,7 +331,11 @@ footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;
 
   <div class="hero">
     <div>
-      <p class="eyebrow"><span class="lang-vi">Giảng viên · Nghiên cứu sinh tiến sĩ</span><span class="lang-en">Lecturer · PhD Candidate</span><span class="lang-fr">Enseignante · Doctorante</span></p>
+      <div class="byline">
+        <img class="avatar" src="assets/img/huong_clay_portrait.webp" width="760" height="760"
+             alt="Clay-modelled portrait of Do Thuy Huong in a white ao dai with a lotus in her hair" fetchpriority="high">
+        <p class="eyebrow"><span class="lang-vi">Giảng viên · Nghiên cứu sinh tiến sĩ</span><span class="lang-en">Lecturer · PhD Candidate</span><span class="lang-fr">Enseignante · Doctorante</span></p>
+      </div>
       <h1><span class="lang-vi">Đỗ Thùy Hương</span><span class="lang-en">Do Thuy Huong</span><span class="lang-fr">Do Thuy Huong</span></h1>
       <p class="affil">
         <span class="lang-vi"><b>Trường Kinh tế, Đại học Cần Thơ</b><br>Hướng dẫn khoa học: PGS.TS. Phan Anh Tú</span>
@@ -327,8 +358,13 @@ footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;
         <a class="btn" href="mailto:thuyhuongctu@gmail.com">✉ <span class="lang-vi">Email</span><span class="lang-en">Email</span><span class="lang-fr">Courriel</span></a>
       </div>
     </div>
-    <img class="portrait" src="assets/img/huong_clay_portrait.webp" width="760" height="760"
-         alt="Clay-modelled portrait of Do Thuy Huong in a white ao dai with a lotus in her hair" fetchpriority="high">
+    <figure class="heroart">
+      <div id="claysan">
+        <img class="claypost" src="assets/img/hero-clay.webp" width="660" height="660" decoding="async"
+             alt="Clay desk: a raised relief map of Vietnam on a clay dish, with a small lotus, a wax seal and a stack of paper">
+      </div>
+      <figcaption class="artcap"><span class="lang-vi">Việt Nam · WBES · 50 nền kinh tế</span><span class="lang-en">Vietnam · WBES · 50 economies</span><span class="lang-fr">Vietnam · WBES · 50 économies</span></figcaption>
+    </figure>
   </div>
 
   <section id="research" class="rv">
@@ -479,6 +515,7 @@ footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;
 </main>
 
 <footer class="wrap">
+  <div class="vnmark" aria-hidden="true"></div>
   <ul class="fnav">
     <li><a href="mailto:thuyhuongctu@gmail.com">thuyhuongctu@gmail.com</a></li>
     <li><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID</a></li>
@@ -563,6 +600,40 @@ footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;
   },{rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
   setTimeout(function(){document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});},2500);
+})();
+</script>
+<script>
+/* ---- nap canh dat set 3D cho hero ----
+   Anh tinh assets/img/hero-clay.webp da hien ngay tu dau; ba tep duoi day
+   chi tai sau khi trang ve xong, va bo qua han trong bon truong hop:
+   khong co WebGL, nguoi dung tat hieu ung, may bat tiet kiem du lieu,
+   hoac mang 2G/3G. Trang van doc duoc day du neu khong nap gi. */
+(function(){
+  if(!document.getElementById('claysan')) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  try{
+    var m=navigator.connection||{};
+    if(m.saveData) return;
+    if(/(^|-)(2g|slow-2g|3g)$/.test(m.effectiveType||'')) return;
+  }catch(e){}
+  try{
+    var t=document.createElement('canvas');
+    if(!(t.getContext('webgl')||t.getContext('experimental-webgl'))) return;
+  }catch(e2){ return; }
+  function nap(ds){
+    (function ke(i){
+      if(i>=ds.length) return;
+      var sc=document.createElement('script');
+      sc.src=ds[i]; sc.async=false;
+      sc.onload=function(){ ke(i+1); };
+      document.head.appendChild(sc);
+    })(0);
+  }
+  function batDau(){
+    nap(['assets/vendor/three-r128.min.js','assets/js/vn-shape.js','assets/js/clayhero.js']);
+  }
+  if('requestIdleCallback' in window) requestIdleCallback(batDau,{timeout:2600});
+  else addEventListener('load',batDau);
 })();
 </script>
 <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
