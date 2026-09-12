@@ -1238,11 +1238,21 @@ function hatGiiong(kieu){
   // kieu: 'welcome' | 'gioi-thieu' | ... map sang file assets/voice/voice_{kieu}_{NG}.mp3
   if(!amBat) return;                 // tôn trọng trạng thái nút âm thanh
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if(huongAudio){ try{huongAudio.pause();}catch(e){} }
+  if(huongAudio){ try{huongAudio.pause();}catch(e){} neGiong(false); }
   const path = `assets/voice/voice_${kieu}_${NG}.mp3`;
   huongAudio = new Audio(path);
   huongAudio.volume = .85;
-  huongAudio.play().catch(()=>{});
+  // truoc day giong noi phat de len nhac nen; bao music.js ha nhac trong luc noi
+  neGiong(true);
+  huongAudio.addEventListener('ended', ()=>neGiong(false), {once:true});
+  huongAudio.addEventListener('error', ()=>neGiong(false), {once:true});
+  huongAudio.play().catch(()=>neGiong(false));
+}
+let dangNe = false;
+function neGiong(batDau){
+  if(batDau === dangNe) return;
+  dangNe = batDau;
+  try{ if(window.HUONG_MUSIC && HUONG_MUSIC.duck) HUONG_MUSIC.duck(batDau); }catch(e){}
 }
 // gắn vào các điểm tương tác
 (function ganSFX(){
