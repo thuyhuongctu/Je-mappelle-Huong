@@ -55,6 +55,15 @@ button{font-family:inherit;cursor:pointer;border:0}
 #cong.tan{opacity:0;visibility:hidden}
 /* Nền video hoàng hôn của cổng chào: tự phát không tiếng, lặp; poster dự phòng */
 #cong-nen{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+/* Man doc (dien thoai): clip 16:9 neu cat theo khung doc thi mat gan het be
+   ngang. Cho contain de thay tron canh; phan trong con lai lay chinh anh
+   poster lam nen roi lam mo, nen mau van am chu khong tro ra nen xanh. */
+@media(max-aspect-ratio:1/1){
+  #cong{background:url('assets/video/cong-hoang-hon-poster.webp') center/cover no-repeat}
+  #cong::before{content:"";position:absolute;inset:-6%;z-index:0;pointer-events:none;
+    background:inherit;filter:blur(26px) brightness(.9) saturate(1.05)}
+  #cong-nen{object-fit:contain;object-position:50% 30%}
+}
 #cong-phu-mau{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(25,12,22,.22),rgba(255,240,230,.10) 52%,rgba(70,28,40,.34))}
 #cong .cong-hop{position:relative;z-index:2;background:rgba(255,252,248,.88);border-radius:22px;
