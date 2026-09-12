@@ -10,7 +10,7 @@ mỗi bài viết blog mới phát hiện trong `blog.html`.
 | Nguồn | Vai trò |
 |---|---|
 | `blog.html` — các `<article class="post">` | Lấy ngày đăng từ `.post-meta` (`DD · MM · YYYY`) làm `lastmod`; tiêu đề Việt trong `.post-title` chuyển thành slug URL thân thiện, gắn làm neo `#slug` trên `blog.html`. |
-| Các trang tĩnh (`index.html`, `blog.html`, `music.html`, `songbook.html`, `trangvien.html`) | `lastmod` lấy từ git history hoặc thời gian sửa file; độ ưu tiên và tần suất thay đổi cố định. |
+| Các trang tĩnh (`index.html`, `publications.html`, `cv.html`, `blog.html`, `garden.html`, `music.html`, `songbook.html`, `trangvien.html`) | `lastmod` lấy từ git history hoặc thời gian sửa file; độ ưu tiên và tần suất thay đổi cố định. |
 
 Slug sinh tự động từ tiêu đề tiếng Việt (bỏ dấu, nối bằng gạch ngang),
 ví dụ «EnQuiz tăng tốc: 52 lượt xem sau ba ngày…» thành
@@ -44,3 +44,26 @@ còn chấp nhận tại `…/sitemap.xml`. Để đối chiếu:
 python3 -c "import xml.etree.ElementTree as t; t.parse('sitemap.xml'); print('XML hợp lệ')"
 curl -s https://thuyhuongctu.github.io/Je-mappelle-Huong/sitemap.xml | head -20
 ```
+
+> **Lưu ý:** script ghi đè **toàn bộ** `sitemap.xml` từ danh sách `PAGE_CONF`
+> bên trong nó. Đừng sửa `sitemap.xml` bằng tay — thêm trang mới vào
+> `PAGE_CONF` rồi chạy lại, nếu không thay đổi sẽ biến mất ở lần workflow
+> `update-sitemap.yml` chạy kế tiếp.
+
+## check-site.py — kiểm tra toàn vẹn trước khi đẩy
+
+Bắt ba lỗi từng xảy ra trong repo này, cả ba đều âm thầm — trang vẫn hiển thị
+bình thường nên không ai phát hiện:
+
+| Kiểm tra | Lỗi nó bắt được |
+|---|---|
+| Danh sách `CORE` trong `sw.js` | Một mục trỏ tới tệp không tồn tại. `cache.addAll()` hỏng nguyên khối, nên **PWA offline không cài được** — nhưng khi có mạng trang vẫn chạy y hệt. |
+| `sitemap.xml` đối chiếu `rebuild-sitemap.py` | Sitemap bị sửa tay, hoặc thêm trang mới mà quên cập nhật `PAGE_CONF`. Thay đổi sẽ bị workflow ghi đè mất. |
+| Liên kết nội bộ và neo `#` | Đổi tên tệp hoặc đổi `id` của một mục, để lại liên kết chết ở trang khác. |
+
+```bash
+python3 scripts/check-site.py    # trả mã 0 nếu đạt, 1 nếu có lỗi
+```
+
+Script không cần thư viện ngoài và không sửa tệp nào. Chạy nó trước mỗi lần
+commit có đụng tới `sw.js`, `sitemap.xml`, hoặc cấu trúc liên kết giữa các trang.

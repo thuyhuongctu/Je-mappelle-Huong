@@ -148,6 +148,7 @@ playful half of the site, reachable by one link from the academic home.
 ├── icons/                   Application icon set
 ├── manifest.webmanifest     Web application manifest
 ├── sw.js                    Service worker (versioned offline cache)
+├── scripts/                 rebuild-sitemap.py, check-site.py (integrity check)
 ├── zenodo-stats.js          Live Zenodo download statistics
 └── sitemap.xml, robots.txt  Search-engine metadata
 ```
