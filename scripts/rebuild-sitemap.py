@@ -13,7 +13,8 @@ Nguồn dữ liệu:
 - blog.html   : dò mọi <article class="post ...">, lấy ngày đăng từ .post-meta
                 (định dạng «DD · MM · YYYY») làm lastmod; slug sinh từ tên bài
                 Việt ở .post-title.
-- trang viên 3D (trangvien.html), music.html, songbook.html : ngày sửa đổi của file.
+- các trang tĩnh (publications.html, cv.html, garden.html, trangvien.html,
+                music.html, songbook.html) : ngày sửa đổi của file.
 - index.html  : luôn ưu tiên lastmod mới nhất của toàn bộ các trang HTML.
 
 URL dùng tiền tố công khai https://thuyhuongctu.github.io/Je-mappelle-Huong/.
@@ -89,8 +90,13 @@ def file_lastmod(filename: str) -> str:
 # ---------- xây sitemap ----------
 PAGE_CONF = [
     # (url_tail, lastmod_override_file, priority, changefreq)
+    # lop hoc thuat - trang chu, cong bo, CV
     ('/', 'index.html', '1.0', 'weekly'),
+    ('/publications.html', 'publications.html', '0.9', 'weekly'),
+    ('/cv.html', 'cv.html', '0.8', 'monthly'),
     ('/blog.html', 'blog.html', '0.9', 'weekly'),
+    # lop vuon so
+    ('/garden.html', 'garden.html', '0.6', 'monthly'),
     ('/music.html', 'music.html', '0.7', 'monthly'),
     ('/songbook.html', 'songbook.html', '0.6', 'monthly'),
     ('/trangvien.html', 'trangvien.html', '0.5', 'monthly'),
