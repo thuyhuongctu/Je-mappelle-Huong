@@ -14,13 +14,13 @@
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="manifest" href="manifest.webmanifest">
 <style>
-:root{--paper:#f2faff;--surface:#ffffff;--ink:#0b1d33;--muted:#5a7a96;--line:#d3e8f5;
---accent:#e8416b;--accent-soft:#e4fbff;--gold:#b98a2e;
---serif:Georgia,"Iowan Old Style","Times New Roman",serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
---shadow:0 1px 2px rgba(30,20,20,.05),0 10px 30px rgba(30,20,20,.07)}
-@media(prefers-color-scheme:dark){:root{--paper:#050a14;--surface:#0a1428;--ink:#c8f2ff;--muted:#7ea8c4;--line:#15304c;--accent:#ff5c8d;--accent2:#00f0ff;--accent-soft:rgba(0,240,255,.08);--shadow:0 0 12px rgba(0,240,255,.18),0 10px 30px rgba(0,0,0,.5)}}
-:root[data-theme=dark]{--paper:#050a14;--surface:#0a1428;--ink:#c8f2ff;--muted:#7ea8c4;--line:#15304c;--accent:#ff5c8d;--accent-soft:rgba(0,240,255,.08);--shadow:0 0 12px rgba(0,240,255,.18),0 10px 30px rgba(0,0,0,.5)}
-:root[data-theme=light]{--paper:#f2faff;--surface:#ffffff;--ink:#0b1d33;--muted:#5a7a96;--line:#d3e8f5;--accent:#e8416b;--accent-soft:#e4fbff}
+:root{--paper:#f6f1e7;--surface:#fffcf5;--ink:#1c1814;--muted:#6f6459;--line:#e2d8c7;
+--accent:#c45c3a;--accent-soft:#f3e4da;--gold:#b8842c;--accent2:#3f6f68;
+--serif:"Iowan Old Style",Georgia,"Times New Roman",serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+--shadow:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#17130f;--surface:#201914;--ink:#efe6d8;--muted:#a6998a;--line:#332a22;--accent:#e08055;--accent-soft:#3a251c;--gold:#d6a24e;--accent2:#79b3a6;--shadow:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42)}}
+:root[data-theme=dark]{--paper:#17130f;--surface:#201914;--ink:#efe6d8;--muted:#a6998a;--line:#332a22;--accent:#e08055;--accent-soft:#3a251c;--gold:#d6a24e;--accent2:#79b3a6;--shadow:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42)}
+:root[data-theme=light]{--paper:#f6f1e7;--surface:#fffcf5;--ink:#1c1814;--muted:#6f6459;--line:#e2d8c7;--accent:#c45c3a;--accent-soft:#f3e4da;--gold:#b8842c;--accent2:#3f6f68;--shadow:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09)}
 html{scroll-behavior:smooth}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6}
 .wrap{max-width:860px;margin:0 auto;padding:clamp(20px,4vw,48px) 18px}
@@ -40,14 +40,14 @@ a{color:var(--accent)}
 html[lang="vi"] .lang-en,html[lang="vi"] .lang-fr{display:none}
 html[lang="en"] .lang-vi,html[lang="en"] .lang-fr{display:none}
 html[lang="fr"] .lang-vi,html[lang="fr"] .lang-en{display:none}
-.sitenav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:96px 0 6px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.wrap{padding-top:96px}
 .sitenav a{font-size:.84rem;font-weight:600;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 17px;box-shadow:inset 0 2px 0 rgba(255,255,255,.55),0 5px 12px rgba(150,95,75,.12)}
 .sitenav a:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 .sitenav a.here{background:var(--accent);border-color:var(--accent);color:#fff}
 header.page{margin:40px 0 14px;text-align:center;border-bottom:none;padding-bottom:0;position:relative}
 header.page h1{font-size:clamp(1.7rem,5vw,2.5rem);margin:0 0 8px}
 .page-kicker{margin:0 0 6px;font:700 .7rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
-header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--mint,#cdeacf),var(--accent-soft),var(--sky,#dde6f6))}
+header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--accent-soft),var(--accent),var(--accent-soft))}
 .sub{color:var(--muted)}
 
 /* filters */
@@ -61,10 +61,10 @@ header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:
 .pub-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .pub-year{font:700 .78rem var(--sans);color:var(--accent);letter-spacing:.05em}
 .pub-type{font:700 .62rem var(--sans);letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:2px 10px;color:#fff}
-.pub-type.pub-journal{background:#4e7a5f}
-.pub-type.pub-chapter{background:#b98a2e}
-.pub-type.pub-conf{background:#5f6e94}
-.pub-type.pub-preprint{background:#8a6fbf}
+.pub-type.pub-journal{background:#3f6f68}
+.pub-type.pub-chapter{background:#b8842c}
+.pub-type.pub-conf{background:#7a6a58}
+.pub-type.pub-preprint{background:#a2634a}
 .pub-type.pub-other{background:var(--muted)}
 .pub-title{font-size:clamp(1rem,2.6vw,1.16rem);line-height:1.35;margin:0 0 8px}
 .pub-venue{font-size:.84rem;color:var(--muted);overflow-wrap:anywhere;word-break:break-word;min-width:0}
@@ -368,12 +368,11 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
   <div class="dmnav" id="dmnav">
     <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
     <div class="dmright">
-      <a href="index.html#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
-      <a href="publications.html"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a>
-      <a class="hide-xs" href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></a>
-      <a class="hide-xs" href="songbook.html">Songbook</a>
-      <a class="hide-xs" href="blog.html">Blog</a>
-      <a href="trangvien.html">🌸 <span class="lang-vi">Trang viên</span><span class="lang-en">3D Garden</span></a>
+      <a href="index.html"><span class="lang-vi">Trang chủ</span><span class="lang-en">Home</span><span class="lang-fr">Accueil</span></a>
+      <a href="index.html#research"><span class="lang-vi">Nghiên cứu</span><span class="lang-en">Research</span><span class="lang-fr">Recherche</span></a>
+      <a href="publications.html" aria-current="page"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></a>
+      <a href="cv.html">CV</a>
+      <a href="garden.html">🪷 <span class="lang-vi">Vườn số</span><span class="lang-en">Garden</span><span class="lang-fr">Jardin</span></a>
       <a class="dmico" href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener" title="ORCID">🆔</a>
       <a class="dmico" href="https://github.com/thuyhuongctu" target="_blank" rel="noopener" title="GitHub">💻</a>
       <a class="dmico" href="mailto:thuyhuongctu@gmail.com" title="Email">✉️</a>
@@ -382,13 +381,11 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<a class="skip" href="#pub-list"><span class="lang-vi">Nhảy đến danh mục công bố</span><span class="lang-en">Skip to publications</span><span class="lang-fr">Aller aux publications</span></a>
+<a class="skip" href="#main"><span class="lang-vi">Nhảy đến danh mục công bố</span><span class="lang-en">Skip to publications</span><span class="lang-fr">Aller aux publications</span></a>
 <a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo LR - Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
-<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span><span class="lang-fr">◐ Clair / Sombre</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button><button class="toprefresh" id="nut-acm" type="button" title="Academic mode"><span>🎓</span> <span class="lang-vi">Học thuật</span><span class="lang-en">Academic</span><span class="lang-fr">Académique</span></button></div>
+<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span><span class="lang-fr">◐ Clair / Sombre</span></button></div>
 <div class="wrap">
-<nav class="sitenav" aria-label="Site"><a href="./"><span class="lang-vi">Trang chủ</span><span class="lang-en">Home</span><span class="lang-fr">Accueil</span></a><a href="./#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span><span class="lang-fr">À propos</span></a><a href="publications.html" class="here" aria-current="page"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></a><a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><span class="lang-fr">Musique</span></a><a class="hide-xs" href="blog.html">Blog</a><a href="trangvien.html">🌸 <span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D Garden</span><span class="lang-fr">Jardin 3D</span></a>
-    <a href="cv.html" title="Curriculum Vitae" style="font-weight:600"><span class="lang-vi">📄 CV</span><span class="lang-en">📄 CV</span><span class="lang-fr">📄 CV</span></a>
-    <a href="journey.html" title="Nhật ký sáng tạo"><span class="lang-vi">🌸 Nhật ký</span><span class="lang-en">🌸 Journal</span><span class="lang-fr">🌸 Journal</span></a></nav>
+
 <header class="page">
   <div class="page-kicker"><span class="lang-vi">Hồ sơ học thuật</span><span class="lang-en">Academic profile</span><span class="lang-fr">Profil académique</span></div>
   <h1><span class="lang-vi">Công bố khoa học</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></h1>
@@ -524,7 +521,7 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
         <h4><span class="lang-vi">Trang này</span><span class="lang-en">Site</span></h4>
         <a href="index.html#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
         <a href="publications.html"><span class="lang-vi">Công bố khoa học</span><span class="lang-en">Publications</span></a>
-        <a href="index.html#gallery"><span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Virtual character</span></a>
+        <a href="garden.html#gallery"><span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Virtual character</span></a>
         <a class="hide-xs" href="blog.html">Blog</a>
       </div>
       <div>
@@ -574,55 +571,33 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
 })();</script>
 
 <script>
-/* Nút làm mới trang + tự phát hiện bản cập nhật PWA */
+/* PWA: register the worker and offer a refresh only when a new version lands */
 (function(){
+  if(!('serviceWorker' in navigator)) return;
   function doReload(){
-    if('serviceWorker' in navigator && navigator.serviceWorker.controller){
-      navigator.serviceWorker.getRegistrations().then(function(rs){
-        rs.forEach(function(r){r.unregister();});
-      }).catch(function(){});
-    }
-    // xóa cache tĩnh của app trước khi reload
-    if('caches' in window){
-      caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});});
-    }
+    if('caches' in window){ caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});}); }
     setTimeout(function(){location.reload();},150);
   }
-  var b=document.getElementById('nut-ref');
-  if(b){b.addEventListener('click',doReload);}
-  /* tự gợi ý làm mới khi có service worker mới */
-  if('serviceWorker' in navigator){
-    navigator.serviceWorker.addEventListener('controllerchange',function(){location.reload();});
-    var sv='sw.js';
-    navigator.serviceWorker.register(sv).then(function(reg){
-      reg.addEventListener('updatefound',function(){
-        var nw=reg.installing;
-        if(!nw) return;
-        nw.addEventListener('statechange',function(){
-          if(nw.state==='installed' && navigator.serviceWorker.controller){
-            var note=document.createElement('button');
-            note.type='button';note.id='note-ref';
-            note.textContent=(document.documentElement.getAttribute('lang')==='fr')?
-              '⟳ Nouvelle version - actualiser ?':'⟳ '+(document.documentElement.getAttribute('lang')==='en'?
-              'New version available - refresh?':'⟳ Đã có bản cập nhật - làm mới?');
-            note.style.cssText='position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99;'+
-              'border:1px solid var(--accent,#b25d7d);border-radius:999px;background:#fff;color:#000;'+
-              'font:700 .8rem system-ui;padding:8px 18px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.15)';
-            note.addEventListener('click',function(){note.remove();doReload();});
-            document.body.appendChild(note);
-            setTimeout(function(){if(note.parentNode)note.remove();},30000);
-          }
-        });
+  navigator.serviceWorker.register('sw.js').then(function(reg){
+    reg.addEventListener('updatefound',function(){
+      var nw=reg.installing; if(!nw) return;
+      nw.addEventListener('statechange',function(){
+        if(nw.state!=='installed'||!navigator.serviceWorker.controller) return;
+        var lg=document.documentElement.getAttribute('lang')||'vi';
+        var note=document.createElement('button');
+        note.type='button'; note.id='note-ref';
+        note.textContent=lg==='fr'?'⟳ Nouvelle version - actualiser ?':
+          (lg==='en'?'⟳ New version available - refresh?':'⟳ Đã có bản cập nhật - làm mới?');
+        note.style.cssText='position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99;'+
+          'border:1px solid var(--accent);border-radius:999px;background:var(--surface);color:var(--ink);'+
+          'font:700 .8rem system-ui;padding:8px 18px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.15)';
+        note.addEventListener('click',function(){note.remove();doReload();});
+        document.body.appendChild(note);
+        setTimeout(function(){if(note.parentNode)note.remove();},30000);
       });
-    }).catch(function(){});
-  }
+    });
+  }).catch(function(){});
 })();
-
-  var REF_L={vi:'Làm mới',en:'Refresh',fr:'Rafraîchir'};
-  function updRefLabel(){var t=document.getElementById('nut-ref-t');if(t){var lg=(document.documentElement.getAttribute('lang')||'vi').slice(0,2);t.textContent=REF_L[lg]||REF_L.vi;}}
-  setInterval(updRefLabel,600);
-  try{new MutationObserver(updRefLabel).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(e){}
-  updRefLabel();
 </script>
 
 <script>
@@ -738,5 +713,4 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
 
   </g>
 <g class="lh" transform="translate(302.1,228.0)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(344.8,435.0)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(71.2,419.4)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(145.3,465.6)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g></svg></div></div>
-<script src="assets/js/music.js" defer></script>
-<script>(function(){var acm=document.getElementById("nut-acm");if(acm){acm.addEventListener("click",function(){try{localStorage.setItem("hocsuat","1")}catch(e){}window.location.href="publications.html#main"});}try{if(localStorage.getItem("hocsuat")==="1"){var r=document.getElementById("nut-ref")&&location.href;if(location.pathname.endsWith("index.html")||location.pathname.endsWith("/")){localStorage.removeItem("hocsuat");window.location.replace("publications.html#main")}}}catch(e){}})();</script></body></html>
+</body></html>
