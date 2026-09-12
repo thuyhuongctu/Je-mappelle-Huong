@@ -70,7 +70,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .ctl{display:flex;align-items:center;gap:7px;flex-shrink:0}
 .mainnav+.ctl{margin-left:6px}
 .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
-.lang button{border:0;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:5px 10px;cursor:pointer}
+.lang button{border:0;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:8px 11px;cursor:pointer}
 .lang button.on{background:var(--clay);color:#fff}
 .morebtn{width:32px;height:32px;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--muted);
   font:700 1rem/1 var(--sans);cursor:pointer;box-shadow:var(--press)}
@@ -92,7 +92,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .ghead .k{font:700 .66rem var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--clay)}
 .ghead h1{font-size:clamp(1.6rem,4.4vw,2.3rem);line-height:1.14;margin:6px 0 8px}
 .ghead p{margin:0 auto;max-width:58ch;color:var(--muted);font-size:.94rem}
-.backhome{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font:600 .84rem var(--sans);text-decoration:none}
+.backhome{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font:600 .84rem var(--sans);text-decoration:none;min-height:34px}
 
 /* ===== the sign map ===================================================== */
 #bando{position:relative;width:100%;aspect-ratio:1376/768;border-radius:26px;overflow:hidden;
@@ -118,7 +118,8 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .tram-feat{background:rgba(196,92,58,.95);color:#fffdf8;box-shadow:inset 0 2px 0 rgba(255,255,255,.32),0 6px 18px rgba(150,70,45,.35)}
 .tram-feat:hover{background:#c45c3a;color:#fff}
 .tram-feat small{color:#ffdfd3}
-@media(max-width:560px){.tram{padding:.4em .62em}.tram small{display:none}}
+@media(max-width:560px){.tram{padding:.55em .7em;min-height:32px;display:inline-flex;
+  align-items:center;justify-content:center}.tram small{display:none}}
 
 /* ===== sections ========================================================= */
 section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
@@ -203,6 +204,7 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 .wd-mini .val{font-family:var(--serif);font-size:22px;color:var(--ink);margin-top:3px;font-weight:600}
 .wd-mini .yr{font-size:11px;color:var(--muted);margin-top:1px}
 .wd-source{font-size:12px;color:var(--muted);margin-top:18px;text-align:center}
+.wd-source a{display:inline-block;padding:6px 3px;margin:-6px -3px}
 @media(max-width:560px){.wd-cards{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}}
 
 /* ===== Hương rides the tour - garden only ============================== */
@@ -219,20 +221,24 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 #hg-next small{display:block;font-weight:600;color:var(--muted);font-size:.68rem;margin-top:2px}
 #hg-bien:hover{border-color:var(--clay)}
 #hg-next:hover{color:var(--clay)}
-#hg-loi{background:none;border:none;font-size:.9rem;padding:0;cursor:pointer;opacity:.85;line-height:1.4}
+#hg-loi{background:none;border:none;font-size:.9rem;padding:0;cursor:pointer;opacity:.85;line-height:1.4;
+  min-width:24px;min-height:24px;display:inline-flex;align-items:center;justify-content:center}
 #hg-loi:hover{opacity:1}
-#hg-tat{position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;
+#hg-tat{position:absolute;top:-9px;right:-9px;width:24px;height:24px;border-radius:50%;
   border:1px solid var(--line);background:var(--surface);color:var(--muted);font:700 .7rem/1 var(--sans);cursor:pointer}
 #tourbtn{position:fixed;left:14px;bottom:14px;z-index:7;border:1px solid var(--line);background:var(--surface);color:var(--ink);
   border-radius:999px;padding:9px 16px;font:600 .82rem var(--sans);cursor:pointer;box-shadow:var(--press),var(--lift)}
 #tourbtn[hidden]{display:none}
 @media(max-width:720px){#hg-img{height:80px}#hg-bien{max-width:150px;font-size:.72rem;padding:7px 11px}}
-@media(max-width:560px){#hg-img{height:58px}#hg-bien{max-width:125px;font-size:.66rem;padding:6px 10px;margin-bottom:10px}#hg-bien small{font-size:.6rem}}
+@media(max-width:560px){#hg-img{height:58px}#hg-bien{max-width:125px;font-size:.66rem;padding:6px 10px;margin-bottom:10px}#hg-bien small{font-size:.6rem}
+  /* music.css dua nut nhac ra giua day o breakpoint nay; nang tour len tren
+     de hai dieu khien noi khong de len nhau tren dien thoai */
+  #hg{bottom:72px}#tourbtn{bottom:72px}}
 @media(prefers-reduced-motion:reduce){#hg.dap #hg-img{animation:none}}
 
 footer{border-top:1px solid var(--line);padding-block:26px 34px;font-size:.85rem;color:var(--muted)}
-.fnav{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 14px;padding:0;list-style:none}
-.fnav a{text-decoration:none;color:var(--ink)}
+.fnav{display:flex;flex-wrap:wrap;gap:0 18px;margin:0 0 10px;padding:0;list-style:none}
+.fnav a{text-decoration:none;color:var(--ink);display:inline-block;padding-block:6px}
 .fnav a:hover{color:var(--clay)}
 .fbot{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.78rem}
 @media(prefers-reduced-motion:no-preference){
@@ -564,11 +570,19 @@ addEventListener('DOMContentLoaded', function(){
   /* narration: play the recorded file when there is one, else speak it */
   var AU=new Audio(); AU.preload='none';
   var speaking=false, playing=false, touched=false;
+  /* nhac nen va loi dan truoc day phat chong len nhau; bao cho music.js
+     ha nhac xuong trong luc noi roi tra lai khi xong */
+  var daNe=false;
+  function ne(batDau){
+    if(batDau===daNe) return;            // khong dem trung
+    daNe=batDau;
+    try{ if(window.HUONG_MUSIC && HUONG_MUSIC.duck) HUONG_MUSIC.duck(batDau); }catch(e){}
+  }
   var LOI=document.getElementById('hg-loi');
   var MA={vi:'vi-VN',en:'en-US',fr:'fr-FR'};
   ['click','keydown','touchstart'].forEach(function(ev){addEventListener(ev,function(){touched=true;},{once:true,passive:true});});
-  function stopTTS(){ if(speaking){ speechSynthesis.cancel(); speaking=false; LOI.textContent='🔊'; } }
-  function stopAU(){ try{AU.pause();AU.currentTime=0;}catch(e){} playing=false; }
+  function stopTTS(){ if(speaking){ speechSynthesis.cancel(); speaking=false; LOI.textContent='🔊'; } ne(false); }
+  function stopAU(){ try{AU.pause();AU.currentTime=0;}catch(e){} playing=false; ne(false); }
   function voice(l){
     var g=(speechSynthesis.getVoices()||[]).filter(function(v){return v.lang.indexOf(MA[l].split('-')[0])===0;});
     return g.find(function(v){return /female|woman|zira|samantha|victoria|audrey|amelie|denise|hortense|moira|karen|google/i.test(v.name);})||g[0]||null;
@@ -576,15 +590,16 @@ addEventListener('DOMContentLoaded', function(){
   function say(t){
     var l=L(); stopTTS(); stopAU();
     AU.src='assets/audio/tour/'+(i<0?'chao':KHU[i][0])+'_'+l+'.mp3';
+    ne(true);
     AU.play().then(function(){
       playing=true; LOI.textContent='🔈';
-      AU.onended=function(){playing=false;LOI.textContent='🔊';};
+      AU.onended=function(){playing=false;LOI.textContent='🔊';ne(false);};
     }).catch(function(){
-      if(!('speechSynthesis' in window)) return;
+      if(!('speechSynthesis' in window)){ ne(false); return; }
       var u=new SpeechSynthesisUtterance(t[l]); u.lang=MA[l];
       var v=voice(l); if(v) u.voice=v; u.rate=1; u.pitch=1.05;
       speaking=true; LOI.textContent='🔈';
-      u.onend=u.onerror=function(){speaking=false;LOI.textContent='🔊';};
+      u.onend=u.onerror=function(){speaking=false;LOI.textContent='🔊';ne(false);};
       speechSynthesis.speak(u);
     });
   }
@@ -624,7 +639,7 @@ addEventListener('DOMContentLoaded', function(){
     }
   }
   function stop(){
-    hg.hidden=true; btn.hidden=false; stopTTS(); stopAU();
+    hg.hidden=true; btn.hidden=false; stopTTS(); stopAU(); ne(false);
     try{sessionStorage.removeItem('huong_tour');}catch(e){}
   }
   btn.addEventListener('click',start);

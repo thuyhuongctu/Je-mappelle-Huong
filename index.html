@@ -72,7 +72,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .ctl{display:flex;align-items:center;gap:7px;flex-shrink:0}
 .mainnav+.ctl{margin-left:6px}
 .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
-.lang button{border:0;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:5px 10px;cursor:pointer}
+.lang button{border:0;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:8px 11px;cursor:pointer}
 .lang button.on{background:var(--clay);color:#fff}
 .morebtn{width:32px;height:32px;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--muted);
   font:700 1rem/1 var(--sans);cursor:pointer;box-shadow:var(--press)}
@@ -132,18 +132,20 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 .pgroup .pitem:last-child{border-bottom:0}
 .pitem .t{font-weight:600;font-size:.95rem;line-height:1.42}
 .pitem .v{font-size:.83rem;color:var(--muted);margin-top:3px}
-.pitem .v a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line)}
+.pitem .v a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line);
+  display:inline-block;padding:5px 3px;margin:-5px -3px}
 .pitem .v a:hover{color:var(--clay)}
-.morelink{font:600 .86rem var(--sans);text-decoration:none}
+.morelink{font:600 .86rem var(--sans);text-decoration:none;display:inline-block;padding:7px 3px;margin:-7px -3px}
 
 /* teaching */
 .courses{list-style:none;margin:0;padding:0}
 .courses li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;align-items:baseline;
   padding:11px 2px;border-bottom:1px solid var(--line);font-size:.93rem}
 .courses li:last-child{border-bottom:0}
-.courses .mat{font:600 .8rem var(--sans);text-decoration:none;white-space:nowrap}
+.courses .mat{font:600 .8rem var(--sans);text-decoration:none;white-space:nowrap;
+  display:inline-block;padding-block:6px}
 .courses .mat.none{color:var(--muted);font-weight:500}
-@media(max-width:560px){.courses li{grid-template-columns:1fr;gap:3px}}
+@media(max-width:560px){.courses li{grid-template-columns:1fr;gap:2px}.courses .mat.none{display:none}}
 
 /* projects - clay objects on the desk */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -161,7 +163,8 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 .gardenband{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;justify-content:space-between;
   background:var(--clay-soft);border:1px solid var(--line);border-radius:18px;padding:16px 20px;margin-top:16px}
 .gardenband p{margin:0;font-size:.9rem;color:var(--muted);max-width:48ch}
-.gardenband a{font:600 .9rem var(--sans);text-decoration:none;color:var(--clay);white-space:nowrap}
+.gardenband a{font:600 .9rem var(--sans);text-decoration:none;color:var(--clay);white-space:nowrap;
+  display:inline-flex;align-items:center;min-height:34px}
 
 /* a quiet note, not a stage */
 .note{border-left:3px solid var(--clay);padding:2px 0 2px 18px;margin:0}
@@ -170,8 +173,8 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 
 /* footer */
 footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;font-size:.85rem;color:var(--muted)}
-.fnav{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 14px;padding:0;list-style:none}
-.fnav a{text-decoration:none;color:var(--ink)}
+.fnav{display:flex;flex-wrap:wrap;gap:0 18px;margin:0 0 10px;padding:0;list-style:none}
+.fnav a{text-decoration:none;color:var(--ink);display:inline-block;padding-block:6px}
 .fnav a:hover{color:var(--clay)}
 .fbot{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.78rem}
 
@@ -410,7 +413,7 @@ footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;
     <div class="shead">
       <span class="k"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span><span class="lang-fr">Enseignement</span></span>
       <h2><span class="lang-vi">Học phần giảng dạy</span><span class="lang-en">Courses taught</span><span class="lang-fr">Cours enseignés</span></h2>
-      <p><span class="lang-vi">Trường Kinh tế, Đại học Cần Thơ. Học liệu mở đi kèm được liệt kê bên phải.</span><span class="lang-en">School of Economics, Can Tho University. Open course material, where it exists, is linked on the right.</span><span class="lang-fr">École d'économie, Université de Cần Thơ. Le matériel ouvert est indiqué à droite.</span></p>
+      <p><span class="lang-vi">Trường Kinh tế, Đại học Cần Thơ. Học phần nào có học liệu mở thì được liên kết kèm theo.</span><span class="lang-en">School of Economics, Can Tho University. Where open course material exists, it is linked with the course.</span><span class="lang-fr">École d'économie, Université de Cần Thơ. Le matériel ouvert, s'il existe, est lié au cours.</span></p>
     </div>
     <ul class="courses">
       <li><span><span class="lang-vi">Kinh tế lượng</span><span class="lang-en">Econometrics</span><span class="lang-fr">Économétrie</span></span><span class="mat none">—</span></li>
