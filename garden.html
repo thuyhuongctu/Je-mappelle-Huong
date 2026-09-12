@@ -236,7 +236,7 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
   #hg{bottom:72px}#tourbtn{bottom:72px}}
 @media(prefers-reduced-motion:reduce){#hg.dap #hg-img{animation:none}}
 
-footer{border-top:1px solid var(--line);padding-block:26px 34px;font-size:.85rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding-block:26px 46px;font-size:.85rem;color:var(--muted)}
 .fnav{display:flex;flex-wrap:wrap;gap:0 18px;margin:0 0 10px;padding:0;list-style:none}
 .fnav a{text-decoration:none;color:var(--ink);display:inline-block;padding-block:6px}
 .fnav a:hover{color:var(--clay)}
@@ -245,6 +245,24 @@ footer{border-top:1px solid var(--line);padding-block:26px 34px;font-size:.85rem
   html.js .rv{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
   html.js .rv.in{opacity:1;transform:none}}
 @media print{.rv{opacity:1!important;transform:none!important}}
+/* ===== hinh chim: duong vien Viet Nam o chan trang ======================
+   Dung mask nen net ban do lay mau tu token, tu doi theo che do sang/toi.
+   Trinh duyet khong ho tro mask thi khong hien - chi la hinh trang tri. */
+/* dai anh trong trang: hinh rong, chu thich nho ben duoi */
+.band{margin:18px 0 22px}
+/* anh hien tron, cao tu ty le that - khong cat mat gi */
+.band img{display:block;width:100%;height:auto;
+  border-radius:var(--r,18px);border:1px solid var(--line);box-shadow:var(--press),var(--lift)}
+.band figcaption{margin:8px 2px 0;font-size:.8rem;line-height:1.5;color:var(--muted)}
+footer.wrap{position:relative;overflow:hidden}
+.vnmark{display:none}
+@supports ((mask-image:url(x)) or (-webkit-mask-image:url(x))){
+  .vnmark{display:block;position:absolute;right:2px;bottom:2px;width:117px;height:132px;
+    pointer-events:none;background:var(--clay);opacity:.34;
+    -webkit-mask:url('assets/img/vn-outline.svg') right bottom/contain no-repeat;
+            mask:url('assets/img/vn-outline.svg') right bottom/contain no-repeat}
+  @media(max-width:560px){.vnmark{width:98px;height:111px;opacity:.28}}
+}
 </style>
 <script>document.documentElement.className+=" js";</script>
 </head><body>
@@ -295,6 +313,16 @@ footer{border-top:1px solid var(--line);padding-block:26px 34px;font-size:.85rem
     <p><span class="lang-vi">Bấm một biển - Hương AI sẽ đạp xe đưa bạn đến khu tương ứng. Đây là phần sáng tạo của trang; hồ sơ học thuật nằm ở trang chủ.</span><span class="lang-en">Click a sign and Huong AI rides there. This is the creative half of the site; the academic profile lives on the home page.</span><span class="lang-fr">Cliquez sur une enseigne et Hương IA vous y emmène. Voici la moitié créative du site ; le profil académique est sur la page d'accueil.</span></p>
     <a class="backhome" href="index.html">← <span class="lang-vi">Về trang học thuật</span><span class="lang-en">Back to the academic home</span><span class="lang-fr">Retour à la page académique</span></a>
   </div>
+
+  <figure class="band">
+    <img src="assets/img/garden-rong.webp" width="1400" height="798" loading="lazy" decoding="async"
+         alt="Clay-modelled scene: Huong and her team riding a dragon over a clay map of Vietnam at sunset">
+    <figcaption>
+      <span class="lang-vi">Cả nhóm cưỡi rồng bay trên bản đồ đất sét - tấm áp phích của vườn số.</span>
+      <span class="lang-en">The team riding a dragon over a clay map of Vietnam - the garden's own poster.</span>
+      <span class="lang-fr">L'équipe à dos de dragon au-dessus d'une carte du Vietnam en argile - l'affiche du jardin.</span>
+    </figcaption>
+  </figure>
 
   <div id="bando" role="navigation" aria-label="Garden map">
     <span class="bd-buom" style="left:27%;top:35%" aria-hidden="true">🦋</span>
@@ -437,6 +465,7 @@ footer{border-top:1px solid var(--line);padding-block:26px 34px;font-size:.85rem
 </main>
 
 <footer class="wrap">
+  <div class="vnmark" aria-hidden="true"></div>
   <ul class="fnav">
     <li><a href="index.html">← <span class="lang-vi">Trang học thuật</span><span class="lang-en">Academic home</span><span class="lang-fr">Page académique</span></a></li>
     <li><a href="trangvien.html"><span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D estate</span><span class="lang-fr">Domaine 3D</span></a></li>
