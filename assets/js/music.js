@@ -153,6 +153,22 @@
   function resumeCtx() {
     try { if (actx && actx.state === 'suspended') actx.resume(); } catch (e) { }
   }
+  /* ---------- NE GIONG NOI ----------
+     Trang co ca nhac nen lan loi dan (garden.html) hoac giong that cua Huong
+     (trangvien.html). Truoc day hai ben khong biet nhau nen phat chong len.
+     duck(true) ha nhac xuong muc nen khi bat dau noi, duck(false) tra lai.
+     Dem so nguon dang noi: neu hai loi dan chong nhau thi nhac chi tra lai
+     khi ca hai cung ket thuc. */
+  var soGiongDangNoi = 0;
+  var MUC_NEN = 0.12;          // du nghe nhac, khong at loi
+  function duck(batDau) {
+    soGiongDangNoi = Math.max(0, soGiongDangNoi + (batDau ? 1 : -1));
+    if (audio.paused) return;
+    if (soGiongDangNoi > 0) fadeTo(Math.min(vol, MUC_NEN), 220);
+    else fadeTo(vol, 600);
+  }
+  function dangNeGiongNoi() { return soGiongDangNoi > 0; }
+
   function playSong(key, opts) {
     opts = opts || {};
     var song = SONGS[key];
@@ -165,7 +181,7 @@
     // giữ volume hiện tại rồi fade nhẹ tới mức mong muốn - tránh ngắt quãng trên mobile khi bấm liên tục
     if (audio.volume <= 0.005) audio.volume = Math.max(0.001, targetVol * 0.4);
     audio.play().then(function () {
-      fadeTo(Math.min(1, targetVol), 500);
+      fadeTo(soGiongDangNoi > 0 ? Math.min(targetVol, MUC_NEN) : Math.min(1, targetVol), 500);
     }).catch(function () { /* autoplay blocked - user click sau */ });
     dangPhat = key;
     // nếu bài hát thuộc mood đang chọn, giữ mood đó để tự động chuyển bài
@@ -299,7 +315,7 @@
 
     document.getElementById('hm-vol').addEventListener('input', function (e) {
       vol = parseFloat(e.target.value);
-      if (!audio.paused) audio.volume = vol;
+      if (!audio.paused && soGiongDangNoi === 0) audio.volume = vol;
       tryLuuVol();
       document.getElementById('hm-vol-num').textContent = Math.round(vol * 100);
     });
@@ -425,6 +441,8 @@
     dungNhacNen: dungNhacNen,
     SONGS: SONGS,
     getFFT: getFFT,
+    duck: duck,
+    dangNeGiongNoi: dangNeGiongNoi,
     nhacDangPhat: function () { return !!(dangPhat && !audio.paused && audio.volume > 0.005); }
   };
 })();

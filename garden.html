@@ -570,11 +570,19 @@ addEventListener('DOMContentLoaded', function(){
   /* narration: play the recorded file when there is one, else speak it */
   var AU=new Audio(); AU.preload='none';
   var speaking=false, playing=false, touched=false;
+  /* nhac nen va loi dan truoc day phat chong len nhau; bao cho music.js
+     ha nhac xuong trong luc noi roi tra lai khi xong */
+  var daNe=false;
+  function ne(batDau){
+    if(batDau===daNe) return;            // khong dem trung
+    daNe=batDau;
+    try{ if(window.HUONG_MUSIC && HUONG_MUSIC.duck) HUONG_MUSIC.duck(batDau); }catch(e){}
+  }
   var LOI=document.getElementById('hg-loi');
   var MA={vi:'vi-VN',en:'en-US',fr:'fr-FR'};
   ['click','keydown','touchstart'].forEach(function(ev){addEventListener(ev,function(){touched=true;},{once:true,passive:true});});
-  function stopTTS(){ if(speaking){ speechSynthesis.cancel(); speaking=false; LOI.textContent='🔊'; } }
-  function stopAU(){ try{AU.pause();AU.currentTime=0;}catch(e){} playing=false; }
+  function stopTTS(){ if(speaking){ speechSynthesis.cancel(); speaking=false; LOI.textContent='🔊'; } ne(false); }
+  function stopAU(){ try{AU.pause();AU.currentTime=0;}catch(e){} playing=false; ne(false); }
   function voice(l){
     var g=(speechSynthesis.getVoices()||[]).filter(function(v){return v.lang.indexOf(MA[l].split('-')[0])===0;});
     return g.find(function(v){return /female|woman|zira|samantha|victoria|audrey|amelie|denise|hortense|moira|karen|google/i.test(v.name);})||g[0]||null;
@@ -582,15 +590,16 @@ addEventListener('DOMContentLoaded', function(){
   function say(t){
     var l=L(); stopTTS(); stopAU();
     AU.src='assets/audio/tour/'+(i<0?'chao':KHU[i][0])+'_'+l+'.mp3';
+    ne(true);
     AU.play().then(function(){
       playing=true; LOI.textContent='🔈';
-      AU.onended=function(){playing=false;LOI.textContent='🔊';};
+      AU.onended=function(){playing=false;LOI.textContent='🔊';ne(false);};
     }).catch(function(){
-      if(!('speechSynthesis' in window)) return;
+      if(!('speechSynthesis' in window)){ ne(false); return; }
       var u=new SpeechSynthesisUtterance(t[l]); u.lang=MA[l];
       var v=voice(l); if(v) u.voice=v; u.rate=1; u.pitch=1.05;
       speaking=true; LOI.textContent='🔈';
-      u.onend=u.onerror=function(){speaking=false;LOI.textContent='🔊';};
+      u.onend=u.onerror=function(){speaking=false;LOI.textContent='🔊';ne(false);};
       speechSynthesis.speak(u);
     });
   }
@@ -630,7 +639,7 @@ addEventListener('DOMContentLoaded', function(){
     }
   }
   function stop(){
-    hg.hidden=true; btn.hidden=false; stopTTS(); stopAU();
+    hg.hidden=true; btn.hidden=false; stopTTS(); stopAU(); ne(false);
     try{sessionStorage.removeItem('huong_tour');}catch(e){}
   }
   btn.addEventListener('click',start);
