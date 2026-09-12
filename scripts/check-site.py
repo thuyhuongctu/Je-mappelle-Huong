@@ -7,8 +7,10 @@ Ba lỗi từng xảy ra trong repo này đều âm thầm, không có thông b�
 1. sw.js liệt kê một tệp không tồn tại trong danh sách CORE. cache.addAll()
    thất bại nguyên khối, nên PWA offline không cài được — mà trang vẫn chạy
    bình thường khi có mạng, nên không ai thấy.
-2. sitemap.xml được sửa tay trong khi scripts/rebuild-sitemap.py ghi đè toàn
-   bộ tệp này từ PAGE_CONF. Thay đổi tay biến mất ở lần chạy workflow kế tiếp.
+2. sitemap.xml thiếu trang, hoặc được thêm URL bằng tay, trong khi
+   scripts/rebuild-sitemap.py ghi đè toàn bộ tệp này từ PAGE_CONF — nên
+   thay đổi tay biến mất ở lần chạy workflow kế tiếp. (Chỉ đối chiếu tập
+   URL; ngày <lastmod> đổi theo mỗi commit nên không so.)
 3. Liên kết nội bộ trỏ tới tệp đã đổi tên, hoặc tới #neo không còn tồn tại.
 
 Cách dùng:
@@ -57,21 +59,47 @@ def check_service_worker() -> list[str]:
 
 
 def check_sitemap() -> list[str]:
-    """sitemap.xml phải trùng khít với thứ rebuild-sitemap.py sinh ra."""
-    path = os.path.join(REPO, 'sitemap.xml')
-    before = open(path, encoding='utf-8').read()
-    r = subprocess.run([sys.executable, 'scripts/rebuild-sitemap.py', '--apply'],
-                       cwd=REPO, capture_output=True, text=True)
-    if r.returncode:
-        return [f'rebuild-sitemap.py that bai: {r.stderr.strip()[:200]}']
-    after = open(path, encoding='utf-8').read()
-    if before != after:
-        open(path, 'w', encoding='utf-8').write(before)  # tra lai nguyen trang
-        return ['sitemap.xml khac voi ket qua cua rebuild-sitemap.py — '
-                'chay "python3 scripts/rebuild-sitemap.py --apply" va commit, '
-                'hoac them trang moi vao PAGE_CONF trong script do']
-    print('  sitemap.xml: trung khop voi rebuild-sitemap.py')
-    return []
+    """sitemap.xml phải chứa đúng tập URL mà rebuild-sitemap.py sinh ra.
+
+    Chỉ so sánh *tập URL*, không so sánh cả tệp: trường <lastmod> lấy từ ngày
+    commit của từng trang nên đổi theo mỗi lần sửa nội dung, và workflow
+    update-sitemap.yml tự sinh lại nó. So cả tệp sẽ khiến một lần sửa lỗi
+    chính tả trong songbook.html cũng làm CI đỏ — báo động giả kiểu đó chỉ
+    dạy người ta phớt lờ CI.
+
+    Tập URL mới là thứ mã hóa lỗi thật: thêm trang mà quên PAGE_CONF, hoặc
+    thêm URL bằng tay vào sitemap.xml (sẽ bị workflow xóa ở lần chạy sau).
+    """
+    import importlib.util
+
+    sys.dont_write_bytecode = True   # khong de lai scripts/__pycache__
+
+    spec = importlib.util.spec_from_file_location(
+        'rebuild_sitemap', os.path.join(REPO, 'scripts', 'rebuild-sitemap.py'))
+    if spec is None or spec.loader is None:
+        return ['khong nap duoc scripts/rebuild-sitemap.py']
+    mod = importlib.util.module_from_spec(spec)
+    try:
+        spec.loader.exec_module(mod)          # chi nap ham, khong ghi tep nao
+        expected_xml = mod.build_xml(mod.scan_blog(), True)
+    except Exception as exc:                  # noqa: BLE001
+        return [f'rebuild-sitemap.py loi khi sinh sitemap: {exc}']
+
+    loc = re.compile(r'<loc>([^<]+)</loc>')
+    expected = set(loc.findall(expected_xml))
+    actual = set(loc.findall(open(os.path.join(REPO, 'sitemap.xml'), encoding='utf-8').read()))
+
+    errors = []
+    for url in sorted(expected - actual):
+        errors.append(f'sitemap.xml: thieu URL ma generator sinh ra — {url} '
+                      '(chay "python3 scripts/rebuild-sitemap.py --apply")')
+    for url in sorted(actual - expected):
+        errors.append(f'sitemap.xml: co URL generator khong sinh — {url} '
+                      '(them trang do vao PAGE_CONF trong rebuild-sitemap.py, '
+                      'neu khong no se bi xoa o lan chay workflow ke tiep)')
+    if not errors:
+        print(f'  sitemap.xml: {len(actual)} URL, trung khop voi rebuild-sitemap.py')
+    return errors
 
 
 def check_links() -> list[str]:
