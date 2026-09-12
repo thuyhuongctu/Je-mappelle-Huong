@@ -89,8 +89,22 @@ html:not([lang="fr"]) .lang-fr{display:none}
 @media(max-width:860px){.mainnav{display:none}.menu .navdup{display:flex}.mark small{display:none}}
 @media(max-width:400px){.mark b{font-size:.84rem}}
 
+/* ===== dai phim dau trang: clip la co, tu phat, khong tieng =============
+   Chieu cao co gioi han de ten nguoi van nam trong man hinh dau tien. */
+.herofilm{position:relative;aspect-ratio:16/9;margin:14px 0 0;border-radius:22px;overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--press),var(--lift);background:var(--sunk)}
+/* contain, khong cover: thu nho cho vua khung chu khong cat mat phan nao cua hinh */
+.herofilm img,.herofilm video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+/* man hinh thap: ha chieu cao va van giu tron hinh (co vien giay hai ben) */
+@media(max-height:700px) and (min-width:721px){.herofilm{aspect-ratio:auto;height:46vh}}
+.herofilm video{opacity:0;transition:opacity .9s ease}
+.herofilm.dangchay video{opacity:1}
+.herofilm::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(28,24,20,.14),transparent 42%,rgba(28,24,20,.2))}
+@media(max-width:560px){.herofilm{border-radius:18px}}
+
 /* ===== hero: name, one sentence, three ways to reach the work =========== */
-.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(20px,4vw,40px);align-items:start;
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(20px,4vw,40px);align-items:center;
   padding-block:clamp(30px,6vw,54px) clamp(24px,4vw,38px)}
 @media(max-width:720px){.hero{grid-template-columns:1fr;gap:24px}}
 .eyebrow{font:700 .68rem var(--sans);letter-spacing:.17em;text-transform:uppercase;color:var(--clay);margin:0 0 10px}
@@ -108,9 +122,45 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .btn.primary{background:var(--clay);border-color:var(--clay);color:#fff;box-shadow:inset 0 2px 0 rgba(255,255,255,.22),var(--lift)}
 .btn.primary:hover{background:#ad4e2f;color:#fff}
 :root[data-theme=dark] .btn.primary,:root:not([data-theme=light]) .btn.primary{color:#1c1814}
-.portrait{width:100%;height:auto;max-width:272px;aspect-ratio:1/1;object-fit:cover;background:#f2ede2;
-  border-radius:18px;border:1px solid var(--line);box-shadow:var(--lift)}
-@media(max-width:720px){.portrait{max-width:200px}}
+/* chan dung nho dat canh ten - giu mat nguoi o dau trang */
+.byline{display:flex;align-items:center;gap:13px;margin:0 0 14px}
+.byline .eyebrow{margin:0}
+.avatar{width:62px;height:62px;flex:none;border-radius:50%;object-fit:cover;background:var(--sunk);
+  border:1px solid var(--line);box-shadow:var(--lift)}
+/* khoi dat set 3D: cai dia tren ban lam viec */
+.heroart{position:relative;width:100%;max-width:348px;justify-self:end;border-radius:24px;overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--press),var(--lift);
+  background:radial-gradient(118% 96% at 28% 16%,var(--surface) 8%,var(--sunk))}
+#claysan{position:relative;width:100%;aspect-ratio:1/1}
+.claycanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.claypost{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s ease}
+#claysan.co-3d .claypost{opacity:0}
+.artcap{position:absolute;left:0;right:0;bottom:0;margin:0;padding:26px 14px 10px;
+  font:600 .64rem var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--muted);text-align:center;
+  background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--sunk) 82%,transparent))}
+@media(max-width:720px){.heroart{justify-self:center;max-width:306px}}
+@media(max-width:560px){.heroart{max-width:250px}.avatar{width:54px;height:54px}}
+
+/* ===== clip gioi thieu trong the du an =================================
+   Bam moi phat, vi cac clip nay co tieng - khong tu chay khi mo trang.
+   Anh nen hien tron khung (height:auto), khong cat. */
+.vthumb{position:relative;display:block;width:100%;margin:0 0 13px;padding:0;border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;background:var(--sunk);cursor:pointer}
+/* Anh nen hien tron; clip doc (ban ghi man hinh dien thoai) chi bi thu nho
+   cho vua chieu cao toi da de the du an khong cao lech nhau, khong bi cat. */
+.vthumb img{display:block;width:100%;height:auto;max-height:270px;object-fit:contain}
+.vthumb:hover{border-color:var(--clay)}
+.vplay{position:absolute;inset:0;display:grid;place-items:center;font:400 1.5rem/1 var(--sans);color:#fff;
+  text-shadow:0 2px 12px rgba(0,0,0,.55);background:linear-gradient(180deg,rgba(28,24,20,.04),rgba(28,24,20,.34))}
+.vlen{position:absolute;right:8px;bottom:8px;background:rgba(28,24,20,.74);color:#fff;
+  font:600 .68rem var(--sans);padding:2px 7px;border-radius:6px}
+/* nhan cho trinh doc man hinh, khong chiem cho tren hinh */
+.vsr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.tile video{display:block;width:100%;height:auto;margin:0 0 13px;border-radius:12px;background:#0e0c0b}
+/* anh nhan vat trong the du an: nen dat set nhat, anh trong suot dat len */
+.pthumb{margin:0 0 13px;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  background:radial-gradient(120% 100% at 30% 14%,var(--surface),var(--sunk))}
+.pthumb img{display:block;width:100%;height:auto;max-height:270px;object-fit:contain}
 
 /* ===== sections ========================================================== */
 section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
@@ -119,6 +169,12 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 .shead h2{font-size:1.5rem;margin:4px 0 0}
 .shead p{color:var(--muted);font-size:.92rem;margin:8px 0 0;max-width:62ch}
 .lead{max-width:64ch;margin:0 0 16px}
+/* dai anh trong mot muc: hinh rong, chu thich nho ben duoi */
+.band{margin:20px 0 0}
+/* anh hien tron, cao tu ty le that - khong cat mat gi */
+.band img{display:block;width:100%;height:auto;
+  border-radius:var(--r);border:1px solid var(--line);box-shadow:var(--press),var(--lift)}
+.band figcaption{margin:8px 2px 0;font-size:.8rem;line-height:1.5;color:var(--muted)}
 .qa{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:18px 0 0}
 .qa div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:15px 17px;box-shadow:var(--press),var(--lift)}
 .qa h3{font:700 .62rem var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
@@ -126,6 +182,8 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 
 /* publications, tiered */
 .pgroup{margin:0 0 22px}
+.prereg{margin-top:26px}
+.morewrap{margin:12px 0 0}
 .pgroup>h3{font:700 .64rem var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--muted);
   padding-bottom:6px;border-bottom:1px solid var(--line);margin:0 0 4px}
 .pitem{padding:13px 2px;border-bottom:1px solid var(--line)}
@@ -172,10 +230,22 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 .note cite{font-style:normal;font-size:.83rem;color:var(--muted)}
 
 /* footer */
-footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;font-size:.85rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 46px;font-size:.85rem;color:var(--muted)}
 .fnav{display:flex;flex-wrap:wrap;gap:0 18px;margin:0 0 10px;padding:0;list-style:none}
 .fnav a{text-decoration:none;color:var(--ink);display:inline-block;padding-block:6px}
 .fnav a:hover{color:var(--clay)}
+/* ===== hinh chim: duong vien Viet Nam o chan trang ======================
+   Dung mask nen net ban do lay mau tu token, tu doi theo che do sang/toi.
+   Trinh duyet khong ho tro mask thi khong hien - chi la hinh trang tri. */
+footer.wrap{position:relative;overflow:hidden}
+.vnmark{display:none}
+@supports ((mask-image:url(x)) or (-webkit-mask-image:url(x))){
+  .vnmark{display:block;position:absolute;right:2px;bottom:2px;width:117px;height:132px;
+    pointer-events:none;background:var(--clay);opacity:.34;
+    -webkit-mask:url('assets/img/vn-outline.svg') right bottom/contain no-repeat;
+            mask:url('assets/img/vn-outline.svg') right bottom/contain no-repeat}
+  @media(max-width:560px){.vnmark{width:98px;height:111px;opacity:.28}}
+}
 .fbot{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.78rem}
 
 /* very little movement */
@@ -302,9 +372,19 @@ footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;
 
 <main class="wrap" id="main">
 
+  <figure class="herofilm">
+    <img src="assets/img/hero-co-poster.webp" width="854" height="480" fetchpriority="high"
+         alt="Do Thuy Huong in a white ao dai holding the Vietnamese flag on a riverbank lined with clay pots at sunset">
+    <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+  </figure>
+
   <div class="hero">
     <div>
-      <p class="eyebrow"><span class="lang-vi">Giảng viên · Nghiên cứu sinh tiến sĩ</span><span class="lang-en">Lecturer · PhD Candidate</span><span class="lang-fr">Enseignante · Doctorante</span></p>
+      <div class="byline">
+        <img class="avatar" src="assets/img/huong_clay_portrait.webp" width="760" height="760"
+             alt="Clay-modelled portrait of Do Thuy Huong in a white ao dai with a lotus in her hair" fetchpriority="high">
+        <p class="eyebrow"><span class="lang-vi">Giảng viên · Nghiên cứu sinh tiến sĩ</span><span class="lang-en">Lecturer · PhD Candidate</span><span class="lang-fr">Enseignante · Doctorante</span></p>
+      </div>
       <h1><span class="lang-vi">Đỗ Thùy Hương</span><span class="lang-en">Do Thuy Huong</span><span class="lang-fr">Do Thuy Huong</span></h1>
       <p class="affil">
         <span class="lang-vi"><b>Trường Kinh tế, Đại học Cần Thơ</b><br>Hướng dẫn khoa học: PGS.TS. Phan Anh Tú</span>
@@ -327,8 +407,13 @@ footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;
         <a class="btn" href="mailto:thuyhuongctu@gmail.com">✉ <span class="lang-vi">Email</span><span class="lang-en">Email</span><span class="lang-fr">Courriel</span></a>
       </div>
     </div>
-    <img class="portrait" src="assets/img/huong_clay_portrait.webp" width="760" height="760"
-         alt="Clay-modelled portrait of Do Thuy Huong in a white ao dai with a lotus in her hair" fetchpriority="high">
+    <figure class="heroart">
+      <div id="claysan">
+        <img class="claypost" src="assets/img/hero-clay.webp" width="660" height="660" decoding="async"
+             alt="Clay desk: a raised relief map of Vietnam on a clay dish, with a small lotus, a wax seal and a stack of paper">
+      </div>
+      <figcaption class="artcap"><span class="lang-vi">Việt Nam · WBES · 50 nền kinh tế</span><span class="lang-en">Vietnam · WBES · 50 economies</span><span class="lang-fr">Vietnam · WBES · 50 économies</span></figcaption>
+    </figure>
   </div>
 
   <section id="research" class="rv">
@@ -342,6 +427,17 @@ footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;
       <span class="lang-en">My dissertation asks whether internationalization improves firm performance in Asia, and under which institutional conditions that relationship strengthens or breaks down. I answer it with two bodies of evidence: World Bank Enterprise Survey (WBES) firm-level data, and a quantitative synthesis of the published literature.</span>
       <span class="lang-fr">Ma thèse pose une question : l'internationalisation améliore-t-elle la performance des entreprises en Asie, et sous quelles conditions institutionnelles ? J'y réponds par deux corpus de preuves : les données d'entreprises de la Banque mondiale (WBES) et une synthèse quantitative de la littérature.</span>
     </p>
+
+    <figure class="band">
+      <img src="assets/img/research-port.webp" width="1400" height="800" loading="lazy" decoding="async"
+           alt="A container ship at a Vietnamese port at sunrise, with crates stencilled Vietnamese origin on the quay">
+      <figcaption>
+        <span class="lang-vi">Quốc tế hóa nhìn từ cảng: xuất khẩu là bước đi ra ngoài đầu tiên của phần lớn doanh nghiệp trong dữ liệu WBES.</span>
+        <span class="lang-en">Internationalization seen from the quay: exporting is the first step abroad for most firms in the WBES data.</span>
+        <span class="lang-fr">L'internationalisation vue du quai : l'exportation est le premier pas à l'étranger pour la plupart des entreprises des données WBES.</span>
+      </figcaption>
+    </figure>
+
     <div class="qa">
       <div>
         <h3><span class="lang-vi">Dữ liệu</span><span class="lang-en">Data</span><span class="lang-fr">Données</span></h3>
@@ -355,6 +451,29 @@ footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;
         <h3><span class="lang-vi">Công cụ</span><span class="lang-en">Tooling</span><span class="lang-fr">Outils</span></h3>
         <p><span class="lang-vi">M-AIDA: trích xuất mức độ ảnh hưởng bằng LLM, kiểm chứng con người 100%, khóa bất biến.</span><span class="lang-en">M-AIDA: LLM-assisted effect-size extraction with 100% human verification and immutable locking.</span><span class="lang-fr">M-AIDA : extraction des tailles d'effet assistée par LLM, vérifiée à 100 % par l'humain.</span></p>
       </div>
+    </div>
+
+    <div class="pgroup prereg">
+      <h3><span class="lang-vi">Tiền đăng ký trên OSF</span><span class="lang-en">Preregistrations on OSF</span><span class="lang-fr">Préenregistrements sur OSF</span></h3>
+      <div class="pitem">
+        <div class="t">Institutional context, digital adoption, and the internationalization–performance relationship: a three-level meta-analysis</div>
+        <div class="v">
+          <span class="lang-vi">Tiền đăng ký tổng quan hệ thống · OSF Registries · 18/05/2026 · k = 237 nghiên cứu, K = 287 hiệu ứng, 49 nền kinh tế · </span>
+          <span class="lang-en">Generalized systematic review registration · OSF Registries · 18 May 2026 · k = 237 studies, K = 287 effects, 49 economies · </span>
+          <span class="lang-fr">Préenregistrement de revue systématique · OSF Registries · 18 mai 2026 · k = 237 études, K = 287 effets, 49 économies · </span>
+          <a href="https://doi.org/10.17605/OSF.IO/Z37KN" target="_blank" rel="noopener">10.17605/OSF.IO/Z37KN</a>
+        </div>
+      </div>
+      <div class="pitem">
+        <div class="t">Institutional context and the form of the internationalization–performance relationship in 50 Asian and Pacific economies: a two-stage random-coefficient design</div>
+        <div class="v">
+          <span class="lang-vi">Tiền đăng ký dữ liệu thứ cấp · 06/09/2026 · WBES trên 50 nền kinh tế, 107 quan sát quốc gia-năm (2006-2026) cùng WGI · </span>
+          <span class="lang-en">Secondary data preregistration · 6 September 2026 · WBES across 50 economies, 107 country-year waves (2006-2026), with the WGI · </span>
+          <span class="lang-fr">Préenregistrement de données secondaires · 6 septembre 2026 · WBES sur 50 économies, 107 vagues pays-année (2006-2026), avec les WGI · </span>
+          <a href="https://doi.org/10.17605/OSF.IO/HW64C" target="_blank" rel="noopener">10.17605/OSF.IO/HW64C</a>
+        </div>
+      </div>
+      <p class="morewrap"><a class="morelink" href="https://osf.io/m25qs/" target="_blank" rel="noopener"><span class="lang-vi">Tất cả dự án và dữ liệu trên OSF →</span><span class="lang-en">All projects and data on OSF →</span><span class="lang-fr">Tous les projets et données sur OSF →</span></a></p>
     </div>
   </section>
 
@@ -439,24 +558,58 @@ footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;
     </div>
     <div class="grid">
       <div class="tile">
+        <button class="vthumb" type="button" data-vid="assets/video/maida-demo.mp4" data-poster="assets/img/maida-demo-poster.webp">
+          <img src="assets/img/maida-demo-poster.webp" loading="lazy" decoding="async" alt="Screen recording of the M-AIDA story map: 70 of 236 studies come from East Asia, with the world map filling in from 1980 to 2026">
+          <span class="vplay" aria-hidden="true">▶</span>
+          <span class="vlen" aria-hidden="true">0:27</span>
+          <span class="vsr"><span class="lang-vi">Xem M-AIDA chạy</span><span class="lang-en">Watch M-AIDA running</span><span class="lang-fr">Voir M-AIDA en action</span></span>
+        </button>
         <h3>M-AIDA</h3>
         <p><span class="lang-vi">Trích xuất mức độ ảnh hưởng từ PDF bằng mô hình ngôn ngữ lớn, kiểm chứng con người 100%, khóa bất biến. Mã nguồn mở, lưu trữ Zenodo.</span><span class="lang-en">Effect-size extraction from PDFs with large language models, 100% human verification and immutable locking. Open-source, archived on Zenodo.</span><span class="lang-fr">Extraction des tailles d'effet depuis des PDF, vérifiée à 100 % par l'humain. Libre, archivé sur Zenodo.</span></p>
         <a class="go" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><span class="lang-vi">Mở M-AIDA ↗</span><span class="lang-en">Open M-AIDA ↗</span><span class="lang-fr">Ouvrir M-AIDA ↗</span></a>
       </div>
       <div class="tile">
+        <button class="vthumb" type="button" data-vid="assets/video/bizon-intro.mp4" data-poster="assets/img/bizon-intro-poster.webp">
+          <img src="assets/img/bizon-intro-poster.webp" loading="lazy" decoding="async" alt="Clay-modelled opening of BizOn: a boy rowing a wooden boat on a Mekong branch at sunset">
+          <span class="vplay" aria-hidden="true">▶</span>
+          <span class="vlen" aria-hidden="true">0:10</span>
+          <span class="vsr"><span class="lang-vi">Xem giới thiệu BizOn</span><span class="lang-en">Watch the BizOn intro</span><span class="lang-fr">Voir la présentation de BizOn</span></span>
+        </button>
         <h3>BizOn AI</h3>
         <p><span class="lang-vi">Trò chơi mô phỏng kinh doanh cho đại học: năm đội trên một thị trường đa tác tử, lõi tài chính tất định. Dùng trong học phần EC1314.</span><span class="lang-en">A business-simulation game for higher education: five teams on one multi-agent market with a deterministic finance core. Used in EC1314.</span><span class="lang-fr">Jeu de simulation d'entreprise : cinq équipes, marché multi-agents, cœur financier déterministe.</span></p>
         <a class="go" href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener"><span class="lang-vi">Mở BizOn ↗</span><span class="lang-en">Open BizOn ↗</span><span class="lang-fr">Ouvrir BizOn ↗</span></a>
       </div>
       <div class="tile">
+        <button class="vthumb" type="button" data-vid="assets/video/enquiz-intro.mp4" data-poster="assets/img/enquiz-intro-poster.webp">
+          <img src="assets/img/enquiz-intro-poster.webp" loading="lazy" decoding="async" alt="Opening of the EnQuiz introduction: Do Thuy Huong presenting a start-up dashboard in an entrepreneurship class">
+          <span class="vplay" aria-hidden="true">▶</span>
+          <span class="vlen" aria-hidden="true">0:22</span>
+          <span class="vsr"><span class="lang-vi">Xem giới thiệu EnQuiz</span><span class="lang-en">Watch the EnQuiz intro</span><span class="lang-fr">Voir la présentation de EnQuiz</span></span>
+        </button>
         <h3>EnQuiz</h3>
         <p><span class="lang-vi">Ứng dụng ôn tập học phần Khởi nghiệp: 300 câu theo 5 chương, thi thử có đếm giờ, lưu câu sai; song ngữ, cài được, chạy offline.</span><span class="lang-en">A revision app for the Entrepreneurship course: 300 questions across 5 chapters, timed mock exams, missed-question tracking; bilingual, installable, offline.</span><span class="lang-fr">Application de révision : 300 questions, examens chronométrés, bilingue, hors ligne.</span></p>
         <a class="go" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><span class="lang-vi">Mở EnQuiz ↗</span><span class="lang-en">Open EnQuiz ↗</span><span class="lang-fr">Ouvrir EnQuiz ↗</span></a>
       </div>
       <div class="tile">
+        <figure class="pthumb">
+          <img src="assets/img/comdraft-character.webp" loading="lazy" decoding="async"
+               alt="ComDraft character: a clay figure of Do Thuy Huong in a cream ao dai embroidered with a gold sunrise, drafting on a tablet">
+        </figure>
         <h3>ComDraft</h3>
         <p><span class="lang-vi">Bộ học liệu học phần EC1103: 5 bộ slide có ghi chú, 3 bài thực hành phòng máy, ngân hàng 200 câu và 8 video phụ đề tiếng Việt.</span><span class="lang-en">A complete teaching package for EC1103: five lecture decks with notes, three lab workbooks, a 200-question bank and eight subtitled videos.</span><span class="lang-fr">Ensemble pédagogique pour EC1103 : cinq diaporamas, trois TP, 200 questions, huit vidéos sous-titrées.</span></p>
         <a class="go" href="https://thuyhuongctu.github.io/ComDraft/" target="_blank" rel="noopener"><span class="lang-vi">Mở ComDraft ↗</span><span class="lang-en">Open ComDraft ↗</span><span class="lang-fr">Ouvrir ComDraft ↗</span></a>
+      </div>
+      <div class="tile">
+        <button class="vthumb" type="button" data-vid="assets/video/wct-trailer.mp4" data-poster="assets/img/wct-trailer-poster.webp">
+          <img src="assets/img/wct-trailer-poster.webp" loading="lazy" decoding="async"
+               alt="Paper-craft title card: two students with a guitar on a sculpted world map, the Mekong lit in gold, reading We Create Tomorrow - School of Economics, Can Tho University">
+          <span class="vplay" aria-hidden="true">▶</span>
+          <span class="vlen" aria-hidden="true">0:06</span>
+          <span class="vsr"><span class="lang-vi">Xem trailer We Create Tomorrow</span><span class="lang-en">Watch the We Create Tomorrow trailer</span><span class="lang-fr">Voir la bande-annonce de We Create Tomorrow</span></span>
+        </button>
+        <h3>We Create Tomorrow</h3>
+        <p><span class="lang-vi">Trang karaoke ca khúc của Trường Kinh tế, Đại học Cần Thơ: lời song ngữ Việt - Anh chạy theo từng đoạn, có giao diện sáng và tối, cài được như ứng dụng. «Từ sông Mekong ra thế giới».</span><span class="lang-en">A karaoke page for the song of the School of Economics, Can Tho University: bilingual Vietnamese-English lyrics section by section, light and dark themes, installable as an app. “From the Mekong to the World”.</span><span class="lang-fr">Page karaoké de la chanson de l'École d'économie, Université de Cần Thơ : paroles bilingues vietnamien-anglais par section, thèmes clair et sombre, installable comme une application. « Du Mékong au monde ».</span></p>
+        <a class="go" href="https://thuyhuongctu.github.io/we-create-tomorrow/" target="_blank" rel="noopener"><span class="lang-vi">Mở We Create Tomorrow ↗</span><span class="lang-en">Open We Create Tomorrow ↗</span><span class="lang-fr">Ouvrir We Create Tomorrow ↗</span></a>
       </div>
     </div>
     <div class="gardenband">
@@ -479,6 +632,7 @@ footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;
 </main>
 
 <footer class="wrap">
+  <div class="vnmark" aria-hidden="true"></div>
   <ul class="fnav">
     <li><a href="mailto:thuyhuongctu@gmail.com">thuyhuongctu@gmail.com</a></li>
     <li><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID</a></li>
@@ -563,6 +717,100 @@ footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;
   },{rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
   setTimeout(function(){document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});},2500);
+})();
+</script>
+<script>
+/* ---- clip gioi thieu trong the du an ----
+   Cac clip nay co tieng nen chi phat khi nguoi xem bam vao: cu chi cua ho
+   la thu cho phep tieng. Mot lan bam thi doi anh nen thanh the video that,
+   va dung clip khac dang chay de khong co hai tieng cung luc. */
+(function(){
+  var dangPhat = null;
+  document.querySelectorAll('.vthumb').forEach(function(nut){
+    nut.addEventListener('click', function(){
+      var v = document.createElement('video');
+      v.src = nut.getAttribute('data-vid');
+      v.poster = nut.getAttribute('data-poster');
+      v.controls = true;
+      v.playsInline = true;
+      v.preload = 'auto';
+      nut.replaceWith(v);
+      v.addEventListener('play', function(){
+        if(dangPhat && dangPhat !== v){ try{ dangPhat.pause(); }catch(e){} }
+        dangPhat = v;
+      });
+      v.play().catch(function(){ /* trinh duyet chan thi nguoi xem bam nut tren thanh dieu khien */ });
+    });
+  });
+})();
+</script>
+<script>
+/* ---- dai phim dau trang ----
+   Anh tinh hien ngay; tep mp4 chi tai khi dai phim vao khung nhin, va bo han
+   khi nguoi dung tat hieu ung hoac may dang tiet kiem du lieu. Clip khong co
+   track am thanh nen khong can nut tat tieng. */
+(function(){
+  var box=document.querySelector('.herofilm');
+  if(!box) return;
+  var v=box.querySelector('video');
+  if(!v) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  try{
+    var m=navigator.connection||{};
+    if(m.saveData) return;
+    if(/(^|-)(2g|slow-2g|3g)$/.test(m.effectiveType||'')) return;
+  }catch(e){}
+  var daNap=false;
+  function chay(){
+    if(!daNap){ daNap=true; v.src='assets/video/hero-co.mp4'; }
+    var p=v.play();
+    if(p && p.then) p.then(function(){ box.classList.add('dangchay'); }).catch(function(){});
+  }
+  function dung(){ try{ v.pause(); }catch(e2){} }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es[0].isIntersecting ? chay() : dung();
+    },{rootMargin:'80px'}).observe(box);
+  }else{
+    addEventListener('load',chay);
+  }
+  document.addEventListener('visibilitychange',function(){
+    document.hidden ? dung() : (daNap && chay());
+  });
+})();
+</script>
+<script>
+/* ---- nap canh dat set 3D cho hero ----
+   Anh tinh assets/img/hero-clay.webp da hien ngay tu dau; ba tep duoi day
+   chi tai sau khi trang ve xong, va bo qua han trong bon truong hop:
+   khong co WebGL, nguoi dung tat hieu ung, may bat tiet kiem du lieu,
+   hoac mang 2G/3G. Trang van doc duoc day du neu khong nap gi. */
+(function(){
+  if(!document.getElementById('claysan')) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  try{
+    var m=navigator.connection||{};
+    if(m.saveData) return;
+    if(/(^|-)(2g|slow-2g|3g)$/.test(m.effectiveType||'')) return;
+  }catch(e){}
+  try{
+    var t=document.createElement('canvas');
+    if(!(t.getContext('webgl')||t.getContext('experimental-webgl'))) return;
+  }catch(e2){ return; }
+  function nap(ds){
+    (function ke(i){
+      if(i>=ds.length) return;
+      var sc=document.createElement('script');
+      sc.src=ds[i]; sc.async=false;
+      sc.onload=function(){ ke(i+1); };
+      document.head.appendChild(sc);
+    })(0);
+  }
+  function batDau(){
+    nap(['assets/vendor/three-r128.min.js','assets/js/vn-shape.js','assets/js/clayhero.js']);
+  }
+  if('requestIdleCallback' in window) requestIdleCallback(batDau,{timeout:2600});
+  else addEventListener('load',batDau);
 })();
 </script>
 <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
