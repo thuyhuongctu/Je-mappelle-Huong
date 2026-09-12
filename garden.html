@@ -236,7 +236,7 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
   #hg{bottom:72px}#tourbtn{bottom:72px}}
 @media(prefers-reduced-motion:reduce){#hg.dap #hg-img{animation:none}}
 
-footer{border-top:1px solid var(--line);padding-block:26px 34px;font-size:.85rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding-block:26px 46px;font-size:.85rem;color:var(--muted)}
 .fnav{display:flex;flex-wrap:wrap;gap:0 18px;margin:0 0 10px;padding:0;list-style:none}
 .fnav a{text-decoration:none;color:var(--ink);display:inline-block;padding-block:6px}
 .fnav a:hover{color:var(--clay)}
@@ -245,6 +245,18 @@ footer{border-top:1px solid var(--line);padding-block:26px 34px;font-size:.85rem
   html.js .rv{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
   html.js .rv.in{opacity:1;transform:none}}
 @media print{.rv{opacity:1!important;transform:none!important}}
+/* ===== hinh chim: duong vien Viet Nam o chan trang ======================
+   Dung mask nen net ban do lay mau tu token, tu doi theo che do sang/toi.
+   Trinh duyet khong ho tro mask thi khong hien - chi la hinh trang tri. */
+footer.wrap{position:relative;overflow:hidden}
+.vnmark{display:none}
+@supports ((mask-image:url(x)) or (-webkit-mask-image:url(x))){
+  .vnmark{display:block;position:absolute;right:2px;bottom:2px;width:117px;height:132px;
+    pointer-events:none;background:var(--clay);opacity:.34;
+    -webkit-mask:url('assets/img/vn-outline.svg') right bottom/contain no-repeat;
+            mask:url('assets/img/vn-outline.svg') right bottom/contain no-repeat}
+  @media(max-width:560px){.vnmark{width:98px;height:111px;opacity:.28}}
+}
 </style>
 <script>document.documentElement.className+=" js";</script>
 </head><body>
@@ -437,6 +449,7 @@ footer{border-top:1px solid var(--line);padding-block:26px 34px;font-size:.85rem
 </main>
 
 <footer class="wrap">
+  <div class="vnmark" aria-hidden="true"></div>
   <ul class="fnav">
     <li><a href="index.html">← <span class="lang-vi">Trang học thuật</span><span class="lang-en">Academic home</span><span class="lang-fr">Page académique</span></a></li>
     <li><a href="trangvien.html"><span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D estate</span><span class="lang-fr">Domaine 3D</span></a></li>
