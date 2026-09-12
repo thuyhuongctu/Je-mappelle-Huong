@@ -52,6 +52,11 @@ section{margin-top:36px}
 .track-name{font-size:.9rem;font-weight:600}
 .track-name .len{font-weight:400;color:var(--muted)}
 audio{width:100%;height:38px}
+/* Doan phim cua mot bai hat: hien tron khung, bam moi phat, co tieng nen
+   khong tu chay. Chu thich ghi ro hinh anh do AI tao. */
+.songclip{margin:16px 22px 4px}
+.songclip video{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:#120f0e}
+.songclip figcaption{margin:7px 2px 0;font-size:.78rem;line-height:1.5;color:var(--muted)}
 .lyrics{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:26px clamp(20px,4vw,36px)}
 .lyrics h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:26px 0 8px;font-family:var(--sans);font-weight:700}
 .lyrics h3:first-child{margin-top:0}
@@ -737,6 +742,14 @@ With the sun embroidered on my chest, and a pink heart.</p>
       <p class="song-desc" style="max-width:100%; font-style: italic;"><span class="lang-vi">Một bài hát đặc biệt từ góc nhìn của người cha dành cho con gái - lời nhắc nhở về việc được phép nghỉ ngơi và luôn là cô bé của cha.</span><span class="lang-en">A special song from a father's perspective to his daughter - a reminder of being allowed to rest and always being his little girl.</span></p>
       <p class="prod"><b>Style:</b> Cinematic Folk / Spoken Word · Warm acoustic guitar, soft piano, intimate atmosphere.</p>
       <p class="keyline" style="color:var(--lam)">«You don't have to be the strongest girl in the world. / If you are tired, rest. I will not be angry.»</p>
+      <figure class="songclip">
+        <video controls preload="none" playsinline poster="assets/img/ba-goi-con-ve-poster.webp"
+               src="assets/video/ba-goi-con-ve.mp4"></video>
+        <figcaption>
+          <span class="lang-vi">Đoạn phim cho «Ba gọi con về» · 10 giây · hình ảnh và nhạc trong đoạn này do AI tạo.</span>
+          <span class="lang-en">A short film for “Ba gọi con về” · 10 seconds · the imagery and music in this clip are AI-generated.</span>
+        </figcaption>
+      </figure>
       <div class="tracks">
         <div class="track">
           <div class="track-name">«Ba gọi con về» (Vietnamese) <span class="len">· 5:52</span></div>
@@ -1468,6 +1481,28 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
   </g>
 <g class="lh" transform="translate(302.1,228.0)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(344.8,435.0)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(71.2,419.4)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g><g class="lh" transform="translate(145.3,465.6)"><path d="M-2.4 0 L-1.4 -7 H1.4 L2.4 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="-2.6" y1="0" x2="2.6" y2="0" stroke="currentColor" stroke-width="1"/><rect x="-1.7" y="-9.2" width="3.4" height="2.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1"/><circle class="vn-light" cx="0" cy="-8.1" r="1.3" fill="#e8483f"/><circle class="vn-halo" cx="0" cy="-8.1" r="4.2" fill="none" stroke="#e8483f" stroke-width="1"/></g></svg></div></div>
 <script src="assets/js/music.js" defer></script>
+
+<script>
+/* Mot nguon tieng mot luc.
+   Trang nay co hon hai muoi ban thu cong them doan phim, va widget nhac nen
+   cua music.js phat bang mot the Audio roi ngoai DOM. Truoc day bam mot ban
+   thu trong khi nhac nen dang chay thi hai dong tieng de len nhau. Khi bat
+   ky the audio/video nao trong trang bat dau phat: tat nhac nen, va tam dung
+   ban thu khac dang chay. Su kien play khong noi bot nen phai bat o pha
+   capture. */
+document.addEventListener('play', function (e) {
+  var m = e.target;
+  if (!m || !(m.tagName === 'AUDIO' || m.tagName === 'VIDEO')) return;
+  try {
+    if (window.HUONG_MUSIC && HUONG_MUSIC.nhacDangPhat && HUONG_MUSIC.nhacDangPhat()) {
+      HUONG_MUSIC.stopAll();
+    }
+  } catch (err) { /* khong co widget nhac thi thoi */ }
+  document.querySelectorAll('audio, video').forEach(function (k) {
+    if (k !== m && !k.paused) { try { k.pause(); } catch (e2) {} }
+  });
+}, true);
+</script>
 
 <script>
 /* Songbook UX: lyrics stay hidden until the reader explicitly opens a track. */
