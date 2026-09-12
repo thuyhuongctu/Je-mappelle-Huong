@@ -14,7 +14,7 @@ Nguồn dữ liệu:
                 (định dạng «DD · MM · YYYY») làm lastmod; slug sinh từ tên bài
                 Việt ở .post-title.
 - các trang tĩnh (publications.html, cv.html, garden.html, trangvien.html,
-                music.html, songbook.html) : ngày sửa đổi của file.
+                music.html) : ngày sửa đổi của file.
 - index.html  : luôn ưu tiên lastmod mới nhất của toàn bộ các trang HTML.
 
 URL dùng tiền tố công khai https://thuyhuongctu.github.io/Je-mappelle-Huong/.
@@ -99,7 +99,6 @@ PAGE_CONF = [
     # lop vuon so
     ('/garden.html', 'garden.html', '0.6', 'monthly'),
     ('/music.html', 'music.html', '0.7', 'monthly'),
-    ('/songbook.html', 'songbook.html', '0.6', 'monthly'),
     ('/trangvien.html', 'trangvien.html', '0.5', 'monthly'),
 ]
 
