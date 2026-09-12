@@ -348,6 +348,24 @@ footer a:hover{color:var(--accent)}
   #t07.bonus-track:has(.track-quickplay.is-playing)::before,
   #t07.bonus-track:has(.track-quickplay.is-playing)::after { animation: none; }
 }
+
+/* Optional intro ambience for Bonus Track 07. */
+.bonus-ambience-toggle {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  border: 1px solid rgba(85,123,184,.42);
+  border-radius: 999px;
+  background: rgba(255,255,255,.5);
+  color: #3e5f9b;
+  cursor: pointer;
+  font: 700 .76rem/1 var(--sans);
+  padding: 8px 12px;
+}
+.bonus-ambience-toggle:hover, .bonus-ambience-toggle[aria-pressed="true"] { background: #557bb8; color: #fff; }
+.bonus-ambience-toggle:focus-visible { outline: 3px solid rgba(85,123,184,.35); outline-offset: 3px; }
 </style></head><body>
   <div class="dmnav" id="dmnav">
     <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
@@ -1639,6 +1657,88 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
   input.addEventListener('input', apply);
   clear.addEventListener('click', function(){ input.value = ''; apply(); input.focus(); });
   apply();
+})();
+</script>
+
+<script>
+/* Bonus Track 07: a very soft procedural wind/rain bed for the intro only. */
+(function(){
+  var audio = document.querySelector('#t07 audio');
+  var song = document.querySelector('#t07 .song');
+  if(!audio || !song) return;
+  var enabled = true;
+  var ambience = null;
+  var fadeTimer = null;
+  var toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'bonus-ambience-toggle';
+  toggle.setAttribute('aria-pressed', 'true');
+  toggle.innerHTML = '<span aria-hidden="true">◌</span><span class="lang-vi">Âm thanh intro: bật</span><span class="lang-en">Intro ambience: on</span>';
+  song.appendChild(toggle);
+  function updateToggle(){
+    toggle.setAttribute('aria-pressed', String(enabled));
+    toggle.querySelector('.lang-vi').textContent = enabled ? 'Âm thanh intro: bật' : 'Âm thanh intro: tắt';
+    toggle.querySelector('.lang-en').textContent = enabled ? 'Intro ambience: on' : 'Intro ambience: off';
+  }
+  function makeNoiseBuffer(ctx, seconds){
+    var buffer = ctx.createBuffer(1, ctx.sampleRate * seconds, ctx.sampleRate);
+    var data = buffer.getChannelData(0);
+    for(var i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+    return buffer;
+  }
+  function stopAmbience(){
+    if(fadeTimer){ clearTimeout(fadeTimer); fadeTimer = null; }
+    if(!ambience) return;
+    var current = ambience;
+    ambience = null;
+    try{
+      current.master.gain.cancelScheduledValues(current.ctx.currentTime);
+      current.master.gain.setTargetAtTime(0, current.ctx.currentTime, .18);
+      current.sources.forEach(function(source){ source.stop(current.ctx.currentTime + .8); });
+      setTimeout(function(){ try{current.ctx.close();}catch(e){} }, 1000);
+    }catch(e){}
+  }
+  function startAmbience(){
+    if(!enabled || ambience || !window.AudioContext && !window.webkitAudioContext) return;
+    try{
+      var Ctx = window.AudioContext || window.webkitAudioContext;
+      var ctx = new Ctx();
+      var master = ctx.createGain();
+      master.gain.value = .0001;
+      master.connect(ctx.destination);
+      var sources = [];
+      var wind = ctx.createBufferSource();
+      wind.buffer = makeNoiseBuffer(ctx, 3);
+      wind.loop = true;
+      var windFilter = ctx.createBiquadFilter();
+      windFilter.type = 'lowpass'; windFilter.frequency.value = 520; windFilter.Q.value = .35;
+      var windGain = ctx.createGain(); windGain.gain.value = .16;
+      wind.connect(windFilter).connect(windGain).connect(master);
+      wind.start(); sources.push(wind);
+      var rain = ctx.createBufferSource();
+      rain.buffer = makeNoiseBuffer(ctx, 2);
+      rain.loop = true;
+      var rainFilter = ctx.createBiquadFilter();
+      rainFilter.type = 'highpass'; rainFilter.frequency.value = 2100; rainFilter.Q.value = .2;
+      var rainGain = ctx.createGain(); rainGain.gain.value = .018;
+      rain.connect(rainFilter).connect(rainGain).connect(master);
+      rain.start(); sources.push(rain);
+      master.gain.setTargetAtTime(.055, ctx.currentTime, .7);
+      ambience = {ctx: ctx, master: master, sources: sources};
+      fadeTimer = setTimeout(stopAmbience, 18000);
+      if(ctx.state === 'suspended') ctx.resume();
+    }catch(e){ ambience = null; }
+  }
+  toggle.addEventListener('click', function(){
+    enabled = !enabled;
+    updateToggle();
+    if(!enabled) stopAmbience();
+    else if(!audio.paused && audio.currentTime < 18) startAmbience();
+  });
+  audio.addEventListener('play', function(){ if(audio.currentTime < 18) startAmbience(); });
+  audio.addEventListener('pause', stopAmbience);
+  audio.addEventListener('ended', stopAmbience);
+  updateToggle();
 })();
 </script>
 </body></html>
