@@ -38,13 +38,18 @@ PhD candidate in Business Administration at Can Tho University, whose research
 concerns the relationship between internationalization and firm performance
 among enterprises in Asia.
 
-The site serves three purposes. It presents a bilingual (Vietnamese–English)
-academic profile covering research, teaching and publications. It acts as the
-central hub linking the author's open software projects, each of which is
+The site serves three purposes. It presents a trilingual (Vietnamese, English,
+French) academic profile covering research, teaching and publications. It acts
+as the central hub linking the author's open software projects, each of which is
 separately archived and citable. And it functions as a public dissemination
 channel, carrying an academic news blog, an interactive data globe backed by
 World Bank Open Data, an illustrated virtual-guide character, an interactive
 3D garden, and a songbook of original recordings.
+
+These two roles are kept on separate pages. The home page is the academic
+profile and nothing else; the creative half of the site lives behind a single
+link to the digital garden (`garden.html`). A first-time visitor meets the
+researcher before being invited into the garden.
 
 The entire site is plain HTML, CSS and JavaScript. It requires no build step,
 no framework and no server-side component, and is published as a static site on
@@ -59,11 +64,15 @@ nghiên cứu sinh tiến sĩ ngành Quản trị kinh doanh tại Trường Đ�
 nghiên cứu về quốc tế hóa và hiệu quả hoạt động kinh doanh của doanh nghiệp
 ở châu Á.
 
-Trang là cổng trung tâm của toàn bộ hệ sinh thái số: hồ sơ học thuật song ngữ,
-liên kết các dự án phần mềm mở đã có DOI, blog tin tức học thuật, quả cầu dữ
-liệu World Bank tương tác, nhân vật hướng dẫn Hương AI, trang viên 3D và tập
-bài hát. Toàn bộ viết bằng HTML/CSS/JS thuần, không cần cài đặt, không cần
-build, chạy trên GitHub Pages.
+Trang có hai cửa tách bạch. **Trang chủ là hồ sơ học thuật**: tên, đơn vị công
+tác, một câu nghiên cứu, CV, ORCID và email ngay màn hình đầu; rồi nghiên cứu,
+công bố chọn lọc chia theo tầng bằng chứng, học phần giảng dạy và các dự án
+phần mềm. **Vườn số** (`garden.html`) giữ toàn bộ phần sáng tạo: bản đồ trang
+viên, nhân vật Hương AI, âm nhạc và songbook, trang viên 3D, trò chơi lịch sử
+và quả cầu dữ liệu World Bank — chỉ cách trang chủ đúng một liên kết.
+
+Toàn bộ viết bằng HTML/CSS/JS thuần, không cần cài đặt, không cần build, chạy
+trên GitHub Pages.
 
 ## Digital ecosystem
 
@@ -79,17 +88,33 @@ build, chạy trên GitHub Pages.
 
 ## Site contents
 
-- **Bilingual academic profile** (Vietnamese and English) with light and dark themes
-- **Ecosystem cards** linking each open project and its archived release
-- **Interactive map homepage**: a hand-drawn estate map through which a 3D
-  character cycles between the main sections of the site
-- **Hương AI virtual guide**: an illustrated character with narrated tours in
-  English and French
-- **Interactive 3D globe** with live World Bank Open Data charts
+The site has two front doors, kept deliberately separate.
+
+**The academic layer** — `index.html`, `publications.html`, `cv.html` — is the
+default entry point. A visitor should be able to tell who this is, what she
+researches, and where the CV and papers are within the first screen, in any
+language, on any device.
+
+- **Identity first**: name, affiliation, a one-sentence research statement, and
+  CV / ORCID / email above the fold — no floating widgets over the name
+- **Research**: the dissertation question, its data (WBES, 50 economies;
+  236 coded studies) and its methods
+- **Selected publications**, tiered by evidence: journal articles, book chapters
+  and conference papers, working papers under review — each with its DOI
+- **Teaching**: courses taught, one line each, linked to open course material
+- **Projects**: M-AIDA, BizOn AI, EnQuiz and ComDraft
+- Trilingual (Vietnamese, English, French), light and dark themes
+
+**The garden layer** — `garden.html` and everything behind it — keeps the
+playful half of the site, reachable by one link from the academic home.
+
+- **Garden map**: a hand-drawn estate map whose signs a 3D character cycles to
+- **Hương AI virtual character** and an opt-in narrated bicycle tour
 - **Trang viên (3D garden)**: an explorable scene with a time-of-day cycle,
   ambient audio and a small game
-- **Songbook**: original recordings with synchronised lyrics
-- **Academic news blog** and an ecosystem slide deck
+- **Songbook and music**: original recordings with synchronised lyrics
+- **Interactive 3D globe** with live World Bank Open Data charts
+- **Academic news blog**, creative journal and an ecosystem slide deck
 
 ## Technology
 
@@ -107,7 +132,10 @@ build, chạy trên GitHub Pages.
 
 ```
 .
-├── index.html               Homepage: estate map, 3D character, ecosystem
+├── index.html               Academic home: research, publications, teaching, CV
+├── publications.html        Full publication list, filterable by type and year
+├── cv.html                  Printable CV
+├── garden.html              Digital garden: the map, character, music, globe
 ├── blog.html                Academic news blog
 ├── trangvien.html           3D garden scene
 ├── songbook.html            Songbook with synchronised lyrics
@@ -120,6 +148,7 @@ build, chạy trên GitHub Pages.
 ├── icons/                   Application icon set
 ├── manifest.webmanifest     Web application manifest
 ├── sw.js                    Service worker (versioned offline cache)
+├── scripts/                 rebuild-sitemap.py, check-site.py (integrity check)
 ├── zenodo-stats.js          Live Zenodo download statistics
 └── sitemap.xml, robots.txt  Search-engine metadata
 ```
