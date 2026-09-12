@@ -1,0 +1,923 @@
+<!doctype html><html lang="vi"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vườn số · Digital Garden - Je m'appelle Hương</title>
+<meta name="description" content="The digital garden of Do Thuy Huong: the 3D clay estate, Huong AI the virtual character, music and songbook, Vietnamese-history games and a live World Bank data globe.">
+<link rel="canonical" href="https://thuyhuongctu.github.io/Je-mappelle-Huong/garden.html">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Vườn số · Digital Garden - Je m'appelle Hương">
+<meta property="og:description" content="The 3D clay estate, Huong AI, music and songbook, history games and a live data globe.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/garden.html">
+<meta property="og:image" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/assets/img/og-trangvien.jpg">
+<style>
+/* ===== shared shell: same clay tokens as the academic home ============== */
+:root{
+  --paper:#f6f1e7;--surface:#fffcf5;--sunk:#efe8dc;
+  --ink:#1c1814;--muted:#6f6459;--line:#e2d8c7;
+  --clay:#c45c3a;--clay-soft:#f3e4da;--river:#3f6f68;--amber:#b8842c;
+  --serif:"Iowan Old Style",Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --lift:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09);
+  --press:inset 0 2px 0 rgba(255,255,255,.72),inset 0 -2px 0 rgba(120,85,60,.06);
+  --accent:var(--clay);--accent-soft:var(--clay-soft);--accent2:var(--river);--gold:var(--amber);
+  --shadow:var(--lift);
+  --w:980px;--r:16px}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --paper:#17130f;--surface:#201914;--sunk:#120e0b;
+  --ink:#efe6d8;--muted:#a6998a;--line:#332a22;
+  --clay:#e08055;--clay-soft:#3a251c;--river:#79b3a6;--amber:#d6a24e;
+  --lift:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42);
+  --press:inset 0 2px 0 rgba(255,255,255,.05),inset 0 -2px 0 rgba(0,0,0,.28)}}
+:root[data-theme=dark]{
+  --paper:#17130f;--surface:#201914;--sunk:#120e0b;
+  --ink:#efe6d8;--muted:#a6998a;--line:#332a22;
+  --clay:#e08055;--clay-soft:#3a251c;--river:#79b3a6;--amber:#d6a24e;
+  --lift:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42);
+  --press:inset 0 2px 0 rgba(255,255,255,.05),inset 0 -2px 0 rgba(0,0,0,.28)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.62 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance;letter-spacing:-.01em}
+a{color:var(--river)}a:hover{color:var(--clay)}
+img{max-width:100%}
+:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px;border-radius:6px}
+.wrap{max-width:var(--w);margin:0 auto;padding-inline:20px}
+.skip{position:fixed;left:12px;top:-60px;z-index:200;background:var(--clay);color:#fff;font:700 .8rem var(--sans);padding:8px 14px;border-radius:8px;text-decoration:none;transition:top .2s}
+.skip:focus{top:10px}
+html[lang="en"] .lang-vi{display:none}
+html:not([lang="en"]) .lang-en{display:none}
+html[lang="fr"] .lang-vi{display:none}
+html[lang="fr"] .lang-en{display:none}
+html:not([lang="fr"]) .lang-fr{display:none}
+
+.top{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);
+  background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(12px)}
+.bar{max-width:var(--w);margin:0 auto;display:flex;align-items:center;gap:12px;padding:8px 20px;min-height:54px}
+.mark{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);flex-shrink:0}
+.mark img{width:28px;height:28px;border-radius:50%;display:block}
+.mark b{font:600 .92rem/1.15 var(--serif);display:block}
+.mark small{display:block;font:600 .55rem/1.2 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.mainnav{display:flex;gap:2px;margin-left:auto}
+.mainnav a{font:600 .82rem var(--sans);color:var(--muted);text-decoration:none;padding:7px 10px;border-radius:9px}
+.mainnav a:hover{color:var(--ink);background:var(--sunk)}
+.mainnav a.home{color:var(--clay)}
+.ctl{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.mainnav+.ctl{margin-left:6px}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
+.lang button{border:0;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:5px 10px;cursor:pointer}
+.lang button.on{background:var(--clay);color:#fff}
+.morebtn{width:32px;height:32px;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--muted);
+  font:700 1rem/1 var(--sans);cursor:pointer;box-shadow:var(--press)}
+.morebtn:hover{color:var(--ink);border-color:var(--clay)}
+.menu{position:absolute;right:16px;top:calc(100% + 8px);width:min(260px,calc(100vw - 32px));background:var(--surface);
+  border:1px solid var(--line);border-radius:18px;box-shadow:var(--press),var(--lift);padding:10px;z-index:60}
+.menu h4{font:700 .58rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:10px 8px 4px}
+.menu h4:first-child{margin-top:2px}
+.menu a,.menu button{display:flex;width:100%;align-items:center;gap:8px;text-align:left;background:none;border:0;
+  font:500 .85rem var(--sans);color:var(--ink);text-decoration:none;padding:7px 8px;border-radius:10px;cursor:pointer}
+.menu a:hover,.menu button:hover{background:var(--sunk);color:var(--clay)}
+.menu button.on{background:var(--clay);color:#fff;font-weight:600}
+.menu .navdup{display:none}
+@media(max-width:860px){.mainnav{display:none}.menu .navdup{display:flex}.mark small{display:none}}
+@media(max-width:400px){.mark b{font-size:.84rem}}
+
+/* ===== garden intro ===================================================== */
+.ghead{text-align:center;padding-block:clamp(26px,5vw,44px) 14px}
+.ghead .k{font:700 .66rem var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--clay)}
+.ghead h1{font-size:clamp(1.6rem,4.4vw,2.3rem);line-height:1.14;margin:6px 0 8px}
+.ghead p{margin:0 auto;max-width:58ch;color:var(--muted);font-size:.94rem}
+.backhome{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font:600 .84rem var(--sans);text-decoration:none}
+
+/* ===== the sign map ===================================================== */
+#bando{position:relative;width:100%;aspect-ratio:1376/768;border-radius:26px;overflow:hidden;
+  border:5px solid var(--surface);box-shadow:var(--lift);margin:14px 0 30px;
+  background:url('assets/img/garden_hub.webp') center/cover no-repeat}
+:root[data-theme=dark] #bando,:root:not([data-theme=light]) #bando{filter:saturate(.94) brightness(.82) contrast(1.02)}
+.bd-buom{position:absolute;z-index:2;pointer-events:none;font-size:clamp(.9rem,1.8vw,1.35rem);opacity:.9;will-change:transform}
+@media(prefers-reduced-motion:no-preference){
+  .bd-buom{animation:buomDrift 9s ease-in-out infinite}
+  .bd-buom:nth-of-type(2){animation-duration:11s;animation-delay:-2.5s}
+  .bd-buom:nth-of-type(3){animation-duration:10s;animation-delay:-5s}
+  @keyframes buomDrift{0%{transform:translate(0,0) rotate(-6deg)}25%{transform:translate(22px,-14px) rotate(4deg)}
+    50%{transform:translate(-8px,-26px) rotate(-4deg)}75%{transform:translate(-24px,-8px) rotate(6deg)}100%{transform:translate(0,0) rotate(-6deg)}}}
+@media(prefers-reduced-motion:reduce){.bd-buom{display:none}}
+.tram{position:absolute;z-index:3;transform:translate(-50%,-50%);cursor:pointer;border:none;
+  background:rgba(255,253,248,.94);border-radius:13px;padding:.48em .78em;text-align:center;
+  font:700 clamp(.56rem,1.35vw,.74rem)/1.25 var(--sans);color:#463029;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.6),0 5px 14px rgba(70,40,40,.25);
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.tram:hover{transform:translate(-50%,-56%) scale(1.07);background:#fff;color:#a8394e;box-shadow:inset 0 2px 0 rgba(255,255,255,.6),0 9px 22px rgba(70,40,40,.3)}
+.tram:active{transform:translate(-50%,-48%) scale(.97)}
+.tram small{display:block;font-weight:600;color:#8d7166;font-size:.74em}
+.tram-feat{background:rgba(196,92,58,.95);color:#fffdf8;box-shadow:inset 0 2px 0 rgba(255,255,255,.32),0 6px 18px rgba(150,70,45,.35)}
+.tram-feat:hover{background:#c45c3a;color:#fff}
+.tram-feat small{color:#ffdfd3}
+@media(max-width:560px){.tram{padding:.4em .62em}.tram small{display:none}}
+
+/* ===== sections ========================================================= */
+section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
+.shead{margin:0 0 18px}
+.shead .k{font:700 .64rem var(--sans);letter-spacing:.17em;text-transform:uppercase;color:var(--clay)}
+.shead h2{font-size:1.5rem;margin:4px 0 0}
+.shead p{color:var(--muted);font-size:.92rem;margin:8px 0 0;max-width:62ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;
+  box-shadow:var(--press),var(--lift);display:flex;flex-direction:column}
+.tile h3{font-size:1.02rem}
+.tile p{font-size:.87rem;color:var(--muted);margin:7px 0 0;line-height:1.55}
+.tile .go{margin-top:auto;padding-top:12px;font:600 .84rem var(--sans);text-decoration:none}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .tile{transition:transform .18s ease,box-shadow .18s ease}
+  .tile:hover{transform:translateY(-3px);box-shadow:var(--press),0 1px 1px rgba(60,40,28,.06),0 16px 30px rgba(90,60,40,.13)}}
+
+/* the clay figure leading the character section */
+.claychar{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:clamp(18px,3vw,30px);align-items:center;max-width:740px;
+  background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px 24px;
+  box-shadow:var(--press),var(--lift);margin:0 0 18px}
+.claychar img{width:100%;height:auto;border-radius:14px;background:#f3e9d8;display:block}
+.claychar p{margin:0 0 10px;font-size:.95rem}
+.claychar .claynote{color:var(--muted);font-size:.86rem;margin:0}
+@media(max-width:640px){.claychar{grid-template-columns:1fr;text-align:center;padding:18px}
+  .claychar img{max-width:190px;margin:0 auto}}
+
+/* workshop scenes */
+.scenes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.scenes figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:8px;
+  box-shadow:var(--press),var(--lift)}
+.scenes img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:12px;display:block}
+.scenes figcaption{font-size:.78rem;color:var(--muted);text-align:center;padding:8px 4px 2px}
+
+/* character gallery */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.gal figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:8px;box-shadow:var(--press),var(--lift)}
+.gal img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:11px;display:block}
+.gal figcaption{font-size:.74rem;color:var(--muted);text-align:center;padding:7px 2px 2px}
+
+/* world data */
+.globe-wrap{display:flex;flex-direction:column;align-items:center;margin:6px 0 22px}
+#globe{width:min(340px,80vw);height:auto;cursor:grab;touch-action:none}
+#globe:active{cursor:grabbing}
+.globe-cap{font-size:.9rem;color:var(--muted);text-align:center;max-width:60ch;margin-top:10px;min-height:2.6em}
+.globe-cap b{color:var(--ink)}
+.wd-card{border:1px solid var(--line);border-radius:18px;padding:22px;background:var(--surface);box-shadow:var(--press),var(--lift)}
+.wd-inds{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.wd-ind{font:500 13px/1.2 var(--sans);padding:8px 13px;border:1px solid var(--line);background:var(--paper);color:var(--muted);
+  border-radius:999px;cursor:pointer;transition:all .18s ease}
+.wd-ind:hover{border-color:var(--clay);color:var(--ink)}
+.wd-ind[aria-selected="true"]{background:var(--clay);border-color:var(--clay);color:#fff;font-weight:600}
+.wd-countries{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.wd-country{font:500 12.5px var(--sans);padding:6px 12px 6px 10px;border:1px solid var(--line);background:var(--paper);color:var(--muted);
+  border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .16s ease}
+.wd-country:hover{border-color:var(--clay);color:var(--ink)}
+.wd-country .dot{width:10px;height:10px;border-radius:50%;background:currentColor;opacity:.25;transition:opacity .16s}
+.wd-country[aria-pressed="true"]{color:var(--ink);border-color:var(--line);background:var(--clay-soft)}
+.wd-country[aria-pressed="true"] .dot{opacity:1}
+.wd-charttitle{font-family:var(--serif);font-size:18px;color:var(--ink);margin:2px 0 10px}
+.wd-charttitle .u{font:400 12.5px var(--sans);color:var(--muted)}
+.wd-svgbox{position:relative;width:100%}
+#wdChart{width:100%;height:auto;display:block;overflow:visible}
+.wd-status{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted);pointer-events:none}
+.wd-gridline{stroke:var(--line);stroke-width:1}
+.wd-axislbl{font-family:var(--sans);font-size:11px;fill:var(--muted)}
+.wd-line{fill:none;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.wd-dot{stroke:var(--surface);stroke-width:1.4}
+.wd-hoverline{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3;opacity:.6}
+.wd-tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--surface);font-family:var(--sans);
+  font-size:12px;line-height:1.5;padding:8px 11px;border-radius:9px;box-shadow:0 8px 24px rgba(0,0,0,.28);
+  opacity:0;transition:opacity .12s;transform:translate(-50%,-108%);white-space:nowrap;z-index:5}
+.wd-tip .r{display:flex;align-items:center;gap:6px;margin-top:2px}
+.wd-tip .r i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.wd-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;justify-content:center}
+.wd-legend span{font-size:12.5px;color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+.wd-legend span i{width:14px;height:3px;border-radius:2px;display:inline-block}
+.wd-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:20px}
+.wd-mini{border:1px solid var(--line);border-radius:14px;padding:13px 14px;background:var(--paper)}
+.wd-mini .cn{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.wd-mini .cn i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.wd-mini .val{font-family:var(--serif);font-size:22px;color:var(--ink);margin-top:3px;font-weight:600}
+.wd-mini .yr{font-size:11px;color:var(--muted);margin-top:1px}
+.wd-source{font-size:12px;color:var(--muted);margin-top:18px;text-align:center}
+@media(max-width:560px){.wd-cards{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}}
+
+/* ===== Hương rides the tour - garden only ============================== */
+#hg{position:fixed;left:14px;bottom:14px;z-index:7;display:flex;align-items:flex-end;gap:10px;pointer-events:none;transition:opacity .4s}
+#hg[hidden]{display:none}
+#hg-img{height:112px;width:auto;filter:drop-shadow(0 10px 12px rgba(120,60,60,.3));transition:transform .3s ease;transform-origin:50% 88%}
+#hg.dap #hg-img{animation:hgDap .5s ease-in-out infinite}
+@keyframes hgDap{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(1.5deg) translateY(-4px)}}
+#hg-bien{position:relative;pointer-events:auto;display:flex;align-items:flex-start;gap:6px;
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:9px 15px;margin-bottom:16px;max-width:200px;box-shadow:var(--press),var(--lift)}
+#hg-next{flex:1;min-width:0;background:none;border:0;padding:0;cursor:pointer;text-align:left;
+  font:700 .8rem var(--sans);color:var(--ink);line-height:1.35}
+#hg-next small{display:block;font-weight:600;color:var(--muted);font-size:.68rem;margin-top:2px}
+#hg-bien:hover{border-color:var(--clay)}
+#hg-next:hover{color:var(--clay)}
+#hg-loi{background:none;border:none;font-size:.9rem;padding:0;cursor:pointer;opacity:.85;line-height:1.4}
+#hg-loi:hover{opacity:1}
+#hg-tat{position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;
+  border:1px solid var(--line);background:var(--surface);color:var(--muted);font:700 .7rem/1 var(--sans);cursor:pointer}
+#tourbtn{position:fixed;left:14px;bottom:14px;z-index:7;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  border-radius:999px;padding:9px 16px;font:600 .82rem var(--sans);cursor:pointer;box-shadow:var(--press),var(--lift)}
+#tourbtn[hidden]{display:none}
+@media(max-width:720px){#hg-img{height:80px}#hg-bien{max-width:150px;font-size:.72rem;padding:7px 11px}}
+@media(max-width:560px){#hg-img{height:58px}#hg-bien{max-width:125px;font-size:.66rem;padding:6px 10px;margin-bottom:10px}#hg-bien small{font-size:.6rem}}
+@media(prefers-reduced-motion:reduce){#hg.dap #hg-img{animation:none}}
+
+footer{border-top:1px solid var(--line);padding-block:26px 34px;font-size:.85rem;color:var(--muted)}
+.fnav{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 14px;padding:0;list-style:none}
+.fnav a{text-decoration:none;color:var(--ink)}
+.fnav a:hover{color:var(--clay)}
+.fbot{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.78rem}
+@media(prefers-reduced-motion:no-preference){
+  html.js .rv{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+  html.js .rv.in{opacity:1;transform:none}}
+@media print{.rv{opacity:1!important;transform:none!important}}
+</style>
+<script>document.documentElement.className+=" js";</script>
+</head><body>
+<a class="skip" href="#main"><span class="lang-vi">Tới nội dung</span><span class="lang-en">Skip to content</span><span class="lang-fr">Aller au contenu</span></a>
+
+<header class="top">
+  <div class="bar">
+    <a class="mark" href="./">
+      <img src="assets/img/lr-seal-round.webp" alt="" onerror="this.style.display='none'">
+      <span><b>Je m'appelle Hương</b><small>Lecturer &amp; Researcher</small></span>
+    </a>
+    <nav class="mainnav" aria-label="Garden">
+      <a href="#estate"><span class="lang-vi">Trang viên</span><span class="lang-en">Estate</span><span class="lang-fr">Domaine</span></a>
+      <a href="#gallery"><span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Character</span><span class="lang-fr">Personnage</span></a>
+      <a href="#workshop"><span class="lang-vi">Xưởng đất</span><span class="lang-en">Workshop</span><span class="lang-fr">Atelier</span></a>
+      <a href="#media"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><span class="lang-fr">Musique</span></a>
+      <a href="#worlddata"><span class="lang-vi">Dữ liệu</span><span class="lang-en">World data</span><span class="lang-fr">Données</span></a>
+      <a class="home" href="index.html">← <span class="lang-vi">Trang học thuật</span><span class="lang-en">Academic home</span><span class="lang-fr">Page académique</span></a>
+    </nav>
+    <div class="ctl">
+      <span class="lang" id="lang"><button type="button" data-lang="vi" class="on">VI</button><button type="button" data-lang="en">EN</button></span>
+      <button class="morebtn" id="morebtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu">···</button>
+    </div>
+  </div>
+  <div class="menu" id="menu" hidden>
+    <h4 class="navdup"><span class="lang-vi">Trong vườn</span><span class="lang-en">In the garden</span><span class="lang-fr">Dans le jardin</span></h4>
+    <a class="navdup" href="#estate"><span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D estate</span><span class="lang-fr">Domaine 3D</span></a>
+    <a class="navdup" href="#gallery"><span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Virtual character</span><span class="lang-fr">Personnage</span></a>
+    <a class="navdup" href="#workshop"><span class="lang-vi">Xưởng đất</span><span class="lang-en">Clay workshop</span><span class="lang-fr">Atelier d'argile</span></a>
+    <a class="navdup" href="#media"><span class="lang-vi">Âm nhạc &amp; songbook</span><span class="lang-en">Music &amp; songbook</span><span class="lang-fr">Musique</span></a>
+    <a class="navdup" href="#worlddata"><span class="lang-vi">Dữ liệu thế giới</span><span class="lang-en">World data</span><span class="lang-fr">Données</span></a>
+    <h4><span class="lang-vi">Thêm</span><span class="lang-en">More</span><span class="lang-fr">Plus</span></h4>
+    <a href="index.html">← <span class="lang-vi">Trang học thuật</span><span class="lang-en">Academic home</span><span class="lang-fr">Page académique</span></a>
+    <a href="blog.html">📰 Blog</a>
+    <a href="journey.html">🌸 <span class="lang-vi">Nhật ký</span><span class="lang-en">Journal</span><span class="lang-fr">Journal</span></a>
+    <a href="audio.html">🎙️ <span class="lang-vi">Phòng thu lời dẫn</span><span class="lang-en">Narration studio</span><span class="lang-fr">Studio de narration</span></a>
+    <h4><span class="lang-vi">Tùy chọn</span><span class="lang-en">Preferences</span><span class="lang-fr">Préférences</span></h4>
+    <button type="button" id="frbtn" aria-pressed="false">🇫🇷 Français</button>
+    <button type="button" id="themebtn">◐ <span class="lang-vi">Sáng / Tối</span><span class="lang-en">Light / Dark</span><span class="lang-fr">Clair / Sombre</span></button>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+
+  <div class="ghead">
+    <span class="k"><span class="lang-vi">Vườn số</span><span class="lang-en">Digital garden</span><span class="lang-fr">Jardin numérique</span></span>
+    <h1><span class="lang-vi">«Je m'appelle Hương» - chọn nơi muốn ghé</span><span class="lang-en">“Je m'appelle Hương” - pick a place to visit</span><span class="lang-fr">« Je m'appelle Hương » - choisissez une étape</span></h1>
+    <p><span class="lang-vi">Bấm một biển - Hương AI sẽ đạp xe đưa bạn đến khu tương ứng. Đây là phần sáng tạo của trang; hồ sơ học thuật nằm ở trang chủ.</span><span class="lang-en">Click a sign and Huong AI rides there. This is the creative half of the site; the academic profile lives on the home page.</span><span class="lang-fr">Cliquez sur une enseigne et Hương IA vous y emmène. Voici la moitié créative du site ; le profil académique est sur la page d'accueil.</span></p>
+    <a class="backhome" href="index.html">← <span class="lang-vi">Về trang học thuật</span><span class="lang-en">Back to the academic home</span><span class="lang-fr">Retour à la page académique</span></a>
+  </div>
+
+  <div id="bando" role="navigation" aria-label="Garden map">
+    <span class="bd-buom" style="left:27%;top:35%" aria-hidden="true">🦋</span>
+    <span class="bd-buom" style="left:61%;top:40%" aria-hidden="true">🦋</span>
+    <span class="bd-buom" style="left:44%;top:30%" aria-hidden="true">🦋</span>
+    <button class="tram" style="left:14%;top:33%" data-den="#gallery">🎀 <span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Character</span><span class="lang-fr">Personnage</span><small>Huong AI</small></button>
+    <button class="tram" style="left:84%;top:28%" data-den="journey.html">🌸 <span class="lang-vi">Nhật ký</span><span class="lang-en">Journal</span><span class="lang-fr">Journal</span><small>Creative log</small></button>
+    <button class="tram" style="left:13%;top:48%" data-den="index.html">🎓 <span class="lang-vi">Trang học thuật</span><span class="lang-en">Academic home</span><span class="lang-fr">Page académique</span><small>Research &amp; CV</small></button>
+    <button class="tram" style="left:87%;top:48%" data-den="music.html">🎵 <span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><span class="lang-fr">Musique</span><small>Creative library</small></button>
+    <button class="tram" style="left:33%;top:76%" data-den="#worlddata">🌏 <span class="lang-vi">Dữ liệu thế giới</span><span class="lang-en">World data</span><span class="lang-fr">Données</span><small>Live globe</small></button>
+    <button class="tram" style="left:67%;top:76%" data-den="blog.html">📰 <span class="lang-vi">Blog · Tin tức</span><span class="lang-en">Blog · News</span><span class="lang-fr">Blog</span><small>News corner</small></button>
+    <button class="tram tram-feat" style="left:50%;top:86%" data-den="trangvien.html">🏡 <span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D estate</span><span class="lang-fr">Domaine 3D</span><small>Walk inside</small></button>
+  </div>
+
+  <section id="estate" class="rv">
+    <div class="shead">
+      <span class="k"><span class="lang-vi">Trang viên</span><span class="lang-en">The estate</span><span class="lang-fr">Le domaine</span></span>
+      <h2><span class="lang-vi">Những nơi có thể ghé</span><span class="lang-en">Places you can visit</span><span class="lang-fr">Lieux à visiter</span></h2>
+    </div>
+    <div class="grid">
+      <div class="tile">
+        <h3><span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D clay estate</span><span class="lang-fr">Domaine 3D</span></h3>
+        <p><span class="lang-vi">Khu vườn đất sét dựng bằng WebGL: đi dạo, nhận nhiệm vụ, sưu tầm vật phẩm và nghe nhạc nền theo từng khu.</span><span class="lang-en">A clay garden built in WebGL: walk around, pick up quests and items, and hear ambient music that changes by area.</span><span class="lang-fr">Un jardin d'argile en WebGL : promenade, quêtes, objets et musique d'ambiance par zone.</span></p>
+        <a class="go" href="trangvien.html"><span class="lang-vi">Vào trang viên →</span><span class="lang-en">Enter the estate →</span><span class="lang-fr">Entrer →</span></a>
+      </div>
+      <div class="tile">
+        <h3><span class="lang-vi">Trò chơi Sử Việt</span><span class="lang-en">Vietnamese-history games</span><span class="lang-fr">Jeux d'histoire</span></h3>
+        <p><span class="lang-vi">Vân Đồn (1149) - xây thương cảng quốc tế đầu tiên của Đại Việt; Bắc Hải Đảo (1780) - giao thương và hải chiến trên vịnh Bắc Bộ.</span><span class="lang-en">Vân Đồn (1149) - build Đại Việt's first international trading port; Bắc Hải Đảo (1780) - trade and naval combat in the Gulf of Tonkin.</span><span class="lang-fr">Vân Đồn (1149) et Bắc Hải Đảo (1780) : commerce et batailles navales.</span></p>
+        <a class="go" href="https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/" target="_blank" rel="noopener"><span class="lang-vi">Vào cổng trò chơi ↗</span><span class="lang-en">Enter the portal ↗</span><span class="lang-fr">Entrer ↗</span></a>
+      </div>
+      <div class="tile">
+        <h3><span class="lang-vi">Nhật ký sáng tạo</span><span class="lang-en">Creative journal</span><span class="lang-fr">Journal créatif</span></h3>
+        <p><span class="lang-vi">Ghi chép quá trình dựng trang, viết nhạc và làm phần mềm - phần hậu trường của cả hệ sinh thái.</span><span class="lang-en">Notes on building the site, writing the songs and shipping the software - the backstage of the whole ecosystem.</span><span class="lang-fr">Notes sur la fabrication du site, des chansons et des logiciels.</span></p>
+        <a class="go" href="journey.html"><span class="lang-vi">Đọc nhật ký →</span><span class="lang-en">Read the journal →</span><span class="lang-fr">Lire →</span></a>
+      </div>
+      <div class="tile">
+        <h3>Blog</h3>
+        <p><span class="lang-vi">Tin tức về nghiên cứu, phần mềm và các học phần - cập nhật theo tuần.</span><span class="lang-en">News on research, software and courses - updated weekly.</span><span class="lang-fr">Actualités sur la recherche, les logiciels et les cours.</span></p>
+        <a class="go" href="blog.html"><span class="lang-vi">Đọc blog →</span><span class="lang-en">Read the blog →</span><span class="lang-fr">Lire le blog →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="rv">
+    <div class="shead">
+      <span class="k"><span class="lang-vi">Nhân vật ảo</span><span class="lang-en">Virtual character</span><span class="lang-fr">Personnage virtuel</span></span>
+      <h2>Hương AI</h2>
+      <p><span class="lang-vi">Nhân vật 3D trong tà áo dài trắng - gương mặt dẫn đường của hệ sinh thái số: dẫn tour bằng giọng nói trong EnQuiz, đồng hành trong M-AIDA và BizOn.</span><span class="lang-en">A 3D character in a white áo dài - the guide across the digital ecosystem: voice-guided tours in EnQuiz, a companion in M-AIDA and BizOn.</span><span class="lang-fr">Un personnage 3D en áo dài blanc, guide de tout l'écosystème numérique.</span></p>
+    </div>
+    <div class="claychar">
+      <img src="assets/img/huong_clay_full.webp" width="700" height="1254"
+           alt="Clay-modelled figure of Huong AI in a white ao dai holding a lotus" loading="lazy">
+      <div>
+        <p><span class="lang-vi">Hương AI được nặn bằng đất sét: áo dài trắng, sen trên tay, một ánh đèn studio duy nhất. Cùng một chất liệu ấy trở lại trong từng thẻ và từng nút trên trang.</span><span class="lang-en">Huong AI is modelled in clay: a white áo dài, a lotus in hand, a single studio light. The same material comes back in every card and button on the site.</span><span class="lang-fr">Hương IA est modelée en argile : áo dài blanc, lotus à la main, une seule lumière de studio.</span></p>
+        <p class="claynote"><span class="lang-vi">Các tư thế bên dưới được dùng trong EnQuiz, M-AIDA và BizOn.</span><span class="lang-en">The poses below are the ones used across EnQuiz, M-AIDA and BizOn.</span><span class="lang-fr">Les poses ci-dessous sont utilisées dans EnQuiz, M-AIDA et BizOn.</span></p>
+      </div>
+    </div>
+    <div class="gal">
+      <figure><img src="assets/img/greet_hero.webp" alt="Huong AI greeting, 3D render in a white ao dai" loading="lazy"><figcaption><span class="lang-vi">Chào mừng</span><span class="lang-en">Welcome</span><span class="lang-fr">Bienvenue</span></figcaption></figure>
+      <figure><img src="assets/img/pose_gioithieu2_fix.webp" alt="Huong AI pointing to introduce a place" loading="lazy"><figcaption><span class="lang-vi">Hướng dẫn công nghệ</span><span class="lang-en">Tech guide</span><span class="lang-fr">Guide tech</span></figcaption></figure>
+      <figure><img src="assets/img/pose_gioithieu_fix.webp" alt="Huong AI gesturing while presenting" loading="lazy"><figcaption><span class="lang-vi">Thuyết trình</span><span class="lang-en">Presenting</span><span class="lang-fr">Présentation</span></figcaption></figure>
+      <figure><img src="assets/img/pose_reo_fix.webp" alt="Huong AI raising both arms enthusiastically" loading="lazy"><figcaption><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span><span class="lang-fr">Enseignement</span></figcaption></figure>
+      <figure><img src="assets/img/huong_silver_tablet.webp" alt="Huong AI holding a holographic tablet" loading="lazy"><figcaption><span class="lang-vi">Phân tích dữ liệu</span><span class="lang-en">Data analysis</span><span class="lang-fr">Analyse</span></figcaption></figure>
+      <figure><img src="assets/img/huong_silver_room.webp" alt="Huong AI presenting at the command room" loading="lazy"><figcaption><span class="lang-vi">Phòng chỉ huy</span><span class="lang-en">Command room</span><span class="lang-fr">Salle de commande</span></figcaption></figure>
+      <figure><img src="assets/img/pose_teo2_fix.webp" alt="Huong AI standing calmly in quiet reflection" loading="lazy"><figcaption><span class="lang-vi">Suy ngẫm</span><span class="lang-en">Reflection</span><span class="lang-fr">Réflexion</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section id="workshop" class="rv">
+    <div class="shead">
+      <span class="k"><span class="lang-vi">Xưởng đất</span><span class="lang-en">The clay workshop</span><span class="lang-fr">L'atelier d'argile</span></span>
+      <h2><span class="lang-vi">Nơi mọi thứ được nặn ra</span><span class="lang-en">Where the pieces are made</span><span class="lang-fr">Où tout est modelé</span></h2>
+      <p><span class="lang-vi">Trang này dựng trên một ý: đất sét là vật liệu, không phải sân khấu. Mỗi nhân vật, mỗi thẻ trên trang đều bắt đầu từ một khối đất trên bàn.</span><span class="lang-en">The whole site rests on one idea: clay is a material, not a stage set. Every character and every card starts as a lump of clay on a table.</span><span class="lang-fr">Tout le site repose sur une idée : l'argile est une matière, pas un décor.</span></p>
+    </div>
+    <div class="scenes">
+      <figure><img src="assets/img/scene_clay_studio.webp" width="1500" height="844" loading="lazy"
+        alt="A workshop table of unfired pots, with a clay figurine held up to the light"><figcaption><span class="lang-vi">Nặn nhân vật</span><span class="lang-en">Modelling a character</span><span class="lang-fr">Modelage</span></figcaption></figure>
+      <figure><img src="assets/img/scene_clay_crate.webp" width="1500" height="844" loading="lazy"
+        alt="A wooden crate of small clay figures being packed beside a river"><figcaption><span class="lang-vi">Xếp vào thùng gỗ bên sông</span><span class="lang-en">Packing the crate by the river</span><span class="lang-fr">Mise en caisse au bord du fleuve</span></figcaption></figure>
+      <figure><img src="assets/img/scene_go_global.webp" width="1500" height="844" loading="lazy"
+        alt="A Vietnamese flag held against a distant skyline at dusk"><figcaption><span class="lang-vi">Ra thế giới - hình ảnh cho BizOn GO GlObal</span><span class="lang-en">Going global - artwork for BizOn GO GlObal</span><span class="lang-fr">À l'international - illustration pour BizOn GO GlObal</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section id="media" class="rv">
+    <div class="shead">
+      <span class="k"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><span class="lang-fr">Musique</span></span>
+      <h2><span class="lang-vi">Bài hát, songbook và lời dẫn</span><span class="lang-en">Songs, songbook and narration</span><span class="lang-fr">Chansons, songbook et narration</span></h2>
+    </div>
+    <div class="grid">
+      <div class="tile">
+        <h3><span class="lang-vi">Phòng nhạc</span><span class="lang-en">Music room</span><span class="lang-fr">Salle de musique</span></h3>
+        <p><span class="lang-vi">Các sáng tác gắn với hệ sinh thái: nhạc chủ đề M-AIDA, BizOn và những bài hát riêng.</span><span class="lang-en">Compositions tied to the ecosystem: M-AIDA and BizOn theme songs, plus personal tracks.</span><span class="lang-fr">Compositions liées à l'écosystème : M-AIDA, BizOn et morceaux personnels.</span></p>
+        <a class="go" href="music.html"><span class="lang-vi">Nghe nhạc →</span><span class="lang-en">Listen →</span><span class="lang-fr">Écouter →</span></a>
+      </div>
+      <div class="tile">
+        <h3>Songbook</h3>
+        <p><span class="lang-vi">Lời bài hát đồng bộ theo thời gian, trình phát có vòng lặp, xáo trộn và hình ảnh hóa âm thanh.</span><span class="lang-en">Time-synced lyrics with a player that loops, shuffles and visualises the audio.</span><span class="lang-fr">Paroles synchronisées, lecteur avec boucle, aléatoire et visualisation.</span></p>
+        <a class="go" href="songbook.html"><span class="lang-vi">Mở songbook →</span><span class="lang-en">Open the songbook →</span><span class="lang-fr">Ouvrir →</span></a>
+      </div>
+      <div class="tile">
+        <h3><span class="lang-vi">Danh sách bài hát</span><span class="lang-en">Song catalog</span><span class="lang-fr">Catalogue</span></h3>
+        <p><span class="lang-vi">Quản lý và tra cứu toàn bộ bài hát theo tên và lời.</span><span class="lang-en">Browse and search every song by title and lyrics.</span><span class="lang-fr">Parcourir et rechercher toutes les chansons.</span></p>
+        <a class="go" href="quan-ly-songbook.html"><span class="lang-vi">Mở danh sách →</span><span class="lang-en">Open the catalog →</span><span class="lang-fr">Ouvrir →</span></a>
+      </div>
+      <div class="tile">
+        <h3><span class="lang-vi">Phòng thu lời dẫn</span><span class="lang-en">Narration studio</span><span class="lang-fr">Studio de narration</span></h3>
+        <p><span class="lang-vi">Thu và nghe lại lời dẫn tour ba thứ tiếng dùng cho vườn số.</span><span class="lang-en">Record and review the three-language tour narration used across the garden.</span><span class="lang-fr">Enregistrer la narration du tour en trois langues.</span></p>
+        <a class="go" href="audio.html"><span class="lang-vi">Vào phòng thu →</span><span class="lang-en">Enter the studio →</span><span class="lang-fr">Entrer →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="worlddata" class="rv">
+    <div class="shead">
+      <span class="k"><span class="lang-vi">Dữ liệu thế giới</span><span class="lang-en">World data</span><span class="lang-fr">Données mondiales</span></span>
+      <h2><span class="lang-vi">Quả cầu dữ liệu Ngân hàng Thế giới</span><span class="lang-en">A live World Bank globe</span><span class="lang-fr">Un globe de données</span></h2>
+      <p><span class="lang-vi">Số liệu tải trực tiếp từ World Bank Open Data cho các nền kinh tế xuất hiện trong luận án. Kéo quả cầu, chọn chỉ số và quốc gia để so sánh.</span><span class="lang-en">Figures fetched live from World Bank Open Data for the economies studied in the dissertation. Spin the globe, pick an indicator and compare countries.</span><span class="lang-fr">Données en direct de la Banque mondiale pour les économies étudiées. Tournez le globe et comparez.</span></p>
+    </div>
+    <div class="globe-wrap">
+      <canvas id="globe" width="680" height="680" role="img" aria-label="Interactive globe of studied economies"></canvas>
+      <div class="globe-cap" id="globeCap"></div>
+    </div>
+    <div class="wd-card">
+      <div class="wd-inds" id="wdInds" role="tablist" aria-label="Indicators"></div>
+      <div class="wd-countries" id="wdCountries" aria-label="Countries"></div>
+      <div class="wd-chartwrap">
+        <div class="wd-charttitle" id="wdChartTitle"></div>
+        <div class="wd-svgbox">
+          <svg id="wdChart" viewBox="0 0 780 400" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Time-series chart"></svg>
+          <div class="wd-status" id="wdStatus" aria-live="polite"></div>
+        </div>
+        <div class="wd-legend" id="wdLegend"></div>
+      </div>
+      <div class="wd-cards" id="wdCards"></div>
+      <div class="wd-source"><span class="lang-vi">Nguồn:</span><span class="lang-en">Source:</span><span class="lang-fr">Source :</span> <a href="https://data.worldbank.org" target="_blank" rel="noopener">World Bank Open Data</a> · api.worldbank.org · <span class="lang-vi">tải trực tiếp khi bạn xem, giấy phép CC-BY 4.0.</span><span class="lang-en">fetched live in your browser, CC-BY 4.0 licence.</span><span class="lang-fr">chargé en direct, licence CC-BY 4.0.</span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <ul class="fnav">
+    <li><a href="index.html">← <span class="lang-vi">Trang học thuật</span><span class="lang-en">Academic home</span><span class="lang-fr">Page académique</span></a></li>
+    <li><a href="trangvien.html"><span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D estate</span><span class="lang-fr">Domaine 3D</span></a></li>
+    <li><a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><span class="lang-fr">Musique</span></a></li>
+    <li><a href="songbook.html">Songbook</a></li>
+    <li><a href="journey.html"><span class="lang-vi">Nhật ký</span><span class="lang-en">Journal</span><span class="lang-fr">Journal</span></a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="mailto:thuyhuongctu@gmail.com">thuyhuongctu@gmail.com</a></li>
+  </ul>
+  <div class="fbot">
+    <span>© <span id="yr">2026</span> <span class="lang-vi">Đỗ Thùy Hương · Cần Thơ, Việt Nam</span><span class="lang-en">Do Thuy Huong · Can Tho, Vietnam</span><span class="lang-fr">Do Thuy Huong · Cần Thơ, Vietnam</span></span>
+  </div>
+</footer>
+
+<button id="tourbtn" type="button" hidden>🚲 <span class="lang-vi">Dạo cùng Hương</span><span class="lang-en">Take the tour</span><span class="lang-fr">Faire le tour</span></button>
+<div id="hg" hidden>
+  <img id="hg-img" src="assets/img/huong_chi.webp" alt="">
+  <div id="hg-bien"><button type="button" id="hg-next" title="Đi tiếp"><span id="hg-ten"></span><small id="hg-phu"></small></button><button type="button" id="hg-loi" title="Nghe lời dẫn">🔊</button><button type="button" id="hg-tat" aria-label="Đóng tour">✕</button></div>
+</div>
+
+<script>
+/* language + theme + menu: identical contract to the academic home */
+(function(){
+  var root=document.documentElement, box=document.getElementById('lang');
+  var btns=box.querySelectorAll('button[data-lang]');
+  var fr=document.getElementById('frbtn');
+  function set(l){
+    root.setAttribute('lang',l);
+    btns.forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===l);});
+    // tieng Phap nam trong menu ···, nen trang thai chon cua no hien o day
+    fr.classList.toggle('on',l==='fr');
+    fr.setAttribute('aria-pressed',String(l==='fr'));
+    try{localStorage.setItem('huong_lang',l);}catch(e){}
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-lang'));});});
+  fr.addEventListener('click',function(){set('fr');});
+  var start='vi';
+  try{start=localStorage.getItem('huong_lang')||(/^en/i.test(navigator.language)?'en':(/^fr/i.test(navigator.language)?'fr':'vi'));}catch(e){}
+  set(start);
+})();
+(function(){
+  var root=document.documentElement;
+  try{var s=localStorage.getItem('huong_theme'); if(s) root.setAttribute('data-theme',s);}catch(e){}
+  document.getElementById('themebtn').addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+    var next=cur==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('huong_theme',next);}catch(e){}
+  });
+})();
+(function(){
+  var btn=document.getElementById('morebtn'), menu=document.getElementById('menu');
+  function close(){menu.hidden=true;btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(e){e.stopPropagation();var open=menu.hidden;menu.hidden=!open;btn.setAttribute('aria-expanded',String(open));});
+  menu.addEventListener('click',function(e){ if(e.target.closest('a')) close(); });
+  document.addEventListener('click',function(e){ if(!menu.hidden && !menu.contains(e.target)) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !menu.hidden){close();btn.focus();} });
+})();
+(function(){
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  if('serviceWorker' in navigator){ addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});}); }
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){
+    document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');}); return;
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+  setTimeout(function(){document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});},2500);
+})();
+</script>
+
+<script src="assets/vendor/three-r128.min.js" defer></script>
+<script src="assets/js/huong3d.js" defer></script>
+<script>
+/* the signs: Huong rides to the sign you clicked, then opens that area */
+addEventListener('DOMContentLoaded', function(){
+  var bd=document.getElementById('bando');
+  var co=null;
+  if(bd && typeof Huong3D!=='undefined'){
+    co=Huong3D.gan({khung:bd,cao:.285,duong:.93,batDau:.5,zIndex:2,
+      anh:{xedap:'assets/img/huong_xedap_full.webp',chi:'assets/img/huong_chi.webp'}});
+  }
+  var busy=false;
+  function mo(den){
+    if(den.charAt(0)==='#'){ var el=document.querySelector(den); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+    else{ location.href=den; }
+  }
+  bd.querySelectorAll('.tram').forEach(function(t){
+    t.addEventListener('click',function(){
+      var den=t.dataset.den;
+      if(!co){ mo(den); return; }
+      if(busy) return; busy=true;
+      co.den(parseFloat(t.style.left)/100,function(){ mo(den); busy=false; });
+    });
+  });
+});
+</script>
+
+<script>
+/* Hương rides the tour - opt-in, never covering the first screen */
+(function(){
+  var hg=document.getElementById('hg'), btn=document.getElementById('tourbtn');
+  var anh=document.getElementById('hg-img'), ten=document.getElementById('hg-ten'), phu=document.getElementById('hg-phu');
+  var XE='assets/img/huong_xedap_full.webp', CHI='assets/img/huong_chi.webp';
+  var KHU=[
+    ['estate',{vi:'🏡 Trang viên',en:'🏡 The estate',fr:'🏡 Le domaine'},{vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'},
+      {vi:'Đây là những nơi bạn có thể ghé trong vườn: trang viên đất sét 3D, trò chơi lịch sử, nhật ký sáng tạo và blog.',
+       en:'These are the places you can visit in the garden: the 3D clay estate, the history games, the creative journal and the blog.',
+       fr:"Voici les lieux du jardin : le domaine 3D, les jeux d'histoire, le journal et le blog."}],
+    ['gallery',{vi:'🎀 Nhân vật ảo',en:'🎀 Virtual character',fr:'🎀 Personnage virtuel'},{vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'},
+      {vi:'Đây là Hương AI trong tà áo dài trắng - gương mặt đại diện xuyên suốt hệ sinh thái, từ EnQuiz đến BizOn và M-AIDA.',
+       en:'This is Huong AI in her white áo dài - the face of the whole ecosystem, from EnQuiz to BizOn and M-AIDA.',
+       fr:"Huong IA dans son áo dài blanc - le visage de tout l'écosystème, d'EnQuiz à BizOn et M-AIDA."}],
+    ['media',{vi:'🎵 Âm nhạc',en:'🎵 Music',fr:'🎵 Musique'},{vi:'Đi tiếp →',en:'Ride on →',fr:'Pédalez →'},
+      {vi:'Phòng nhạc, songbook có lời đồng bộ, danh sách bài hát và phòng thu lời dẫn ba thứ tiếng.',
+       en:'The music room, a songbook with synced lyrics, the song catalog and a three-language narration studio.',
+       fr:'La salle de musique, le songbook, le catalogue et le studio de narration.'}],
+    ['worlddata',{vi:'🌏 Dữ liệu thế giới',en:'🌏 World data',fr:'🌏 Données du monde'},{vi:'Quay lại đầu →',en:'Back to the top →',fr:'Retour en haut →'},
+      {vi:'Số liệu trực tiếp từ Ngân hàng Thế giới - so sánh chỉ số giữa các nền kinh tế mà luận án của tôi phân tích.',
+       en:'Live data from the World Bank - compare indicators across the economies studied in my dissertation.',
+       fr:'Des données en direct de la Banque mondiale - comparer les économies analysées dans ma thèse.'}]
+  ];
+  var i=-1, io=null, scrollBound=false;
+  function L(){var l=document.documentElement.lang;return (l==='en'||l==='fr')?l:'vi';}
+  function bien(){
+    var l=L();
+    if(i<0){
+      ten.textContent=l==='vi'?'👋 Cùng dạo vườn nhé!':l==='fr'?'👋 Visitons le jardin !':'👋 Let’s tour the garden!';
+      phu.textContent=l==='vi'?'Bấm để đạp xe bắt đầu →':l==='fr'?'Cliquez pour commencer →':'Click to start riding →';
+    }else{ ten.textContent=KHU[i][1][l]; phu.textContent=KHU[i][2][l]; }
+  }
+  /* narration: play the recorded file when there is one, else speak it */
+  var AU=new Audio(); AU.preload='none';
+  var speaking=false, playing=false, touched=false;
+  var LOI=document.getElementById('hg-loi');
+  var MA={vi:'vi-VN',en:'en-US',fr:'fr-FR'};
+  ['click','keydown','touchstart'].forEach(function(ev){addEventListener(ev,function(){touched=true;},{once:true,passive:true});});
+  function stopTTS(){ if(speaking){ speechSynthesis.cancel(); speaking=false; LOI.textContent='🔊'; } }
+  function stopAU(){ try{AU.pause();AU.currentTime=0;}catch(e){} playing=false; }
+  function voice(l){
+    var g=(speechSynthesis.getVoices()||[]).filter(function(v){return v.lang.indexOf(MA[l].split('-')[0])===0;});
+    return g.find(function(v){return /female|woman|zira|samantha|victoria|audrey|amelie|denise|hortense|moira|karen|google/i.test(v.name);})||g[0]||null;
+  }
+  function say(t){
+    var l=L(); stopTTS(); stopAU();
+    AU.src='assets/audio/tour/'+(i<0?'chao':KHU[i][0])+'_'+l+'.mp3';
+    AU.play().then(function(){
+      playing=true; LOI.textContent='🔈';
+      AU.onended=function(){playing=false;LOI.textContent='🔊';};
+    }).catch(function(){
+      if(!('speechSynthesis' in window)) return;
+      var u=new SpeechSynthesisUtterance(t[l]); u.lang=MA[l];
+      var v=voice(l); if(v) u.voice=v; u.rate=1; u.pitch=1.05;
+      speaking=true; LOI.textContent='🔈';
+      u.onend=u.onerror=function(){speaking=false;LOI.textContent='🔊';};
+      speechSynthesis.speak(u);
+    });
+  }
+  function narrate(){
+    if(speaking&&!playing){ stopTTS(); return; }
+    if(playing){ stopAU(); LOI.textContent='🔊'; return; }
+    if(i<0){ say({vi:'Xin chào! Tôi là Hương AI. Bấm vào biển chỉ đường để cùng đạp xe thăm từng khu trong vườn nhé!',
+      en:'Hello! I am Huong AI. Click a sign and we will ride from area to area in the garden.',
+      fr:'Bonjour ! Je suis Hương IA. Cliquez sur une enseigne et nous pédalerons de zone en zone.'}); return; }
+    say(KHU[i][3]);
+  }
+  LOI.addEventListener('click',narrate);
+  function start(){
+    hg.hidden=false; btn.hidden=true;
+    try{sessionStorage.setItem('huong_tour','1');}catch(e){}
+    bien();
+    if(!io){
+      io=new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(!e.isIntersecting) return;
+          var k=KHU.findIndex(function(x){return x[0]===e.target.id;});
+          if(k>=0&&k!==i){ var old=i; i=k; bien(); if(touched&&old>=0) narrate(); }
+        });
+      },{rootMargin:'-30% 0px -55% 0px'});
+      KHU.forEach(function(k){var el=document.getElementById(k[0]); if(el) io.observe(el);});
+    }
+    if(!scrollBound){
+      scrollBound=true;
+      var t=null;
+      addEventListener('scroll',function(){
+        if(hg.hidden) return;
+        hg.classList.add('dap');
+        if(anh.getAttribute('src')!==XE) anh.src=XE;
+        clearTimeout(t);
+        t=setTimeout(function(){hg.classList.remove('dap');anh.src=CHI;},650);
+      },{passive:true});
+    }
+  }
+  function stop(){
+    hg.hidden=true; btn.hidden=false; stopTTS(); stopAU();
+    try{sessionStorage.removeItem('huong_tour');}catch(e){}
+  }
+  btn.addEventListener('click',start);
+  document.getElementById('hg-tat').addEventListener('click',stop);
+  function next(){
+    var k=KHU[(i+1)%KHU.length][0], el=document.getElementById(k);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  document.getElementById('hg-next').addEventListener('click',next);
+  new MutationObserver(bien).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+  /* the button only appears once the visitor has scrolled past the map */
+  addEventListener('scroll',function(){
+    if(!hg.hidden||!btn.hidden) return;
+    if(window.scrollY>window.innerHeight*0.6) btn.hidden=false;
+  },{passive:true});
+  var resume=false;
+  try{resume=sessionStorage.getItem('huong_tour')==='1';}catch(e){}
+  if(resume) start();
+})();
+</script>
+
+
+<script>(function(){
+ var cv=document.getElementById("globe"); if(!cv||!cv.getContext) return;
+ var ctx=cv.getContext("2d");
+ var R=300, cx=340, cy=340;
+ var lam=1.85, phi=0.30, drag=false, px=0, py=0, auto=true, vel=0.0035;
+ var COUNTRIES=[
+  {iso:"VNM",lat:16.0,lon:107.5,vi:"Việt Nam",en:"Vietnam",nvi:"Bối cảnh trong nước, FDI, TMĐT, hiệu quả DN, giá trị nơi làm việc.",nen:"Home context, FDI, e-commerce, firm performance, workplace values."},
+  {iso:"SGP",lat:1.35,lon:103.8,vi:"Singapore",en:"Singapore",nvi:"Tính đầy đủ thể chế & quan hệ quốc tế hóa - hiệu quả (bài Singapore).",nen:"Institutional completeness & the internationalization - performance link (Singapore)."},
+  {iso:"CHN",lat:35.0,lon:105.0,vi:"Trung Quốc",en:"China",nvi:"Quốc tế hóa DNNVV sản xuất Trung Quốc & hiệu quả (JFAR, 2026).",nen:"Internationalization of Chinese manufacturing SMEs & performance (JFAR, 2026)."},
+  {iso:"THA",lat:15.0,lon:101.0,vi:"Thái Lan",en:"Thailand",nvi:"Nền so sánh khu vực trong khung dữ liệu doanh nghiệp (WBES).",nen:"Regional comparator in the firm-level WBES frame."},
+  {iso:"MYS",lat:3.5,lon:102.0,vi:"Malaysia",en:"Malaysia",nvi:"Nền so sánh khu vực trong khung dữ liệu doanh nghiệp (WBES).",nen:"Regional comparator in the firm-level WBES frame."},
+  {iso:"FJI",lat:-17.8,lon:178.0,vi:"Fiji",en:"Fiji",nvi:"Đại diện quốc đảo nhỏ Thái Bình Dương (SIDS) trong nghiên cứu.",nen:"Pacific small-island developing state (SIDS) representative."}
+ ];
+ var sel=null;
+ function lang(){return (document.documentElement.lang||"vi").slice(0,2)==="en"?"en":"vi";}
+ function rad(d){return d*Math.PI/180;}
+ function proj(lat,lon){var la=rad(lat),lo=rad(lon);
+   var cosc=Math.sin(phi)*Math.sin(la)+Math.cos(phi)*Math.cos(la)*Math.cos(lo-lam);
+   var x=Math.cos(la)*Math.sin(lo-lam);
+   var y=Math.cos(phi)*Math.sin(la)-Math.sin(phi)*Math.cos(la)*Math.cos(lo-lam);
+   return {x:cx+R*x, y:cy-R*y, vis:cosc>=0};}
+ function sv(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()||n;}
+ function draw(){
+   ctx.clearRect(0,0,cv.width,cv.height);
+   var ocean=sv("--sunk"),line=sv("--muted"),accent=sv("--accent"),ink=sv("--ink"),surf=sv("--surface");
+   var g=ctx.createRadialGradient(cx-90,cy-90,60,cx,cy,R);g.addColorStop(0,surf);g.addColorStop(1,ocean);
+   ctx.beginPath();ctx.arc(cx,cy,R,0,7);ctx.fillStyle=g;ctx.fill();ctx.lineWidth=1.4;ctx.strokeStyle=line;ctx.stroke();
+   ctx.lineWidth=1;ctx.strokeStyle=line;ctx.globalAlpha=.32;
+   var mer,par,la,lo,p,st;
+   for(mer=-180;mer<180;mer+=30){st=false;ctx.beginPath();for(la=-90;la<=90;la+=4){p=proj(la,mer);if(p.vis){if(!st){ctx.moveTo(p.x,p.y);st=true;}else ctx.lineTo(p.x,p.y);}else st=false;}ctx.stroke();}
+   for(par=-60;par<=60;par+=30){st=false;ctx.beginPath();for(lo=-180;lo<=180;lo+=4){p=proj(par,lo);if(p.vis){if(!st){ctx.moveTo(p.x,p.y);st=true;}else ctx.lineTo(p.x,p.y);}else st=false;}ctx.stroke();}
+   ctx.globalAlpha=1;var L=lang();
+   COUNTRIES.forEach(function(c){var q=proj(c.lat,c.lon);c._sx=q.x;c._sy=q.y;c._vis=q.vis;if(!q.vis)return;
+     var isS=sel===c,r=isS?9:6.5;
+     ctx.beginPath();ctx.arc(q.x,q.y,r,0,7);ctx.fillStyle=accent;ctx.fill();ctx.lineWidth=2.5;ctx.strokeStyle=surf;ctx.stroke();
+     if(isS){ctx.beginPath();ctx.arc(q.x,q.y,r+5,0,7);ctx.lineWidth=2;ctx.strokeStyle=sv("--gold");ctx.stroke();}
+     ctx.font="600 20px system-ui,sans-serif";ctx.fillStyle=ink;ctx.textAlign="left";ctx.fillText(c[L],q.x+r+6,q.y+7);});
+ }
+ function tick(){if(auto&&!drag){lam+=vel;}draw();requestAnimationFrame(tick);}
+ function pos(e){var r=cv.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width*cv.width,y:(e.clientY-r.top)/r.height*cv.height};}
+ cv.addEventListener("pointerdown",function(e){drag=true;auto=false;var q=pos(e);px=q.x;py=q.y;try{cv.setPointerCapture(e.pointerId);}catch(_){}});
+ cv.addEventListener("pointermove",function(e){if(!drag)return;var q=pos(e);lam+=(q.x-px)*0.005;phi=Math.max(-1.2,Math.min(1.2,phi-(q.y-py)*0.005));px=q.x;py=q.y;});
+ cv.addEventListener("pointerup",function(e){drag=false;var q=pos(e),hit=null,best=28*28;
+   COUNTRIES.forEach(function(c){if(!c._vis)return;var dx=q.x-c._sx,dy=q.y-c._sy,d=dx*dx+dy*dy;if(d<best){best=d;hit=c;}});
+   if(hit){sel=hit;showCap();}setTimeout(function(){auto=true;},2600);});
+ function showCap(){var L=lang(),c=sel,cap=document.getElementById("globeCap");if(!c){cap.innerHTML="";return;}
+   cap.innerHTML="<b>"+c[L]+"</b>, "+(L==="en"?c.nen:c.nvi);}
+ new MutationObserver(function(){if(sel)showCap();else initCap();}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+ function initCap(){var L=lang();document.getElementById("globeCap").innerHTML=L==="en"?"Drag to spin · tap a marker to see the related research.":"Kéo để xoay · chạm một điểm để xem nghiên cứu liên quan.";}
+ initCap();requestAnimationFrame(tick);
+})();</script>
+
+<script id="wd-script">
+(function(){
+  var SVGNS='http://www.w3.org/2000/svg';
+  // Chỉ số World Bank gắn với các chủ đề của luận án (phát triển tài chính · kinh tế · môi trường/ESG)
+  var INDS=[
+    {code:'FS.AST.PRVT.GD.ZS', unit:'% GDP', dec:0,
+     vi:'Tín dụng tư nhân (Phát triển tài chính)', en:'Private credit (financial development)', fr:'Crédit privé (dév. financier)'},
+    {code:'NY.GDP.PCAP.CD', unit:'US$', dec:0, money:true,
+     vi:'GDP bình quân đầu người', en:'GDP per capita', fr:'PIB par habitant'},
+    {code:'BX.KLT.DINV.WD.GD.ZS', unit:'% GDP', dec:1,
+     vi:'FDI ròng vào', en:'FDI net inflows', fr:'IDE entrants nets'},
+    {code:'EN.GHG.CO2.PC.CE.AR5', unit:'t/người', dec:2,
+     vi:'Phát thải CO₂ đầu người (ESG · Môi trường)', en:'CO₂ per capita (ESG · Environment)', fr:'CO₂ par habitant (ESG · Environnement)'}
+  ];
+  var COUNTRIES=[
+    {iso:'VNM', color:'#B76E5A', vi:'Việt Nam', en:'Vietnam', fr:'Vietnam', def:true},
+    {iso:'SGP', color:'#C9A24B', vi:'Singapore', en:'Singapore', fr:'Singapour', def:true},
+    {iso:'CHN', color:'#2F6E6A', vi:'Trung Quốc', en:'China', fr:'Chine', def:true},
+    {iso:'THA', color:'#9E5643', vi:'Thái Lan', en:'Thailand', fr:'Thaïlande'},
+    {iso:'MYS', color:'#5E7357', vi:'Malaysia', en:'Malaysia', fr:'Malaisie'},
+    {iso:'FJI', color:'#7A6BA0', vi:'Fiji (Thái Bình Dương)', en:'Fiji (Pacific SIDS)', fr:'Fidji (PEID)'}
+  ];
+  var T={
+    vi:{loading:'Đang tải dữ liệu…', nodata:'Không có dữ liệu cho lựa chọn này.', err:'Không tải được dữ liệu (kiểm tra kết nối).', pick:'Chọn ít nhất một quốc gia.', latest:'mới nhất'},
+    en:{loading:'Loading data…', nodata:'No data for this selection.', err:'Could not load data (check connection).', pick:'Select at least one country.', latest:'latest'},
+    fr:{loading:'Chargement…', nodata:'Aucune donnée pour cette sélection.', err:'Échec du chargement (vérifiez la connexion).', pick:'Sélectionnez au moins un pays.', latest:'récent'}
+  };
+  function lang(){var l=(document.documentElement.lang||'vi').slice(0,2);return T[l]?l:'vi';}
+  function tr(o){var l=lang();return o[l]||o.vi||o.en;}
+  function t(k){return (T[lang()]||T.vi)[k];}
+
+  var el={inds:document.getElementById('wdInds'), cty:document.getElementById('wdCountries'),
+    svg:document.getElementById('wdChart'), status:document.getElementById('wdStatus'),
+    legend:document.getElementById('wdLegend'), cards:document.getElementById('wdCards'),
+    title:document.getElementById('wdChartTitle')};
+  if(!el.svg) return;
+
+  var state={ind:0, sel:{}, cache:{}, tip:null};
+  COUNTRIES.forEach(function(c){state.sel[c.iso]=!!c.def;});
+
+  function fmt(v,ind){
+    if(v==null||isNaN(v)) return ' - ';
+    if(ind.money){
+      if(v>=1000) return Math.round(v).toLocaleString('en-US');
+      return v.toFixed(0);
+    }
+    return v.toFixed(ind.dec);
+  }
+
+  function buildControls(){
+    el.inds.innerHTML='';
+    INDS.forEach(function(ind,i){
+      var b=document.createElement('button');
+      b.className='wd-ind'; b.setAttribute('role','tab');
+      b.setAttribute('aria-selected', i===state.ind?'true':'false');
+      b.textContent=tr(ind);
+      b.addEventListener('click',function(){ state.ind=i; buildControls(); render(); });
+      el.inds.appendChild(b);
+    });
+    el.cty.innerHTML='';
+    COUNTRIES.forEach(function(c){
+      var b=document.createElement('button');
+      b.className='wd-country'; b.style.color=c.color;
+      b.setAttribute('aria-pressed', state.sel[c.iso]?'true':'false');
+      b.innerHTML='<span class="dot"></span>'+tr(c);
+      b.addEventListener('click',function(){ state.sel[c.iso]=!state.sel[c.iso]; buildControls(); render(); });
+      el.cty.appendChild(b);
+    });
+  }
+
+  function selectedISOs(){ return COUNTRIES.filter(function(c){return state.sel[c.iso];}).map(function(c){return c.iso;}); }
+
+  function fetchInd(code){
+    if(state.cache[code]) return Promise.resolve(state.cache[code]);
+    var isos=COUNTRIES.map(function(c){return c.iso;}).join(';');
+    var url='https://api.worldbank.org/v2/country/'+isos+'/indicator/'+code+'?format=json&per_page=1000&date=2000:2024';
+    return fetch(url).then(function(r){return r.json();}).then(function(j){
+      var rows=(j&&j[1])||[]; var by={};
+      rows.forEach(function(r){
+        if(r.value==null) return;
+        var iso=r.countryiso3code||(r.country&&r.country.id); if(!iso) return;
+        (by[iso]=by[iso]||[]).push({year:+r.date, value:+r.value});
+      });
+      Object.keys(by).forEach(function(k){by[k].sort(function(a,b){return a.year-b.year;});});
+      state.cache[code]=by; return by;
+    });
+  }
+
+  function render(){
+    var ind=INDS[state.ind];
+    el.title.innerHTML=tr(ind)+' <span class="u">· '+ind.unit+' · 2000 - 2024</span>';
+    var isos=selectedISOs();
+    clearSvg();
+    el.legend.innerHTML=''; el.cards.innerHTML='';
+    if(!isos.length){ el.status.textContent=t('pick'); return; }
+    el.status.textContent=t('loading');
+    fetchInd(ind.code).then(function(by){
+      var series=isos.map(function(iso){
+        var c=COUNTRIES.filter(function(x){return x.iso===iso;})[0];
+        return {iso:iso, color:c.color, name:tr(c), pts:(by[iso]||[])};
+      }).filter(function(s){return s.pts.length;});
+      if(!series.length){ el.status.textContent=t('nodata'); return; }
+      el.status.textContent='';
+      draw(series, ind);
+      drawLegendCards(series, ind);
+    }).catch(function(){ el.status.textContent=t('err'); });
+  }
+
+  function clearSvg(){ while(el.svg.firstChild) el.svg.removeChild(el.svg.firstChild); }
+  function mk(tag,attrs){var e=document.createElementNS(SVGNS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);return e;}
+
+  var M={l:58,r:16,t:18,b:34}, W=780, H=400;
+  function draw(series, ind){
+    var pw=W-M.l-M.r, ph=H-M.t-M.b;
+    var yrs=[], vals=[];
+    series.forEach(function(s){s.pts.forEach(function(p){yrs.push(p.year);vals.push(p.value);});});
+    var y0=Math.min.apply(null,yrs), y1=Math.max.apply(null,yrs);
+    var v1=Math.max.apply(null,vals), v0=Math.min.apply(null,vals);
+    if(v0>0) v0=0; // baseline at zero for honest reading
+    var pad=(v1-v0)*0.06||1; v1+=pad;
+    var nice=niceMax(v1); v1=nice;
+    function X(yr){ return M.l + (y1===y0?pw/2:(yr-y0)/(y1-y0)*pw); }
+    function Y(v){ return M.t + ph - (v-v0)/(v1-v0)*ph; }
+
+    // y gridlines + labels
+    var ticks=5;
+    for(var i=0;i<=ticks;i++){
+      var v=v0+(v1-v0)*i/ticks, yy=Y(v);
+      el.svg.appendChild(mk('line',{class:'wd-gridline',x1:M.l,y1:yy,x2:W-M.r,y2:yy}));
+      var lab=mk('text',{class:'wd-axislbl',x:M.l-8,y:yy+4,'text-anchor':'end'});
+      lab.textContent=ind.money&&v>=1000?Math.round(v/1000)+'k':(+v.toFixed(ind.dec)).toLocaleString('en-US');
+      el.svg.appendChild(lab);
+    }
+    // x labels (~6)
+    var step=Math.ceil((y1-y0)/6)||1;
+    for(var yr=y0; yr<=y1; yr+=step){
+      var xx=X(yr);
+      var xl=mk('text',{class:'wd-axislbl',x:xx,y:H-M.b+18,'text-anchor':'middle'});
+      xl.textContent=yr; el.svg.appendChild(xl);
+    }
+    // lines + dots
+    series.forEach(function(s){
+      var d=''; s.pts.forEach(function(p,i){ d+=(i?'L':'M')+X(p.year).toFixed(1)+' '+Y(p.value).toFixed(1)+' '; });
+      el.svg.appendChild(mk('path',{class:'wd-line',d:d,stroke:s.color}));
+      s.pts.forEach(function(p){
+        var c=mk('circle',{class:'wd-dot',cx:X(p.year),cy:Y(p.value),r:2.6,fill:s.color});
+        var ti=document.createElementNS(SVGNS,'title'); ti.textContent=s.name+' · '+p.year+': '+fmt(p.value,ind)+' '+ind.unit;
+        c.appendChild(ti); el.svg.appendChild(c);
+      });
+    });
+    setupHover(series, ind, X, Y, y0, y1);
+  }
+
+  function niceMax(v){
+    if(v<=0) return 1;
+    var mag=Math.pow(10,Math.floor(Math.log10(v)));
+    var n=v/mag;
+    var step=n<=1?1:n<=2?2:n<=2.5?2.5:n<=5?5:10;
+    return step*mag;
+  }
+
+  function setupHover(series, ind, X, Y, y0, y1){
+    var box=el.svg.parentNode; // wd-svgbox
+    if(state.tip){ state.tip.remove(); }
+    var tip=document.createElement('div'); tip.className='wd-tip'; box.appendChild(tip); state.tip=tip;
+    var hl=mk('line',{class:'wd-hoverline',x1:0,y1:M.t,x2:0,y2:H-M.b,opacity:0}); el.svg.appendChild(hl);
+    var overlay=mk('rect',{x:M.l,y:M.t,width:W-M.l-M.r,height:H-M.t-M.b,fill:'transparent'});
+    el.svg.appendChild(overlay);
+    function pt(evt){
+      var r=el.svg.getBoundingClientRect();
+      var sx=(evt.clientX-r.left)/r.width*W;
+      var frac=(sx-M.l)/(W-M.l-M.r); frac=Math.max(0,Math.min(1,frac));
+      var yr=Math.round(y0+frac*(y1-y0));
+      var rows='', anyX=null;
+      series.forEach(function(s){
+        var near=null,bd=1e9; s.pts.forEach(function(p){var dd=Math.abs(p.year-yr);if(dd<bd){bd=dd;near=p;}});
+        if(near){ anyX=X(near.year);
+          rows+='<div class="r"><i style="background:'+s.color+'"></i>'+s.name+': <b>'+fmt(near.value,ind)+'</b> '+ind.unit+'</div>';
+        }
+      });
+      if(anyX==null) return;
+      hl.setAttribute('x1',anyX); hl.setAttribute('x2',anyX); hl.setAttribute('opacity',1);
+      tip.innerHTML='<b>'+yr+'</b>'+rows; tip.style.opacity=1;
+      tip.style.left=(anyX/W*r.width)+'px';
+      tip.style.top=(M.t/H*r.height)+'px';
+    }
+    overlay.addEventListener('mousemove',pt);
+    overlay.addEventListener('mouseleave',function(){tip.style.opacity=0;hl.setAttribute('opacity',0);});
+  }
+
+  function drawLegendCards(series, ind){
+    series.forEach(function(s){
+      var lg=document.createElement('span');
+      lg.innerHTML='<i style="background:'+s.color+'"></i>'+s.name;
+      el.legend.appendChild(lg);
+      var last=s.pts[s.pts.length-1];
+      var m=document.createElement('div'); m.className='wd-mini';
+      m.innerHTML='<div class="cn"><i style="background:'+s.color+'"></i>'+s.name+'</div>'+
+        '<div class="val">'+fmt(last.value,ind)+(ind.unit==='US$'?'':' <span style="font-size:13px;color:var(--muted)">'+ind.unit+'</span>')+'</div>'+
+        '<div class="yr">'+last.year+' · '+t('latest')+'</div>';
+      el.cards.appendChild(m);
+    });
+  }
+
+  // re-render labels when the site language toggle is used
+  new MutationObserver(function(){ buildControls(); if(started) render(); })
+    .observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+
+  buildControls();
+  // lazy first render when the section scrolls into view (saves a fetch until needed)
+  var sec=document.getElementById('worlddata'), started=false;
+  function kick(){ if(started) return; started=true; render(); }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){kick();io.disconnect();}});},{rootMargin:'200px'});
+    io.observe(sec);
+  } else { kick(); }
+})();
+</script>
+
+<script src="assets/js/music.js" defer></script>
+<script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body></html>

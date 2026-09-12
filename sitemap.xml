@@ -2,31 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/publications.html</loc>
+    <lastmod>2026-09-12</lastmod>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/cv.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/garden.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/music.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/songbook.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/trangvien.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
