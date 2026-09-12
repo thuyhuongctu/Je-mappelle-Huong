@@ -53,7 +53,9 @@ a{color:var(--accent)}
 .tools button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 html[data-theme=dark] .tools button{background:#201914}
 @media(max-width:640px){.tools{top:6px;right:6px;gap:6px}.tools button{padding:5px 9px;font-size:8pt}}
-@media(max-width:640px){.cv{padding:12mm 8mm 14mm}body{font-size:10pt}}
+@media(max-width:640px){.cv{padding:12mm 8mm 14mm}body{font-size:10pt}
+  /* vung cham toi thieu 24px theo WCAG 2.2 khi doc tren dien thoai */
+  .contact a,.cv li a,p a,.venue a,footer a{display:inline-block;padding:5px 3px;margin:-5px -3px}}
 @media print{
   @page{size:A4;margin:12mm 10mm}
   .tools{display:none}
