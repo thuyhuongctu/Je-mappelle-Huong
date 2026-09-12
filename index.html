@@ -157,6 +157,10 @@ html:not([lang="fr"]) .lang-fr{display:none}
 /* nhan cho trinh doc man hinh, khong chiem cho tren hinh */
 .vsr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .tile video{display:block;width:100%;height:auto;margin:0 0 13px;border-radius:12px;background:#0e0c0b}
+/* anh nhan vat trong the du an: nen dat set nhat, anh trong suot dat len */
+.pthumb{margin:0 0 13px;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  background:radial-gradient(120% 100% at 30% 14%,var(--surface),var(--sunk))}
+.pthumb img{display:block;width:100%;height:auto;max-height:270px;object-fit:contain}
 
 /* ===== sections ========================================================== */
 section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
@@ -587,9 +591,25 @@ footer.wrap{position:relative;overflow:hidden}
         <a class="go" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><span class="lang-vi">Mở EnQuiz ↗</span><span class="lang-en">Open EnQuiz ↗</span><span class="lang-fr">Ouvrir EnQuiz ↗</span></a>
       </div>
       <div class="tile">
+        <figure class="pthumb">
+          <img src="assets/img/comdraft-character.webp" loading="lazy" decoding="async"
+               alt="ComDraft character: a clay figure of Do Thuy Huong in a cream ao dai embroidered with a gold sunrise, drafting on a tablet">
+        </figure>
         <h3>ComDraft</h3>
         <p><span class="lang-vi">Bộ học liệu học phần EC1103: 5 bộ slide có ghi chú, 3 bài thực hành phòng máy, ngân hàng 200 câu và 8 video phụ đề tiếng Việt.</span><span class="lang-en">A complete teaching package for EC1103: five lecture decks with notes, three lab workbooks, a 200-question bank and eight subtitled videos.</span><span class="lang-fr">Ensemble pédagogique pour EC1103 : cinq diaporamas, trois TP, 200 questions, huit vidéos sous-titrées.</span></p>
         <a class="go" href="https://thuyhuongctu.github.io/ComDraft/" target="_blank" rel="noopener"><span class="lang-vi">Mở ComDraft ↗</span><span class="lang-en">Open ComDraft ↗</span><span class="lang-fr">Ouvrir ComDraft ↗</span></a>
+      </div>
+      <div class="tile">
+        <button class="vthumb" type="button" data-vid="assets/video/wct-trailer.mp4" data-poster="assets/img/wct-trailer-poster.webp">
+          <img src="assets/img/wct-trailer-poster.webp" loading="lazy" decoding="async"
+               alt="Paper-craft title card: two students with a guitar on a sculpted world map, the Mekong lit in gold, reading We Create Tomorrow - School of Economics, Can Tho University">
+          <span class="vplay" aria-hidden="true">▶</span>
+          <span class="vlen" aria-hidden="true">0:06</span>
+          <span class="vsr"><span class="lang-vi">Xem trailer We Create Tomorrow</span><span class="lang-en">Watch the We Create Tomorrow trailer</span><span class="lang-fr">Voir la bande-annonce de We Create Tomorrow</span></span>
+        </button>
+        <h3>We Create Tomorrow</h3>
+        <p><span class="lang-vi">Trang karaoke ca khúc của Trường Kinh tế, Đại học Cần Thơ: lời song ngữ Việt - Anh chạy theo từng đoạn, có giao diện sáng và tối, cài được như ứng dụng. «Từ sông Mekong ra thế giới».</span><span class="lang-en">A karaoke page for the song of the School of Economics, Can Tho University: bilingual Vietnamese-English lyrics section by section, light and dark themes, installable as an app. “From the Mekong to the World”.</span><span class="lang-fr">Page karaoké de la chanson de l'École d'économie, Université de Cần Thơ : paroles bilingues vietnamien-anglais par section, thèmes clair et sombre, installable comme une application. « Du Mékong au monde ».</span></p>
+        <a class="go" href="https://thuyhuongctu.github.io/we-create-tomorrow/" target="_blank" rel="noopener"><span class="lang-vi">Mở We Create Tomorrow ↗</span><span class="lang-en">Open We Create Tomorrow ↗</span><span class="lang-fr">Ouvrir We Create Tomorrow ↗</span></a>
       </div>
     </div>
     <div class="gardenband">
