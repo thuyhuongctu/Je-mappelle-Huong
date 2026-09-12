@@ -265,6 +265,9 @@ footer.wrap{position:relative;overflow:hidden}
 }
 </style>
 <script>document.documentElement.className+=" js";</script>
+<script>/* Lua chon sang/toi dung chung ca site (khoa huong_theme). Dat trong <head>
+   de trang khong nhay mau khi tai. */
+(function(){try{var s=localStorage.getItem('huong_theme');if(s)document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script>
 </head><body>
 <a class="skip" href="#main"><span class="lang-vi">Tới nội dung</span><span class="lang-en">Skip to content</span><span class="lang-fr">Aller au contenu</span></a>
 
