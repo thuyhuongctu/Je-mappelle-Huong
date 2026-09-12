@@ -248,6 +248,11 @@ footer{border-top:1px solid var(--line);padding-block:26px 46px;font-size:.85rem
 /* ===== hinh chim: duong vien Viet Nam o chan trang ======================
    Dung mask nen net ban do lay mau tu token, tu doi theo che do sang/toi.
    Trinh duyet khong ho tro mask thi khong hien - chi la hinh trang tri. */
+/* dai anh trong trang: hinh rong, chu thich nho ben duoi */
+.band{margin:18px 0 22px}
+.band img{display:block;width:100%;height:clamp(160px,22vw,260px);object-fit:cover;object-position:50% 46%;
+  border-radius:var(--r,18px);border:1px solid var(--line);box-shadow:var(--press),var(--lift)}
+.band figcaption{margin:8px 2px 0;font-size:.8rem;line-height:1.5;color:var(--muted)}
 footer.wrap{position:relative;overflow:hidden}
 .vnmark{display:none}
 @supports ((mask-image:url(x)) or (-webkit-mask-image:url(x))){
@@ -307,6 +312,16 @@ footer.wrap{position:relative;overflow:hidden}
     <p><span class="lang-vi">Bấm một biển - Hương AI sẽ đạp xe đưa bạn đến khu tương ứng. Đây là phần sáng tạo của trang; hồ sơ học thuật nằm ở trang chủ.</span><span class="lang-en">Click a sign and Huong AI rides there. This is the creative half of the site; the academic profile lives on the home page.</span><span class="lang-fr">Cliquez sur une enseigne et Hương IA vous y emmène. Voici la moitié créative du site ; le profil académique est sur la page d'accueil.</span></p>
     <a class="backhome" href="index.html">← <span class="lang-vi">Về trang học thuật</span><span class="lang-en">Back to the academic home</span><span class="lang-fr">Retour à la page académique</span></a>
   </div>
+
+  <figure class="band">
+    <img src="assets/img/garden-rong.webp" width="1400" height="798" loading="lazy" decoding="async"
+         alt="Clay-modelled scene: Huong and her team riding a dragon over a clay map of Vietnam at sunset">
+    <figcaption>
+      <span class="lang-vi">Cả nhóm cưỡi rồng bay trên bản đồ đất sét - tấm áp phích của vườn số.</span>
+      <span class="lang-en">The team riding a dragon over a clay map of Vietnam - the garden's own poster.</span>
+      <span class="lang-fr">L'équipe à dos de dragon au-dessus d'une carte du Vietnam en argile - l'affiche du jardin.</span>
+    </figcaption>
+  </figure>
 
   <div id="bando" role="navigation" aria-label="Garden map">
     <span class="bd-buom" style="left:27%;top:35%" aria-hidden="true">🦋</span>

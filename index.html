@@ -89,6 +89,17 @@ html:not([lang="fr"]) .lang-fr{display:none}
 @media(max-width:860px){.mainnav{display:none}.menu .navdup{display:flex}.mark small{display:none}}
 @media(max-width:400px){.mark b{font-size:.84rem}}
 
+/* ===== dai phim dau trang: clip la co, tu phat, khong tieng =============
+   Chieu cao co gioi han de ten nguoi van nam trong man hinh dau tien. */
+.herofilm{position:relative;height:clamp(186px,32vh,340px);margin:14px 0 0;border-radius:22px;overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--press),var(--lift);background:var(--sunk)}
+.herofilm img,.herofilm video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+.herofilm video{opacity:0;transition:opacity .9s ease}
+.herofilm.dangchay video{opacity:1}
+.herofilm::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(28,24,20,.14),transparent 42%,rgba(28,24,20,.2))}
+@media(max-width:560px){.herofilm{border-radius:18px;height:clamp(168px,26vh,240px)}}
+
 /* ===== hero: name, one sentence, three ways to reach the work =========== */
 .hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(20px,4vw,40px);align-items:center;
   padding-block:clamp(30px,6vw,54px) clamp(24px,4vw,38px)}
@@ -134,6 +145,11 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 .shead h2{font-size:1.5rem;margin:4px 0 0}
 .shead p{color:var(--muted);font-size:.92rem;margin:8px 0 0;max-width:62ch}
 .lead{max-width:64ch;margin:0 0 16px}
+/* dai anh trong mot muc: hinh rong, chu thich nho ben duoi */
+.band{margin:20px 0 0}
+.band img{display:block;width:100%;height:clamp(150px,24vw,240px);object-fit:cover;object-position:50% 42%;
+  border-radius:var(--r);border:1px solid var(--line);box-shadow:var(--press),var(--lift)}
+.band figcaption{margin:8px 2px 0;font-size:.8rem;line-height:1.5;color:var(--muted)}
 .qa{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:18px 0 0}
 .qa div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:15px 17px;box-shadow:var(--press),var(--lift)}
 .qa h3{font:700 .62rem var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
@@ -141,6 +157,8 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 
 /* publications, tiered */
 .pgroup{margin:0 0 22px}
+.prereg{margin-top:26px}
+.morewrap{margin:12px 0 0}
 .pgroup>h3{font:700 .64rem var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--muted);
   padding-bottom:6px;border-bottom:1px solid var(--line);margin:0 0 4px}
 .pitem{padding:13px 2px;border-bottom:1px solid var(--line)}
@@ -329,6 +347,12 @@ footer.wrap{position:relative;overflow:hidden}
 
 <main class="wrap" id="main">
 
+  <figure class="herofilm">
+    <img src="assets/img/hero-co-poster.webp" width="854" height="480" fetchpriority="high"
+         alt="Do Thuy Huong in a white ao dai holding the Vietnamese flag on a riverbank lined with clay pots at sunset">
+    <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+  </figure>
+
   <div class="hero">
     <div>
       <div class="byline">
@@ -378,6 +402,17 @@ footer.wrap{position:relative;overflow:hidden}
       <span class="lang-en">My dissertation asks whether internationalization improves firm performance in Asia, and under which institutional conditions that relationship strengthens or breaks down. I answer it with two bodies of evidence: World Bank Enterprise Survey (WBES) firm-level data, and a quantitative synthesis of the published literature.</span>
       <span class="lang-fr">Ma thèse pose une question : l'internationalisation améliore-t-elle la performance des entreprises en Asie, et sous quelles conditions institutionnelles ? J'y réponds par deux corpus de preuves : les données d'entreprises de la Banque mondiale (WBES) et une synthèse quantitative de la littérature.</span>
     </p>
+
+    <figure class="band">
+      <img src="assets/img/research-port.webp" width="1400" height="800" loading="lazy" decoding="async"
+           alt="A container ship at a Vietnamese port at sunrise, with crates stencilled Vietnamese origin on the quay">
+      <figcaption>
+        <span class="lang-vi">Quốc tế hóa nhìn từ cảng: xuất khẩu là bước đi ra ngoài đầu tiên của phần lớn doanh nghiệp trong dữ liệu WBES.</span>
+        <span class="lang-en">Internationalization seen from the quay: exporting is the first step abroad for most firms in the WBES data.</span>
+        <span class="lang-fr">L'internationalisation vue du quai : l'exportation est le premier pas à l'étranger pour la plupart des entreprises des données WBES.</span>
+      </figcaption>
+    </figure>
+
     <div class="qa">
       <div>
         <h3><span class="lang-vi">Dữ liệu</span><span class="lang-en">Data</span><span class="lang-fr">Données</span></h3>
@@ -391,6 +426,29 @@ footer.wrap{position:relative;overflow:hidden}
         <h3><span class="lang-vi">Công cụ</span><span class="lang-en">Tooling</span><span class="lang-fr">Outils</span></h3>
         <p><span class="lang-vi">M-AIDA: trích xuất mức độ ảnh hưởng bằng LLM, kiểm chứng con người 100%, khóa bất biến.</span><span class="lang-en">M-AIDA: LLM-assisted effect-size extraction with 100% human verification and immutable locking.</span><span class="lang-fr">M-AIDA : extraction des tailles d'effet assistée par LLM, vérifiée à 100 % par l'humain.</span></p>
       </div>
+    </div>
+
+    <div class="pgroup prereg">
+      <h3><span class="lang-vi">Tiền đăng ký trên OSF</span><span class="lang-en">Preregistrations on OSF</span><span class="lang-fr">Préenregistrements sur OSF</span></h3>
+      <div class="pitem">
+        <div class="t">Institutional context, digital adoption, and the internationalization–performance relationship: a three-level meta-analysis</div>
+        <div class="v">
+          <span class="lang-vi">Tiền đăng ký tổng quan hệ thống · OSF Registries · 18/05/2026 · k = 237 nghiên cứu, K = 287 hiệu ứng, 49 nền kinh tế · </span>
+          <span class="lang-en">Generalized systematic review registration · OSF Registries · 18 May 2026 · k = 237 studies, K = 287 effects, 49 economies · </span>
+          <span class="lang-fr">Préenregistrement de revue systématique · OSF Registries · 18 mai 2026 · k = 237 études, K = 287 effets, 49 économies · </span>
+          <a href="https://doi.org/10.17605/OSF.IO/Z37KN" target="_blank" rel="noopener">10.17605/OSF.IO/Z37KN</a>
+        </div>
+      </div>
+      <div class="pitem">
+        <div class="t">Institutional context and the form of the internationalization–performance relationship in 50 Asian and Pacific economies: a two-stage random-coefficient design</div>
+        <div class="v">
+          <span class="lang-vi">Tiền đăng ký dữ liệu thứ cấp · 06/09/2026 · WBES trên 50 nền kinh tế, 107 quan sát quốc gia-năm (2006-2026) cùng WGI · </span>
+          <span class="lang-en">Secondary data preregistration · 6 September 2026 · WBES across 50 economies, 107 country-year waves (2006-2026), with the WGI · </span>
+          <span class="lang-fr">Préenregistrement de données secondaires · 6 septembre 2026 · WBES sur 50 économies, 107 vagues pays-année (2006-2026), avec les WGI · </span>
+          <a href="https://doi.org/10.17605/OSF.IO/HW64C" target="_blank" rel="noopener">10.17605/OSF.IO/HW64C</a>
+        </div>
+      </div>
+      <p class="morewrap"><a class="morelink" href="https://osf.io/m25qs/" target="_blank" rel="noopener"><span class="lang-vi">Tất cả dự án và dữ liệu trên OSF →</span><span class="lang-en">All projects and data on OSF →</span><span class="lang-fr">Tous les projets et données sur OSF →</span></a></p>
     </div>
   </section>
 
@@ -600,6 +658,41 @@ footer.wrap{position:relative;overflow:hidden}
   },{rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
   setTimeout(function(){document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});},2500);
+})();
+</script>
+<script>
+/* ---- dai phim dau trang ----
+   Anh tinh hien ngay; tep mp4 chi tai khi dai phim vao khung nhin, va bo han
+   khi nguoi dung tat hieu ung hoac may dang tiet kiem du lieu. Clip khong co
+   track am thanh nen khong can nut tat tieng. */
+(function(){
+  var box=document.querySelector('.herofilm');
+  if(!box) return;
+  var v=box.querySelector('video');
+  if(!v) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  try{
+    var m=navigator.connection||{};
+    if(m.saveData) return;
+    if(/(^|-)(2g|slow-2g|3g)$/.test(m.effectiveType||'')) return;
+  }catch(e){}
+  var daNap=false;
+  function chay(){
+    if(!daNap){ daNap=true; v.src='assets/video/hero-co.mp4'; }
+    var p=v.play();
+    if(p && p.then) p.then(function(){ box.classList.add('dangchay'); }).catch(function(){});
+  }
+  function dung(){ try{ v.pause(); }catch(e2){} }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es[0].isIntersecting ? chay() : dung();
+    },{rootMargin:'80px'}).observe(box);
+  }else{
+    addEventListener('load',chay);
+  }
+  document.addEventListener('visibilitychange',function(){
+    document.hidden ? dung() : (daNap && chay());
+  });
 })();
 </script>
 <script>
