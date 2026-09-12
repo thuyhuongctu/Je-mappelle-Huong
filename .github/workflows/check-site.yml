@@ -1,0 +1,44 @@
+# Kiểm tra toàn vẹn website tĩnh trên mỗi pull request.
+#
+# Bắt ba lỗi từng xảy ra trong repo này, cả ba đều âm thầm — trang vẫn hiển
+# thị bình thường nên không ai phát hiện cho tới khi quá muộn:
+#   1. sw.js precache một tệp không tồn tại  -> cache.addAll() hỏng nguyên
+#      khối, PWA offline không cài được, nhưng khi có mạng trang chạy y hệt.
+#   2. sitemap.xml thiếu trang hoặc bị thêm URL tay -> rebuild-sitemap.py ghi
+#      đè toàn bộ tệp, thay đổi tay biến mất ở lần chạy update-sitemap.yml sau.
+#   3. Liên kết nội bộ hoặc neo # trỏ vào hư không sau khi đổi tên tệp / id.
+#
+# Script không cần thư viện ngoài, không ghi tệp nào, và không phụ thuộc vào
+# độ sâu của bản checkout (nó chỉ đối chiếu tập URL, không đối chiếu ngày
+# <lastmod> vốn đổi theo từng commit).
+
+name: Check site integrity
+
+on:
+  pull_request:
+  push:
+    branches: [claude/academic-profile-page-psxbdv, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-site-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check-site:
+    name: check-site.py
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check service worker, sitemap and internal links
+        run: python3 scripts/check-site.py

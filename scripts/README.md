@@ -58,7 +58,7 @@ bình thường nên không ai phát hiện:
 | Kiểm tra | Lỗi nó bắt được |
 |---|---|
 | Danh sách `CORE` trong `sw.js` | Một mục trỏ tới tệp không tồn tại. `cache.addAll()` hỏng nguyên khối, nên **PWA offline không cài được** — nhưng khi có mạng trang vẫn chạy y hệt. |
-| `sitemap.xml` đối chiếu `rebuild-sitemap.py` | Sitemap bị sửa tay, hoặc thêm trang mới mà quên cập nhật `PAGE_CONF`. Thay đổi sẽ bị workflow ghi đè mất. |
+| `sitemap.xml` đối chiếu `rebuild-sitemap.py` | Sitemap bị thêm URL tay, hoặc thêm trang mới mà quên cập nhật `PAGE_CONF`. Thay đổi sẽ bị workflow ghi đè mất. Chỉ đối chiếu **tập URL**, không đối chiếu `<lastmod>` — ngày đó đổi theo mỗi commit, so cả tệp thì một lần sửa lỗi chính tả cũng làm CI đỏ. |
 | Liên kết nội bộ và neo `#` | Đổi tên tệp hoặc đổi `id` của một mục, để lại liên kết chết ở trang khác. |
 
 ```bash
@@ -67,3 +67,5 @@ python3 scripts/check-site.py    # trả mã 0 nếu đạt, 1 nếu có lỗi
 
 Script không cần thư viện ngoài và không sửa tệp nào. Chạy nó trước mỗi lần
 commit có đụng tới `sw.js`, `sitemap.xml`, hoặc cấu trúc liên kết giữa các trang.
+
+Script chạy tự động trên mỗi pull request qua `.github/workflows/check-site.yml`.
