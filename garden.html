@@ -82,6 +82,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .menu a,.menu button{display:flex;width:100%;align-items:center;gap:8px;text-align:left;background:none;border:0;
   font:500 .85rem var(--sans);color:var(--ink);text-decoration:none;padding:7px 8px;border-radius:10px;cursor:pointer}
 .menu a:hover,.menu button:hover{background:var(--sunk);color:var(--clay)}
+.menu button.on{background:var(--clay);color:#fff;font-weight:600}
 .menu .navdup{display:none}
 @media(max-width:860px){.mainnav{display:none}.menu .navdup{display:flex}.mark small{display:none}}
 @media(max-width:400px){.mark b{font-size:.84rem}}
@@ -210,16 +211,18 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 #hg-img{height:112px;width:auto;filter:drop-shadow(0 10px 12px rgba(120,60,60,.3));transition:transform .3s ease;transform-origin:50% 88%}
 #hg.dap #hg-img{animation:hgDap .5s ease-in-out infinite}
 @keyframes hgDap{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(1.5deg) translateY(-4px)}}
-#hg-bien{pointer-events:auto;cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:16px;
-  padding:9px 15px;margin-bottom:16px;max-width:190px;box-shadow:var(--press),var(--lift);
-  font:700 .8rem var(--sans);color:var(--ink);line-height:1.35;text-align:left}
-#hg-bien small{display:block;font-weight:600;color:var(--muted);font-size:.68rem;margin-top:2px}
-#hg-bien:hover{border-color:var(--clay);color:var(--clay)}
-#hg-loi{margin-left:6px;background:none;border:none;font-size:.9rem;padding:0;cursor:pointer;opacity:.85}
+#hg-bien{position:relative;pointer-events:auto;display:flex;align-items:flex-start;gap:6px;
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:9px 15px;margin-bottom:16px;max-width:200px;box-shadow:var(--press),var(--lift)}
+#hg-next{flex:1;min-width:0;background:none;border:0;padding:0;cursor:pointer;text-align:left;
+  font:700 .8rem var(--sans);color:var(--ink);line-height:1.35}
+#hg-next small{display:block;font-weight:600;color:var(--muted);font-size:.68rem;margin-top:2px}
+#hg-bien:hover{border-color:var(--clay)}
+#hg-next:hover{color:var(--clay)}
+#hg-loi{background:none;border:none;font-size:.9rem;padding:0;cursor:pointer;opacity:.85;line-height:1.4}
 #hg-loi:hover{opacity:1}
-#hg-tat{pointer-events:auto;position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;
+#hg-tat{position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;
   border:1px solid var(--line);background:var(--surface);color:var(--muted);font:700 .7rem/1 var(--sans);cursor:pointer}
-#hg-bien{position:relative}
 #tourbtn{position:fixed;left:14px;bottom:14px;z-index:7;border:1px solid var(--line);background:var(--surface);color:var(--ink);
   border-radius:999px;padding:9px 16px;font:600 .82rem var(--sans);cursor:pointer;box-shadow:var(--press),var(--lift)}
 #tourbtn[hidden]{display:none}
@@ -273,7 +276,7 @@ footer{border-top:1px solid var(--line);padding-block:26px 34px;font-size:.85rem
     <a href="journey.html">🌸 <span class="lang-vi">Nhật ký</span><span class="lang-en">Journal</span><span class="lang-fr">Journal</span></a>
     <a href="audio.html">🎙️ <span class="lang-vi">Phòng thu lời dẫn</span><span class="lang-en">Narration studio</span><span class="lang-fr">Studio de narration</span></a>
     <h4><span class="lang-vi">Tùy chọn</span><span class="lang-en">Preferences</span><span class="lang-fr">Préférences</span></h4>
-    <button type="button" id="frbtn">🇫🇷 Français</button>
+    <button type="button" id="frbtn" aria-pressed="false">🇫🇷 Français</button>
     <button type="button" id="themebtn">◐ <span class="lang-vi">Sáng / Tối</span><span class="lang-en">Light / Dark</span><span class="lang-fr">Clair / Sombre</span></button>
   </div>
 </header>
@@ -445,7 +448,7 @@ footer{border-top:1px solid var(--line);padding-block:26px 34px;font-size:.85rem
 <button id="tourbtn" type="button" hidden>🚲 <span class="lang-vi">Dạo cùng Hương</span><span class="lang-en">Take the tour</span><span class="lang-fr">Faire le tour</span></button>
 <div id="hg" hidden>
   <img id="hg-img" src="assets/img/huong_chi.webp" alt="">
-  <div id="hg-bien" role="button" tabindex="0" title="Đi tiếp"><span id="hg-ten"></span><small id="hg-phu"></small><button type="button" id="hg-loi" title="Nghe lời dẫn">🔊</button><button type="button" id="hg-tat" aria-label="Đóng tour">✕</button></div>
+  <div id="hg-bien"><button type="button" id="hg-next" title="Đi tiếp"><span id="hg-ten"></span><small id="hg-phu"></small></button><button type="button" id="hg-loi" title="Nghe lời dẫn">🔊</button><button type="button" id="hg-tat" aria-label="Đóng tour">✕</button></div>
 </div>
 
 <script>
@@ -453,13 +456,17 @@ footer{border-top:1px solid var(--line);padding-block:26px 34px;font-size:.85rem
 (function(){
   var root=document.documentElement, box=document.getElementById('lang');
   var btns=box.querySelectorAll('button[data-lang]');
+  var fr=document.getElementById('frbtn');
   function set(l){
     root.setAttribute('lang',l);
     btns.forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===l);});
+    // tieng Phap nam trong menu ···, nen trang thai chon cua no hien o day
+    fr.classList.toggle('on',l==='fr');
+    fr.setAttribute('aria-pressed',String(l==='fr'));
     try{localStorage.setItem('huong_lang',l);}catch(e){}
   }
   btns.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-lang'));});});
-  document.getElementById('frbtn').addEventListener('click',function(){set('fr');});
+  fr.addEventListener('click',function(){set('fr');});
   var start='vi';
   try{start=localStorage.getItem('huong_lang')||(/^en/i.test(navigator.language)?'en':(/^fr/i.test(navigator.language)?'fr':'vi'));}catch(e){}
   set(start);
@@ -589,7 +596,7 @@ addEventListener('DOMContentLoaded', function(){
       fr:'Bonjour ! Je suis Hương IA. Cliquez sur une enseigne et nous pédalerons de zone en zone.'}); return; }
     say(KHU[i][3]);
   }
-  LOI.addEventListener('click',function(e){e.stopPropagation();narrate();});
+  LOI.addEventListener('click',narrate);
   function start(){
     hg.hidden=false; btn.hidden=true;
     try{sessionStorage.setItem('huong_tour','1');}catch(e){}
@@ -621,14 +628,12 @@ addEventListener('DOMContentLoaded', function(){
     try{sessionStorage.removeItem('huong_tour');}catch(e){}
   }
   btn.addEventListener('click',start);
-  document.getElementById('hg-tat').addEventListener('click',function(e){e.stopPropagation();stop();});
+  document.getElementById('hg-tat').addEventListener('click',stop);
   function next(){
     var k=KHU[(i+1)%KHU.length][0], el=document.getElementById(k);
     if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
   }
-  var sign=document.getElementById('hg-bien');
-  sign.addEventListener('click',next);
-  sign.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();next();} });
+  document.getElementById('hg-next').addEventListener('click',next);
   new MutationObserver(bien).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
   /* the button only appears once the visitor has scrolled past the map */
   addEventListener('scroll',function(){

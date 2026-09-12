@@ -84,6 +84,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .menu a,.menu button{display:flex;width:100%;align-items:center;gap:8px;text-align:left;background:none;border:0;
   font:500 .85rem var(--sans);color:var(--ink);text-decoration:none;padding:7px 8px;border-radius:10px;cursor:pointer}
 .menu a:hover,.menu button:hover{background:var(--sunk);color:var(--clay)}
+.menu button.on{background:var(--clay);color:#fff;font-weight:600}
 .menu .navdup{display:none}
 @media(max-width:860px){.mainnav{display:none}.menu .navdup{display:flex}.mark small{display:none}}
 @media(max-width:400px){.mark b{font-size:.84rem}}
@@ -290,7 +291,7 @@ footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;
     <a href="garden.html">🪷 <span class="lang-vi">Vườn số</span><span class="lang-en">Digital garden</span><span class="lang-fr">Jardin numérique</span></a>
     <a href="blog.html">📰 Blog</a>
     <h4><span class="lang-vi">Tùy chọn</span><span class="lang-en">Preferences</span><span class="lang-fr">Préférences</span></h4>
-    <button type="button" id="frbtn">🇫🇷 Français</button>
+    <button type="button" id="frbtn" aria-pressed="false">🇫🇷 Français</button>
     <button type="button" id="themebtn">◐ <span class="lang-vi">Sáng / Tối</span><span class="lang-en">Light / Dark</span><span class="lang-fr">Clair / Sombre</span></button>
     <a href="#" id="installBtn" hidden>📲 <span class="lang-vi">Cài ứng dụng</span><span class="lang-en">Install app</span><span class="lang-fr">Installer</span></a>
   </div>
@@ -495,13 +496,17 @@ footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 34px;
 (function(){
   var root=document.documentElement, box=document.getElementById('lang');
   var btns=box.querySelectorAll('button[data-lang]');
+  var fr=document.getElementById('frbtn');
   function set(l){
     root.setAttribute('lang',l);
     btns.forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===l);});
+    // tieng Phap nam trong menu ···, nen trang thai chon cua no hien o day
+    fr.classList.toggle('on',l==='fr');
+    fr.setAttribute('aria-pressed',String(l==='fr'));
     try{localStorage.setItem('huong_lang',l);}catch(e){}
   }
   btns.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-lang'));});});
-  document.getElementById('frbtn').addEventListener('click',function(){set('fr');});
+  fr.addEventListener('click',function(){set('fr');});
   var start='vi';
   try{start=localStorage.getItem('huong_lang')||(/^en/i.test(navigator.language)?'en':(/^fr/i.test(navigator.language)?'fr':'vi'));}catch(e){}
   set(start);

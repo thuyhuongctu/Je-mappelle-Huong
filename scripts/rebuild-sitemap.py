@@ -56,6 +56,7 @@ def slugify(text: str) -> str:
 
 
 def scan_blog() -> list[dict]:
+    """Dò mọi bài viết trong blog.html, lấy ngày đăng và slug neo của từng bài."""
     path = os.path.join(REPO, 'blog.html')
     html = open(path, encoding='utf-8').read()
     posts = []
@@ -104,6 +105,7 @@ PAGE_CONF = [
 
 
 def build_xml(posts: list[dict], dry: bool) -> str:
+    """Dựng toàn bộ nội dung sitemap.xml từ PAGE_CONF và danh sách bài viết."""
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
@@ -141,6 +143,7 @@ def build_xml(posts: list[dict], dry: bool) -> str:
 
 
 def main() -> int:
+    """Sinh sitemap, in bản xem trước hoặc ghi đè sitemap.xml khi có --apply."""
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--apply', action='store_true', help='Ghi sitemap.xml thay vì xem trước')
     ap.add_argument('--commit', action='store_true', help='Commit + push sau khi ghi')
