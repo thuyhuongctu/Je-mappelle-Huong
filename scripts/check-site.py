@@ -27,23 +27,49 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # GitHub Pages phục vụ site dưới tiền tố này, nên đường dẫn tuyệt đối
 # kiểu /Je-mappelle-Huong/blog.html là hợp lệ và phải quy về gốc repo.
 BASE_PATH = '/Je-mappelle-Huong/'
-PAGES = ['index.html', 'garden.html', 'publications.html', 'cv.html',
-         'blog.html', 'music.html', 'songbook.html', 'quan-ly-songbook.html',
-         'journey.html', 'audio.html', 'trangvien.html', '404.html']
 SKIP_SCHEMES = ('http://', 'https://', 'mailto:', 'tel:', 'data:', 'javascript:', '//')
+# Thư mục không được GitHub Pages phục vụ như trang thật.
+SKIP_DIRS = {'.git', 'node_modules', '__pycache__'}
+
+# Cả hai kiểu nháy đều hợp lệ trong HTML; chỉ bắt nháy kép sẽ bỏ sót liên kết
+# và tạo báo động giả về neo không tồn tại.
+RE_ID = re.compile(r'''\bid\s*=\s*["\']([^"\']+)["\']''')
+RE_HREF = re.compile(r'''\bhref\s*=\s*["\']([^"\']{0,300})["\']''')
+RE_JS_HREF = re.compile(r'''location\.href\s*=\s*["\']([^"\']{0,300})["\']''')
+
+
+def deployed_pages() -> list[str]:
+    """Mọi tệp .html được GitHub Pages phục vụ, kể cả trong thư mục con.
+
+    Pages tải lên toàn bộ thư mục gốc, nên trang lồng như
+    design-demos/*.html cũng nằm trên site thật và cũng có liên kết nội bộ.
+    """
+    out = []
+    for folder, dirs, files in os.walk(REPO):
+        dirs[:] = [d for d in dirs if d not in SKIP_DIRS and not d.startswith('.')]
+        for f in files:
+            if f.endswith('.html') and not f.endswith('.bak'):
+                out.append(os.path.relpath(os.path.join(folder, f), REPO))
+    return sorted(out)
+
 
 _ids: dict[str, set[str]] = {}
 
 
 def ids_of(page: str) -> set[str]:
+    """Tập id khai báo trong một trang, dùng để kiểm tra neo #."""
     if page not in _ids:
         html = open(os.path.join(REPO, page), encoding='utf-8').read()
-        _ids[page] = set(re.findall(r'\bid="([^"]+)"', html))
+        _ids[page] = set(RE_ID.findall(html))
     return _ids[page]
 
 
 def check_service_worker() -> list[str]:
-    """Mọi mục trong CORE phải tồn tại, nếu không addAll() hỏng toàn bộ cache."""
+    """Mọi mục trong danh sách CORE của sw.js phải tồn tại trên đĩa.
+
+    cache.addAll() từ chối nguyên khối: chỉ một tệp thiếu là toàn bộ cache
+    offline không cài được, trong khi trang vẫn chạy bình thường khi có mạng.
+    """
     sw = open(os.path.join(REPO, 'sw.js'), encoding='utf-8').read()
     block = sw[sw.index('const CORE'):sw.index('];', sw.index('const CORE'))]
     errors = []
@@ -103,39 +129,48 @@ def check_sitemap() -> list[str]:
 
 
 def check_links() -> list[str]:
-    """Mọi liên kết nội bộ và mọi #neo phải giải được."""
+    """Mọi liên kết nội bộ và mọi neo # phải giải được.
+
+    Liên kết được phân giải tương đối với trang chứa nó, nên trang trong thư
+    mục con cũng được kiểm tra đúng như khi trình duyệt mở nó.
+    """
     errors = []
+    pages = deployed_pages()
     checked = 0
-    for page in PAGES:
-        if not os.path.exists(os.path.join(REPO, page)):
-            errors.append(f'thieu trang: {page}')
-            continue
+    for page in pages:
         html = open(os.path.join(REPO, page), encoding='utf-8').read()
-        hrefs = set(re.findall(r'href="([^"]{0,300})"', html))
-        hrefs |= set(re.findall(r"location\.href\s*=\s*'([^']{0,300})'", html))
+        base = os.path.dirname(page)
+        hrefs = set(RE_HREF.findall(html)) | set(RE_JS_HREF.findall(html))
         for href in hrefs:
             if href.startswith(SKIP_SCHEMES) or not href:
                 continue
-            target, _, frag = href.partition('#')
-            if target.startswith(BASE_PATH):
-                target = target[len(BASE_PATH):]
-            elif target.startswith('/'):
-                errors.append(f'{page}: duong dan tuyet doi khong co tien to '
-                              f'{BASE_PATH} — {href}')
-                continue
-            target = target or page
-            if target in ('./', '.', ''):
-                target = 'index.html'
+            raw, _, frag = href.partition('#')
+            if not raw:
+                target = page                      # "#neo" tro chinh trang do
+            else:
+                if raw.startswith(BASE_PATH):
+                    target = raw[len(BASE_PATH):]
+                elif raw.startswith('/'):
+                    errors.append(f'{page}: duong dan tuyet doi khong co tien to '
+                                  f'{BASE_PATH} — {href}')
+                    continue
+                else:
+                    target = os.path.normpath(os.path.join(base, raw))
+                # "./", "thu-muc/" hay tien to Pages tran tro toi trang chi muc
+                # cua thu muc do, khong phai trang hien tai
+                if not target or raw.endswith('/') or target in ('.', './'):
+                    target = os.path.normpath(os.path.join(target or '.', 'index.html'))
             checked += 1
             if not os.path.exists(os.path.join(REPO, target)):
                 errors.append(f'{page}: lien ket toi tep khong ton tai — {href}')
             elif frag and target.endswith('.html') and frag not in ids_of(target):
                 errors.append(f'{page}: neo khong ton tai — {href}')
-    print(f'  lien ket noi bo: da kiem tra {checked} duong dan tren {len(PAGES)} trang')
+    print(f'  lien ket noi bo: da kiem tra {checked} duong dan tren {len(pages)} trang')
     return errors
 
 
 def main() -> int:
+    """Chạy cả ba phép kiểm tra, in kết quả, trả 0 nếu đạt và 1 nếu có lỗi."""
     print('Kiem tra website tinh:')
     errors = check_service_worker() + check_sitemap() + check_links()
     if errors:

@@ -575,8 +575,13 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
 (function(){
   if(!('serviceWorker' in navigator)) return;
   function doReload(){
-    if('caches' in window){ caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});}); }
-    setTimeout(function(){location.reload();},150);
+    function reload(){ location.reload(); }
+    if(!('caches' in window)){ reload(); return; }
+    // cho xoa xong toan bo cache roi moi tai lai, neu khong lan tai lai
+    // van co the doc trung noi dung cu tu cache
+    caches.keys()
+      .then(function(ks){ return Promise.all(ks.map(function(k){ return caches.delete(k); })); })
+      .then(reload, reload);
   }
   navigator.serviceWorker.register('sw.js').then(function(reg){
     reg.addEventListener('updatefound',function(){

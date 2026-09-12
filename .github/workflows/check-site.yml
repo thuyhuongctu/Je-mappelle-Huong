@@ -34,6 +34,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # Job nay chay ma nguon cua pull request va khong buoc nao can
+          # git da xac thuc, nen khong de token nam lai trong .git/config.
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v5
