@@ -20,6 +20,7 @@
     track04_v2:    { t: 'Hai Mươi Sáu Năm Sau (v2)',     f: A + 'track04-26-nam-sau-v2.mp3', main: true },
     track05:       { t: 'Je m’appelle Hương',            f: A + 'track05.mp3' },
     track05_vi:    { t: 'Ba gọi con về (Vietnamese)',    f: A + 'track05-father-song-vi.mp3' },
+    mekong_sunfire:{ t: 'Mekong Sunfire',                 f: A + 'mekong-sunfire.mp3' },
 
     // M-AIDA
     maida_official:        { t: 'M-AIDA · Official',           f: A + 'maida/maida_song_official.mp3' },
@@ -66,7 +67,7 @@
       vi: { tieude: 'Hôm nay thật vui!', noi: 'Nghe bài thư giãn thêm - để niềm vui chảy dài thêm chút nữa.' },
       en: { tieude: 'Happy today!', noi: 'Relax and let the joy flow a little longer.' },
       fr: { tieude: 'Heureux aujourd\u2019hui !', noi: 'D\u00e9tendez-vous et laissez la joie s\u2019\u00e9couler un peu plus longtemps.' },
-      bai: ['track04', 'track05', 'track05_vi', 'track03']
+      bai: ['track04', 'mekong_sunfire', 'track05', 'track05_vi', 'track03']
     },
     binhthuong: {
       icon: '😌',
@@ -432,6 +433,21 @@
   } else {
     dungTaoWidget();
   }
+
+  /* ---------- BAO TIN CHO TRANG ----------
+     Nhac phat qua mot the Audio roi ngoai DOM, nen su kien 'play' cua no khong
+     noi len document - trang khong the biet nhac vua bat. Phat lai mot su kien
+     'huong-nhac' tren document de trang lam viec cua minh (vi du: trang chu tat
+     tieng dai phim dau trang khi nhac nen bat len). */
+  ['play', 'pause', 'ended'].forEach(function (ev) {
+    audio.addEventListener(ev, function () {
+      try {
+        document.dispatchEvent(new CustomEvent('huong-nhac', {
+          detail: { trangthai: ev, bai: dangPhat }
+        }));
+      } catch (e) { /* trinh duyet cu khong co CustomEvent thi thoi */ }
+    });
+  });
 
   window.HUONG_MUSIC = {
     playSong: playSong,
