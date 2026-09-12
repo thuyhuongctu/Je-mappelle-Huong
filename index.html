@@ -25,6 +25,9 @@
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --lift:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09);
   --press:inset 0 2px 0 rgba(255,255,255,.72),inset 0 -2px 0 rgba(120,85,60,.06);
+  /* Ten goi chung cua ca site, de doan CSS chep tu trang khac sang van dung mau. */
+  --accent:var(--clay);--accent-soft:var(--clay-soft);--accent2:var(--river);--gold:var(--amber);
+  --shadow:var(--lift);--text:var(--ink);
   --w:860px;--r:16px}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){
   --paper:#17130f;--surface:#201914;--sunk:#120e0b;
@@ -331,6 +334,9 @@ footer.wrap{position:relative;overflow:hidden}
  ]
 }
 </script>
+<script>/* Lua chon sang/toi dung chung ca site (khoa huong_theme). Dat trong <head>
+   de trang khong nhay mau khi tai. */
+(function(){try{var s=localStorage.getItem('huong_theme');if(s)document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script>
 </head><body>
 <a class="skip" href="#main"><span class="lang-vi">Tới nội dung</span><span class="lang-en">Skip to content</span><span class="lang-fr">Aller au contenu</span></a>
 
