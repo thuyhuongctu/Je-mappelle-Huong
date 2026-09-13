@@ -311,6 +311,17 @@ body.cham #ban-do canvas{width:84px;height:84px pointer-events:none; }
   background:var(--nhan);color:#fff;cursor:pointer;box-shadow:0 6px 16px rgba(196,92,58,.42)}
 @media(max-width:720px){#logo-tv{width:36px;height:36px}}
 @media(max-width:420px){#logo-tv{width:30px;height:30px}}
+/* Tren dien thoai, hang nut tren cung truoc day cao toi 143px (17% man hinh) vi
+   ten trang va nam nut phai xuong hai hang. Nay o duoi 600px chi giu logo tron,
+   bo phan chu cua ten - nho vay ca nam nut nam gon mot hang, canh tren thoang ra
+   cho canh vuon. Ten trang van con trong nhan tro nang cua the <a>. */
+@media(max-width:600px){
+  #hud-tren{padding:.5rem .55rem;gap:.35rem;flex-wrap:nowrap;align-items:center}
+  #hieu{padding:0;background:none;box-shadow:none;gap:0}
+  #hieu span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .nhom{gap:.3rem;flex-wrap:nowrap}
+  #hud-tren .nut-nho{padding:.4rem .6rem;font-size:.72rem}
+}
 /* --- Messenger Window HUD --- */
 #hud-msg{position:fixed;left:50%;bottom:105px;transform:translateX(-50%);width:350px;max-width:93vw;
   background:#FFF8EE;border:3px solid #7FC8B0;border-radius:26px;box-shadow:0 10px 34px rgba(90,60,60,.22);
@@ -491,14 +502,54 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important z-index:920
       <div><b>B</b><span data-vi="lên / xuống xe" data-en="bike on / off">lên / xuống xe</span></div>
     </div>
     <div class="ngon-ngu-hop" style="display:flex;justify-content:center;gap:.4rem;margin:0 0 1.2rem">
-      <button type="button" id="ng-vi" onclick="datNgonNgu('vi')" style="border:1px solid #c9d6c3;border-radius:999px;padding:.35rem .9rem;font-weight:700;font-size:.8rem;cursor:pointer;background:#fff">🇻🇳 VI</button>
-      <button type="button" id="ng-en" onclick="datNgonNgu('en')" style="border:1px solid #c9d6c3;border-radius:999px;padding:.35rem .9rem;font-weight:700;font-size:.8rem;cursor:pointer;background:transparent">🇬🇧 EN</button>
+      <button type="button" id="ng-vi" style="border:1px solid #c9d6c3;border-radius:999px;padding:.35rem .9rem;font-weight:700;font-size:.8rem;cursor:pointer;background:#fff">🇻🇳 VI</button>
+      <button type="button" id="ng-en" style="border:1px solid #c9d6c3;border-radius:999px;padding:.35rem .9rem;font-weight:700;font-size:.8rem;cursor:pointer;background:transparent">🇬🇧 EN</button>
       <button type="button" id="cong-nhac" class="nut-nho" aria-pressed="true"><span class="bieu" aria-hidden="true">🔊</span><span data-vi="Nhạc" data-en="Music">Nhạc</span></button>
     </div>
     <button class="nut" id="nut-vao" data-vi="Bắt đầu tham quan" data-en="Start the tour">Bắt đầu tham quan</button>
     <div id="tai-tien"><i></i></div>
   </div>
 </div>
+<script>
+/* Ngon ngu cua cong chao.
+   Ca the gioi 3D - ke ca ham datNgonNgu - chi duoc nap sau khi nguoi xem bam
+   "Bat dau", nen truoc do cong khong co gi de doi ngon ngu: hai nut VI/EN
+   khong lam gi, va chu o cong luon la tieng Viet ngay ca khi may dat tieng
+   Anh, roi vao trong lai thanh tieng Anh. Doan nay lo phan do: doi chu ngay
+   tren cong, danh dau dung nut dang chon, va ghi lua chon vao khoa dung chung
+   huong_lang de the gioi mo ra cung mot thu tieng. Khi khoi 3D nap xong, ham
+   datNgonNgu that se thay cho ham nay. */
+(function(){
+  var cong = document.getElementById('cong');
+  if (!cong) return;
+  var nVi = document.getElementById('ng-vi'), nEn = document.getElementById('ng-en');
+
+  function veNut(l){
+    [[nVi, l === 'vi'], [nEn, l === 'en']].forEach(function (c) {
+      if (!c[0]) return;
+      c[0].style.background = c[1] ? '#C45C3A' : '#fff';
+      c[0].style.color = c[1] ? '#fff' : '#4E6B5C';
+      c[0].setAttribute('aria-pressed', c[1] ? 'true' : 'false');
+    });
+  }
+  function dat(l, ghi){
+    document.documentElement.lang = l;
+    cong.querySelectorAll('[data-vi]').forEach(function (el) {
+      var t = el.dataset[l];
+      if (t !== undefined) el.innerHTML = t;
+    });
+    veNut(l);
+    if (ghi) { try { localStorage.setItem('huong_lang', l); } catch (e) {} }
+  }
+  window.datNgonNgu = function (l) { dat(l, true); };
+  if (nVi) nVi.addEventListener('click', function(){ dat('vi', true); });
+  if (nEn) nEn.addEventListener('click', function(){ dat('en', true); });
+
+  var l = 'vi';
+  try { l = localStorage.getItem('huong_lang') || (/^en/i.test(navigator.language) ? 'en' : 'vi'); } catch (e) {}
+  dat(l === 'en' ? 'en' : 'vi', false);
+})();
+</script>
 
 <script src="assets/vendor/three-r128.min.js"></script>
 <script>

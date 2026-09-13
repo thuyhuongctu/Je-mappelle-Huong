@@ -9,7 +9,7 @@
   const guide=document.createElement('aside');
   guide.id='th-onboarding-guide';
   guide.setAttribute('aria-live','polite');
-  guide.innerHTML='<div class="th-guide-kicker">BƯỚC <span id="th-guide-step">1</span>/3</div><strong id="th-guide-title">Khám phá Trang viên</strong><p id="th-guide-copy">Dùng cần điều khiển hoặc WASD để di chuyển quanh đồng sen.</p><button type="button" id="th-guide-next">Đã hiểu</button><button type="button" id="th-guide-help">?</button>';
+  guide.innerHTML='<div class="th-guide-kicker"><span id="th-guide-kicker-word">BƯỚC</span> <span id="th-guide-step">1</span>/3</div><strong id="th-guide-title">Khám phá Trang viên</strong><p id="th-guide-copy">Dùng cần điều khiển hoặc WASD để di chuyển quanh đồng sen.</p><button type="button" id="th-guide-next">Đã hiểu</button><button type="button" id="th-guide-help">?</button>';
   document.body.appendChild(guide);
   const steps=[
     {vi:['Khám phá Trang viên','Dùng cần điều khiển hoặc WASD để di chuyển quanh đồng sen.'],en:['Explore the estate','Use the joystick or WASD to move through the lotus garden.']},
@@ -20,6 +20,7 @@
   function lang(){return document.documentElement.lang==='en'?'en':'vi'}
   function render(){
     const p=steps[step][lang()];
+    document.getElementById('th-guide-kicker-word').textContent=lang()==='en'?'STEP':'BƯỚC';
     document.getElementById('th-guide-step').textContent=step+1;
     document.getElementById('th-guide-title').textContent=p[0];
     document.getElementById('th-guide-copy').textContent=p[1];
