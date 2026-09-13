@@ -1,0 +1,73 @@
+/* Xep lai HUD cua Trang vien 3D.
+   Trang viên gom chín cụm nút nổi, do năm tệp giao diện khác nhau đặt chỗ, mỗi
+   tệp tự chọn toạ độ mà không biết tệp kia đặt gì ở đó. Kết quả là năm chỗ đè
+   lên nhau. Tệp này nạp sau cùng, chỉ làm một việc: dời đúng những cụm đang
+   chồng, không đổi kiểu dáng, không ẩn cụm nào.
+
+   Đo ở khổ 390x844 (chạm), 360x740 (chạm) và 1280x800 (chuột).  */
+
+/* ===== Điện thoại ===== */
+@media (max-width:700px){
+  /* Dãy biểu cảm trước nằm ở góc trái trên (body.cham đẩy nó lên đó), ngay
+     chồng lên bộ đếm sen và thẻ nhiệm vụ. Đưa xuống khoảng trống phía trên
+     cột nút bấm. */
+  body.cham #bieu-cam,
+  #bieu-cam{
+    left:50% !important; right:auto !important;
+    top:auto !important;
+    bottom:calc(env(safe-area-inset-bottom,0px) + 300px) !important;
+    transform:translateX(-50%) !important;
+  }
+
+  /* Nút nhạc nổi lệch đúng vào nút xe đạp (hai hộp cắt nhau 8px). Dịch sang
+     phải khỏi nút xe. */
+  #hm-widget{ left:calc(50% + 26px) !important; }
+
+  /* Gợi ý "Bấm ✦ để vào khu" trước nằm chồng lên dãy thẻ nhiệm vụ phụ. Nâng
+     lên trên dãy thẻ nhân vật. */
+  #goi-y{ bottom:calc(env(safe-area-inset-bottom,0px) + 214px) !important; }
+
+  /* Dãy thẻ nhân vật hạ xuống một nhịp để chừa chỗ cho dòng gợi ý trên. */
+  .th-npc-dock{ bottom:calc(env(safe-area-inset-bottom,0px) + 177px) !important; }
+
+  /* Hai dải chỉ hiện thoáng qua nhưng khi hiện thì rơi trúng chỗ có sẵn:
+     thẻ nhặt vật phẩm rơi vào dãy thẻ nhân vật, dòng mách nước rơi vào thẻ
+     nhiệm vụ ở góc trái trên. */
+  .th-pickup{ bottom:calc(env(safe-area-inset-bottom,0px) + 340px) !important; }
+  .th-play-hint{ top:calc(var(--hud-cao,46px) + 108px) !important; }
+
+  /* Thẻ nhiệm vụ ở góc trái trên trước đặt cứng top:108px, hợp khi hàng nút
+     trên cùng gọn một hàng (cao 46px). Ở khổ 360px hàng nút xuống hai dòng
+     (cao 74px) thì bộ đếm sen tụt xuống đúng chỗ thẻ này. Cho nó bám theo
+     chiều cao thật của hàng nút, như bộ đếm sen và bản đồ. */
+  #th-story-quest{ top:calc(var(--hud-cao,46px) + 62px) !important; }
+
+  /* Danh sách điểm đến dài tới đâu là tuỳ màn hình: ở máy thấp (740px) nó
+     chạm xuống dãy biểu cảm. Chặn thêm một mức theo chiều cao thật còn lại,
+     lấy mức nhỏ nhất trong ba. */
+  #bd-chon{ max-height:min(38vh, 320px, calc(100vh - var(--hud-cao,46px) - 414px)) !important; }
+
+  /* Đồng hồ đặt ở góc phải dưới, đúng vào cột nút ✦ / tin nhắn và dãy thẻ
+     nhiệm vụ phụ. Chuyển sang cột trái, vào khoảng trống giữa cần điều khiển
+     và dãy thẻ nhân vật. */
+  #dongho-widget{
+    left:.6rem !important; right:auto !important;
+    bottom:calc(env(safe-area-inset-bottom,0px) + 130px) !important;
+  }
+}
+
+/* ===== Màn hình rộng ===== */
+@media (min-width:701px){
+  /* Thẻ "trò chuyện cùng Hương" nằm đè lên cần điều khiển ở góc trái dưới.
+     Dời sang phải cần điều khiển. */
+  #th-story-huong{ left:152px; }
+
+  /* Dãy thẻ nhiệm vụ phụ kéo dài tới sát mép phải, chồng lên nút tin nhắn.
+     Thu lại, chừa nguyên cột nút bên phải. */
+  .th-side-actions{ right:84px; }
+
+  /* Đồng hồ và nút nhạc cùng nằm ở góc phải dưới, đè lên nhau. Dời đồng hồ
+     sang trái nút nhạc. */
+  /* dongho.js tu chen CSS cua no vao cuoi head luc chay, nen phai danh dau uu tien. */
+  #dongho-widget{ right:84px !important; }
+}
