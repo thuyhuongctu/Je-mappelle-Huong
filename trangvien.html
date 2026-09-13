@@ -275,6 +275,15 @@ body.dang-doc-khu #bd-thang,
 body.dang-doc-khu #ban-do,
 body.dang-doc-khu .th-side-actions,
 body.dang-doc-khu #th-onboarding-guide{display:none !important}
+/* Dang di tour thi bang noi dung noi ro: dang o diem thu may, va dong lai la
+   di tiep - de khach biet minh dang duoc dan di chu khong phai bi bo lai. */
+#bang-tour{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin:0 0 1rem;
+  padding:.55rem .8rem;border-radius:.9rem;background:var(--accent-soft,#F7E4DA);
+  border:1px solid rgba(196,92,58,.28);font:600 .78rem/1.4 "Baloo 2",system-ui;color:var(--muc)}
+#bang-tour b{font-weight:800;color:var(--nhan)}
+#bang-tour button{margin-left:auto;border:none;border-radius:999px;cursor:pointer;
+  padding:.4rem .8rem;font:700 .74rem "Baloo 2",system-ui;background:var(--nhan);color:#fff}
+#bang-tour button.bo{background:#FDECF0;color:#B85C7E}
 .keo{width:52px;height:5px;border-radius:99px;background:var(--vien);margin:0 auto 1rem}
 .bang-dau{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:1.1rem}
 .bang-icon{
@@ -508,6 +517,7 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important;z-index:920
       </div>
       <button id="dong" aria-label="Đóng">✕</button>
     </div>
+    <div id="bang-tour" hidden></div>
     <div id="noi-dung"></div>
   </div>
 </div>
@@ -2227,6 +2237,13 @@ function dongBang(){
   document.body.classList.remove('dang-doc-khu');
   document.getElementById('noi-dung').querySelectorAll('audio').forEach(a=>a.pause());
   if (window.HUONG_MUSIC) HUONG_MUSIC.dungNhacNen();
+  /* Dang di tour ma dong bang lai tuc la "doc xong roi, di tiep di" - khong
+     bat khach doi het gio nghi. Xe di chuyen bi khoa khi bang con mo, nen
+     phai doi mot nhip cho bang dong han. */
+  if(typeof tourDangChay !== 'undefined' && tourDangChay){
+    dongHenTour();
+    setTimeout(diChuyenTour, 300);
+  }
 }
 document.getElementById('dong').addEventListener('click', dongBang);
 man.addEventListener('click', e=>{ if(e.target === man) dongBang(); });
@@ -2513,8 +2530,25 @@ document.addEventListener('pointerdown', e=>{
 const bdEl = document.getElementById('ban-do');
 bdEl.addEventListener('click', e=>{ if(e.target === bdCanvas) moBdChon(); });
 
+/* ---------- TOUR QUANH VUON ----------
+   Tour nghia la tu dong dan khach di het cac khu: di toi mot khu, mo bang noi
+   dung cho doc, roi di tiep khu sau.
+
+   Truoc day no dung han sau khu dau tien. Vong di chuyen co dieu kien
+   "if(mucTieuDi && !dangMo)" - tuc bang noi dung con mo thi nhan vat dung yen -
+   ma tour lai hen gio di tiep NGAY LUC bang dang mo, va diToiKhu() cung tu choi
+   khi dangMo. Ket qua: ghe dung mot khu roi dung mai. Nay het gio nghi thi dong
+   bang truoc roi moi di; va khach dong bang som thi di tiep luon.
+
+   Thu tu ghe cung doi: truoc di theo dung thu tu khai bao, nen tu goc dong-nam
+   khach bi dat thang sang khu Hoc thuat o goc doi dien - gan 80 don vi, di mai
+   khong toi. Nay moi lan chon khu CHUA GHE gan nhat, duong di vong quanh vuon
+   thay vi cat cheo qua lai. */
+let tourDaGhe = new Set(), henTour = null;
+function dongHenTour(){ if(henTour){ clearTimeout(henTour); henTour = null; } }
 function batTour(){
-  tourDangChay = true; tourChiSo = 0;
+  tourDangChay = true; tourChiSo = 0; tourDaGhe = new Set();
+  dongHenTour();
   dongBdChon();
   hatGiiong('welcome');
   capNhatTrangThai();
@@ -2522,27 +2556,61 @@ function batTour(){
 }
 function huyTour(){
   tourDangChay = false; mucTieuDi = null;
+  dongHenTour();
+  veThanhTour();
   capNhatTrangThai();
 }
 function diChuyenTour(){
   if(!tourDangChay) return;
-  let diem = null;
-  const stops = danhSachTour();
-  for(let i = tourChiSo; i < stops.length; i++){
-    const k = stops[i];
-    const d = Math.hypot(k.x - nhanVat.position.x, k.z - nhanVat.position.z);
-    if(d >= 3.2){ tourChiSo = i; diem = k; break; }
-  }
-  if(!diem){
+  const conLai = danhSachTour().filter(k => !tourDaGhe.has(k.khu.id));
+  if(!conLai.length){
     tourDangChay = false;
     hatGiiong('welcome');
+    veThanhTour();
     capNhatTrangThai();
     return;
   }
+  let diem = conLai[0], dGan = Infinity;
+  conLai.forEach(k => {
+    const d = Math.hypot(k.x - nhanVat.position.x, k.z - nhanVat.position.z);
+    if(d < dGan){ dGan = d; diem = k; }
+  });
   diToiKhu(diem.khu);
+}
+/* Ve lai thanh bao trong bang noi dung va nhan cua vien "Di dau?". */
+function veThanhTour(){
+  const thanh = document.getElementById('bang-tour');
+  const nhan = bdDau ? bdDau.querySelector('span') : null;
+  const vi = (typeof NG !== 'undefined' && NG === 'vi');
+  if(!tourDangChay){
+    if(thanh) thanh.hidden = true;
+    if(nhan) nhan.textContent = vi ? 'Đi đâu?' : 'Go where?';
+    return;
+  }
+  const tong = danhSachTour().length, daGhe = tourDaGhe.size;
+  if(nhan) nhan.textContent = (vi ? 'Tour ' : 'Tour ') + daGhe + '/' + tong;
+  if(!thanh) return;
+  thanh.hidden = false;
+  thanh.innerHTML = '';
+  const chu = document.createElement('span');
+  chu.innerHTML = (vi ? '🗺 Đang đi tour · điểm <b>' : '🗺 On the tour · stop <b>')
+    + daGhe + '/' + tong + '</b>'
+    + (vi ? ' · đóng bảng là đi tiếp' : ' · close this to move on');
+  thanh.appendChild(chu);
+  const tiep = document.createElement('button');
+  tiep.type = 'button';
+  tiep.textContent = vi ? 'Đi tiếp →' : 'Next stop →';
+  tiep.addEventListener('click', dongBang);
+  thanh.appendChild(tiep);
+  const dung = document.createElement('button');
+  dung.type = 'button'; dung.className = 'bo';
+  dung.textContent = vi ? '⏹ Dừng tour' : '⏹ Stop tour';
+  dung.addEventListener('click', function(){ huyTour(); dongBang(); });
+  thanh.appendChild(dung);
 }
 function capNhatTrangThai(){
   if(banDangMo) veBdChon();   // refresh các nút highlight
+  veThanhTour();
   if(tourDangChay){
     bdTrangThai.textContent = (NG==='vi' ? '🗺 Tour đang chạy - ghé từng khu...' : '🗺 Tour in progress - visiting each zone...');
     bdTrangThai.style.display = 'block';
@@ -2558,8 +2626,17 @@ function capNhatTrangThai(){
 function moBang(khu){
   moBangGoc(khu);
   if(tourDangChay){
-    tourChiSo++;
-    setTimeout(diChuyenTour, Math.max(2600, 5500 * (5.6 / TOUR_SPEEDS[tourTocDo])));
+    tourDaGhe.add(khu.id);
+    tourChiSo = tourDaGhe.size;
+    veThanhTour();
+    capNhatTrangThai();
+    dongHenTour();
+    henTour = setTimeout(function(){
+      henTour = null;
+      if(!tourDangChay) return;
+      if(dangMo) dongBang();       // dongBang() se tu goi diChuyenTour()
+      else diChuyenTour();
+    }, Math.max(2600, 5500 * (5.6 / TOUR_SPEEDS[tourTocDo])));
   }
 }
 // đi bộ tay huỷ lệnh tự đi (như cũ) - hook thêm cập nhật trạng thái
@@ -3699,8 +3776,13 @@ function vong(){
     if(phim['q']) gocMay += 1.6*dt;
     if(phim['e'] && false) {}
     ix += canVec.x; iz += canVec.y;
-    // đi bộ thường = huỷ lệnh tự đi
-    if(Math.hypot(ix,iz) > .06) mucTieuDi = null;
+    /* Di bo tay = huy lenh tu di. Neu dang trong tour thi huy luon ca tour:
+       truoc day tour van bat, vien "Di dau?" van ghi "Tour 3/7", nhung khong
+       con ai dan di nua - khach tuong minh lam hong cai gi. */
+    if(Math.hypot(ix,iz) > .06){
+      mucTieuDi = null;
+      if(tourDangChay && !dangMo) huyTour();
+    }
   }
 
   /* --- tự đi tới khu (auto-walk) --- */

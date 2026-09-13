@@ -17,11 +17,11 @@
     track02:       { t: 'Đèn vẫn còn sáng',              f: A + 'track02-den-van-con-sang.mp3' },
     track03:       { t: 'The Lamp Still Burns',          f: A + 'track03.mp3' },
     track04:       { t: 'Hai Mươi Sáu Năm Sau',          f: A + 'track04-hai-muoi-sau-nam-sau.mp3' },
-    track04_v2:    { t: 'Hai Mươi Sáu Năm Sau (v2)',     f: A + 'track04-26-nam-sau-v2.mp3', main: true },
+    track04_v2:    { t: 'Hai Mươi Sáu Năm Sau (v2)',     f: A + 'track04-26-nam-sau-v2.mp3' },
     track05:       { t: 'Je m’appelle Hương',            f: A + 'track05.mp3' },
     track05_vi:    { t: 'Ba gọi con về (Vietnamese)',    f: A + 'track05-father-song-vi.mp3' },
     mekong_sunfire:{ t: 'Mekong Sunfire',                 f: A + 'mekong-sunfire.mp3' },
-    mekong_rise:   { t: 'Mekong Sunfire · Rise With The River', f: A + 'mekong-sunfire-rise-with-the-river.mp3' },
+    mekong_rise:   { t: 'Mekong Sunfire · Rise With The River', f: A + 'mekong-sunfire-rise-with-the-river.mp3', main: true },
 
     // M-AIDA
     maida_official:        { t: 'M-AIDA · Official',           f: A + 'maida/maida_song_official.mp3' },
@@ -75,7 +75,7 @@
       vi: { tieude: 'Một ngày bình yên', noi: 'Bài mặc định trang chủ chọn cho bạn - nghe thoải mái nhé.' },
       en: { tieude: 'A peaceful day', noi: 'The homepage’s default pick for you - enjoy.' },
       fr: { tieude: 'Une journée paisible', noi: 'Le choix par défaut de la page d’accueil pour vous - bonne écoute.' },
-      bai: ['track04_v2', 'official', 'track05_vi', 'track05', 'track01']
+      bai: ['mekong_rise', 'track04_v2', 'official', 'track05_vi', 'track05', 'track01']
     }
   };
 
@@ -202,7 +202,7 @@
       ds = MOODS[dangMood].bai;
     } else {
       // nếu không trong mood, lấy danh sách bài official/songbook làm mặc định
-      ds = ['track04_v2', 'official', 'track05', 'track01', 'track02', 'track03'];
+      ds = ['mekong_rise', 'track04_v2', 'official', 'track05', 'track01', 'track02', 'track03'];
     }
 
     var idx = ds.indexOf(dangPhat);
