@@ -137,7 +137,11 @@ button{font-family:inherit;cursor:pointer;border:0}
 .hud{position:fixed;z-index:9500;z-index:1000; pointer-events:none; }
 .hud > *{pointer-events:auto !important; }
 
-#hud-tren{top:0;left:0;right:0;display:flex;gap:.5rem;align-items:flex-start;padding:.7rem;flex-wrap:wrap}
+/* Nut lam moi (#nut-ref) la mot nut tron co dinh o goc phai tren, nam ngoai
+   hang nut nay: no rong 44px va cach mep phai 1.05rem, tuc mep trai cua no o
+   60.8px. Vay hang nut phai chua san 68px ben phai (60.8 + mot khe 7px), neu
+   khong nut "?" nam ngay duoi no - hai vung cham chong nhau. */
+#hud-tren{top:0;left:0;right:0;display:flex;gap:.5rem;align-items:flex-start;padding:.7rem 68px .7rem .7rem;flex-wrap:wrap}
 #hieu{
   display:flex;align-items:center;gap:.5rem;padding:.45rem .8rem .45rem .45rem;border-radius:999px;
   background:rgba(255,251,244,.9);backdrop-filter:blur(10px);box-shadow:var(--bong);
@@ -316,11 +320,15 @@ body.cham #ban-do canvas{width:84px;height:84px pointer-events:none; }
    bo phan chu cua ten - nho vay ca nam nut nam gon mot hang, canh tren thoang ra
    cho canh vuon. Ten trang van con trong nhan tro nang cua the <a>. */
 @media(max-width:600px){
-  #hud-tren{padding:.5rem .55rem;gap:.35rem;flex-wrap:nowrap;align-items:center}
+  #hud-tren{padding:.5rem 68px .5rem .55rem;gap:.35rem;flex-wrap:nowrap;align-items:center}
   #hieu{padding:0;background:none;box-shadow:none;gap:0}
   #hieu span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-  .nhom{gap:.3rem;flex-wrap:nowrap}
-  #hud-tren .nut-nho{padding:.4rem .6rem;font-size:.72rem}
+  /* Khi du cho thi van mot hang (HUD thap); chat qua thi xuong dong, chu khong
+     tran ra ngoai roi nam duoi nut lam moi. */
+  .nhom{gap:.3rem;flex-wrap:wrap}
+  /* Nam nut vua du mot hang tren may 390px (logo + 5 nut + khe = ~302px trong
+     313px con lai). Chu con nguyen: khach moi doc duoc "Dap xe", "Chieu". */
+  #hud-tren .nut-nho{padding:.4rem .45rem;font-size:.72rem}
 }
 /* --- Messenger Window HUD --- */
 #hud-msg{position:fixed;left:50%;bottom:105px;transform:translateX(-50%);width:350px;max-width:93vw;
