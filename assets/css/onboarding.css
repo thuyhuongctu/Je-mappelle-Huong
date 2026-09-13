@@ -7,7 +7,11 @@
 #th-guide-next{min-height:38px;padding:8px 16px;border:0;border-radius:999px;background:#5C7F62;color:#fff;font:800 11px system-ui,sans-serif;cursor:pointer;touch-action:manipulation}
 #th-guide-help{position:absolute;right:12px;top:12px;width:30px;height:30px;border:1px solid rgba(92,127,95,.3);border-radius:50%;background:#fff8e9;color:#5C7F62;font:800 14px system-ui,sans-serif;cursor:pointer}
 body:not(.tour-started) #bd-thang,body:not(.tour-started) #ban-do,body:not(.tour-started) #bieu-cam,body:not(.tour-started) #can,body:not(.tour-started) #nut-xe,body:not(.tour-started) #nut-cham,body:not(.tour-started) #goi-y,body:not(.tour-started) #hud-sen,body:not(.tour-started) #th-play-hint,body:not(.tour-started) #th-story-quest,body:not(.tour-started) #th-story-npcs,body:not(.tour-started) #th-side-actions,body:not(.tour-started) #th-pickup,body:not(.tour-started) #th-achievement-open,body:not(.tour-started) #th-story-huong{display:none!important}
-@media(max-width:700px){#th-onboarding-guide{bottom:calc(env(safe-area-inset-bottom,0px) + 18px);width:calc(100vw - 24px);padding:13px 44px 13px 14px}#th-guide-title{font-size:18px}#th-guide-copy{font-size:11px}}
+/* Tren dien thoai, can dieu khien nam goc trai duoi cao khoang 112px va nut
+   cham nam goc phai duoi. The huong dan truoc day de len ca can dieu khien -
+   buoc 1 bao "dung can dieu khien" ma lai che mat no. Nay the nam han phia
+   tren cum dieu khien. */
+@media(max-width:700px){#th-onboarding-guide{bottom:calc(env(safe-area-inset-bottom,0px) + 146px);width:calc(100vw - 24px);padding:13px 44px 13px 14px}#th-guide-title{font-size:18px}#th-guide-copy{font-size:11px}}
 
 /* Before Start, keep only orientation, language and help; reveal gameplay controls after entry. */
 body:not(.tour-started) #nut-xe-may,body:not(.tour-started) #nut-thoi-khac,body:not(.tour-started) #nut-am-thanh,body:not(.tour-started) #nut-ngu,body:not(.tour-started) #nut-msg,body:not(.tour-started) #hm-widget,body:not(.tour-started) #dongho-nut{display:none!important}
