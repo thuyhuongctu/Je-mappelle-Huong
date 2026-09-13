@@ -9,17 +9,22 @@
   const guide=document.createElement('aside');
   guide.id='th-onboarding-guide';
   guide.setAttribute('aria-live','polite');
-  guide.innerHTML='<div class="th-guide-kicker">BƯỚC <span id="th-guide-step">1</span>/3</div><strong id="th-guide-title">Khám phá Trang viên</strong><p id="th-guide-copy">Dùng cần điều khiển hoặc WASD để di chuyển quanh đồng sen.</p><button type="button" id="th-guide-next">Đã hiểu</button><button type="button" id="th-guide-help">?</button>';
+  guide.innerHTML='<div class="th-guide-kicker"><span id="th-guide-kicker-word">BƯỚC</span> <span id="th-guide-step">1</span>/3</div><strong id="th-guide-title">Chọn nơi muốn đến</strong><p id="th-guide-copy">Bảng «Đi đâu?» ở góc phải liệt kê bảy khu.</p><button type="button" id="th-guide-next">Đã hiểu</button><button type="button" id="th-guide-help">?</button>';
   document.body.appendChild(guide);
+  /* Ba buoc cu mo dau bang "dung can dieu khien" - duong cham nhat - roi ket
+     bang mot buoc noi toi vat pham, NPC va nhiem vu ma khach moi chua thay gi.
+     Nay ba buoc di dung thu tu nguoi ta thuc su lam: chon noi den, den noi,
+     mo ra doc. */
   const steps=[
-    {vi:['Khám phá Trang viên','Dùng cần điều khiển hoặc WASD để di chuyển quanh đồng sen.'],en:['Explore the estate','Use the joystick or WASD to move through the lotus garden.']},
-    {vi:['Ghé một khu vực','Đến gần biển chỉ đường rồi bấm ✦ hoặc phím E để mở nội dung.'],en:['Visit an area','Walk near a signpost, then press ✦ or E to open its story.']},
-    {vi:['Tìm điều bất ngờ','Thu thập vật phẩm, gặp NPC và mở nhiệm vụ khi bạn đã quen với không gian.'],en:['Find what is hidden','Collect items, meet NPCs and unlock quests after you know the space.']}
+    {vi:['Chọn nơi muốn đến','Bảng «Đi đâu?» ở góc phải liệt kê bảy khu. Chọn một khu, Hương tự đi tới.'],en:['Pick where to go','The “Go where?” list on the right holds all seven areas. Pick one and Hương walks there.']},
+    {vi:['Hoặc tự đi lấy','Cần điều khiển hoặc phím W A S D để đi; ← → xoay góc nhìn; B để lên xe đạp.'],en:['Or walk it yourself','Joystick or W A S D to move, ← → to turn the camera, B to hop on the bicycle.']},
+    {vi:['Mở nội dung một khu','Tới nơi sẽ thấy biển chỉ đường. Bấm ✦ hoặc phím E để đọc khu đó.'],en:['Open an area','A signpost stands at each place. Press ✦ or E to read it.']}
   ];
   let step=0;
   function lang(){return document.documentElement.lang==='en'?'en':'vi'}
   function render(){
     const p=steps[step][lang()];
+    document.getElementById('th-guide-kicker-word').textContent=lang()==='en'?'STEP':'BƯỚC';
     document.getElementById('th-guide-step').textContent=step+1;
     document.getElementById('th-guide-title').textContent=p[0];
     document.getElementById('th-guide-copy').textContent=p[1];

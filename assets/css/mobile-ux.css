@@ -2,9 +2,13 @@
 @media (max-width:700px){
   :root{--safe-bottom:env(safe-area-inset-bottom,0px);--pad:12px;--control:52px}
   body{overflow:hidden}
-  #hud-sen{left:var(--pad);top:64px;font-size:11px;padding:6px 9px}
-  #bd-thang{right:var(--pad);top:58px;width:112px}
-  #ban-do{right:var(--pad);top:137px;width:82px;height:82px}
+  #hud-sen{left:var(--pad);top:calc(var(--hud-cao,46px) + 16px);font-size:11px;padding:6px 9px}
+  /* 112px la be ngang cua ban do tron, khong phai cua danh sach. Bay ten khu
+     phai chen vao khoang 40px con lai sau cai cham mau, bieu tuong va ngoi sao
+     yeu thich - "Hoc thuat & Nghien cuu" be xuong nam dong, con ngoi sao bi day
+     han ra ngoai mep man hinh. Danh sach can rong hon ban do. */
+  #bd-thang{right:var(--pad);top:calc(var(--hud-cao,46px) + 16px);width:min(196px,54vw)}
+  #ban-do{right:var(--pad);top:calc(var(--hud-cao,46px) + 91px);width:82px;height:82px}
   #ban-do canvas{width:72px;height:72px}
   #bieu-cam{left:50%;bottom:calc(var(--safe-bottom) + 12px);transform:translateX(-50%);gap:4px;padding:5px 7px;z-index:10020!important}
   #bieu-cam button{width:34px;height:34px;font-size:16px}
