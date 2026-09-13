@@ -1463,7 +1463,18 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
   if(b){b.addEventListener('click',doReload);}
   /* tự gợi ý làm mới khi có service worker mới */
   if('serviceWorker' in navigator){
-    navigator.serviceWorker.addEventListener('controllerchange',function(){location.reload();});
+    /* sw.js goi skipWaiting() roi clients.claim(), nen ngay lan ghe dau tien no
+       cung gianh quyen dieu khien trang dang mo - va 'controllerchange' ban ra.
+       Truoc day dong nay reload luon, thanh thu khach moi vua vao la trang tu
+       tai lai giua chung: dang doc thi mat cho, dang vao vuon 3D thi bi da ve
+       cong. Chi reload khi truoc do da co mot service worker khac - tuc that su
+       co ban moi thay ban cu - va chi mot lan. */
+    var swCu = !!navigator.serviceWorker.controller, daTaiLai = false;
+    navigator.serviceWorker.addEventListener('controllerchange',function(){
+      if(!swCu || daTaiLai) return;
+      daTaiLai = true;
+      location.reload();
+    });
     var sv='sw.js';
     navigator.serviceWorker.register(sv).then(function(reg){
       reg.addEventListener('updatefound',function(){

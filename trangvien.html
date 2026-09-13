@@ -106,6 +106,8 @@ button{font-family:inherit;cursor:pointer;border:0}
 .nut-nho:hover{transform:translateY(-2px)}
 .nut-nho:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(150,105,80,.3)}
 .nut-nho.bat{background:linear-gradient(150deg,#F6A8BF,var(--sen-sau));color:#fff;box-shadow:0 4px 0 #B85C7E}
+/* Nut vao luc con khoa: nhat di va con tro doi, de khong ai bam vao khoang khong. */
+#nut-vao[disabled]{opacity:.62;cursor:progress;filter:saturate(.55)}
 #tai-tien{width:100%;height:7px;border-radius:99px;background:rgba(255,255,255,.5);overflow:hidden;margin-top:1rem}
 /* Bảng chữ ở cổng chào từng nằm giữa khung hình và che mất người trong clip.
    Điện thoại: dồn bảng xuống đáy. Máy rộng: dồn sang trái. Phần khung còn lại
@@ -157,19 +159,24 @@ button{font-family:inherit;cursor:pointer;border:0}
 
 /* bản đồ nhỏ */
 #ban-do{
-  position:fixed;right:.7rem;top:3.6rem;z-index:9500;width:126px;height:126px;border-radius:50%;
+  position:fixed;right:.7rem;top:calc(var(--hud-cao,46px) + 16px);z-index:9500;width:126px;height:126px;border-radius:50%;
   background:rgba(255,251,244,.85);backdrop-filter:blur(8px);box-shadow:var(--bong);
   display:grid;place-items:center;cursor:pointer;transition:opacity .3s, transform .25s;
  z-index:9400; pointer-events:none; }
 #ban-do:hover{transform:scale(1.05)}
 /* bảng chọn điểm đến */
-#bd-thang{position:fixed;right:.7rem;top:3.6rem;z-index:41;width:126px z-index:9401; pointer-events:auto !important; }
+/* Bang nay rong 126px theo be ngang cua ban do tron, nen bay ten khu phai be
+   xuong ba dong ("Hoc thuat & Nghien cuu") va cai sao yeu thich bi day ra
+   ngoai mep phai. Nay rong theo man hinh, va danh sach tu cuon khi dai - de
+   khong bao gio cham toi the huong dan o duoi. */
+#bd-thang{position:fixed;right:.7rem;top:calc(var(--hud-cao,46px) + 16px);z-index:9401;width:min(212px,52vw);pointer-events:auto !important; }
 #bd-dau{display:flex;align-items:center;gap:.3rem;padding:.42rem .6rem;border-radius:999px;margin-top:.45rem;
   background:rgba(255,251,244,.92);backdrop-filter:blur(10px);box-shadow:var(--bong);border:none;cursor:pointer;
   font:700 .78rem "Baloo 2",system-ui;color:#4E6B5C;width:100%;}
 #bd-dau i{font-style:normal;font-size:.85rem}
 #bd-chon{display:none;margin-top:.4rem;border-radius:1.1rem;padding:.5rem;
-  background:rgba(255,251,244,.94);backdrop-filter:blur(12px);box-shadow:var(--bong);max-height:62vh;overflow:auto}
+  background:rgba(255,251,244,.94);backdrop-filter:blur(12px);box-shadow:var(--bong);
+  max-height:min(38vh,320px);overflow:auto;overscroll-behavior:contain}
 #bd-thang.mo #bd-chon{display:flex;flex-direction:column;gap:.32rem}
 .khu-chon{display:flex;align-items:center;gap:.4rem;padding:.4rem .5rem;border-radius:.8rem;border:none;cursor:pointer;
   font:600 .72rem "Baloo 2",system-ui;color:#4A3730;background:#FFF8EE;width:100%;text-align:left;}
@@ -186,7 +193,7 @@ button{font-family:inherit;cursor:pointer;border:0}
 #bd-huy{display:none;padding:.42rem;border-radius:.8rem;font:700 .72rem "Baloo 2",system-ui;color:#E77E9A;
   background:#FDECF0;border:none;cursor:pointer;width:100%;}
 #bd-trang-thai{font:.68rem "Baloo 2",system-ui;color:#8A7568;line-height:1.35;padding:.1rem .15rem .3rem;display:none}
-#ban-do canvas{width:110px;height:110px;border-radius:50% pointer-events:none; }
+#ban-do canvas{width:110px;height:110px;border-radius:50%;pointer-events:none; }
 
 /* thanh biểu cảm */
 #bieu-cam{
@@ -233,9 +240,9 @@ button{font-family:inherit;cursor:pointer;border:0}
   background:rgba(255,251,244,.92);box-shadow:var(--bong);
  z-index:9200; pointer-events:auto !important; }
 body.cham #can,body.cham #nut-cham,body.cham #nut-xe{ z-index: 10005 !important; display:grid; z-index:9200 !important; pointer-events:auto !important; }
-body.cham #bieu-cam{bottom:auto;top:3.6rem;left:.7rem;transform:none z-index:1002; pointer-events:none; }
-body.cham #ban-do{width:96px;height:96px;top:8.5rem z-index:9400; pointer-events:none; }
-body.cham #ban-do canvas{width:84px;height:84px pointer-events:none; }
+body.cham #bieu-cam{bottom:auto;top:3.6rem;left:.7rem;transform:none;z-index:1002; pointer-events:none; }
+body.cham #ban-do{width:96px;height:96px;top:calc(var(--hud-cao,46px) + 90px);z-index:9400; pointer-events:none; }
+body.cham #ban-do canvas{width:84px;height:84px;pointer-events:none; }
 
 /* ================= BẢNG NỘI DUNG ================= */
 #man{
@@ -251,7 +258,23 @@ body.cham #ban-do canvas{width:84px;height:84px pointer-events:none; }
   transform:translateY(102%);transition:transform .5s var(--uyen);
   padding:1.1rem clamp(1.1rem,4vw,2.2rem) 2.4rem;
  z-index:1020; }
-#man.mo #bang{transform:none z-index:1020; }
+#man.mo #bang{transform:none;z-index:1020; }
+/* Luc dang doc noi dung mot khu thi khong con lai nhan vat nua, ma can dieu
+   khien, nut xe, nut ✦, the huong dan va bang "Di dau?" deu co z-index cao hon
+   bang noi dung nen noi hep len tren mat chu. Dep het trong luc doc, mo bang
+   ra la co lai. */
+body.dang-doc-khu #can,
+body.dang-doc-khu #nut-xe,
+body.dang-doc-khu #nut-cham,
+body.dang-doc-khu #nut-msg,
+body.dang-doc-khu #bieu-cam,
+body.dang-doc-khu #hm-widget,
+body.dang-doc-khu #goi-y,
+body.dang-doc-khu #hud-sen,
+body.dang-doc-khu #bd-thang,
+body.dang-doc-khu #ban-do,
+body.dang-doc-khu .th-side-actions,
+body.dang-doc-khu #th-onboarding-guide{display:none !important}
 .keo{width:52px;height:5px;border-radius:99px;background:var(--vien);margin:0 auto 1rem}
 .bang-dau{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:1.1rem}
 .bang-icon{
@@ -293,19 +316,19 @@ body.cham #ban-do canvas{width:84px;height:84px pointer-events:none; }
 
 @media (min-width:820px){
   #man{place-items:center}
-  #bang{border-radius:30px;max-height:84svh;padding-bottom:1.8rem z-index:1020; }
-  #man.mo #bang{transform:none z-index:1020; }
-  #bang{transform:translateY(40px) scale(.96) z-index:1020; }
+  #bang{border-radius:30px;max-height:84svh;padding-bottom:1.8rem;z-index:1020; }
+  #man.mo #bang{transform:none;z-index:1020; }
+  #bang{transform:translateY(40px) scale(.96);z-index:1020; }
 }
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
 :focus-visible{outline:3px solid var(--nhan);outline-offset:3px}
 .an{display:none!important}
 
 /* mini-game hái sen */
-#hud-sen{position:fixed;left:14px;top:64px;z-index:8;background:rgba(255,253,248,.92);border-radius:999px;
+#hud-sen{position:fixed;left:14px;top:calc(var(--hud-cao,46px) + 16px);z-index:8;background:rgba(255,253,248,.92);border-radius:999px;
   padding:8px 16px;font:700 15px/1 system-ui,sans-serif;color:#a8394e;
-  box-shadow:0 4px 14px rgba(150,95,75,.25);pointer-events:none z-index:1001; }
-#toast-sen{position:fixed;inset:0;display:none;place-items:center;z-index:9500;background:rgba(40,25,35,.45) z-index:1030; pointer-events:none; }
+  box-shadow:0 4px 14px rgba(150,95,75,.25);pointer-events:none;z-index:1001; }
+#toast-sen{position:fixed;inset:0;display:none;place-items:center;z-index:9500;background:rgba(40,25,35,.45);z-index:1030; pointer-events:none; }
 #toast-sen.hien{display:grid}
 #toast-sen .hop{background:#fffdf8;border-radius:26px;padding:34px 40px;text-align:center;max-width:420px;
   box-shadow:0 24px 60px rgba(40,20,30,.4)}
@@ -347,10 +370,10 @@ body.cham #ban-do canvas{width:84px;height:84px pointer-events:none; }
 .hm-nut:hover{background:#F2A8C4}
 #nut-msg{position:fixed;right:16px;bottom:172px;width:52px;height:52px;border-radius:50%;border:none;
   background:#7FC8B0;color:#fff;font-size:1.35rem;box-shadow:0 6px 20px rgba(70,130,110,.35);cursor:pointer;z-index:95;
-  transition:bottom .3s ease z-index:9200; pointer-events:auto !important; }
+  transition:bottom .3s ease;z-index:9200; pointer-events:auto !important; }
 #nut-msg:hover{transform:scale(1.06)}
-#nut-msg.len{bottom:470px z-index:9200; pointer-events:auto !important; }
-body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important z-index:9200; pointer-events:auto !important; } /* dock phải: trên nut-xe, cách đều, tránh .len */
+#nut-msg.len{bottom:470px;z-index:9200; pointer-events:auto !important; }
+body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important;z-index:9200; pointer-events:auto !important; } /* dock phải: trên nut-xe, cách đều, tránh .len */
 /* --- HUD đọc sách --- */
 #hud-quote{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:#FFF8EE;
   border:3px solid #E8B84B;border-radius:22px;padding:.9rem 1.4rem;max-width:86vw;width:380px;
@@ -361,7 +384,7 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important z-index:920
   #hud-msg{width:320px;bottom:90px}
   #hud-msg-khu{max-height:190px}
   .hm-nut{font-size:.7rem;padding:.4rem .6rem}
-  #nut-msg.len{bottom:430px z-index:9200; pointer-events:auto !important; }
+  #nut-msg.len{bottom:430px;z-index:9200; pointer-events:auto !important; }
   #hud-quote{width:330px;bottom:84px;font-size:.85rem}
 }
 .an-mobile { display: flex; }
@@ -427,10 +450,10 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important z-index:920
   <link rel="stylesheet" href="assets/css/achievements.css">
 </head>
 <body><button type="button" id="nut-ref" title="Làm mới trang · Refresh page">⟳</button>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#san">Skip to content</a>
 
 
-<div id="san"></div>
+<div id="san" tabindex="-1"></div>
 
 <!-- ============ HUD ============ -->
 <div class="hud" id="hud-tren">
@@ -485,7 +508,7 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important z-index:920
       </div>
       <button id="dong" aria-label="Đóng">✕</button>
     </div>
-    <div id="main" id="noi-dung"></div>
+    <div id="noi-dung"></div>
   </div>
 </div>
 
@@ -499,9 +522,9 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important z-index:920
       Đi bộ hoặc đạp xe qua đồng sen, ghé từng khu: học thuật, dự án mở, thư viện sáng tạo, âm nhạc và bảng tin.
     </p>
     <div class="th-start-steps" aria-label="Các bước bắt đầu">
-      <div class="th-start-step"><b>1 · Vào vườn</b><span data-vi="Bấm bắt đầu để bước vào không gian 3D." data-en="Press start to enter the 3D garden.">Bấm bắt đầu để bước vào không gian 3D.</span></div>
-      <div class="th-start-step"><b>2 · Khám phá</b><span data-vi="Dùng cần điều khiển để đi quanh hồ sen." data-en="Use the joystick to walk around the lotus pond.">Dùng cần điều khiển để đi quanh hồ sen.</span></div>
-      <div class="th-start-step"><b>3 · Tương tác</b><span data-vi="Đến gần biển chỉ đường và bấm ✦." data-en="Walk to a signpost and press ✦.">Đến gần biển chỉ đường và bấm ✦.</span></div>
+      <div class="th-start-step"><b data-vi="1 · Vào vườn" data-en="1 · Enter">1 · Vào vườn</b><span data-vi="Bấm bắt đầu để bước vào không gian 3D." data-en="Press start to enter the 3D garden.">Bấm bắt đầu để bước vào không gian 3D.</span></div>
+      <div class="th-start-step"><b data-vi="2 · Chọn nơi đến" data-en="2 · Pick a place">2 · Chọn nơi đến</b><span data-vi="Bảng «Đi đâu?» mở sẵn - chọn một khu, Hương tự đi tới." data-en="The “Go where?” list opens for you - pick an area and Hương walks there.">Bảng «Đi đâu?» mở sẵn - chọn một khu, Hương tự đi tới.</span></div>
+      <div class="th-start-step"><b data-vi="3 · Mở nội dung" data-en="3 · Open it">3 · Mở nội dung</b><span data-vi="Đến nơi, bấm ✦ để đọc khu đó." data-en="On arrival, press ✦ to read that area.">Đến nơi, bấm ✦ để đọc khu đó.</span></div>
     </div>
     <div class="phim an-mobile">
       <div><b>W A S D</b><span data-vi="di chuyển" data-en="move">di chuyển</span></div>
@@ -543,6 +566,12 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important z-index:920
   function dat(l, ghi){
     document.documentElement.lang = l;
     cong.querySelectorAll('[data-vi]').forEach(function (el) {
+      // Nut vao con dang khoa thi giu nhan "dang dung khu vuon", dung lay
+      // nhan that - bam vao van chua di dau duoc.
+      if (el.id === 'nut-vao' && el.disabled) {
+        el.textContent = l === 'en' ? el.dataset.taiEn : el.dataset.taiVi;
+        return;
+      }
       var t = el.dataset[l];
       if (t !== undefined) el.innerHTML = t;
     });
@@ -556,6 +585,39 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important z-index:920
   var l = 'vi';
   try { l = localStorage.getItem('huong_lang') || (/^en/i.test(navigator.language) ? 'en' : 'vi'); } catch (e) {}
   dat(l === 'en' ? 'en' : 'vi', false);
+
+  /* Nut "Bat dau tham quan" ve ra ngay tu HTML, nhung nguoi bam no thi khong
+     co gi xay ra: ca khoi 3D - three.js 590 KB cong doan kich ban trong trang
+     - nap sau, ma tay bam lai gan trong do. Tren may cham, khach moi bam vai
+     lan roi tuong trang hong. Vay khoa nut lai, doi chu thanh "Dang dung khu
+     vuon", den khi the gioi san sang (ham moCong ben duoi) moi mo. */
+  var nutVao = document.getElementById('nut-vao');
+  if (nutVao) {
+    nutVao.disabled = true;
+    nutVao.dataset.vi = 'Bắt đầu tham quan';
+    nutVao.dataset.en = 'Start the tour';
+    nutVao.dataset.taiVi = 'Đang dựng khu vườn…';
+    nutVao.dataset.taiEn = 'Building the garden…';
+    nutVao.textContent = document.documentElement.lang === 'en'
+      ? nutVao.dataset.taiEn : nutVao.dataset.taiVi;
+    // Thanh tien do truoc day chi la trang tri: no nam yen o 8% suot luc tai
+    // that, roi day vut len 100% sau khi moi thu da xong. Nay no bo dan trong
+    // luc cho va chi day het khi canh 3D da chay.
+    var thanh = document.querySelector('#tai-tien i');
+    var muc = 8;
+    var nhip = setInterval(function () {
+      muc = Math.min(68, muc + 4);
+      if (thanh) thanh.style.width = muc + '%';
+      if (muc >= 68) clearInterval(nhip);
+    }, 260);
+    window.thePhepVaoVuon = function () {
+      clearInterval(nhip);
+      if (thanh) thanh.style.width = '100%';
+      nutVao.disabled = false;
+      nutVao.textContent = document.documentElement.lang === 'en'
+        ? nutVao.dataset.en : nutVao.dataset.vi;
+    };
+  }
 })();
 </script>
 
@@ -2154,6 +2216,7 @@ function moBangGoc(khu){
   ic.style.background = `linear-gradient(150deg, ${khu.mau}33, ${khu.mau}66)`;
   document.getElementById('noi-dung').innerHTML = khu.html[NG];
   man.classList.add('mo');
+  document.body.classList.add('dang-doc-khu');
   document.getElementById('bang').scrollTop = 0;
   datBieuCam(khu.id === 'am-nhac' ? 'hat' : 'vui');
   if (window.HUONG_MUSIC) HUONG_MUSIC.playNhacNen(khu.id);
@@ -2161,6 +2224,7 @@ function moBangGoc(khu){
 function dongBang(){
   dangMo = false;
   man.classList.remove('mo');
+  document.body.classList.remove('dang-doc-khu');
   document.getElementById('noi-dung').querySelectorAll('audio').forEach(a=>a.pause());
   if (window.HUONG_MUSIC) HUONG_MUSIC.dungNhacNen();
 }
@@ -2278,7 +2342,25 @@ document.getElementById('nut-vao').addEventListener('click', ()=>{
   hatGiiong('welcome');
   cong.classList.add('tan');
   setTimeout(()=>cong.remove(), 800);
+  moBanLanDau();
 });
+
+/* Khách lần đầu vào vườn thì rơi ngay xuống góc đông-nam, quanh mình chỉ có
+   sen và tre, không thấy khu nào để mà nhắm tới - nên hay đứng yên rồi thoát.
+   Bảy khu vốn đã nằm sẵn trong bảng "Đi đâu?", chỉ tội bảng ấy đóng và nút mở
+   nó là một viên thuốc nhỏ nấp dưới bản đồ tròn. Vậy lần đầu thì mở sẵn bảng:
+   khách thấy ngay bảy khu, chọn một cái là Hương tự đi tới. Chỉ mở một lần;
+   ai đã vào rồi thì vườn mở ra thoáng như cũ. */
+function moBanLanDau(){
+  var KHOA = 'th_ban_do_lan_dau_v1';
+  try{ if(localStorage.getItem(KHOA)) return; }catch(e){}
+  setTimeout(function(){
+    try{
+      if(!banDangMo) moBdChon();
+      localStorage.setItem(KHOA, '1');
+    }catch(e){}
+  }, 1200);
+}
 
 /* ---------- NHẠC CHO CLIP CỔNG CHÀO ----------
    Tệp assets/video/cong-hoang-hon.mp4 chỉ có hình, không có track âm thanh,
@@ -2344,14 +2426,6 @@ document.getElementById('nut-vao').addEventListener('click', ()=>{
     bat ? phat() : dung();
   });
 })();
-let tienDo = 8;
-const thanhTien = document.querySelector('#tai-tien i');
-const nhipTai = setInterval(()=>{
-  tienDo = Math.min(100, tienDo + 14);
-  if(thanhTien && thanhTien.isConnected) thanhTien.style.width = tienDo + '%';
-  else clearInterval(nhipTai);
-  if(tienDo >= 100) clearInterval(nhipTai);
-}, 160);
 
 /* ---------- 11. BẢN ĐỒ NHỎ ---------- */
 const bdCanvas = document.querySelector('#ban-do canvas');
@@ -3907,6 +3981,25 @@ vong = function(){
   vongGoc();
 };
 vong();
+// Canh 3D da chay: giờ nút cổng mới thật sự bấm được.
+try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
+
+/* Hang nut tren cung cao bao nhieu con tuy ngon ngu va be ngang may: o 390px
+   no gon mot hang (46px), o 360px thi nam nut xuong hai hang (74px) va dung
+   ngay vao vien "Di dau?" nam duoi. Do chieu cao that roi ghi vao --hud-cao de
+   bang chon diem den luon nam duoi no, khong phai doan truoc. */
+(function(){
+  var hud = document.getElementById('hud-tren');
+  if(!hud) return;
+  function doHud(){
+    var c = Math.round(hud.getBoundingClientRect().height);
+    if(c > 0) document.documentElement.style.setProperty('--hud-cao', c + 'px');
+  }
+  doHud();
+  addEventListener('resize', doHud);
+  try{ new ResizeObserver(doHud).observe(hud); }catch(e){}
+  new MutationObserver(doHud).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
+})();
 </script>
 <script src="assets/js/music.js" defer></script>
 <script src="assets/js/dongho.js" defer></script>
@@ -3930,7 +4023,18 @@ vong();
   if(b){b.addEventListener('click',doReload);}
   /* tự gợi ý làm mới khi có service worker mới */
   if('serviceWorker' in navigator){
-    navigator.serviceWorker.addEventListener('controllerchange',function(){location.reload();});
+    /* sw.js goi skipWaiting() roi clients.claim(), nen ngay lan ghe dau tien no
+       cung gianh quyen dieu khien trang dang mo - va 'controllerchange' ban ra.
+       Truoc day dong nay reload luon, thanh thu khach moi vua vao la trang tu
+       tai lai giua chung: dang doc thi mat cho, dang vao vuon 3D thi bi da ve
+       cong. Chi reload khi truoc do da co mot service worker khac - tuc that su
+       co ban moi thay ban cu - va chi mot lan. */
+    var swCu = !!navigator.serviceWorker.controller, daTaiLai = false;
+    navigator.serviceWorker.addEventListener('controllerchange',function(){
+      if(!swCu || daTaiLai) return;
+      daTaiLai = true;
+      location.reload();
+    });
     var sv='sw.js';
     navigator.serviceWorker.register(sv).then(function(reg){
       reg.addEventListener('updatefound',function(){
