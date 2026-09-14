@@ -303,6 +303,7 @@
         '<div>' +
         '<a class="sf-mark" href="index.html">' +
         '<span>Je m’appelle Hương<br>' + t('Giảng viên &amp; Nhà nghiên cứu', 'Lecturer &amp; Researcher', 'Enseignante &amp; Chercheuse') + '</span></a>' +
+        '<p class="sf-tag">' + t('Nghiên cứu, giảng dạy và sáng tạo cùng AI.', 'Research, teaching and creativity with AI.', 'Recherche, enseignement et création avec l\u2019IA.') + '</p>' +
         '<div class="sf-slogan">' +
         '<svg class="rose" viewBox="0 0 40 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
         '<circle cx="20" cy="14.6" r="7.4"/><circle cx="20" cy="14.6" r="4.2"/>' +
@@ -340,7 +341,11 @@
 
         '<div class="sf-col"><div class="sf-ch">' + t('Dự án', 'Projects', 'Projets') + '</div>' +
         '<div><a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA</a></div>' +
-        '<div><a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn</a></div></div>' +
+        '<div><a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn</a></div>' +
+        '<div><a href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener">EnQuiz</a></div>' +
+        '<div><a href="https://thuyhuongctu.github.io/ComDraft/" target="_blank" rel="noopener">ComDraft</a></div>' +
+        '<div><a href="https://thuyhuongctu.github.io/we-create-tomorrow/" target="_blank" rel="noopener">We Create Tomorrow</a></div>' +
+        '<div><a href="https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/" target="_blank" rel="noopener">' + t('Trò Chơi Sử Việt', 'History Games', 'Jeux d\u2019histoire') + '</a></div></div>' +
         '</div>' +
 
         '</div>' +
