@@ -651,22 +651,6 @@ footer.wrap{position:relative;overflow:hidden}
 
 </main>
 
-<footer class="wrap">
-  <div class="vnmark" aria-hidden="true"></div>
-  <ul class="fnav">
-    <li><a href="mailto:thuyhuongctu@gmail.com">thuyhuongctu@gmail.com</a></li>
-    <li><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID</a></li>
-    <li><a href="https://scholar.google.com/citations?user=jSvAVnsAAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
-    <li><a href="https://www.researchgate.net/profile/Do-Thuy-Huong" target="_blank" rel="noopener">ResearchGate</a></li>
-    <li><a href="https://osf.io/m25qs/" target="_blank" rel="noopener">OSF</a></li>
-    <li><a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener">GitHub</a></li>
-    <li><a href="garden.html">🪷 <span class="lang-vi">Vườn số</span><span class="lang-en">Digital garden</span><span class="lang-fr">Jardin numérique</span></a></li>
-  </ul>
-  <div class="fbot">
-    <span>© <span id="yr">2026</span> <span class="lang-vi">Đỗ Thùy Hương · Cần Thơ, Việt Nam</span><span class="lang-en">Do Thuy Huong · Can Tho, Vietnam</span><span class="lang-fr">Do Thuy Huong · Cần Thơ, Vietnam</span></span>
-    <span><span class="lang-vi">HTML/CSS/JS thuần · PWA chạy offline</span><span class="lang-en">Plain HTML/CSS/JS · offline-capable PWA</span><span class="lang-fr">HTML/CSS/JS · PWA hors ligne</span></span>
-  </div>
-</footer>
 
 <script>
 /* language: VI | EN in the bar, FR in the menu - shared key with the rest of the site */
@@ -728,7 +712,7 @@ footer.wrap{position:relative;overflow:hidden}
 
 /* a small fade-up, nothing more */
 (function(){
-  document.getElementById('yr').textContent=new Date().getFullYear();
+  var _yr=document.getElementById('yr'); if(_yr)_yr.textContent=new Date().getFullYear();
   if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){
     document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');}); return;
   }
@@ -886,4 +870,5 @@ footer.wrap{position:relative;overflow:hidden}
    xem bam - khong bao gio tu chay - va bat nhac thi dai phim dau trang tu tat tieng. */</script>
 <script src="assets/js/music.js" defer></script>
 <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="assets/js/site-chrome.js" defer></script>
 </body></html>

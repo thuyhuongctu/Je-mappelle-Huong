@@ -59,8 +59,24 @@ section{margin-top:36px}
 audio{width:100%;height:38px}
 /* Doan phim cua mot bai hat: hien tron khung, bam moi phat, co tieng nen
    khong tu chay. */
+/* Anh chu de cua trang Am nhac: canh ba cong con tren duong lang luc hoang hon.
+   Dat ngay duoi tieu de de nguoi xem nhan ra trang qua mot khung hinh, va dung
+   lai chinh no lam anh chim rat nhat phia sau noi dung. */
+.pagecover{margin:18px 0 26px}
+.pagecover img{display:block;width:100%;height:auto;border-radius:18px;
+  border:1px solid var(--line);box-shadow:var(--shadow)}
+.pagecover figcaption{margin:9px 4px 0;font-size:.82rem;line-height:1.55;color:var(--muted)}
+.pagewash{position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:url('assets/img/music-cover-ba-cong-con.webp') center 22%/cover no-repeat;
+  opacity:.055;filter:blur(3px) saturate(.72);
+  -webkit-mask:radial-gradient(120% 85% at 50% 42%,transparent 0 38%,#000 78%);
+          mask:radial-gradient(120% 85% at 50% 42%,transparent 0 38%,#000 78%)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .pagewash{opacity:.085}}
+:root[data-theme=dark] .pagewash{opacity:.085}
+@media print{.pagewash{display:none}}
 .songclip{margin:16px 22px 4px}
 .songclip video{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:#120f0e}
+    .songclip.doc video{width:auto;max-width:100%;max-height:560px;margin-inline:auto}
 .songclip figcaption{margin:7px 2px 0;font-size:.78rem;line-height:1.5;color:var(--muted)}
 /* MV tren YouTube: hien anh bia truoc, chi tai trinh phat khi nguoi xem bam -
    giu dung quy uoc "khong tu chay" cua trang, va khong dat cookie truoc do. */
@@ -91,6 +107,7 @@ audio{width:100%;height:38px}
 .picrow{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);margin:16px 22px 4px}
 /* Anh cuoi - con thuyen - trai het hang duoi, la hinh ket cua bai hat. */
 .picrow figure:last-child{grid-column:1/-1}
+.picrow.doi figure:last-child{grid-column:auto}
 .picrow figure{margin:0}
 .picrow img{display:block;width:auto;height:auto;max-width:100%;max-height:300px;margin-inline:auto;
   border-radius:12px;border:1px solid var(--line)}
@@ -125,7 +142,7 @@ footer a{color:var(--muted)}
 footer a:hover{color:var(--accent)}
 .skip-link{position:absolute;top:-52px;left:12px;background:#a8394e;color:#fff;font:700 .85rem sans-serif;padding:10px 16px;z-index:100;border-radius:0 0 10px 10px;text-decoration:none;transition:top .2s}.skip-link:focus{top:0;outline:3px solid #a8394e;outline-offset:2px}</style>
 
-<meta property="og:image" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/assets/img/huong_songbook_hero.jpg">
+<meta property="og:image" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/assets/img/music-og-ba-cong-con.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -442,6 +459,13 @@ footer a:hover{color:var(--accent)}
     <p class="sub"><span class="lang-vi">Các sáng tác riêng của Đỗ Thùy Hương: một album kèm lời, và vài bản nhạc ngoài album. Nhạc của các dự án nằm ở <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Bài hát</a> và <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a>.</span><span class="lang-en">Personal compositions by Do Thuy Huong: one album with lyrics, and a few pieces outside it. Project music lives at <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Songs</a> and <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a>.</span></p>
   </header>
 
+  <figure class="pagecover">
+    <img src="assets/img/music-cover-ba-cong-con.webp" width="1600" height="900"
+         fetchpriority="high" decoding="async"
+         alt="Hình đất sét: người cha cõng con gái trên vai đi trên con đường làng lúc hoàng hôn, phía xa là dòng sông và những mái nhà lá">
+    <figcaption><span class="lang-vi">Khung hình của cả trang này: «Có những buổi chiều ba cõng con trên vai.» - con đường làng bên sông lúc hoàng hôn, nơi bắt đầu gần như mọi bài hát trong album.</span><span class="lang-en">The frame this whole page grows from: “There were afternoons I carried you on my shoulders.” - the village road by the river at sunset, where nearly every song on the album begins.</span></figcaption>
+  </figure>
+
   <section class="reveal" id="main">
     <div class="shead"><h2><span class="lang-vi">Album «Je m'appelle Hương»</span><span class="lang-en">The album «Je m'appelle Hương»</span></h2><span class="ln"></span></div>
     <p class="song-desc" style="max-width:100%;margin:0 0 14px"><span class="lang-vi">Sáu bài chính cùng một bản bonus · 24 bản thu · sáng tác 07 - 13/08/2026.</span><span class="lang-en">Six main songs plus one bonus · 24 recordings · composed 7 - 13 Aug 2026.</span></p>
@@ -491,10 +515,11 @@ footer a:hover{color:var(--accent)}
           <p class="keyline">«Je voudrais te parler, à toi. / Tu n'as rien à prouver. / Je m'appelle Hương.»</p>
         </div>
       </div>
-      <figure class="songpic">
-        <img src="assets/img/ba-va-con-duong-lang.webp" width="900" height="1350" loading="lazy" decoding="async"
-             alt="Hình đất sét: cô bé mặc váy hoa đứng cạnh ba trên con đường làng, sau lưng là giàn cây và mấy đứa trẻ đang chơi">
-        <figcaption><span class="lang-vi">«Parler à mon père, moi aussi» - con đường làng trong bài hát.</span><span class="lang-en">“Parler à mon père, moi aussi” - the village road the song remembers.</span></figcaption>
+      <figure class="songclip doc">
+        <video controls preload="none" playsinline width="768" height="1168"
+               poster="assets/img/ba-va-con-duong-lang.webp"
+               src="assets/video/ba-va-con-duong-lang.mp4"></video>
+        <figcaption><span class="lang-vi">«Parler à mon père, moi aussi» - con đường làng trong bài hát, dựng thành hoạt cảnh đất sét.</span><span class="lang-en">“Parler à mon père, moi aussi” - the village road the song remembers, as a clay animation.</span></figcaption>
       </figure>
       <div class="tracks">
         <div class="track">
@@ -581,6 +606,11 @@ Et puis dormir.</p>
           <p class="keyline">«Je m'appelle Hương - la lampe brûle encore.»</p>
         </div>
       </div>
+      <figure class="songpic">
+        <img src="assets/img/me-giu-den.webp" width="1200" height="676" loading="lazy" decoding="async"
+             alt="Bến sông lúc hoàng hôn, một ngọn đèn dầu cháy trên sàn gỗ và đôi bàn tay nâng một tượng đất sét nhỏ">
+        <figcaption><span class="lang-vi">«La lampe brûle encore» - ngọn đèn mẹ giữ, vẫn cháy bên sông.</span><span class="lang-en">“La lampe brûle encore” - the lamp the mother kept, still burning by the river.</span></figcaption>
+      </figure>
       <div class="tracks">
         <div class="track">
           <div class="track-name">«Đèn vẫn còn sáng» <span class="len">· 5:13</span></div>
@@ -717,6 +747,12 @@ Và em được phép nghỉ một đêm. Et puis dormir.</p>
       <p class="prod"><b>Style:</b> Cinematic electro-pop / nocturnal trance-folk · 118 BPM · riverine forward motion, weary but resilient</p>
       <p class="keyline">«The lamp still burns. / Tu peux dormir.»</p>
 
+      <figure class="songpic">
+        <img src="assets/img/dem-nghi-ngoi.webp" width="768" height="1376" loading="lazy" decoding="async"
+             alt="Chân dung trong ánh đèn đêm dịu, gương mặt thư thái sau một ngày dài">
+        <figcaption><span class="lang-vi">«Tu peux dormir» - trạm nghỉ của bài hát: đặt gánh nặng xuống một đêm.</span><span class="lang-en">“Tu peux dormir” - the song’s resting station: setting the load down for one night.</span></figcaption>
+      </figure>
+
       <div class="tracks">
         <div class="track">
           <div class="track-name">The Lamp Still Burns <span class="len">· 2:04</span></div>
@@ -778,10 +814,23 @@ La nuit peut garder ce que tu ne peux plus porter.</p>
           <p class="keyline" style="color:var(--accent); font-size:1.1rem; border-left:3px solid var(--accent); padding-left:15px">«26 năm sau, em thấy mình trong những dòng code. / I found the light, I found the way.»</p>
         </div>
       </div>
-      <figure class="songpic">
-        <img src="assets/img/hoi-thi-be-kheo-tay.webp" width="900" height="1350" loading="lazy" decoding="async"
-             alt="Hình đất sét: cô bé mang số báo danh 84 trong hội thi Bé khéo tay tỉnh Cần Thơ, năm học 1999-2000">
-        <figcaption><span class="lang-vi">Hội thi «Bé khéo tay» tỉnh Cần Thơ, năm học 1999 - 2000 - nơi bắt đầu hai mươi sáu năm của bài hát này.</span><span class="lang-en">The “Bé khéo tay” craft contest, Cần Thơ, school year 1999 - 2000 - where the twenty-six years of this song begin.</span></figcaption>
+      <div class="picrow doi">
+        <figure>
+          <img src="assets/img/hoi-thi-be-kheo-tay.webp" width="900" height="1350" loading="lazy" decoding="async"
+               alt="Hình đất sét: cô bé mang số báo danh 84 trong hội thi Bé khéo tay tỉnh Cần Thơ, năm học 1999-2000">
+          <figcaption><span class="lang-vi">Em bé sáu tuổi - hội thi «Bé khéo tay» tỉnh Cần Thơ, năm học 1999 - 2000.</span><span class="lang-en">The six-year-old - the “Bé khéo tay” craft contest, Cần Thơ, school year 1999 - 2000.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/26-nam-sau-dong-code.webp" width="768" height="1376" loading="lazy" decoding="async"
+               alt="Người phụ nữ ngồi trước màn hình máy tính với biểu đồ dữ liệu, hai mươi sáu năm sau">
+          <figcaption><span class="lang-vi">Hai mươi sáu năm sau - vẫn đôi tay ấy, nay vẽ bằng những dòng code.</span><span class="lang-en">Twenty-six years later - the same hands, now drawing in lines of code.</span></figcaption>
+        </figure>
+      </div>
+      <figure class="songclip">
+        <video controls preload="none" playsinline width="1280" height="720"
+               poster="assets/img/26-nam-sau-ben-song-poster.webp"
+               src="assets/video/26-nam-sau-ben-song.mp4"></video>
+        <figcaption><span class="lang-vi">«26 năm sau» - người lớn cầm lại chính mình hồi sáu tuổi, bên sông lúc trời sập tối.</span><span class="lang-en">“26 năm sau” - the grown woman holding her six-year-old self again, by the river at nightfall.</span></figcaption>
       </figure>
       <div class="tracks" style="background:var(--sunk); border-radius:16px; margin-top:20px">
         <div class="track" style="padding: 15px;">
@@ -1099,6 +1148,12 @@ Go, my daughter.</pre>
       <p class="song-desc" style="max-width:100%"><span class="lang-vi">Bản giao hưởng hợp nhất vĩ đại. Đứa trẻ và người phụ nữ trưởng thành cùng bước đi.</span><span class="lang-en">The great unifying symphony. The child and the grown woman walk together.</span></p>
       <p class="prod"><b>Style:</b> French cinematic electro-pop / art-tech chanson · 112 - 116 BPM · dreamlike, spacious and luminous climax</p>
       <p class="keyline">«Je m'appelle Hương. / Elle est encore là, je le sais. / Papa, I found my way back. / Là où mon enfance respire encore.»</p>
+
+      <figure class="songpic">
+        <img src="assets/img/hoa-si-lon-len.webp" width="768" height="1376" loading="lazy" decoding="async"
+             alt="Người phụ nữ ngồi vẽ trên bảng vẽ điện tử, quanh bàn là bút chì màu và những trang phác thảo">
+        <figcaption><span class="lang-vi">«Elle est encore là» - đứa trẻ mê vẽ ngày ấy vẫn còn, chỉ đổi cây cọ.</span><span class="lang-en">“Elle est encore là” - the child who loved to draw is still here, only the brush has changed.</span></figcaption>
+      </figure>
 
       <div class="tracks">
         <div class="track">
@@ -1975,4 +2030,6 @@ document.addEventListener('play', function (e) {
   updateToggle();
 })();
 </script>
+<div class="pagewash" aria-hidden="true"></div>
+<script src="assets/js/site-chrome.js" defer></script>
 </body></html>
