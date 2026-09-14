@@ -302,7 +302,6 @@
 
         '<div>' +
         '<a class="sf-mark" href="index.html">' +
-        '<img src="assets/img/lr-seal-round.webp" width="62" height="62" loading="lazy" decoding="async" alt="" onerror="this.style.display=\'none\'">' +
         '<span>Je m’appelle Hương<br>' + t('Giảng viên &amp; Nhà nghiên cứu', 'Lecturer &amp; Researcher', 'Enseignante &amp; Chercheuse') + '</span></a>' +
         '<div class="sf-slogan">' +
         '<svg class="rose" viewBox="0 0 40 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
