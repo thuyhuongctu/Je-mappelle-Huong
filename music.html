@@ -59,6 +59,21 @@ section{margin-top:36px}
 audio{width:100%;height:38px}
 /* Doan phim cua mot bai hat: hien tron khung, bam moi phat, co tieng nen
    khong tu chay. */
+/* Anh chu de cua trang Am nhac: canh ba cong con tren duong lang luc hoang hon.
+   Dat ngay duoi tieu de de nguoi xem nhan ra trang qua mot khung hinh, va dung
+   lai chinh no lam anh chim rat nhat phia sau noi dung. */
+.pagecover{margin:18px 0 26px}
+.pagecover img{display:block;width:100%;height:auto;border-radius:18px;
+  border:1px solid var(--line);box-shadow:var(--shadow)}
+.pagecover figcaption{margin:9px 4px 0;font-size:.82rem;line-height:1.55;color:var(--muted)}
+.pagewash{position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:url('assets/img/music-cover-ba-cong-con.webp') center 22%/cover no-repeat;
+  opacity:.055;filter:blur(3px) saturate(.72);
+  -webkit-mask:radial-gradient(120% 85% at 50% 42%,transparent 0 38%,#000 78%);
+          mask:radial-gradient(120% 85% at 50% 42%,transparent 0 38%,#000 78%)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .pagewash{opacity:.085}}
+:root[data-theme=dark] .pagewash{opacity:.085}
+@media print{.pagewash{display:none}}
 .songclip{margin:16px 22px 4px}
 .songclip video{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:#120f0e}
     .songclip.doc video{width:auto;max-width:100%;max-height:560px;margin-inline:auto}
@@ -127,7 +142,7 @@ footer a{color:var(--muted)}
 footer a:hover{color:var(--accent)}
 .skip-link{position:absolute;top:-52px;left:12px;background:#a8394e;color:#fff;font:700 .85rem sans-serif;padding:10px 16px;z-index:100;border-radius:0 0 10px 10px;text-decoration:none;transition:top .2s}.skip-link:focus{top:0;outline:3px solid #a8394e;outline-offset:2px}</style>
 
-<meta property="og:image" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/assets/img/huong_songbook_hero.jpg">
+<meta property="og:image" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/assets/img/music-og-ba-cong-con.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -443,6 +458,13 @@ footer a:hover{color:var(--accent)}
     <h1><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></h1>
     <p class="sub"><span class="lang-vi">Các sáng tác riêng của Đỗ Thùy Hương: một album kèm lời, và vài bản nhạc ngoài album. Nhạc của các dự án nằm ở <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Bài hát</a> và <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a>.</span><span class="lang-en">Personal compositions by Do Thuy Huong: one album with lyrics, and a few pieces outside it. Project music lives at <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Songs</a> and <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a>.</span></p>
   </header>
+
+  <figure class="pagecover">
+    <img src="assets/img/music-cover-ba-cong-con.webp" width="1600" height="900"
+         fetchpriority="high" decoding="async"
+         alt="Hình đất sét: người cha cõng con gái trên vai đi trên con đường làng lúc hoàng hôn, phía xa là dòng sông và những mái nhà lá">
+    <figcaption><span class="lang-vi">Khung hình của cả trang này: «Có những buổi chiều ba cõng con trên vai.» - con đường làng bên sông lúc hoàng hôn, nơi bắt đầu gần như mọi bài hát trong album.</span><span class="lang-en">The frame this whole page grows from: “There were afternoons I carried you on my shoulders.” - the village road by the river at sunset, where nearly every song on the album begins.</span></figcaption>
+  </figure>
 
   <section class="reveal" id="main">
     <div class="shead"><h2><span class="lang-vi">Album «Je m'appelle Hương»</span><span class="lang-en">The album «Je m'appelle Hương»</span></h2><span class="ln"></span></div>
@@ -2008,4 +2030,6 @@ document.addEventListener('play', function (e) {
   updateToggle();
 })();
 </script>
+<div class="pagewash" aria-hidden="true"></div>
+<script src="assets/js/site-chrome.js" defer></script>
 </body></html>
