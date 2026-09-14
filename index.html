@@ -94,6 +94,33 @@ html:not([lang="fr"]) .lang-fr{display:none}
 
 /* ===== dai phim dau trang: clip la co, tu phat, khong tieng =============
    Chieu cao co gioi han de ten nguoi van nam trong man hinh dau tien. */
+/* ===== dai phim dau trang: clip la co, tu phat, khong tieng =============
+   Chieu cao co gioi han de ten nguoi van nam trong man hinh dau tien. */
+.herofilm{position:relative;aspect-ratio:16/9;margin:14px 0 0;border-radius:22px;overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--press),var(--lift);background:var(--sunk)}
+/* contain, khong cover: thu nho cho vua khung chu khong cat mat phan nao cua hinh */
+.herofilm img,.herofilm video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+/* man hinh thap: ha chieu cao va van giu tron hinh (co vien giay hai ben) */
+@media(max-height:700px) and (min-width:721px){.herofilm{aspect-ratio:auto;height:46vh}}
+.herofilm video{opacity:0;transition:opacity .9s ease}
+.herofilm.dangchay video{opacity:1}
+.herofilm::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(28,24,20,.14),transparent 42%,rgba(28,24,20,.2))}
+@media(max-width:560px){.herofilm{border-radius:18px}}
+/* Nut tieng cua dai phim. Trinh duyet chi cho tu chay khi khong co tieng, nen clip
+   mo ra van tat tieng va chi bat khi nguoi xem bam - cu chi cua ho la thu cho phep.
+   Vung cham 44px theo WCAG 2.2 SC 2.5.8; nut nam goc phai duoi nen khong che ten. */
+.filmsound{position:absolute;right:10px;bottom:10px;z-index:2;display:inline-flex;align-items:center;gap:7px;
+  min-height:44px;padding:0 14px;border:1px solid rgba(255,255,255,.5);border-radius:999px;cursor:pointer;
+  background:rgba(28,24,20,.62);color:#fff;font:600 .76rem var(--sans);backdrop-filter:blur(4px)}
+.filmsound:hover{background:rgba(28,24,20,.78)}
+/* [hidden] mac dinh la display:none, nhung inline-flex o tren de len no:
+   phai noi ro, khong thi nut van hien khi trinh duyet khong phat duoc clip. */
+.filmsound[hidden]{display:none}
+.filmsound .fsico{font-size:1rem;line-height:1}
+@media(max-width:560px){.filmsound{right:8px;bottom:8px;padding:0 12px;font-size:.72rem}
+  .filmsound .fslabel{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}}
+
 /* ===== hero: name, one sentence, three ways to reach the work =========== */
 .hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(20px,4vw,40px);align-items:center;
   padding-block:clamp(30px,6vw,54px) clamp(24px,4vw,38px)}
@@ -118,11 +145,14 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .btn.primary{background:var(--clay);border-color:var(--clay);color:#fff;box-shadow:inset 0 2px 0 rgba(255,255,255,.22),var(--lift)}
 .btn.primary:hover{background:#ad4e2f;color:#fff}
 :root[data-theme=dark] .btn.primary,:root:not([data-theme=light]) .btn.primary{color:#1c1814}
-.byline{margin:0 0 12px}
+/* chan dung nho dat canh ten - giu mat nguoi o dau trang */
+.byline{display:flex;align-items:center;gap:13px;margin:0 0 14px}
 .byline .eyebrow{margin:0}
-/* khoi dat set 3D: cai dia tren ban lam viec */
-/* Anh hero: mot anh tinh duy nhat, khong nguoi. Chieu cao co tran de first
-   fold con cho cho ten va ba nut - tren dien thoai anh khong duoc an het man hinh. */
+.avatar{width:62px;height:62px;flex:none;border-radius:50%;object-fit:cover;background:var(--sunk);
+  border:1px solid var(--line);box-shadow:var(--lift)}
+/* khoi dat set 3D: cai dia tren ban lam viec.
+   Chieu cao co tran de first fold con cho cho ten va ba nut - tren dien thoai
+   anh khong duoc an het man hinh. */
 .heroart{position:relative;width:100%;max-width:340px;max-height:360px;justify-self:end;border-radius:24px;overflow:hidden;
   border:1px solid var(--line);box-shadow:var(--press),var(--lift);
   background:radial-gradient(118% 96% at 28% 16%,var(--surface) 8%,var(--sunk))}
@@ -134,7 +164,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
   font:600 .64rem var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--muted);text-align:center;
   background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--sunk) 82%,transparent))}
 @media(max-width:720px){.heroart{justify-self:center;max-width:min(306px,42vh);max-height:42vh}}
-@media(max-width:560px){.heroart{max-width:min(250px,42vh)}}
+@media(max-width:560px){.heroart{max-width:min(250px,42vh)}.avatar{width:54px;height:54px}}
 
 /* ===== clip gioi thieu trong the du an =================================
    Bam moi phat, vi cac clip nay co tieng - khong tu chay khi mo trang.
@@ -405,10 +435,22 @@ footer.wrap{position:relative;overflow:hidden}
 
 <main class="wrap" id="main">
 
+  <figure class="herofilm">
+    <img src="assets/img/hero-co-poster.webp" width="854" height="480" fetchpriority="high"
+         alt="Do Thuy Huong in a white ao dai holding the Vietnamese flag on a riverbank lined with clay pots at sunset">
+    <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+    <button class="filmsound" id="filmsound" type="button" hidden aria-pressed="false">
+      <span class="fsico" aria-hidden="true">🔇</span>
+      <span class="fslabel"><span class="lang-vi">Bật tiếng</span><span class="lang-en">Sound on</span><span class="lang-fr">Activer le son</span></span>
+    </button>
+  </figure>
+
 
   <div class="hero">
     <div>
       <div class="byline">
+        <img class="avatar" src="assets/img/huong_clay_portrait.webp" width="760" height="760"
+             alt="Clay-modelled portrait of Do Thuy Huong in a white ao dai with a lotus in her hair" fetchpriority="high">
         <p class="eyebrow"><span class="lang-vi">Nghiên cứu sinh · Trường Kinh tế, Đại học Cần Thơ</span><span class="lang-en">PhD candidate · School of Economics, CTU</span><span class="lang-fr">Doctorante · École d'économie, Université de Cần Thơ</span></p>
       </div>
       <h1><span class="lang-vi">Đỗ Thùy Hương</span><span class="lang-en">Do Thuy Huong</span><span class="lang-fr">Do Thuy Huong</span></h1>
@@ -776,6 +818,87 @@ footer.wrap{position:relative;overflow:hidden}
       });
       v.play().catch(function(){ /* trinh duyet chan thi nguoi xem bam nut tren thanh dieu khien */ });
     });
+  });
+})();
+</script>
+<script>
+/* ---- dai phim dau trang ----
+   Anh tinh hien ngay; tep mp4 chi tai khi dai phim vao khung nhin, va bo han
+   khi nguoi dung tat hieu ung hoac may dang tiet kiem du lieu.
+   Clip co mot doan nhac cua chinh tac gia (hook «Mekong Sunfire»). Trinh duyet
+   chi cho tu chay khi khong co tieng, nen clip mo ra van tat tieng va chi bat
+   khi nguoi xem bam nut - cu chi cua ho la thu cho phep tieng. Bat tieng clip
+   thi dung nhac nen, va nguoc lai, de khong bao gio co hai nguon tieng. */
+(function(){
+  var box=document.querySelector('.herofilm');
+  if(!box) return;
+  var v=box.querySelector('video');
+  if(!v) return;
+  var nut=document.getElementById('filmsound');
+  var ico=nut&&nut.querySelector('.fsico');
+  function nhac(){ return window.HUONG_MUSIC; }
+  function veNut(){
+    if(!nut) return;
+    var tat=v.muted;
+    nut.setAttribute('aria-pressed', tat?'false':'true');
+    if(ico) ico.textContent = tat?'🔇':'🔊';
+    nut.querySelectorAll('.fslabel span').forEach(function(sp,i){
+      sp.textContent = tat ? ['Bật tiếng','Sound on','Activer le son'][i]
+                           : ['Tắt tiếng','Sound off','Couper le son'][i];
+    });
+  }
+  if(nut){
+    nut.addEventListener('click',function(){
+      v.muted = !v.muted;
+      if(!v.muted){
+        /* mot nguon tieng mot luc: tat nhac nen truoc khi clip len tieng */
+        try{ var M=nhac(); if(M&&M.dungNhacNen) M.dungNhacNen(); if(M&&M.stopAll) M.stopAll(); }catch(e){}
+        v.play().catch(function(){});
+      }
+      veNut();
+    });
+  }
+  /* Nhac nen bat len thi clip tro lai im lang. music.js phat nhac bang mot the
+     Audio roi ngoai DOM nen su kien 'play' cua no khong noi len document; no bao
+     bang su kien rieng 'huong-nhac'. Van nghe ca 'play' cho cac the trong trang. */
+  function imLang(){ if(!v.muted){ v.muted=true; veNut(); } }
+  document.addEventListener('huong-nhac',function(e){
+    if(e.detail && e.detail.trangthai==='play') imLang();
+  });
+  document.addEventListener('play',function(e){
+    var m=e.target;
+    if(m===v || !m || !(m.tagName==='AUDIO'||m.tagName==='VIDEO')) return;
+    imLang();
+  },true);
+
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  try{
+    var m=navigator.connection||{};
+    if(m.saveData) return;
+    if(/(^|-)(2g|slow-2g|3g)$/.test(m.effectiveType||'')) return;
+  }catch(e){}
+  var daNap=false;
+  /* Hien nut tieng ngay khi clip nap duoc du de phat - khong doi play() thanh cong,
+     vi neu trinh duyet chan ca video tat tieng thi nguoi xem van can mot cach bat. */
+  v.addEventListener('loadeddata',function(){ if(nut){ nut.hidden=false; veNut(); } });
+  function chay(){
+    if(!daNap){ daNap=true; v.src='assets/video/hero-co.mp4'; }
+    var p=v.play();
+    if(p && p.then) p.then(function(){
+      box.classList.add('dangchay');
+      if(nut){ nut.hidden=false; veNut(); }
+    }).catch(function(){});
+  }
+  function dung(){ try{ v.pause(); }catch(e2){} }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es[0].isIntersecting ? chay() : dung();
+    },{rootMargin:'80px'}).observe(box);
+  }else{
+    addEventListener('load',chay);
+  }
+  document.addEventListener('visibilitychange',function(){
+    document.hidden ? dung() : (daNap && chay());
   });
 })();
 </script>
