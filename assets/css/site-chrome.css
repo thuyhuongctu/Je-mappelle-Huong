@@ -22,7 +22,7 @@ body{background:transparent}
 
 #vnmark{
   position:fixed;top:50%;right:1.5%;transform:translateY(-50%);
-  width:min(30vw,400px);color:var(--accent,#c45c3a);opacity:.13;
+  width:min(26vw,340px);color:var(--accent,#c45c3a);opacity:.07;
   pointer-events:none;z-index:-1;
 }
 #vnmark svg{width:100%;height:auto;display:block}
@@ -38,7 +38,7 @@ body{background:transparent}
 @keyframes vnm-blink{0%,100%{opacity:.35}50%{opacity:1}}
 @keyframes vnm-halo{0%,100%{opacity:0}50%{opacity:.7}}
 @media(max-width:1150px){
-  #vnmark{right:50%;top:56%;transform:translate(50%,-50%);width:min(86vw,380px);opacity:.10}
+  #vnmark{right:50%;top:56%;transform:translate(50%,-50%);width:min(74vw,320px);opacity:.055}
 }
 @media print{#vnmark{display:none}}
 

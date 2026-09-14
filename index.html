@@ -94,28 +94,6 @@ html:not([lang="fr"]) .lang-fr{display:none}
 
 /* ===== dai phim dau trang: clip la co, tu phat, khong tieng =============
    Chieu cao co gioi han de ten nguoi van nam trong man hinh dau tien. */
-.herofilm{position:relative;aspect-ratio:16/9;margin:14px 0 0;border-radius:22px;overflow:hidden;
-  border:1px solid var(--line);box-shadow:var(--press),var(--lift);background:var(--sunk)}
-/* contain, khong cover: thu nho cho vua khung chu khong cat mat phan nao cua hinh */
-.herofilm img,.herofilm video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
-/* man hinh thap: ha chieu cao va van giu tron hinh (co vien giay hai ben) */
-@media(max-height:700px) and (min-width:721px){.herofilm{aspect-ratio:auto;height:46vh}}
-.herofilm video{opacity:0;transition:opacity .9s ease}
-.herofilm.dangchay video{opacity:1}
-.herofilm::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(28,24,20,.14),transparent 42%,rgba(28,24,20,.2))}
-@media(max-width:560px){.herofilm{border-radius:18px}}
-/* Nut tieng cua dai phim. Trinh duyet chi cho tu chay khi khong co tieng, nen clip
-   mo ra van tat tieng va chi bat khi nguoi xem bam - cu chi cua ho la thu cho phep.
-   Vung cham 44px theo WCAG 2.2 SC 2.5.8; nut nam goc phai duoi nen khong che ten. */
-.filmsound{position:absolute;right:10px;bottom:10px;z-index:2;display:inline-flex;align-items:center;gap:7px;
-  min-height:44px;padding:0 14px;border:1px solid rgba(255,255,255,.5);border-radius:999px;cursor:pointer;
-  background:rgba(28,24,20,.62);color:#fff;font:600 .76rem var(--sans);backdrop-filter:blur(4px)}
-.filmsound:hover{background:rgba(28,24,20,.78)}
-.filmsound .fsico{font-size:1rem;line-height:1}
-@media(max-width:560px){.filmsound{right:8px;bottom:8px;padding:0 12px;font-size:.72rem}
-  .filmsound .fslabel{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}}
-
 /* ===== hero: name, one sentence, three ways to reach the work =========== */
 .hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(20px,4vw,40px);align-items:center;
   padding-block:clamp(30px,6vw,54px) clamp(24px,4vw,38px)}
@@ -124,9 +102,14 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .hero h1{font-size:clamp(2rem,6vw,2.9rem);line-height:1.06;margin:0 0 12px}
 .affil{color:var(--muted);font-size:.94rem;margin:0 0 18px}
 .affil b{color:var(--ink);font-weight:600}
+/* Dong nguoi huong dan la thong tin phu - nho hon dong co quan o eyebrow. */
+.affil.sup{font-size:.86rem;margin:0 0 18px}
 .statement{font-family:var(--serif);font-size:clamp(1.04rem,2.4vw,1.2rem);line-height:1.55;max-width:44ch;margin:0 0 18px}
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 22px;padding:0;list-style:none}
-.chips li{font:600 .74rem var(--sans);color:var(--muted);background:var(--sunk);border-radius:8px;padding:4px 10px}
+/* Chip phang: cung nen kem, chu muc, bo tron han - it bong hon the du an
+   de khong canh tranh voi chung o cung mot man hinh. */
+.chips li{font:600 .74rem var(--sans);color:var(--ink);background:var(--sunk);
+  border:1px solid var(--line);border-radius:999px;padding:4px 12px;box-shadow:none}
 .acts{display:flex;flex-wrap:wrap;gap:9px}
 .btn{display:inline-flex;align-items:center;gap:7px;font:600 .85rem var(--sans);text-decoration:none;
   border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:11px;padding:9px 16px;
@@ -135,13 +118,12 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .btn.primary{background:var(--clay);border-color:var(--clay);color:#fff;box-shadow:inset 0 2px 0 rgba(255,255,255,.22),var(--lift)}
 .btn.primary:hover{background:#ad4e2f;color:#fff}
 :root[data-theme=dark] .btn.primary,:root:not([data-theme=light]) .btn.primary{color:#1c1814}
-/* chan dung nho dat canh ten - giu mat nguoi o dau trang */
-.byline{display:flex;align-items:center;gap:13px;margin:0 0 14px}
+.byline{margin:0 0 12px}
 .byline .eyebrow{margin:0}
-.avatar{width:62px;height:62px;flex:none;border-radius:50%;object-fit:cover;background:var(--sunk);
-  border:1px solid var(--line);box-shadow:var(--lift)}
 /* khoi dat set 3D: cai dia tren ban lam viec */
-.heroart{position:relative;width:100%;max-width:348px;justify-self:end;border-radius:24px;overflow:hidden;
+/* Anh hero: mot anh tinh duy nhat, khong nguoi. Chieu cao co tran de first
+   fold con cho cho ten va ba nut - tren dien thoai anh khong duoc an het man hinh. */
+.heroart{position:relative;width:100%;max-width:340px;max-height:360px;justify-self:end;border-radius:24px;overflow:hidden;
   border:1px solid var(--line);box-shadow:var(--press),var(--lift);
   background:radial-gradient(118% 96% at 28% 16%,var(--surface) 8%,var(--sunk))}
 #claysan{position:relative;width:100%;aspect-ratio:1/1}
@@ -151,8 +133,8 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .artcap{position:absolute;left:0;right:0;bottom:0;margin:0;padding:26px 14px 10px;
   font:600 .64rem var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--muted);text-align:center;
   background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--sunk) 82%,transparent))}
-@media(max-width:720px){.heroart{justify-self:center;max-width:306px}}
-@media(max-width:560px){.heroart{max-width:250px}.avatar{width:54px;height:54px}}
+@media(max-width:720px){.heroart{justify-self:center;max-width:min(306px,42vh);max-height:42vh}}
+@media(max-width:560px){.heroart{max-width:min(250px,42vh)}}
 
 /* ===== clip gioi thieu trong the du an =================================
    Bam moi phat, vi cac clip nay co tieng - khong tu chay khi mo trang.
@@ -174,6 +156,9 @@ html:not([lang="fr"]) .lang-fr{display:none}
 
 /* ===== sections ========================================================== */
 section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
+/* Dau trang dinh (.top) cao khoang 58px; khong tru san thi nhay neo se dua
+   tieu de muc chui xuong duoi no. */
+section[id],span[id]{scroll-margin-top:76px}
 .shead{margin:0 0 18px}
 .shead .k{font:700 .64rem var(--sans);letter-spacing:.17em;text-transform:uppercase;color:var(--clay)}
 .shead h2{font-size:1.5rem;margin:4px 0 0}
@@ -185,6 +170,33 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 .band img{display:block;width:100%;height:auto;
   border-radius:var(--r);border:1px solid var(--line);box-shadow:var(--press),var(--lift)}
 .band figcaption{margin:8px 2px 0;font-size:.8rem;line-height:1.5;color:var(--muted)}
+/* So do mo hinh luan an. Dung HTML chu khong phai anh: chu la chu that nen
+   phong to thu nho deu doc duoc, va o man hinh hep ba khoi tu xep doc thay vi
+   co lai den muc khong con doc noi. */
+.band.model{background:var(--surface);border:1px solid var(--line);border-radius:22px;
+  padding:22px 16px 14px;box-shadow:0 8px 24px rgba(28,24,20,.08),var(--press)}
+.mdl .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);margin:0}
+.mrow{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:nowrap}
+.mbox{flex:0 1 auto;min-width:0;text-align:center;background:var(--sunk);
+  border:1.5px solid var(--line);border-radius:14px;padding:11px 16px;
+  font:600 .95rem/1.3 var(--sans);color:var(--ink)}
+.mbox.dash{background:none;border-style:dashed;color:var(--muted)}
+/* Mui ten: mot vach ngang cong mot dau tam giac, ve bang CSS nen theo mau dat. */
+.marw{flex:0 0 46px;position:relative;height:2px;background:var(--clay)}
+.marw::after{content:"";position:absolute;right:-1px;top:-5px;
+  border:6px solid transparent;border-left-color:var(--clay);border-right:0}
+.mmod{display:flex;flex-direction:column;align-items:center;margin-top:2px}
+/* Nhanh dieu tiet: vach dut net di len, tro vao nhanh quoc te hoa - hieu qua. */
+.mup{width:2px;height:34px;background:repeating-linear-gradient(var(--clay) 0 6px,transparent 6px 11px);position:relative}
+.mup::before{content:"";position:absolute;top:-1px;left:-5px;
+  border:6px solid transparent;border-bottom-color:var(--clay);border-top:0}
+@media(max-width:620px){
+  .mrow{flex-direction:column;gap:8px}
+  .mbox{width:100%;max-width:19rem}
+  .marw{flex:0 0 2px;width:2px;height:26px}
+  .marw::after{right:-5px;top:auto;bottom:-1px;border:6px solid transparent;
+    border-top-color:var(--clay);border-bottom:0;border-left-color:transparent}
+}
 .qa{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:18px 0 0}
 .qa div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:15px 17px;box-shadow:var(--press),var(--lift)}
 .qa h3{font:700 .62rem var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
@@ -203,6 +215,14 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
 .pitem .v a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line);
   display:inline-block;padding:5px 3px;margin:-5px -3px}
 .pitem .v a:hover{color:var(--clay)}
+.pitem .au{font-size:.83rem;color:var(--muted);margin-top:4px}
+.pitem .au b{font-weight:700;color:var(--ink)}
+.ptag{display:inline-block;vertical-align:2px;margin-left:7px;white-space:nowrap;
+  font:700 .6rem/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);background:var(--sunk);border:1px solid var(--line);
+  border-radius:999px;padding:4px 9px}
+.ptag.core{color:var(--clay);border-color:var(--clay);background:none;letter-spacing:.04em}
+.puball{margin:4px 0 0}
 .morelink{font:600 .86rem var(--sans);text-decoration:none;display:inline-block;padding:7px 3px;margin:-7px -3px}
 
 /* teaching */
@@ -385,28 +405,17 @@ footer.wrap{position:relative;overflow:hidden}
 
 <main class="wrap" id="main">
 
-  <figure class="herofilm">
-    <img src="assets/img/hero-co-poster.webp" width="854" height="480" fetchpriority="high"
-         alt="Do Thuy Huong in a white ao dai holding the Vietnamese flag on a riverbank lined with clay pots at sunset">
-    <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-    <button class="filmsound" id="filmsound" type="button" hidden aria-pressed="false">
-      <span class="fsico" aria-hidden="true">🔇</span>
-      <span class="fslabel"><span class="lang-vi">Bật tiếng</span><span class="lang-en">Sound on</span><span class="lang-fr">Activer le son</span></span>
-    </button>
-  </figure>
 
   <div class="hero">
     <div>
       <div class="byline">
-        <img class="avatar" src="assets/img/huong_clay_portrait.webp" width="760" height="760"
-             alt="Clay-modelled portrait of Do Thuy Huong in a white ao dai with a lotus in her hair" fetchpriority="high">
-        <p class="eyebrow"><span class="lang-vi">Nghiên cứu sinh tiến sĩ · Đại học Cần Thơ</span><span class="lang-en">PhD Candidate · Can Tho University</span><span class="lang-fr">Doctorante · Université de Can Tho</span></p>
+        <p class="eyebrow"><span class="lang-vi">Nghiên cứu sinh · Trường Kinh tế, Đại học Cần Thơ</span><span class="lang-en">PhD candidate · School of Economics, CTU</span><span class="lang-fr">Doctorante · École d'économie, Université de Cần Thơ</span></p>
       </div>
       <h1><span class="lang-vi">Đỗ Thùy Hương</span><span class="lang-en">Do Thuy Huong</span><span class="lang-fr">Do Thuy Huong</span></h1>
-      <p class="affil">
-        <span class="lang-vi"><b>Trường Kinh tế, Đại học Cần Thơ</b><br>Hướng dẫn khoa học: PGS.TS. Phan Anh Tú</span>
-        <span class="lang-en"><b>School of Economics, Can Tho University</b><br>Supervisor: Assoc. Prof. Dr. Phan Anh Tu</span>
-        <span class="lang-fr"><b>École d'économie, Université de Cần Thơ</b><br>Direction : Pr. Phan Anh Tú</span>
+      <p class="affil sup">
+        <span class="lang-vi">Hướng dẫn khoa học: PGS.TS. Phan Anh Tú</span>
+        <span class="lang-en">Supervisor: Assoc. Prof. Dr. Phan Anh Tu</span>
+        <span class="lang-fr">Direction : Pr. Phan Anh Tú</span>
       </p>
       <p class="statement">
         <span class="lang-vi">Tôi nghiên cứu quan hệ giữa quốc tế hóa và hiệu quả hoạt động của doanh nghiệp ở châu Á, bằng dữ liệu doanh nghiệp WBES trên 50 nền kinh tế và phân tích tổng hợp.</span>
@@ -445,31 +454,6 @@ footer.wrap{position:relative;overflow:hidden}
       <span class="lang-fr">Ma thèse pose une question : l'internationalisation améliore-t-elle la performance des entreprises en Asie, et sous quelles conditions institutionnelles ? J'y réponds par deux corpus de preuves : les données d'entreprises de la Banque mondiale (WBES) et une synthèse quantitative de la littérature.</span>
     </p>
 
-    <figure class="band">
-      <img src="assets/img/research-port.webp" width="1400" height="788" loading="lazy" decoding="async"
-           alt="A container ship at a Vietnamese port at sunrise, with crates stencilled Vietnamese origin on the quay">
-      <figcaption>
-        <span class="lang-vi">Quốc tế hóa nhìn từ cảng: xuất khẩu là bước đi ra ngoài đầu tiên của phần lớn doanh nghiệp trong dữ liệu WBES.</span>
-        <span class="lang-en">Internationalization seen from the quay: exporting is the first step abroad for most firms in the WBES data.</span>
-        <span class="lang-fr">L'internationalisation vue du quai : l'exportation est le premier pas à l'étranger pour la plupart des entreprises des données WBES.</span>
-      </figcaption>
-    </figure>
-
-    <div class="qa">
-      <div>
-        <h3><span class="lang-vi">Dữ liệu</span><span class="lang-en">Data</span><span class="lang-fr">Données</span></h3>
-        <p><span class="lang-vi">WBES cấp doanh nghiệp, 50 nền kinh tế; 236 nghiên cứu được mã hóa cho phân tích tổng hợp.</span><span class="lang-en">Firm-level WBES across 50 economies; 236 studies coded for the meta-analysis.</span><span class="lang-fr">WBES au niveau des entreprises, 50 économies ; 236 études codées pour la méta-analyse.</span></p>
-      </div>
-      <div>
-        <h3><span class="lang-vi">Phương pháp</span><span class="lang-en">Methods</span><span class="lang-fr">Méthodes</span></h3>
-        <p><span class="lang-vi">Kinh tế lượng doanh nghiệp, kiểm định điều tiết, phân tích tổng hợp hiệu ứng ngẫu nhiên.</span><span class="lang-en">Firm-level econometrics, moderation tests, random-effects meta-analysis.</span><span class="lang-fr">Économétrie d'entreprise, tests de modération, méta-analyse à effets aléatoires.</span></p>
-      </div>
-      <div>
-        <h3><span class="lang-vi">Công cụ</span><span class="lang-en">Tooling</span><span class="lang-fr">Outils</span></h3>
-        <p><span class="lang-vi">M-AIDA: trích xuất mức độ ảnh hưởng bằng LLM, kiểm chứng con người 100%, khóa bất biến.</span><span class="lang-en">M-AIDA: LLM-assisted effect-size extraction with 100% human verification and immutable locking.</span><span class="lang-fr">M-AIDA : extraction des tailles d'effet assistée par LLM, vérifiée à 100 % par l'humain.</span></p>
-      </div>
-    </div>
-
     <div class="pgroup prereg">
       <h3><span class="lang-vi">Tiền đăng ký trên OSF</span><span class="lang-en">Preregistrations on OSF</span><span class="lang-fr">Préenregistrements sur OSF</span></h3>
       <div class="pitem">
@@ -492,6 +476,40 @@ footer.wrap{position:relative;overflow:hidden}
       </div>
       <p class="morewrap"><a class="morelink" href="https://osf.io/m25qs/" target="_blank" rel="noopener"><span class="lang-vi">Tất cả dự án và dữ liệu trên OSF →</span><span class="lang-en">All projects and data on OSF →</span><span class="lang-fr">Tous les projets et données sur OSF →</span></a></p>
     </div>
+
+    <figure class="band model">
+      <div class="mdl">
+        <p class="sr"><span class="lang-vi">Sơ đồ: quốc tế hóa tác động lên hiệu quả hoạt động của doanh nghiệp, quan hệ này được bối cảnh thể chế điều tiết.</span><span class="lang-en">Diagram: internationalization acts on firm performance, and institutional context moderates that relationship.</span><span class="lang-fr">Schéma : l’internationalisation agit sur la performance de l’entreprise, relation modérée par le contexte institutionnel.</span></p>
+        <div class="mrow">
+          <div class="mbox"><span class="lang-vi">Doanh nghiệp</span><span class="lang-en">Firm</span><span class="lang-fr">Entreprise</span></div><span class="marw" aria-hidden="true"></span><div class="mbox"><span class="lang-vi">Quốc tế hóa</span><span class="lang-en">Internationalization</span><span class="lang-fr">Internationalisation</span></div><span class="marw" aria-hidden="true"></span><div class="mbox"><span class="lang-vi">Hiệu quả hoạt động</span><span class="lang-en">Firm performance</span><span class="lang-fr">Performance</span></div>
+        </div>
+        <div class="mmod">
+          <span class="mup" aria-hidden="true"></span>
+          <div class="mbox dash"><span class="lang-vi">Bối cảnh thể chế</span><span class="lang-en">Institutional context</span><span class="lang-fr">Contexte institutionnel</span></div>
+        </div>
+      </div>
+      <figcaption>
+        <span class="lang-vi">Quan hệ được kiểm định trên dữ liệu WBES cấp doanh nghiệp ở 50 nền kinh tế, với bộ chỉ số quản trị toàn cầu (WGI) làm biến điều tiết.</span>
+        <span class="lang-en">The relationship is tested on firm-level WBES data across 50 economies, with the Worldwide Governance Indicators entering as moderators.</span>
+        <span class="lang-fr">La relation est testée sur les données d’entreprises WBES de 50 économies, les Worldwide Governance Indicators servant de modérateurs.</span>
+      </figcaption>
+    </figure>
+
+    <div class="qa">
+      <div>
+        <h3><span class="lang-vi">Dữ liệu</span><span class="lang-en">Data</span><span class="lang-fr">Données</span></h3>
+        <p><span class="lang-vi">WBES cấp doanh nghiệp, 50 nền kinh tế; 236 nghiên cứu được mã hóa cho phân tích tổng hợp.</span><span class="lang-en">Firm-level WBES across 50 economies; 236 studies coded for the meta-analysis.</span><span class="lang-fr">WBES au niveau des entreprises, 50 économies ; 236 études codées pour la méta-analyse.</span></p>
+      </div>
+      <div>
+        <h3><span class="lang-vi">Phương pháp</span><span class="lang-en">Methods</span><span class="lang-fr">Méthodes</span></h3>
+        <p><span class="lang-vi">Kinh tế lượng doanh nghiệp, kiểm định điều tiết, phân tích tổng hợp hiệu ứng ngẫu nhiên.</span><span class="lang-en">Firm-level econometrics, moderation tests, random-effects meta-analysis.</span><span class="lang-fr">Économétrie d'entreprise, tests de modération, méta-analyse à effets aléatoires.</span></p>
+      </div>
+      <div>
+        <h3><span class="lang-vi">Công cụ</span><span class="lang-en">Tooling</span><span class="lang-fr">Outils</span></h3>
+        <p><span class="lang-vi">M-AIDA: trích xuất mức độ ảnh hưởng bằng LLM, kiểm chứng con người 100%, khóa bất biến.</span><span class="lang-en">M-AIDA: LLM-assisted effect-size extraction with 100% human verification and immutable locking.</span><span class="lang-fr">M-AIDA : extraction des tailles d'effet assistée par LLM, vérifiée à 100 % par l'humain.</span></p>
+      </div>
+    </div>
+
   </section>
 
   <section id="publications" class="rv">
@@ -501,48 +519,59 @@ footer.wrap{position:relative;overflow:hidden}
       <p><span class="lang-vi">Danh mục đầy đủ, lọc theo loại và năm, nằm ở trang công bố; bản chính thức trên ORCID.</span><span class="lang-en">The complete list, filterable by type and year, lives on the publications page; the authoritative record is on ORCID.</span><span class="lang-fr">La liste complète se trouve sur la page publications ; l'enregistrement de référence est sur ORCID.</span></p>
     </div>
 
+<!-- CAN BO SUNG: danh sach tac gia cho 3 muc duoi chua co trong repo, them <div class="au"> khi co -->
     <div class="pgroup">
       <h3><span class="lang-vi">Bài tạp chí</span><span class="lang-en">Journal articles</span><span class="lang-fr">Articles de revue</span></h3>
       <div class="pitem">
-        <div class="t">Nurturing the soul at work: spiritual values and psychological well-being in Vietnamese companies</div>
-        <div class="v">Human Resource Development International · 2025 · <a href="https://doi.org/10.1080/13678868.2025.2549549" target="_blank" rel="noopener">10.1080/13678868.2025.2549549</a></div>
+        <div class="t">Nurturing the soul at work: spiritual values and psychological well-being in Vietnamese companies
+          <span class="ptag"><span class="lang-vi">phúc lợi tâm lý</span><span class="lang-en">well-being</span><span class="lang-fr">bien-être</span></span></div>
+        <div class="au">Phong, Point &amp; <b>Do T.H.</b> &middot; <span class="lang-vi">đồng tác giả</span><span class="lang-en">co-author</span><span class="lang-fr">co-auteure</span></div>
+        <div class="v">Human Resource Development International &middot; 2025 &middot; <a href="https://doi.org/10.1080/13678868.2025.2549549" target="_blank" rel="noopener">10.1080/13678868.2025.2549549</a></div>
       </div>
       <div class="pitem">
-        <div class="t">The moderating effects of managers' experience and gender on internationalization and firm performance of manufacturing enterprises in Turkey</div>
-        <div class="v">Accounting · 2020 · <a href="https://doi.org/10.5267/j.ac.2020.9.006" target="_blank" rel="noopener">10.5267/j.ac.2020.9.006</a></div>
+        <div class="t">The moderating effects of managers' experience and gender on internationalization and firm performance of manufacturing enterprises in Turkey
+          <span class="ptag core">I&ndash;P</span></div>
+        <div class="au">Tu, <b>Do T.H.</b> &amp; Triet &middot; <span class="lang-vi">đồng tác giả</span><span class="lang-en">co-author</span><span class="lang-fr">co-auteure</span></div>
+        <div class="v">Accounting &middot; 2020 &middot; <a href="https://doi.org/10.5267/j.ac.2020.9.006" target="_blank" rel="noopener">10.5267/j.ac.2020.9.006</a></div>
       </div>
       <div class="pitem">
-        <div class="t">The impact of the COVID-19 pandemic on the business performance of construction industry enterprises in Can Tho City</div>
-        <div class="v">Journal of Law and Sustainable Development · 2023 · <a href="https://doi.org/10.55908/sdgs.v11i12.1751" target="_blank" rel="noopener">10.55908/sdgs.v11i12.1751</a></div>
-      </div>
-    </div>
-
-    <div class="pgroup">
-      <h3><span class="lang-vi">Chương sách &amp; hội nghị</span><span class="lang-en">Book chapters &amp; conference papers</span><span class="lang-fr">Chapitres &amp; conférences</span></h3>
-      <div class="pitem">
-        <div class="t">Internationalization and Turkish manufacturing firm performance - does managerial personality matter?</div>
-        <div class="v"><span class="lang-vi">Chương sách</span><span class="lang-en">Book chapter</span><span class="lang-fr">Chapitre</span>, Accounting and Finance Innovations · 2021 · <a href="https://doi.org/10.5772/intechopen.97432" target="_blank" rel="noopener">10.5772/intechopen.97432</a></div>
-      </div>
-      <div class="pitem">
-        <div class="t">AI in higher education: does AI fear hinder learning outcomes?</div>
-        <div class="v">2024 Artificial Intelligence Revolutions (AIR) · <a href="https://doi.org/10.1109/air63653.2024.00013" target="_blank" rel="noopener">10.1109/air63653.2024.00013</a></div>
+        <div class="t">The impact of the COVID-19 pandemic on the business performance of construction industry enterprises in Can Tho City
+          <span class="ptag"><span class="lang-vi">nghiên cứu vùng</span><span class="lang-en">regional</span><span class="lang-fr">régional</span></span></div>
+        <div class="v">Journal of Law and Sustainable Development &middot; 2023 &middot; <a href="https://doi.org/10.55908/sdgs.v11i12.1751" target="_blank" rel="noopener">10.55908/sdgs.v11i12.1751</a></div>
       </div>
     </div>
 
     <div class="pgroup">
       <h3><span class="lang-vi">Bản thảo &amp; đang phản biện</span><span class="lang-en">Working papers &amp; under review</span><span class="lang-fr">Documents de travail</span></h3>
       <div class="pitem">
-        <div class="t">Institutional completeness and the internationalization - performance relationship: capability ceiling and dual substitution evidence from Singapore</div>
-        <div class="v">SSRN · 2026 · <a href="https://doi.org/10.2139/ssrn.6620124" target="_blank" rel="noopener">10.2139/ssrn.6620124</a></div>
+        <div class="t">Institutional completeness and the internationalization - performance relationship: capability ceiling and dual substitution evidence from Singapore
+          <span class="ptag core">I&ndash;P</span></div>
+        <div class="au"><b>Do T.H.</b> &middot; <span class="lang-vi">tác giả đứng đầu</span><span class="lang-en">first author</span><span class="lang-fr">première auteure</span></div>
+        <div class="v">SSRN &middot; 2026 &middot; <a href="https://doi.org/10.2139/ssrn.6620124" target="_blank" rel="noopener">10.2139/ssrn.6620124</a></div>
       </div>
       <div class="pitem">
-        <div class="t">Internationalization and firm performance: a meta-analysis review</div>
-        <div class="v"><span class="lang-vi">Trình bày tại Hội nghị quốc tế lần thứ sáu về Phát triển bền vững trong Kinh tế, Kinh doanh và Tài chính, 2024 · tư liệu trên</span><span class="lang-en">Presented at the Sixth International Conference on Sustainable Development in Economics, Business and Finance, 2024 · materials on</span><span class="lang-fr">Présenté à la sixième conférence internationale sur le développement durable, 2024 · matériaux sur</span> <a href="https://osf.io/m25qs/" target="_blank" rel="noopener">OSF</a></div>
+        <div class="t">Internationalization and firm performance: a meta-analysis review
+          <span class="ptag core">I&ndash;P</span></div>
+        <div class="au"><b>Do T.H.</b> &middot; <span class="lang-vi">tác giả đứng đầu</span><span class="lang-en">first author</span><span class="lang-fr">première auteure</span></div>
+        <div class="v"><span class="lang-vi">Hội nghị quốc tế lần thứ sáu về Phát triển bền vững trong Kinh tế, Kinh doanh và Tài chính &middot; 2024 &middot; tư liệu trên</span><span class="lang-en">Sixth International Conference on Sustainable Development in Economics, Business and Finance &middot; 2024 &middot; materials on</span><span class="lang-fr">Sixième conférence internationale sur le développement durable &middot; 2024 &middot; matériaux sur</span> <a href="https://osf.io/m25qs/" target="_blank" rel="noopener">OSF</a></div>
       </div>
     </div>
 
-    <p><a class="morelink" href="publications.html"><span class="lang-vi">Danh mục đầy đủ →</span><span class="lang-en">Full publication list →</span><span class="lang-fr">Liste complète →</span></a>
-    &nbsp; <a class="morelink" href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID ↗</a></p>
+    <div class="pgroup">
+      <h3><span class="lang-vi">Chương sách &amp; hội nghị</span><span class="lang-en">Book chapters &amp; conference papers</span><span class="lang-fr">Chapitres &amp; conférences</span></h3>
+      <div class="pitem">
+        <div class="t">Internationalization and Turkish manufacturing firm performance - does managerial personality matter?
+          <span class="ptag"><span class="lang-vi">chương sách</span><span class="lang-en">book chapter</span><span class="lang-fr">chapitre</span></span></div>
+        <div class="v">Accounting and Finance Innovations &middot; 2021 &middot; <a href="https://doi.org/10.5772/intechopen.97432" target="_blank" rel="noopener">10.5772/intechopen.97432</a></div>
+      </div>
+      <div class="pitem">
+        <div class="t">AI in higher education: does AI fear hinder learning outcomes?
+          <span class="ptag"><span class="lang-vi">hội nghị</span><span class="lang-en">conference</span><span class="lang-fr">conférence</span></span></div>
+        <div class="v">2024 Artificial Intelligence Revolutions (AIR) &middot; <a href="https://doi.org/10.1109/air63653.2024.00013" target="_blank" rel="noopener">10.1109/air63653.2024.00013</a></div>
+      </div>
+    </div>
+
+    <p class="puball"><a class="morelink" href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener"><span class="lang-vi">Toàn bộ trên ORCID →</span><span class="lang-en">All on ORCID →</span><span class="lang-fr">Tout sur ORCID →</span></a></p>
   </section>
 
   <section id="teaching" class="rv">
@@ -751,87 +780,6 @@ footer.wrap{position:relative;overflow:hidden}
 })();
 </script>
 <script>
-/* ---- dai phim dau trang ----
-   Anh tinh hien ngay; tep mp4 chi tai khi dai phim vao khung nhin, va bo han
-   khi nguoi dung tat hieu ung hoac may dang tiet kiem du lieu.
-   Clip co mot doan nhac cua chinh tac gia (hook «Mekong Sunfire»). Trinh duyet
-   chi cho tu chay khi khong co tieng, nen clip mo ra van tat tieng va chi bat
-   khi nguoi xem bam nut - cu chi cua ho la thu cho phep tieng. Bat tieng clip
-   thi dung nhac nen, va nguoc lai, de khong bao gio co hai nguon tieng. */
-(function(){
-  var box=document.querySelector('.herofilm');
-  if(!box) return;
-  var v=box.querySelector('video');
-  if(!v) return;
-  var nut=document.getElementById('filmsound');
-  var ico=nut&&nut.querySelector('.fsico');
-  function nhac(){ return window.HUONG_MUSIC; }
-  function veNut(){
-    if(!nut) return;
-    var tat=v.muted;
-    nut.setAttribute('aria-pressed', tat?'false':'true');
-    if(ico) ico.textContent = tat?'🔇':'🔊';
-    nut.querySelectorAll('.fslabel span').forEach(function(sp,i){
-      sp.textContent = tat ? ['Bật tiếng','Sound on','Activer le son'][i]
-                           : ['Tắt tiếng','Sound off','Couper le son'][i];
-    });
-  }
-  if(nut){
-    nut.addEventListener('click',function(){
-      v.muted = !v.muted;
-      if(!v.muted){
-        /* mot nguon tieng mot luc: tat nhac nen truoc khi clip len tieng */
-        try{ var M=nhac(); if(M&&M.dungNhacNen) M.dungNhacNen(); if(M&&M.stopAll) M.stopAll(); }catch(e){}
-        v.play().catch(function(){});
-      }
-      veNut();
-    });
-  }
-  /* Nhac nen bat len thi clip tro lai im lang. music.js phat nhac bang mot the
-     Audio roi ngoai DOM nen su kien 'play' cua no khong noi len document; no bao
-     bang su kien rieng 'huong-nhac'. Van nghe ca 'play' cho cac the trong trang. */
-  function imLang(){ if(!v.muted){ v.muted=true; veNut(); } }
-  document.addEventListener('huong-nhac',function(e){
-    if(e.detail && e.detail.trangthai==='play') imLang();
-  });
-  document.addEventListener('play',function(e){
-    var m=e.target;
-    if(m===v || !m || !(m.tagName==='AUDIO'||m.tagName==='VIDEO')) return;
-    imLang();
-  },true);
-
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  try{
-    var m=navigator.connection||{};
-    if(m.saveData) return;
-    if(/(^|-)(2g|slow-2g|3g)$/.test(m.effectiveType||'')) return;
-  }catch(e){}
-  var daNap=false;
-  /* Hien nut tieng ngay khi clip nap duoc du de phat - khong doi play() thanh cong,
-     vi neu trinh duyet chan ca video tat tieng thi nguoi xem van can mot cach bat. */
-  v.addEventListener('loadeddata',function(){ if(nut){ nut.hidden=false; veNut(); } });
-  function chay(){
-    if(!daNap){ daNap=true; v.src='assets/video/hero-co.mp4'; }
-    var p=v.play();
-    if(p && p.then) p.then(function(){
-      box.classList.add('dangchay');
-      if(nut){ nut.hidden=false; veNut(); }
-    }).catch(function(){});
-  }
-  function dung(){ try{ v.pause(); }catch(e2){} }
-  if('IntersectionObserver' in window){
-    new IntersectionObserver(function(es){
-      es[0].isIntersecting ? chay() : dung();
-    },{rootMargin:'80px'}).observe(box);
-  }else{
-    addEventListener('load',chay);
-  }
-  document.addEventListener('visibilitychange',function(){
-    document.hidden ? dung() : (daNap && chay());
-  });
-})();
-</script>
-<script>
 /* ---- nap canh dat set 3D cho hero ----
    Anh tinh assets/img/hero-clay.webp da hien ngay tu dau; ba tep duoi day
    chi tai sau khi trang ve xong, va bo qua han trong bon truong hop:
@@ -865,10 +813,6 @@ footer.wrap{position:relative;overflow:hidden}
   else addEventListener('load',batDau);
 })();
 </script>
-<script>/* Nut nhac noi cua trang chu: cung mot he thong voi cac trang khac
-   (assets/js/music.js tu chen CSS va tu dung widget). Nhac chi phat khi nguoi
-   xem bam - khong bao gio tu chay - va bat nhac thi dai phim dau trang tu tat tieng. */</script>
-<script src="assets/js/music.js" defer></script>
 <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="assets/js/site-chrome.js" defer></script>
 </body></html>
