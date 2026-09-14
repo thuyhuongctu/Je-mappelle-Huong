@@ -457,21 +457,6 @@ footer.wrap{position:relative;overflow:hidden}
 
 </main>
 
-<footer class="wrap">
-  <div class="vnmark" aria-hidden="true"></div>
-  <ul class="fnav">
-    <li><a href="index.html">← <span class="lang-vi">Trang học thuật</span><span class="lang-en">Academic home</span><span class="lang-fr">Page académique</span></a></li>
-    <li><a href="trangvien.html"><span class="lang-vi">Trang viên 3D</span><span class="lang-en">3D estate</span><span class="lang-fr">Domaine 3D</span></a></li>
-    <li><a href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><span class="lang-fr">Musique</span></a></li>
-    <li></li>
-    <li><a href="journey.html"><span class="lang-vi">Nhật ký</span><span class="lang-en">Journal</span><span class="lang-fr">Journal</span></a></li>
-    <li><a href="blog.html">Blog</a></li>
-    <li><a href="mailto:thuyhuongctu@gmail.com">thuyhuongctu@gmail.com</a></li>
-  </ul>
-  <div class="fbot">
-    <span>© <span id="yr">2026</span> <span class="lang-vi">Đỗ Thùy Hương · Cần Thơ, Việt Nam</span><span class="lang-en">Do Thuy Huong · Can Tho, Vietnam</span><span class="lang-fr">Do Thuy Huong · Cần Thơ, Vietnam</span></span>
-  </div>
-</footer>
 
 <button id="tourbtn" type="button" hidden>🚲 <span class="lang-vi">Dạo cùng Hương</span><span class="lang-en">Take the tour</span><span class="lang-fr">Faire le tour</span></button>
 <div id="hg" hidden>
@@ -518,7 +503,7 @@ footer.wrap{position:relative;overflow:hidden}
   document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !menu.hidden){close();btn.focus();} });
 })();
 (function(){
-  document.getElementById('yr').textContent=new Date().getFullYear();
+  var _yr=document.getElementById('yr'); if(_yr)_yr.textContent=new Date().getFullYear();
   if('serviceWorker' in navigator){ addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});}); }
   if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){
     document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');}); return;
@@ -957,4 +942,5 @@ addEventListener('DOMContentLoaded', function(){
 
 <script src="assets/js/music.js" defer></script>
 <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="assets/js/site-chrome.js" defer></script>
 </body></html>
