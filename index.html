@@ -1,4 +1,4 @@
-<!doctype html><html lang="vi"><head>
+<!doctype html><html lang="vi" data-chrome="no-map"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Đỗ Thùy Hương · Do Thuy Huong - PhD Candidate, Can Tho University</title>
 <meta name="description" content="Do Thuy Huong - lecturer and PhD candidate at Can Tho University. Research on internationalization and firm performance in Asia: WBES firm-level data, meta-analysis, institutions. Publications, teaching and CV.">
@@ -231,6 +231,29 @@ section[id],span[id]{scroll-margin-top:76px}
 .qa div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:15px 17px;box-shadow:var(--press),var(--lift)}
 .qa h3{font:700 .62rem var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
 .qa p{margin:0;font-size:.9rem;line-height:1.55}
+
+/* ===== ban do Viet Nam ba chieu (lay tu BizOn, da tach nen) =============
+   Anh goc 768x1376 giu nguyen khung nen bay nhan bam dung toa do phan tram
+   nhu ben BizOn. Ben do nen bien toi nen nhan mau trang; ben nay nen giay
+   kem nen nhan dung mau muc voi quang sang de doc duoc tren moi vung mau. */
+.vnband{margin:34px 0 0;text-align:center}
+.vnband > figcaption{margin:14px auto 0;max-width:46ch;
+  font:400 .84rem/1.6 var(--sans);color:var(--muted)}
+.vnmap3d{position:relative;container-type:inline-size;
+  width:min(100%,430px);margin:0 auto;aspect-ratio:768/1376}
+.vnmap3d img{width:100%;height:auto;display:block;
+  filter:drop-shadow(0 16px 26px rgba(28,24,20,.22))}
+.vnlb{position:absolute;transform:translate(-50%,-50%);text-align:center;
+  font:700 clamp(9px,3.5cqw,13px)/1.2 var(--sans);letter-spacing:.01em;
+  color:var(--ink);pointer-events:none;white-space:nowrap;
+  padding:3px 8px;border-radius:999px;
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  box-shadow:0 1px 4px rgba(28,24,20,.12)}
+.vnlb.wide{white-space:normal;width:32cqw}
+.vnlb.right{transform:translate(-100%,-50%)}
+.vnlb.sea{font-style:italic;font-weight:800;color:var(--river)}
+.vnlb.wide{padding:3px 10px}
+@media print{.vnmap3d img{filter:none}}
 
 /* publications, tiered */
 .pgroup{margin:0 0 22px}
@@ -483,6 +506,22 @@ footer.wrap{position:relative;overflow:hidden}
       <figcaption class="artcap"><span class="lang-vi">Việt Nam · WBES · 50 nền kinh tế</span><span class="lang-en">Vietnam · WBES · 50 economies</span><span class="lang-fr">Vietnam · WBES · 50 économies</span></figcaption>
     </figure>
   </div>
+
+
+  <figure class="vnband rv">
+    <div class="vnmap3d">
+      <img src="assets/img/vn-map-3d.webp" width="768" height="1376" loading="lazy" decoding="async"
+           alt="Three-dimensional clay map of Vietnam divided by economic region, with the Hoàng Sa and Trường Sa archipelagos offshore">
+      <span class="vnlb" style="left:73.3%;top:10.2%"><span class="lang-vi">Miền Bắc</span><span class="lang-en">Northern Vietnam</span><span class="lang-fr">Nord</span></span>
+      <span class="vnlb sea" style="left:84.0%;top:28.9%"><span class="lang-vi">Hoàng Sa</span><span class="lang-en">Hoàng Sa</span><span class="lang-fr">Hoàng Sa</span></span>
+      <span class="vnlb" style="left:36.8%;top:40.0%"><span class="lang-vi">Miền Trung</span><span class="lang-en">Central Vietnam</span><span class="lang-fr">Centre</span></span>
+      <span class="vnlb" style="left:49.9%;top:61.4%"><span class="lang-vi">Tây Nguyên</span><span class="lang-en">Central Highlands</span><span class="lang-fr">Hauts Plateaux</span></span>
+      <span class="vnlb wide" style="left:24.5%;top:74.3%"><span class="lang-vi">Đồng bằng sông Cửu Long</span><span class="lang-en">Mekong Delta</span><span class="lang-fr">Delta du Mékong</span></span>
+      <span class="vnlb" style="left:60.0%;top:86.0%"><span class="lang-vi">Nam Bộ</span><span class="lang-en">Southern Vietnam</span><span class="lang-fr">Sud</span></span>
+      <span class="vnlb sea right" style="left:97.0%;top:81.0%"><span class="lang-vi">Trường Sa</span><span class="lang-en">Trường Sa</span><span class="lang-fr">Trường Sa</span></span>
+    </div>
+    <figcaption><span class="lang-vi">Bản đồ trong <a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn</a> — trò chơi mô phỏng khởi nghiệp tôi dựng cho lớp học. Quần đảo Hoàng Sa và Trường Sa thuộc chủ quyền Việt Nam.</span><span class="lang-en">The map from <a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn</a>, the business simulation game I built for my classroom. The Hoàng Sa and Trường Sa archipelagos are Vietnamese sovereign territory.</span><span class="lang-fr">La carte de <a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn</a>, le jeu de simulation d’entreprise que j’ai conçu pour mes cours. Les archipels de Hoàng Sa et Trường Sa relèvent de la souveraineté vietnamienne.</span></figcaption>
+  </figure>
 
   <section id="research" class="rv">
     <span id="about"></span>
