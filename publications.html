@@ -687,17 +687,6 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
   }catch(e){}
 })();
 </script>
-<div class="vnmark" aria-hidden="true"><style>
-/* Hình chìm: đường viền Việt Nam sinh từ Natural Earth (assets/img/vn-outline.svg),
-   dùng chung với chân trang của trang chủ và vườn số. Màu lấy từ token nên theo cả
-   chế độ sáng và tối. Trình duyệt không hỗ trợ mask thì không hiện - chỉ là trang trí. */
-.vnmark{display:none}
-@supports ((mask-image:url(x)) or (-webkit-mask-image:url(x))){
-  .vnmark{display:block;position:fixed;right:10px;bottom:10px;width:112px;height:126px;
-    z-index:-1;pointer-events:none;background:var(--accent);opacity:.18;
-    -webkit-mask:url('assets/img/vn-outline.svg') right bottom/contain no-repeat;
-            mask:url('assets/img/vn-outline.svg') right bottom/contain no-repeat}
-  @media(max-width:560px){.vnmark{width:84px;height:95px;opacity:.14}}
-}
-</style></div>
+<script src="assets/js/music.js" defer></script>
+<script src="assets/js/site-chrome.js" defer></script>
 </body></html>
