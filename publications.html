@@ -108,20 +108,6 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
 .dmnav .dmico{width:28px;height:28px;font-size:.8rem;flex-shrink:0}.dmnav .dmico:last-child{display:none}.dmnav .dmright{min-width:0}.dmnav{max-width:100%;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;flex-shrink:1}.dmnav::-webkit-scrollbar{display:none}
 .dmnav .hide-xs{display:none}}
 /* ===== DeepMind-style footer ===== */
-.dmfooter{background:linear-gradient(160deg,#26211f,#2e2724);color:#d8cdc7;padding:52px 24px 26px;margin-top:64px;border-radius:20px 20px 0 0}
-.dmfooter .dmf-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:28px;max-width:1100px;margin:0 auto}
-.dmfooter h4{font:700 .78rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#efe6e2;margin:0 0 14px}
-.dmfooter p{font:.85rem/1.6 var(--sans);color:#b9aca5;margin:0}
-.dmfooter .dmf-tag{font:600 clamp(1.3rem,3.2vw,1.9rem)/1.25 var(--serif);color:#efe6e2;max-width:100%;margin:10px 0 6px}
-.dmfooter a{color:#b9aca5;text-decoration:none;font:.82rem/1.9 var(--sans);display:block}
-.dmfooter a:hover{color:#fff;text-decoration:underline}
-.dmfooter .dmf-ico{display:inline-flex;gap:8px;margin:16px 0 0}
-.dmfooter .dmf-ico a{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border:1px solid #4a413c;border-radius:50%;font-size:.85rem}
-.dmfooter .dmf-ico a:hover{background:#4a413c;text-decoration:none}
-.dmfooter .dmf-bottom{border-top:1px solid #40383320;margin-top:36px;padding-top:18px;display:flex;flex-wrap:wrap;gap:8px 24px;font:.76rem/1.6 var(--sans);color:#8f817a;max-width:1100px;margin-left:auto;margin-right:auto}
-.dmfooter .dmf-bottom span{white-space:nowrap}
-@media(max-width:820px){.dmfooter .dmf-grid{grid-template-columns:1fr 1fr;gap:22px 28px}}
-@media(max-width:480px){.dmfooter .dmf-grid{grid-template-columns:1fr}}
 /* ===== Hiệu ứng động ===== */
 @media(prefers-reduced-motion:no-preference){
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
@@ -580,8 +566,6 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
   }
   window.addEventListener('scroll',onScroll,{passive:true});
   document.querySelectorAll('.reveal').forEach(function(el){onScroll();});
-  var y=document.getElementById('dm-year');
-  if(y){y.textContent=new Date().getFullYear()+' · '+(document.documentElement.getAttribute('lang')==='en'?'Je m\'appelle Hương website':'Website Je m\'appelle Hương');}
 })();
 </script>
 
