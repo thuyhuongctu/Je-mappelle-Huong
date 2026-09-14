@@ -18,8 +18,10 @@
     track03:       { t: 'The Lamp Still Burns',          f: A + 'track03.mp3' },
     track04:       { t: 'Hai Mươi Sáu Năm Sau',          f: A + 'track04-hai-muoi-sau-nam-sau.mp3' },
     track04_v2:    { t: 'Hai Mươi Sáu Năm Sau (v2)',     f: A + 'track04-26-nam-sau-v2.mp3' },
-    track05:       { t: 'Je m’appelle Hương',            f: A + 'track05.mp3' },
-    track05_vi:    { t: 'Ba gọi con về (Vietnamese)',    f: A + 'track05-father-song-vi.mp3' },
+    // Track 05 «Ba gọi con về» - ba bản thu, đúng như trang Âm nhạc liệt kê
+    track05_vi:    { t: 'Ba gọi con về (Tiếng Việt)', f: A + 'track05-father-song-vi.mp3' },
+    track05_v2:    { t: 'A Father’s Song (v2)',        f: A + 'track05-father-song-v2.mp3' },
+    track05_v1:    { t: 'A Father’s Song (v1)',        f: A + 'track05-father-song-v1.mp3' },
     mekong_sunfire:{ t: 'Mekong Sunfire',                 f: A + 'mekong-sunfire.mp3' },
     mekong_rise:   { t: 'Mekong Sunfire · Rise With The River', f: A + 'mekong-sunfire-rise-with-the-river.mp3', main: true },
 
@@ -61,21 +63,21 @@
       vi: { tieude: 'Hôm nay có chút buồn?', noi: 'Để Hương hát một bài sưởi lòng nhé - nghe nhẹ, rồi ngày mai lại sáng.' },
       en: { tieude: 'A little sad today?', noi: 'Let Huong sing something warm - gentle listening, brighter tomorrow.' },
       fr: { tieude: 'Un peu triste aujourd\u2019hui ?', noi: 'Laissez Huong vous chanter une chanson chaleureuse \u2014 une \u00e9coute douce, demain sera plus lumineux.' },
-      bai: ['track01', 'track02', 'official']
+      bai: ['track01', 'track02', 'track05_vi', 'track05_v2', 'official']
     },
     vui: {
       icon: '\u{1F60A}',
       vi: { tieude: 'Hôm nay thật vui!', noi: 'Nghe bài thư giãn thêm - để niềm vui chảy dài thêm chút nữa.' },
       en: { tieude: 'Happy today!', noi: 'Relax and let the joy flow a little longer.' },
       fr: { tieude: 'Heureux aujourd\u2019hui !', noi: 'D\u00e9tendez-vous et laissez la joie s\u2019\u00e9couler un peu plus longtemps.' },
-      bai: ['track04', 'mekong_rise', 'mekong_sunfire', 'track05', 'track05_vi', 'track03']
+      bai: ['track04', 'mekong_rise', 'mekong_sunfire', 'official', 'track05_v1', 'track03']
     },
     binhthuong: {
       icon: '😌',
       vi: { tieude: 'Một ngày bình yên', noi: 'Bài mặc định trang chủ chọn cho bạn - nghe thoải mái nhé.' },
       en: { tieude: 'A peaceful day', noi: 'The homepage’s default pick for you - enjoy.' },
       fr: { tieude: 'Une journée paisible', noi: 'Le choix par défaut de la page d’accueil pour vous - bonne écoute.' },
-      bai: ['mekong_rise', 'track04_v2', 'official', 'track05_vi', 'track05', 'track01']
+      bai: ['mekong_rise', 'track04_v2', 'official', 'track05_vi', 'track01']
     }
   };
 
@@ -202,7 +204,7 @@
       ds = MOODS[dangMood].bai;
     } else {
       // nếu không trong mood, lấy danh sách bài official/songbook làm mặc định
-      ds = ['mekong_rise', 'track04_v2', 'official', 'track05', 'track01', 'track02', 'track03'];
+      ds = ['mekong_rise', 'track04_v2', 'official', 'track05_vi', 'track01', 'track02', 'track03'];
     }
 
     var idx = ds.indexOf(dangPhat);
@@ -380,9 +382,9 @@
     'du-an':      'track04',               // Hai Mươi Sáu Năm Sau - hồi sinh, năng lượng tìm lại ước mơ (khu dự án)
     'thu-vien':   'track01',               // Je voudrais te parler - nội tâm, đọc trong yên lặng (khu thư viện)
     'am-nhac':    'track03',               // The Lamp Still Burns - ôm ấp, an ủi (khu âm nhạc)
-    'bang-tin':   'track05',               // Je m'appelle Hương - thông điệp tổng hợp (khu bảng tin)
+    'bang-tin':   'official',              // Je m'appelle Hương - thông điệp tổng hợp (khu bảng tin)
     'gioi-thieu': 'official',              // Je m'appelle Hương bản đầy đủ - mở đầu chuyến tham quan (khu giới thiệu)
-    'kho-tuong-lai': 'track05',             // Je m'appelle Hương - khép chuyến tham quan bằng bài chủ đề (kho tương lai)
+    'kho-tuong-lai': 'official',            // Je m'appelle Hương - khép chuyến tham quan bằng bài chủ đề (kho tương lai)
     'khuon-vien':  'tranquien_528'           // Sóng 528Hz - nhạc tần số thư giãn khi dạo ngoài khuôn viên
   };
   var khuDangChoi = '';
