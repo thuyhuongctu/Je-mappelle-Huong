@@ -1,5 +1,5 @@
 /* Service worker - Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v72';
+const CACHE = 'jshuong-v75';
 const CORE = [
   './',
   'index.html',
@@ -17,6 +17,8 @@ const CORE = [
   'assets/js/vn-shape.js',
   'assets/js/dongho.js',
   'assets/js/music.js',
+  'assets/js/site-chrome.js',
+  'assets/css/site-chrome.css',
   'manifest.webmanifest',
   'assets/img/huong_clay_portrait.webp',
   'assets/img/hero-clay.webp',
@@ -29,6 +31,7 @@ const CORE = [
   'assets/img/comdraft-character.webp',
   'assets/img/comdraft-app.webp',
   'assets/img/mekong-sunfire-cover.webp',
+  'assets/img/music-cover-ba-cong-con.webp',
   'assets/img/ba-goi-con-ve-poster.webp',
   'assets/img/huong-nghe-nhac-dung.webp',
   'assets/img/huong-nghe-nhac-ngoi.webp',
