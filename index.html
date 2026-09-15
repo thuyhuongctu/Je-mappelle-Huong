@@ -157,12 +157,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
   border:1px solid var(--line);box-shadow:var(--press),var(--lift);
   background:radial-gradient(118% 96% at 28% 16%,var(--surface) 8%,var(--sunk))}
 #claysan{position:relative;width:100%;aspect-ratio:1/1}
-.claycanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .claypost{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s ease}
-#claysan.co-3d .claypost{opacity:0}
-.artcap{position:absolute;left:0;right:0;bottom:0;margin:0;padding:26px 14px 10px;
-  font:600 .64rem var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--muted);text-align:center;
-  background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--sunk) 82%,transparent))}
 @media(max-width:720px){.heroart{justify-self:center;max-width:min(306px,42vh);max-height:42vh}}
 @media(max-width:560px){.heroart{max-width:min(250px,42vh)}.avatar{width:54px;height:54px}}
 
@@ -493,10 +488,10 @@ footer.wrap{position:relative;overflow:hidden}
     </div>
     <figure class="heroart">
       <div id="claysan">
-        <img class="claypost" src="assets/img/hero-clay.webp" width="542" height="542" decoding="async"
-             alt="Clay desk: a raised relief map of Vietnam on a clay dish, with a small lotus, a wax seal and a stack of paper">
+        <img class="claypost" src="assets/img/huong_clay_portrait.webp" width="760" height="760"
+             fetchpriority="high" decoding="async"
+             alt="Clay-modelled portrait of Do Thuy Huong in a white ao dai with a lotus in her hair">
       </div>
-      <figcaption class="artcap"><span class="lang-vi">Việt Nam · WBES · 50 nền kinh tế</span><span class="lang-en">Vietnam · WBES · 50 economies</span><span class="lang-fr">Vietnam · WBES · 50 économies</span></figcaption>
     </figure>
   </div>
 
@@ -1116,40 +1111,6 @@ footer.wrap{position:relative;overflow:hidden}
   document.addEventListener('visibilitychange',function(){
     document.hidden ? dung() : (daNap && chay());
   });
-})();
-</script>
-<script>
-/* ---- nap canh dat set 3D cho hero ----
-   Anh tinh assets/img/hero-clay.webp da hien ngay tu dau; ba tep duoi day
-   chi tai sau khi trang ve xong, va bo qua han trong bon truong hop:
-   khong co WebGL, nguoi dung tat hieu ung, may bat tiet kiem du lieu,
-   hoac mang 2G/3G. Trang van doc duoc day du neu khong nap gi. */
-(function(){
-  if(!document.getElementById('claysan')) return;
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  try{
-    var m=navigator.connection||{};
-    if(m.saveData) return;
-    if(/(^|-)(2g|slow-2g|3g)$/.test(m.effectiveType||'')) return;
-  }catch(e){}
-  try{
-    var t=document.createElement('canvas');
-    if(!(t.getContext('webgl')||t.getContext('experimental-webgl'))) return;
-  }catch(e2){ return; }
-  function nap(ds){
-    (function ke(i){
-      if(i>=ds.length) return;
-      var sc=document.createElement('script');
-      sc.src=ds[i]; sc.async=false;
-      sc.onload=function(){ ke(i+1); };
-      document.head.appendChild(sc);
-    })(0);
-  }
-  function batDau(){
-    nap(['assets/vendor/three-r128.min.js','assets/js/vn-shape.js','assets/js/clayhero.js']);
-  }
-  if('requestIdleCallback' in window) requestIdleCallback(batDau,{timeout:2600});
-  else addEventListener('load',batDau);
 })();
 </script>
 <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
