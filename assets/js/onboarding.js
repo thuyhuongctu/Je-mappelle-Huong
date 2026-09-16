@@ -9,14 +9,14 @@
   const guide=document.createElement('aside');
   guide.id='th-onboarding-guide';
   guide.setAttribute('aria-live','polite');
-  guide.innerHTML='<div class="th-guide-kicker"><span id="th-guide-kicker-word">BƯỚC</span> <span id="th-guide-step">1</span>/3</div><strong id="th-guide-title">Xem toàn cảnh trước</strong><p id="th-guide-copy">Bản đồ trang viên cho thấy cả bảy khu quanh ao sen.</p><button type="button" id="th-guide-next">Đã hiểu</button><button type="button" id="th-guide-help">?</button>';
+  guide.innerHTML='<div class="th-guide-kicker"><span id="th-guide-kicker-word">BƯỚC</span> <span id="th-guide-step">1</span>/3</div><strong id="th-guide-title">Xem toàn cảnh trước</strong><p id="th-guide-copy">Bản đồ trang viên cho thấy tất cả các khu quanh ao sen.</p><button type="button" id="th-guide-next">Đã hiểu</button><button type="button" id="th-guide-help">?</button>';
   document.body.appendChild(guide);
   /* Ba buoc cu mo dau bang "dung can dieu khien" - duong cham nhat - roi ket
      bang mot buoc noi toi vat pham, NPC va nhiem vu ma khach moi chua thay gi.
      Nay ba buoc di dung thu tu nguoi ta thuc su lam: chon noi den, den noi,
      mo ra doc. */
   const steps=[
-    {vi:['Xem toàn cảnh trước','Bản đồ trang viên vừa mở cho thấy cả bảy khu quanh ao sen. Chạm một khu, Hương tự đi tới. Nút 🗺 hoặc phím M mở lại bản đồ bất cứ lúc nào.'],en:['See the whole estate first','The map that just opened shows all seven zones around the lotus pond. Tap one and Hương walks there. The 🗺 button or the M key reopens it any time.']},
+    {vi:['Xem toàn cảnh trước','Bản đồ trang viên vừa mở cho thấy tất cả các khu quanh ao sen. Chạm một khu, Hương tự đi tới. Nút 🗺 hoặc phím M mở lại bản đồ bất cứ lúc nào.'],en:['See the whole estate first','The map that just opened shows every zone around the lotus pond. Tap one and Hương walks there. The 🗺 button or the M key reopens it any time.']},
     {vi:['Hoặc tự đi lấy','Cần điều khiển hoặc phím W A S D để đi; ← → xoay góc nhìn; B để lên xe đạp.'],en:['Or walk it yourself','Joystick or W A S D to move, ← → to turn the camera, B to hop on the bicycle.']},
     {vi:['Mở nội dung một khu','Tới nơi sẽ thấy biển chỉ đường. Bấm ✦ hoặc phím E để đọc khu đó.'],en:['Open an area','A signpost stands at each place. Press ✦ or E to read it.']}
   ];

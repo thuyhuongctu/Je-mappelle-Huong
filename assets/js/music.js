@@ -22,6 +22,7 @@
     track05_vi:    { t: 'Ba gọi con về (Tiếng Việt)', f: A + 'track05-father-song-vi.mp3' },
     track05_v2:    { t: 'A Father’s Song (v2)',        f: A + 'track05-father-song-v2.mp3' },
     track05_v1:    { t: 'A Father’s Song (v1)',        f: A + 'track05-father-song-v1.mp3' },
+    le_ciel:       { t: 'Le ciel que tu gardes',        f: A + 'le-ciel-que-tu-gardes.mp3' },
     mekong_sunfire:{ t: 'Mekong Sunfire',                 f: A + 'mekong-sunfire.mp3' },
     mekong_rise:   { t: 'Mekong Sunfire · Rise With The River', f: A + 'mekong-sunfire-rise-with-the-river.mp3', main: true },
 
