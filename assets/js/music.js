@@ -12,7 +12,7 @@
   var A = 'assets/audio/';
   var SONGS = {
     // Songbook gốc - trang chủ chọn mặc định
-    official:      { t: 'Je m’appelle Hương',            f: A + 'track05.mp3' },
+    official:      { t: 'Je m\'appelle Hương',            f: A + 'track05.mp3' },
     track01:       { t: 'Je voudrais te parler',         f: A + 'track01.mp3' },
     track02:       { t: 'Đèn vẫn còn sáng',              f: A + 'track02-den-van-con-sang.mp3' },
     track03:       { t: 'The Lamp Still Burns',          f: A + 'track03.mp3' },
