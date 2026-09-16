@@ -248,6 +248,117 @@ body.cham #bieu-cam{bottom:auto;top:3.6rem;left:.7rem;transform:none;z-index:100
 body.cham #ban-do{width:96px;height:96px;top:calc(var(--hud-cao,46px) + 90px);z-index:9400; pointer-events:none; }
 body.cham #ban-do canvas{width:84px;height:84px;pointer-events:none; }
 
+
+/* ================= BẢN ĐỒ TOÀN CẢNH =================
+   Truoc day khach khong bao gio thay ca trang vien mot luc. Cai duy nhat co
+   the cho thay dieu do - ban do tron #ban-do - lai nam duoi bang "Di dau?"
+   (z-index 9400 so voi 9999) va bi tat pointer-events, nen no vua khong thay
+   vua khong bam duoc. Thu thay the no la mot danh sach chu: danh sach thi noi
+   duoc TEN bay khu nhung khong noi duoc khu nao o dau, xa hay gan, da ghe hay
+   chua - tuc la mat sach phan "toan canh".
+
+   Ban do nay ve dung toa do that cua bay khu trong canh ba chieu, kem vi tri
+   Huong dang dung. Bay so tren ban do trung voi phim 1-7. */
+#toancanh{
+  position:fixed;inset:0;z-index:10060;display:grid;place-items:center;
+  padding:clamp(.7rem,3vw,1.8rem);
+  background:rgba(46,34,30,.52);backdrop-filter:blur(7px);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .34s var(--uyen),visibility .34s;
+}
+/* visibility doi tri o CUOI chuyen canh, nen suot .34s sau khi dong thi lop nay
+   van con an mat chuot - bam vao ban do tron ngay luc do se khong an gi. Tat
+   han pointer-events luc dong de khong bao gio co khoang chet ay. */
+#toancanh.mo{opacity:1;visibility:visible;pointer-events:auto}
+#tc-hop{
+  width:min(940px,100%);max-height:94svh;overflow:auto;overscroll-behavior:contain;
+  border-radius:clamp(20px,4vw,30px);background:linear-gradient(170deg,#FFFBF4,#F6E9D6);
+  box-shadow:0 18px 54px rgba(80,50,40,.32);
+  padding:clamp(.9rem,3vw,1.5rem);
+  transform:translateY(16px) scale(.97);transition:transform .4s var(--uyen);
+}
+#toancanh.mo #tc-hop{transform:none}
+#tc-dau{display:flex;align-items:flex-start;gap:.7rem;margin-bottom:.9rem}
+#tc-dau h2{font:800 clamp(1.05rem,3.4vw,1.35rem)/1.2 'Baloo 2',system-ui;color:var(--muc)}
+#tc-dau p{font-size:.82rem;color:var(--muc-nhat);margin-top:.15rem;line-height:1.45}
+#tc-dong{
+  margin-left:auto;flex:none;width:36px;height:36px;border-radius:50%;
+  background:#FFF8EE;box-shadow:var(--bong);font-size:1rem;color:var(--muc-nhat);
+  display:grid;place-items:center;
+}
+#tc-dong:hover{background:#F8DCE4;color:var(--nhan)}
+
+/* khung: ban do ben trai, danh sach bay khu ben phai */
+#tc-than{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(.8rem,2.5vw,1.3rem);align-items:start}
+@media(max-width:760px){#tc-than{grid-template-columns:1fr}}
+
+#tc-ve{
+  position:relative;border-radius:22px;overflow:hidden;
+  background:radial-gradient(circle at 50% 42%,#CDEBC4,#A9DDA0 72%,#94CE93);
+  box-shadow:inset 0 2px 10px rgba(90,120,80,.22);
+}
+#tc-ve svg{display:block;width:100%;height:auto}
+.tc-pin{cursor:pointer}
+.tc-pin circle.nen{transition:r .18s var(--uyen)}
+.tc-pin:hover circle.nen,.tc-pin:focus-visible circle.nen{r:15}
+.tc-pin text{font:800 12px 'Baloo 2',system-ui;fill:#FFF8EE;pointer-events:none;user-select:none}
+.tc-pin.da circle.vien{stroke:#FFF8EE;stroke-width:3.2}
+.tc-pin:focus-visible{outline:none}
+.tc-pin:focus-visible circle.nen{stroke:var(--muc);stroke-width:2.5}
+
+/* chu giai duoi ban do */
+#tc-giai{display:flex;flex-wrap:wrap;gap:.35rem .9rem;margin-top:.55rem;
+  font:.72rem/1.4 'Be Vietnam Pro',system-ui;color:var(--muc-nhat)}
+#tc-giai span{display:flex;align-items:center;gap:.3rem}
+#tc-giai i{width:11px;height:11px;border-radius:50%;flex:none;font-style:normal}
+#tc-giai i.toi{background:#E77E9A;box-shadow:0 0 0 2.5px rgba(231,126,154,.3)}
+#tc-giai i.da{background:#6B8F71}
+#tc-giai i.chua{background:transparent;border:2px solid #9DAF9B}
+
+/* danh sach bay khu */
+#tc-ds{display:flex;flex-direction:column;gap:.3rem}
+.tc-khu{
+  display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:.5rem;
+  padding:.45rem .55rem;border-radius:.85rem;background:#FFF8EE;
+  text-align:left;width:100%;cursor:pointer;border:1px solid transparent;
+}
+.tc-khu:hover{background:#F8DCE4;border-color:rgba(231,126,154,.4)}
+.tc-khu:focus-visible{outline:2px solid var(--nhan);outline-offset:2px}
+.tc-khu .so{
+  width:22px;height:22px;border-radius:50%;flex:none;display:grid;place-items:center;
+  font:800 .72rem 'Baloo 2',system-ui;color:#FFF8EE;
+}
+.tc-khu .bieu{font-size:1rem;line-height:1}
+.tc-khu .chu{min-width:0;display:flex;flex-direction:column}
+.tc-khu .ten{font:700 .84rem/1.25 'Baloo 2',system-ui;color:#4A3730}
+.tc-khu .phu{font-size:.72rem;color:var(--muc-nhat);line-height:1.35;margin-top:.05rem}
+.tc-khu .dau{font-size:.7rem;color:#6B8F71;font-weight:700;margin-top:.1rem;display:none}
+.tc-khu.da .dau{display:block}
+.tc-khu.dang{background:#E77E9A;border-color:#E77E9A}
+.tc-khu.dang .ten,.tc-khu.dang .phu,.tc-khu.dang .dau{color:#fff}
+
+#tc-chan{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:.9rem;
+  padding-top:.8rem;border-top:1px solid var(--vien)}
+#tc-tour{
+  padding:.5rem 1rem;border-radius:999px;background:#6B8F71;color:#fff;
+  font:700 .8rem 'Baloo 2',system-ui;
+}
+#tc-tour:hover{background:#5C7F62}
+#tc-tour.dang{background:#E77E9A}
+#tc-meo{font-size:.74rem;color:var(--muc-nhat);line-height:1.45;flex:1 1 14rem;min-width:0}
+#tc-meo kbd{font:600 .72rem var(--sans);background:#FFF8EE;border:1px solid var(--vien);
+  border-radius:.35rem;padding:.05rem .3rem;color:var(--muc)}
+
+/* Bang "Di dau?" cu: giu trong DOM cho cac doan ma cu con tro toi no, nhung
+   khong con chiem mat man hinh nua (trước đây che 7,2% màn máy tính và 21,6%
+   màn điện thoại, lại còn tự cắt mất khu thứ bảy). */
+#bd-thang{display:none !important}
+/* Ban do tron nay lai nhin thay va bam duoc, va bam vao no thi mo ban do lon. */
+#ban-do{pointer-events:auto !important;cursor:pointer;z-index:9400}
+#ban-do canvas{pointer-events:none}
+body.cham #ban-do{pointer-events:auto !important}
+body.dang-doc-khu #toancanh:not(.mo){display:none}
+
 /* ================= BẢNG NỘI DUNG ================= */
 #man{
   position:fixed;inset:0;z-index:60;display:grid;place-items:end center;padding:0;
@@ -279,6 +390,12 @@ body.dang-doc-khu #bd-thang,
 body.dang-doc-khu #ban-do,
 body.dang-doc-khu .th-side-actions,
 body.dang-doc-khu #th-onboarding-guide{display:none !important}
+/* The huong dan ba buoc va ban do toan canh deu nam giua man hinh, nen luc
+   ban do mo thi the nap duoi no. Mo xong ban do la the hien lai. */
+body.dang-xem-ban-do #th-onboarding-guide,
+body.dang-xem-ban-do #goi-y,
+body.dang-xem-ban-do #bieu-cam,
+body.dang-xem-ban-do #hud-sen{display:none !important}
 /* Dang di tour thi bang noi dung noi ro: dang o diem thu may, va dong lai la
    di tiep - de khach biet minh dang duoc dan di chu khong phai bi bo lai. */
 #bang-tour{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin:0 0 1rem;
@@ -473,6 +590,8 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important;z-index:920
 <div class="hud" id="hud-tren">
   <a href="index.html" id="hieu"><img src="assets/img/lr-seal-round.webp" alt="Logo LR - Je m'appelle Hương" id="logo-tv"><span data-vi="Trang viên Hương" data-en="Hương's Estate">Trang viên Hương</span></a>
   <div class="nhom">
+    <button class="nut-nho" id="nut-ban-do" data-vi="🗺 Bản đồ" data-en="🗺 Map"
+      aria-label="Mở bản đồ trang viên">🗺 Bản đồ</button>
     <button class="nut-nho" id="nut-xe-may" data-vi="🚲 Đạp xe" data-en="🚲 Cycle">🚲 Đạp xe</button>
     <button class="nut-nho" id="nut-thoi-khac" data-vi="🌇 Chiều" data-en="🌇 Sunset">🌇 Chiều</button>
     <button class="nut-nho" id="nut-am-thanh" aria-label="Âm thanh">🔊</button>
@@ -488,6 +607,29 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important;z-index:920
   </div>
   <div id="bd-chon" role="list" aria-label="Danh sách khu">
     <div id="bd-trang-thai"></div>
+  </div>
+</div>
+
+<div id="toancanh" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="tc-ten">
+  <div id="tc-hop">
+    <div id="tc-dau">
+      <div>
+        <h2 id="tc-ten">Bản đồ trang viên</h2>
+        <p></p>
+      </div>
+      <button type="button" id="tc-dong" aria-label="Đóng bản đồ">✕</button>
+    </div>
+    <div id="tc-than">
+      <div>
+        <div id="tc-ve"></div>
+        <div id="tc-giai"></div>
+      </div>
+      <div id="tc-ds" role="list"></div>
+    </div>
+    <div id="tc-chan">
+      <button type="button" id="tc-tour">🗺 Tour quanh vườn</button>
+      <p id="tc-meo"></p>
+    </div>
   </div>
 </div>
 
@@ -538,7 +680,7 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important;z-index:920
     </p>
     <div class="th-start-steps" aria-label="Các bước bắt đầu">
       <div class="th-start-step"><b data-vi="1 · Vào vườn" data-en="1 · Enter">1 · Vào vườn</b><span data-vi="Bấm bắt đầu để bước vào không gian 3D." data-en="Press start to enter the 3D garden.">Bấm bắt đầu để bước vào không gian 3D.</span></div>
-      <div class="th-start-step"><b data-vi="2 · Chọn nơi đến" data-en="2 · Pick a place">2 · Chọn nơi đến</b><span data-vi="Bảng «Đi đâu?» mở sẵn - chọn một khu, Hương tự đi tới." data-en="The “Go where?” list opens for you - pick an area and Hương walks there.">Bảng «Đi đâu?» mở sẵn - chọn một khu, Hương tự đi tới.</span></div>
+      <div class="th-start-step"><b data-vi="2 · Chọn nơi đến" data-en="2 · Pick a place">2 · Chọn nơi đến</b><span data-vi="Bản đồ trang viên mở sẵn - chạm một khu, Hương tự đi tới." data-en="The estate map opens for you - tap a zone and Hương walks there.">Bản đồ trang viên mở sẵn - chạm một khu, Hương tự đi tới.</span></div>
       <div class="th-start-step"><b data-vi="3 · Mở nội dung" data-en="3 · Open it">3 · Mở nội dung</b><span data-vi="Đến nơi, bấm ✦ để đọc khu đó." data-en="On arrival, press ✦ to read that area.">Đến nơi, bấm ✦ để đọc khu đó.</span></div>
     </div>
     <div class="phim an-mobile">
@@ -2235,6 +2377,8 @@ function moBangGoc(khu){
   document.getElementById('bang').scrollTop = 0;
   datBieuCam(khu.id === 'am-nhac' ? 'hat' : 'vui');
   if (window.HUONG_MUSIC) HUONG_MUSIC.playNhacNen(khu.id);
+  // Danh dau da ghe - ban do toan canh va ban do tron doc co nay.
+  if (window.ghiDaGhe) window.ghiDaGhe(khu.id);
 }
 function dongBang(){
   dangMo = false;
@@ -2378,7 +2522,7 @@ function moBanLanDau(){
   try{ if(localStorage.getItem(KHOA)) return; }catch(e){}
   setTimeout(function(){
     try{
-      if(!banDangMo) moBdChon();
+      if(window.moToanCanh) window.moToanCanh();
       localStorage.setItem(KHOA, '1');
     }catch(e){}
   }, 1200);
@@ -3089,13 +3233,13 @@ function capNhatThuVien(t, dt){
 
 /* --- Messenger Window: HUD tin nhắn --- */
 const MSG_KHUNG = {
-  vi:['Xin chào! Mình là Hương 🌸','Trang viên có 6 khu để khám phá - thử bấm phím 1 đến 6 nhé!','Mình rất vui được gặp bạn. Gửi cho mình một tin nhắn bất kỳ!'],
-  en:['Hello! I am Hương 🌸','The estate has 6 zones to explore - try keys 1 to 6!','So glad to meet you. Send me any message!'],
-  fr:['Bonjour ! Je suis Hương 🌸','Le domaine a 6 zones à explorer - essayez les touches 1 à 6 !','Très heureuse de vous rencontrer. Envoyez-moi un message !']
+  vi:['Xin chào! Mình là Hương 🌸','Trang viên có 7 khu để khám phá - thử bấm phím 1 đến 7 nhé!','Mình rất vui được gặp bạn. Gửi cho mình một tin nhắn bất kỳ!'],
+  en:['Hello! I am Hương 🌸','The estate has 7 zones to explore - try keys 1 to 7!','So glad to meet you. Send me any message!'],
+  fr:['Bonjour ! Je suis Hương 🌸','Le domaine a 7 zones à explorer - essayez les touches 1 à 7 !','Très heureuse de vous rencontrer. Envoyez-moi un message !']
 };
 const MSG_TRA_LOI = {
   vi:[
-    'Xin chào bạn! 🌸 Mình là Hương, chủ nhân của trang viên này. Rất vui được đón bạn - hãy đi bộ hoặc đạp xe quanh ao sen để ghé 6 khu: Học thuật, Dự án, Thư viện, Âm nhạc, Bảng tin và Kho tương lai. Cần gì cứ nhắn mình nhé!',
+    'Xin chào bạn! 🌸 Mình là Hương, chủ nhân của trang viên này. Rất vui được đón bạn - hãy đi bộ hoặc đạp xe quanh ao sen để ghé 7 khu: Nhà chính, Học thuật, Dự án, Thư viện, Âm nhạc, Bảng tin và Kho tương lai. Cần gì cứ nhắn mình nhé!',
     'Khó mà chọn khu nào đẹp nhất thật đấy! Nhưng nếu phải chọn, mình thích ao sen buổi chiều nhất - đèn lồng thắp lên trông rất thơ, chưa kể bể koi và cối xay gió quay thật dịu dàng. Còn bạn thích khu nào? 🏡',
     'Mình kể bạn nghe nha 📦 M-AIDA là phần mềm trích xuất dữ liệu nghiên cứu từ PDF, có DOI và lưu trữ trên Zenodo - rương ngọc xanh đang đợi bạn ở khu Dự án. Còn BizOn là game mô phỏng kinh doanh phong cách đất nặn: các đội sinh viên cắm cờ công ty từ Cần Thơ lên tận cột cờ Lũng Cú! Hai dự án đều do mình cùng đồng nghiệp thiết kế tại Đại học Cần Thơ.',
     'Thư viện Clay 📚 là nơi mình cất những trang sách yêu thích - những câu trích dẫn về sách, tri thức và ước mơ nằm trong những cuốn sách đất nặn. Bạn chạm vào bất kỳ cuốn sách nào để đọc một câu ngẫu nhiên nhé - đọc sách giúp tâm hồn bay xa mà không cần di chuyển!',
@@ -3103,7 +3247,7 @@ const MSG_TRA_LOI = {
     'Sắp tới nhiều thứ lắm 🔮 Mình đang hoàn thiện luận án tiến sĩ về quốc tế hóa và hiệu quả hoạt động của doanh nghiệp châu Á - kết quả mới sẽ cập nhật ở khu Học thuật. M-AIDA sẽ có bản trích xuất mới, BizOn mở rộng GO GlObal, EnQuiz thêm chương trình ôn tập, và Songbook sẽ có chương mới của những bài hát. Hãy quay lại thăm trang viên nhé!'
   ],
   en:[
-    'Hello there! 🌸 I am Hương, the owner of this estate. So glad you came - walk or pedal around the lotus pond to visit all 6 zones: Academic, Projects, Library, Music, News and Future. Message me anytime you need something!',
+    'Hello there! 🌸 I am Hương, the owner of this estate. So glad you came - walk or pedal around the lotus pond to visit all 7 zones: Main House, Academic, Projects, Library, Music, News and Future. Message me anytime you need something!',
     'Honestly, it is hard to pick a favorite! But if I must, I love the lotus pond at sunset - the lanterns glow so poetically, not to mention the koi pond and the gently turning windmill. Which zone do you like? 🏡',
     'Let me tell you a story 📦 M-AIDA is research data-extraction software from PDFs, DOI-registered and archived on Zenodo - the blue-gem treasure chest in the Projects zone is waiting for you. BizOn is a claymorphism business-simulation game where student teams plant company flags from Cần Thơ all the way to Lũng Cú! Both were designed with my colleague at Can Tho University.',
     'The Clay Library 📚 is where I keep my favorite books - quotes about books, knowledge and dreams live inside clay-book covers. Tap any book for a random quote - reading lets the soul travel without moving!',
@@ -3111,7 +3255,7 @@ const MSG_TRA_LOI = {
     'So much is coming 🔮 I am finishing my PhD dissertation on internationalization and firm performance in Asia - new findings will appear in the Academic zone. M-AIDA gets a new extraction release, BizOn expands with GO GlObal, EnQuiz adds the next revision program, and the Songbook will have a brand-new chapter of songs. Come back and visit again!'
   ],
   fr:[
-    'Bonjour ! 🌸 Je suis Hương, la propriétaire de ce domaine. Très heureuse de vous accueillir - promenez-vous ou pédalez autour de l’étang de lotus pour visiter les 6 zones : Académique, Projets, Bibliothèque, Musique, Actualités et Avenir. Écrivez-moi quand vous voulez !',
+    'Bonjour ! 🌸 Je suis Hương, la propriétaire de ce domaine. Très heureuse de vous accueillir - promenez-vous ou pédalez autour de l’étang de lotus pour visiter les 7 zones : Maison principale, Académique, Projets, Bibliothèque, Musique, Actualités et Avenir. Écrivez-moi quand vous voulez !',
     'Honnêtement, difficile de choisir la plus belle ! Mais si je devais, j’aime l’étang de lotus au coucher du soleil - les lanternes s’allument si poétiquement, sans compter le bassin de koïs et le moulin qui tourne doucement. Et vous, quelle zone préférez-vous ? 🏡',
     'Laissez-moi vous raconter 📦 M-AIDA est un logiciel d’extraction de données de recherche depuis des PDF, enregistré avec DOI et archivé sur Zenodo - le coffre à la gemme bleue de la zone Projets vous attend. BizOn est un jeu de simulation d’entreprise en claymorphism où les équipes d’étudiants plantent leurs drapeaux de Cần Thơ jusqu’à Lũng Cú ! Les deux ont été conçus avec mon collègue à l’Université de Cần Thơ.',
     'La Clay Library 📚 est l’endroit où je garde mes livres préférés - des citations sur les livres, le savoir et les rêves vivent dans des livres en terre. Touchez n’importe quel livre pour une citation aléatoire - lire, c’est voyager sans bouger !',
@@ -4087,6 +4231,197 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
   try{ new ResizeObserver(doHud).observe(hud); }catch(e){}
   new MutationObserver(doHud).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
 })();
+
+/* ---------- 16. BẢN ĐỒ TOÀN CẢNH TRANG VIÊN ----------
+   Ve bay khu dung toa do that trong canh ba chieu (KHU[].vt) len mot ban do
+   phang, kem vi tri Huong dang dung. So tren ban do trung voi phim 1-7 nen
+   ban do cung la bang phim tat.
+
+   Cach dung: nut 🗺 tren thanh dau trang, bam ban do tron, hoac phim M.
+   Esc hoac bam ra ngoai de dong. Bam mot khu: Huong tu di toi khu do.        */
+(function(){
+  const lop = document.getElementById('toancanh');
+  if(!lop || typeof diemKhu === 'undefined') return;
+  const hopEl  = document.getElementById('tc-hop');
+  const veEl   = document.getElementById('tc-ve');
+  const dsEl   = document.getElementById('tc-ds');
+  const giaiEl = document.getElementById('tc-giai');
+  const tourEl = document.getElementById('tc-tour');
+  const meoEl  = document.getElementById('tc-meo');
+  const dauEl  = document.getElementById('tc-dau');
+
+  const RONG = 400;        // canh ban do trong toa do SVG
+  const NUA  = 46;         // nua the gioi duoc ve (BAN_KINH = 52, chua bien mot chut)
+  const toaX = x => (x + NUA) / (2*NUA) * RONG;
+  const toaZ = z => (z + NUA) / (2*NUA) * RONG;
+  const vi   = () => (typeof NG !== 'undefined' && NG === 'en') ? false : true;
+
+  /* Khu nao da tung mo bang noi dung thi nho lai, de ban do danh dau "da ghe".
+     Truoc day co san co k.khu._daMo trong ma ve ban do tron, nhung khong cho
+     nao dat no ca - nen dau hieu do khong bao gio hien. */
+  const KHOA_GHE = 'th_khu_da_ghe_v1';
+  let daGhe = new Set();
+  try{
+    const t = JSON.parse(localStorage.getItem(KHOA_GHE) || '[]');
+    if(Array.isArray(t)) daGhe = new Set(t.filter(x=>typeof x === 'string'));
+  }catch(e){}
+  daGhe.forEach(id=>{ const k = KHU.find(kh=>kh.id===id); if(k) k._daMo = true; });
+  window.ghiDaGhe = function(id){
+    if(!id || daGhe.has(id)) return;
+    daGhe.add(id);
+    const k = KHU.find(kh=>kh.id===id); if(k) k._daMo = true;
+    try{ localStorage.setItem(KHOA_GHE, JSON.stringify([...daGhe])); }catch(e){}
+    if(dangMoTC) veLai();
+  };
+
+  let dangMoTC = false, nhipEl = null;
+
+  function veBanDoLon(){
+    const p = [];
+    // dong song: dung dung cong thuc sin cua canh that
+    let d = '';
+    for(let x=-NUA; x<=NUA; x+=4){
+      const z = Math.sin(x*.05)*7 + 8;
+      d += (x===-NUA ? 'M' : 'L') + toaX(x).toFixed(1) + ' ' + toaZ(z).toFixed(1) + ' ';
+    }
+    p.push('<path d="'+d+'" fill="none" stroke="#9FD3E8" stroke-width="13" stroke-linecap="round" opacity=".85"/>');
+    // duong mon vong quanh ao sen
+    p.push('<circle cx="200" cy="200" r="86" fill="none" stroke="#F0DEC0" stroke-width="11" opacity=".85"/>');
+    // ao sen + dai phun o chinh giua
+    p.push('<circle cx="200" cy="200" r="15" fill="#9FD3E8" stroke="#E8C9A8" stroke-width="5"/>');
+    p.push('<text x="200" y="204" text-anchor="middle" font-size="11" opacity=".92">🌸</text>');
+    p.push('<text x="200" y="232" text-anchor="middle" font-size="10" fill="#5C6B66"'+
+      ' font-family="Be Vietnam Pro, system-ui" opacity=".75">'+(vi()?'ao sen':'lotus pond')+'</text>');
+
+    diemKhu.forEach((k,i)=>{
+      const x = toaX(k.x), z = toaZ(k.z), mau = k.khu.mau;
+      const xong = daGhe.has(k.khu.id);
+      const ten = (k.khu.ten && k.khu.ten[NG]) ? k.khu.ten[NG] : k.khu.id;
+      p.push(
+        '<g class="tc-pin'+(xong?' da':'')+'" data-khu="'+k.khu.id+'" role="button" tabindex="0"'+
+        ' aria-label="'+ten.replace(/"/g,'&quot;')+'">'+
+        '<title>'+ten.replace(/</g,'&lt;')+'</title>'+
+        '<circle class="vien" cx="'+x.toFixed(1)+'" cy="'+z.toFixed(1)+'" r="16" fill="#FFF8EE" opacity="'+(xong?'.95':'.7')+'"/>'+
+        '<circle class="nen" cx="'+x.toFixed(1)+'" cy="'+z.toFixed(1)+'" r="13" fill="'+mau+'"/>'+
+        '<text x="'+x.toFixed(1)+'" y="'+(z+4.2).toFixed(1)+'" text-anchor="middle">'+(i+1)+'</text>'+
+        '</g>');
+    });
+
+    // Huong dang o dau, quay mat huong nao
+    const hx = toaX(nhanVat.position.x), hz = toaZ(nhanVat.position.z);
+    const goc = (typeof nhanVat.rotation !== 'undefined' ? nhanVat.rotation.y : 0);
+    p.push('<g id="tc-toi" transform="translate('+hx.toFixed(1)+' '+hz.toFixed(1)+')">'+
+      '<circle r="13" fill="#E77E9A" opacity=".22"/>'+
+      '<circle r="6.5" fill="#E77E9A" stroke="#FFF8EE" stroke-width="2.5"/>'+
+      '<path d="M0 -14 L4.6 -6 L-4.6 -6 Z" fill="#E77E9A" stroke="#FFF8EE" stroke-width="1.4"'+
+      ' transform="rotate('+((-goc*180/Math.PI)).toFixed(1)+')"/></g>');
+
+    veEl.innerHTML = '<svg viewBox="0 0 400 400" role="img" aria-label="'+
+      (vi()?'Bản đồ trang viên với bảy khu':'Map of the estate with seven zones')+'">'+p.join('')+'</svg>';
+
+    veEl.querySelectorAll('.tc-pin').forEach(g=>{
+      const id = g.dataset.khu;
+      const di = ()=>{ const k = KHU.find(kh=>kh.id===id); if(k){ diToiKhu(k); dong(); } };
+      g.addEventListener('click', di);
+      g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); di(); } });
+    });
+  }
+
+  /* Chi doi vi tri Huong, khong ve lai ca ban do - de con tro khong nhay khi
+     khach dang ro chuot len mot khu. */
+  function doiViTri(){
+    const g = veEl.querySelector('#tc-toi');
+    if(!g) return;
+    const goc = (typeof nhanVat.rotation !== 'undefined' ? nhanVat.rotation.y : 0);
+    g.setAttribute('transform','translate('+toaX(nhanVat.position.x).toFixed(1)+' '+toaZ(nhanVat.position.z).toFixed(1)+')');
+    const mui = g.querySelector('path');
+    if(mui) mui.setAttribute('transform','rotate('+((-goc*180/Math.PI)).toFixed(1)+')');
+  }
+
+  function veDanhSach(){
+    dsEl.innerHTML = '';
+    diemKhu.forEach((k,i)=>{
+      const kh = k.khu, xong = daGhe.has(kh.id);
+      const dangDi = (typeof mucTieuDi !== 'undefined' && mucTieuDi && mucTieuDi.khu.id === kh.id);
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'tc-khu' + (xong?' da':'') + (dangDi?' dang':'');
+      b.innerHTML =
+        '<span class="so" style="background:'+kh.mau+'">'+(i+1)+'</span>'+
+        '<span class="bieu" aria-hidden="true">'+(kh.icon||'')+'</span>'+
+        '<span class="chu"><span class="ten">'+(kh.ten[NG]||kh.id)+'</span>'+
+        '<span class="phu">'+(kh.phu[NG]||'')+'</span>'+
+        '<span class="dau">'+(vi()?'✓ đã ghé':'✓ visited')+'</span></span>';
+      b.addEventListener('click', ()=>{ diToiKhu(kh); dong(); });
+      dsEl.appendChild(b);
+    });
+  }
+
+  function veChu(){
+    const soDa = diemKhu.filter(k=>daGhe.has(k.khu.id)).length, tong = diemKhu.length;
+    dauEl.querySelector('h2').textContent = vi() ? 'Bản đồ trang viên' : 'Map of the estate';
+    dauEl.querySelector('p').textContent = vi()
+      ? 'Bảy khu quanh ao sen. Chấm hồng là chỗ Hương đang đứng. Chạm một khu, Hương tự đi tới. Đã ghé ' + soDa + '/' + tong + ' khu.'
+      : 'Seven zones around the lotus pond. The pink dot is where Hương stands. Tap a zone and she walks there. Visited ' + soDa + '/' + tong + '.';
+    giaiEl.innerHTML =
+      '<span><i class="toi"></i>'+(vi()?'Hương đang ở đây':'Hương is here')+'</span>'+
+      '<span><i class="da"></i>'+(vi()?'đã ghé':'visited')+'</span>'+
+      '<span><i class="chua"></i>'+(vi()?'chưa ghé':'not yet')+'</span>';
+    const chay = (typeof tourDangChay !== 'undefined' && tourDangChay);
+    tourEl.className = chay ? 'dang' : '';
+    tourEl.textContent = chay
+      ? (vi()?'⏹ Dừng tour':'⏹ Stop tour')
+      : (vi()?'🗺 Tour quanh vườn':'🗺 Tour the estate');
+    meoEl.innerHTML = vi()
+      ? 'Số trên bản đồ cũng là phím tắt: bấm <kbd>1</kbd>–<kbd>7</kbd> để đi thẳng tới khu. <kbd>M</kbd> mở lại bản đồ này, <kbd>E</kbd> vào khu đang đứng cạnh.'
+      : 'The numbers are also shortcuts: press <kbd>1</kbd>–<kbd>7</kbd> to walk to a zone. <kbd>M</kbd> reopens this map, <kbd>E</kbd> enters the zone you stand beside.';
+  }
+
+  function veLai(){ veBanDoLon(); veDanhSach(); veChu(); }
+
+  function mo(){
+    if(dangMoTC) return;
+    dangMoTC = true;
+    veLai();
+    lop.classList.add('mo');
+    document.body.classList.add('dang-xem-ban-do');
+    lop.setAttribute('aria-hidden','false');
+    nhipEl = setInterval(doiViTri, 260);
+    const dau = dsEl.querySelector('.tc-khu');
+    if(dau) setTimeout(()=>dau.focus({preventScroll:true}), 120);
+  }
+  function dong(){
+    if(!dangMoTC) return;
+    dangMoTC = false;
+    lop.classList.remove('mo');
+    document.body.classList.remove('dang-xem-ban-do');
+    lop.setAttribute('aria-hidden','true');
+    clearInterval(nhipEl); nhipEl = null;
+  }
+  window.moToanCanh = mo;
+  window.dongToanCanh = dong;
+
+  document.getElementById('tc-dong').addEventListener('click', dong);
+  lop.addEventListener('pointerdown', e=>{ if(e.target === lop) dong(); });
+  tourEl.addEventListener('click', ()=>{
+    if(typeof tourDangChay !== 'undefined' && tourDangChay){ huyTour(); veChu(); }
+    else { batTour(); dong(); }
+  });
+
+  const nut = document.getElementById('nut-ban-do');
+  if(nut) nut.addEventListener('click', ()=> dangMoTC ? dong() : mo());
+  // bam ban do tron cung mo ban do lon
+  const tron = document.getElementById('ban-do');
+  if(tron) tron.addEventListener('click', ()=>{ if(!dangMo) mo(); });
+
+  addEventListener('keydown', e=>{
+    if(e.key === 'Escape' && dangMoTC){ e.preventDefault(); dong(); return; }
+    if((e.key === 'm' || e.key === 'M') && !dangMo){
+      e.preventDefault(); dangMoTC ? dong() : mo();
+    }
+  });
+})();
+
 </script>
 <script src="assets/js/music.js" defer></script>
 <script src="assets/js/dongho.js" defer></script>
