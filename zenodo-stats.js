@@ -71,9 +71,9 @@
     var stampLive = stamp.querySelector('.lang-vi');
     var stampEn = stamp.querySelector('.lang-en');
     if (stampLive) stampLive.textContent =
-      '\u{1F31F} Tin nổi bật hệ sinh thái \u00abJe m\u2019appelle H\u01b0\u01a1ng\u00bb \u00b7 số liệu Zenodo cập nhật trực tiếp';
+      '\u{1F31F} Tin nổi bật hệ sinh thái \u00abJe m\u0027appelle H\u01b0\u01a1ng\u00bb \u00b7 số liệu Zenodo cập nhật trực tiếp';
     if (stampEn) stampEn.textContent =
-      '\u{1F31F} \u00abJe m\u2019appelle H\u01b0\u01a1ng\u00bb ecosystem highlights \u00b7 Zenodo figures live';
+      '\u{1F31F} \u00abJe m\u0027appelle H\u01b0\u01a1ng\u00bb ecosystem highlights \u00b7 Zenodo figures live';
     stamp.setAttribute('data-live-updated', '1');
   }
 })();
