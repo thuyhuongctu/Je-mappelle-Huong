@@ -340,13 +340,30 @@ body.cham #ban-do canvas{width:84px;height:84px;pointer-events:none; }
 
 /* danh sach bay khu */
 #tc-ds{display:flex;flex-direction:column;gap:.3rem}
+/* Mỗi hàng có hai việc khác nhau nên phải là hai nút: đi tới khu, hoặc đọc
+   ngay tại chỗ. Trước đây cả hàng là một nút và chỉ làm được việc đi tới,
+   nghĩa là muốn đọc nội dung một khu thì bắt buộc phải đi bộ tới đó. */
 .tc-khu{
-  display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:.5rem;
-  padding:.45rem .55rem;border-radius:.85rem;background:#FFF8EE;
-  text-align:left;width:100%;cursor:pointer;border:1px solid transparent;
+  display:flex;align-items:stretch;gap:.25rem;
+  border-radius:.85rem;background:#FFF8EE;border:1px solid transparent;
 }
 .tc-khu:hover{background:#F8DCE4;border-color:rgba(231,126,154,.4)}
-.tc-khu:focus-visible{outline:2px solid var(--nhan);outline-offset:2px}
+.tc-di{
+  flex:1;min-width:0;
+  display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:.5rem;
+  padding:.45rem .55rem;border-radius:.85rem 0 0 .85rem;
+  background:transparent;border:0;color:inherit;font:inherit;
+  text-align:left;cursor:pointer;
+}
+.tc-doc{
+  flex:none;align-self:center;margin-right:.4rem;
+  padding:.34rem .62rem;border-radius:999px;
+  border:1px solid rgba(138,90,59,.3);background:#FFFDF8;color:#8A5A3B;
+  font:700 .7rem/1 'Baloo 2',system-ui;white-space:nowrap;cursor:pointer;
+}
+.tc-doc:hover{background:#8A5A3B;border-color:#8A5A3B;color:#FFF8EE}
+.tc-khu.dang .tc-doc{background:rgba(255,255,255,.9);border-color:transparent;color:#B44B69}
+.tc-di:focus-visible,.tc-doc:focus-visible{outline:2px solid var(--nhan);outline-offset:2px}
 .tc-khu .so{
   width:22px;height:22px;border-radius:50%;flex:none;display:grid;place-items:center;
   font:800 .72rem 'Baloo 2',system-ui;color:#FFF8EE;
@@ -4446,17 +4463,35 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
     diemKhu.forEach((k,i)=>{
       const kh = k.khu, xong = daGhe.has(kh.id);
       const dangDi = (typeof mucTieuDi !== 'undefined' && mucTieuDi && mucTieuDi.khu.id === kh.id);
+      const ten = kh.ten[NG] || kh.id;
+      const hang = document.createElement('div');
+      hang.className = 'tc-khu' + (xong?' da':'') + (dangDi?' dang':'');
+      hang.setAttribute('role','listitem');
+
       const b = document.createElement('button');
       b.type = 'button';
-      b.className = 'tc-khu' + (xong?' da':'') + (dangDi?' dang':'');
+      b.className = 'tc-di';
       b.innerHTML =
         '<span class="so" style="background:'+kh.mau+'">'+(i+1)+'</span>'+
         '<span class="bieu" aria-hidden="true">'+(kh.icon||'')+'</span>'+
-        '<span class="chu"><span class="ten">'+(kh.ten[NG]||kh.id)+'</span>'+
+        '<span class="chu"><span class="ten">'+ten+'</span>'+
         '<span class="phu">'+(kh.phu[NG]||'')+'</span>'+
         '<span class="dau">'+(vi()?'✓ đã ghé':'✓ visited')+'</span></span>';
       b.addEventListener('click', ()=>{ diToiKhu(kh); dong(); });
-      dsEl.appendChild(b);
+
+      // Đọc ngay: mở đúng bảng nội dung mà đi bộ tới nơi sẽ mở, chỉ khác là
+      // không bắt khách đi. Khách dùng điện thoại, hoặc người chỉ muốn đọc
+      // chứ không muốn chơi, trước đây không có đường nào tới nội dung này.
+      const d = document.createElement('button');
+      d.type = 'button';
+      d.className = 'tc-doc';
+      d.textContent = vi() ? 'Đọc' : 'Read';
+      d.setAttribute('aria-label', (vi()?'Đọc nội dung khu ':'Read the ') + ten);
+      d.addEventListener('click', ()=>{ dong(); moBangGoc(kh); });
+
+      hang.appendChild(b);
+      hang.appendChild(d);
+      dsEl.appendChild(hang);
     });
   }
 
@@ -4464,8 +4499,8 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
     const soDa = diemKhu.filter(k=>daGhe.has(k.khu.id)).length, tong = diemKhu.length;
     dauEl.querySelector('h2').textContent = vi() ? 'Bản đồ trang viên' : 'Map of the estate';
     dauEl.querySelector('p').textContent = vi()
-      ? tong + ' khu quanh ao sen. Chấm hồng là chỗ Hương đang đứng. Chạm một khu, Hương tự đi tới. Đã ghé ' + soDa + '/' + tong + ' khu.'
-      : tong + ' zones around the lotus pond. The pink dot is where Hương stands. Tap a zone and she walks there. Visited ' + soDa + '/' + tong + '.';
+      ? tong + ' khu quanh ao sen. Chấm hồng là chỗ Hương đang đứng. Chạm một khu, Hương tự đi tới; bấm «Đọc» thì đọc ngay tại đây. Đã ghé ' + soDa + '/' + tong + ' khu.'
+      : tong + ' zones around the lotus pond. The pink dot is where Hương stands. Tap a zone and she walks there, or press “Read” to read it right here. Visited ' + soDa + '/' + tong + '.';
     giaiEl.innerHTML =
       '<span><i class="toi"></i>'+(vi()?'Hương đang ở đây':'Hương is here')+'</span>'+
       '<span><i class="da"></i>'+(vi()?'đã ghé':'visited')+'</span>'+
@@ -4490,7 +4525,7 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
     document.body.classList.add('dang-xem-ban-do');
     lop.setAttribute('aria-hidden','false');
     nhipEl = setInterval(doiViTri, 260);
-    const dau = dsEl.querySelector('.tc-khu');
+    const dau = dsEl.querySelector('.tc-di');
     if(dau) setTimeout(()=>dau.focus({preventScroll:true}), 120);
   }
   function dong(){
