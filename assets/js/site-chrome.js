@@ -182,7 +182,7 @@
 
     function nutChiaSe() {
       var u = encodeURIComponent(location.href.split('#')[0]);
-      var ti = encodeURIComponent(document.title || 'Je m’appelle Hương');
+      var ti = encodeURIComponent(document.title || 'Je m\'appelle Hương');
       return SHARE.map(function (s) {
         var href = s[1].replace('{U}', u).replace('{T}', ti);
         return '<a class="sc-sh" href="' + href + '"' +
@@ -302,7 +302,7 @@
 
         '<div>' +
         '<a class="sf-mark" href="index.html">' +
-        '<span>Je m’appelle Hương<br>' + t('Giảng viên &amp; Nhà nghiên cứu', 'Lecturer &amp; Researcher', 'Enseignante &amp; Chercheuse') + '</span></a>' +
+        '<span>Je m\'appelle Hương<br>' + t('Giảng viên &amp; Nhà nghiên cứu', 'Lecturer &amp; Researcher', 'Enseignante &amp; Chercheuse') + '</span></a>' +
         '<p class="sf-tag">' + t('Nghiên cứu, giảng dạy và sáng tạo cùng AI.', 'Research, teaching and creativity with AI.', 'Recherche, enseignement et création avec l\u2019IA.') + '</p>' +
         '<div class="sf-slogan">' +
         '<svg class="rose" viewBox="0 0 40 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
