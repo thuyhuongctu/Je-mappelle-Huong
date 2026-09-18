@@ -331,7 +331,8 @@
         '<div class="sf-col"><div class="sf-ch">' + t('Khu vườn', 'The garden', 'Le jardin') + '</div>' +
         '<div><a href="garden.html">' + t('Vườn số', 'Digital garden', 'Jardin numérique') + '</a></div>' +
         '<div><a href="trangvien.html">' + t('Trang viên 3D', '3D estate', 'Domaine 3D') + '</a></div>' +
-        '<div><a href="music.html">' + t('Âm nhạc', 'Music', 'Musique') + '</a></div></div>' +
+        '<div><a href="music.html">' + t('Âm nhạc', 'Music', 'Musique') + '</a></div>' +
+        '<div><a href="so-luu-niem.html">' + t('Sổ lưu niệm', 'Guest book', 'Livre d\u2019or') + '</a></div></div>' +
 
         '<div class="sf-col"><div class="sf-ch">' + t('Hồ sơ', 'Profiles', 'Profils') + '</div>' +
         '<div><a href="https://scholar.google.com/citations?user=jSvAVnsAAAAJ" target="_blank" rel="noopener">Google Scholar</a></div>' +

@@ -495,9 +495,18 @@ body.dang-xem-ban-do #hud-sen{display:none !important}
 .an{display:none!important}
 
 /* mini-game hái sen */
-#hud-sen{position:fixed;left:14px;top:calc(var(--hud-cao,46px) + 16px);z-index:8;background:rgba(255,253,248,.92);border-radius:999px;
-  padding:8px 16px;font:700 15px/1 system-ui,sans-serif;color:#a8394e;
-  box-shadow:0 4px 14px rgba(150,95,75,.25);pointer-events:none;z-index:1001; }
+/* Bộ đếm sen trước đây là một ô nổi riêng, đặt cứng ở góc trái trên ngay
+   dưới hàng nút — nhìn ra thành hàng thứ hai. Nay nó nằm hẳn trong hàng nút,
+   cạnh dấu hiệu, nên trên cùng chỉ còn một dải.
+   pointer-events phải ghi đè: .hud > * ép mọi con thành auto, mà đây chỉ là
+   chỗ đọc số, không bấm được, để auto thì nó ăn mất cú chạm vào khu vườn. */
+#hud-sen{
+  display:flex;align-items:center;gap:.3rem;flex:none;
+  padding:.45rem .85rem;border-radius:999px;
+  background:rgba(255,251,244,.9);backdrop-filter:blur(10px);box-shadow:var(--bong);
+  font:800 .85rem/1 'Baloo 2',system-ui;color:#a8394e;white-space:nowrap;
+  pointer-events:none !important;
+}
 #toast-sen{position:fixed;inset:0;display:none;place-items:center;z-index:9500;background:rgba(40,25,35,.45);z-index:1030; pointer-events:none; }
 #toast-sen.hien{display:grid}
 #toast-sen .hop{background:#fffdf8;border-radius:26px;padding:34px 40px;text-align:center;max-width:420px;
@@ -629,6 +638,7 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important;z-index:920
 <!-- ============ HUD ============ -->
 <div class="hud" id="hud-tren">
   <a href="index.html" id="hieu"><img src="assets/img/lr-seal-round.webp" alt="Logo LR - Je m'appelle Hương" id="logo-tv"><span data-vi="Trang viên Hương" data-en="Hương's Estate">Trang viên Hương</span></a>
+  <div id="hud-sen"><span aria-hidden="true">🌸</span><span><span id="sen-so">0</span>/12</span></div>
   <div class="nhom">
     <button class="nut-nho" id="nut-ban-do" data-vi="🗺 Bản đồ" data-en="🗺 Map"
       aria-label="Mở bản đồ trang viên">🗺 Bản đồ</button>
@@ -683,7 +693,6 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important;z-index:920
 <div id="goi-y"><b>E</b><span></span></div>
 
 <div id="can"><i></i></div>
-<div id="hud-sen">🌸 <span id="sen-so">0</span>/12</div>
 <div id="toast-sen"><div class="hop">
   <h2>🎉 <span data-vi="Hái đủ 12 đóa sen!" data-en="All 12 lotus picked!">Hái đủ 12 đóa sen!</span></h2>
   <p data-vi="Khu vườn nở rộ chúc mừng bạn. Sen sẽ lại nở để bạn hái tiếp." data-en="The garden blooms in your honor. The lotus will bloom again for another round.">Khu vườn nở rộ chúc mừng bạn. Sen sẽ lại nở để bạn hái tiếp.</p>
@@ -2465,6 +2474,10 @@ function moTroGiup(){
   document.getElementById('bang-icon').style.background = 'linear-gradient(150deg,#BFE3EE,#8FC9DE)';
   document.getElementById('noi-dung').innerHTML = HD[NG].body;
   man.classList.add('mo');
+  // Bang tro giup dung chung dung cai bang voi bang cua mot khu, nhung truoc
+  // day khong dat lop nay - nen mo khu thi chin cum noi tu an di, con mo tro
+  // giup thi chung van lo lung quanh bang. Cung mot bang thi cung mot nep.
+  document.body.classList.add('dang-doc-khu');
 }
 document.getElementById('nut-tro-giup').addEventListener('click', moTroGiup);
 

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-title" content="Hương">
+<title>Sổ lưu niệm · Guest book - Je m'appelle Hương</title>
+<meta name="description" content="Guest book of Do Thuy Huong's site: leave a few words, or read what other visitors have left.">
+<link rel="canonical" href="https://thuyhuongctu.github.io/Je-mappelle-Huong/so-luu-niem.html">
+<meta property="og:title" content="Sổ lưu niệm · Guest book - Je m'appelle Hương">
+<meta property="og:description" content="Leave a few words, or read what other visitors have left.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/so-luu-niem.html">
+<meta property="og:site_name" content="Je m'appelle Hương - Do Thuy Huong">
+<meta property="og:image" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/assets/img/og-default.jpg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>
+:root{--paper:#f6f1e7;--surface:#fffcf5;--ink:#1c1814;--muted:#6f6459;--line:#e2d8c7;
+--accent:#c45c3a;--accent-soft:#f3e4da;--gold:#b8842c;--accent2:#3f6f68;
+--serif:"Iowan Old Style",Georgia,"Times New Roman",serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+--shadow:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09);
+--ra:cubic-bezier(.23,1,.32,1)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#17130f;--surface:#201914;--ink:#efe6d8;--muted:#a6998a;--line:#332a22;--accent:#e08055;--accent-soft:#3a251c;--gold:#d6a24e;--accent2:#79b3a6;--shadow:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42)}}
+:root[data-theme=dark]{--paper:#17130f;--surface:#201914;--ink:#efe6d8;--muted:#a6998a;--line:#332a22;--accent:#e08055;--accent-soft:#3a251c;--gold:#d6a24e;--accent2:#79b3a6;--shadow:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42)}
+:root[data-theme=light]{--paper:#f6f1e7;--surface:#fffcf5;--ink:#1c1814;--muted:#6f6459;--line:#e2d8c7;--accent:#c45c3a;--accent-soft:#f3e4da;--gold:#b8842c;--accent2:#3f6f68;--shadow:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09)}
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6}
+.wrap{max-width:860px;margin:0 auto;padding:clamp(20px,4vw,48px) 18px;padding-top:96px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
+a{color:var(--accent)}
+.skip{position:absolute;left:-999px;top:0;background:var(--accent);color:#fff;padding:10px 16px;z-index:99}
+.skip:focus{left:12px;top:12px;border-radius:10px;text-decoration:none}
+.skip-link{position:absolute;top:-48px;left:0;background:var(--accent);color:#fff;font-weight:700;padding:10px 18px;z-index:100;border-radius:0 0 10px 0;text-decoration:none}
+.skip-link:focus{top:0}
+.brandmini{position:fixed;top:10px;left:12px;z-index:6;display:none;width:min(230px,calc(100vw - 190px));height:auto;text-decoration:none;line-height:0}
+.brandmini img{display:block;width:100%;height:auto;object-fit:contain}
+@media(max-width:560px){.brandmini{top:6px;left:6px;width:96px;background:rgba(255,253,248,.7);border-radius:14px;padding:3px 8px}}
+.topctl{position:fixed;top:58px;right:14px;display:flex;gap:8px;z-index:61;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 24px)}
+@media(max-width:760px){.topctl{top:52px;gap:6px}}
+.toggle{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 13px;font-size:.74rem;cursor:pointer;box-shadow:var(--shadow)}
+.langtog{display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
+.langtog button{border:none;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:6px 11px;cursor:pointer}
+.langtog button.active{background:var(--accent);color:#fff}
+html[lang="vi"] .lang-en,html[lang="vi"] .lang-fr{display:none}
+html[lang="en"] .lang-vi,html[lang="en"] .lang-fr{display:none}
+html[lang="fr"] .lang-vi,html[lang="fr"] .lang-en{display:none}
+header.page{margin:40px 0 14px;text-align:center;position:relative}
+header.page h1{font-size:clamp(1.7rem,5vw,2.5rem);margin:0 0 8px}
+.page-kicker{margin:0 0 6px;font:700 .7rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--accent-soft),var(--accent),var(--accent-soft))}
+.sub{color:var(--muted)}
+
+/* ---- lời ngỏ của chủ nhà --------------------------------------------- */
+.ngo{background:var(--accent-soft);border:1px solid var(--line);border-radius:22px;
+  padding:20px 24px;margin:22px 0 30px;display:flex;gap:16px;align-items:flex-start}
+.ngo img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none;box-shadow:var(--shadow)}
+.ngo p{margin:0 0 6px;font-family:var(--serif);font-size:1.02rem;line-height:1.55}
+.ngo .ky{font:700 .74rem var(--sans);color:var(--accent);letter-spacing:.04em}
+@media(max-width:520px){.ngo{flex-direction:column;gap:12px;padding:18px}}
+
+/* ---- tường lưu niệm --------------------------------------------------- */
+.dem{font-size:.74rem;color:var(--muted);margin:0 0 14px}
+#tuong{display:grid;gap:14px;margin:0 0 40px;padding:0;list-style:none}
+.loi{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px 24px;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.5),0 1px 2px rgba(30,20,20,.05),0 8px 24px rgba(30,20,20,.06);
+  transition:transform .18s var(--ra)}
+.loi:hover{transform:translateY(-2px)}
+.loi blockquote{margin:0 0 12px;font-family:var(--serif);font-size:1.04rem;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+.loi blockquote::before{content:"\201C";color:var(--accent);font-size:1.5em;line-height:0;vertical-align:-.28em;margin-right:.08em}
+.loi footer{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;font-size:.8rem;color:var(--muted)}
+.loi .ai{font-weight:700;color:var(--ink)}
+.loi .noi::before{content:"·";margin-right:8px}
+.loi .khi{margin-left:auto;font-variant-numeric:tabular-nums}
+.trong{border:1px dashed var(--line);border-radius:22px;padding:30px 24px;text-align:center;color:var(--muted);font-size:.9rem}
+
+/* ---- ô viết ----------------------------------------------------------- */
+.viet{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow)}
+.viet h2{font-size:1.25rem;margin:0 0 4px}
+.viet .huong-dan{font-size:.84rem;color:var(--muted);margin:0 0 18px}
+.hang{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+@media(max-width:560px){.hang{grid-template-columns:1fr}}
+.o{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.o label{font:700 .76rem var(--sans);color:var(--ink)}
+.o .phu{font-weight:400;color:var(--muted)}
+.o input,.o textarea{font:inherit;font-size:.92rem;color:var(--ink);background:var(--paper);
+  border:1px solid var(--line);border-radius:14px;padding:10px 13px;width:100%;
+  transition:border-color .18s var(--ra),box-shadow .18s var(--ra)}
+.o textarea{min-height:130px;resize:vertical;line-height:1.55}
+.o input:focus,.o textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.dongy{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--muted);margin:4px 0 18px}
+.dongy input{margin-top:3px;flex:none;width:16px;height:16px;accent-color:var(--accent)}
+.gui{font:700 .88rem var(--sans);background:var(--accent);color:#fff;border:none;border-radius:999px;
+  padding:11px 26px;cursor:pointer;box-shadow:var(--shadow);
+  transition:transform .16s var(--ra),opacity .16s var(--ra)}
+.gui:hover{transform:translateY(-1px)}
+.gui:active{transform:scale(.97)}
+.gui[disabled]{opacity:.55;cursor:default;transform:none}
+.bao{margin:14px 0 0;font-size:.85rem;min-height:1.4em}
+.bao.xong{color:var(--accent2);font-weight:600}
+.bao.hong{color:#b23b3b;font-weight:600}
+.chua{border:1px dashed var(--line);border-radius:18px;padding:20px;font-size:.88rem;color:var(--muted)}
+.chua a{font-weight:600}
+.rieng{font-size:.76rem;color:var(--muted);margin:16px 0 0;padding-top:14px;border-top:1px solid var(--line)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
+</style>
+<style>
+/* ===== đầu trang dùng chung (kiểu DeepMind) ===== */
+.dmnav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:10px;padding:10px 16px;
+  background:color-mix(in srgb,var(--surface) 78%,transparent);backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);transition:padding .25s ease,box-shadow .25s ease}
+.dmnav.shrink{padding:6px 16px;box-shadow:0 2px 12px rgba(60,30,30,.12)}
+.dmnav .dmlogo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);line-height:0;flex-shrink:0}
+.dmnav .dmlogo img{height:30px;width:auto}
+.dmnav .dmlabel{font:600 .78rem/1 var(--serif);color:var(--ink);letter-spacing:.02em}
+.dmnav .dmlabel small{display:block;font:600 .56rem/1.2 var(--sans);color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-top:2px}
+.dmnav .dmright{margin-left:auto;display:flex;align-items:center;gap:6px;overflow-x:auto;max-width:calc(100vw - 170px)}
+.dmnav .dmright a{color:var(--ink);text-decoration:none;font:500 .76rem/1.4 var(--sans);padding:6px 8px;white-space:nowrap;
+  background-image:linear-gradient(var(--accent),var(--accent));background-size:0% 1.5px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .28s ease,color .2s}
+.dmnav .dmright a:hover{color:var(--accent);background-size:100% 1.5px}
+.dmnav .dmico{display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border-radius:50%;color:var(--muted);font-size:.9rem;text-decoration:none;transition:color .2s,background .2s}
+.dmnav .dmico:hover{color:var(--accent);background:var(--accent-soft)}
+@media(max-width:760px){.dmnav{padding:7px 10px;gap:6px;flex-wrap:nowrap}.dmnav .dmlabel small{display:none}.dmnav .dmlabel{font-size:.7rem}
+.dmnav .dmright{max-width:calc(100vw - 150px);flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.dmnav .dmright::-webkit-scrollbar{display:none}
+.dmnav .dmright a{font-size:.66rem;padding:5px 5px;white-space:nowrap;flex-shrink:0}
+.dmnav .dmico{width:28px;height:28px;font-size:.8rem;flex-shrink:0}.dmnav .dmico:last-child{display:none}.dmnav .dmright{min-width:0}
+.dmnav{max-width:100%;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;flex-shrink:1}.dmnav::-webkit-scrollbar{display:none}}
+</style>
+<script>/* Lua chon sang/toi dung chung ca site (khoa huong_theme). Dat trong <head>
+   de trang khong nhay mau khi tai. */
+(function(){try{var s=localStorage.getItem('huong_theme');if(s)document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script>
+</head><body>
+  <div class="dmnav" id="dmnav">
+    <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
+    <div class="dmright">
+      <a href="index.html"><span class="lang-vi">Trang chủ</span><span class="lang-en">Home</span><span class="lang-fr">Accueil</span></a>
+      <a href="publications.html"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></a>
+      <a href="cv.html">CV</a>
+      <a href="garden.html">🪷 <span class="lang-vi">Vườn số</span><span class="lang-en">Garden</span><span class="lang-fr">Jardin</span></a>
+      <a href="so-luu-niem.html" aria-current="page"><span class="lang-vi">Sổ lưu niệm</span><span class="lang-en">Guest book</span><span class="lang-fr">Livre d'or</span></a>
+      <a class="dmico" href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener" title="ORCID">🆔</a>
+      <a class="dmico" href="https://github.com/thuyhuongctu" target="_blank" rel="noopener" title="GitHub">💻</a>
+      <a class="dmico" href="mailto:thuyhuongctu@gmail.com" title="Email">✉️</a>
+    </div>
+  </div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip" href="#main"><span class="lang-vi">Nhảy đến sổ lưu niệm</span><span class="lang-en">Skip to the guest book</span><span class="lang-fr">Aller au livre d'or</span></a>
+<a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo LR - Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
+<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span><span class="lang-fr">◐ Clair / Sombre</span></button></div>
+
+<div class="wrap">
+
+<header class="page">
+  <div class="page-kicker"><span class="lang-vi">Khách đến chơi nhà</span><span class="lang-en">Visitors</span><span class="lang-fr">Les visiteurs</span></div>
+  <h1><span class="lang-vi">Sổ lưu niệm</span><span class="lang-en">Guest book</span><span class="lang-fr">Livre d'or</span></h1>
+  <p class="sub">
+    <span class="lang-vi">Ai ghé qua đây, nếu muốn để lại đôi dòng thì xin viết vào cuối trang. Lời nhắn về thẳng hộp thư của Hương; Hương đọc rồi mới chép lên tường, nên có thể vài hôm mới thấy.</span>
+    <span class="lang-en">If you have passed by and would like to leave a few words, please write them at the bottom of this page. Messages go straight to Hương's inbox; she reads them before copying any onto the wall, so a few days may pass before one appears.</span>
+    <span class="lang-fr">Si vous passez par ici et souhaitez laisser quelques mots, écrivez-les en bas de page. Les messages arrivent directement dans la boîte de Hương ; elle les lit avant d'en recopier sur le mur, quelques jours peuvent donc s'écouler.</span>
+  </p>
+</header>
+
+<div class="ngo">
+  <img src="assets/img/pro_aodai.webp" width="56" height="56" loading="lazy" decoding="async" alt="" onerror="this.style.display='none'">
+  <div>
+    <p>
+      <span class="lang-vi">Trang này bắt đầu từ một thư mục rỗng và vài dòng HTML, làm buổi tối sau giờ lên lớp. Nếu có chỗ nào hữu ích cho bạn — một bài đọc, một bản nhạc, hay chỉ là một buổi đi lang thang trong khu vườn — thì cho tôi biết với. Một dòng thôi cũng quý.</span>
+      <span class="lang-en">This site began as an empty folder and a few lines of HTML, written in the evenings after teaching. If anything here has been of use to you — a paper, a song, or simply an evening wandering the garden — do tell me. A single line is worth a great deal.</span>
+      <span class="lang-fr">Ce site a commencé par un dossier vide et quelques lignes de HTML, écrites le soir après les cours. Si quelque chose ici vous a servi — un article, une chanson, ou simplement une promenade dans le jardin — dites-le moi. Une seule ligne compte beaucoup.</span>
+    </p>
+    <div class="ky">— <span class="lang-vi">Đỗ Thùy Hương, Cần Thơ</span><span class="lang-en">Do Thuy Huong, Can Tho</span><span class="lang-fr">Do Thuy Huong, Cần Thơ</span></div>
+  </div>
+</div>
+
+<main id="main">
+  <p class="dem" id="dem"></p>
+  <ul id="tuong" aria-live="polite"></ul>
+
+  <section class="viet" aria-labelledby="tieu-de-viet">
+    <h2 id="tieu-de-viet"><span class="lang-vi">Viết đôi dòng</span><span class="lang-en">Leave a few words</span><span class="lang-fr">Laisser quelques mots</span></h2>
+    <p class="huong-dan">
+      <span class="lang-vi">Không cần tài khoản gì cả. Lời nhắn đi thẳng về hộp thư của Hương.</span>
+      <span class="lang-en">No account of any kind is needed. Your message goes straight to Hương's inbox.</span>
+      <span class="lang-fr">Aucun compte n'est nécessaire. Votre message arrive directement dans la boîte de Hương.</span>
+    </p>
+
+    <div id="chua-noi" class="chua" hidden>
+      <span class="lang-vi">Ô viết còn đang chờ nối vào biểu mẫu. Trong lúc chờ, xin gửi lời nhắn qua thư: </span>
+      <span class="lang-en">The writing box is still waiting to be connected to its form. In the meantime, please send a message by email: </span>
+      <span class="lang-fr">La zone d'écriture attend encore d'être reliée à son formulaire. En attendant, envoyez un message par courriel : </span>
+      <a href="mailto:thuyhuongctu@gmail.com?subject=S%E1%BB%95%20l%C6%B0u%20ni%E1%BB%87m">thuyhuongctu@gmail.com</a>
+    </div>
+
+    <form id="mau" hidden novalidate>
+      <div class="hang">
+        <div class="o">
+          <label for="f-ten"><span class="lang-vi">Tên</span><span class="lang-en">Name</span><span class="lang-fr">Nom</span></label>
+          <input id="f-ten" name="ten" type="text" maxlength="80" autocomplete="name" required>
+        </div>
+        <div class="o">
+          <label for="f-noi"><span class="lang-vi">Từ đâu tới <span class="phu">(không bắt buộc)</span></span><span class="lang-en">Where from <span class="phu">(optional)</span></span><span class="lang-fr">D'où <span class="phu">(facultatif)</span></span></label>
+          <input id="f-noi" name="noi" type="text" maxlength="80" placeholder="Cần Thơ · K30 · Twitter">
+        </div>
+      </div>
+      <div class="o">
+        <label for="f-loi"><span class="lang-vi">Lời nhắn</span><span class="lang-en">Message</span><span class="lang-fr">Message</span></label>
+        <textarea id="f-loi" name="loi" maxlength="900" required></textarea>
+      </div>
+      <div class="o">
+        <label for="f-thu"><span class="lang-vi">Thư điện tử <span class="phu">(không bắt buộc, không bao giờ đăng lên)</span></span><span class="lang-en">Email <span class="phu">(optional, never published)</span></span><span class="lang-fr">Courriel <span class="phu">(facultatif, jamais publié)</span></span></label>
+        <input id="f-thu" name="thu" type="email" maxlength="120" autocomplete="email">
+      </div>
+      <label class="dongy">
+        <input id="f-dang" type="checkbox" checked>
+        <span>
+          <span class="lang-vi">Hương có thể chép lời này lên tường (kèm tên và nơi ở trên, không kèm thư điện tử). Bỏ dấu này thì lời nhắn chỉ mình Hương đọc.</span>
+          <span class="lang-en">Hương may copy this message onto the wall (with the name and place above, never the email). Untick and the message stays for her eyes only.</span>
+          <span class="lang-fr">Hương peut recopier ce message sur le mur (avec le nom et le lieu ci-dessus, jamais le courriel). Décochez et le message ne sera lu que par elle.</span>
+        </span>
+      </label>
+      <button class="gui" type="submit" id="nut-gui"><span class="lang-vi">Gửi</span><span class="lang-en">Send</span><span class="lang-fr">Envoyer</span></button>
+      <p class="bao" id="bao" role="status" aria-live="polite"></p>
+    </form>
+
+    <noscript>
+      <div class="chua">
+        <span class="lang-vi">Ô viết cần JavaScript. Nếu bạn tắt JavaScript, xin gửi thư về </span>
+        <span class="lang-en">The writing box needs JavaScript. If you have it switched off, please write to </span>
+        <span class="lang-fr">La zone d'écriture a besoin de JavaScript. S'il est désactivé, écrivez à </span>
+        <a href="mailto:thuyhuongctu@gmail.com?subject=S%E1%BB%95%20l%C6%B0u%20ni%E1%BB%87m">thuyhuongctu@gmail.com</a>
+      </div>
+    </noscript>
+
+    <p class="rieng">
+      <span class="lang-vi">Về chuyện riêng tư: lời nhắn đi qua một biểu mẫu Google và về hộp thư của Hương, không qua máy chủ nào khác. Thư điện tử không bao giờ hiện trên trang. Muốn xoá lời đã đăng thì nhắn một câu, Hương gỡ xuống.</span>
+      <span class="lang-en">On privacy: messages travel through a Google Form into Hương's own inbox and touch no other server. Email addresses never appear on the page. To have a published message taken down, just say so and it comes down.</span>
+      <span class="lang-fr">Sur la vie privée : les messages passent par un formulaire Google jusqu'à la boîte de Hương et ne touchent aucun autre serveur. Les adresses de courriel n'apparaissent jamais sur la page. Pour faire retirer un message publié, il suffit de le demander.</span>
+    </p>
+  </section>
+</main>
+
+</div>
+
+<script>document.getElementById('tg').addEventListener('click',function(){var r=document.documentElement;var c=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('huong_theme',n);}catch(e){}});</script>
+<script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="vi";try{s=localStorage.getItem("huong_lang")||(/^en/i.test(navigator.language)?"en":(/^fr/i.test(navigator.language)?"fr":"vi"));}catch(e){}set(s);})();</script>
+<script src="assets/js/so-luu-niem.js" defer></script>
+<script src="assets/js/music.js" defer></script>
+<script src="assets/js/site-chrome.js" defer></script>
+</body></html>
