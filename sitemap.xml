@@ -98,4 +98,10 @@
     <changefreq>yearly</changefreq>
     <!-- Vì sao tôi xây M-AIDA: để máy đọc, còn người quyết định -->
   </url>
+  <url>
+    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/so-luu-niem.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
+  </url>
 </urlset>

@@ -1,5 +1,5 @@
 /* Service worker - Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v96';
+const CACHE = 'jshuong-v97';
 const CORE = [
   './',
   'index.html',
@@ -11,6 +11,7 @@ const CORE = [
   'songbook.html',
   'trangvien.html',
   'blog.html',
+  'so-luu-niem.html',
   'assets/vendor/three-r128.min.js',
   'assets/js/huong3d.js',
   'assets/js/clayhero.js',
@@ -18,6 +19,8 @@ const CORE = [
   'assets/js/dongho.js',
   'assets/js/music.js',
   'assets/js/site-chrome.js',
+  'assets/js/so-luu-niem.js',
+  'assets/data/so-luu-niem.json',
   'assets/css/site-chrome.css',
   'manifest.webmanifest',
   'assets/img/huong_clay_portrait.webp',
