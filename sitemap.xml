@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/garden.html</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
@@ -39,6 +39,12 @@
   <url>
     <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/trangvien.html</loc>
     <lastmod>2026-09-17</lastmod>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/so-luu-niem.html</loc>
+    <lastmod>2026-09-18</lastmod>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
@@ -97,11 +103,5 @@
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- Vì sao tôi xây M-AIDA: để máy đọc, còn người quyết định -->
-  </url>
-  <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/so-luu-niem.html</loc>
-    <lastmod>2026-09-18</lastmod>
-    <priority>0.5</priority>
-    <changefreq>weekly</changefreq>
   </url>
 </urlset>
