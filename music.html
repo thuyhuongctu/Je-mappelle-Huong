@@ -117,6 +117,9 @@ audio{width:100%;height:38px}
 @media(max-width:640px){.picrow,.songpic{margin:14px 16px 4px}}
 /* Nhan vat nghe nhac: anh nen trong suot nen khong can khung. */
 .nhanvat{display:block;margin:2px auto 0;width:min(210px,46vw);height:auto}
+/* Dáng đứng cao gầy thì chặn theo chiều cao, không theo chiều ngang,
+   nếu không nó chiếm mất cả màn hình trước khi đọc được tên album. */
+.nhanvat.dung{width:auto;height:min(268px,38vh)}
 .lyrics{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:26px clamp(20px,4vw,36px)}
 .lyrics h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:26px 0 8px;font-family:var(--sans);font-weight:700}
 .lyrics h3:first-child{margin-top:0}
@@ -457,8 +460,8 @@ footer a:hover{color:var(--accent)}
     <div class="shead"><h2><span class="lang-vi">Album «Je m'appelle Hương»</span><span class="lang-en">The album «Je m'appelle Hương»</span></h2><span class="ln"></span></div>
     <p class="song-desc" style="max-width:100%;margin:0 0 14px"><span class="lang-vi">Sáu bài chính cùng một bản bonus · 25 bản thu · sáng tác 07 - 13/08/2026.</span><span class="lang-en">Six main songs plus one bonus · 25 recordings · composed 7 - 13 Aug 2026.</span></p>
     <div class="song" style="padding:22px 24px">
-      <img class="nhanvat" src="assets/img/huong-nghe-nhac-dung.webp" width="768" height="768" loading="lazy" decoding="async"
-           alt="Hình đất sét: Hương trong áo dài trắng, đội tai nghe, giữa những nốt nhạc vàng">
+      <img class="nhanvat dung" src="assets/img/huong-ai-sen.webp" width="264" height="900" loading="lazy" decoding="async"
+           alt="Hình đất sét: Hương AI trong áo dài trắng, một đoá sen trên tay">
       <div class="song-title" style="text-align:center">La lampe, le fleuve et les couleurs</div>
       <p class="song-desc" style="max-width:100%;text-align:center;margin:6px auto 0"><span class="lang-vi">Một mini song-cycle / EP gồm 6 bài hát về sự vắng mặt, sự trưởng thành, và những giấc mơ thay hình đổi dạng · Sáng tác 07 - 13/08/2026.</span><span class="lang-en">A six-song mini song-cycle / EP about absence, growing up, and dreams that change their shape · Composed 7 - 13 Aug 2026.</span></p>
       <div class="taglines">

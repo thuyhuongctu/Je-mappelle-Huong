@@ -2118,7 +2118,7 @@ let bcHienTai = 'vui';
 function datBieuCam(bc){
   if(bc === bcHienTai) return;
   bcHienTai = bc;
-  if(typeof datDang === 'function') datDang(BC_SANG_DANG[bc] || 'teo2');
+  if(typeof datDang === 'function') datDang(dangHopCanh(bc));
   // nảy nhẹ mỗi lần đổi dáng
   nhanVat.userData.nay = 1;
 }
@@ -2243,13 +2243,24 @@ nhanVat.traverse(o=>{ if(o.isMesh){ o.castShadow = true; } });
 nhanVat.visible = false;
 
 const DANG_ANH = {
-  xedap:'assets/img/huong_xedap_full.webp',
-  gioithieu:'assets/img/pose_gioithieu_fix.webp',
-  reo:'assets/img/pose_reo_fix.webp',
-  teo2:'assets/img/pose_teo2_fix.webp',
-  gioithieu2:'assets/img/pose_gioithieu2_fix.webp',
+  xedap:'assets/img/huong-ai-xe-dap.webp',
+  gioithieu:'assets/img/huong-ai-chao.webp',
+  reo:'assets/img/huong-ai-sen-sang.webp',
+  teo2:'assets/img/huong-ai-sen.webp',
+  gioithieu2:'assets/img/huong-ai-cuon-thu.webp',
+  docsach:'assets/img/huong-ai-doc-sach.webp',
+  dannguyet:'assets/img/huong-ai-dan-nguyet.webp',
+  thuyen:'assets/img/huong-ai-thuyen.webp',
 };
-const DANG_TL = {xedap:0.7250, gioithieu:0.8792, reo:0.8792, teo2:0.8167, gioithieu2:0.8319};
+/* Rộng/cao lấy đúng theo khổ tệp ảnh. Ảnh mới cắt sát người nên khung phẳng
+   bằng đúng khổ ảnh thì nhân vật giữ nguyên tỉ lệ. Bộ ảnh cũ ghi 0.8792
+   trong khi tệp chỉ 0.6708 — tức là bấy lâu nhân vật bị kéo bè ngang
+   khoảng 1,3 lần mà không ai để ý, vì ảnh cũ còn viền trong suốt quanh
+   người nên nhìn không ra. */
+const DANG_TL = {
+  xedap:0.8427, gioithieu:0.3817, reo:0.2963, teo2:0.2933, gioithieu2:0.6268,
+  docsach:0.7756, dannguyet:0.5537, thuyen:1.0393,
+};
 
 const boTai = new THREE.TextureLoader();
 const DANG_TEX = {};
@@ -2272,6 +2283,22 @@ anhHuong.renderOrder = 5;
 scene.add(anhHuong);
 
 let dangHienTai = 'teo2', latNV = 1;
+/* Dáng đúng cho lúc này, theo thứ tự ưu tiên: đang đạp xe → dáng xe;
+   đang đứng trong một khu có dáng riêng → dáng của khu; còn lại mới theo
+   nét mặt.
+
+   Trước đây KHU_SANG_DANG gần như chưa bao giờ hiện ra. Nó chỉ được đặt
+   đúng một lần, ngay lúc bước vào vùng của khu; nhưng ngay sau đó trong
+   cùng vòng vẽ, phần «biểu cảm tự động» gọi datBieuCam() cho khu ấy, và
+   datBieuCam() lại đặt dáng theo BC_SANG_DANG - ghi đè mất dáng của khu.
+   Nên khu âm nhạc vẫn đứng yên chứ không ngồi gảy đàn. */
+function dangHopCanh(bc){
+  if(dapXe) return 'xedap';
+  if(khuGan && typeof KHU_SANG_DANG !== 'undefined' && KHU_SANG_DANG[khuGan.id])
+    return KHU_SANG_DANG[khuGan.id];
+  return BC_SANG_DANG[bc] || 'teo2';
+}
+
 function datDang(k){
   if(!DANG_TEX[k] || k === dangHienTai) return;
   dangHienTai = k;
@@ -2304,10 +2331,14 @@ const BC_SANG_DANG = {
 };
 /* dáng bổ sung theo khu: khi vào khu thì chuyển sang dáng phù hợp ngữ cảnh */
 const KHU_SANG_DANG = {
-  'hoc-thuat':'teo2',        // khu học thuật: dáng tư thế trầm tư (full body)
-  'thu-vien':'gioithieu2',   // thư viện sáng tạo: chỉ tay giới thiệu
-  'am-nhac':'reo',           // khu âm nhạc: reo hò theo nhạc
-  'kho-tuong-lai':'gioithieu' // kho tương lai: giơ tay chào mừng
+  'hoc-thuat':'docsach',       // học thuật: ngồi đọc bên bàn gỗ
+  'du-an':'gioithieu2',        // dự án: cầm cuộn thư giới thiệu
+  'thu-vien':'docsach',        // thư viện: cũng là dáng đọc
+  'am-nhac':'dannguyet',       // âm nhạc: ngồi gảy đàn nguyệt
+  'bang-tin':'gioithieu',      // bảng tin: vẫy tay chào
+  'gioi-thieu':'teo2',         // giới thiệu: đứng yên, sen trên tay
+  'loi-ke-chuyen':'thuyen',    // lối kể chuyện: chèo thuyền chở sen
+  'kho-tuong-lai':'reo'        // kho tương lai: đoá sen phát sáng
 };
 
 /* ---------- 8. XE ĐẠP ---------- */
@@ -2488,7 +2519,7 @@ function doiXe(){
   n.textContent = dapXe ? (NG==='vi'?'🚶 Đi bộ':'🚶 Walk') : (NG==='vi'?'🚲 Đạp xe':'🚲 Cycle');
   n.classList.toggle('bat', dapXe);
   document.getElementById('nut-xe').textContent = dapXe ? '🚶' : '🚲';
-  if(!dapXe) datDang(BC_SANG_DANG[bcHienTai] || 'teo2');
+  if(!dapXe) datDang(dangHopCanh(bcHienTai));
   if(!bcChon) datBieuCam(dapXe ? 'reo' : 'vui');
 }
 
