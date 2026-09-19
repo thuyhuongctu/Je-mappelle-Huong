@@ -482,6 +482,12 @@ body.dang-xem-ban-do #hud-sen{display:none !important}
 .bai audio{width:100%;height:34px;margin-top:.5rem}
 .ngay{font-size:.7rem;font-weight:700;letter-spacing:.08em;color:var(--vang);text-transform:uppercase}
 .anh-nv{width:100%;max-width:210px;margin:0 auto 1rem;display:block;filter:drop-shadow(0 14px 24px rgba(120,80,60,.28))}
+/* Canh dat set dat o dau bang mot khu: rong het bang, bo goc theo dung
+   kieu the .the ben duoi, co chu thich nho ben duoi anh. */
+.canh-khu{margin:0 0 1.1rem}
+.canh-khu img{width:100%;height:auto;display:block;border-radius:18px;
+  box-shadow:0 10px 26px rgba(120,80,60,.22)}
+.canh-khu figcaption{margin:.5rem .2rem 0;font-size:.82rem;line-height:1.5;color:var(--muc-nhat)}
 #noi-dung::-webkit-scrollbar{width:0}
 
 @media (min-width:820px){
@@ -842,7 +848,9 @@ const KHU = [
     ten:{vi:'Học thuật & Nghiên cứu', en:'Research'},
     phu:{vi:'Giảng đường sen · Đại học Cần Thơ', en:'Lotus hall · Can Tho University'},
     html:{
-      vi:`<p><b>Nghiên cứu sinh tiến sĩ</b>, Trường Kinh tế, Đại học Cần Thơ. Hướng dẫn khoa học: <b>PGS.TS. Phan Anh Tú</b>.</p>
+      vi:`<figure class="canh-khu"><img src="assets/img/khu-hoc-thuat-an-thu.webp" width="916" height="524" loading="lazy" decoding="async"
+        alt="Hình đất sét: Hương đứng bên án thư gỗ có cuộn giấy và sách, cửa sổ mở ra đầm sen và những con thuyền"><figcaption>Giảng đường sen - án thư bên cửa sổ mở ra đồng sen và khúc sông.</figcaption></figure>
+        <p><b>Nghiên cứu sinh tiến sĩ</b>, Trường Kinh tế, Đại học Cần Thơ. Hướng dẫn khoa học: <b>PGS.TS. Phan Anh Tú</b>.</p>
         <p>Hướng nghiên cứu chính: <b>quốc tế hóa và hiệu quả hoạt động kinh doanh của doanh nghiệp ở châu Á</b> - kết hợp kinh tế lượng doanh nghiệp, phân tích tổng hợp và công cụ AI có kiểm chứng con người.</p>
         <div class="hang">
           <div class="o"><b>50</b><span>nền kinh tế WBES</span></div>
@@ -860,7 +868,9 @@ const KHU = [
         <a class="the" href="https://osf.io/m25qs/" target="_blank" rel="noopener"><b>OSF</b><span>Dữ liệu và tài liệu mở</span><em>Mở →</em></a>
         <h3>Giảng dạy</h3>
         <p>Kinh tế lượng · Phương pháp nghiên cứu · Phân tích hoạt động kinh doanh · Kinh doanh quốc tế · Thương mại điện tử · Mô phỏng tình huống kinh doanh · Khởi nghiệp.</p>`,
-      en:`<p><b>PhD Candidate</b>, School of Economics, Can Tho University. Supervisor: <b>Assoc. Prof. Dr. Phan Anh Tu</b>.</p>
+      en:`<figure class="canh-khu"><img src="assets/img/khu-hoc-thuat-an-thu.webp" width="916" height="524" loading="lazy" decoding="async"
+        alt="Clay scene: Huong at a wooden desk with scrolls and books, the window open onto a lotus field and boats"><figcaption>The lotus hall - a writing desk by a window open to the lotus field and the river.</figcaption></figure>
+        <p><b>PhD Candidate</b>, School of Economics, Can Tho University. Supervisor: <b>Assoc. Prof. Dr. Phan Anh Tu</b>.</p>
         <p>Core line of work: <b>internationalization and firm performance in Asia</b> - firm-level econometrics, meta-analysis, and human-verified AI research tools.</p>
         <div class="hang">
           <div class="o"><b>50</b><span>WBES economies</span></div>
@@ -910,14 +920,18 @@ const KHU = [
     ten:{vi:'Thư viện sáng tạo', en:'Library'},
     phu:{vi:'Nhà sàn tri thức · slide, sổ nhạc, tư liệu', en:'Stilt house · decks, songbook, materials'},
     html:{
-      vi:`<p>Kho tư liệu sáng tạo của hệ sinh thái: bộ trình chiếu, sổ nhạc, tư liệu MV và các bộ kỹ năng dựng nội dung.</p>
+      vi:`<figure class="canh-khu"><img src="assets/img/khu-thu-vien-thuyen.webp" width="916" height="509" loading="lazy" decoding="async"
+        alt="Hình đất sét: chiếc thuyền chở đầy sách neo bên bờ, Hương đứng trên cầu ván đón mấy đứa trẻ tới mượn"><figcaption>Thư viện nổi bên sông - sách chở bằng thuyền, cầu ván bắc vào bờ.</figcaption></figure>
+        <p>Kho tư liệu sáng tạo của hệ sinh thái: bộ trình chiếu, sổ nhạc, tư liệu MV và các bộ kỹ năng dựng nội dung.</p>
         <a class="the" href="deck-ecosystem/index.html"><b>Bộ slide hệ sinh thái</b><span>“Je m'appelle Hương” - 10 slide giới thiệu luận án, M-AIDA, BizOn, EnQuiz và âm nhạc. Có bản PDF kèm theo.</span><em>Mở bộ slide →</em></a>
         <a class="the" href="music.html#main"><b>Album «La lampe, le fleuve et les couleurs»</b><span>Sáu bài chính cùng một bản bonus, 24 bản thu, sáng tác 07 - 13/08/2026. Trọn bộ lời và ghi chú sáng tác.</span><em>Mở album →</em></a>
         <a class="the" href="deck-ecosystem/Je-mappelle-Huong-Ecosystem-Deck.pdf"><b>Bản PDF trình chiếu</b><span>Tải về để trình bày hội thảo hoặc bảo vệ chuyên đề.</span><em>Tải PDF →</em></a>
         <a class="the" href="garden.html#worlddata"><b>Dữ liệu thế giới</b><span>Số liệu trực tiếp từ World Bank Open Data cho các nền kinh tế trong luận án, chọn chỉ số và quốc gia để so sánh.</span><em>Xem bảng dữ liệu →</em></a>
         <h3>Giấy phép</h3>
         <p style="font-size:.86rem;color:var(--muc-nhat)">Phần mềm mở theo giấy phép công bố kèm DOI Zenodo. Nhạc và lời: tác giả giữ bản quyền.</p>`,
-      en:`<p>The ecosystem's creative archive: presentation decks, the songbook, music-video materials and content-production skill kits.</p>
+      en:`<figure class="canh-khu"><img src="assets/img/khu-thu-vien-thuyen.webp" width="916" height="509" loading="lazy" decoding="async"
+        alt="Clay scene: a boat loaded with books moored at the bank, Huong on the plank bridge welcoming children"><figcaption>A floating library - books carried by boat, a plank bridge to the bank.</figcaption></figure>
+        <p>The ecosystem's creative archive: presentation decks, the songbook, music-video materials and content-production skill kits.</p>
         <a class="the" href="deck-ecosystem/index.html"><b>Ecosystem deck</b><span>“Je m'appelle Hương” - ten slides covering the dissertation, M-AIDA, BizOn, EnQuiz and the music. A PDF is included.</span><em>Open deck →</em></a>
         <a class="the" href="music.html#main"><b>The album «La lampe, le fleuve et les couleurs»</b><span>Six main songs plus one bonus, 24 recordings, composed 7 - 13 Aug 2026. Full lyrics and composition notes.</span><em>Open the album →</em></a>
         <a class="the" href="deck-ecosystem/Je-mappelle-Huong-Ecosystem-Deck.pdf"><b>Deck as PDF</b><span>Download for conference talks or seminar defences.</span><em>Download PDF →</em></a>
@@ -931,14 +945,18 @@ const KHU = [
     ten:{vi:'Âm nhạc', en:'Music'},
     phu:{vi:'Sân khấu tre bên đầm sen', en:'Bamboo stage by the lotus pond'},
     html:{
-      vi:`<p>Các sáng tác riêng - nghe ngay tại đây, hoặc mở trang nhạc đầy đủ có lời và ghi chú.</p>
+      vi:`<figure class="canh-khu"><img src="assets/img/khu-am-nhac-dan-nguyet.webp" width="916" height="503" loading="lazy" decoding="async"
+        alt="Hình đất sét: Hương ngồi trên ghế gỗ dưới gốc liễu, ôm đàn nguyệt, bên cạnh là ngọn đèn lồng và hồ sen đêm"><figcaption>Sân khấu tre bên đầm sen - một ngọn đèn, cây đàn nguyệt và đêm trăng.</figcaption></figure>
+        <p>Các sáng tác riêng - nghe ngay tại đây, hoặc mở trang nhạc đầy đủ có lời và ghi chú.</p>
         <div class="bai"><b>Parler à mon père</b><span>Chương mở đầu của song-cycle</span><audio controls preload="none" src="assets/audio/parler-a-mon-pere.mp3"></audio></div>
         <div class="bai"><b>La lampe brûle encore</b><span>Ngọn đèn vẫn cháy - bản thu 3</span><audio controls preload="none" src="assets/audio/la-lampe-brule-encore-3.mp3"></audio></div>
         <div class="bai"><b>Đèn còn sáng · remix</b><span>Bản tiếng Việt</span><audio controls preload="none" src="assets/audio/den-con-sang-remix3.mp3"></audio></div>
         <div class="bai"><b>Mekong Sunfire · hook 15s</b><span>Trích đoạn MV</span><audio controls preload="none" src="docs/mv/mekong-sunfire-hook-15s.mp3"></audio></div>
         <a class="the" href="music.html"><b>Trang âm nhạc đầy đủ</b><span>24 bản thu, sáu bài chính cùng một bản bonus, lời và ghi chú sáng tác.</span><em>Mở trang nhạc →</em></a>
         <p style="font-style:italic;color:var(--nhan);text-align:center;margin-top:1rem">🪷 «Je m'appelle Hương - tu m'as donné ce nom.»</p>`,
-      en:`<p>Personal compositions - listen here, or open the full music page with lyrics and notes.</p>
+      en:`<figure class="canh-khu"><img src="assets/img/khu-am-nhac-dan-nguyet.webp" width="916" height="503" loading="lazy" decoding="async"
+        alt="Clay scene: Huong on a wooden bench under a willow playing a đàn nguyệt, beside a lantern and a night-time lotus pond"><figcaption>The bamboo stage by the lotus pond - one lantern, a đàn nguyệt, a moonlit night.</figcaption></figure>
+        <p>Personal compositions - listen here, or open the full music page with lyrics and notes.</p>
         <div class="bai"><b>Parler à mon père</b><span>Opening chapter of the song-cycle</span><audio controls preload="none" src="assets/audio/parler-a-mon-pere.mp3"></audio></div>
         <div class="bai"><b>La lampe brûle encore</b><span>The lamp still burns - take 3</span><audio controls preload="none" src="assets/audio/la-lampe-brule-encore-3.mp3"></audio></div>
         <div class="bai"><b>Đèn còn sáng · remix</b><span>Vietnamese version</span><audio controls preload="none" src="assets/audio/den-con-sang-remix3.mp3"></audio></div>
@@ -971,7 +989,9 @@ const KHU = [
     ten:{vi:'Nhà chính · Giới thiệu', en:'Main House · About'},
     phu:{vi:'Đỗ Thùy Hương · Cần Thơ, Việt Nam', en:'Do Thuy Huong · Can Tho, Vietnam'},
     html:{
-      vi:`<img class="anh-nv" src="assets/img/pro_aodai.webp" alt="Đỗ Thùy Hương trong tà áo dài trắng" onerror="this.style.display='none'" loading="lazy">
+      vi:`<figure class="canh-khu"><img src="assets/img/khu-gioi-thieu-chong-tra.webp" width="916" height="517" loading="lazy" decoding="async"
+        alt="Hình đất sét: Hương ngồi trong chòi tre bên đầm sen, rót trà ra chén trên chiếc bàn thấp"><figcaption>Nhà chính - chòi tre bên đầm sen, ấm trà vừa rót, mời bạn ngồi.</figcaption></figure>
+        <img class="anh-nv" src="assets/img/pro_aodai.webp" alt="Đỗ Thùy Hương trong tà áo dài trắng" onerror="this.style.display='none'" loading="lazy">
         <p>Tôi là giảng viên và nghiên cứu sinh tiến sĩ ngành Quản trị kinh doanh tại Trường Kinh tế, Đại học Cần Thơ. Công việc của tôi kết hợp kinh tế lượng doanh nghiệp, phân tích tổng hợp, và phát triển công cụ AI hỗ trợ nghiên cứu có kiểm chứng con người.</p>
         <p>Trang viên này là phiên bản đi được của hệ sinh thái số ấy: mỗi khu là một phần công việc, và nhân vật hướng dẫn - <b>Hương AI</b> trong tà áo dài trắng - cũng chính là gương mặt đại diện xuyên suốt M-AIDA, BizOn và EnQuiz.</p>
         <h3>🪷 Nguồn cảm hứng</h3>
@@ -981,7 +1001,9 @@ const KHU = [
         <a class="the" href="mailto:thuyhuongctu@gmail.com"><b>thuyhuongctu@gmail.com</b><span>Thư nghiên cứu và hợp tác</span><em>Gửi thư →</em></a>
         <a class="the" href="https://github.com/thuyhuongctu" target="_blank" rel="noopener"><b>GitHub</b><span>Mã nguồn các dự án mở</span><em>Mở →</em></a>
         <a class="the" href="index.html"><b>Trang học thuật đầy đủ</b><span>Bản trang chính có công bố, giảng dạy và dữ liệu thế giới.</span><em>Về trang chính →</em></a>`,
-      en:`<img class="anh-nv" src="assets/img/pro_aodai.webp" alt="Do Thuy Huong in a white áo dài" onerror="this.style.display='none'" loading="lazy">
+      en:`<figure class="canh-khu"><img src="assets/img/khu-gioi-thieu-chong-tra.webp" width="916" height="517" loading="lazy" decoding="async"
+        alt="Clay scene: Huong in a bamboo pavilion over a lotus pond, pouring tea at a low table"><figcaption>The main house - a bamboo pavilion over the lotus pond, tea just poured.</figcaption></figure>
+        <img class="anh-nv" src="assets/img/pro_aodai.webp" alt="Do Thuy Huong in a white áo dài" onerror="this.style.display='none'" loading="lazy">
         <p>I am a lecturer and PhD candidate in Business Administration at the School of Economics, Can Tho University. My work combines firm-level econometrics, meta-analysis, and the development of human-verified AI research tools.</p>
         <p>This estate is a walkable version of that digital ecosystem: each area is a part of the work, and the guide - <b>Hương AI</b> in her white áo dài - is the same face that appears across M-AIDA, BizOn and EnQuiz.</p>
         <h3>🪷 Inspiration</h3>
@@ -998,9 +1020,13 @@ const KHU = [
     ten:{vi:'Lối kể chuyện', en:'Story Lane'},
     phu:{vi:'Bảy ngọn đèn · câu chuyện qua songbook', en:'Seven lanterns · the story through the songbook'},
     html:{
-      vi:`<p>Bảy bài trong songbook không rời nhau: xếp đúng thứ tự, chúng kể một câu chuyện. Mỗi ngọn đèn dưới đây là một bài. Chạm vào để nghe ngay tại đây, hoặc mở trang Âm nhạc để đọc trọn lời.</p><p style="font-size:.85rem;color:var(--muc-nhat)">Phần mô tả mỗi bài lấy nguyên từ bảng mạch truyện trên trang Âm nhạc.</p><div class="loi-den"><button type="button" class="den-bai " data-bai="track01" data-neo="t01"><span class="den-so">01</span><span class="den-chu"><span class="den-ten">Je voudrais te parler</span><span class="den-tt">Người trưởng thành lên tiếng</span><span class="den-bt">🏮 Đêm, lời chưa nói · Mong manh</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="track02" data-neo="t02"><span class="den-so">02</span><span class="den-chu"><span class="den-ten">Đèn vẫn còn sáng</span><span class="den-tt">Nguồn gốc khoảng lặng</span><span class="den-bt">🏮 Ghế trống, hai mái chèo · Mất mát, ấm áp</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="track03" data-neo="t03"><span class="den-so">03</span><span class="den-chu"><span class="den-ten">The Lamp Still Burns</span><span class="den-tt">Góc nhìn thứ ba bao quát</span><span class="den-bt">🏮 Đèn, sông · An ủi, cho phép nghỉ</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai chu" data-bai="track04_v2" data-neo="t04"><span class="den-so">04</span><span class="den-chu"><span class="den-ten">Hai Mươi Sáu Năm Sau (v2)</span><span class="den-tt">BÀI HÁT CHỦ ĐỀ</span><span class="den-bt">🏮 Hộp màu, màn hình, code · Hồi sinh, ngộ ra</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="track05_vi" data-neo="t05"><span class="den-so">05</span><span class="den-chu"><span class="den-ten">Ba gọi con về</span><span class="den-tt">Lời nhắn nhủ từ người cha</span><span class="den-bt">🏮 Dòng sông, đôi vai · Thấu hiểu, chữa lành</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="official" data-neo="t06"><span class="den-so">06</span><span class="den-chu"><span class="den-ten">Je m'appelle Hương</span><span class="den-tt">Hợp nhất mọi phiên bản</span><span class="den-bt">🏮 Con đường, hòn đảo · Trở về, bình yên</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="le_ciel_quitte" data-neo="t07"><span class="den-so">07</span><span class="den-chu"><span class="den-ten">Le ciel que tu n’as jamais quitté</span><span class="den-tt">Ngoại truyện</span><span class="den-bt">🏮 Bầu trời, mái hiên · Tôn trọng, chờ đợi</span></span><span class="den-phat" aria-hidden="true">▶</span></button></div>
+      vi:`<figure class="canh-khu"><img src="assets/img/khu-loi-ke-den-long.webp" width="916" height="521" loading="lazy" decoding="async"
+        alt="Hình đất sét: Hương chèo thuyền chở giỏ sen qua xóm nhà sàn, hai bên là những ngọn đèn lồng thắp sáng"><figcaption>Lối kể chuyện - những ngọn đèn dọc đường nước, mỗi ngọn là một bài.</figcaption></figure>
+        <p>Bảy bài trong songbook không rời nhau: xếp đúng thứ tự, chúng kể một câu chuyện. Mỗi ngọn đèn dưới đây là một bài. Chạm vào để nghe ngay tại đây, hoặc mở trang Âm nhạc để đọc trọn lời.</p><p style="font-size:.85rem;color:var(--muc-nhat)">Phần mô tả mỗi bài lấy nguyên từ bảng mạch truyện trên trang Âm nhạc.</p><div class="loi-den"><button type="button" class="den-bai " data-bai="track01" data-neo="t01"><span class="den-so">01</span><span class="den-chu"><span class="den-ten">Je voudrais te parler</span><span class="den-tt">Người trưởng thành lên tiếng</span><span class="den-bt">🏮 Đêm, lời chưa nói · Mong manh</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="track02" data-neo="t02"><span class="den-so">02</span><span class="den-chu"><span class="den-ten">Đèn vẫn còn sáng</span><span class="den-tt">Nguồn gốc khoảng lặng</span><span class="den-bt">🏮 Ghế trống, hai mái chèo · Mất mát, ấm áp</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="track03" data-neo="t03"><span class="den-so">03</span><span class="den-chu"><span class="den-ten">The Lamp Still Burns</span><span class="den-tt">Góc nhìn thứ ba bao quát</span><span class="den-bt">🏮 Đèn, sông · An ủi, cho phép nghỉ</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai chu" data-bai="track04_v2" data-neo="t04"><span class="den-so">04</span><span class="den-chu"><span class="den-ten">Hai Mươi Sáu Năm Sau (v2)</span><span class="den-tt">BÀI HÁT CHỦ ĐỀ</span><span class="den-bt">🏮 Hộp màu, màn hình, code · Hồi sinh, ngộ ra</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="track05_vi" data-neo="t05"><span class="den-so">05</span><span class="den-chu"><span class="den-ten">Ba gọi con về</span><span class="den-tt">Lời nhắn nhủ từ người cha</span><span class="den-bt">🏮 Dòng sông, đôi vai · Thấu hiểu, chữa lành</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="official" data-neo="t06"><span class="den-so">06</span><span class="den-chu"><span class="den-ten">Je m'appelle Hương</span><span class="den-tt">Hợp nhất mọi phiên bản</span><span class="den-bt">🏮 Con đường, hòn đảo · Trở về, bình yên</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="le_ciel_quitte" data-neo="t07"><span class="den-so">07</span><span class="den-chu"><span class="den-ten">Le ciel que tu n’as jamais quitté</span><span class="den-tt">Ngoại truyện</span><span class="den-bt">🏮 Bầu trời, mái hiên · Tôn trọng, chờ đợi</span></span><span class="den-phat" aria-hidden="true">▶</span></button></div>
         <a class="the" href="music.html" target="_blank" rel="noopener"><b>Trang Âm nhạc</b><span>Trọn lời bảy bài, ba ngôn ngữ, kèm các bản thu khác.</span><em>Mở →</em></a>`,
-      en:`<p>The seven songs in the songbook are not separate: in order, they tell one story. Each lantern below is one song. Tap to hear it here, or open the Music page for the full lyrics.</p><p style="font-size:.85rem;color:var(--muc-nhat)">Each description is taken verbatim from the story table on the Music page.</p><div class="loi-den"><button type="button" class="den-bai " data-bai="track01" data-neo="t01"><span class="den-so">01</span><span class="den-chu"><span class="den-ten">Je voudrais te parler</span><span class="den-tt">The adult speaks</span><span class="den-bt">🏮 Night, unsaid words · Fragile</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="track02" data-neo="t02"><span class="den-so">02</span><span class="den-chu"><span class="den-ten">La lampe brûle encore</span><span class="den-tt">Where the silence began</span><span class="den-bt">🏮 Empty chair, two oars · Loss, warmth</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="track03" data-neo="t03"><span class="den-so">03</span><span class="den-chu"><span class="den-ten">The Lamp Still Burns</span><span class="den-tt">A third-person embrace</span><span class="den-bt">🏮 Lamp, river · Comfort, permission to rest</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai chu" data-bai="track04_v2" data-neo="t04"><span class="den-so">04</span><span class="den-chu"><span class="den-ten">26 Năm Sau</span><span class="den-tt">TITLE TRACK</span><span class="den-bt">🏮 Paint box, screen, code · Rebirth, realization</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="track05_vi" data-neo="t05"><span class="den-so">05</span><span class="den-chu"><span class="den-ten">A Father’s Song to His Little Girl</span><span class="den-tt">A message from father</span><span class="den-bt">🏮 The river, shoulders · Healing, understanding</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="official" data-neo="t06"><span class="den-so">06</span><span class="den-chu"><span class="den-ten">Je m'appelle Hương</span><span class="den-tt">All selves unite</span><span class="den-bt">🏮 The road, the island · Return, peace</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="le_ciel_quitte" data-neo="t07"><span class="den-so">07</span><span class="den-chu"><span class="den-ten">Le ciel que tu n’as jamais quitté</span><span class="den-tt">Epilogue</span><span class="den-bt">🏮 Sky, doorstep · Respect, waiting</span></span><span class="den-phat" aria-hidden="true">▶</span></button></div>
+      en:`<figure class="canh-khu"><img src="assets/img/khu-loi-ke-den-long.webp" width="916" height="521" loading="lazy" decoding="async"
+        alt="Clay scene: Huong rowing a boat with a basket of lotus past stilt houses lit by lanterns"><figcaption>Story Lane - lanterns along the waterway, one for each song.</figcaption></figure>
+        <p>The seven songs in the songbook are not separate: in order, they tell one story. Each lantern below is one song. Tap to hear it here, or open the Music page for the full lyrics.</p><p style="font-size:.85rem;color:var(--muc-nhat)">Each description is taken verbatim from the story table on the Music page.</p><div class="loi-den"><button type="button" class="den-bai " data-bai="track01" data-neo="t01"><span class="den-so">01</span><span class="den-chu"><span class="den-ten">Je voudrais te parler</span><span class="den-tt">The adult speaks</span><span class="den-bt">🏮 Night, unsaid words · Fragile</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="track02" data-neo="t02"><span class="den-so">02</span><span class="den-chu"><span class="den-ten">La lampe brûle encore</span><span class="den-tt">Where the silence began</span><span class="den-bt">🏮 Empty chair, two oars · Loss, warmth</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="track03" data-neo="t03"><span class="den-so">03</span><span class="den-chu"><span class="den-ten">The Lamp Still Burns</span><span class="den-tt">A third-person embrace</span><span class="den-bt">🏮 Lamp, river · Comfort, permission to rest</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai chu" data-bai="track04_v2" data-neo="t04"><span class="den-so">04</span><span class="den-chu"><span class="den-ten">26 Năm Sau</span><span class="den-tt">TITLE TRACK</span><span class="den-bt">🏮 Paint box, screen, code · Rebirth, realization</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="track05_vi" data-neo="t05"><span class="den-so">05</span><span class="den-chu"><span class="den-ten">A Father’s Song to His Little Girl</span><span class="den-tt">A message from father</span><span class="den-bt">🏮 The river, shoulders · Healing, understanding</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="official" data-neo="t06"><span class="den-so">06</span><span class="den-chu"><span class="den-ten">Je m'appelle Hương</span><span class="den-tt">All selves unite</span><span class="den-bt">🏮 The road, the island · Return, peace</span></span><span class="den-phat" aria-hidden="true">▶</span></button><button type="button" class="den-bai " data-bai="le_ciel_quitte" data-neo="t07"><span class="den-so">07</span><span class="den-chu"><span class="den-ten">Le ciel que tu n’as jamais quitté</span><span class="den-tt">Epilogue</span><span class="den-bt">🏮 Sky, doorstep · Respect, waiting</span></span><span class="den-phat" aria-hidden="true">▶</span></button></div>
         <a class="the" href="music.html" target="_blank" rel="noopener"><b>Music page</b><span>Full lyrics for all seven, three languages, with alternate takes.</span><em>Open →</em></a>`
     }
   },
@@ -1009,7 +1035,9 @@ const KHU = [
     ten:{vi:'Kho tương lai', en:'Future'},
     phu:{vi:'Ngọn hải đăng ước mơ · những kế hoạch sắp tới', en:'Lighthouse of dreams · what comes next'},
     html:{
-      vi:`<p>Trang viên này vẫn đang lớn lên cùng hệ sinh thái. Mỗi chuyến tham quan của bạn là một viên gạch cho những điều sắp tới.</p>
+      vi:`<figure class="canh-khu"><img src="assets/img/khu-tuong-lai-xe-dap.webp" width="916" height="504" loading="lazy" decoding="async"
+        alt="Hình đất sét: Hương đạp xe chở giỏ sen trên con đường đất giữa cánh đồng sen lúc bình minh"><figcaption>Kho tương lai - con đường đất xuyên cánh đồng sen, phía trước là bình minh.</figcaption></figure>
+        <p>Trang viên này vẫn đang lớn lên cùng hệ sinh thái. Mỗi chuyến tham quan của bạn là một viên gạch cho những điều sắp tới.</p>
         <div class="hang">
           <div class="o"><b>M-AIDA</b><span>phiên bản trích xuất mới</span></div>
           <div class="o"><b>BizOn</b><span>bản mở rộng GO GlObal</span></div>
@@ -1019,7 +1047,9 @@ const KHU = [
         <h3>Định hướng học thuật</h3>
         <p>Luận án tiến sĩ về <b>quốc tế hóa và hiệu quả hoạt động kinh doanh của doanh nghiệp ở châu Á</b> đang được hoàn thiện; các phát hiện mới sẽ được cập nhật tại khu học thuật.</p>
         <p style="font-style:italic;color:var(--nhan)">“Hải đăng không cần to - chỉ cần sáng.”</p>`,
-      en:`<p>This estate keeps growing alongside the ecosystem. Every visit lays a brick for what comes next.</p>
+      en:`<figure class="canh-khu"><img src="assets/img/khu-tuong-lai-xe-dap.webp" width="916" height="504" loading="lazy" decoding="async"
+        alt="Clay scene: Huong cycling with a basket of lotus along a dirt path through the lotus fields at dawn"><figcaption>The future - a dirt path through the lotus fields, with dawn ahead.</figcaption></figure>
+        <p>This estate keeps growing alongside the ecosystem. Every visit lays a brick for what comes next.</p>
         <div class="hang">
           <div class="o"><b>M-AIDA</b><span>next extraction release</span></div>
           <div class="o"><b>BizOn</b><span>GO GlObal expansion</span></div>
@@ -2118,7 +2148,7 @@ let bcHienTai = 'vui';
 function datBieuCam(bc){
   if(bc === bcHienTai) return;
   bcHienTai = bc;
-  if(typeof datDang === 'function') datDang(BC_SANG_DANG[bc] || 'teo2');
+  if(typeof datDang === 'function') datDang(dangHopCanh(bc));
   // nảy nhẹ mỗi lần đổi dáng
   nhanVat.userData.nay = 1;
 }
@@ -2243,13 +2273,24 @@ nhanVat.traverse(o=>{ if(o.isMesh){ o.castShadow = true; } });
 nhanVat.visible = false;
 
 const DANG_ANH = {
-  xedap:'assets/img/huong_xedap_full.webp',
-  gioithieu:'assets/img/pose_gioithieu_fix.webp',
-  reo:'assets/img/pose_reo_fix.webp',
-  teo2:'assets/img/pose_teo2_fix.webp',
-  gioithieu2:'assets/img/pose_gioithieu2_fix.webp',
+  xedap:'assets/img/huong-ai-xe-dap.webp',
+  gioithieu:'assets/img/huong-ai-chao.webp',
+  reo:'assets/img/huong-ai-sen-sang.webp',
+  teo2:'assets/img/huong-ai-sen.webp',
+  gioithieu2:'assets/img/huong-ai-cuon-thu.webp',
+  docsach:'assets/img/huong-ai-doc-sach.webp',
+  dannguyet:'assets/img/huong-ai-dan-nguyet.webp',
+  thuyen:'assets/img/huong-ai-thuyen.webp',
 };
-const DANG_TL = {xedap:0.7250, gioithieu:0.8792, reo:0.8792, teo2:0.8167, gioithieu2:0.8319};
+/* Rộng/cao lấy đúng theo khổ tệp ảnh. Ảnh mới cắt sát người nên khung phẳng
+   bằng đúng khổ ảnh thì nhân vật giữ nguyên tỉ lệ. Bộ ảnh cũ ghi 0.8792
+   trong khi tệp chỉ 0.6708 — tức là bấy lâu nhân vật bị kéo bè ngang
+   khoảng 1,3 lần mà không ai để ý, vì ảnh cũ còn viền trong suốt quanh
+   người nên nhìn không ra. */
+const DANG_TL = {
+  xedap:0.8390, gioithieu:0.3805, reo:0.2951, teo2:0.2989, gioithieu2:0.6268,
+  docsach:0.7744, dannguyet:0.5549, thuyen:1.0340,
+};
 
 const boTai = new THREE.TextureLoader();
 const DANG_TEX = {};
@@ -2272,6 +2313,22 @@ anhHuong.renderOrder = 5;
 scene.add(anhHuong);
 
 let dangHienTai = 'teo2', latNV = 1;
+/* Dáng đúng cho lúc này, theo thứ tự ưu tiên: đang đạp xe → dáng xe;
+   đang đứng trong một khu có dáng riêng → dáng của khu; còn lại mới theo
+   nét mặt.
+
+   Trước đây KHU_SANG_DANG gần như chưa bao giờ hiện ra. Nó chỉ được đặt
+   đúng một lần, ngay lúc bước vào vùng của khu; nhưng ngay sau đó trong
+   cùng vòng vẽ, phần «biểu cảm tự động» gọi datBieuCam() cho khu ấy, và
+   datBieuCam() lại đặt dáng theo BC_SANG_DANG - ghi đè mất dáng của khu.
+   Nên khu âm nhạc vẫn đứng yên chứ không ngồi gảy đàn. */
+function dangHopCanh(bc){
+  if(dapXe) return 'xedap';
+  if(khuGan && typeof KHU_SANG_DANG !== 'undefined' && KHU_SANG_DANG[khuGan.id])
+    return KHU_SANG_DANG[khuGan.id];
+  return BC_SANG_DANG[bc] || 'teo2';
+}
+
 function datDang(k){
   if(!DANG_TEX[k] || k === dangHienTai) return;
   dangHienTai = k;
@@ -2304,10 +2361,14 @@ const BC_SANG_DANG = {
 };
 /* dáng bổ sung theo khu: khi vào khu thì chuyển sang dáng phù hợp ngữ cảnh */
 const KHU_SANG_DANG = {
-  'hoc-thuat':'teo2',        // khu học thuật: dáng tư thế trầm tư (full body)
-  'thu-vien':'gioithieu2',   // thư viện sáng tạo: chỉ tay giới thiệu
-  'am-nhac':'reo',           // khu âm nhạc: reo hò theo nhạc
-  'kho-tuong-lai':'gioithieu' // kho tương lai: giơ tay chào mừng
+  'hoc-thuat':'docsach',       // học thuật: ngồi đọc bên bàn gỗ
+  'du-an':'gioithieu2',        // dự án: cầm cuộn thư giới thiệu
+  'thu-vien':'docsach',        // thư viện: cũng là dáng đọc
+  'am-nhac':'dannguyet',       // âm nhạc: ngồi gảy đàn nguyệt
+  'bang-tin':'gioithieu',      // bảng tin: vẫy tay chào
+  'gioi-thieu':'teo2',         // giới thiệu: đứng yên, sen trên tay
+  'loi-ke-chuyen':'thuyen',    // lối kể chuyện: chèo thuyền chở sen
+  'kho-tuong-lai':'reo'        // kho tương lai: đoá sen phát sáng
 };
 
 /* ---------- 8. XE ĐẠP ---------- */
@@ -2488,7 +2549,7 @@ function doiXe(){
   n.textContent = dapXe ? (NG==='vi'?'🚶 Đi bộ':'🚶 Walk') : (NG==='vi'?'🚲 Đạp xe':'🚲 Cycle');
   n.classList.toggle('bat', dapXe);
   document.getElementById('nut-xe').textContent = dapXe ? '🚶' : '🚲';
-  if(!dapXe) datDang(BC_SANG_DANG[bcHienTai] || 'teo2');
+  if(!dapXe) datDang(dangHopCanh(bcHienTai));
   if(!bcChon) datBieuCam(dapXe ? 'reo' : 'vui');
 }
 
