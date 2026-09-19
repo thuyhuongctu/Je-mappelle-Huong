@@ -482,6 +482,12 @@ body.dang-xem-ban-do #hud-sen{display:none !important}
 .bai audio{width:100%;height:34px;margin-top:.5rem}
 .ngay{font-size:.7rem;font-weight:700;letter-spacing:.08em;color:var(--vang);text-transform:uppercase}
 .anh-nv{width:100%;max-width:210px;margin:0 auto 1rem;display:block;filter:drop-shadow(0 14px 24px rgba(120,80,60,.28))}
+/* Canh dat set dat o dau bang mot khu: rong het bang, bo goc theo dung
+   kieu the .the ben duoi, co chu thich nho ben duoi anh. */
+.canh-khu{margin:0 0 1.1rem}
+.canh-khu img{width:100%;height:auto;display:block;border-radius:18px;
+  box-shadow:0 10px 26px rgba(120,80,60,.22)}
+.canh-khu figcaption{margin:.5rem .2rem 0;font-size:.82rem;line-height:1.5;color:var(--muc-nhat)}
 #noi-dung::-webkit-scrollbar{width:0}
 
 @media (min-width:820px){
@@ -910,14 +916,18 @@ const KHU = [
     ten:{vi:'Thư viện sáng tạo', en:'Library'},
     phu:{vi:'Nhà sàn tri thức · slide, sổ nhạc, tư liệu', en:'Stilt house · decks, songbook, materials'},
     html:{
-      vi:`<p>Kho tư liệu sáng tạo của hệ sinh thái: bộ trình chiếu, sổ nhạc, tư liệu MV và các bộ kỹ năng dựng nội dung.</p>
+      vi:`<figure class="canh-khu"><img src="assets/img/khu-thu-vien-thuyen.webp" width="916" height="509" loading="lazy" decoding="async"
+        alt="Hình đất sét: chiếc thuyền chở đầy sách neo bên bờ, Hương đứng trên cầu ván đón mấy đứa trẻ tới mượn"><figcaption>Thư viện nổi bên sông - sách chở bằng thuyền, cầu ván bắc vào bờ.</figcaption></figure>
+        <p>Kho tư liệu sáng tạo của hệ sinh thái: bộ trình chiếu, sổ nhạc, tư liệu MV và các bộ kỹ năng dựng nội dung.</p>
         <a class="the" href="deck-ecosystem/index.html"><b>Bộ slide hệ sinh thái</b><span>“Je m'appelle Hương” - 10 slide giới thiệu luận án, M-AIDA, BizOn, EnQuiz và âm nhạc. Có bản PDF kèm theo.</span><em>Mở bộ slide →</em></a>
         <a class="the" href="music.html#main"><b>Album «La lampe, le fleuve et les couleurs»</b><span>Sáu bài chính cùng một bản bonus, 24 bản thu, sáng tác 07 - 13/08/2026. Trọn bộ lời và ghi chú sáng tác.</span><em>Mở album →</em></a>
         <a class="the" href="deck-ecosystem/Je-mappelle-Huong-Ecosystem-Deck.pdf"><b>Bản PDF trình chiếu</b><span>Tải về để trình bày hội thảo hoặc bảo vệ chuyên đề.</span><em>Tải PDF →</em></a>
         <a class="the" href="garden.html#worlddata"><b>Dữ liệu thế giới</b><span>Số liệu trực tiếp từ World Bank Open Data cho các nền kinh tế trong luận án, chọn chỉ số và quốc gia để so sánh.</span><em>Xem bảng dữ liệu →</em></a>
         <h3>Giấy phép</h3>
         <p style="font-size:.86rem;color:var(--muc-nhat)">Phần mềm mở theo giấy phép công bố kèm DOI Zenodo. Nhạc và lời: tác giả giữ bản quyền.</p>`,
-      en:`<p>The ecosystem's creative archive: presentation decks, the songbook, music-video materials and content-production skill kits.</p>
+      en:`<figure class="canh-khu"><img src="assets/img/khu-thu-vien-thuyen.webp" width="916" height="509" loading="lazy" decoding="async"
+        alt="Clay scene: a boat loaded with books moored at the bank, Huong on the plank bridge welcoming children"><figcaption>A floating library - books carried by boat, a plank bridge to the bank.</figcaption></figure>
+        <p>The ecosystem's creative archive: presentation decks, the songbook, music-video materials and content-production skill kits.</p>
         <a class="the" href="deck-ecosystem/index.html"><b>Ecosystem deck</b><span>“Je m'appelle Hương” - ten slides covering the dissertation, M-AIDA, BizOn, EnQuiz and the music. A PDF is included.</span><em>Open deck →</em></a>
         <a class="the" href="music.html#main"><b>The album «La lampe, le fleuve et les couleurs»</b><span>Six main songs plus one bonus, 24 recordings, composed 7 - 13 Aug 2026. Full lyrics and composition notes.</span><em>Open the album →</em></a>
         <a class="the" href="deck-ecosystem/Je-mappelle-Huong-Ecosystem-Deck.pdf"><b>Deck as PDF</b><span>Download for conference talks or seminar defences.</span><em>Download PDF →</em></a>
@@ -2118,7 +2128,7 @@ let bcHienTai = 'vui';
 function datBieuCam(bc){
   if(bc === bcHienTai) return;
   bcHienTai = bc;
-  if(typeof datDang === 'function') datDang(BC_SANG_DANG[bc] || 'teo2');
+  if(typeof datDang === 'function') datDang(dangHopCanh(bc));
   // nảy nhẹ mỗi lần đổi dáng
   nhanVat.userData.nay = 1;
 }
@@ -2243,13 +2253,24 @@ nhanVat.traverse(o=>{ if(o.isMesh){ o.castShadow = true; } });
 nhanVat.visible = false;
 
 const DANG_ANH = {
-  xedap:'assets/img/huong_xedap_full.webp',
-  gioithieu:'assets/img/pose_gioithieu_fix.webp',
-  reo:'assets/img/pose_reo_fix.webp',
-  teo2:'assets/img/pose_teo2_fix.webp',
-  gioithieu2:'assets/img/pose_gioithieu2_fix.webp',
+  xedap:'assets/img/huong-ai-xe-dap.webp',
+  gioithieu:'assets/img/huong-ai-chao.webp',
+  reo:'assets/img/huong-ai-sen-sang.webp',
+  teo2:'assets/img/huong-ai-sen.webp',
+  gioithieu2:'assets/img/huong-ai-cuon-thu.webp',
+  docsach:'assets/img/huong-ai-doc-sach.webp',
+  dannguyet:'assets/img/huong-ai-dan-nguyet.webp',
+  thuyen:'assets/img/huong-ai-thuyen.webp',
 };
-const DANG_TL = {xedap:0.7250, gioithieu:0.8792, reo:0.8792, teo2:0.8167, gioithieu2:0.8319};
+/* Rộng/cao lấy đúng theo khổ tệp ảnh. Ảnh mới cắt sát người nên khung phẳng
+   bằng đúng khổ ảnh thì nhân vật giữ nguyên tỉ lệ. Bộ ảnh cũ ghi 0.8792
+   trong khi tệp chỉ 0.6708 — tức là bấy lâu nhân vật bị kéo bè ngang
+   khoảng 1,3 lần mà không ai để ý, vì ảnh cũ còn viền trong suốt quanh
+   người nên nhìn không ra. */
+const DANG_TL = {
+  xedap:0.8390, gioithieu:0.3805, reo:0.2951, teo2:0.2989, gioithieu2:0.6268,
+  docsach:0.7744, dannguyet:0.5549, thuyen:1.0340,
+};
 
 const boTai = new THREE.TextureLoader();
 const DANG_TEX = {};
@@ -2272,6 +2293,22 @@ anhHuong.renderOrder = 5;
 scene.add(anhHuong);
 
 let dangHienTai = 'teo2', latNV = 1;
+/* Dáng đúng cho lúc này, theo thứ tự ưu tiên: đang đạp xe → dáng xe;
+   đang đứng trong một khu có dáng riêng → dáng của khu; còn lại mới theo
+   nét mặt.
+
+   Trước đây KHU_SANG_DANG gần như chưa bao giờ hiện ra. Nó chỉ được đặt
+   đúng một lần, ngay lúc bước vào vùng của khu; nhưng ngay sau đó trong
+   cùng vòng vẽ, phần «biểu cảm tự động» gọi datBieuCam() cho khu ấy, và
+   datBieuCam() lại đặt dáng theo BC_SANG_DANG - ghi đè mất dáng của khu.
+   Nên khu âm nhạc vẫn đứng yên chứ không ngồi gảy đàn. */
+function dangHopCanh(bc){
+  if(dapXe) return 'xedap';
+  if(khuGan && typeof KHU_SANG_DANG !== 'undefined' && KHU_SANG_DANG[khuGan.id])
+    return KHU_SANG_DANG[khuGan.id];
+  return BC_SANG_DANG[bc] || 'teo2';
+}
+
 function datDang(k){
   if(!DANG_TEX[k] || k === dangHienTai) return;
   dangHienTai = k;
@@ -2304,10 +2341,14 @@ const BC_SANG_DANG = {
 };
 /* dáng bổ sung theo khu: khi vào khu thì chuyển sang dáng phù hợp ngữ cảnh */
 const KHU_SANG_DANG = {
-  'hoc-thuat':'teo2',        // khu học thuật: dáng tư thế trầm tư (full body)
-  'thu-vien':'gioithieu2',   // thư viện sáng tạo: chỉ tay giới thiệu
-  'am-nhac':'reo',           // khu âm nhạc: reo hò theo nhạc
-  'kho-tuong-lai':'gioithieu' // kho tương lai: giơ tay chào mừng
+  'hoc-thuat':'docsach',       // học thuật: ngồi đọc bên bàn gỗ
+  'du-an':'gioithieu2',        // dự án: cầm cuộn thư giới thiệu
+  'thu-vien':'docsach',        // thư viện: cũng là dáng đọc
+  'am-nhac':'dannguyet',       // âm nhạc: ngồi gảy đàn nguyệt
+  'bang-tin':'gioithieu',      // bảng tin: vẫy tay chào
+  'gioi-thieu':'teo2',         // giới thiệu: đứng yên, sen trên tay
+  'loi-ke-chuyen':'thuyen',    // lối kể chuyện: chèo thuyền chở sen
+  'kho-tuong-lai':'reo'        // kho tương lai: đoá sen phát sáng
 };
 
 /* ---------- 8. XE ĐẠP ---------- */
@@ -2488,7 +2529,7 @@ function doiXe(){
   n.textContent = dapXe ? (NG==='vi'?'🚶 Đi bộ':'🚶 Walk') : (NG==='vi'?'🚲 Đạp xe':'🚲 Cycle');
   n.classList.toggle('bat', dapXe);
   document.getElementById('nut-xe').textContent = dapXe ? '🚶' : '🚲';
-  if(!dapXe) datDang(BC_SANG_DANG[bcHienTai] || 'teo2');
+  if(!dapXe) datDang(dangHopCanh(bcHienTai));
   if(!bcChon) datBieuCam(dapXe ? 'reo' : 'vui');
 }
 
