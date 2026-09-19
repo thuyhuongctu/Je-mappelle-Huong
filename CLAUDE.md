@@ -98,10 +98,35 @@ những gì, bằng con số thật.
 
 ## Ảnh
 
-WebP, cắt sát nội dung. Ảnh nhân vật cần nền trong suốt. Nếu nguồn là JPG nền
-đen thì **đừng chia ngược màu cho độ phủ** — sai nguyên lý, viền vẫn tối. Làm
-thế này: lấy phần thân bằng ngưỡng thấp → nối màu ra ngoài (mỗi pixel ngoài
-thân lấy màu pixel gần nhất bên trong) → làm mềm mép.
+WebP, cắt sát nội dung. Ảnh nhân vật cần nền trong suốt.
+
+Nguồn là JPG nền đen thì **đừng suy độ phủ ra từ độ sáng**. Đã thử hai lần và
+hỏng cả hai: chia ngược màu cho độ phủ thì sai nguyên lý, viền vẫn tối; lấy
+độ phủ từ một dải độ sáng mềm thì bóng tối của chính nhân vật — khe giữa tóc
+và cổ, nếp gấp sâu — bị tính là nền, thành nửa trong suốt rồi bị phần nối màu
+tràn vào, hiện lên nền sáng thành mảng xám rách.
+
+Matte của những ảnh này đen tuyệt đối (đo góc ảnh: đúng 0) và mép nhân vật
+rất gọn — diện tích thân chỉ đổi 0,2% khi ngưỡng chạy từ 8 tới 24. Nên làm
+thế này, không đoán gì cả:
+
+1. `thân = sáng hơn 12`. Bóng của nhân vật vẫn sáng hơn mức ấy nên ở lại.
+2. Khép mép một vòng 3×3 cho hết răng cưa do nén JPEG; giữ cụm lớn nhất; lấp
+   những lỗ thủng nhỏ hơn 200px. **Đừng lấp lỗ thủng lớn** — khoảng hở thật
+   giữa cánh tay và thân người phải để trong suốt.
+3. Độ phủ là nhị phân. Mọi pixel ngoài lõi (thân co vào 2px) lấy màu của pixel
+   **sáng hơn 40** gần nhất trong lõi — kể cả vùng nền. Nếu để nền đen thì
+   bước 4 sẽ trộn đen vào mép; nếu để mấy lỗ đen vừa lấp được cho màu thì mép
+   áo dài trắng sẽ dính đốm đen.
+4. Thu nhỏ về cỡ đích bằng LANCZOS. **Chính bước này sinh ra độ phủ từng phần
+   ở mép**, đúng đắn, thay cho việc ta ngồi đoán.
+
+Đừng lấy "tỉ lệ pixel mép còn tối" làm thước đo: tóc sẫm ở mép vốn phải tối,
+nên con số ấy cao hay thấp không nói lên điều gì. Phóng to mà nhìn.
+
+Đổi ảnh nhân vật thì nhớ `DANG_TL` trong `trangvien.html` và cặp
+`width`/`height` của ảnh chữ ký trong `music.html` — đọc thẳng từ tệp, đừng
+chép tay.
 
 ## Trước khi thêm tệp mới
 
