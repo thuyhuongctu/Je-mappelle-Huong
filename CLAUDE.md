@@ -128,15 +128,24 @@ thế này, không đoán gì cả:
 2. Khép mép một vòng 3×3 cho hết răng cưa do nén JPEG; giữ cụm lớn nhất; lấp
    những lỗ thủng nhỏ hơn 200px. **Đừng lấp lỗ thủng lớn** — khoảng hở thật
    giữa cánh tay và thân người phải để trong suốt.
-3. Độ phủ là nhị phân. Mọi pixel ngoài lõi (thân co vào 2px) lấy màu của pixel
-   **sáng hơn 40** gần nhất trong lõi — kể cả vùng nền. Nếu để nền đen thì
-   bước 4 sẽ trộn đen vào mép; nếu để mấy lỗ đen vừa lấp được cho màu thì mép
-   áo dài trắng sẽ dính đốm đen.
+3. Độ phủ là nhị phân. Lấy màu của pixel **sáng hơn 40 và là vật liệu thật**
+   gần nhất trong lõi, thay vào **hai chỗ**: ngoài lõi (thân co vào 2px), *và*
+   những pixel do bước 2 thêm vào mặt nạ. Vế thứ hai dễ quên: pixel khép mép
+   hay lấp lỗ thêm vào vốn là nền đen, nằm sâu quá thì quy tắc "ngoài lõi"
+   không với tới, nên chúng giữ nguyên màu đen và hiện ra thành **chấm đen
+   rải dọc viền** — kẽ ngón tay, mép tóc, khe giữa các lọn. Đo ở dáng chào:
+   đúng 310 pixel như thế. Sửa xong thì pixel đen trung tính của cả tám tấm
+   giảm 4739 → 545, riêng dáng đạp xe 1740 → 29.
+   Pixel cho màu cũng phải là vật liệu thật, nếu không mấy lỗ đen vừa lấp sẽ
+   cho màu ra viền và mép áo dài trắng dính đốm đen.
 4. Thu nhỏ về cỡ đích bằng LANCZOS. **Chính bước này sinh ra độ phủ từng phần
    ở mép**, đúng đắn, thay cho việc ta ngồi đoán.
 
 Đừng lấy "tỉ lệ pixel mép còn tối" làm thước đo: tóc sẫm ở mép vốn phải tối,
-nên con số ấy cao hay thấp không nói lên điều gì. Phóng to mà nhìn.
+nên con số ấy cao hay thấp không nói lên điều gì. Phóng to mà nhìn. Muốn đo
+bằng số thì đếm pixel **đặc và đen trung tính** — `max(RGB) < 38` *và*
+`max - min < 14` — vì nền là đen trung tính còn tóc là nâu (R hơn hẳn B).
+Đã ba lần dùng nhầm thước và ba lần tưởng xong trong khi chưa xong.
 
 Đổi ảnh nhân vật thì nhớ `DANG_TL` trong `trangvien.html` và cặp
 `width`/`height` của ảnh chữ ký trong `music.html` — đọc thẳng từ tệp, đừng
