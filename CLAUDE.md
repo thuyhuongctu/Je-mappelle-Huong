@@ -61,9 +61,23 @@ viết lại trong từng tệp.
 - `DANG_TL` phải **đúng bằng rộng/cao của tệp ảnh**. Ảnh phải cắt sát người.
   Đặt sai thì nhân vật bị kéo bè ngang mà nhìn không ra, vì viền trong suốt
   quanh người che mất.
-- Dáng do `dangHopCanh()` quyết định, theo thứ tự: đạp xe → dáng xe; đứng
-  trong khu có dáng riêng → dáng khu; còn lại theo nét mặt. Đừng gọi thẳng
-  `datDang()` từ chỗ khác, sẽ bị ghi đè.
+- Dáng do `dangHopCanh()` quyết định, theo thứ tự: đạp xe → dáng xe; chèo
+  xuồng → dáng thuyền; đứng trong khu có dáng riêng → dáng khu; còn lại theo
+  nét mặt. Đừng gọi thẳng `datDang()` từ chỗ khác, sẽ bị ghi đè.
+- Ba phương tiện trong `phuongTien`: `'bo'`, `'xe'`, `'xuong'`. Tốc độ, nhãn
+  nút, biểu tượng đều tra bảng (`PT_TOC`, `PT_NHAN`, `PT_BIEU`, `PT_TIEP`);
+  hai nút đổi phương tiện hiển thị phương tiện **kế tiếp**, không phải phương
+  tiện đang dùng.
+- **Xuồng chỉ đi trên sông.** `trenNuoc()` xét điểm có nằm trong đa giác mặt
+  sông không; `vienSong` lấy từ chính hình dựng mặt sông, nhớ đổi dấu trục
+  (mặt sông xoay -90° quanh X nên điểm `(x,y)` rơi xuống thành `(x,0,-y)`).
+  `benGanNhat()` thả xuồng vào **giữa dòng**, không phải chỗ nước gần nhất -
+  thả sát mép thì chèo vài bước là húc bờ. `chenNuoc()` khi chạm bờ thì lái
+  chệch dần tới ±1,4 rad để lướt dọc bờ; tách theo hai trục x/z là không đủ
+  vì sông chạy xiên.
+- Chèo xuồng và phần «tự đi tới khu» loại trừ nhau: các khu đều trên bờ, mà
+  phần tự đi không xét mặt nước nên sẽ kéo xuồng lên cỏ. Vào xuồng thì xoá
+  `mucTieuDi` và huỷ tour; đang chèo mà có đích thì tự chuyển về đi bộ.
 - Màn hình có **chín cụm nổi do năm tệp CSS khác nhau đặt chỗ**;
   `assets/css/hud-gon.css` sinh ra chỉ để chúng khỏi chồng nhau. Thêm cụm mới
   thì phải canh lại ở đó.
@@ -114,15 +128,24 @@ thế này, không đoán gì cả:
 2. Khép mép một vòng 3×3 cho hết răng cưa do nén JPEG; giữ cụm lớn nhất; lấp
    những lỗ thủng nhỏ hơn 200px. **Đừng lấp lỗ thủng lớn** — khoảng hở thật
    giữa cánh tay và thân người phải để trong suốt.
-3. Độ phủ là nhị phân. Mọi pixel ngoài lõi (thân co vào 2px) lấy màu của pixel
-   **sáng hơn 40** gần nhất trong lõi — kể cả vùng nền. Nếu để nền đen thì
-   bước 4 sẽ trộn đen vào mép; nếu để mấy lỗ đen vừa lấp được cho màu thì mép
-   áo dài trắng sẽ dính đốm đen.
+3. Độ phủ là nhị phân. Lấy màu của pixel **sáng hơn 40 và là vật liệu thật**
+   gần nhất trong lõi, thay vào **hai chỗ**: ngoài lõi (thân co vào 2px), *và*
+   những pixel do bước 2 thêm vào mặt nạ. Vế thứ hai dễ quên: pixel khép mép
+   hay lấp lỗ thêm vào vốn là nền đen, nằm sâu quá thì quy tắc "ngoài lõi"
+   không với tới, nên chúng giữ nguyên màu đen và hiện ra thành **chấm đen
+   rải dọc viền** — kẽ ngón tay, mép tóc, khe giữa các lọn. Đo ở dáng chào:
+   đúng 310 pixel như thế. Sửa xong thì pixel đen trung tính của cả tám tấm
+   giảm 4739 → 545, riêng dáng đạp xe 1740 → 29.
+   Pixel cho màu cũng phải là vật liệu thật, nếu không mấy lỗ đen vừa lấp sẽ
+   cho màu ra viền và mép áo dài trắng dính đốm đen.
 4. Thu nhỏ về cỡ đích bằng LANCZOS. **Chính bước này sinh ra độ phủ từng phần
    ở mép**, đúng đắn, thay cho việc ta ngồi đoán.
 
 Đừng lấy "tỉ lệ pixel mép còn tối" làm thước đo: tóc sẫm ở mép vốn phải tối,
-nên con số ấy cao hay thấp không nói lên điều gì. Phóng to mà nhìn.
+nên con số ấy cao hay thấp không nói lên điều gì. Phóng to mà nhìn. Muốn đo
+bằng số thì đếm pixel **đặc và đen trung tính** — `max(RGB) < 38` *và*
+`max - min < 14` — vì nền là đen trung tính còn tóc là nâu (R hơn hẳn B).
+Đã ba lần dùng nhầm thước và ba lần tưởng xong trong khi chưa xong.
 
 Đổi ảnh nhân vật thì nhớ `DANG_TL` trong `trangvien.html` và cặp
 `width`/`height` của ảnh chữ ký trong `music.html` — đọc thẳng từ tệp, đừng

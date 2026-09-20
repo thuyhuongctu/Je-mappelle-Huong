@@ -1070,7 +1070,17 @@ const HD = {
 
 /* ---------- 2. TRẠNG THÁI ---------- */
 let NG = 'vi';                 // ngôn ngữ
-let dapXe = false;             // đang đạp xe?
+/* Phương tiện: đi bộ, đạp xe, chèo xuồng. Ảnh của cả ba dáng đã có sẵn
+   trong DANG_ANH. Xuồng chỉ đi được trên sông - xem trenNuoc() bên dưới. */
+let phuongTien = 'bo';         // 'bo' | 'xe' | 'xuong'
+const PT_TIEP = {bo:'xe', xe:'xuong', xuong:'bo'};
+const PT_BIEU = {bo:'\u{1F6B6}', xe:'\u{1F6B2}', xuong:'\u{1F6F6}'};
+const PT_NHAN = {
+  bo:    {vi:'\u{1F6B6} Đi bộ',      en:'\u{1F6B6} Walk'},
+  xe:    {vi:'\u{1F6B2} Đạp xe',     en:'\u{1F6B2} Cycle'},
+  xuong: {vi:'\u{1F6F6} Chèo xuồng', en:'\u{1F6F6} Row'}
+};
+const PT_TOC  = {bo:4.6, xe:11.5, xuong:6.4};
 let bcChon = null;             // biểu cảm do người dùng chọn (null = tự động)
 let khuGan = null;             // khu đang đứng gần
 let dangMo = false;            // bảng nội dung đang mở?
@@ -1171,6 +1181,7 @@ vanh.rotation.x = -Math.PI/2; vanh.position.y = .02;
 theGioi.add(vanh);
 
 // 5.2 con sông uốn qua trang viên
+let vienSong = null;      // đa giác mặt sông, toạ độ (x, z) của thế giới
 function songNuoc(){
   const s = new THREE.Shape();
   s.moveTo(-60, 6);
@@ -1180,6 +1191,10 @@ function songNuoc(){
   s.bezierCurveTo(44, 13, 30, 19, 14, 9);
   s.bezierCurveTo(-6, -5, -26, 23, -60, 13);
   s.closePath();
+  /* Giữ lại đường viền để còn xét xem một điểm có nằm trên mặt nước không.
+     Mặt sông xoay -90 độ quanh trục X, nên điểm (x,y) của hình phẳng rơi
+     xuống thế giới thành (x, 0, -y) - dấu trừ ấy dễ quên. */
+  vienSong = s.getPoints(90).map(pt => [pt.x, -pt.y]);
   const m = new THREE.Mesh(new THREE.ShapeGeometry(s, 26),
     new THREE.MeshStandardMaterial({color:new THREE.Color('#9FD3E8'), roughness:.28, metalness:.05, transparent:true, opacity:.94}));
   m.rotation.x = -Math.PI/2; m.position.y = .05;
@@ -1187,6 +1202,65 @@ function songNuoc(){
 }
 const song = songNuoc();
 theGioi.add(song);
+
+/* Điểm (x,z) có nằm trên mặt sông không - phép đếm số lần cắt cạnh. */
+function trenNuoc(x, z){
+  if(!vienSong) return false;
+  let trong = false;
+  for(let i = 0, j = vienSong.length - 1; i < vienSong.length; j = i++){
+    const xi = vienSong[i][0], zi = vienSong[i][1];
+    const xj = vienSong[j][0], zj = vienSong[j][1];
+    if((zi > z) !== (zj > z) && x < (xj - xi) * (z - zi) / (zj - zi) + xi) trong = !trong;
+  }
+  return trong;
+}
+
+/* Lưới điểm nằm trên sông, để khi khách chọn xuồng thì đưa nhân vật xuống
+   chỗ nước gần nhất. Tính một lần lúc dựng cảnh. */
+let diemNuoc = null;
+function benGanNhat(x, z){
+  if(!diemNuoc){
+    diemNuoc = [];
+    for(let ax = -BAN_KINH; ax <= BAN_KINH; ax += 1.5)
+      for(let az = -BAN_KINH; az <= BAN_KINH; az += 1.5){
+        if(Math.hypot(ax, az) > BAN_KINH - 1 || !trenNuoc(ax, az)) continue;
+        // Chỉ nhận chỗ giữa dòng. Thả xuồng ngay sát mép thì chèo một đoạn
+        // ngắn là húc bờ, khách tưởng hỏng - đã đo đúng thế: 289/300 bước bị chặn.
+        let giua = true;
+        for(let g = 0; g < 8 && giua; g++){
+          const a = g * Math.PI / 4;
+          if(!trenNuoc(ax + Math.sin(a)*1.4, az + Math.cos(a)*1.4)) giua = false;
+        }
+        if(giua) diemNuoc.push([ax, az]);
+      }
+  }
+  let tot = null, gan = Infinity;
+  for(const d of diemNuoc){
+    const k = (d[0] - x) * (d[0] - x) + (d[1] - z) * (d[1] - z);
+    if(k < gan){ gan = k; tot = d; }
+  }
+  return tot;
+}
+
+/* Xuồng chỉ đi trên nước. Đi được thì trả về chỗ mới; chạm bờ thì thử trượt
+   dọc bờ theo từng trục, không thì đứng yên. */
+function chenNuoc(cx, cz, nx, nz){
+  if(trenNuoc(nx, nz)) return [nx, nz];
+  /* Chạm bờ thì lái chệch đi một chút để lướt dọc bờ, chứ đứng sững lại thì
+     khúc sông cong nào cũng thành ngõ cụt. Tách theo hai trục x/z không đủ:
+     sông chạy xiên, mà đông-tây hay nam-bắc đều có thể vướng cùng lúc. */
+  const dx = nx - cx, dz = nz - cz;
+  const d = Math.hypot(dx, dz);
+  if(d > 1e-6){
+    const goc = Math.atan2(dx, dz);
+    for(const lech of [.35, -.35, .7, -.7, 1.05, -1.05, 1.4, -1.4]){
+      const g = goc + lech;
+      const tx = cx + Math.sin(g) * d, tz = cz + Math.cos(g) * d;
+      if(trenNuoc(tx, tz)) return [tx, tz];
+    }
+  }
+  return [cx, cz];
+}
 
 // 5.3 lối đi đất nện dẫn qua các khu
 function loiDi(){
@@ -2304,6 +2378,7 @@ Object.keys(DANG_ANH).forEach(k=>{
 
 const CAO_NV = 2.72;
 const CAO_XE = 2.60;   // dáng đạp xe gồm cả xe nên cao hơn
+const CAO_XUONG = 2.45;   // dáng chèo xuồng ngồi thấp, lại rộng bề ngang
 const vlHuong = new THREE.MeshBasicMaterial({
   map: DANG_TEX['teo2'], transparent:true, alphaTest:.05,
   side: THREE.DoubleSide, toneMapped:false, depthWrite:true
@@ -2323,7 +2398,8 @@ let dangHienTai = 'teo2', latNV = 1;
    datBieuCam() lại đặt dáng theo BC_SANG_DANG - ghi đè mất dáng của khu.
    Nên khu âm nhạc vẫn đứng yên chứ không ngồi gảy đàn. */
 function dangHopCanh(bc){
-  if(dapXe) return 'xedap';
+  if(phuongTien === 'xe') return 'xedap';
+  if(phuongTien === 'xuong') return 'thuyen';
   if(khuGan && typeof KHU_SANG_DANG !== 'undefined' && KHU_SANG_DANG[khuGan.id])
     return KHU_SANG_DANG[khuGan.id];
   return BC_SANG_DANG[bc] || 'teo2';
@@ -2542,15 +2618,38 @@ function moTroGiup(){
 }
 document.getElementById('nut-tro-giup').addEventListener('click', moTroGiup);
 
-function doiXe(){
-  dapXe = !dapXe;
-  xeDap.visible = false;   // đã có ảnh cô Hương đạp xe thật
+/* Hai nút cùng chỉ MỘT phương tiện kế tiếp, không phải phương tiện đang dùng
+   - giữ đúng nếp cũ của nút này. */
+function capNhatNutXe(){
+  const tiep = PT_TIEP[phuongTien];
+  const ngu = NG === 'vi' ? 'vi' : 'en';
   const n = document.getElementById('nut-xe-may');
-  n.textContent = dapXe ? (NG==='vi'?'🚶 Đi bộ':'🚶 Walk') : (NG==='vi'?'🚲 Đạp xe':'🚲 Cycle');
-  n.classList.toggle('bat', dapXe);
-  document.getElementById('nut-xe').textContent = dapXe ? '🚶' : '🚲';
-  if(!dapXe) datDang(dangHopCanh(bcHienTai));
-  if(!bcChon) datBieuCam(dapXe ? 'reo' : 'vui');
+  if(n){
+    n.textContent = PT_NHAN[tiep][ngu];
+    n.classList.toggle('bat', phuongTien !== 'bo');
+  }
+  const x = document.getElementById('nut-xe');
+  if(x){
+    x.textContent = PT_BIEU[tiep];
+    x.setAttribute('aria-label', (ngu === 'vi' ? 'Chuyển sang ' : 'Switch to ') + PT_NHAN[tiep][ngu]);
+  }
+}
+
+function doiXe(){
+  phuongTien = PT_TIEP[phuongTien];
+  xeDap.visible = false;   // đã có ảnh cô Hương đạp xe thật
+  if(phuongTien === 'xuong'){
+    // xuồng phải ở dưới nước: đưa nhân vật ra chỗ sông gần nhất
+    const ben = benGanNhat(nhanVat.position.x, nhanVat.position.z);
+    if(ben){ nhanVat.position.x = ben[0]; nhanVat.position.z = ben[1]; }
+    else phuongTien = 'bo';   // không dựng được mặt nước thì thôi, đừng để kẹt
+    // Các khu đều trên bờ, nên đích lẻ lẫn tour quanh vườn đều phải dừng.
+    mucTieuDi = null;
+    if(typeof huyTour === 'function' && tourDangChay) huyTour();
+  }
+  capNhatNutXe();
+  if(phuongTien === 'bo') datDang(dangHopCanh(bcHienTai));
+  if(!bcChon) datBieuCam(phuongTien === 'xe' ? 'reo' : phuongTien === 'xuong' ? 'thuong' : 'vui');
 }
 
 // biểu cảm do người dùng chọn
@@ -2580,8 +2679,7 @@ function datNgonNgu(l){
   if(a){a.style.background = l==='vi' ? '#E77E9A' : '#fff'; a.style.color = l==='vi' ? '#fff' : '#4E6B5C';}
   if(b){b.style.background = l==='en' ? '#E77E9A' : '#fff'; b.style.color = l==='en' ? '#fff' : '#4E6B5C';}
   try{localStorage.setItem('huong_lang', l);}catch(e){}
-  const n = document.getElementById('nut-xe-may');
-  n.textContent = dapXe ? (l==='vi'?'🚶 Đi bộ':'🚶 Walk') : (l==='vi'?'🚲 Đạp xe':'🚲 Cycle');
+  capNhatNutXe();
   bienBao.forEach(b=>{
     b.mesh.material.map.dispose();
     b.mesh.material.map = bienBaoTexture(b.khu);
@@ -2613,6 +2711,9 @@ function diToiKhu(khu){
   if(!khu || dangMo) return;
   const r = Math.hypot(khu.vt[0]-nhanVat.position.x, khu.vt[2]-nhanVat.position.z);
   if(r < 1.6){ moBang(khu); return; }
+  // Các khu đều nằm trên bờ. Đang chèo xuồng mà chọn điểm đến thì lên bờ đi bộ,
+  // chứ để xuồng húc vào bờ rồi đứng im thì khách tưởng trang bị treo.
+  if(phuongTien === 'xuong'){ phuongTien = 'bo'; capNhatNutXe(); }
   mucTieuDi = {khu: khu, x: khu.vt[0], z: khu.vt[2]};
   phim['w']=phim['s']=phim['a']=phim['d']=false;
   canVec.x = canVec.y = 0;
@@ -4102,6 +4203,9 @@ function vong(){
   }
 
   /* --- tự đi tới khu (auto-walk) --- */
+  /* Phần này không xét mặt nước, nên đang chèo mà để nó chạy thì xuồng bị kéo
+     lên cỏ. Chèo xuồng và tự đi là hai việc loại trừ nhau. */
+  if(mucTieuDi && phuongTien === 'xuong'){ phuongTien = 'bo'; capNhatNutXe(); }
   if(mucTieuDi && !dangMo){
     const ax = mucTieuDi.x - nhanVat.position.x;
     const az = mucTieuDi.z - nhanVat.position.z;
@@ -4111,7 +4215,7 @@ function vong(){
       moBang(k);
     }else{
       // xoay camera theo hướng đích để đi thắng
-      const toc = dapXe ? TOUR_SPEEDS[tourTocDo]*2 : TOUR_SPEEDS[tourTocDo];
+      const toc = phuongTien === 'xe' ? TOUR_SPEEDS[tourTocDo]*2 : TOUR_SPEEDS[tourTocDo];
       const goc = Math.atan2(ax, az);
       gocMay = goc; huong = goc; nhanVat.rotation.y = goc;
       const dx = Math.sin(goc) * toc * dt;
@@ -4121,13 +4225,13 @@ function vong(){
       if(rr > BAN_KINH){ nx = nx/rr*BAN_KINH; nz = nz/rr*BAN_KINH; }
       nhanVat.position.x = nx; nhanVat.position.z = nz;
       dungYen = 0;
-      vTruoc += ((dapXe?11.5:4.6) - vTruoc) * Math.min(1, 8*dt);
+      vTruoc += (PT_TOC[phuongTien] - vTruoc) * Math.min(1, 8*dt);
     }
   }
   const manh = Math.min(1, Math.hypot(ix,iz));
 
   /* --- di chuyển --- */
-  const tocDo = (dapXe ? 11.5 : 4.6) * manh;
+  const tocDo = PT_TOC[phuongTien] * manh;
   if(manh > .06){
     dungYen = 0;
     const goc = Math.atan2(ix, iz) + gocMay;
@@ -4137,6 +4241,8 @@ function vong(){
     let nx = nhanVat.position.x + dx, nz = nhanVat.position.z + dz;
     const r = Math.hypot(nx, nz);
     if(r > BAN_KINH){ nx = nx/r*BAN_KINH; nz = nz/r*BAN_KINH; }
+    if(phuongTien === 'xuong')
+      [nx, nz] = chenNuoc(nhanVat.position.x, nhanVat.position.z, nx, nz);
     nhanVat.position.x = nx; nhanVat.position.z = nz;
   }else{
     dungYen += dt;
@@ -4149,15 +4255,17 @@ function vong(){
   vTruoc += (tocDo - vTruoc) * Math.min(1, 8*dt);
 
   /* --- hoạt ảnh nhân vật --- */
-  const nhip = t * (dapXe ? 9 : 7.5);
+  const nhip = t * (phuongTien === 'xe' ? 9 : phuongTien === 'xuong' ? 2.2 : 7.5);
   const buoc = Math.sin(nhip) * Math.min(1, vTruoc/4.5);
-  if(dapXe){
+  if(phuongTien !== 'bo'){
     nhanVat.position.y = .62;
-    xeDap.position.set(nhanVat.position.x, 0, nhanVat.position.z);
-    xeDap.rotation.y = nhanVat.rotation.y;
-    banhTruoc.children[0].rotation.x -= vTruoc*dt*1.9;
-    banhSau.children[0].rotation.x  -= vTruoc*dt*1.9;
-    banDap.rotation.x -= vTruoc*dt*1.9;
+    if(phuongTien === 'xe'){
+      xeDap.position.set(nhanVat.position.x, 0, nhanVat.position.z);
+      xeDap.rotation.y = nhanVat.rotation.y;
+      banhTruoc.children[0].rotation.x -= vTruoc*dt*1.9;
+      banhSau.children[0].rotation.x  -= vTruoc*dt*1.9;
+      banDap.rotation.x -= vTruoc*dt*1.9;
+    }
     // ngồi: hơi cúi, tay ra ghi đông
     thanAo.rotation.x = .18;
     tayT.rotation.set(-1.15, 0, .30);
@@ -4237,15 +4345,16 @@ function vong(){
                : khuGan.id === 'du-an'      ? 'tutin'
                : 'ngac');
     }
-    else if(dapXe && vTruoc > 3)    datBieuCam('reo');
+    else if(phuongTien === 'xe' && vTruoc > 3) datBieuCam('reo');
     else if(dungYen > 12)           datBieuCam('thuong');   // đứng thật lâu: mơ màng
     else if(dungYen > 5)            datBieuCam(benHo ? 'thuong' : 'suytu');
     else if(vTruoc > 1.5)           datBieuCam('vui');
   }
 
   /* --- máy quay bám sau lưng --- */
-  const cao = dapXe ? 4.6 : 3.8;
-  const xa  = dapXe ? 10.5 : Math.max(8.2, xaDau - Math.min(tDau, 2.5) * 3.2);
+  const cao = phuongTien === 'xe' ? 4.6 : phuongTien === 'xuong' ? 4.2 : 3.8;
+  const xa  = phuongTien === 'xe' ? 10.5 : phuongTien === 'xuong' ? 9.6
+            : Math.max(8.2, xaDau - Math.min(tDau, 2.5) * 3.2);
   tamMay.set(nhanVat.position.x, nhanVat.position.y + 1.9, nhanVat.position.z);
   const mx = tamMay.x + Math.sin(gocMay)*xa;
   const mz = tamMay.z + Math.cos(gocMay)*xa;
@@ -4263,19 +4372,24 @@ function vong(){
   song.position.y = .05 + Math.sin(t*.8)*.015;
 
   /* --- đặt ảnh cô Hương: luôn quay mặt về máy quay --- */
-  if(dapXe) datDang('xedap');
-  const caoNV  = dapXe ? CAO_XE : CAO_NV;
-  const chanNV = dapXe ? .02 + Math.abs(Math.sin(t*7))*.03 : nhanVat.position.y;
+  if(phuongTien !== 'bo') datDang(phuongTien === 'xe' ? 'xedap' : 'thuyen');
+  const caoNV  = phuongTien === 'xe' ? CAO_XE : phuongTien === 'xuong' ? CAO_XUONG : CAO_NV;
+  // xe thì nhún theo nhịp đạp, xuồng thì dập dềnh chậm hơn và sâu hơn
+  const chanNV = phuongTien === 'xe'    ? .02 + Math.abs(Math.sin(t*7))*.03
+               : phuongTien === 'xuong' ? .02 + Math.sin(t*1.6)*.05
+               : nhanVat.position.y;
   const rongNV = caoNV * (DANG_TL[dangHienTai] || .4);
   anhHuong.position.set(nhanVat.position.x, chanNV + caoNV*.5 + 0.05, nhanVat.position.z);
   anhHuong.quaternion.copy(camera.quaternion);
-  anhHuong.rotateZ(Math.sin(t*(dapXe?3.2:1.4)) * (dapXe?.02:.012));  // nhún nhẹ
+  const nhipNghieng = phuongTien === 'xe' ? [3.2, .02] : phuongTien === 'xuong' ? [1.1, .026] : [1.4, .012];
+  anhHuong.rotateZ(Math.sin(t*nhipNghieng[0]) * nhipNghieng[1]);  // nhún nhẹ
   const lech = Math.sin(nhanVat.rotation.y - gocMay);
   if(Math.abs(lech) > .25) latNV = lech > 0 ? 1 : -1;
   anhHuong.scale.set(rongNV * latNV, caoNV, 1);
   bongHuong.position.set(nhanVat.position.x, .035, nhanVat.position.z);
-  bongHuong.scale.set(dapXe ? 1.55 : 1, dapXe ? 1.1 : 1, 1);
-  bongHuong.material.opacity = dapXe ? .7 : .85;
+  const bongCo = phuongTien === 'xe' ? [1.55, 1.1] : phuongTien === 'xuong' ? [2.0, 1.15] : [1, 1];
+  bongHuong.scale.set(bongCo[0], bongCo[1], 1);
+  bongHuong.material.opacity = phuongTien === 'bo' ? .85 : .7;
 
   capNhatKhoBau(t, dt);
   capNhatThuVien(t, dt);
