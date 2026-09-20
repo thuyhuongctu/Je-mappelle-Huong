@@ -312,10 +312,10 @@
         '<path d="M20 36.4c4.2-1.2 6-4.4 9.4-4.4-1.2 4.4-4.4 6.4-9.4 6.4z"/></g></svg>' +
         '<span class="sl">La vie en rose</span></div>' +
         '<div class="sf-card">' +
-        '<img src="assets/img/pro_aodai.webp" width="54" height="54" loading="lazy" decoding="async" alt="" onerror="this.style.display=\'none\'">' +
+        '<img src="assets/img/huong-ai-chan-dung.webp" width="360" height="360" loading="lazy" decoding="async" alt="" onerror="this.style.display=\'none\'">' +
         '<div>' +
         '<div class="an">' + t('Đỗ Thùy Hương', 'Do Thuy Huong', 'Do Thuy Huong') + '</div>' +
-        '<div class="ar">' + t('Nghiên cứu sinh · Giảng viên', 'Ph.D candidate · Lecturer', 'Doctorante · Enseignante') + '</div>' +
+        '<div class="ar">' + t('Giảng viên &amp; Nhà nghiên cứu', 'Lecturer &amp; Researcher', 'Enseignante &amp; Chercheuse') + '</div>' +
         '<div class="ao"><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID 0000-0002-7711-2487</a></div>' +
         '<div class="ao"><a href="mailto:thuyhuongctu@gmail.com">thuyhuongctu@gmail.com</a></div>' +
         '</div></div>' +
