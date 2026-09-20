@@ -54,6 +54,26 @@ thuộc tính `lang` của `<html>`; khoá nhớ là `huong_lang`, `huong_theme`
 Đầu trang và chân trang dùng chung do `assets/js/site-chrome.js` dựng, không
 viết lại trong từng tệp.
 
+## Năm mô-đun trò chơi của trang viên
+
+`achievements.js`, `side-quests.js`, `play-loop.js`, `minigame.js`,
+`story-quest.js` dựng chữ bằng JavaScript nên không dùng được lớp `.lang-*`.
+Cả năm tệp dùng chung một cách:
+
+```js
+const NG=()=>document.documentElement.lang==='en'?'en':'vi';
+const T=o=>typeof o==='string'?o:(o[NG()]||o.vi);
+```
+
+Chuỗi trong dữ liệu là `{vi,en}`, và **đọc `lang` ngay lúc vẽ**, đừng nhớ lại
+lúc nạp — khách đổi ngôn ngữ giữa chừng thì bảng đang mở phải vẽ lại đúng.
+Mỗi mô-đun tự theo dõi `lang` bằng `MutationObserver` trên `<html>`; riêng
+`play-loop.js` thì không cần vì nhãn của nó vẽ lại mỗi khung hình trong
+`scan()`. Bảng đang mở phải nhớ là bảng nào để mở lại đúng nó; `minigame.js`
+không vẽ lại ván đang chơi, chỉ vẽ lại màn giới thiệu.
+
+Trang viên chỉ có **hai thứ tiếng** (vi/en), không có tiếng Pháp.
+
 ## Trang viên 3D (`trangvien.html`)
 
 - Nhân vật là **ảnh phẳng luôn xoay về máy quay**, không phải khối 3D. Ảnh
@@ -146,6 +166,42 @@ nên con số ấy cao hay thấp không nói lên điều gì. Phóng to mà nh
 bằng số thì đếm pixel **đặc và đen trung tính** — `max(RGB) < 38` *và*
 `max - min < 14` — vì nền là đen trung tính còn tóc là nâu (R hơn hẳn B).
 Đã ba lần dùng nhầm thước và ba lần tưởng xong trong khi chưa xong.
+
+Công thức trên là cho **tám dáng của Hương**, nguồn độ phân giải đầy đủ, tóc
+nâu. Năm nhân vật kia (`npc-*.webp`) là ảnh chụp màn hình điện thoại, tóc đen,
+và hỏng ở đúng ba chỗ khác — đã sửa, ghi lại để khỏi mắc lại:
+
+1. **Khung đầu nhỏ hơn cỡ đích thì bước 4 không hề xảy ra.** Đầu của Linh,
+   Minh, Mai, Tùng chỉ 318–357px mà đích là 360, tức là đang **phóng to**.
+   Độ phủ từng phần ở mép vì thế không sinh ra được: alpha ở lại dạng nhị phân
+   đúng độ phân giải gốc, mép thành bậc thang và lốm đốm — nhìn là «bể».
+   Cách sửa: **lấy mẫu gấp ba** (độ sáng nội suy song tuyến, màu nội suy
+   LANCZOS) rồi mới ngưỡng, sau đó thu về 360. Mép cắt khi ấy nằm dưới mức
+   pixel gốc, thu nhỏ xong thành độ phủ từng phần thật. Trước khi chạy, hãy
+   **in ra tỉ lệ đích/nguồn**; lớn hơn 1 là đang phóng to, phải lấy mẫu thêm.
+
+2. **Đừng lấp lỗ thủng theo diện tích.** Ngưỡng 200px là của ảnh Hương. Tóc
+   đen sẫm hơn ngưỡng 12 nên bị đục thủng thành mảng lớn tới 2349px, để trống
+   thì hiện ra vết trắng giữa tóc. Đo cả năm tấm: mọi lỗ khép kín đều có độ
+   sáng trung bình 4–12 và gần như không pixel nào bằng 0, trong khi nền thật
+   thì 99,99% bằng 0. Nên xét **thành phần của lỗ**, không xét diện tích: lỗ
+   nào có quá 70% pixel bằng đúng 0 mới là nền nhìn xuyên qua. Ngưỡng lại ở
+   mức gấp ba còn đục thêm chấm nhỏ, nên sau đó khép một vòng rồi lấp hết lỗ
+   khép kín lần nữa.
+
+3. **Lỗ đã lấp thì giữ nguyên màu của chính nó.** Bước 3 bảo thay màu cho mọi
+   pixel mà bước 2 thêm vào — đúng với ảnh Hương, vì lỗ ở đó chỉ vài chục
+   pixel nền đen. Ở đây lỗ là tóc thật, thay hết thì cả mảng tóc bị bôi phẳng
+   thành vệt trơn (tóc tết của Linh thành khối ô liu bẹt). Chỉ thay pixel
+   **đen tuyệt đối** (`max(RGB) ≤ 2`) nằm lọt trong thân, và lấy màu từ **vật
+   liệu bất kỳ** kể cả tóc sẫm — lấy từ vật liệu sáng thì thành đốm sáng giữa
+   tóc.
+
+Với năm tấm này, thước «đặc và đen trung tính» **không dùng được**: tóc các
+nhân vật vốn đen trung tính nên số đếm 2000–9000 là tóc thật, không phải nền
+lọt vào. Chỉ `an` (tóc bạc) đo được: 315. Phải phóng to mà nhìn. Một con số
+dùng được là **số pixel mép có độ phủ từng phần**: nếu gần bằng 0 thì alpha
+vẫn nhị phân, tức là chưa hề thu nhỏ.
 
 Đổi ảnh nhân vật thì nhớ `DANG_TL` trong `trangvien.html` và cặp
 `width`/`height` của ảnh chữ ký trong `music.html` — đọc thẳng từ tệp, đừng
