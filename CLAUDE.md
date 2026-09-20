@@ -61,9 +61,23 @@ viết lại trong từng tệp.
 - `DANG_TL` phải **đúng bằng rộng/cao của tệp ảnh**. Ảnh phải cắt sát người.
   Đặt sai thì nhân vật bị kéo bè ngang mà nhìn không ra, vì viền trong suốt
   quanh người che mất.
-- Dáng do `dangHopCanh()` quyết định, theo thứ tự: đạp xe → dáng xe; đứng
-  trong khu có dáng riêng → dáng khu; còn lại theo nét mặt. Đừng gọi thẳng
-  `datDang()` từ chỗ khác, sẽ bị ghi đè.
+- Dáng do `dangHopCanh()` quyết định, theo thứ tự: đạp xe → dáng xe; chèo
+  xuồng → dáng thuyền; đứng trong khu có dáng riêng → dáng khu; còn lại theo
+  nét mặt. Đừng gọi thẳng `datDang()` từ chỗ khác, sẽ bị ghi đè.
+- Ba phương tiện trong `phuongTien`: `'bo'`, `'xe'`, `'xuong'`. Tốc độ, nhãn
+  nút, biểu tượng đều tra bảng (`PT_TOC`, `PT_NHAN`, `PT_BIEU`, `PT_TIEP`);
+  hai nút đổi phương tiện hiển thị phương tiện **kế tiếp**, không phải phương
+  tiện đang dùng.
+- **Xuồng chỉ đi trên sông.** `trenNuoc()` xét điểm có nằm trong đa giác mặt
+  sông không; `vienSong` lấy từ chính hình dựng mặt sông, nhớ đổi dấu trục
+  (mặt sông xoay -90° quanh X nên điểm `(x,y)` rơi xuống thành `(x,0,-y)`).
+  `benGanNhat()` thả xuồng vào **giữa dòng**, không phải chỗ nước gần nhất -
+  thả sát mép thì chèo vài bước là húc bờ. `chenNuoc()` khi chạm bờ thì lái
+  chệch dần tới ±1,4 rad để lướt dọc bờ; tách theo hai trục x/z là không đủ
+  vì sông chạy xiên.
+- Chèo xuồng và phần «tự đi tới khu» loại trừ nhau: các khu đều trên bờ, mà
+  phần tự đi không xét mặt nước nên sẽ kéo xuồng lên cỏ. Vào xuồng thì xoá
+  `mucTieuDi` và huỷ tour; đang chèo mà có đích thì tự chuyển về đi bộ.
 - Màn hình có **chín cụm nổi do năm tệp CSS khác nhau đặt chỗ**;
   `assets/css/hud-gon.css` sinh ra chỉ để chúng khỏi chồng nhau. Thêm cụm mới
   thì phải canh lại ở đó.
