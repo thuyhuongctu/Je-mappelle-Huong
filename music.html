@@ -112,6 +112,11 @@ audio{width:100%;height:38px}
 .picrow figure{margin:0}
 .picrow img{display:block;width:auto;height:auto;max-width:100%;max-height:300px;margin-inline:auto;
   border-radius:12px;border:1px solid var(--line)}
+/* Hàng hai ảnh: để nguyên luật trên thì hai ảnh dọc khác tỉ lệ ra hai khối nhỏ
+   khác bề ngang, hụt hai bên cột. Cho chúng lấp đầy cột và cắt về cùng một
+   khuôn 3:4 - cắt từ mép dưới lên nên phần chữ ở đầu ảnh hội thi còn nguyên. */
+.picrow.doi img{width:100%;height:auto;max-height:none;aspect-ratio:3/4;object-fit:cover;object-position:50% 0}
+.picrow.doi figure{display:flex;flex-direction:column}
 .picrow figcaption{margin:6px 2px 0;font-size:.74rem;line-height:1.45;color:var(--muted)}
 @media(max-width:560px){.picrow{grid-template-columns:1fr}}
 @media(max-width:640px){.picrow,.songpic{margin:14px 16px 4px}}
@@ -738,6 +743,13 @@ Và em được phép nghỉ một đêm. Et puis dormir.</p>
         <img src="assets/img/dem-nghi-ngoi.webp" width="768" height="1376" loading="lazy" decoding="async"
              alt="Chân dung trong ánh đèn đêm dịu, gương mặt thư thái sau một ngày dài">
         <figcaption><span class="lang-vi">«Tu peux dormir» - trạm nghỉ của bài hát: đặt gánh nặng xuống một đêm.</span><span class="lang-en">“Tu peux dormir” - the song’s resting station: setting the load down for one night.</span></figcaption>
+      </figure>
+
+      <figure class="songclip">
+        <video controls preload="none" playsinline width="1280" height="720"
+               poster="assets/img/den-dau-ben-song-poster.webp"
+               src="assets/video/den-dau-ben-song.mp4"></video>
+        <figcaption><span class="lang-vi">Ngọn đèn dầu bên sông lúc chạng vạng - hai hình ảnh xuyên suốt bài hát.</span><span class="lang-en">The oil lamp by the river at dusk - the two images the song is built on.</span></figcaption>
       </figure>
 
       <div class="tracks">
