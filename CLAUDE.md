@@ -54,6 +54,26 @@ thuộc tính `lang` của `<html>`; khoá nhớ là `huong_lang`, `huong_theme`
 Đầu trang và chân trang dùng chung do `assets/js/site-chrome.js` dựng, không
 viết lại trong từng tệp.
 
+## Năm mô-đun trò chơi của trang viên
+
+`achievements.js`, `side-quests.js`, `play-loop.js`, `minigame.js`,
+`story-quest.js` dựng chữ bằng JavaScript nên không dùng được lớp `.lang-*`.
+Cả năm tệp dùng chung một cách:
+
+```js
+const NG=()=>document.documentElement.lang==='en'?'en':'vi';
+const T=o=>typeof o==='string'?o:(o[NG()]||o.vi);
+```
+
+Chuỗi trong dữ liệu là `{vi,en}`, và **đọc `lang` ngay lúc vẽ**, đừng nhớ lại
+lúc nạp — khách đổi ngôn ngữ giữa chừng thì bảng đang mở phải vẽ lại đúng.
+Mỗi mô-đun tự theo dõi `lang` bằng `MutationObserver` trên `<html>`; riêng
+`play-loop.js` thì không cần vì nhãn của nó vẽ lại mỗi khung hình trong
+`scan()`. Bảng đang mở phải nhớ là bảng nào để mở lại đúng nó; `minigame.js`
+không vẽ lại ván đang chơi, chỉ vẽ lại màn giới thiệu.
+
+Trang viên chỉ có **hai thứ tiếng** (vi/en), không có tiếng Pháp.
+
 ## Trang viên 3D (`trangvien.html`)
 
 - Nhân vật là **ảnh phẳng luôn xoay về máy quay**, không phải khối 3D. Ảnh
