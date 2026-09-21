@@ -1228,18 +1228,28 @@ const theGioi = new THREE.Group();
 scene.add(theGioi);
 const BAN_KINH = 52;   // giới hạn đi lại
 
-// 5.1 mặt đất - đồng lúa pastel
-const dat = new THREE.Mesh(new THREE.CircleGeometry(BAN_KINH+16, 72), vatLieu('#A9DDA0', .98));
-const datMauGoc = dat.material.color.clone();   // de doi lai khi roi thoi khac noir
-const dsDuongMon = [];                           // cac tam duong mon, thu gom o duoi
+/* 5.1 MẶT ĐẤT
+
+   Trước đây là một đĩa `CircleGeometry` phẳng tuyệt đối, MỘT màu `#A9DDA0`,
+   cộng một vành `RingGeometry` sẫm hơn đặt chồng lên. Đĩa quạt ấy chỉ có 73
+   đỉnh, toàn nằm ở mép - không có chỗ nào để đặt vân. Cảnh vì thế có một
+   mảng phẳng trơn chiếm gần nửa khung hình, mắt không có gì bám vào.
+
+   Nay là một lưới vành `RingGeometry` phủ kín từ tâm ra mép, tô bằng MÀU
+   THEO ĐỈNH: vạt cỏ đậm nhạt, vạt cỏ cháy nắng, vành ngoài sẫm dần, và dải
+   cát ven sông ven ao. Vành sẫm cũ gộp luôn vào đây nên bỏ được một mesh.
+
+   `material.color` để trắng vì với `vertexColors` nó là hệ số NHÂN - noir
+   đặt `nenDat:'#241B15'` thì nhân xuống thành nền nâu sẫm, đúng ý. */
+const DAT_BK = BAN_KINH + 16;
+const datHH = new THREE.RingGeometry(.02, DAT_BK, 132, 36);
+const dat = new THREE.Mesh(datHH, new THREE.MeshStandardMaterial({
+  color: 0xffffff, roughness: .98, metalness: 0, vertexColors: true}));
+const datMauGoc = new THREE.Color(0xffffff);   // de doi lai khi roi thoi khac noir
+const dsDuongMon = [];                          // cac tam duong mon, thu gom o duoi
 dat.rotation.x = -Math.PI/2;
 dat.receiveShadow = true;
 theGioi.add(dat);
-
-// vành đất sẫm hơn cho có chiều sâu
-const vanh = new THREE.Mesh(new THREE.RingGeometry(BAN_KINH+2, BAN_KINH+16, 72), vatLieu('#8CCB88', .98));
-vanh.rotation.x = -Math.PI/2; vanh.position.y = .02;
-theGioi.add(vanh);
 
 // 5.2 con sông uốn qua trang viên
 let vienSong = null;      // đa giác mặt sông, toạ độ (x, z) của thế giới
@@ -1263,6 +1273,87 @@ function songNuoc(){
 }
 const song = songNuoc();
 theGioi.add(song);
+
+/* Khoảng cách từ một điểm tới mặt sông, để tô dải cát ven bờ và để giữ phẳng
+   chỗ sông cắt qua vành ngoài. Trả 0 nếu điểm nằm trên nước. */
+function xaSong(x, z){
+  if(!vienSong) return 999;
+  if(trenNuoc(x, z)) return 0;
+  let gan = Infinity;
+  for(let i = 0, j = vienSong.length - 1; i < vienSong.length; j = i++){
+    const ax = vienSong[j][0], az = vienSong[j][1];
+    const bx = vienSong[i][0], bz = vienSong[i][1];
+    const vx = bx - ax, vz = bz - az;
+    const dd = vx*vx + vz*vz;
+    let k = dd > 1e-9 ? ((x - ax)*vx + (z - az)*vz) / dd : 0;
+    k = k < 0 ? 0 : k > 1 ? 1 : k;
+    const dx = x - (ax + vx*k), dz = z - (az + vz*k);
+    const b = dx*dx + dz*dz;
+    if(b < gan) gan = b;
+  }
+  return Math.sqrt(gan);
+}
+
+/* Tô vân cho mặt đất và nâng gò ở vành ngoài.
+
+   Gò chỉ nâng ở NGOÀI vòng đi lại (BAN_KINH = 52): bắt đầu từ bán kính 50,
+   theo bình phương nên ở 52 mới cao 0,03 đơn vị - nhân vật không hề cảm thấy.
+   Trong lòng trang viên đất vẫn phẳng tuyệt đối, nên mọi công trình, cây cối
+   và nhân vật giữ nguyên độ cao, không phải tính lại gì. Đấy là lý do chọn
+   cách này thay vì làm địa hình thật cho cả bản đồ.
+
+   Chỗ sông cắt qua vành ngoài thì ép phẳng lại, kẻo gò nhô lên xuyên qua mặt
+   nước - sông chạy tới x = ±62, tức là ra ngoài vòng 52. */
+(function veVanDat(){
+  const v = datHH.attributes.position;
+  const n = v.count;
+  const mau = new Float32Array(n * 3);
+  const co = new THREE.Color();
+  const CO_NEN  = new THREE.Color('#A9DDA0');   // co chinh, dung mau cu
+  const CO_SAM  = new THREE.Color('#7FBC7E');
+  const CO_NHAT = new THREE.Color('#CFEDB6');
+  const CO_KEM  = new THREE.Color('#DFE3B4');   // vat co chay nang
+  const CO_VANH = new THREE.Color('#6FAC70');   // vanh ngoai, dam hon vanh cu
+  const CO_CAT  = new THREE.Color('#E6DCBA');   // bo cat ven nuoc
+  for(let i = 0; i < n; i++){
+    const x = v.getX(i), y = v.getY(i);
+    /* Mặt đất xoay -90° quanh X nên đỉnh (x,y) rơi xuống thế giới thành
+       (x, 0, -y). Quên dấu trừ này thì vân cỏ và bờ cát lệch sang phía đối
+       diện so với sông thật. */
+    const wz = -y, r = Math.hypot(x, y);
+
+    /* Ba tần số chồng lên nhau: vạt lớn, vạt vừa, rồi lốm đốm nhỏ. Chỉ một
+       tần số thì ra những mảng tròn đều, nhìn ra ngay là hàm sin. */
+    const n1 = Math.sin(x*.068 + 1.3) * Math.cos(wz*.055 - .7);
+    const n2 = Math.sin(x*.17 - 2.1) * Math.cos(wz*.15 + .4) * .55;
+    const n3 = Math.sin(x*.44 + .6) * Math.cos(wz*.39 - 2.6) * .28;
+    const t  = (n1 + n2 + n3 + 1.6) / 3.2;
+    co.copy(CO_SAM).lerp(CO_NEN, Math.min(1, Math.max(0, t) * 1.5));
+    if(t > .55) co.lerp(CO_NHAT, Math.min(1, (t - .55) / .45));
+
+    const v3 = Math.sin(x*.038 - 3.1) * Math.cos(wz*.033 + 2.2);
+    if(v3 > .42) co.lerp(CO_KEM, Math.min(1, (v3 - .42) / .58) * .72);
+
+    const rv = Math.max(0, (r - 30) / (DAT_BK - 30));
+    co.lerp(CO_VANH, rv * rv * .92);
+
+    const dS = xaSong(x, wz);
+    const dA = Math.abs(r - 2.9);          // ao sen giua trang vien, ban kinh 2,7
+    const d  = Math.min(dS, dA);
+    if(d < 3.4) co.lerp(CO_CAT, (1 - d / 3.4) * .8);
+
+    mau[i*3] = co.r; mau[i*3+1] = co.g; mau[i*3+2] = co.b;
+
+    const g = Math.max(0, (r - 50) / (DAT_BK - 50));
+    let h = (Math.sin(x*.11 + .9) * Math.cos(wz*.095 - 1.6)
+           + Math.sin(wz*.07 + 2.4) * .6) * 1.35 * g * g;
+    if(dS < 11) h *= (dS / 11) * (dS / 11);
+    v.setZ(i, h);
+  }
+  datHH.setAttribute('color', new THREE.BufferAttribute(mau, 3));
+  v.needsUpdate = true;
+  datHH.computeVertexNormals();
+})();
 
 /* Điểm (x,z) có nằm trên mặt sông không - phép đếm số lần cắt cạnh. */
 function trenNuoc(x, z){
@@ -1323,12 +1414,42 @@ function chenNuoc(cx, cz, nx, nz){
   return [cx, cz];
 }
 
-// 5.3 lối đi đất nện dẫn qua các khu
+/* 5.3 lối đi đất nện dẫn qua các khu.
+   Khai ở ngoài hàm vì bản đồ trang viên vẽ lại chính mạng lối mòn này - một
+   nguồn dữ liệu, hai nơi dùng, khỏi lệch nhau như con sông đã từng lệch. */
+const TUYEN_MON = [
+  [[0,-6],[-14,-14],[-26,-20]],      // Hoc thuat
+  [[0,-6],[12,-14],[24,-24]],        // Du an
+  [[0,-6],[0,12],[0,34]],            // Bang tin
+  [[0,12],[16,14],[34,16]],          // Thu vien
+  [[0,12],[-16,16],[-30,22]],        // Am nhac
+  [[0,12],[-8,26],[-16,42]],         // Loi ke chuyen
+  [[0,-6],[-6,-22],[-12,-38]]        // Kho tuong lai
+];
 function loiDi(){
   const g = new THREE.Group();
-  const diem = [[0,-6],[-14,-14],[-26,-20],[-14,-6],[0,-6],[12,-14],[24,-24],[14,-8],[0,-6],[0,12],[0,34],[0,12],[16,14],[34,16],[16,14],[-16,16],[-30,22]];
-  for(let i=0;i<diem.length-1;i++){
-    const a = diem[i], b = diem[i+1];
+  /* Hai khu vốn KHÔNG có lối mòn nào dẫn tới - «Lối kể chuyện» ở (-16,42) và
+     «Kho tương lai» ở (-12,-38). Đi tới đó phải lội cỏ, mà nhìn từ trên xuống
+     thì hai khu ấy trông như bị bỏ rơi khỏi trang viên. Nay nối cả tám.
+
+     Viết thành từng TUYẾN riêng thay vì một đường đi liền mạch. Cách cũ là một
+     danh sách điểm nối đuôi nhau, nên muốn rẽ sang nhánh khác thì phải quay
+     ngược lại - và mỗi lần quay ngược ấy lại dựng thêm một tấm phẳng NẰM ĐÈ
+     KHÍT lên tấm cũ, cùng y = 0,07. Hai mặt cùng độ cao thì tranh nhau, trên
+     máy khác dễ thành vệt nhấp nháy. Lỗi có sẵn: đếm được 16 tấm cho 11 đoạn
+     thật. Nay bỏ trùng bằng khoá hai đầu đoạn. */
+  const tuyen = TUYEN_MON;
+  const daCo = new Set();
+  const diem = [];
+  for(const tu of tuyen)
+    for(let k=0;k<tu.length-1;k++){
+      const a = tu[k], b = tu[k+1];
+      const kh = [a,b].map(q=>q[0]+','+q[1]).sort().join('|');
+      if(daCo.has(kh)) continue;
+      daCo.add(kh); diem.push([a,b]);
+    }
+  for(let i=0;i<diem.length;i++){
+    const a = diem[i][0], b = diem[i][1];
     const dx = b[0]-a[0], dz = b[1]-a[1];
     const d = Math.hypot(dx,dz);
     if(d < .5) continue;
@@ -4813,15 +4934,31 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
 
   function veBanDoLon(){
     const p = [];
-    // dong song: dung dung cong thuc sin cua canh that
-    let d = '';
-    for(let x=-NUA; x<=NUA; x+=4){
-      const z = Math.sin(x*.05)*7 + 8;
-      d += (x===-NUA ? 'M' : 'L') + toaX(x).toFixed(1) + ' ' + toaZ(z).toFixed(1) + ' ';
+    /* Dòng sông: vẽ thẳng từ `vienSong`, tức chính đa giác dựng nên mặt sông
+       trong cảnh 3D.
+
+       Trước đây chỗ này vẽ bằng một công thức sin riêng, `z = sin(x*.05)*7+8`,
+       cho z từ 1 tới 15 - toàn số DƯƠNG. Mà sông thật nằm ở z từ -21 tới -2,
+       toàn số âm. Nghĩa là bản đồ vẽ con sông sang đúng phía đối diện suốt
+       bấy lâu: đứng ở bờ nam nhìn bản đồ thì tưởng sông ở phía bắc. Đúng cái
+       bẫy đổi dấu trục đã ghi trong CLAUDE.md, chỉ là lần này nó nằm ở bản đồ
+       chứ không ở phần chèo xuồng. Lấy thẳng từ nguồn thì hết đường sai. */
+    if(typeof vienSong !== 'undefined' && vienSong && vienSong.length){
+      const ds = vienSong.map((pt, i) =>
+        (i ? 'L' : 'M') + toaX(pt[0]).toFixed(1) + ' ' + toaZ(pt[1]).toFixed(1)).join(' ') + ' Z';
+      p.push('<path d="'+ds+'" fill="#9FD3E8" opacity=".85"/>');
     }
-    p.push('<path d="'+d+'" fill="none" stroke="#9FD3E8" stroke-width="13" stroke-linecap="round" opacity=".85"/>');
     // duong mon vong quanh ao sen
     p.push('<circle cx="200" cy="200" r="86" fill="none" stroke="#F0DEC0" stroke-width="11" opacity=".85"/>');
+    /* Mạng lối mòn thật, lấy từ TUYEN_MON - chính bảng mà loiDi() dùng để
+       dựng các tấm đường trong cảnh 3D. Trước đây bản đồ chỉ có vòng tròn
+       quanh ao sen, nên nhìn vào không biết các khu nối với nhau thế nào. */
+    if(typeof TUYEN_MON !== 'undefined')
+      TUYEN_MON.forEach(tu=>{
+        const d = tu.map((pt,i)=>(i?'L':'M')+toaX(pt[0]).toFixed(1)+' '+toaZ(pt[1]).toFixed(1)).join(' ');
+        p.push('<path d="'+d+'" fill="none" stroke="#F0DEC0" stroke-width="7.5"'+
+               ' stroke-linecap="round" stroke-linejoin="round" opacity=".8"/>');
+      });
     // ao sen + dai phun o chinh giua
     /* Ao sen nho lai mot chut: huy hieu khu nay to hon truoc (r 16 -> 17) ma
        Nha chinh chi cach tam ao 26 don vi, de bi dinh vao nhau. */

@@ -148,6 +148,55 @@ việc: nó là phím tắt 1–8. Dòng mẹo dưới bảng phải nói đúng
 Bảng «Đi đâu?» (`bd-chon`, mở từ bản đồ tròn ở góc) vẫn dùng emoji — `TRANH_KHU`
 khai trong phạm vi của `#toancanh` nên chỗ kia không với tới.
 
+## Mặt đất và lối mòn trang viên
+
+Mặt đất **không còn là `CircleGeometry`**. Đĩa quạt ấy chỉ có 73 đỉnh, toàn
+nằm ở mép, nên không có chỗ nào đặt vân — cảnh vì thế có một mảng phẳng trơn
+một màu chiếm gần nửa khung hình. Nay là `RingGeometry(.02, 68, 132, 36)`,
+4 921 đỉnh, tô bằng **màu theo đỉnh** (`vertexColors`). Vành sẫm riêng ngày
+trước gộp luôn vào đây nên bớt được một mesh.
+
+`material.color` phải để **trắng**: với `vertexColors` nó là hệ số *nhân*.
+`datMauGoc` cũng là trắng, còn noir đặt `nenDat:'#241B15'` thì nhân xuống
+thành nền nâu sẫm — đúng ý, không phải sửa gì thêm ở `apThoiKhac()`.
+
+**Gò chỉ nâng ở ngoài vòng đi lại.** Bắt đầu từ bán kính 50 và theo bình
+phương, nên ở 52 (`BAN_KINH`) mới cao 0,03 đơn vị. Đo lại sau khi dựng: **0
+đỉnh** trong vòng 52 lệch quá 0,05. Nhờ thế mọi công trình, cây cối và nhân
+vật giữ nguyên độ cao, không phải viết hàm tra chiều cao địa hình. Muốn làm
+địa hình thật cho cả bản đồ thì phải tra chiều cao cho từng thứ một, kể cả
+`nhanVat.position.y` — đó là việc khác, đừng lẫn vào đây.
+
+Chỗ sông cắt qua vành ngoài phải **ép phẳng** (sông chạy tới x = ±62, tức ra
+ngoài vòng 52), nếu không gò nhô lên xuyên qua mặt nước.
+
+Vân cỏ dùng **ba tần số** chồng lên nhau. Một tần số thôi thì ra những mảng
+tròn đều, nhìn phát hiện ngay là hàm sin.
+
+Khi tính màu theo vị trí, nhớ mặt đất xoay -90° quanh X nên đỉnh `(x,y)` rơi
+xuống thế giới thành `(x, 0, -y)`. Quên dấu trừ thì vân cỏ và bờ cát lệch sang
+đúng phía đối diện so với sông thật.
+
+### Một nguồn dữ liệu, nhiều nơi dùng
+
+Đã dính hai lần vì chép lại hình dạng thay vì lấy từ nguồn:
+
+- **Sông trên bản đồ vẽ ngược phía** suốt bấy lâu. Bản đồ dùng một công thức
+  sin riêng, `z = sin(x*.05)*7 + 8`, cho z từ 1 tới 15 — toàn dương; mà
+  `vienSong` đo được nằm ở z từ **-21 tới 2**. Nay bản đồ vẽ thẳng từ
+  `vienSong`.
+- **Lối mòn** nay khai ở `TUYEN_MON` ngoài hàm `loiDi()`, để bản đồ vẽ lại
+  chính mạng ấy.
+
+Danh sách lối mòn cũ là **một đường đi liền mạch**, nên muốn rẽ nhánh phải
+quay ngược lại — mỗi lần quay ngược dựng thêm một tấm phẳng nằm đè khít lên
+tấm cũ, cùng `y = 0,07`, hai mặt tranh nhau. Đếm được 16 tấm cho 11 đoạn thật.
+Nay viết thành từng **tuyến riêng** rồi bỏ trùng bằng khoá hai đầu đoạn: 14
+tấm cho đủ **tám** khu.
+
+Trước đó hai khu **không hề có lối mòn nào dẫn tới** — «Lối kể chuyện»
+`(-16,42)` và «Kho tương lai» `(-12,-38)`.
+
 ## Ánh sáng trang viên
 
 Số thật **không nằm ở chỗ khai đèn** mà ở `BC_CH` — bảng bốn thời khắc
