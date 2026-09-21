@@ -1143,19 +1143,50 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.06;
 san.appendChild(renderer.domElement);
 
-// ánh sáng: nắng dịu buổi sớm
-scene.add(new THREE.HemisphereLight(0xEAF6FF, 0x9CCB92, 1.0));
-const nang = new THREE.DirectionalLight(0xFFF3DC, 1.5);
-nang.position.set(24, 34, 18);
+/* ---------- ÁNH SÁNG ----------
+   Một đèn nắng có bóng, một đèn trời, một đèn viền sau lưng.
+
+   Trước đây đèn trời để 1,0 trong khi đèn nắng chỉ 1,5 - tỉ lệ 0,67. Nghĩa là
+   mọi khối đều được rọi gần như đều từ mọi phía nên không còn sáng-tối, cảnh
+   nhìn bẹt. Cảnh tháp mượn của ThreeUI để tỉ lệ ấy ở 0,29. Số thật nằm trong
+   BC_CH của từng thời khắc, chỗ này chỉ là giá trị khởi tạo - apThoiKhac()
+   ghi đè ngay lúc nạp.
+
+   Khoảng cách đèn luôn kéo về 72 đơn vị (xem NANG_XA). Đèn định hướng chỉ
+   quan tâm HƯỚNG chứ không quan tâm khoảng cách, mà mấy thời khắc mặt trời
+   thấp khai vị trí rất gần gốc toạ độ (noir: [-18,9,21], dài 29) - để nguyên
+   thì có vật nằm gần đèn hơn mặt phẳng «near» của khung bóng và bị cắt mất. */
+const NANG_XA = 72;
+scene.add(new THREE.HemisphereLight(0xEAF6FF, 0x9CCB92, .38));
+const nang = new THREE.DirectionalLight(0xFFF3DC, 1.82);
 nang.castShadow = true;
 nang.shadow.mapSize.set(laMobile ? 1024 : 2048, laMobile ? 1024 : 2048);
-nang.shadow.radius = laMobile ? 2 : 4;
-nang.shadow.camera.near = 5; nang.shadow.camera.far = 110;
-nang.shadow.camera.left=-52; nang.shadow.camera.right=52;
-nang.shadow.camera.top=52; nang.shadow.camera.bottom=-52;
+nang.shadow.radius = laMobile ? 2 : 3;
+nang.shadow.camera.near = 6; nang.shadow.camera.far = 170;
+/* Khung bóng: trước phủ cả ±52, tức cả thế giới, trên bản đồ 2048 - mỗi texel
+   0,051 đơn vị nên chân nhân vật không có bóng tiếp đất rõ. Nay ±34 và CHẠY
+   THEO TẦM NHÌN: tâm khung đặt trước mặt, không phải ngay dưới chân, vì đặt
+   dưới chân thì phần xa trong tầm mắt mất bóng. Mỗi texel còn 0,033. */
+const BONG_NUA = 34, BONG_TRUOC = 16;
+nang.shadow.camera.left=-BONG_NUA; nang.shadow.camera.right=BONG_NUA;
+nang.shadow.camera.top=BONG_NUA; nang.shadow.camera.bottom=-BONG_NUA;
 nang.shadow.bias = -0.0011;
-scene.add(nang);
-scene.add(new THREE.DirectionalLight(0xBFD9FF, .35).translateX(-20).translateY(12).translateZ(-22));
+nang.shadow.normalBias = .035;
+scene.add(nang); scene.add(nang.target);
+const nangLech = new THREE.Vector3(24, 34, 18).setLength(NANG_XA);
+
+/* Đèn viền sau lưng - chính nó làm hình khối nổi lên mà không phải tăng đèn
+   môi trường. Trước đây chỗ này là một đèn phụ cố định 0,35 màu xanh ban ngày
+   mà apThoiKhac() không hề động tới, nên ban đêm và noir nó vẫn rọi ánh sáng
+   ban ngày vào cảnh. Nay nó đổi theo thời khắc như hai đèn kia. */
+const vienSau = new THREE.DirectionalLight(0xBFD9FF, .18);
+scene.add(vienSau); scene.add(vienSau.target);
+const vienLech = new THREE.Vector3();
+function datLechDen(vt){
+  nangLech.set(vt[0], vt[1], vt[2]).setLength(NANG_XA);
+  vienLech.set(-vt[0], Math.abs(vt[1]) * .4 + 6, -vt[2]).setLength(NANG_XA);
+}
+datLechDen([24, 34, 18]);
 
 /* ---------- 4. TIỆN ÍCH ---------- */
 const CACHE = {};
@@ -3708,15 +3739,17 @@ scene.add(denTheoChan);
 const BC_CH = {
  sang:{
   troi:[[0,'#B8CCF2'],[.42,'#DDE9F8'],[.62,'#FBEEDF'],[1,'#F6E4D2']],
-  suong:'#D8E9EF', nangMau:'#FFF3DC', nangManh:1.55, nangViTri:[24,34,18],
-  bauTroi:'#EAF6FF', phanDat:'#9CCB92', bauManh:1.0, phoiSang:1.08, thienThe:null,
+  suong:'#D8E9EF', nangMau:'#FFF3DC', nangManh:1.82, nangViTri:[24,34,18],
+  bauTroi:'#EAF6FF', phanDat:'#9CCB92', bauManh:.38, phoiSang:1.04, thienThe:null,
+  vienMau:'#CFE4FF', vienManh:.18,
   tre:'#9CCB7E', treDot:'#7FB05F', tham:['#CDEACF','#F9E6D8','#DFF0E8','#FAE3E6'],
   hoa:['#F2A9B8','#FFFFFF','#F2D06B','#B9A9F2'], sen:'#F08CA2', doiXa:'#BFD9EA', denSang:.45, domDom:false
  },
  chieu:{
   troi:[[0,'#7A6BB8'],[.38,'#C97BA4'],[.58,'#F09A6E'],[.78,'#FBCB8A'],[1,'#FDE4B8']],
-  suong:'#EBB58F', nangMau:'#FFB36B', nangManh:1.35, nangViTri:[-30,14,26],
-  bauTroi:'#E8B49A', phanDat:'#B08A6E', bauManh:.75, phoiSang:1.02,
+  suong:'#EBB58F', nangMau:'#FFB36B', nangManh:1.62, nangViTri:[-30,14,26],
+  bauTroi:'#E8B49A', phanDat:'#B08A6E', bauManh:.34, phoiSang:1.00,
+  vienMau:'#A8C4FF', vienManh:.16,
   thienThe:'matTroi',
   tre:'#8FAF6E', treDot:'#75955A', tham:['#F3D3A8','#F0BFA5','#E8CBB0','#F5B7A0'],
   hoa:['#F2A9B8','#FFD9A0','#F2D06B','#E88AA0'], sen:'#F0789A', doiXa:'#B88AA8', denSang:1.15, domDom:false
@@ -3727,8 +3760,9 @@ const BC_CH = {
     nó như một thời khắc thứ tư để so. */
  noir:{
   troi:[[0,'#120E0C'],[.44,'#231913'],[.74,'#3C291C'],[1,'#57391F']],
-  suong:'#140F0C', nangMau:'#FFA65C', nangManh:.26, nangViTri:[-18,9,21],
-  bauTroi:'#2A2230', phanDat:'#171210', bauManh:.09, phoiSang:.58,
+  suong:'#140F0C', nangMau:'#FFA65C', nangManh:.34, nangViTri:[-18,9,21],
+  bauTroi:'#2A2230', phanDat:'#171210', bauManh:.05, phoiSang:.58,
+  vienMau:'#6E86C4', vienManh:.10,
   suongGan:14, suongXa:58, nenDat:'#241B15', nenMon:'#3A2C20',
   thienThe:'matTrang',
   tre:'#3B4F41', treDot:'#2B3D31', tham:['#4A3A2B','#3D3327','#432F25','#4D392F'],
@@ -3737,8 +3771,9 @@ const BC_CH = {
  },
  dem:{
   troi:[[0,'#2A2450'],[.45,'#463B78'],[.72,'#7A6098'],[1,'#A88AB0']],
-  suong:'#5A4A78', nangMau:'#BFD0FF', nangManh:.55, nangViTri:[20,30,-14],
-  bauTroi:'#8A9AD0', phanDat:'#4A5A68', bauManh:.5, phoiSang:.98,
+  suong:'#5A4A78', nangMau:'#BFD0FF', nangManh:.52, nangViTri:[20,30,-14],
+  bauTroi:'#8A9AD0', phanDat:'#4A5A68', bauManh:.13, phoiSang:.80,
+  vienMau:'#9FB4FF', vienManh:.10,
   thienThe:'matTrang',
   tre:'#5F8A6A', treDot:'#4A7055', tham:['#3E5A66','#54486E','#465E52','#5E4858'],
   hoa:['#E8B4C8','#CFC4FF','#A8D8E8','#F2D06B'], sen:'#E890B0', doiXa:'#54487A', denSang:1.9, domDom:true
@@ -3881,7 +3916,9 @@ function apThoiKhac(k){
   scene.fog.far  = cfg.suongXa  != null ? cfg.suongXa  : 130;
   nang.color = new THREE.Color(cfg.nangMau);
   nang.intensity = cfg.nangManh;
-  nang.position.set(...cfg.nangViTri);
+  datLechDen(cfg.nangViTri);
+  vienSau.color = new THREE.Color(cfg.vienMau || '#BFD9FF');
+  vienSau.intensity = cfg.vienManh != null ? cfg.vienManh : .5;
   scene.children.filter(c=>c.isHemisphereLight).forEach(h=>{
     h.color = new THREE.Color(cfg.bauTroi); h.groundColor = new THREE.Color(cfg.phanDat);
     h.intensity = cfg.bauManh;
@@ -4410,6 +4447,18 @@ function vong(){
   if(!camera.position.__dat){ camera.position.set(mx, tamMay.y + cao, mz); camera.position.__dat = true; }
   camera.position.lerp(new THREE.Vector3(mx, tamMay.y + cao, mz), Math.min(1, 6*dt));
   camera.lookAt(tamMay);
+
+  /* Khung bóng bám theo tầm nhìn. Tâm đặt trước mặt nhân vật một đoạn, theo
+     đúng hướng máy quay đang nhìn, nên khung ±34 phủ hết chỗ khách thấy.
+     Bóng «bơi» khi khung dịch thì ở đây không thành vấn đề: khung chỉ dịch
+     khi nhân vật hoặc máy quay động, mà lúc ấy cả cảnh đang động; đứng yên
+     thì khung đứng yên. */
+  const bcx = nhanVat.position.x - Math.sin(gocMay)*BONG_TRUOC;
+  const bcz = nhanVat.position.z - Math.cos(gocMay)*BONG_TRUOC;
+  nang.target.position.set(bcx, 0, bcz);
+  nang.position.set(bcx + nangLech.x, nangLech.y, bcz + nangLech.z);
+  vienSau.target.position.set(bcx, 0, bcz);
+  vienSau.position.set(bcx + vienLech.x, vienLech.y, bcz + vienLech.z);
 
   /* --- mây trôi --- */
   may.forEach(c=>{

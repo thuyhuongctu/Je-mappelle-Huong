@@ -148,6 +148,59 @@ việc: nó là phím tắt 1–8. Dòng mẹo dưới bảng phải nói đúng
 Bảng «Đi đâu?» (`bd-chon`, mở từ bản đồ tròn ở góc) vẫn dùng emoji — `TRANH_KHU`
 khai trong phạm vi của `#toancanh` nên chỗ kia không với tới.
 
+## Ánh sáng trang viên
+
+Số thật **không nằm ở chỗ khai đèn** mà ở `BC_CH` — bảng bốn thời khắc
+(`sang` / `chieu` / `dem` / `noir`). `apThoiKhac()` ghi đè giá trị khởi tạo
+ngay lúc nạp, nên sửa chỗ khai đèn là vô ích.
+
+Thước đo là **tỉ lệ đèn phụ trên đèn chính**, và «đèn phụ» phải tính **cả đèn
+trời lẫn đèn viền**. Trước đây tỉ lệ ấy là 0,81 ở buổi chiều (đèn trời 0,75 +
+một đèn phụ cố định 0,35 mà `apThoiKhac()` không hề động tới, chia cho đèn nắng
+1,35) — mọi khối được rọi gần như đều từ mọi phía nên cảnh bẹt hoàn toàn. Nay
+giữ khoảng **0,31** cho hai buổi ban ngày.
+
+Đã mắc một lần rồi: hạ đèn trời mà lại đặt đèn viền 0,52 thì **bù lại gần hết**,
+tổng đèn phụ vẫn 1,04 — đo ra thì vùng tối không sâu thêm chút nào. Đèn viền
+phải rất nhẹ (0,10–0,18).
+
+Cũng đã mắc: nâng đèn chính **và** nâng phơi sáng cùng lúc thì vùng sáng cháy
+trắng. Hình khối sinh ra từ **tỉ lệ**, không từ tổng lượng sáng — nâng đèn
+chính thì giữ nguyên hoặc hạ phơi sáng.
+
+Khung bóng `BONG_NUA` ±34 và **chạy theo tầm nhìn**: tâm đặt trước mặt nhân vật
+`BONG_TRUOC` = 16 đơn vị theo hướng máy quay, không phải ngay dưới chân — đặt
+dưới chân thì phần xa trong tầm mắt mất bóng. Mỗi texel còn 0,033 đơn vị thay
+vì 0,051. Bóng «bơi» khi khung dịch không thành vấn đề ở đây: khung chỉ dịch
+khi nhân vật hoặc máy quay động, mà lúc ấy cả cảnh đang động.
+
+Vị trí đèn trong `nangViTri` phải **kéo về một khoảng cách cố định** (`NANG_XA`
+= 72) rồi mới dùng. Đèn định hướng chỉ quan tâm hướng, mà mấy thời khắc mặt
+trời thấp khai vị trí rất gần gốc toạ độ (noir: `[-18,9,21]`, dài 29) — để
+nguyên thì có vật nằm gần đèn hơn mặt phẳng `near` của khung bóng và bị cắt.
+
+### Đo thế nào
+
+Chụp **cùng một khuôn hình** trước/sau: đặt thẳng `nhanVat.position` và
+`gocMay`, đừng chờ nhân vật đi bộ tới. Nhớ **đóng bảng bản đồ** (nó tự mở ở
+bước hướng dẫn đầu) *rồi mới* bấm qua ba bước `#th-guide-next` — bảng bản đồ
+nằm trên nên hướng dẫn không bấm được.
+
+Cắt một vùng thuần cảnh 3D rồi đo ba con số. «Độ lệch chuẩn» của cả vùng
+**không dùng được** — nó lẫn màu khác nhau giữa các vật với bóng đổ trong một
+vật, và đã cho kết quả sai một lần. Dùng:
+
+- **bách phân vị 3 và 97**: vùng tối phải sâu xuống, vùng sáng nên giữ nguyên;
+- **năng lượng tần cao** = độ lệch chuẩn của `ảnh − ảnh_làm_mờ(σ=9)`: đây mới
+  là bóng đổ trong từng vật.
+
+Đo ở buổi chiều, vùng các khối cầu: p3 172 → 130, biên độ 49 → 75, năng lượng
+tần cao 8,24 → 14,15.
+
+Máy chủ thử tại chỗ phải là bản **đa luồng** (`ThreadingMixIn`); bản
+`python3 -m http.server` một luồng bị nghẽn khi Chromium mở nhiều kết nối, lần
+tải sau treo luôn. Chặn `*.mp3/mp4` trong Playwright cho nhẹ.
+
 ## Cảnh tháp mượn từ ThreeUI (`assets/canh/thap.html`)
 
 Bóc từ `src/shaders/japanese-tower/Towers.html` của
