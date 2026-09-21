@@ -1,0 +1,7 @@
+# Chỗ làm việc với giấy tờ có dữ liệu cá nhân (căn cước, địa chỉ, chữ ký).
+# Kho này công khai — mọi thứ trong thư mục dưới đây không bao giờ được đẩy lên.
+ho-so-quyen-tac-gia/rieng-tu/
+
+# Tạm
+*.bak
+.DS_Store
