@@ -104,6 +104,64 @@ Trang viên chỉ có **hai thứ tiếng** (vi/en), không có tiếng Pháp.
 - Bảng nội dung một khu và bảng trợ giúp dùng chung một bảng; cả hai đều phải
   đặt lớp `body.dang-doc-khu` để các cụm nổi ẩn đi.
 
+## Cảnh tháp mượn từ ThreeUI (`assets/canh/thap.html`)
+
+Bóc từ `src/shaders/japanese-tower/Towers.html` của
+<https://github.com/MengTo/threeui> — **MIT, Copyright (c) 2026 Meng To**,
+toàn văn ở `assets/vendor/threeui-LICENSE.txt`. Kho ấy là thư viện **React**
+(`peerDependencies: react >=18 <20`), cần npm + Vite, nên **không cắm thẳng
+vào trang tĩnh được**. Nhưng trong `src/shaders/**` có 70 tệp `.html` chạy độc
+lập — chính bản vanilla trước khi bọc React. Đấy là đường dùng được.
+
+Bốn điều đã đo, để lần sau khỏi dò lại:
+
+- **2,4 MB của tệp gốc gần hết là dữ liệu nhúng**: 593 KB three.js, 1 063 KB
+  nhạc nền base64 (44% tệp), 564 KB ảnh nền. Mã cảnh thật chỉ ~190 KB. Bỏ
+  three và nhạc thì còn 712 KB. `loadBuf()` vốn đã trả về null khi khoá rỗng
+  nên bỏ nhạc không phải sửa gì thêm.
+- **Chạy được trên r128** dù kho khai `three >=0.149`: cảnh chỉ dùng 40 lớp,
+  đều có từ r128, và đã có sẵn nhánh `if(...!==undefined)` cho cả
+  `sRGBEncoding` lẫn `SRGBColorSpace`. Kiểm bằng Chromium: không lỗi nào.
+- **Nhãn các nút do JS ghi lúc chạy** từ `id` trong `STYLES`/`WEATHER`/`TIMES`.
+  Sửa chữ trong HTML là vô ích — phải dịch trong `setBtn()`. Cũng vậy,
+  `applyStyle(2)` ở cuối tệp mới quyết định kiểu lúc mở, không phải giá trị
+  khởi tạo của `styleIdx`.
+- **`.sub-cn` ghi bằng `textContent`**, nên `&nbsp;` hiện ra thành chữ. Muốn
+  khoảng trắng không ngắt thì dùng thẳng ký tự U+00A0.
+
+Bản gốc hiện **phần trăm âm** vài giây đầu (đo được −19%) vì mốc thời gian bắt
+đầu trước 0 cho máy quay kịp ổn định. Đã chặn ở chỗ hiện chữ, không đụng đồng
+hồ.
+
+Ba chỗ nữa đã vấp rồi mới thấy:
+
+- **Tệp gốc viết `<!doctype html>` chữ thường.** Tìm `<!DOCTYPE html>` chữ hoa
+  thì `str.replace` không báo gì mà cũng không làm gì - ghi nguồn MIT tưởng đã
+  chèn hoá ra không có. Chèn xong phải kiểm lại bằng `grep`, đừng tin lời gọi.
+- **Bảng màu phải khai ở cả hai nơi.** `THEMES` trong JS ghi đè lúc chạy, nhưng
+  khung hình đầu tiên vẫn vẽ bằng `:root`, nên để nguyên thì loé bảng màu cũ
+  một nhịp.
+- **Đừng đổi tên `const T=THREE`** để lấy chữ `T` cho hàm dịch: có 169 chỗ gọi
+  `T.`. Hàm dịch ở tệp này tên là `TR()`.
+
+Trang nhúng vào khu «Kho tương lai» của trang viên bằng iframe, **gắn lúc mở
+bảng và gỡ lúc đóng** (`gamThap()` / `goThap()` trong `trangvien.html`): đây là
+cảnh WebGL thứ hai, để nó chạy song song với trang viên thì nặng máy, mà gỡ
+node là cách chắc chắn nhất để trình duyệt thả ngữ cảnh WebGL và vòng lặp vẽ.
+Ngôn ngữ truyền qua `?lang=` vì trong iframe nó không thấy thẻ `<html>` của
+trang cha.
+
+**Không khai trong `sw.js`**: tệp nặng 718 KB, thêm vào thì bộ nhớ đệm tăng
+16%, mà đây chỉ là phần tô điểm - không có mạng thì bảng khu vẫn đọc được, chỉ
+thiếu cảnh tháp.
+
+Kiểu tháp Việt Nam (`buildThap`, các giai đoạn NỀN MÓNG → THÂN THÁP → MÁI NGÓI
+→ TẦNG TRÊN → ĐỈNH THÁP) **có sẵn trong bản gốc**, không phải ta thêm vào.
+
+Cảnh nào khác trong kho ấy cũng cần đối chiếu trước: phần lớn kéo Tailwind,
+GSAP, Iconify, Google Fonts, và ảnh từ kho Supabase riêng của tác giả —
+`ASSET-LICENSES.md` nói rõ **media ngoài không thuộc giấy phép MIT**.
+
 ## Kiểm bằng trình duyệt thật
 
 Dùng Playwright với Chromium sẵn có:

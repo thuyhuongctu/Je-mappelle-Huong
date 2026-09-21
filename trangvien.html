@@ -493,6 +493,16 @@ body.dang-xem-ban-do #hud-sen{display:none !important}
 .canh-khu img{width:100%;height:auto;display:block;border-radius:18px;
   box-shadow:0 10px 26px rgba(120,80,60,.22)}
 .canh-khu figcaption{margin:.5rem .2rem 0;font-size:.82rem;line-height:1.5;color:var(--muc-nhat)}
+/* Cảnh tháp nhúng trong bảng khu «Kho tương lai». Khung dựng sẵn đúng tỉ lệ
+   để bảng không giật khi iframe nạp xong; iframe chỉ gắn vào lúc mở bảng và
+   gỡ đi lúc đóng, xem gamThap()/goThap(). */
+.o-thap{position:relative;aspect-ratio:12/7;border-radius:18px;overflow:hidden;
+  background:var(--kem);box-shadow:0 10px 26px rgba(120,80,60,.22)}
+.o-thap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.o-thap .cho{position:absolute;inset:0;display:grid;place-items:center;
+  color:var(--muc-nhat);font-size:.84rem;letter-spacing:.04em}
+.canh-khu .mo-rong{display:inline-block;margin:.45rem .2rem 0;font-size:.8rem;
+  color:var(--nhan);text-decoration:none;border-bottom:1px solid currentColor}
 #noi-dung::-webkit-scrollbar{width:0}
 
 @media (min-width:820px){
@@ -1043,6 +1053,11 @@ const KHU = [
       vi:`<figure class="canh-khu"><img src="assets/img/khu-tuong-lai-xe-dap.webp" width="916" height="504" loading="lazy" decoding="async"
         alt="Hình đất sét: Hương đạp xe chở giỏ sen trên con đường đất giữa cánh đồng sen lúc bình minh"><figcaption>Kho tương lai - con đường đất xuyên cánh đồng sen, phía trước là bình minh.</figcaption></figure>
         <p>Trang viên này vẫn đang lớn lên cùng hệ sinh thái. Mỗi chuyến tham quan của bạn là một viên gạch cho những điều sắp tới.</p>
+        <figure class="canh-khu">
+          <div class="o-thap" data-thap="assets/canh/thap.html"><div class="cho">Đang dựng tháp…</div></div>
+          <figcaption>Ngôi tháp dựng lên từng tầng một, từ nền móng tới đỉnh - như trang viên này.</figcaption>
+          <a class="mo-rong" href="assets/canh/thap.html" target="_blank" rel="noopener">Mở toàn màn hình →</a>
+        </figure>
         <div class="hang">
           <div class="o"><b>M-AIDA</b><span>phiên bản trích xuất mới</span></div>
           <div class="o"><b>BizOn</b><span>bản mở rộng GO GlObal</span></div>
@@ -1055,6 +1070,11 @@ const KHU = [
       en:`<figure class="canh-khu"><img src="assets/img/khu-tuong-lai-xe-dap.webp" width="916" height="504" loading="lazy" decoding="async"
         alt="Clay scene: Huong cycling with a basket of lotus along a dirt path through the lotus fields at dawn"><figcaption>The future - a dirt path through the lotus fields, with dawn ahead.</figcaption></figure>
         <p>This estate keeps growing alongside the ecosystem. Every visit lays a brick for what comes next.</p>
+        <figure class="canh-khu">
+          <div class="o-thap" data-thap="assets/canh/thap.html?lang=en"><div class="cho">Raising the tower…</div></div>
+          <figcaption>The tower rises one tier at a time, from foundation to finial - like this estate.</figcaption>
+          <a class="mo-rong" href="assets/canh/thap.html?lang=en" target="_blank" rel="noopener">Open full screen →</a>
+        </figure>
         <div class="hang">
           <div class="o"><b>M-AIDA</b><span>next extraction release</span></div>
           <div class="o"><b>BizOn</b><span>GO GlObal expansion</span></div>
@@ -2583,6 +2603,7 @@ function moBangGoc(khu){
   ic.textContent = khu.icon;
   ic.style.background = `linear-gradient(150deg, ${khu.mau}33, ${khu.mau}66)`;
   document.getElementById('noi-dung').innerHTML = khu.html[NG];
+  gamThap();
   man.classList.add('mo');
   document.body.classList.add('dang-doc-khu');
   document.getElementById('bang').scrollTop = 0;
@@ -2591,10 +2612,27 @@ function moBangGoc(khu){
   // Danh dau da ghe - ban do toan canh va ban do tron doc co nay.
   if (window.ghiDaGhe) window.ghiDaGhe(khu.id);
 }
+/* Cảnh tháp là một cảnh WebGL thứ hai, chạy song song với trang viên thì nặng
+   máy. Nên chỉ gắn iframe lúc bảng khu mở ra, và gỡ hẳn lúc đóng - gỡ node là
+   cách chắc chắn nhất để trình duyệt thả ngữ cảnh WebGL và vòng lặp vẽ. */
+function gamThap(){
+  document.querySelectorAll('#noi-dung .o-thap[data-thap]').forEach(o=>{
+    if(o.querySelector('iframe'))return;
+    const f = document.createElement('iframe');
+    f.src = o.dataset.thap;
+    f.loading = 'lazy';
+    f.title = NG === 'en' ? 'The tower rises, tier by tier' : 'Ngôi tháp dựng lên từng tầng';
+    o.appendChild(f);
+  });
+}
+function goThap(){
+  document.querySelectorAll('#noi-dung .o-thap iframe').forEach(f=>f.remove());
+}
 function dongBang(){
   dangMo = false;
   man.classList.remove('mo');
   document.body.classList.remove('dang-doc-khu');
+  goThap();
   document.getElementById('noi-dung').querySelectorAll('audio').forEach(a=>a.pause());
   if (window.HUONG_MUSIC) HUONG_MUSIC.dungNhacNen();
   /* Dang di tour ma dong bang lai tuc la "doc xong roi, di tiep di" - khong
