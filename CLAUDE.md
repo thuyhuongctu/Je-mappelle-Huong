@@ -117,6 +117,186 @@ Trang viên chỉ có **hai thứ tiếng** (vi/en), không có tiếng Pháp.
 - Bảng nội dung một khu và bảng trợ giúp dùng chung một bảng; cả hai đều phải
   đặt lớp `body.dang-doc-khu` để các cụm nổi ẩn đi.
 
+## Tám bức vẽ trên bản đồ trang viên
+
+Bảng «Bản đồ trang viên» (`#toancanh`) trước đây đánh số 1–8 lên từng khu; nay
+mỗi khu là một huy hiệu tròn có **bức vẽ đúng công trình có thật ở khu ấy trong
+cảnh 3D** — chồng hồ sơ và kính lúp, rương kho báu, nhà sàn sách, sân khấu tre,
+bảng làng, nhà chính, đèn lồng, hải đăng. Bảng `TRANH_KHU` nằm ngay trên
+`veBanDoLon()`.
+
+Ba điều ràng buộc, đã đo chứ không đoán:
+
+- **Vẽ trong hộp 32×32, nhưng huy hiệu là hình tròn.** Nửa đường chéo của hộp
+  là 22,6 trong khi vành chỉ bán kính 17, nên bốn góc hộp lòi ra ngoài. Giữ nét
+  trong vòng bán kính 14 quanh `(16,16)`.
+- **Cỡ thật: 38px trên máy tính, 28px trên điện thoại.** Khung SVG 400 đơn vị
+  hiện ra 446px ở bề ngang 1180 và 338px ở bề ngang 390. Nét mảnh hơn ~1,2 đơn
+  vị sẽ biến mất ở cỡ điện thoại — dùng mảng đặc, đừng dùng nét.
+- **Đừng để hai khu cùng một dáng.** Thư viện và Nhà chính trong cảnh 3D đều
+  mái đỏ; vẽ y như thế thì ở 28px không phân biệt nổi. Thư viện vẽ thành nhà
+  sàn có cột và thang (đúng như phụ đề «Nhà sàn tri thức»), khác hẳn dáng nhà
+  chính có cửa sát đất.
+
+Huy hiệu to lên (bán kính 16 → 17) nên **ao sen giữa bản đồ phải nhỏ lại** (15
+→ 12): khu Nhà chính chỉ cách tâm ao 26 đơn vị, để nguyên thì hai hình dính vào
+nhau.
+
+Số thứ tự vẫn còn, nhưng ở **danh sách bên cạnh**, vì đó mới là chỗ nó làm
+việc: nó là phím tắt 1–8. Dòng mẹo dưới bảng phải nói đúng chỗ ấy.
+
+Bảng «Đi đâu?» (`bd-chon`, mở từ bản đồ tròn ở góc) vẫn dùng emoji — `TRANH_KHU`
+khai trong phạm vi của `#toancanh` nên chỗ kia không với tới.
+
+## Mặt đất và lối mòn trang viên
+
+Mặt đất **không còn là `CircleGeometry`**. Đĩa quạt ấy chỉ có 73 đỉnh, toàn
+nằm ở mép, nên không có chỗ nào đặt vân — cảnh vì thế có một mảng phẳng trơn
+một màu chiếm gần nửa khung hình. Nay là `RingGeometry(.02, 68, 132, 36)`,
+4 921 đỉnh, tô bằng **màu theo đỉnh** (`vertexColors`). Vành sẫm riêng ngày
+trước gộp luôn vào đây nên bớt được một mesh.
+
+`material.color` phải để **trắng**: với `vertexColors` nó là hệ số *nhân*.
+`datMauGoc` cũng là trắng, còn noir đặt `nenDat:'#241B15'` thì nhân xuống
+thành nền nâu sẫm — đúng ý, không phải sửa gì thêm ở `apThoiKhac()`.
+
+**Gò chỉ nâng ở ngoài vòng đi lại.** Bắt đầu từ bán kính 50 và theo bình
+phương, nên ở 52 (`BAN_KINH`) mới cao 0,03 đơn vị. Đo lại sau khi dựng: **0
+đỉnh** trong vòng 52 lệch quá 0,05. Nhờ thế mọi công trình, cây cối và nhân
+vật giữ nguyên độ cao, không phải viết hàm tra chiều cao địa hình. Muốn làm
+địa hình thật cho cả bản đồ thì phải tra chiều cao cho từng thứ một, kể cả
+`nhanVat.position.y` — đó là việc khác, đừng lẫn vào đây.
+
+Chỗ sông cắt qua vành ngoài phải **ép phẳng** (sông chạy tới x = ±62, tức ra
+ngoài vòng 52), nếu không gò nhô lên xuyên qua mặt nước.
+
+Vân cỏ dùng **ba tần số** chồng lên nhau. Một tần số thôi thì ra những mảng
+tròn đều, nhìn phát hiện ngay là hàm sin.
+
+Khi tính màu theo vị trí, nhớ mặt đất xoay -90° quanh X nên đỉnh `(x,y)` rơi
+xuống thế giới thành `(x, 0, -y)`. Quên dấu trừ thì vân cỏ và bờ cát lệch sang
+đúng phía đối diện so với sông thật.
+
+### Một nguồn dữ liệu, nhiều nơi dùng
+
+Đã dính hai lần vì chép lại hình dạng thay vì lấy từ nguồn:
+
+- **Sông trên bản đồ vẽ ngược phía** suốt bấy lâu. Bản đồ dùng một công thức
+  sin riêng, `z = sin(x*.05)*7 + 8`, cho z từ 1 tới 15 — toàn dương; mà
+  `vienSong` đo được nằm ở z từ **-21 tới 2**. Nay bản đồ vẽ thẳng từ
+  `vienSong`.
+- **Lối mòn** nay khai ở `TUYEN_MON` ngoài hàm `loiDi()`, để bản đồ vẽ lại
+  chính mạng ấy.
+
+Danh sách lối mòn cũ là **một đường đi liền mạch**, nên muốn rẽ nhánh phải
+quay ngược lại — mỗi lần quay ngược dựng thêm một tấm phẳng nằm đè khít lên
+tấm cũ, cùng `y = 0,07`, hai mặt tranh nhau. Đếm được 16 tấm cho 11 đoạn thật.
+Nay viết thành từng **tuyến riêng** rồi bỏ trùng bằng khoá hai đầu đoạn: 14
+tấm cho đủ **tám** khu.
+
+Trước đó hai khu **không hề có lối mòn nào dẫn tới** — «Lối kể chuyện»
+`(-16,42)` và «Kho tương lai» `(-12,-38)`.
+
+## Ánh sáng trang viên
+
+Số thật **không nằm ở chỗ khai đèn** mà ở `BC_CH` — bảng bốn thời khắc
+(`sang` / `chieu` / `dem` / `noir`). `apThoiKhac()` ghi đè giá trị khởi tạo
+ngay lúc nạp, nên sửa chỗ khai đèn là vô ích.
+
+Thước đo là **tỉ lệ đèn phụ trên đèn chính**, và «đèn phụ» phải tính **cả đèn
+trời lẫn đèn viền**. Trước đây tỉ lệ ấy là 0,81 ở buổi chiều (đèn trời 0,75 +
+một đèn phụ cố định 0,35 mà `apThoiKhac()` không hề động tới, chia cho đèn nắng
+1,35) — mọi khối được rọi gần như đều từ mọi phía nên cảnh bẹt hoàn toàn. Nay
+giữ khoảng **0,31** cho hai buổi ban ngày.
+
+Đã mắc một lần rồi: hạ đèn trời mà lại đặt đèn viền 0,52 thì **bù lại gần hết**,
+tổng đèn phụ vẫn 1,04 — đo ra thì vùng tối không sâu thêm chút nào. Đèn viền
+phải rất nhẹ (0,10–0,18).
+
+Cũng đã mắc: nâng đèn chính **và** nâng phơi sáng cùng lúc thì vùng sáng cháy
+trắng. Hình khối sinh ra từ **tỉ lệ**, không từ tổng lượng sáng — nâng đèn
+chính thì giữ nguyên hoặc hạ phơi sáng.
+
+Khung bóng `BONG_NUA` ±34 và **chạy theo tầm nhìn**: tâm đặt trước mặt nhân vật
+`BONG_TRUOC` = 16 đơn vị theo hướng máy quay, không phải ngay dưới chân — đặt
+dưới chân thì phần xa trong tầm mắt mất bóng. Mỗi texel còn 0,033 đơn vị thay
+vì 0,051. Bóng «bơi» khi khung dịch không thành vấn đề ở đây: khung chỉ dịch
+khi nhân vật hoặc máy quay động, mà lúc ấy cả cảnh đang động.
+
+Vị trí đèn trong `nangViTri` phải **kéo về một khoảng cách cố định** (`NANG_XA`
+= 72) rồi mới dùng. Đèn định hướng chỉ quan tâm hướng, mà mấy thời khắc mặt
+trời thấp khai vị trí rất gần gốc toạ độ (noir: `[-18,9,21]`, dài 29) — để
+nguyên thì có vật nằm gần đèn hơn mặt phẳng `near` của khung bóng và bị cắt.
+
+### Đo thế nào
+
+Chụp **cùng một khuôn hình** trước/sau: đặt thẳng `nhanVat.position` và
+`gocMay`, đừng chờ nhân vật đi bộ tới. Nhớ **đóng bảng bản đồ** (nó tự mở ở
+bước hướng dẫn đầu) *rồi mới* bấm qua ba bước `#th-guide-next` — bảng bản đồ
+nằm trên nên hướng dẫn không bấm được.
+
+Cắt một vùng thuần cảnh 3D rồi đo ba con số. «Độ lệch chuẩn» của cả vùng
+**không dùng được** — nó lẫn màu khác nhau giữa các vật với bóng đổ trong một
+vật, và đã cho kết quả sai một lần. Dùng:
+
+- **bách phân vị 3 và 97**: vùng tối phải sâu xuống, vùng sáng nên giữ nguyên;
+- **năng lượng tần cao** = độ lệch chuẩn của `ảnh − ảnh_làm_mờ(σ=9)`: đây mới
+  là bóng đổ trong từng vật.
+
+Đo ở buổi chiều, vùng các khối cầu: p3 172 → 130, biên độ 49 → 75, năng lượng
+tần cao 8,24 → 14,15.
+
+Máy chủ thử tại chỗ phải là bản **đa luồng** (`ThreadingMixIn`); bản
+`python3 -m http.server` một luồng bị nghẽn khi Chromium mở nhiều kết nối, lần
+tải sau treo luôn. Chặn `*.mp3/mp4` trong Playwright cho nhẹ.
+
+## Bảng màu trang viên
+
+### Đếm màu cho đúng
+
+`trangvien.html` có **ba khối `<style>`**. Cắt CSS bằng
+`s.replace(''.join(cac_khoi), '')` thì **không khớp gì cả** — phép nối chỉ ra
+một chuỗi liền, mà trong tệp ba khối nằm rời nhau. Đã đo sai một lần vì thế và
+báo nhầm «108 màu trong cảnh 3D»; đúng ra là 58. Phải xoá theo **vị trí đầu
+cuối**, không xoá theo chuỗi.
+
+Bốn vùng màu tách bạch, đừng trộn khi đếm hay khi sửa:
+
+| vùng | là gì | có được đụng không |
+| --- | --- | --- |
+| ba khối `<style>` | giao diện, bộ màu đất sét chung của trang web | không, đấy là việc khác |
+| `BC_CH` | bốn thời khắc | chỉ sửa có chủ đích |
+| mảng `KHU` | tám màu khu + HTML trong bảng nội dung | tám màu khu là **neo**, không đổi |
+| còn lại | cảnh 3D + `TRANH_KHU` | đây mới là chỗ gom màu |
+
+### Gom màu: bỏ bản sao, đừng đổi ý đồ
+
+Gom theo **ΔE trong không gian Lab**, duyệt từ màu dùng nhiều tới màu dùng ít,
+giữ màu đầu của mỗi cụm. Ngưỡng **ΔE < 8** là chỗ mắt không phân biệt được
+từng màu một. Neo cố định: tám màu khu, nước, năm sắc cỏ của mặt đất, lối mòn,
+chấm hồng của nhân vật, và ba bậc giấy `#FFFCF5` / `#F6F1E7` / `#E2D8C7` lấy
+từ chính bộ màu đất sét của trang web — nhờ thế cảnh 3D và các trang web dùng
+chung một họ giấy.
+
+Kết quả: cảnh 3D **58 → 46** màu, tám bức vẽ bản đồ 38 → 33, cả tệp 261 → 243.
+Lệch lớn nhất khi gom: ΔE 7,8.
+
+### Nhiều sắc không phải là vấn đề — cùng một bậc sáng mới là
+
+Bốn màu `tham` trong `BC_CH` tô **14 vòng tròn bán kính 3–9** phủ phần lớn mặt
+đất. Đo ra thì chúng chênh nhau **1 bậc sáng** ở buổi chiều (81, 79, 80, 79),
+và 4–7 bậc ở ba thời khắc kia. Bốn màu mà về giá trị sáng là một, nên mặt đất
+không có lớp lang dù có tới bốn sắc.
+
+Cách sửa: **giữ nguyên sắc và độ bão hoà, chỉ trải lại độ sáng** quanh đúng
+giá trị trung bình cũ, bốn bậc cách nhau khoảng 21 điểm. Giữ trung bình thì độ
+sáng chung của cảnh không nhảy, chỉ có cấu trúc hiện ra — đo được: trung vị
+giữ nguyên 209, còn bách phân vị 3 xuống 136 → 125 và năng lượng tần cao lên
+14,86 → 18,91.
+
+Với noir và đêm phải **chặn sàn** độ sáng (không dưới 0,03) kẻo ra mảng đen
+đặc.
+
 ## Cảnh tháp mượn từ ThreeUI (`assets/canh/thap.html`)
 
 Bóc từ `src/shaders/japanese-tower/Towers.html` của
