@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,7 +91,7 @@ a{color:var(--accent)}
     <button type="button" data-lang="en">🇬🇧 EN</button>
   </span>
 </div>
-<script>(function(){var r=document.documentElement;try{var s0=localStorage.getItem('huong_theme');if(s0)r.setAttribute('data-theme',s0);}catch(e0){}var t=document.getElementById('cv-theme');if(t)t.addEventListener('click',function(){var c=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('huong_theme',n);}catch(e1){}});var b=document.querySelectorAll('#cv-lang button');function set(l){r.setAttribute('lang',l);b.forEach(function(x){x.classList.toggle('active',x.getAttribute('data-lang')===l);});try{localStorage.setItem('huong_lang',l);}catch(e){}}b.forEach(function(x){x.addEventListener('click',function(){set(x.getAttribute('data-lang'));});});try{set(localStorage.getItem('huong_lang')||((/^en/i.test(navigator.language))?'en':'vi'));}catch(e){set('vi');}})();</script>
+<script>(function(){var r=document.documentElement;try{var s0=localStorage.getItem('huong_theme');if(s0)r.setAttribute('data-theme',s0);}catch(e0){}var t=document.getElementById('cv-theme');if(t)t.addEventListener('click',function(){var c=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('huong_theme',n);}catch(e1){}});var b=document.querySelectorAll('#cv-lang button');function set(l){r.setAttribute('lang',l);b.forEach(function(x){x.classList.toggle('active',x.getAttribute('data-lang')===l);});try{localStorage.setItem('huong_lang',l);}catch(e){}}b.forEach(function(x){x.addEventListener('click',function(){set(x.getAttribute('data-lang'));});});try{set(localStorage.getItem('huong_lang')||'en');}catch(e){set('vi');}})();</script>
 <div class="cv" id="main">
   <header>
     <h1>Do Thuy Huong<span class="lang-vi"> · Đỗ Thùy Hương</span>

@@ -23,7 +23,9 @@
   function tat(x) { return bo.indexOf(x) > -1; }
 
   function ng() {
-    var l = (root.getAttribute('lang') || 'vi').slice(0, 2).toLowerCase();
+    /* Trang mặc định mở ra bằng tiếng Anh, nên khi chưa có thuộc tính lang
+       thì rơi về en chứ không phải vi. */
+    var l = (root.getAttribute('lang') || 'en').slice(0, 2).toLowerCase();
     return (l === 'en' || l === 'fr') ? l : 'vi';
   }
   /* chon chuoi theo ngon ngu dang hien; thieu tieng Phap thi dung tieng Anh */

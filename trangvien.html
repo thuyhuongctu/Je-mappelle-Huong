@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi" data-chrome="no-foot no-util">
+<html lang="en" data-chrome="no-foot no-util">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
@@ -481,7 +481,10 @@ body.dang-xem-ban-do #hud-sen{display:none !important}
 .bai span{font-size:.75rem;color:var(--muc-nhat)}
 .bai audio{width:100%;height:34px;margin-top:.5rem}
 .ngay{font-size:.7rem;font-weight:700;letter-spacing:.08em;color:var(--vang);text-transform:uppercase}
-.anh-nv{width:100%;max-width:210px;margin:0 auto 1rem;display:block;filter:drop-shadow(0 14px 24px rgba(120,80,60,.28))}
+/* height:auto là bắt buộc vì thẻ có width/height thật (để trình duyệt chừa
+   chỗ, khỏi giật khi ảnh nạp xong). Thiếu nó thì chiều cao lấy nguyên số
+   trong thuộc tính và ảnh bị bóp ngang. */
+.anh-nv{width:100%;max-width:210px;height:auto;margin:0 auto 1rem;display:block;filter:drop-shadow(0 14px 24px rgba(120,80,60,.28))}
 /* Canh dat set dat o dau bang mot khu: rong het bang, bo goc theo dung
    kieu the .the ben duoi, co chu thich nho ben duoi anh. */
 .canh-khu{margin:0 0 1.1rem}
@@ -810,7 +813,7 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important;z-index:920
   if (nEn) nEn.addEventListener('click', function(){ dat('en', true); });
 
   var l = 'vi';
-  try { l = localStorage.getItem('huong_lang') || (/^en/i.test(navigator.language) ? 'en' : 'vi'); } catch (e) {}
+  try { l = localStorage.getItem('huong_lang') || 'en'; } catch (e) {}
   dat(l === 'en' ? 'en' : 'vi', false);
 
   /* Nut "Bat dau tham quan" ve ra ngay tu HTML, nhung nguoi bam no thi khong
@@ -1006,7 +1009,7 @@ const KHU = [
     html:{
       vi:`<figure class="canh-khu"><img src="assets/img/khu-gioi-thieu-chong-tra.webp" width="916" height="517" loading="lazy" decoding="async"
         alt="Hình đất sét: Hương ngồi trong chòi tre bên đầm sen, rót trà ra chén trên chiếc bàn thấp"><figcaption>Nhà chính - chòi tre bên đầm sen, ấm trà vừa rót, mời bạn ngồi.</figcaption></figure>
-        <img class="anh-nv" src="assets/img/pro_aodai.webp" alt="Đỗ Thùy Hương trong tà áo dài trắng" onerror="this.style.display='none'" loading="lazy">
+        <img class="anh-nv" src="assets/img/huong-ai-chan-dung.webp" width="360" height="360" alt="Đỗ Thùy Hương trong tà áo dài trắng" onerror="this.style.display='none'" loading="lazy">
         <p>Tôi là giảng viên và nghiên cứu sinh tiến sĩ ngành Quản trị kinh doanh tại Trường Kinh tế, Đại học Cần Thơ. Công việc của tôi kết hợp kinh tế lượng doanh nghiệp, phân tích tổng hợp, và phát triển công cụ AI hỗ trợ nghiên cứu có kiểm chứng con người.</p>
         <p>Trang viên này là phiên bản đi được của hệ sinh thái số ấy: mỗi khu là một phần công việc, và nhân vật hướng dẫn - <b>Hương AI</b> trong tà áo dài trắng - cũng chính là gương mặt đại diện xuyên suốt M-AIDA, BizOn và EnQuiz.</p>
         <h3>🪷 Nguồn cảm hứng</h3>
@@ -1018,7 +1021,7 @@ const KHU = [
         <a class="the" href="index.html"><b>Trang học thuật đầy đủ</b><span>Bản trang chính có công bố, giảng dạy và dữ liệu thế giới.</span><em>Về trang chính →</em></a>`,
       en:`<figure class="canh-khu"><img src="assets/img/khu-gioi-thieu-chong-tra.webp" width="916" height="517" loading="lazy" decoding="async"
         alt="Clay scene: Huong in a bamboo pavilion over a lotus pond, pouring tea at a low table"><figcaption>The main house - a bamboo pavilion over the lotus pond, tea just poured.</figcaption></figure>
-        <img class="anh-nv" src="assets/img/pro_aodai.webp" alt="Do Thuy Huong in a white áo dài" onerror="this.style.display='none'" loading="lazy">
+        <img class="anh-nv" src="assets/img/huong-ai-chan-dung.webp" width="360" height="360" alt="Do Thuy Huong in a white áo dài" onerror="this.style.display='none'" loading="lazy">
         <p>I am a lecturer and PhD candidate in Business Administration at the School of Economics, Can Tho University. My work combines firm-level econometrics, meta-analysis, and the development of human-verified AI research tools.</p>
         <p>This estate is a walkable version of that digital ecosystem: each area is a part of the work, and the guide - <b>Hương AI</b> in her white áo dài - is the same face that appears across M-AIDA, BizOn and EnQuiz.</p>
         <h3>🪷 Inspiration</h3>
@@ -1054,9 +1057,9 @@ const KHU = [
         alt="Hình đất sét: Hương đạp xe chở giỏ sen trên con đường đất giữa cánh đồng sen lúc bình minh"><figcaption>Kho tương lai - con đường đất xuyên cánh đồng sen, phía trước là bình minh.</figcaption></figure>
         <p>Trang viên này vẫn đang lớn lên cùng hệ sinh thái. Mỗi chuyến tham quan của bạn là một viên gạch cho những điều sắp tới.</p>
         <figure class="canh-khu">
-          <div class="o-thap" data-thap="assets/canh/thap.html"><div class="cho">Đang dựng tháp…</div></div>
+          <div class="o-thap" data-thap="assets/canh/thap.html?lang=vi"><div class="cho">Đang dựng tháp…</div></div>
           <figcaption>Ngôi tháp dựng lên từng tầng một, từ nền móng tới đỉnh - như trang viên này.</figcaption>
-          <a class="mo-rong" href="assets/canh/thap.html" target="_blank" rel="noopener">Mở toàn màn hình →</a>
+          <a class="mo-rong" href="assets/canh/thap.html?lang=vi" target="_blank" rel="noopener">Mở toàn màn hình →</a>
         </figure>
         <div class="hang">
           <div class="o"><b>M-AIDA</b><span>phiên bản trích xuất mới</span></div>
@@ -2737,7 +2740,7 @@ function datNgonNgu(l){
   const bieu = document.getElementById('bieu-cam'); if(bieu) bieu.setAttribute('aria-label', l==='vi'?'Biểu cảm nhân vật':'Character expressions');
 }
 document.getElementById('nut-ngu').addEventListener('click', ()=> datNgonNgu(NG === 'vi' ? 'en' : 'vi'));
-(function(){var l='vi';try{l=localStorage.getItem('huong_lang')||((/^en/i.test(navigator.language)?'en':'vi'));}catch(e){}if(l==='en') datNgonNgu('en');
+(function(){var l='en';try{l=localStorage.getItem('huong_lang')||'en';}catch(e){}if(l!=='en') datNgonNgu(l); else datNgonNgu('en');
   var a=document.getElementById('ng-vi'),b=document.getElementById('ng-en');
   if(a) a.addEventListener('click',()=>datNgonNgu('vi'));
   if(b) b.addEventListener('click',()=>datNgonNgu('en'));

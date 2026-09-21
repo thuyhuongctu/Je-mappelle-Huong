@@ -1,4 +1,4 @@
-<!doctype html><html lang="vi"><head>
+<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Đỗ Thùy Hương · Do Thuy Huong - Lecturer &amp; Researcher, Can Tho University</title>
 <meta name="description" content="Do Thuy Huong - lecturer and researcher at Can Tho University. Research on internationalization and firm performance in Asia: WBES firm-level data, meta-analysis, institutions. Publications, teaching and CV.">
@@ -951,7 +951,7 @@ footer.wrap{position:relative;overflow:hidden}
   btns.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-lang'));});});
   fr.addEventListener('click',function(){set('fr');});
   var start='vi';
-  try{start=localStorage.getItem('huong_lang')||(/^en/i.test(navigator.language)?'en':(/^fr/i.test(navigator.language)?'fr':'vi'));}catch(e){}
+  try{start=localStorage.getItem('huong_lang')||'en';}catch(e){}
   set(start);
 })();
 
