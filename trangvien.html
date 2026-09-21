@@ -791,7 +791,7 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important;z-index:920
     [[nVi, l === 'vi'], [nEn, l === 'en']].forEach(function (c) {
       if (!c[0]) return;
       c[0].style.background = c[1] ? '#C45C3A' : '#fff';
-      c[0].style.color = c[1] ? '#fff' : '#4E6B5C';
+      c[0].style.color = c[1] ? '#fff' : '#3F5B4A';
       c[0].setAttribute('aria-pressed', c[1] ? 'true' : 'false');
     });
   }
@@ -2641,10 +2641,10 @@ function banhXe(){
   const lop = khoi(new THREE.TorusGeometry(.52,.055,7,26), '#4A3730', .85);
   lop.scale.setScalar(1.06); g.add(lop);
   for(let i=0;i<6;i++){
-    const n = khoi(new THREE.CylinderGeometry(.018,.018,1.0,5), '#F5F0E6', .8);
+    const n = khoi(new THREE.CylinderGeometry(.018,.018,1.0,5), '#F6F1E7', .8);
     n.rotation.z = (i/6)*Math.PI; g.add(n);
   }
-  const truc = khoi(new THREE.CylinderGeometry(.07,.07,.16,9), '#EFE3D0', .85);
+  const truc = khoi(new THREE.CylinderGeometry(.07,.07,.16,9), '#E2D8C7', .85);
   truc.rotation.x = Math.PI/2; g.add(truc);
   return g;
 }
@@ -2661,11 +2661,11 @@ function ong(a, b, r, mau){
   return m;
 }
 xeDap.add(
-  ong([0,.52,-.72],[0,1.05,-.30],.045,'#FFFFFF'),
-  ong([0,1.05,-.30],[0,1.02,.52],.045,'#FFFFFF'),
-  ong([0,1.02,.52],[0,.52,.82],.045,'#FFFFFF'),
-  ong([0,.52,-.72],[0,.62,.10],.042,'#FFFFFF'),
-  ong([0,.62,.10],[0,1.05,-.30],.042,'#FFFFFF')
+  ong([0,.52,-.72],[0,1.05,-.30],.045,'#FFFCF5'),
+  ong([0,1.05,-.30],[0,1.02,.52],.045,'#FFFCF5'),
+  ong([0,1.02,.52],[0,.52,.82],.045,'#FFFCF5'),
+  ong([0,.52,-.72],[0,.62,.10],.042,'#FFFCF5'),
+  ong([0,.62,.10],[0,1.05,-.30],.042,'#FFFCF5')
 );
 const ghiDong = khoi(new THREE.CylinderGeometry(.035,.035,.78,8), '#4A3730', .85);
 ghiDong.rotation.z = Math.PI/2; ghiDong.position.set(0,1.16,.58); xeDap.add(ghiDong);
@@ -2679,7 +2679,7 @@ gioDay.position.set(0,.95,.80); xeDap.add(gioDay);
 // bàn đạp
 const banDap = new THREE.Group(); banDap.position.set(0,.62,.10); xeDap.add(banDap);
 for(const s of [-1,1]){
-  const tay = khoi(new THREE.CylinderGeometry(.03,.03,.34,6), '#EFE3D0', .8);
+  const tay = khoi(new THREE.CylinderGeometry(.03,.03,.34,6), '#E2D8C7', .8);
   tay.position.set(s*.13, s*.17, 0); tay.rotation.z = Math.PI/2 - s*.0;
   tay.rotation.x = 0; banDap.add(tay);
   const ban = khoi(hopTron(.16,.10,.05,.02), '#4A3730', .85);
@@ -2808,7 +2808,7 @@ function moTroGiup(){
   document.getElementById('bang-ten').textContent = HD[NG].title;
   document.getElementById('bang-phu').textContent = 'Trang viên Hương';
   document.getElementById('bang-icon').textContent = '🧭';
-  document.getElementById('bang-icon').style.background = 'linear-gradient(150deg,#BFE3EE,#8FC9DE)';
+  document.getElementById('bang-icon').style.background = 'linear-gradient(150deg,#BFE3EE,#9FD3E8)';
   document.getElementById('noi-dung').innerHTML = HD[NG].body;
   man.classList.add('mo');
   // Bang tro giup dung chung dung cai bang voi bang cua mot khu, nhung truoc
@@ -2876,8 +2876,8 @@ function datNgonNgu(l){
   if(banDangMo) veBdChon();
   if(tourDangChay || mucTieuDi) capNhatTrangThai();
   const a = document.getElementById('ng-vi'), b = document.getElementById('ng-en');
-  if(a){a.style.background = l==='vi' ? '#E77E9A' : '#fff'; a.style.color = l==='vi' ? '#fff' : '#4E6B5C';}
-  if(b){b.style.background = l==='en' ? '#E77E9A' : '#fff'; b.style.color = l==='en' ? '#fff' : '#4E6B5C';}
+  if(a){a.style.background = l==='vi' ? '#E77E9A' : '#fff'; a.style.color = l==='vi' ? '#fff' : '#3F5B4A';}
+  if(b){b.style.background = l==='en' ? '#E77E9A' : '#fff'; b.style.color = l==='en' ? '#fff' : '#3F5B4A';}
   try{localStorage.setItem('huong_lang', l);}catch(e){}
   capNhatNutXe();
   bienBao.forEach(b=>{
@@ -3246,7 +3246,7 @@ function veBanDo(){
     const px = R + k.x*TL, py = R + k.z*TL;
     bd.fillStyle = k.khu.mau;
     bd.beginPath(); bd.arc(px,py,8,0,7); bd.fill();
-    bd.strokeStyle = '#FFF8EE'; bd.lineWidth = 2.5; bd.stroke();
+    bd.strokeStyle = '#FFFCF5'; bd.lineWidth = 2.5; bd.stroke();
     // nhãn tên khu - bản đồ khám phá
     bd.fillStyle = 'rgba(74,55,48,.95)';
     bd.font = '600 10px "Baloo 2", system-ui';
@@ -3377,7 +3377,7 @@ function capNhatNhacQuang(t, dt){
 }
 
 // bươm bướm - cánh kép vỗ, lượn quanh vườn
-const BUOM_MAU = ['#F2A9B8','#B9A9F2','#F2D9A9','#A9E3F2','#F2A9E0','#C4E8B0','#F6C1CB'];
+const BUOM_MAU = ['#F2A8C4','#B9A9F2','#F2D9A9','#9FD3E8','#F2A9E0','#CFEDB6','#F8C0D2'];
 const dsBuom = [];
 BUOM_MAU.forEach((mau,i)=>{
   const g = new THREE.Group();
@@ -3413,7 +3413,7 @@ for(let i=0;i<5;i++){
 // cánh hoa sen rơi - chao nghiêng, chạm đất lại bay lên
 const dsCanh = [];
 {
-  const vl = new THREE.MeshStandardMaterial({color:new THREE.Color('#F5B7C4'), roughness:.75, metalness:0,
+  const vl = new THREE.MeshStandardMaterial({color:new THREE.Color('#F8C0D2'), roughness:.75, metalness:0,
     side:THREE.DoubleSide, transparent:true, opacity:.92});
   for(let i=0;i<22;i++){
     const m = new THREE.Mesh(new THREE.PlaneGeometry(.26,.18), vl);
@@ -3436,7 +3436,7 @@ function conVit(mauThan, mauMo){
   g.add(than); g.add(dau); g.add(mo);
   return g;
 }
-[['#FFF6E8','#F0A24B',-34,.9],['#F7E19A','#E8823C',-10,1.5],['#FFF6E8','#F0A24B',18,.7]].forEach(([m1,m2,x0,toc],i)=>{
+[['#F6F1E7','#F0A24B',-34,.9],['#F7E19A','#E8823C',-10,1.5],['#F6F1E7','#F0A24B',18,.7]].forEach(([m1,m2,x0,toc],i)=>{
   const v = conVit(m1,m2);
   v.userData={x:x0,toc,pha:i*2.4};
   sinhDong.add(v); dsVit.push(v);
@@ -3500,7 +3500,7 @@ function capNhatSinhDong(t, dt){
 /* ---------- SINH ĐỘNG ĐỢT 2: cá chép nhảy, đèn lồng, ong mật ---------- */
 // cá chép - thi thoảng phóng vọt khỏi mặt sông theo cung tròn
 const dsCa = [];
-[['#F08A4B',-20,13.5,6.5,0],['#E85A4F',6,12,8,2.6],['#FFF3E0',34,15,7,4.4]].forEach(([mau,cx,cz,chuKy,tre])=>{
+[['#E8823C',-20,13.5,6.5,0],['#E85A4F',6,12,8,2.6],['#F6F1E7',34,15,7,4.4]].forEach(([mau,cx,cz,chuKy,tre])=>{
   const g = new THREE.Group();
   const than = new THREE.Mesh(new THREE.SphereGeometry(.3,16,12), vatLieu(mau,.55));
   than.scale.set(1.9,.75,.6);
@@ -3516,9 +3516,9 @@ const dsCa = [];
 const dsLong = [];
 [[3.2,.5],[-3.2,9],[3.2,20],[-3.2,29]].forEach(([lx,lz],i)=>{
   const cum = new THREE.Group();
-  const cot = new THREE.Mesh(new THREE.CylinderGeometry(.07,.09,2.1,10), vatLieu('#EFE3CE',.9));
+  const cot = new THREE.Mesh(new THREE.CylinderGeometry(.07,.09,2.1,10), vatLieu('#E2D8C7',.9));
   cot.position.y = 1.05; cot.castShadow = true;
-  const tay = new THREE.Mesh(new THREE.CylinderGeometry(.05,.05,.55,8), vatLieu('#EFE3CE',.9));
+  const tay = new THREE.Mesh(new THREE.CylinderGeometry(.05,.05,.55,8), vatLieu('#E2D8C7',.9));
   tay.rotation.z = Math.PI/2; tay.position.set(lx>0?-.24:.24, 2.06, 0);
   const treo = new THREE.Group();
   treo.position.set(lx>0?-.48:.48, 2.02, 0);
@@ -3863,7 +3863,7 @@ const BC_CH = {
   suong:'#D8E9EF', nangMau:'#FFF3DC', nangManh:1.82, nangViTri:[24,34,18],
   bauTroi:'#EAF6FF', phanDat:'#9CCB92', bauManh:.38, phoiSang:1.04, thienThe:null,
   vienMau:'#CFE4FF', vienManh:.18,
-  tre:'#9CCB7E', treDot:'#7FB05F', tham:['#CDEACF','#F9E6D8','#DFF0E8','#FAE3E6'],
+  tre:'#9CCB7E', treDot:'#7FB05F', tham:['#B7E1BA','#FBEFE6','#D1EADE','#FDF2F3'],
   hoa:['#F2A9B8','#FFFFFF','#F2D06B','#B9A9F2'], sen:'#F08CA2', doiXa:'#BFD9EA', denSang:.45, domDom:false
  },
  chieu:{
@@ -3872,7 +3872,7 @@ const BC_CH = {
   bauTroi:'#E8B49A', phanDat:'#B08A6E', bauManh:.34, phoiSang:1.00,
   vienMau:'#A8C4FF', vienManh:.16,
   thienThe:'matTroi',
-  tre:'#8FAF6E', treDot:'#75955A', tham:['#F3D3A8','#F0BFA5','#E8CBB0','#F5B7A0'],
+  tre:'#8FAF6E', treDot:'#75955A', tham:['#F9EAD6','#E9A079','#ECD5BF','#F4AC92'],
   hoa:['#F2A9B8','#FFD9A0','#F2D06B','#E88AA0'], sen:'#F0789A', doiXa:'#B88AA8', denSang:1.15, domDom:false
  },
  /* Đất sét noir - phim đen kiểu diorama đất sét: nền gần như tắt sáng, chỉ còn
@@ -3886,7 +3886,7 @@ const BC_CH = {
   vienMau:'#6E86C4', vienManh:.10,
   suongGan:14, suongXa:58, nenDat:'#241B15', nenMon:'#3A2C20',
   thienThe:'matTrang',
-  tre:'#3B4F41', treDot:'#2B3D31', tham:['#4A3A2B','#3D3327','#432F25','#4D392F'],
+  tre:'#3B4F41', treDot:'#2B3D31', tham:['#534130','#231D17','#3C2A21','#684D3F'],
   hoa:['#C4756A','#DCA263','#836459','#CB8576'], sen:'#BE6B79', doiXa:'#251D23',
   denSang:5.4, domDom:true
  },
@@ -3896,7 +3896,7 @@ const BC_CH = {
   bauTroi:'#8A9AD0', phanDat:'#4A5A68', bauManh:.13, phoiSang:.80,
   vienMau:'#9FB4FF', vienManh:.10,
   thienThe:'matTrang',
-  tre:'#5F8A6A', treDot:'#4A7055', tham:['#3E5A66','#54486E','#465E52','#5E4858'],
+  tre:'#5F8A6A', treDot:'#4A7055', tham:['#2C3F48','#685988','#41574C','#6B5264'],
   hoa:['#E8B4C8','#CFC4FF','#A8D8E8','#F2D06B'], sen:'#E890B0', doiXa:'#54487A', denSang:1.9, domDom:true
  }
 };
@@ -3938,11 +3938,11 @@ function vlRieng(mau, nham){
   return new THREE.MeshStandardMaterial({color:new THREE.Color(mau), roughness:nham, metalness:0});
 }
 const treVL = vlRieng('#8FAF6E',.85), dotVL = vlRieng('#75955A',.8);
-const senVL = vlRieng('#F0789A',.75);
+const senVL = vlRieng('#E77E9A',.75);
 const thamVLs = [0,1,2,3].map(()=>{
-  const m = vlRieng('#F3D3A8',.98); m.transparent = true; m.opacity = .5; return m;
+  const m = vlRieng('#F2D9A9',.98); m.transparent = true; m.opacity = .5; return m;
 });
-const hoaVLs = [0,1,2,3].map(()=>vlRieng('#F2A9B8',.8));
+const hoaVLs = [0,1,2,3].map(()=>vlRieng('#F2A8C4',.8));
 
 // --- khóm tre ---
 function khomTreBC(x, z, so){
@@ -3987,7 +3987,7 @@ for(let i=0;i<70;i++){
 for(let i=0;i<7;i++){
   const g = new THREE.Group();
   const x = -46+i*14, z = 13+Math.sin(x*.09)*3.2;
-  const la = new THREE.Mesh(new THREE.CircleGeometry(.85,18), vlRieng('#7FBF7A',.9));
+  const la = new THREE.Mesh(new THREE.CircleGeometry(.85,18), vlRieng('#7FBC7E',.9));
   la.rotation.x = -Math.PI/2; la.position.y = .09;
   g.add(la);
   if(i%2===0){
@@ -4282,10 +4282,10 @@ function capNhatNutAm(){
 
 /* ========== MINI-GAME «HÁI SEN» ========== */
 const SEN_VT = [[-26,-14],[-10,-24],[8,-20],[22,-14],[34,4],[24,22],[8,28],[-8,20],[-24,26],[-34,8],[-16,2],[16,6]];
-const senVLGame = new THREE.MeshStandardMaterial({color:new THREE.Color('#F27FA5'), roughness:.55, metalness:0,
+const senVLGame = new THREE.MeshStandardMaterial({color:new THREE.Color('#E77E9A'), roughness:.55, metalness:0,
   emissive:new THREE.Color('#E8607A'), emissiveIntensity:.5});
 const nhuyVLGame = new THREE.MeshStandardMaterial({color:new THREE.Color('#F2D06B'), roughness:.6, metalness:0,
-  emissive:new THREE.Color('#D8A82E'), emissiveIntensity:.6});
+  emissive:new THREE.Color('#E8B84B'), emissiveIntensity:.6});
 const dsSenGame = [];
 SEN_VT.forEach(([x,z])=>{
   const g = new THREE.Group();
@@ -4306,7 +4306,7 @@ SEN_VT.forEach(([x,z])=>{
 });
 let senDem = 0;
 const dsPhao = [];
-const PHAO_MAU = ['#F2A9B8','#F2D06B','#B9A9F2','#A9E3F2','#C4E8B0','#F27FA5'];
+const PHAO_MAU = ['#F2A8C4','#F2D06B','#B9A9F2','#9FD3E8','#CFEDB6','#E77E9A'];
 
 function amNhatSen(){
   if(typeof amCtx === 'undefined' || !amCtx || !amBat) return;
@@ -4824,7 +4824,7 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
   '<g transform="rotate(-2 16 17.3)"><rect x="8.4" y="15.7" width="15.2" height="3.2" rx="1" fill="#C4596B"/></g>'+
   '<g transform="rotate(3 16 14.2)"><rect x="9.4" y="12.7" width="13.2" height="3" rx="1" fill="#5C7FBF"/></g>'+
   '<line x1="23.4" y1="9.4" x2="26.4" y2="13.2" stroke="#8A6A4A" stroke-width="2.3" stroke-linecap="round"/>'+
-  '<circle cx="20.8" cy="6.6" r="4.1" fill="#EAF2FF" stroke="#5C7FBF" stroke-width="2.1"/>'+
+  '<circle cx="20.8" cy="6.6" r="4.1" fill="#DFF1F6" stroke="#5C7FBF" stroke-width="2.1"/>'+
   '<path d="M18.7 5.2a2.9 2.9 0 0 1 2.1-1.4" stroke="#FFF" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".9"/>',
 
 'du-an':
@@ -4832,11 +4832,11 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
   '<circle cx="16" cy="6.6" r="2.5" fill="#7DB4FF"/>'+
   '<circle cx="16" cy="6.6" r="4.4" fill="#7DB4FF" opacity=".22"/>'+
   '<rect x="5.6" y="16.4" width="20.8" height="9.6" rx="1.8" fill="#B07B4B"/>'+
-  '<path d="M5.6 16.4a10.4 5.6 0 0 1 20.8 0z" fill="#C98F57"/>'+
+  '<path d="M5.6 16.4a10.4 5.6 0 0 1 20.8 0z" fill="#C9924F"/>'+
   '<rect x="5.6" y="15.4" width="20.8" height="2.4" rx="1.2" fill="#8A6A4A"/>'+
   '<rect x="8.4" y="14.2" width="2.2" height="8.2" rx=".9" fill="#E8B84B"/>'+
   '<rect x="21.4" y="14.2" width="2.2" height="8.2" rx=".9" fill="#E8B84B"/>'+
-  '<rect x="13.9" y="16.9" width="4.2" height="4.6" rx="1.3" fill="#FFD27A"/>'+
+  '<rect x="13.9" y="16.9" width="4.2" height="4.6" rx="1.3" fill="#FFCE7A"/>'+
   '<circle cx="16" cy="19.1" r="1" fill="#8A6A4A"/>',
 
 'thu-vien':
@@ -4844,7 +4844,7 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
   '<rect x="8.2" y="21.4" width="2.1" height="5.6" rx="1" fill="#8A6A4A"/>'+
   '<rect x="21.7" y="21.4" width="2.1" height="5.6" rx="1" fill="#8A6A4A"/>'+
   '<path d="M16 3.4 27.4 12.2H4.6z" fill="#C4596B"/>'+
-  '<rect x="4.6" y="12.2" width="22.8" height="1.6" rx=".8" fill="#A8455A"/>'+
+  '<rect x="4.6" y="12.2" width="22.8" height="1.6" rx=".8" fill="#B44B69"/>'+
   '<rect x="6.6" y="13.8" width="18.8" height="8.4" rx="1.2" fill="#D8B98E"/>'+
   '<rect x="8.2" y="15" width="15.6" height="3.1" rx=".6" fill="#C4A377"/>'+
   '<rect x="8.2" y="18.6" width="15.6" height="3.1" rx=".6" fill="#C4A377"/>'+
@@ -4866,11 +4866,11 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
 'am-nhac':
   '<ellipse cx="16" cy="27.4" rx="10" ry="1.9" fill="#3F5B4A" opacity=".13"/>'+
   '<rect x="4.6" y="7" width="1.9" height="16" rx=".95" fill="#9FCF7F"/>'+
-  '<rect x="7.2" y="5.4" width="1.9" height="17.6" rx=".95" fill="#8FC06F"/>'+
+  '<rect x="7.2" y="5.4" width="1.9" height="17.6" rx=".95" fill="#9FCF7F"/>'+
   '<rect x="23.1" y="6.2" width="1.9" height="16.8" rx=".95" fill="#9FCF7F"/>'+
-  '<rect x="25.7" y="8" width="1.9" height="15" rx=".95" fill="#8FC06F"/>'+
-  '<ellipse cx="16" cy="23.4" rx="9.4" ry="3.1" fill="#F3DCE4"/>'+
-  '<path d="M6.6 23.4v-1.6a9.4 3.1 0 0 1 18.8 0v1.6z" fill="#E7C2CE"/>'+
+  '<rect x="25.7" y="8" width="1.9" height="15" rx=".95" fill="#9FCF7F"/>'+
+  '<ellipse cx="16" cy="23.4" rx="9.4" ry="3.1" fill="#F8DCE4"/>'+
+  '<path d="M6.6 23.4v-1.6a9.4 3.1 0 0 1 18.8 0v1.6z" fill="#F8C0D2"/>'+
   '<rect x="16.5" y="6.2" width="1.9" height="10.2" rx=".95" fill="#D9749B"/>'+
   '<path d="M18.4 6.2c3 .7 4.6 2.2 4.4 4.5-1-1.6-2.5-2.3-4.4-2.4z" fill="#D9749B"/>'+
   '<ellipse cx="14" cy="16.8" rx="3.7" ry="2.9" fill="#D9749B" transform="rotate(-18 14 16.8)"/>',
@@ -4880,38 +4880,38 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
   '<rect x="9.4" y="16" width="2.3" height="10.6" rx="1.1" fill="#8A6A4A"/>'+
   '<rect x="20.3" y="16" width="2.3" height="10.6" rx="1.1" fill="#8A6A4A"/>'+
   '<rect x="4.6" y="5.6" width="22.8" height="14" rx="2" fill="#8A6A4A"/>'+
-  '<rect x="6.5" y="7.4" width="19" height="10.4" rx="1.2" fill="#FFF8EE"/>'+
+  '<rect x="6.5" y="7.4" width="19" height="10.4" rx="1.2" fill="#FFFCF5"/>'+
   '<rect x="7.8" y="8.6" width="5.2" height="3.9" rx=".6" fill="#F2A8C4" transform="rotate(-3 10.4 10.5)"/>'+
   '<rect x="13.6" y="8.8" width="5.2" height="3.9" rx=".6" fill="#BFE3EE" transform="rotate(2 16.2 10.7)"/>'+
-  '<rect x="19.4" y="8.6" width="5.2" height="3.9" rx=".6" fill="#E8DFA8" transform="rotate(-2 22 10.5)"/>'+
-  '<rect x="8.6" y="13.4" width="5.2" height="3.4" rx=".6" fill="#C8E8C0" transform="rotate(2 11.2 15.1)"/>'+
+  '<rect x="19.4" y="8.6" width="5.2" height="3.9" rx=".6" fill="#DFE3B4" transform="rotate(-2 22 10.5)"/>'+
+  '<rect x="8.6" y="13.4" width="5.2" height="3.4" rx=".6" fill="#CDEBC4" transform="rotate(2 11.2 15.1)"/>'+
   '<rect x="15" y="13.2" width="6.4" height="3.6" rx=".6" fill="#E3D2F0" transform="rotate(-2 18.2 15)"/>',
 
 'gioi-thieu':
   '<ellipse cx="16" cy="27.4" rx="9.6" ry="1.9" fill="#3F5B4A" opacity=".13"/>'+
   '<path d="M16 3.8 28 13.4H4z" fill="#C4596B"/>'+
-  '<rect x="6.4" y="13.4" width="19.2" height="12.6" rx="1.6" fill="#FFF8EE"/>'+
-  '<rect x="6.4" y="13.4" width="19.2" height="1.6" fill="#EFE2D2"/>'+
+  '<rect x="6.4" y="13.4" width="19.2" height="12.6" rx="1.6" fill="#FFFCF5"/>'+
+  '<rect x="6.4" y="13.4" width="19.2" height="1.6" fill="#E2D8C7"/>'+
   '<rect x="13.5" y="18.4" width="5" height="7.6" rx="1.1" fill="#8A6A4A"/>'+
   '<circle cx="17.7" cy="22.2" r=".65" fill="#E8B84B"/>'+
   '<rect x="8" y="17.6" width="4.2" height="4.2" rx=".9" fill="#BFE3EE"/>'+
   '<rect x="19.8" y="17.6" width="4.2" height="4.2" rx=".9" fill="#BFE3EE"/>'+
   '<circle cx="16" cy="16.4" r="1.25" fill="#E8B84B"/>'+
-  '<circle cx="16" cy="16.4" r="2.6" fill="#FFD98A" opacity=".3"/>',
+  '<circle cx="16" cy="16.4" r="2.6" fill="#FFCE7A" opacity=".3"/>',
 
 'loi-ke-chuyen':
   '<ellipse cx="16" cy="27.4" rx="8.4" ry="1.8" fill="#3F5B4A" opacity=".13"/>'+
   '<line x1="3" y1="5.4" x2="29" y2="5.4" stroke="#8A6A4A" stroke-width="1.5" stroke-linecap="round"/>'+
   '<g opacity=".62"><line x1="6.6" y1="5.4" x2="6.6" y2="8.6" stroke="#8A6A4A" stroke-width="1.1"/>'+
-  '<ellipse cx="6.6" cy="11.6" rx="3" ry="3.4" fill="#E08A3C"/>'+
+  '<ellipse cx="6.6" cy="11.6" rx="3" ry="3.4" fill="#C77A2E"/>'+
   '<line x1="6.6" y1="14.8" x2="6.6" y2="17.4" stroke="#C77A2E" stroke-width="1.1"/></g>'+
   '<g opacity=".62"><line x1="25.4" y1="5.4" x2="25.4" y2="8.6" stroke="#8A6A4A" stroke-width="1.1"/>'+
-  '<ellipse cx="25.4" cy="11.6" rx="3" ry="3.4" fill="#E08A3C"/>'+
+  '<ellipse cx="25.4" cy="11.6" rx="3" ry="3.4" fill="#C77A2E"/>'+
   '<line x1="25.4" y1="14.8" x2="25.4" y2="17.4" stroke="#C77A2E" stroke-width="1.1"/></g>'+
   '<line x1="16" y1="5.4" x2="16" y2="9.2" stroke="#8A6A4A" stroke-width="1.5"/>'+
   '<rect x="12.6" y="8.6" width="6.8" height="1.8" rx=".8" fill="#8A6A4A"/>'+
   '<ellipse cx="16" cy="16.4" rx="5.6" ry="6.2" fill="#C77A2E"/>'+
-  '<ellipse cx="16" cy="16.4" rx="2.4" ry="6.2" fill="#E8A055" opacity=".75"/>'+
+  '<ellipse cx="16" cy="16.4" rx="2.4" ry="6.2" fill="#F0A24B" opacity=".75"/>'+
   '<ellipse cx="16" cy="16.4" rx="5.6" ry="6.2" fill="none" stroke="#A85F1E" stroke-width=".9"/>'+
   '<rect x="12.6" y="22.2" width="6.8" height="1.8" rx=".8" fill="#8A6A4A"/>'+
   '<line x1="16" y1="24" x2="16" y2="27" stroke="#C4596B" stroke-width="1.6" stroke-linecap="round"/>',
@@ -4922,11 +4922,11 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
   '<path d="M11.8 20 12.6 15.8h6.8l.8 4.2z" fill="#8A6FBF"/>'+
   '<path d="M12.6 15.8 13.2 12.2h5.6l.6 3.6z" fill="#EFE6F8"/>'+
   '<path d="M13.2 12.2 13.7 9.2h4.6l.5 3z" fill="#8A6FBF"/>'+
-  '<rect x="9.6" y="25.4" width="12.8" height="1.9" rx=".95" fill="#EBD9C4"/>'+
-  '<rect x="12.6" y="6.6" width="6.8" height="2.9" rx="1" fill="#F7C4CC"/>'+
+  '<rect x="9.6" y="25.4" width="12.8" height="1.9" rx=".95" fill="#E2D8C7"/>'+
+  '<rect x="12.6" y="6.6" width="6.8" height="2.9" rx="1" fill="#F8C0D2"/>'+
   '<rect x="12.1" y="8.9" width="7.8" height="1.3" rx=".65" fill="#8A6FBF"/>'+
   '<path d="M16 2.6 18.9 6.6h-5.8z" fill="#C4596B"/>'+
-  '<path d="M12.4 8.1 5.4 5.6M19.6 8.1 26.6 5.6M12.4 8.9 5.8 10.8M19.6 8.9 26.2 10.8" stroke="#FFE8A8" stroke-width="1.5" stroke-linecap="round" opacity=".75"/>'+
+  '<path d="M12.4 8.1 5.4 5.6M19.6 8.1 26.6 5.6M12.4 8.9 5.8 10.8M19.6 8.9 26.2 10.8" stroke="#F7E19A" stroke-width="1.5" stroke-linecap="round" opacity=".75"/>'+
   '<circle cx="24.6" cy="14.6" r="1.1" fill="#D9B3FF"/>'+
   '<circle cx="7.6" cy="16.4" r=".9" fill="#D9B3FF"/>'+
   '<circle cx="23.2" cy="19.6" r=".75" fill="#D9B3FF"/>'
@@ -4976,7 +4976,7 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
         '<g class="tc-pin'+(xong?' da':'')+'" data-khu="'+k.khu.id+'" role="button" tabindex="0"'+
         ' aria-label="'+ten.replace(/"/g,'&quot;')+(xong?(vi()?' (đã ghé)':' (visited)'):'')+'">'+
         '<title>'+ten.replace(/</g,'&lt;')+'</title>'+
-        '<circle class="vien" cx="'+x.toFixed(1)+'" cy="'+z.toFixed(1)+'" r="17" fill="#FFF8EE" opacity="'+(xong?'.97':'.88')+'"/>'+
+        '<circle class="vien" cx="'+x.toFixed(1)+'" cy="'+z.toFixed(1)+'" r="17" fill="#FFFCF5" opacity="'+(xong?'.97':'.88')+'"/>'+
         '<circle class="nen" cx="'+x.toFixed(1)+'" cy="'+z.toFixed(1)+'" r="15.4" fill="none" stroke="'+mau+'"'+
           ' stroke-width="'+(xong?'3.2':'2.2')+'"/>'+
         '<g class="tranh" transform="translate('+(x-16).toFixed(1)+' '+(z-16).toFixed(1)+')"'+
@@ -4984,9 +4984,9 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
         /* Dau da ghe: mau dung bang mau o chu giai duoi ban do, khong thi chu
            giai noi mot dang ma ban do ve mot dang. */
         (xong ? '<g class="dau-ghe"><circle cx="'+(x+11.6).toFixed(1)+'" cy="'+(z+11.6).toFixed(1)+'" r="5.4"'+
-                ' fill="#6B8F71" stroke="#FFF8EE" stroke-width="1.6"/>'+
+                ' fill="#6B8F71" stroke="#FFFCF5" stroke-width="1.6"/>'+
                 '<path d="M'+(x+9.2).toFixed(1)+' '+(z+11.6).toFixed(1)+'l1.8 1.9 3.3-3.6" fill="none"'+
-                ' stroke="#FFF8EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></g>' : '')+
+                ' stroke="#FFFCF5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></g>' : '')+
         '</g>');
     });
 
@@ -4995,8 +4995,8 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
     const goc = (typeof nhanVat.rotation !== 'undefined' ? nhanVat.rotation.y : 0);
     p.push('<g id="tc-toi" transform="translate('+hx.toFixed(1)+' '+hz.toFixed(1)+')">'+
       '<circle r="13" fill="#E77E9A" opacity=".22"/>'+
-      '<circle r="6.5" fill="#E77E9A" stroke="#FFF8EE" stroke-width="2.5"/>'+
-      '<path d="M0 -14 L4.6 -6 L-4.6 -6 Z" fill="#E77E9A" stroke="#FFF8EE" stroke-width="1.4"'+
+      '<circle r="6.5" fill="#E77E9A" stroke="#FFFCF5" stroke-width="2.5"/>'+
+      '<path d="M0 -14 L4.6 -6 L-4.6 -6 Z" fill="#E77E9A" stroke="#FFFCF5" stroke-width="1.4"'+
       ' transform="rotate('+((-goc*180/Math.PI)).toFixed(1)+')"/></g>');
 
     veEl.innerHTML = '<svg viewBox="0 0 400 400" role="img" aria-label="'+
@@ -5173,7 +5173,7 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
               '⟳ Nouvelle version - actualiser ?':'⟳ '+(document.documentElement.getAttribute('lang')==='en'?
               'New version available - refresh?':'⟳ Đã có bản cập nhật - làm mới?');
             note.style.cssText='position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99;'+
-              'border:1px solid var(--accent,#b25d7d);border-radius:999px;background:#fff;color:#000;'+
+              'border:1px solid var(--accent,#B85C7E);border-radius:999px;background:#fff;color:#000;'+
               'font:700 .8rem system-ui;padding:8px 18px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.15)';
             note.addEventListener('click',function(){note.remove();doReload();});
             document.body.appendChild(note);

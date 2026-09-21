@@ -250,6 +250,53 @@ Máy chủ thử tại chỗ phải là bản **đa luồng** (`ThreadingMixIn`)
 `python3 -m http.server` một luồng bị nghẽn khi Chromium mở nhiều kết nối, lần
 tải sau treo luôn. Chặn `*.mp3/mp4` trong Playwright cho nhẹ.
 
+## Bảng màu trang viên
+
+### Đếm màu cho đúng
+
+`trangvien.html` có **ba khối `<style>`**. Cắt CSS bằng
+`s.replace(''.join(cac_khoi), '')` thì **không khớp gì cả** — phép nối chỉ ra
+một chuỗi liền, mà trong tệp ba khối nằm rời nhau. Đã đo sai một lần vì thế và
+báo nhầm «108 màu trong cảnh 3D»; đúng ra là 58. Phải xoá theo **vị trí đầu
+cuối**, không xoá theo chuỗi.
+
+Bốn vùng màu tách bạch, đừng trộn khi đếm hay khi sửa:
+
+| vùng | là gì | có được đụng không |
+| --- | --- | --- |
+| ba khối `<style>` | giao diện, bộ màu đất sét chung của trang web | không, đấy là việc khác |
+| `BC_CH` | bốn thời khắc | chỉ sửa có chủ đích |
+| mảng `KHU` | tám màu khu + HTML trong bảng nội dung | tám màu khu là **neo**, không đổi |
+| còn lại | cảnh 3D + `TRANH_KHU` | đây mới là chỗ gom màu |
+
+### Gom màu: bỏ bản sao, đừng đổi ý đồ
+
+Gom theo **ΔE trong không gian Lab**, duyệt từ màu dùng nhiều tới màu dùng ít,
+giữ màu đầu của mỗi cụm. Ngưỡng **ΔE < 8** là chỗ mắt không phân biệt được
+từng màu một. Neo cố định: tám màu khu, nước, năm sắc cỏ của mặt đất, lối mòn,
+chấm hồng của nhân vật, và ba bậc giấy `#FFFCF5` / `#F6F1E7` / `#E2D8C7` lấy
+từ chính bộ màu đất sét của trang web — nhờ thế cảnh 3D và các trang web dùng
+chung một họ giấy.
+
+Kết quả: cảnh 3D **58 → 46** màu, tám bức vẽ bản đồ 38 → 33, cả tệp 261 → 243.
+Lệch lớn nhất khi gom: ΔE 7,8.
+
+### Nhiều sắc không phải là vấn đề — cùng một bậc sáng mới là
+
+Bốn màu `tham` trong `BC_CH` tô **14 vòng tròn bán kính 3–9** phủ phần lớn mặt
+đất. Đo ra thì chúng chênh nhau **1 bậc sáng** ở buổi chiều (81, 79, 80, 79),
+và 4–7 bậc ở ba thời khắc kia. Bốn màu mà về giá trị sáng là một, nên mặt đất
+không có lớp lang dù có tới bốn sắc.
+
+Cách sửa: **giữ nguyên sắc và độ bão hoà, chỉ trải lại độ sáng** quanh đúng
+giá trị trung bình cũ, bốn bậc cách nhau khoảng 21 điểm. Giữ trung bình thì độ
+sáng chung của cảnh không nhảy, chỉ có cấu trúc hiện ra — đo được: trung vị
+giữ nguyên 209, còn bách phân vị 3 xuống 136 → 125 và năng lượng tần cao lên
+14,86 → 18,91.
+
+Với noir và đêm phải **chặn sàn** độ sáng (không dưới 0,03) kẻo ra mảng đen
+đặc.
+
 ## Cảnh tháp mượn từ ThreeUI (`assets/canh/thap.html`)
 
 Bóc từ `src/shaders/japanese-tower/Towers.html` của
