@@ -1944,7 +1944,11 @@ function bienBaoTexture(khu){
   c.width = 512; c.height = 256;
   const g = c.getContext('2d');
   const r = 34;
+  /* Lấp kín cả khung trước. Chỉ vẽ hình chữ nhật bo góc thì bốn góc còn trong
+     suốt, mà vật liệu của biển không bật transparent nên góc trong suốt hiện
+     ra thành ĐEN. */
   g.fillStyle = '#FFFBF4';
+  g.fillRect(0, 0, 512, 256);
   g.beginPath();
   g.moveTo(r,0); g.lineTo(512-r,0); g.quadraticCurveTo(512,0,512,r);
   g.lineTo(512,256-r); g.quadraticCurveTo(512,256,512-r,256);
@@ -1984,6 +1988,97 @@ const dsMsgTV = [];   // Messenger - cửa sổ + bong bóng
 const dsDomHDL = [];  // Kho tương lai - đom đóm tím hồng quanh hải đăng
 let denTV = new THREE.Mesh(new THREE.SphereGeometry(.01), new THREE.MeshBasicMaterial());
 
+/* ---------- BỘ KIẾN TRÚC DÙNG CHUNG CHO TÁM KHU ----------
+   Tám khu trước đây chỉ là một đĩa đất tôn cao, một vành màu, và tấm biển chỉ
+   đường trên hai cột. Không có thềm để bước lên, không có nét dọc nào, nên
+   nhìn từ xa mỗi khu là một cái đĩa chứ không phải một CHỖ.
+
+   Bộ này thêm bốn thứ lặp lại ở cả tám khu - thềm bậc, lan can, hai cột cổng
+   có đèn, và mái ngói nhỏ che biển - để trang viên có một ngôn ngữ kiến trúc
+   chung thay vì tám đống đồ vật rời.
+
+   Hình học khai MỘT LẦN cho cả tám khu. Đo trước khi làm: 1 603 mesh mà dùng
+   tới 1 161 hình học, tức gần như mỗi mesh một hình riêng - thêm trăm mesh nữa
+   theo nếp ấy thì phí vô ích. Hai thứ đông nhất (cột lan can, bậc thềm) dựng
+   bằng InstancedMesh: 88 khối mà chỉ tốn 2 lệnh vẽ. */
+const KT_KHE   = .70;                 // nua khoang ho cua lan can, phia bien chi duong
+const KT_BK    = 5.15;                // ban kinh lan can
+const KT_SO_COT = 8;                  // so cot lan can moi khu
+const KT_HH = {
+  bac:     new THREE.BoxGeometry(1, .18, .62),
+  cot:     new THREE.CylinderGeometry(.105, .125, .78, 6),
+  tayVin:  new THREE.TorusGeometry(KT_BK, .075, 5, 44, Math.PI*2 - KT_KHE*2),
+  cotCong: new THREE.CylinderGeometry(.17, .21, 3.1, 8),
+  muCong:  new THREE.ConeGeometry(.34, .36, 8),
+  denCong: new THREE.SphereGeometry(.24, 10, 8),
+  maiLop:  new THREE.BoxGeometry(1, .12, 1),
+  noc:     new THREE.CylinderGeometry(.085, .085, 5.5, 6)
+};
+/* Ba bac them: [y, z, be rong]. Dat o phia +z, dung huong tam bien chi duong,
+   tuc dung cho khach di toi. */
+const KT_BAC = [[.46, 5.78, 3.5], [.28, 6.34, 3.1], [.10, 6.90, 2.7]];
+const dsDenCong = [];                 // de apThoiKhac() chinh do sang theo thoi khac
+const vlDenCong = new THREE.MeshStandardMaterial({
+  color:new THREE.Color('#FFE6B4'), roughness:.55, metalness:0,
+  emissive:new THREE.Color('#E8B84B'), emissiveIntensity:.5});
+
+/* Hai khoi dong nhat gop thanh InstancedMesh, dung mot vat lieu chung. */
+const ktBacIM = new THREE.InstancedMesh(KT_HH.bac, vatLieu('#DCC9AE', .96), KHU.length * 3);
+const ktCotIM = new THREE.InstancedMesh(KT_HH.cot, vatLieu('#F1E6D4', .94), KHU.length * KT_SO_COT);
+ktBacIM.castShadow = ktBacIM.receiveShadow = true;
+ktCotIM.castShadow = ktCotIM.receiveShadow = true;
+theGioi.add(ktBacIM); theGioi.add(ktCotIM);
+let ktBacN = 0, ktCotN = 0;
+const _ktM = new THREE.Matrix4(), _ktQ = new THREE.Quaternion(),
+      _ktV = new THREE.Vector3(),  _ktS = new THREE.Vector3(), _ktE = new THREE.Euler();
+function ktDat(im, n, x, y, z, ry, sx, sy, sz){
+  _ktE.set(0, ry || 0, 0);
+  im.setMatrixAt(n, _ktM.compose(_ktV.set(x, y, z), _ktQ.setFromEuler(_ktE),
+                                 _ktS.set(sx || 1, sy || 1, sz || 1)));
+}
+
+function dungKienTruc(g, khu){
+  const vx = khu.vt[0], vz = khu.vt[2];
+  // 1. Them bac - InstancedMesh nen phai dat theo toa do THE GIOI, khong phai
+  //    toa do trong nhom cua khu.
+  KT_BAC.forEach(([y, z, rong]) => ktDat(ktBacIM, ktBacN++, vx, y, vz + z, 0, rong, 1, 1));
+  // 2. Lan can: vong tay vin cong + cot chong
+  const vong = khoi(KT_HH.tayVin, khu.mau, .88);
+  /* Torus nam trong mat phang XY, cung bat dau tu goc 0. Nhom bao ngoai xoay
+     -90 do quanh X de ha xuong mat phang XZ, khi ay diem goc phi roi xuong
+     (R.cos phi, 0, -R.sin phi) - nen muon khoang ho quay ve +z thi cung phai
+     bat dau o -90 do cong nua khoang ho. */
+  vong.rotation.z = -Math.PI/2 + KT_KHE;
+  const nhomVong = new THREE.Group();
+  nhomVong.rotation.x = -Math.PI/2; nhomVong.position.y = 1.23;
+  nhomVong.add(vong); g.add(nhomVong);
+  for(let i = 0; i < KT_SO_COT; i++){
+    const a = KT_KHE + (i + .5) / KT_SO_COT * (Math.PI*2 - KT_KHE*2);
+    ktDat(ktCotIM, ktCotN++, vx + Math.sin(a)*KT_BK, .94, vz + Math.cos(a)*KT_BK);
+  }
+  /* 3. Hai cột cổng đứng ở CHÂN thềm, không phải trên nền - để khách đi
+        xuyên qua cổng rồi mới bước lên, đúng thứ tự của một lối vào. Đặt trên
+        nền thì chúng chỉ là hai cây cột lạc giữa sân. */
+  for(const ben of [-1, 1]){
+    const c = khoi(KT_HH.cotCong, '#F1E6D4', .94);
+    c.position.set(ben*2.45, 1.55, 6.30); g.add(c);
+    const d = new THREE.Mesh(KT_HH.denCong, vlDenCong);
+    d.position.set(ben*2.45, 3.26, 6.30); g.add(d); dsDenCong.push(d);
+    const m = khoi(KT_HH.muCong, khu.mau, .9);
+    m.position.set(ben*2.45, 3.60, 6.30); g.add(m);
+  }
+  // 4. Mai ngoi nho che bien chi duong
+  for(const ben of [-1, 1]){
+    const l = khoi(KT_HH.maiLop, '#C4596B', .93);
+    l.position.set(0, 4.74, 3.90 + ben*.62);
+    l.rotation.x = ben * .42;
+    l.scale.set(5.2, 1, 1.55);
+    g.add(l);
+  }
+  const n = khoi(KT_HH.noc, '#A8455A', .92);
+  n.rotation.z = Math.PI/2; n.position.set(0, 5.00, 3.90); g.add(n);
+}
+
 function dungKhu(khu){
   const g = new THREE.Group();
   g.position.set(khu.vt[0], 0, khu.vt[2]);
@@ -1998,16 +2093,31 @@ function dungKhu(khu){
   const cot1 = khoi(new THREE.CylinderGeometry(.16,.18,3.1,9), '#F5F0E6', .93);
   cot1.position.set(-1.25, 1.55, 3.9); g.add(cot1);
   const cot2 = cot1.clone(); cot2.position.x = 1.25; g.add(cot2);
+  /* Khung biển và MẶT biển nay là hai khối riêng.
+
+     Trước đây cả tấm biển là một ExtrudeGeometry có dán ảnh. Nhưng
+     ExtrudeGeometry sinh toạ độ ảnh bằng chính toạ độ của hình phẳng, nên ở
+     đây u chạy -2,2..2,2 và v chạy -1,1..1,1 thay vì 0..1 - đo được 91,9% số
+     đỉnh nằm ngoài khoảng 0..1. Kiểu bọc là ClampToEdge nên gần hết mặt biển
+     chỉ là pixel mép bị kéo dãn. Nghĩa là tấm biển - thứ cho khách biết mình
+     đang đứng ở khu nào - chưa bao giờ hiện đúng.
+
+     Nay mặt biển là một PlaneGeometry, toạ độ ảnh đúng 0..1, đặt ngay trước
+     khung gỗ bo góc. Khung lo phần dày và bóng đổ, mặt lo phần chữ. */
+  const khungBien = khoi(hopTron(4.5, 2.3, .34, .22), '#F5EFE4', .95);
+  khungBien.position.set(0, 3.4, 3.9); g.add(khungBien);
   const tex = bienBaoTexture(khu);
-  const bang = new THREE.Mesh(hopTron(4.4, 2.2, .34, .22),
+  const bang = new THREE.Mesh(new THREE.PlaneGeometry(4.16, 2.08),
     new THREE.MeshStandardMaterial({map:tex, roughness:.9, metalness:0}));
-  bang.position.set(0, 3.4, 3.9);
-  bang.castShadow = true;
+  /* 4,24 chứ không phải 4,10: hopTron() là ExtrudeGeometry có vát, mà vát dày
+     0,06 mỗi bên nên khung thật ra dày 0,46 chứ không phải 0,34 - mặt trước
+     của khung nằm ở z 4,13 và che mất mặt biển đặt ở 4,10. */
+  bang.position.set(0, 3.4, 4.24);
+  bang.receiveShadow = true;
   g.add(bang);
-  // mặt sau cùng màu để không bị đen
-  const sau = khoi(hopTron(4.5, 2.3, .3, .22), '#F5EFE4', .95);
-  sau.position.set(0, 3.4, 3.72); g.add(sau);
   bienBao.push({khu, mesh:bang});
+
+  dungKienTruc(g, khu);
 
   // vật thể đặc trưng của từng khu
   const dt = new THREE.Group(); dt.position.y = .55; g.add(dt);
@@ -4056,6 +4166,9 @@ function apThoiKhac(k){
   if(typeof dsLong!=='undefined') dsLong.forEach(c=>{
     c.userData.treo.children[0].material.emissiveIntensity = cfg.denSang;
   });
+  // den tren cot cong sang theo thoi khac, cung nhip voi den long
+  if(typeof dsDenCong!=='undefined' && dsDenCong.length)
+    dsDenCong[0].material.emissiveIntensity = Math.max(.18, cfg.denSang * .75);
   dsDom.forEach(d=>d.visible = cfg.domDom);
   // Nen dat va duong mon giu mau rieng, khong nghe bang mau; noir phai nhuom
   // chung xuong nau sam, roi thoi khac khac thi tra ve dung mau goc.
