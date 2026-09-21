@@ -179,7 +179,8 @@ xuống thế giới thành `(x, 0, -y)`. Quên dấu trừ thì vân cỏ và b
 
 ### Một nguồn dữ liệu, nhiều nơi dùng
 
-Đã dính hai lần vì chép lại hình dạng thay vì lấy từ nguồn:
+Đã dính **ba** lần vì chép lại hình dạng thay vì lấy từ nguồn — cùng một công
+thức sai, cùng một kiểu hỏng:
 
 - **Sông trên bản đồ vẽ ngược phía** suốt bấy lâu. Bản đồ dùng một công thức
   sin riêng, `z = sin(x*.05)*7 + 8`, cho z từ 1 tới 15 — toàn dương; mà
@@ -187,6 +188,14 @@ xuống thế giới thành `(x, 0, -y)`. Quên dấu trừ thì vân cỏ và b
   `vienSong`.
 - **Lối mòn** nay khai ở `TUYEN_MON` ngoài hàm `loiDi()`, để bản đồ vẽ lại
   chính mạng ấy.
+- **Cỏ mọc giữa sông.** `coLua()` và `luongHoa()` né sông bằng đúng công thức
+  sin sai ấy. Đo bằng 200 000 mẫu trong cảnh đang chạy: **8,25%** số vị trí
+  lọt qua guard cũ nằm trên mặt nước — với 900 bụi cỏ là khoảng **74 bụi mọc
+  giữa dòng**. Nay cả hai dùng `xaSong()`, và đếm lại được **0** bụi trên
+  nước.
+
+Quy tắc rút ra: hễ thấy một hằng số hình học viết tay ở chỗ thứ hai, đi tìm
+nguồn của nó. Ba lần rồi.
 
 Danh sách lối mòn cũ là **một đường đi liền mạch**, nên muốn rẽ nhánh phải
 quay ngược lại — mỗi lần quay ngược dựng thêm một tấm phẳng nằm đè khít lên
@@ -541,3 +550,140 @@ lấy nguyên con số trong thuộc tính và ảnh bị bóp ngang — `.anh-n
 Đối chiếu đã. Nhiều tệp gửi tới hoá ra trùng với tệp đã có trong kho, hoặc là
 bản chưa nén của tệp đã có. So bằng tương quan ảnh thu nhỏ, hoặc bằng khung
 hình với video — đừng nhìn tên tệp mà đoán.
+
+## Mật độ, và giới hạn của cách đo bằng số
+
+Sau năm chặng nâng cấp, trang viên vẫn bị nhận xét là «chưa đẹp». Đo lại thì
+nguyên nhân không phải ánh sáng cũng không phải bảng màu — cả hai đã sửa rồi.
+
+Đếm trong cảnh đang chạy: **3 381 mesh, trong đó 2 455 là vật trang trí nhỏ**
+(1 371 hình cầu dưới 1,2 đơn vị, 959 hình nón), rải **đều** khắp trang viên.
+Mật độ đều nghĩa là không có khoảng trống, mà không có khoảng trống thì không
+có hình khối. Mắt không tìm được chỗ nghỉ nên cảnh nhìn bẹt.
+
+Cách sửa là **gụm thành cụm**: `TAM_KHOM` (20 tâm, tự tránh nhau, tránh nước
+và tránh nền khu) cộng `diemKhom()` lấy điểm quanh tâm bằng trung bình ba số
+ngẫu nhiên, nên cụm có lõi dày rìa thưa. `coLua` 900 → 430, `luongHoa` 420 →
+192, chấm hoa 70 → 38. Tổng 3 381 → 2 653.
+
+### Đây mới là chỗ quan trọng
+
+**Mọi thước đo bằng số ở mục «Đo thế nào» đều ĐI LÙI sau khi sửa, trong khi
+bức tranh khá lên rõ rệt.** Ngắm toàn cảnh, trước → sau:
+
+| | trước | sau |
+| --- | --- | --- |
+| năng lượng tần cao | 18,52 | **15,08** |
+| % trong dải hẹp 205–212 | 15,4% | **18,8%** |
+| p50 → p97 | 23,84 | **18,58** |
+
+Không phải sửa hỏng. Là vì **năng lượng tần cao đo mật độ chi tiết**, mà thưa
+bớt đồ trang trí thì chi tiết tất nhiên giảm; còn tỉ lệ dải hẹp tăng chính vì
+đã có cỏ trống thật — thứ vừa cố tạo ra.
+
+Bách phân vị và năng lượng tần cao là thước đo của **độ tương phản và chất
+liệu**, không phải của **bố cục**. Bố cục là thứ bậc và khoảng trống, không
+thước nào trong số ấy đo được. Gặp lần sau thì **nhìn ảnh, đừng kéo con số lên
+lại** — kéo lên là quay về đúng chỗ vừa thoát ra.
+
+## Nước là khối tối của cảnh
+
+Màu nước cũ `#9FD3E8` có độ sáng **201,5**, cỏ nền `#A9DDA0` là **205,5** —
+cách nhau 4 bậc, nên con sông tan vào bãi cỏ và nhìn từ xa không thấy nước.
+Nay dùng `#3F6F68`, tức đúng `--river` của bộ màu đất sét trang web, độ sáng
+**100,3**: cách cỏ 105 bậc.
+
+Kèm theo hạ `roughness` xuống .14 để mặt nước bắt nắng thành vệt sáng — dải
+sáng vì thế mở ra ở **cả hai đầu** chứ không chỉ thêm một đầu tối.
+
+Bốn màu cỏ cũng trải lại. `t` trong `veVanDat()` là tổng ba tích sin-cos nên
+**dồn quanh 0,5**; cách cũ còn nhân 1,5 rồi kẹp, nên mọi đỉnh có t ≥ 0,667 đều
+ra đúng một màu. Đo được: **52% khung hình nằm gọn trong 7 bậc sáng**. Nay kéo
+độ lệch quanh 0,5 ra 1,9 lần rồi rải lên bốn bậc cách đều (118 → 171 → 205 →
+227); khoảng cách p50→p97 lúc đứng giữa trang viên từ 5,8 lên 36,2.
+
+## Tám khu phải khác dáng nhau
+
+Chặng 4 dựng bộ kiến trúc dùng chung và cho cả tám khu **cùng** thềm, **cùng**
+lan can, **cùng** cổng, **cùng** mái. Tưởng là cho chúng hình hài, hoá ra xoá
+mất thứ làm chúng khác nhau: nhìn từ xa là tám cái vòng y hệt, không nhận ra
+đâu là Nghiên cứu đâu là Âm nhạc. Trớ trêu là ngay trong tệp này đã có dòng
+«Đừng để hai khu cùng một dáng» cho tám huy hiệu bản đồ — theo được ở đó rồi
+làm ngược lại trong cảnh 3D.
+
+Nay `KT_DANG` khai ba thứ quyết định bóng dáng cho từng khu:
+
+- `vong`: `'tron'` (vành torus như cũ) / `'vuong'` (ba cạnh thẳng, chừa cạnh
+  +z làm lối vào) / `'khong'` (bỏ hẳn, khu mở nhìn thấu qua);
+- `mai`: có mái ngói nhỏ che biển hay không;
+- `tru`: **một nét dọc riêng** — `dungTru()` dựng tháp vuông, khung chữ A,
+  mái nhà sàn cao, vòm sân khấu, cột cờ, dãy đèn lồng, cột buồm.
+
+Nét dọc là thứ đọc được **xa nhất** vì nó cắt lên nền trời. Đó mới là cái phân
+biệt khu này với khu kia ở tầm nhìn từ giữa trang viên, chứ không phải màu vành
+hay chữ trên biển.
+
+### InstancedMesh: cắt `count` khi dùng ít hơn cấp phát
+
+Chỗ này **suýt hỏng âm thầm**. `ktCotIM` cấp phát `KHU.length * KT_SO_COT` = 64
+thể hiện từ hồi cả tám khu đều có lan can tròn. Nay ba khu bỏ lan can và hai
+khu dùng lan can vuông bốn cột, nên chỉ đặt **32**. Thể hiện không đặt thì ma
+trận là **đơn vị**, tức cột hiện ra ngay **gốc toạ độ**.
+
+Đo trong cảnh đang chạy: để nguyên `count = 64` thì có **32 cột chồng lên nhau
+giữa trang viên**; đặt `ktCotIM.count = ktCotN` thì còn **0**. Trang vẫn chạy
+bình thường trong cả hai trường hợp nên rất dễ không nhận ra.
+
+## Cụm nổi: đo cho đúng, rồi mờ đi khi đang đi
+
+### Đừng đo bằng hộp bao
+
+Lần đầu đếm bằng `getBoundingClientRect()` của các con trực tiếp của `body` và
+báo **«13 cụm che 31,6% màn hình»**. Sai. Hai chỗ hỏng:
+
+- `#vnmark` (bản đồ Việt Nam chìm) có `opacity: .07` và **`z-index: -1`**, tức
+  nằm *sau* canvas — hộp bao 333×366 nhưng gần như vô hình. Đếm hộp bao thì nó
+  thành cụm lớn nhất với 12,5%.
+- `#hud-tren` có hộp bao rộng cả màn hình nên ra 10,6%, trong khi các nút thật
+  bên trong chỉ chiếm **2,44%**.
+
+Cách đo dùng được: phủ **lưới 4px**, duyệt xuống tới lá, chỉ tính phần tử **có
+nền hoặc có chữ**, bỏ phần tử `opacity < .25` hoặc `z-index < 0` (và dừng đệ
+quy ở đó luôn, vì con của một cụm đã mờ thì cũng mờ theo).
+
+Đo lại cho đúng: **13,5% trên máy tính 1280, 27,5% trên điện thoại 390** — trên
+điện thoại nặng **gấp đôi**.
+
+### Mờ đi khi đang đi
+
+Bỏ hẳn cụm nào cũng tiếc vì lúc đứng lại khách cần chúng. Nên: `body.dang-di`
+cho cụm phụ mờ còn 0,12; đứng lại 0,4 giây thì hiện về. Mờ chứ không ẩn, để bố
+cục không nhảy.
+
+Lớp `.hud-phu` do JS gắn lúc chạy theo lối **loại trừ** (`HUD_GIU` kể ra những
+cụm phải giữ), kèm `MutationObserver` trên `body` cho những cụm gắn muộn — vì
+năm mô-đun trò chơi tự gắn thẻ lúc chạy nên danh sách viết tay luôn lạc hậu.
+
+Đo được: **13,5% → 6,7%** trên máy tính 1280 và **27,5% → 11,8%** trên điện
+thoại 390. Con số 6,7 khớp đúng phần giữ lại — `hud-tren` 3,13 + `ban-do` 1,74
++ `can` 1,58 + `skip-link` 0,25 = 6,70.
+
+### Kiểm cái này: huỷ tour rồi bấm phím đi THẬT
+
+Mất ba lượt đo sai mới ra. Hai cách giả lập «đang đi» đều **không dùng được**:
+
+- `dungYen = 0`: vòng lặp cộng `dungYen += dt` nên 0,4 giây sau lớp `dang-di`
+  tự tắt, đo xong ra số gần như không đổi;
+- `dungYen = -1e6`: tưởng chắc ăn, nhưng **nhánh tour tự đi đặt lại
+  `dungYen = 0` mỗi khung hình**, ghi đè luôn. Nên kịch bản nào có bấm qua ba
+  bước hướng dẫn (tour chạy sau đó) thì ra một kết quả, kịch bản nào không bấm
+  lại ra kết quả ngược — hai lần đo mâu thuẫn nhau mà cả hai đều sai.
+
+Cách đúng: huỷ tour (`huyTour()`, `mucTieuDi = null`) rồi **giữ phím mũi tên**
+bằng `keyboard.down('ArrowUp')`. Đo xong thì đọc luôn
+`document.body.classList.contains('dang-di')` và `opacity` của một cụm mẫu để
+biết chắc trạng thái lúc đo, đừng tin là mình đã đặt đúng.
+
+Bài học chung: **giả lập trạng thái bằng cách gán biến thì phải kiểm xem có
+nhánh nào trong vòng lặp ghi đè biến ấy không.** Ở đây có, và nó làm hỏng hai
+lượt đo liền.

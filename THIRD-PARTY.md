@@ -119,6 +119,12 @@ $ grep -rl "\.claude/skills" --include=*.html --include=*.js --include=*.py .
 Vì vậy chúng **không nằm trong phạm vi tác phẩm đăng ký**. Bộ `huashu-design`
 có giấy phép riêng tại `.claude/skills/huashu-design/LICENSE`.
 
+Thư mục `ban-cu/` cũng không thuộc tác phẩm. Đó là chỗ cất 267 tệp `.bak` —
+bản sao lưu sinh ra trong lúc làm việc, trước nằm rải rác khắp kho. Trong số
+ấy **178 tệp là bản nháp của chính các bộ hướng dẫn bên thứ ba nói trên**, nên
+cũng theo giấy phép riêng của chúng. Không tệp nào trong `ban-cu/` được trang
+web dùng tới. Xem [`ban-cu/README.md`](ban-cu/README.md).
+
 ---
 
 ## 7. Phần thuộc về tác giả
