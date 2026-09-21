@@ -104,6 +104,42 @@ Trang viên chỉ có **hai thứ tiếng** (vi/en), không có tiếng Pháp.
 - Bảng nội dung một khu và bảng trợ giúp dùng chung một bảng; cả hai đều phải
   đặt lớp `body.dang-doc-khu` để các cụm nổi ẩn đi.
 
+## Bản thử tháp mượn từ ThreeUI (`design-demos/thap-threeui.html`)
+
+Bóc từ `src/shaders/japanese-tower/Towers.html` của
+<https://github.com/MengTo/threeui> — **MIT, Copyright (c) 2026 Meng To**,
+toàn văn ở `assets/vendor/threeui-LICENSE.txt`. Kho ấy là thư viện **React**
+(`peerDependencies: react >=18 <20`), cần npm + Vite, nên **không cắm thẳng
+vào trang tĩnh được**. Nhưng trong `src/shaders/**` có 70 tệp `.html` chạy độc
+lập — chính bản vanilla trước khi bọc React. Đấy là đường dùng được.
+
+Bốn điều đã đo, để lần sau khỏi dò lại:
+
+- **2,4 MB của tệp gốc gần hết là dữ liệu nhúng**: 593 KB three.js, 1 063 KB
+  nhạc nền base64 (44% tệp), 564 KB ảnh nền. Mã cảnh thật chỉ ~190 KB. Bỏ
+  three và nhạc thì còn 712 KB. `loadBuf()` vốn đã trả về null khi khoá rỗng
+  nên bỏ nhạc không phải sửa gì thêm.
+- **Chạy được trên r128** dù kho khai `three >=0.149`: cảnh chỉ dùng 40 lớp,
+  đều có từ r128, và đã có sẵn nhánh `if(...!==undefined)` cho cả
+  `sRGBEncoding` lẫn `SRGBColorSpace`. Kiểm bằng Chromium: không lỗi nào.
+- **Nhãn các nút do JS ghi lúc chạy** từ `id` trong `STYLES`/`WEATHER`/`TIMES`.
+  Sửa chữ trong HTML là vô ích — phải dịch trong `setBtn()`. Cũng vậy,
+  `applyStyle(2)` ở cuối tệp mới quyết định kiểu lúc mở, không phải giá trị
+  khởi tạo của `styleIdx`.
+- **`.sub-cn` ghi bằng `textContent`**, nên `&nbsp;` hiện ra thành chữ. Muốn
+  khoảng trắng không ngắt thì dùng thẳng ký tự U+00A0.
+
+Bản gốc hiện **phần trăm âm** vài giây đầu (đo được −19%) vì mốc thời gian bắt
+đầu trước 0 cho máy quay kịp ổn định. Đã chặn ở chỗ hiện chữ, không đụng đồng
+hồ.
+
+Kiểu tháp Việt Nam (`buildThap`, các giai đoạn NỀN MÓNG → THÂN THÁP → MÁI NGÓI
+→ TẦNG TRÊN → ĐỈNH THÁP) **có sẵn trong bản gốc**, không phải ta thêm vào.
+
+Cảnh nào khác trong kho ấy cũng cần đối chiếu trước: phần lớn kéo Tailwind,
+GSAP, Iconify, Google Fonts, và ảnh từ kho Supabase riêng của tác giả —
+`ASSET-LICENSES.md` nói rõ **media ngoài không thuộc giấy phép MIT**.
+
 ## Kiểm bằng trình duyệt thật
 
 Dùng Playwright với Chromium sẵn có:
