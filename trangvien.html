@@ -452,6 +452,22 @@ body.dang-ngam > *:not(#san):not(#ngam-meo){display:none !important}
   letter-spacing:.01em; pointer-events:none;
 }
 body.dang-ngam #ngam-meo{display:block}
+
+/* Khoảnh khắc ra tới cửa biển. Hiện đúng một lần mỗi lượt ghé, khi khách
+   chèo xuồng ra khỏi trang viên. Đây là thứ khách mang về. */
+#cua-bien{
+  position:fixed; left:50%; top:26%; transform:translate(-50%,-10px);
+  z-index:9700; max-width:min(30rem, calc(100vw - 2.4rem));
+  background:rgba(28,24,20,.72); color:#FFF8EE; backdrop-filter:blur(6px);
+  padding:1.05rem 1.35rem; border-radius:1.1rem; text-align:center;
+  font:400 .95rem/1.55 'Be Vietnam Pro',system-ui; letter-spacing:.005em;
+  opacity:0; pointer-events:none; transition:opacity .9s ease, transform .9s ease;
+  box-shadow:0 10px 34px rgba(28,24,20,.28);
+}
+#cua-bien.hien{opacity:1; transform:translate(-50%,0)}
+#cua-bien b{display:block; font-weight:700; font-size:1.06rem; margin-bottom:.4rem;
+  color:#F2D06B; letter-spacing:.02em}
+@media (max-width:520px){ #cua-bien{top:22%; font-size:.88rem; padding:.9rem 1.1rem} }
 /* The huong dan ba buoc va ban do toan canh deu nam giua man hinh, nen luc
    ban do mo thi the nap duoi no. Mo xong ban do la the hien lai. */
 body.dang-xem-ban-do #th-onboarding-guide,
@@ -697,6 +713,7 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important;z-index:920
 </div>
 
 <div id="ngam-meo"></div>
+<div id="cua-bien" aria-live="polite"></div>
 <div id="ban-do" title="Chọn điểm đến · Pick a destination"><canvas width="220" height="220"></canvas></div>
 <div id="bd-thang">
   <div id="bd-dau" role="button" tabindex="0" aria-label="Mở bảng chọn điểm đến">
@@ -1259,7 +1276,18 @@ function khoi(hh, mau, nham){
 /* ---------- 5. THẾ GIỚI ---------- */
 const theGioi = new THREE.Group();
 scene.add(theGioi);
-const BAN_KINH = 52;   // giới hạn đi lại
+const BAN_KINH = 52;   // giới hạn đi bộ và đạp xe
+
+/* Chèo xuồng thì đi xa hơn được, tới tận cửa biển.
+
+   Đây là ý chính của cả trang viên: con sông chảy từ trong ra, qua ngọn hải
+   đăng, rồi mở vào biển. Muốn ra tới đó thì phải xuống thuyền - đi bộ không
+   tới được. Doanh nghiệp muốn ra thế giới cũng vậy.
+
+   Nới giới hạn cho xuồng là an toàn vì `chenNuoc()` vốn đã giữ xuồng trong
+   lòng đa giác mặt sông; ra khỏi nước thì không đi được, bất kể bán kính. */
+const BAN_KINH_NUOC = 96;
+const HUONG_BIEN = -0.19;   // góc từ tâm ra cửa biển, tính từ hình dựng sông
 
 /* 5.1 MẶT ĐẤT
 
@@ -1287,12 +1315,21 @@ theGioi.add(dat);
 // 5.2 con sông uốn qua trang viên
 let vienSong = null;      // đa giác mặt sông, toạ độ (x, z) của thế giới
 function songNuoc(){
+  /* Sông hẹp ở trong, LOE DẦN ra cửa biển. Toạ độ ở đây là toạ độ hình phẳng;
+     mặt sông xoay -90° quanh X nên điểm (x,y) rơi xuống thế giới thành
+     (x, 0, -y) - nhớ dấu trừ, y lớn là z âm.
+
+     Bề rộng đo được: 7 đơn vị ở x = 14, 22 ở x = 62, 56 ở cửa x = 96. Cái
+     loe ấy là thứ làm con sông đọc ra thành «chảy đi đâu» chứ không phải
+     một con kênh cụt. */
   const s = new THREE.Shape();
   s.moveTo(-60, 6);
   s.bezierCurveTo(-26, 16, -6, -12, 14, 2);
-  s.bezierCurveTo(30, 12, 44, 6, 62, 14);
-  s.lineTo(62, 21);
-  s.bezierCurveTo(44, 13, 30, 19, 14, 9);
+  s.bezierCurveTo(30, 11, 46, 7, 62, 5);        // bờ bắc, hẹp dần rồi thẳng ra
+  s.bezierCurveTo(74, 3, 86, 0, 96, -3);        // loe ra cửa
+  s.lineTo(96, 31);                             // mép ngoài cửa biển
+  s.bezierCurveTo(86, 27, 74, 23, 62, 20);      // bờ nam quay vào
+  s.bezierCurveTo(46, 18, 30, 19, 14, 9);
   s.bezierCurveTo(-6, -5, -26, 23, -60, 13);
   s.closePath();
   /* Giữ lại đường viền để còn xét xem một điểm có nằm trên mặt nước không.
@@ -1313,6 +1350,46 @@ function songNuoc(){
 }
 const song = songNuoc();
 theGioi.add(song);
+
+/* 5.2b MẶT BIỂN ngoài cửa sông.
+
+   Mặt đất là vành khuyên tới bán kính 68. Biển là một tấm phẳng rộng đặt
+   ngoài đó về phía +x, thấp hơn mặt sông 0,004 đơn vị để hai mặt không
+   tranh nhau ở chỗ giáp. Sương lo phần chân trời, nên tấm không cần vô tận -
+   nhưng phải đủ rộng để ở chế độ ngắm toàn cảnh (máy quay cách tâm 104) nhìn
+   ra vẫn là nước chứ không phải mép tấm. */
+const bienHH = new THREE.PlaneGeometry(300, 300, 48, 48);
+(function vanBien(){
+  /* Tô màu theo đỉnh, KHÔNG để một màu phẳng.
+
+     Đã vấp đúng cái bệnh vừa chữa cho bãi cỏ: lần đầu dựng biển bằng một tấm
+     phẳng một màu, đứng ở cửa sông nhìn ra thì cả khung hình là một bức tường
+     xanh đặc, không sâu không nông gì cả. Mặt nước rộng thì càng cần lớp lang
+     hơn mặt đất, vì nó không có cây cối che.
+
+     Ba thứ chồng lên nhau: nhạt dần ra xa bờ (nước xa thì hắt trời nhiều
+     hơn), vệt sóng dài theo hai tần số, và đậm lại ở rìa gần cửa sông. */
+  const v = bienHH.attributes.position, n = v.count;
+  const m = new Float32Array(n*3), c = new THREE.Color();
+  const GAN = new THREE.Color('#33605A');   // nước gần bờ, sâu và tối
+  const XA  = new THREE.Color('#7FB0AA');   // nước xa, hắt trời nên nhạt
+  for(let i=0;i<n;i++){
+    const px = v.getX(i), py = v.getY(i);         // tấm chưa xoay: y là trục xa
+    const xa = Math.min(1, Math.max(0, (py + 150) / 300));
+    c.copy(GAN).lerp(XA, xa*xa*.92);
+    const song1 = Math.sin(px*.055 + py*.021) * .5 + .5;
+    const song2 = Math.sin(px*.15 - py*.09 + 1.7) * .5 + .5;
+    c.offsetHSL(0, 0, (song1*.6 + song2*.4 - .5) * .055);
+    m[i*3]=c.r; m[i*3+1]=c.g; m[i*3+2]=c.b;
+  }
+  bienHH.setAttribute('color', new THREE.BufferAttribute(m, 3));
+})();
+const bien = new THREE.Mesh(bienHH, new THREE.MeshStandardMaterial({
+  color:0xffffff, vertexColors:true, roughness:.18, metalness:.20}));
+bien.rotation.x = -Math.PI/2;
+bien.position.set(172, .046, -14);
+bien.receiveShadow = false;
+theGioi.add(bien);
 
 /* Khoảng cách từ một điểm tới mặt sông, để tô dải cát ven bờ và để giữ phẳng
    chỗ sông cắt qua vành ngoài. Trả 0 nếu điểm nằm trên nước. */
@@ -1519,6 +1596,12 @@ theGioi.add(loiDi());
 const hinhNui = nan(new THREE.ConeGeometry(1, 1, 7), .07);
 for(let i=0;i<16;i++){
   const a = (i/16)*Math.PI*2 + .2;
+  /* CHỪA MỘT KHOẢNG TRỐNG VỀ PHÍA BIỂN. Mười sáu quả núi này trước đây vây
+     kín một vòng, nên trang viên là cái lòng chảo không có chân trời ở bất
+     cứ hướng nào - đấy là một lý do nữa khiến cảnh nhìn bẹt. Nay bỏ những
+     quả rơi vào hướng cửa biển để mở ra một đường chân trời thật. */
+  let lech = Math.abs(((a - HUONG_BIEN + Math.PI) % (Math.PI*2)) - Math.PI);
+  if(lech < .62) continue;
   const r = 74 + Math.random()*24;
   const cao = 12 + Math.random()*18;
   const n = khoi(hinhNui, i%3===0 ? '#9ECBB4' : (i%3===1 ? '#B4D8C6' : '#8FBFA8'), .97);
@@ -1526,6 +1609,102 @@ for(let i=0;i<16;i++){
   n.scale.set(9+Math.random()*7, cao, 9+Math.random()*7);
   n.castShadow = false;
   theGioi.add(n);
+}
+
+/* 5.4b HẢI ĐĂNG ở cửa sông, và những con thuyền đi ra.
+
+   Đây là chỗ cả trang viên có một tâm điểm. Trước nay cảnh không có nét dọc
+   nào cao hơn mái khu, nên mắt không có gì để bám; ngọn hải đăng cao 17 đơn
+   vị đứng ngay khoảng trống vừa chừa trong vành núi, nhìn từ giữa trang viên
+   là thấy.
+
+   Thân sơn khoang trắng-đất sét: độ sáng 252 và 112, cách nhau 140 bậc - tự
+   nó là một cặp tương phản, không phụ thuộc ánh sáng thời khắc. */
+const dsThuyen = [];
+(function haiDangVaThuyen(){
+  const g = new THREE.Group();
+  g.position.set(60, 0, 4);
+
+  /* Tỉ lệ là chỗ dễ hỏng nhất. Bản đầu làm đáy 4,6 cho thân cao 14,5 - tỉ lệ
+     cao/đáy chỉ 3,4, và thân thon mạnh, nên nhìn ra CÁI NÓN GIAO THÔNG chứ
+     không ra hải đăng. Hải đăng thật có tỉ lệ 5-8. Nay đáy 2,1 thân cao 19,5,
+     tỉ lệ 5,6; thân gần như trụ thẳng, chỉ thon nhẹ.
+     Khoang cũng phải hẹp: khoang cao 2,6 trên thân 13 là năm mảng to, đọc ra
+     khối màu. Chín khoang cao 2,1 mới đọc ra sọc. */
+  const mo = khoi(nan(new THREE.CylinderGeometry(2.6, 3.4, 1.1, 9), .10), '#9C8F7C', .98);
+  mo.position.y = .45; g.add(mo);
+
+  const KH_SO = 9, KH_CAO = 2.1;
+  for(let i = 0; i < KH_SO; i++){
+    const d0 = 2.1 - i*.075, d1 = 2.1 - (i+1)*.075;
+    const kh = khoi(new THREE.CylinderGeometry(d1, d0, KH_CAO, 14),
+                    i % 2 ? '#C45C3A' : '#FFFCF5', .92);
+    kh.position.y = 1.0 + KH_CAO*i + KH_CAO/2; g.add(kh);
+  }
+  const DINH = 1.0 + KH_CAO*KH_SO;               // 19,9
+  // sàn quan sát nhô ra, cho bóng đổ cắt ngang thân - nét ấy mới ra hải đăng
+  const san = khoi(new THREE.CylinderGeometry(2.0, 2.0, .3, 14), '#E2D8C7', .94);
+  san.position.y = DINH + .15; g.add(san);
+  const vanh = khoi(new THREE.TorusGeometry(1.95, .075, 5, 16), '#8A7F70', .9);
+  vanh.rotation.x = Math.PI/2; vanh.position.y = DINH + .85; g.add(vanh);
+  // buồng đèn - MeshBasic nên sáng cả lúc đêm, đúng như một ngọn hải đăng
+  const den = new THREE.Mesh(new THREE.CylinderGeometry(1.15, 1.15, 1.7, 12),
+    new THREE.MeshBasicMaterial({color:new THREE.Color('#F2D06B'), fog:false}));
+  den.position.y = DINH + 1.15; g.add(den);
+  const chop = khoi(new THREE.ConeGeometry(1.5, 1.6, 12), '#C45C3A', .92);
+  chop.position.y = DINH + 2.8; g.add(chop);
+  theGioi.add(g);
+
+  /* Ba con thuyền xuôi ra cửa. Chúng trôi chậm theo +x rồi quay lại đầu
+     sông, nên lúc nào cũng có cái đang đi ra - cái ấy mới là điều muốn nói.
+     Trục giữa dòng đo từ chính hai bờ của hình dựng sông. */
+  function thuyen(){
+    const t = new THREE.Group();
+    const than = khoi(nan(new THREE.BoxGeometry(2.6, .5, .95), .16), '#B8845A', .94);
+    than.position.y = .3; t.add(than);
+    const khoang = khoi(new THREE.BoxGeometry(.9, .42, .72), '#8A6244', .95);
+    khoang.position.set(-.35, .68, 0); t.add(khoang);
+    const cot = khoi(new THREE.CylinderGeometry(.06, .07, 2.5, 6), '#6F6459', .95);
+    cot.position.set(.35, 1.6, 0); t.add(cot);
+    const buom = khoi(new THREE.ConeGeometry(.92, 2.1, 3), '#FFFCF5', .9);
+    buom.position.set(.5, 1.75, 0); buom.rotation.y = Math.PI/2; t.add(buom);
+    return t;
+  }
+  for(let i = 0; i < 3; i++){
+    const t = thuyen();
+    t.userData = { x: 8 + i*26, toc: .55 + i*.12 };
+    theGioi.add(t); dsThuyen.push(t);
+  }
+})();
+
+/* Khoảnh khắc cửa biển: thứ duy nhất trong trang viên nói thẳng ra nó về
+   điều gì. Chèo xuồng qua khỏi x = 70 thì hiện, một lần mỗi lượt ghé - không
+   nhớ vào localStorage, vì lần sau ghé lại vẫn nên gặp. Đọc `lang` ngay lúc
+   vẽ theo đúng nếp của năm mô-đun trò chơi. */
+let daRaBien = false;
+function hienCuaBien(){
+  const el = document.getElementById('cua-bien'); if(!el) return;
+  const vi = document.documentElement.lang !== 'en';
+  el.innerHTML = vi
+    ? '<b>Cửa sông</b>Từ đây là biển lớn. Tôi nghiên cứu chuyện doanh nghiệp '
+      + 'Việt bước ra thế giới — và điều gì xảy ra với họ sau đó.'
+    : '<b>The river mouth</b>Beyond it, the open sea. I study Vietnamese firms '
+      + 'venturing abroad — and what becomes of them after.';
+  el.classList.add('hien');
+  clearTimeout(hienCuaBien._h);
+  hienCuaBien._h = setTimeout(() => el.classList.remove('hien'), 11000);
+}
+
+/* Đưa thuyền về giữa dòng ở hoành độ x: lấy hai bờ từ chính `vienSong` nên
+   sông có đổi hình thì thuyền đi theo, không phải sửa hai nơi. */
+function giuaDong(x){
+  let zmin = Infinity, zmax = -Infinity;
+  for(const [px, pz] of vienSong){
+    if(Math.abs(px - x) > 3.5) continue;
+    if(pz < zmin) zmin = pz;
+    if(pz > zmax) zmax = pz;
+  }
+  return zmin === Infinity ? null : (zmin + zmax) / 2;
 }
 
 // 5.5 mây đất sét trôi
@@ -4684,7 +4863,8 @@ function vong(){
       const dz = Math.cos(goc) * toc * dt;
       let nx = nhanVat.position.x + dx, nz = nhanVat.position.z + dz;
       const rr = Math.hypot(nx, nz);
-      if(rr > BAN_KINH){ nx = nx/rr*BAN_KINH; nz = nz/rr*BAN_KINH; }
+      const gh1 = phuongTien === 'xuong' ? BAN_KINH_NUOC : BAN_KINH;
+      if(rr > gh1){ nx = nx/rr*gh1; nz = nz/rr*gh1; }
       nhanVat.position.x = nx; nhanVat.position.z = nz;
       dungYen = 0;
       vTruoc += (PT_TOC[phuongTien] - vTruoc) * Math.min(1, 8*dt);
@@ -4702,7 +4882,10 @@ function vong(){
     const dz = Math.cos(goc) * tocDo * dt;
     let nx = nhanVat.position.x + dx, nz = nhanVat.position.z + dz;
     const r = Math.hypot(nx, nz);
-    if(r > BAN_KINH){ nx = nx/r*BAN_KINH; nz = nz/r*BAN_KINH; }
+    /* Xuồng được đi xa hơn để ra tới cửa biển; chenNuoc() vẫn giữ nó trong
+       lòng sông nên nới bán kính không làm xuồng leo lên cỏ. */
+    const gh = phuongTien === 'xuong' ? BAN_KINH_NUOC : BAN_KINH;
+    if(r > gh){ nx = nx/r*gh; nz = nz/r*gh; }
     if(phuongTien === 'xuong')
       [nx, nz] = chenNuoc(nhanVat.position.x, nhanVat.position.z, nx, nz);
     nhanVat.position.x = nx; nhanVat.position.z = nz;
@@ -4857,6 +5040,27 @@ function vong(){
   });
   // gợn sóng mặt sông
   song.position.y = .05 + Math.sin(t*.8)*.015;
+
+  /* --- ra tới cửa biển thì hiện một dòng, đúng một lần mỗi lượt ghé --- */
+  if(!daRaBien && phuongTien === 'xuong' && nhanVat.position.x > 70
+     && trenNuoc(nhanVat.position.x, nhanVat.position.z)){
+    daRaBien = true;
+    hienCuaBien();
+  }
+
+  /* --- thuyền xuôi ra cửa biển --- */
+  dsThuyen.forEach((tv, i) => {
+    const u = tv.userData;
+    u.x += u.toc * dt;
+    if(u.x > 92) u.x = -52;
+    const z = giuaDong(u.x);
+    if(z === null){ tv.visible = false; return; }
+    tv.visible = true;
+    tv.position.set(u.x, .04 + Math.sin(t*1.1 + i*2)*.035, z);
+    // mũi thuyền hướng ra cửa, hơi lắc theo sóng
+    tv.rotation.y = Math.PI/2 + Math.sin(t*.5 + i)*.05;
+    tv.rotation.z = Math.sin(t*1.3 + i*1.7)*.035;
+  });
 
   /* --- đặt ảnh cô Hương: luôn quay mặt về máy quay --- */
   if(phuongTien !== 'bo') datDang(phuongTien === 'xe' ? 'xedap' : 'thuyen');
