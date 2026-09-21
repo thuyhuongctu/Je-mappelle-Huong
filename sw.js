@@ -1,5 +1,5 @@
 /* Service worker - Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v117';
+const CACHE = 'jshuong-v120';
 const CORE = [
   './',
   'index.html',
@@ -40,7 +40,7 @@ const CORE = [
   'assets/img/huong-ao-dai-sen.webp',
   'assets/img/vn-outline.svg',
   'assets/img/huong_clay_full.webp',
-  'assets/img/pro_aodai.webp',
+  'assets/img/huong-ai-chan-dung.webp',
   'assets/img/lr-je-mappelle-huong.webp',
   'assets/img/lr-seal-round.webp',
   'assets/img/garden_hub.webp',

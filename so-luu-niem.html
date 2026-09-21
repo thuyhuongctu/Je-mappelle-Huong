@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -167,7 +167,7 @@ header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:
 </header>
 
 <div class="ngo">
-  <img src="assets/img/pro_aodai.webp" width="56" height="56" loading="lazy" decoding="async" alt="" onerror="this.style.display='none'">
+  <img src="assets/img/huong-ai-chan-dung.webp" width="56" height="56" loading="lazy" decoding="async" alt="" onerror="this.style.display='none'">
   <div>
     <p>
       <span class="lang-vi">Trang này bắt đầu từ một thư mục rỗng và vài dòng HTML, làm buổi tối sau giờ lên lớp. Nếu có chỗ nào hữu ích cho bạn — một bài đọc, một bản nhạc, hay chỉ là một buổi đi lang thang trong khu vườn — thì cho tôi biết với. Một dòng thôi cũng quý.</span>
@@ -248,7 +248,7 @@ header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:
 </div>
 
 <script>document.getElementById('tg').addEventListener('click',function(){var r=document.documentElement;var c=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('huong_theme',n);}catch(e){}});</script>
-<script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="vi";try{s=localStorage.getItem("huong_lang")||(/^en/i.test(navigator.language)?"en":(/^fr/i.test(navigator.language)?"fr":"vi"));}catch(e){}set(s);})();</script>
+<script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="vi";try{s=localStorage.getItem("huong_lang")||"en";}catch(e){}set(s);})();</script>
 <script src="assets/js/so-luu-niem.js" defer></script>
 <script src="assets/js/music.js" defer></script>
 <script src="assets/js/site-chrome.js" defer></script>

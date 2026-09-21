@@ -1,4 +1,4 @@
-<!doctype html><html lang="vi"><head>
+<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Đỗ Thùy Hương · Do Thuy Huong - Lecturer &amp; Researcher, Can Tho University</title>
 <meta name="description" content="Do Thuy Huong - lecturer and researcher at Can Tho University. Research on internationalization and firm performance in Asia: WBES firm-level data, meta-analysis, institutions. Publications, teaching and CV.">
@@ -880,7 +880,8 @@ footer.wrap{position:relative;overflow:hidden}
       </div>
       <div class="tile">
         <button class="vthumb" type="button" data-vid="assets/video/enquiz-intro.mp4" data-poster="assets/img/enquiz-intro-poster.webp">
-          <img src="assets/img/enquiz-intro-poster.webp" loading="lazy" decoding="async" alt="Opening of the EnQuiz introduction: Do Thuy Huong presenting a start-up dashboard in an entrepreneurship class">
+          <img src="assets/img/enquiz-intro-poster.webp" width="1000" height="562" loading="lazy" decoding="async"
+               alt="From the EnQuiz introduction: Do Thuy Huong in a silver ao dai at a holographic start-up dashboard in an entrepreneurship class">
           <span class="vplay" aria-hidden="true">▶</span>
           <span class="vlen" aria-hidden="true">0:22</span>
           <span class="vsr"><span class="lang-vi">Xem giới thiệu EnQuiz</span><span class="lang-en">Watch the EnQuiz intro</span><span class="lang-fr">Voir la présentation de EnQuiz</span></span>
@@ -951,7 +952,7 @@ footer.wrap{position:relative;overflow:hidden}
   btns.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-lang'));});});
   fr.addEventListener('click',function(){set('fr');});
   var start='vi';
-  try{start=localStorage.getItem('huong_lang')||(/^en/i.test(navigator.language)?'en':(/^fr/i.test(navigator.language)?'fr':'vi'));}catch(e){}
+  try{start=localStorage.getItem('huong_lang')||'en';}catch(e){}
   set(start);
 })();
 
