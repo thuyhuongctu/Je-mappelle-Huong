@@ -1299,8 +1299,15 @@ function songNuoc(){
      Mặt sông xoay -90 độ quanh trục X, nên điểm (x,y) của hình phẳng rơi
      xuống thế giới thành (x, 0, -y) - dấu trừ ấy dễ quên. */
   vienSong = s.getPoints(90).map(pt => [pt.x, -pt.y]);
+  /* Nước là KHỐI TỐI của cả khung hình, không phải một dải xanh nhạt.
+     Màu cũ '#9FD3E8' có độ sáng 201,5 trong khi cỏ nền là 205,5 - cách nhau
+     4 bậc, nên con sông tan vào bãi cỏ và nhìn từ xa không thấy nước đâu.
+     Nay dùng '#3F6F68', tức đúng --river của bộ màu đất sét trang web (độ
+     sáng 100,3): cách cỏ 105 bậc, thành chỗ cho mắt đậu.
+     Mặt khác hạ roughness để nước bắt nắng thành vệt sáng - dải sáng vì thế
+     mở ra ở CẢ HAI đầu, chứ không chỉ thêm một đầu tối. */
   const m = new THREE.Mesh(new THREE.ShapeGeometry(s, 26),
-    new THREE.MeshStandardMaterial({color:new THREE.Color('#9FD3E8'), roughness:.28, metalness:.05, transparent:true, opacity:.94}));
+    new THREE.MeshStandardMaterial({color:new THREE.Color('#3F6F68'), roughness:.14, metalness:.22, transparent:true, opacity:.96}));
   m.rotation.x = -Math.PI/2; m.position.y = .05;
   return m;
 }
@@ -1345,6 +1352,7 @@ function xaSong(x, z){
   const CO_NEN  = new THREE.Color('#A9DDA0');   // co chinh, dung mau cu
   const CO_SAM  = new THREE.Color('#7FBC7E');
   const CO_NHAT = new THREE.Color('#CFEDB6');
+  const CO_TOI  = new THREE.Color('#4F8459');   // bac toi moi, xem ghi chu duoi
   const CO_KEM  = new THREE.Color('#DFE3B4');   // vat co chay nang
   const CO_VANH = new THREE.Color('#6FAC70');   // vanh ngoai, dam hon vanh cu
   const CO_CAT  = new THREE.Color('#E6DCBA');   // bo cat ven nuoc
@@ -1361,8 +1369,17 @@ function xaSong(x, z){
     const n2 = Math.sin(x*.17 - 2.1) * Math.cos(wz*.15 + .4) * .55;
     const n3 = Math.sin(x*.44 + .6) * Math.cos(wz*.39 - 2.6) * .28;
     const t  = (n1 + n2 + n3 + 1.6) / 3.2;
-    co.copy(CO_SAM).lerp(CO_NEN, Math.min(1, Math.max(0, t) * 1.5));
-    if(t > .55) co.lerp(CO_NHAT, Math.min(1, (t - .55) / .45));
+
+    /* Trải giá trị ra trước khi tra màu. `t` là tổng ba tích sin-cos nên nó
+       DỒN QUANH 0,5; cách cũ còn nhân 1,5 rồi kẹp, nên mọi đỉnh có t ≥ 0,667
+       đều ra đúng một màu CO_NEN. Đo trên ảnh: 52% khung hình nằm gọn trong
+       7 bậc sáng (205-212) - quá nửa bức tranh chỉ một giá trị.
+       Nay kéo độ lệch quanh 0,5 ra 1,9 lần rồi rải lên bốn bậc cách đều
+       (118 → 171 → 205 → 227), nên chỗ dồn cũ trải thành cả thang. */
+    const tt = Math.max(0, Math.min(1, .5 + (t - .5) * 1.9));
+    if(tt < .34)      co.copy(CO_TOI).lerp(CO_SAM,  tt / .34);
+    else if(tt < .67) co.copy(CO_SAM).lerp(CO_NEN,  (tt - .34) / .33);
+    else              co.copy(CO_NEN).lerp(CO_NHAT, (tt - .67) / .33);
 
     const v3 = Math.sin(x*.038 - 3.1) * Math.cos(wz*.033 + 2.2);
     if(v3 > .42) co.lerp(CO_KEM, Math.min(1, (v3 - .42) / .58) * .72);
@@ -1529,23 +1546,61 @@ for(let i=0;i<11;i++){
   theGioi.add(c); may.push(c);
 }
 
+/* 5.5b Tâm cụm dùng chung cho mọi thứ rải trên cỏ.
+
+   Đếm được trong cảnh cũ: 3 381 mesh, trong đó 2 455 là vật trang trí nhỏ -
+   1 371 hình cầu dưới 1,2 đơn vị và 959 hình nón - rải ĐỀU khắp trang viên.
+   Mật độ đều nghĩa là không có khoảng trống, mà không có khoảng trống thì
+   không có hình khối: mắt không tìm được chỗ nghỉ nên cảnh nhìn bẹt dù ánh
+   sáng và bảng màu đã sửa.
+
+   Nay rải quanh một số tâm cụm và chừa cỏ trống giữa các cụm. Tâm cụm tránh
+   mặt nước và nền tám khu, và tự tránh nhau để không dồn lại một chỗ. */
+const TAM_KHOM = [];
+(function dungTamKhom(){
+  let thu = 0;
+  while(TAM_KHOM.length < 20 && thu++ < 900){
+    const a = Math.random()*Math.PI*2, r = 13 + Math.random()*36;
+    const x = Math.cos(a)*r, z = Math.sin(a)*r;
+    if(xaSong(x, z) < 5) continue;
+    if(KHU.some(k => Math.hypot(x - k.vt[0], z - k.vt[2]) < 12)) continue;
+    if(TAM_KHOM.some(t => Math.hypot(x - t[0], z - t[1]) < 14)) continue;
+    TAM_KHOM.push([x, z, 3.6 + Math.random()*4.4]);   // x, z, bán kính cụm
+  }
+})();
+/* Lấy một điểm trong cụm. Trung bình ba số ngẫu nhiên cho phân bố dồn về
+   tâm, nên cụm có lõi dày và rìa thưa thay vì một đĩa đặc đều. */
+function diemKhom(){
+  if(!TAM_KHOM.length) return null;
+  const t = TAM_KHOM[(Math.random()*TAM_KHOM.length)|0];
+  const g = () => (Math.random() + Math.random() + Math.random()) / 1.5 - 1;
+  return [t[0] + g()*t[2], t[1] + g()*t[2]];
+}
+
 // 5.6 cỏ lúa - InstancedMesh cho nhẹ
 (function coLua(){
+  const SO = 430;                       // trước là 900, rải đều
   const hh = new THREE.ConeGeometry(.16, 1.1, 4);
-  const im = new THREE.InstancedMesh(hh, vatLieu('#7CC183', .98), 900);
+  const im = new THREE.InstancedMesh(hh, vatLieu('#7CC183', .98), SO);
   const d = new THREE.Object3D();
-  let n = 0;
-  while(n < 900){
-    const a = Math.random()*Math.PI*2, r = 8 + Math.random()*(BAN_KINH+8);
-    const x = Math.cos(a)*r, z = Math.sin(a)*r;
-    // tránh sông và lối đi giữa
-    if(Math.abs(z - (Math.sin(x*.05)*7 + 8)) < 7) continue;
+  let n = 0, thu = 0;
+  while(n < SO && thu++ < SO*40){
+    const p = diemKhom(); if(!p) break;
+    const x = p[0], z = p[1];
+    if(Math.hypot(x, z) < 8 || Math.hypot(x, z) > BAN_KINH + 14) continue;
+    /* Tránh sông bằng chính đa giác mặt sông. Chỗ này trước dùng công thức
+       `z = sin(x*.05)*7 + 8`, tức bản sao chép tay cho z từ 1 tới 15 - toàn
+       dương - trong khi sông thật nằm ở z từ -21 tới 2. Cỏ vì thế né một
+       con sông không có và mọc xuyên qua con sông thật. Đây là lần thứ ba
+       cùng một lỗi: chép lại hình dạng thay vì lấy từ nguồn. */
+    if(xaSong(x, z) < 2.6) continue;
     d.position.set(x, .5, z);
     d.rotation.set(0, Math.random()*3, (Math.random()-.5)*.25);
-    d.scale.setScalar(.6 + Math.random()*.8);
+    d.scale.setScalar(.55 + Math.random()*1.15);   // cỡ trải rộng hơn trước
     d.updateMatrix();
     im.setMatrixAt(n++, d.matrix);
   }
+  im.count = n;
   im.castShadow = false; im.receiveShadow = false;
   theGioi.add(im);
 })();
@@ -1669,20 +1724,24 @@ const dsLuongHoa = new THREE.Group(); theGioi.add(dsLuongHoa);
   const mau = ['#F2A9B8','#FFFFFF','#E8DFA8','#D9A8F2','#F0C46B','#E88A6A'];
   const hh = new THREE.SphereGeometry(1, 8, 7);
   for(let mi=0; mi<mau.length; mi++){
-    const n = 70;
+    /* Trước: 6 màu × 70 = 420 quả cầu rải đều khắp vành r = 16…42, cùng cỡ.
+       Đấy là đám lốm đốm chiếm phần lớn khung hình. Nay còn 32 mỗi màu, gụm
+       vào cụm, và cỡ trải rộng hơn để có cái to cái nhỏ. */
+    const n = 32;
     const im = new THREE.InstancedMesh(hh, vatLieu(mau[mi], .88), n);
-    const d = new THREE.Object3D(); let k = 0;
-    while(k < n){
-      const a = Math.random()*Math.PI*2, r = 16 + Math.random()*26;
-      const x = Math.cos(a)*r, z = Math.sin(a)*r;
-      // tránh sông
-      if(Math.abs(z - (Math.sin(x*.05)*7 + 8)) < 6) continue;
+    const d = new THREE.Object3D(); let k = 0, thu = 0;
+    while(k < n && thu++ < n*40){
+      const p = diemKhom(); if(!p) break;
+      const x = p[0], z = p[1];
+      if(Math.hypot(x, z) < 14) continue;
+      // tránh sông - lấy từ đa giác mặt sông, xem ghi chú ở coLua
+      if(xaSong(x, z) < 2.4) continue;
       // tránh nền các khu
       let trong = false;
       for(const kk of KHU){ if(Math.hypot(x-kk.vt[0], z-kk.vt[2]) < 7.5){ trong = true; break; } }
       if(trong) continue;
       d.position.set(x, .3 + Math.random()*.35, z);
-      d.scale.setScalar(.3 + Math.random()*.35);
+      d.scale.setScalar(.24 + Math.random()*.68);
       d.rotation.y = Math.random()*3;
       d.updateMatrix();
       im.setMatrixAt(k++, d.matrix);
@@ -4163,9 +4222,12 @@ for(let i=0;i<14;i++){
   vet.position.set((Math.random()-.5)*80, .022+i*.0007, (Math.random()-.5)*70);
   theGioi.add(vet);
 }
-for(let i=0;i<70;i++){
+// chấm hoa: gụm vào cụm như cỏ, đừng rắc đều khắp mặt đất
+for(let i=0;i<38;i++){
+  const p = diemKhom(); if(!p) continue;
+  if(xaSong(p[0], p[1]) < 2) continue;
   const h = new THREE.Mesh(new THREE.SphereGeometry(.09+Math.random()*.07, 6, 5), hoaVLs[i%4]);
-  h.position.set((Math.random()-.5)*84, .1, (Math.random()-.5)*74);
+  h.position.set(p[0], .1, p[1]);
   theGioi.add(h);
 }
 

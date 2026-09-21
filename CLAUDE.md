@@ -179,7 +179,8 @@ xuống thế giới thành `(x, 0, -y)`. Quên dấu trừ thì vân cỏ và b
 
 ### Một nguồn dữ liệu, nhiều nơi dùng
 
-Đã dính hai lần vì chép lại hình dạng thay vì lấy từ nguồn:
+Đã dính **ba** lần vì chép lại hình dạng thay vì lấy từ nguồn — cùng một công
+thức sai, cùng một kiểu hỏng:
 
 - **Sông trên bản đồ vẽ ngược phía** suốt bấy lâu. Bản đồ dùng một công thức
   sin riêng, `z = sin(x*.05)*7 + 8`, cho z từ 1 tới 15 — toàn dương; mà
@@ -187,6 +188,14 @@ xuống thế giới thành `(x, 0, -y)`. Quên dấu trừ thì vân cỏ và b
   `vienSong`.
 - **Lối mòn** nay khai ở `TUYEN_MON` ngoài hàm `loiDi()`, để bản đồ vẽ lại
   chính mạng ấy.
+- **Cỏ mọc giữa sông.** `coLua()` và `luongHoa()` né sông bằng đúng công thức
+  sin sai ấy. Đo bằng 200 000 mẫu trong cảnh đang chạy: **8,25%** số vị trí
+  lọt qua guard cũ nằm trên mặt nước — với 900 bụi cỏ là khoảng **74 bụi mọc
+  giữa dòng**. Nay cả hai dùng `xaSong()`, và đếm lại được **0** bụi trên
+  nước.
+
+Quy tắc rút ra: hễ thấy một hằng số hình học viết tay ở chỗ thứ hai, đi tìm
+nguồn của nó. Ba lần rồi.
 
 Danh sách lối mòn cũ là **một đường đi liền mạch**, nên muốn rẽ nhánh phải
 quay ngược lại — mỗi lần quay ngược dựng thêm một tấm phẳng nằm đè khít lên
@@ -541,3 +550,54 @@ lấy nguyên con số trong thuộc tính và ảnh bị bóp ngang — `.anh-n
 Đối chiếu đã. Nhiều tệp gửi tới hoá ra trùng với tệp đã có trong kho, hoặc là
 bản chưa nén của tệp đã có. So bằng tương quan ảnh thu nhỏ, hoặc bằng khung
 hình với video — đừng nhìn tên tệp mà đoán.
+
+## Mật độ, và giới hạn của cách đo bằng số
+
+Sau năm chặng nâng cấp, trang viên vẫn bị nhận xét là «chưa đẹp». Đo lại thì
+nguyên nhân không phải ánh sáng cũng không phải bảng màu — cả hai đã sửa rồi.
+
+Đếm trong cảnh đang chạy: **3 381 mesh, trong đó 2 455 là vật trang trí nhỏ**
+(1 371 hình cầu dưới 1,2 đơn vị, 959 hình nón), rải **đều** khắp trang viên.
+Mật độ đều nghĩa là không có khoảng trống, mà không có khoảng trống thì không
+có hình khối. Mắt không tìm được chỗ nghỉ nên cảnh nhìn bẹt.
+
+Cách sửa là **gụm thành cụm**: `TAM_KHOM` (20 tâm, tự tránh nhau, tránh nước
+và tránh nền khu) cộng `diemKhom()` lấy điểm quanh tâm bằng trung bình ba số
+ngẫu nhiên, nên cụm có lõi dày rìa thưa. `coLua` 900 → 430, `luongHoa` 420 →
+192, chấm hoa 70 → 38. Tổng 3 381 → 2 653.
+
+### Đây mới là chỗ quan trọng
+
+**Mọi thước đo bằng số ở mục «Đo thế nào» đều ĐI LÙI sau khi sửa, trong khi
+bức tranh khá lên rõ rệt.** Ngắm toàn cảnh, trước → sau:
+
+| | trước | sau |
+| --- | --- | --- |
+| năng lượng tần cao | 18,52 | **15,08** |
+| % trong dải hẹp 205–212 | 15,4% | **18,8%** |
+| p50 → p97 | 23,84 | **18,58** |
+
+Không phải sửa hỏng. Là vì **năng lượng tần cao đo mật độ chi tiết**, mà thưa
+bớt đồ trang trí thì chi tiết tất nhiên giảm; còn tỉ lệ dải hẹp tăng chính vì
+đã có cỏ trống thật — thứ vừa cố tạo ra.
+
+Bách phân vị và năng lượng tần cao là thước đo của **độ tương phản và chất
+liệu**, không phải của **bố cục**. Bố cục là thứ bậc và khoảng trống, không
+thước nào trong số ấy đo được. Gặp lần sau thì **nhìn ảnh, đừng kéo con số lên
+lại** — kéo lên là quay về đúng chỗ vừa thoát ra.
+
+## Nước là khối tối của cảnh
+
+Màu nước cũ `#9FD3E8` có độ sáng **201,5**, cỏ nền `#A9DDA0` là **205,5** —
+cách nhau 4 bậc, nên con sông tan vào bãi cỏ và nhìn từ xa không thấy nước.
+Nay dùng `#3F6F68`, tức đúng `--river` của bộ màu đất sét trang web, độ sáng
+**100,3**: cách cỏ 105 bậc.
+
+Kèm theo hạ `roughness` xuống .14 để mặt nước bắt nắng thành vệt sáng — dải
+sáng vì thế mở ra ở **cả hai đầu** chứ không chỉ thêm một đầu tối.
+
+Bốn màu cỏ cũng trải lại. `t` trong `veVanDat()` là tổng ba tích sin-cos nên
+**dồn quanh 0,5**; cách cũ còn nhân 1,5 rồi kẹp, nên mọi đỉnh có t ≥ 0,667 đều
+ra đúng một màu. Đo được: **52% khung hình nằm gọn trong 7 bậc sáng**. Nay kéo
+độ lệch quanh 0,5 ra 1,9 lần rồi rải lên bốn bậc cách đều (118 → 171 → 205 →
+227); khoảng cách p50→p97 lúc đứng giữa trang viên từ 5,8 lên 36,2.
