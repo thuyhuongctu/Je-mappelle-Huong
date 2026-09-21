@@ -250,6 +250,79 @@ Máy chủ thử tại chỗ phải là bản **đa luồng** (`ThreadingMixIn`)
 `python3 -m http.server` một luồng bị nghẽn khi Chromium mở nhiều kết nối, lần
 tải sau treo luôn. Chặn `*.mp3/mp4` trong Playwright cho nhẹ.
 
+## Kiến trúc tám khu
+
+Mỗi khu trước đây chỉ là một đĩa đất tôn cao, một vành màu, và tấm biển trên
+hai cột — không có thềm để bước lên, không có nét dọc nào, nên nhìn từ xa là
+một cái đĩa chứ không phải một *chỗ*. Nay có bốn thứ lặp lại ở cả tám khu:
+**thềm bậc, lan can, hai cột cổng có đèn, mái ngói nhỏ che biển** (`KT_HH`,
+`dungKienTruc()`).
+
+**Cổng đứng ở chân thềm, không phải trên nền.** Đặt trên nền thì hai cây cột
+chỉ lạc giữa sân; đặt ở chân thềm thì khách đi xuyên qua rồi mới bước lên,
+đúng thứ tự của một lối vào.
+
+**Hình học khai một lần cho cả tám khu.** Đo trước khi làm: 1 603 mesh mà dùng
+tới 1 161 hình học — gần như mỗi mesh một hình riêng. Hai thứ đông nhất (cột
+lan can 64 cái, bậc thềm 24 cái) dựng bằng `InstancedMesh`. Kết quả: **+80
+mesh nhưng chỉ +1 lệnh vẽ**, và số hình học còn *giảm* (1 161 → 1 157).
+
+`InstancedMesh` đặt theo toạ độ **thế giới**, không phải toạ độ trong nhóm của
+khu — nhớ cộng `khu.vt` vào.
+
+Vòng lan can là `TorusGeometry` có `arc`. Torus nằm trong mặt phẳng XY và cung
+bắt đầu từ góc 0; nhóm bao ngoài xoay -90° quanh X để hạ xuống mặt phẳng XZ,
+khi ấy điểm góc φ rơi xuống `(R·cos φ, 0, −R·sin φ)` — nên muốn khoảng hở quay
+về +z thì cung phải bắt đầu ở −90° cộng nửa khoảng hở.
+
+### Biển chỉ đường chưa bao giờ hiện đúng
+
+Lỗi có sẵn, đo mới thấy. Tấm biển vốn là một `ExtrudeGeometry` có dán ảnh,
+nhưng `ExtrudeGeometry` **sinh toạ độ ảnh bằng chính toạ độ của hình phẳng**:
+ở đây u chạy −2,2…2,2 và v chạy −1,1…1,1 thay vì 0…1. Đo được **91,9% số đỉnh
+nằm ngoài khoảng 0…1**, mà kiểu bọc là `ClampToEdge`, nên gần hết mặt biển chỉ
+là pixel mép bị kéo dãn. Thêm nữa, ảnh vẽ hình chữ nhật **bo góc** nên bốn góc
+trong suốt, mà vật liệu không bật `transparent` → bốn góc hiện ra **đen**.
+
+Sửa: mặt biển là `PlaneGeometry` (toạ độ ảnh đúng 0…1) đặt trước khung bo góc,
+và ảnh lấp kín cả khung trước khi vẽ viền.
+
+**`hopTron()` dày hơn con số truyền vào.** Nó là `ExtrudeGeometry` có vát dày
+0,06 mỗi bên, nên `hopTron(w, h, .34, …)` thật ra dày **0,46**. Đặt mặt biển ở
+z 4,10 trước khung ở 3,9 thì vẫn bị khung che, vì mặt trước của khung ở 4,13.
+Phải 4,24.
+
+## Máy quay và chế độ ngắm toàn cảnh
+
+Ống kính đi bộ là **38°**, không phải 46° như trước. 46° là góc rộng của trò
+chơi bắn súng: phối cảnh mạnh, vật gần phình ra, cả trang viên nhìn như đồ
+chơi rải trên bàn. Cảnh tháp mượn của ThreeUI để **11°**, gần như phép chiếu
+trực giao — nhưng 11° gắn lên máy quay bám nhân vật thì khách mất phương
+hướng, đi vài bước là lạc.
+
+Thu góc lại thì vật cũng nhỏ đi, nên **khoảng cách máy quay phải nhân lên
+`tan(23°)/tan(19°) = 1,23`** mới giữ được cỡ khuôn hình. Độ cao nhân 1,12.
+Quên bước này thì nhân vật teo lại giữa màn hình.
+
+**Chế độ ngắm toàn cảnh** (`doiNgamCanh()`, phím `C`, nút trong bảng bản đồ):
+máy quay rời nhân vật, bay một vòng quanh trang viên ở bán kính 104, cao 50,
+ống kính **20°**. Đây là chỗ duy nhất dùng được ống kính thật dài. Ba thứ phải
+đổi theo, nếu không khuôn hình hỏng:
+
+- **Khung bóng mở ra ±58.** Khung ±34 chạy theo tầm nhìn chỉ hợp lúc đi bộ; ở
+  đây cả trang viên nằm trong khuôn hình nên chỗ nào mất bóng là thấy ngay.
+- **Sương kéo xa gấp 2,6 lần.** Sương vốn đặc hẳn từ 130 đơn vị, mà máy quay
+  đứng cách tâm 104 — để nguyên thì cả trang viên chìm trong sương. Tính hệ số
+  ngay trong `apThoiKhac()` chứ không tính lúc bật, để đổi thời khắc giữa
+  chừng vẫn đúng.
+- **Cất mây.** Mây bay ở độ cao 20–30 nên có đám rơi đúng trước ống kính, che
+  nửa khuôn hình.
+
+**Dọn màn hình thì làm ngược lại đừng liệt kê.** Năm mô-đun trò chơi tự gắn
+thẻ của chúng vào `body` lúc chạy, nên danh sách viết tay luôn lạc hậu — đã
+thử và sót đúng bốn cụm. Quy tắc dùng được là
+`body.dang-ngam > *:not(#san):not(#ngam-meo){display:none !important}`.
+
 ## Bảng màu trang viên
 
 ### Đếm màu cho đúng
