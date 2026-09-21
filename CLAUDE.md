@@ -104,7 +104,7 @@ Trang viên chỉ có **hai thứ tiếng** (vi/en), không có tiếng Pháp.
 - Bảng nội dung một khu và bảng trợ giúp dùng chung một bảng; cả hai đều phải
   đặt lớp `body.dang-doc-khu` để các cụm nổi ẩn đi.
 
-## Bản thử tháp mượn từ ThreeUI (`design-demos/thap-threeui.html`)
+## Cảnh tháp mượn từ ThreeUI (`assets/canh/thap.html`)
 
 Bóc từ `src/shaders/japanese-tower/Towers.html` của
 <https://github.com/MengTo/threeui> — **MIT, Copyright (c) 2026 Meng To**,
@@ -132,6 +132,28 @@ Bốn điều đã đo, để lần sau khỏi dò lại:
 Bản gốc hiện **phần trăm âm** vài giây đầu (đo được −19%) vì mốc thời gian bắt
 đầu trước 0 cho máy quay kịp ổn định. Đã chặn ở chỗ hiện chữ, không đụng đồng
 hồ.
+
+Ba chỗ nữa đã vấp rồi mới thấy:
+
+- **Tệp gốc viết `<!doctype html>` chữ thường.** Tìm `<!DOCTYPE html>` chữ hoa
+  thì `str.replace` không báo gì mà cũng không làm gì - ghi nguồn MIT tưởng đã
+  chèn hoá ra không có. Chèn xong phải kiểm lại bằng `grep`, đừng tin lời gọi.
+- **Bảng màu phải khai ở cả hai nơi.** `THEMES` trong JS ghi đè lúc chạy, nhưng
+  khung hình đầu tiên vẫn vẽ bằng `:root`, nên để nguyên thì loé bảng màu cũ
+  một nhịp.
+- **Đừng đổi tên `const T=THREE`** để lấy chữ `T` cho hàm dịch: có 169 chỗ gọi
+  `T.`. Hàm dịch ở tệp này tên là `TR()`.
+
+Trang nhúng vào khu «Kho tương lai» của trang viên bằng iframe, **gắn lúc mở
+bảng và gỡ lúc đóng** (`gamThap()` / `goThap()` trong `trangvien.html`): đây là
+cảnh WebGL thứ hai, để nó chạy song song với trang viên thì nặng máy, mà gỡ
+node là cách chắc chắn nhất để trình duyệt thả ngữ cảnh WebGL và vòng lặp vẽ.
+Ngôn ngữ truyền qua `?lang=` vì trong iframe nó không thấy thẻ `<html>` của
+trang cha.
+
+**Không khai trong `sw.js`**: tệp nặng 718 KB, thêm vào thì bộ nhớ đệm tăng
+16%, mà đây chỉ là phần tô điểm - không có mạng thì bảng khu vẫn đọc được, chỉ
+thiếu cảnh tháp.
 
 Kiểu tháp Việt Nam (`buildThap`, các giai đoạn NỀN MÓNG → THÂN THÁP → MÁI NGÓI
 → TẦNG TRÊN → ĐỈNH THÁP) **có sẵn trong bản gốc**, không phải ta thêm vào.

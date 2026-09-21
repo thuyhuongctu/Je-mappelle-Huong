@@ -1,5 +1,21 @@
 <!doctype html>
-<html lang="ja">
+<!--
+  Cảnh «Towers» của ThreeUI, bóc khỏi thư viện React để chạy thẳng trên trang
+  tĩnh. Nguồn: https://github.com/MengTo/threeui
+  (src/shaders/japanese-tower/Towers.html) — MIT License, Copyright (c) 2026
+  Meng To. Toàn văn giấy phép: assets/vendor/threeui-LICENSE.txt
+
+  Đã đổi so với bản gốc:
+  • bỏ three.js nhúng sẵn (593 KB), dùng assets/vendor/three-r128.min.js của
+    kho — cảnh có sẵn nhánh tương thích cho cả hai đời API màu;
+  • bỏ nhạc nền base64 (1 063 KB, 44% tệp); loadBuf() vốn trả null khi khoá
+    rỗng nên không phải sửa gì thêm;
+  • mở ra là kiểu tháp Việt Nam (applyStyle(2)), vốn có sẵn trong bản gốc;
+  • bảng màu buổi sáng kéo về bộ màu đất sét của kho;
+  • bỏ chữ Hán của kiểu Việt Nam, thay bằng tiếng Việt và tiếng Anh;
+  • song ngữ vi/en theo nếp NG()/T() của kho, nhận ?lang= khi nhúng.
+-->
+<html lang="vi">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -8,14 +24,17 @@
 <style>
 :root{
   --k:1;
-  --paper:#ecdcbc; --w0:#fdf1d6; --w1:#f7e5c6; --w2:#ebd9b6;
-  --ink:#2e2515; --ink2:#8b7c5c; --ink3:#3f3520;
-  --accent:#a8621f;
-  --line:#d9caa6; --rule2:#c2b18c; --divider:rgba(62,44,18,.30); --hairline:rgba(58,40,14,.40);
-  --grid:rgba(96,74,32,.07);
-  --pl-a:#fdf8e8; --pl-b:#f0e6cc; --pl-br:#ddceac; --pl-fg:#3f3520;
-  --track:#dccba8; --fillc:#96551b;
-  --btn:#332a17; --btn-fg:#f6eed8;
+  /* Bộ màu đất sét của kho (CLAUDE.md). Phải khai cả ở đây chứ không chỉ
+     trong bảng THEMES của JS: JS ghi đè lúc chạy, nhưng khung hình đầu tiên
+     vẫn vẽ bằng giá trị :root nên loé màu cũ một nhịp. */
+  --paper:#f6f1e7; --w0:#fffcf5; --w1:#f6f1e7; --w2:#ece4d5;
+  --ink:#1c1814; --ink2:#6f6459; --ink3:#2a241d;
+  --accent:#c45c3a;
+  --line:#e2d8c7; --rule2:#d2c5ae; --divider:rgba(28,24,20,.30); --hairline:rgba(28,24,20,.40);
+  --grid:rgba(111,100,89,.07);
+  --pl-a:#fffcf5; --pl-b:#f2ece0; --pl-br:#e2d8c7; --pl-fg:#1c1814;
+  --track:#e2d8c7; --fillc:#c45c3a;
+  --btn:#1c1814; --btn-fg:#fffcf5;
   --sans:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
   --mincho:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"HiraMinProN-W3","Noto Serif JP","Songti SC",serif;
 }
@@ -111,7 +130,15 @@ header{position:absolute;left:0;right:0;top:0;
 [data-style="turkey"] .title-cn{font-size:calc(74px * var(--k));line-height:calc(82px * var(--k));
   letter-spacing:calc(-1px * var(--k))}
 [data-style="turkey"] .big-cn{font-size:calc(58px * var(--k))}
-[data-style="vietnam"] .big-cn{font-size:calc(62px * var(--k))}
+/* Chữ quốc ngữ rộng hơn hai chữ Hán nhiều, nên kiểu Việt Nam phải hạ cỡ
+   riêng - để nguyên 116px thì khối tên tràn khỏi mép phải. */
+[data-style="vietnam"] .big-cn{font-size:calc(46px * var(--k))}
+[data-style="vietnam"] .title-cn{font-size:calc(62px * var(--k));line-height:calc(66px * var(--k))}
+[data-style="vietnam"] .roman{font-family:var(--sans);font-size:calc(11px * var(--k));
+  letter-spacing:calc(1px * var(--k));padding-left:calc(4px * var(--k))}
+/* Bản này bỏ nhạc nền để nhẹ tệp, nên nút Âm thanh không còn việc gì -
+   ẩn hẳn, đừng để một nút bấm vào không có gì xảy ra. */
+#soundBtn{display:none}
 .tag{position:absolute;right:calc(46px * var(--k));top:calc(593.6px * var(--k));
   padding-left:calc(9px * var(--k));
   border-left:calc(2px * var(--k)) solid var(--accent);
@@ -284,7 +311,7 @@ footer{position:absolute;left:0;right:0;bottom:0;
   </footer>
 </div>
 
-<script src="../assets/vendor/three-r128.min.js"></script>
+<script src="../vendor/three-r128.min.js"></script>
 <script>
 /* =====================================================================
    普請 · 天守生長 — CONSTRUCTION STUDY / 01
@@ -294,6 +321,30 @@ footer{position:absolute;left:0;right:0;bottom:0;
 (function(){
 "use strict";
 const T=THREE;
+/* Song ngữ theo nếp chung của kho (CLAUDE.md): đọc thuộc tính lang lúc vẽ,
+   không nhớ lại. Trang này còn nhận ?lang= vì khi nhúng vào trang viên nó
+   nằm trong iframe, không thấy thẻ <html> của trang cha. */
+const NG=()=>{
+  const q=new URLSearchParams(location.search).get('lang');
+  const l=q||document.documentElement.lang;
+  return l==='en'?'en':'vi';
+};
+const TR=o=>typeof o==='string'?o:(o[NG()]||o.vi);
+const CHU={
+  title:{vi:'Tháp · Kho tương lai — Je m’appelle Hương',
+         en:'The Tower · Future — Je m’appelle Hương'},
+  brand:{vi:'THÁP',en:'THE TOWER'},
+  topmid:{vi:'NGHIÊN CỨU DỰNG XÂY / 01',en:'CONSTRUCTION STUDY / 01'},
+  bKieu:{vi:'KIỂU',en:'STYLE'}, bThoiTiet:{vi:'THỜI TIẾT',en:'WEATHER'},
+  bGio:{vi:'GIỜ',en:'TIME'}, bAmThanh:{vi:'ÂM THANH',en:'SOUND'},
+  bDungLai:{vi:'↻ DỰNG LẠI',en:'↻ REBUILD'},
+  eyebrow:{vi:'KHUNG HÌNH / 365',en:'FRAME / 365'},
+  tag:{vi:'DỰNG LẠI<br>THEO BẢN GỐC',en:'ORIGINAL<br>RECONSTRUCTION'},
+  quote:{vi:['“Điểm nhìn không hề dịch chuyển.','Đá, gỗ và ngói từ những đống rời rạc',
+             'tìm về đúng chỗ của mình,','dựng lên từ mặt đất.”'],
+         en:['“The viewpoint never moves.','Stone, timber and tile converge',
+             'from scattered heaps into place,','assembling from the ground up.”']}
+};
 
 /* ------------------------------------------------------------------ *
  * 0.  deterministic noise
@@ -1909,7 +1960,7 @@ const STYLES=[ {id:'JAPAN',aud:{music:'music_jp',build:'build_jp',bell:'bell_jp'
           ['斗栱層疊','BRACKETS',7.40],['塗朱飾彩','LACQUER',9.40],['覆瓦裝剎','ROOFING',14.30],
           ['完成','COMPLETE',14.30]]},
  {id:'VIETNAM',aud:{music:'music_vn',build:'build_vn',bell:'bell_vn',bg:0.82,bv:0.92},build:buildThap,
-  t1:'興工',sub:'THÁP · NGHIÊN CỨU DỰNG XÂY',t2:'佛塔',t3:'生長',gloss:'（Hưng&nbsp;·&nbsp;興）',
+  t1:{vi:'Khởi công',en:'Breaking ground'},sub:{vi:'THÁP · NGHIÊN CỨU DỰNG XÂY',en:'THÁP · TOWER GROWTH STUDY'},t2:{vi:'THÁP',en:'THE TOWER'},t3:{vi:'LỚN LÊN',en:'GROWS'},gloss:{vi:'（The&nbsp;tower&nbsp;grows）',en:'（Tháp&nbsp;lớn&nbsp;lên）'},
   caps:[[LV.terr[0].y0,LV.terr[0].y1,3.38],[LV.terr[1].y0,LV.terr[1].y1,3.06],
         [LV.plinth.y0,LV.plinth.y1,2.68,8],[LV.body.y0,5.00,2.28,8],
         [5.00,8.20,1.85,8],[8.20,LV.body.y1,1.50,8],[LV.fin.y0,LV.fin.y1,0.56,12]],
@@ -2892,14 +2943,17 @@ const ringsEl=document.getElementById('rings');
 /* Nhãn bốn nút do JS ghi lúc chạy từ id trong STYLES/WEATHER/TIMES, nên sửa
    trong HTML là vô ích - phải dịch ngay tại chỗ ghi. Thiếu khoá thì giữ
    nguyên id, để thêm kiểu mới không làm vỡ nút. */
-const NHAN={JAPAN:'NHẬT BẢN',CHINA:'TRUNG HOA',VIETNAM:'VIỆT NAM',THAI:'THÁI LAN',
-            CAMBODIA:'CAM-PU-CHIA',TURKEY:'THỔ NHĨ KỲ',
-            CLEAR:'QUANG',RAIN:'MƯA',STORM:'GIÔNG',SNOW:'TUYẾT',
-            MORNING:'BUỔI SÁNG',NOON:'BUỔI TRƯA',SUNSET:'HOÀNG HÔN',NIGHT:'BAN ĐÊM',
-            ON:'BẬT',OFF:'TẮT'};
+const NHAN={JAPAN:{vi:'NHẬT BẢN',en:'JAPAN'},CHINA:{vi:'TRUNG HOA',en:'CHINA'},
+            VIETNAM:{vi:'VIỆT NAM',en:'VIETNAM'},THAI:{vi:'THÁI LAN',en:'THAILAND'},
+            CAMBODIA:{vi:'CAM-PU-CHIA',en:'CAMBODIA'},TURKEY:{vi:'THỔ NHĨ KỲ',en:'TURKEY'},
+            CLEAR:{vi:'QUANG',en:'CLEAR'},RAIN:{vi:'MƯA',en:'RAIN'},
+            STORM:{vi:'GIÔNG',en:'STORM'},SNOW:{vi:'TUYẾT',en:'SNOW'},
+            MORNING:{vi:'BUỔI SÁNG',en:'MORNING'},NOON:{vi:'BUỔI TRƯA',en:'NOON'},
+            SUNSET:{vi:'HOÀNG HÔN',en:'SUNSET'},NIGHT:{vi:'BAN ĐÊM',en:'NIGHT'},
+            ON:{vi:'BẬT',en:'ON'},OFF:{vi:'TẮT',en:'OFF'}};
 function setBtn(el,v){
   if(!el)return;
-  const nhan=NHAN[v]||v;
+  const nhan=NHAN[v]?TR(NHAN[v]):v;
   const s=el.lastElementChild,b=el.firstElementChild;
   if(s&&b){s.textContent=nhan;el.setAttribute('aria-label',b.textContent+': '+nhan);}
   else el.textContent=nhan;
@@ -3003,10 +3057,12 @@ function applyStyle(i){
   STAGES=st.stages.map((x,k)=>({t:STAGE_T[k],cn:x[0],en:x[1],to:x[2]}));
   buildScaffolds(st.scaf);
   const q=sel=>document.querySelector(sel);
-  q('.big-cn').textContent=st.t1;
-  q('.sub-cn').textContent=st.sub;
-  q('.title-cn').innerHTML='<b>'+st.t2+'</b><b>'+st.t3+'</b>';
-  q('.roman').innerHTML=st.gloss;
+  /* TR() trả nguyên chuỗi khi trường không phải {vi,en}, nên năm kiểu còn
+     lại giữ chữ gốc của chúng mà không phải sửa gì. */
+  q('.big-cn').textContent=TR(st.t1);
+  q('.sub-cn').textContent=TR(st.sub);
+  q('.title-cn').innerHTML='<b>'+TR(st.t2)+'</b><b>'+TR(st.t3)+'</b>';
+  q('.roman').innerHTML=TR(st.gloss);
   document.documentElement.setAttribute('data-style',st.id.toLowerCase());
   const sb=document.getElementById('styleBtn');
   setBtn(sb,st.id);
@@ -3348,6 +3404,24 @@ window.addEventListener('resize',layout);
 /* Mở ra là kiểu tháp Việt Nam (vị trí 2 trong STYLES), thay cho Nhật ở vị
    trí 0. Chính lời gọi này quyết định, không phải giá trị khởi tạo của
    styleIdx ở trên. */
+/* Chữ cố định trong HTML viết sẵn tiếng Việt; hàm này ghi lại theo ngôn ngữ
+   đang chọn. Gọi trước applyStyle() để nhãn nút cũng đúng ngay lần vẽ đầu. */
+function datChu(){
+  const q=sel=>document.querySelector(sel);
+  document.title=TR(CHU.title);
+  document.documentElement.lang=NG();
+  q('.brand').textContent=TR(CHU.brand);
+  q('.top-mid').innerHTML=TR(CHU.topmid).replace(/ /g,'&nbsp;');
+  q('.eyebrow').textContent=TR(CHU.eyebrow);
+  q('.tag').innerHTML=TR(CHU.tag);
+  q('.quote').innerHTML=TR(CHU.quote).map(d=>'<div><i>'+d+'</i></div>').join('');
+  const nut=[['styleBtn','bKieu'],['wxBtn','bThoiTiet'],['timeBtn','bGio']];
+  for(const [id,k] of nut){
+    const b=document.getElementById(id); if(b&&b.firstElementChild)b.firstElementChild.textContent=TR(CHU[k]);
+  }
+  const rb=document.getElementById('rebuildBtn'); if(rb)rb.textContent=TR(CHU.bDungLai);
+}
+datChu();
 applyStyle(2);
 applyWeather(0,true);
 applyTheme(0,true);
