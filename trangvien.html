@@ -322,12 +322,13 @@ body.cham #ban-do canvas{width:84px;height:84px;pointer-events:none; }
 }
 #tc-ve svg{display:block;width:100%;height:auto}
 .tc-pin{cursor:pointer}
+/* Cham khu gio la huy hieu: dia kem, vanh mau khu, ben trong la buc ve cong
+   trinh that o khu ay. Vanh day len khi da ghe, con dau ✓ ve trong JS. */
 .tc-pin circle.nen{transition:r .18s var(--uyen)}
-.tc-pin:hover circle.nen,.tc-pin:focus-visible circle.nen{r:15}
-.tc-pin text{font:800 12px 'Baloo 2',system-ui;fill:#FFF8EE;pointer-events:none;user-select:none}
-.tc-pin.da circle.vien{stroke:#FFF8EE;stroke-width:3.2}
+.tc-pin:hover circle.nen,.tc-pin:focus-visible circle.nen{r:16.2}
+.tc-pin .tranh{pointer-events:none}
 .tc-pin:focus-visible{outline:none}
-.tc-pin:focus-visible circle.nen{stroke:var(--muc);stroke-width:2.5}
+.tc-pin:focus-visible circle.nen{stroke:var(--muc);stroke-width:2.6}
 
 /* chu giai duoi ban do */
 #tc-giai{display:flex;flex-wrap:wrap;gap:.35rem .9rem;margin-top:.55rem;
@@ -368,7 +369,8 @@ body.cham #ban-do canvas{width:84px;height:84px;pointer-events:none; }
   width:22px;height:22px;border-radius:50%;flex:none;display:grid;place-items:center;
   font:800 .72rem 'Baloo 2',system-ui;color:#FFF8EE;
 }
-.tc-khu .bieu{font-size:1rem;line-height:1}
+.tc-khu .bieu{flex:none;width:24px;height:24px;display:grid;place-items:center;font-size:1rem;line-height:1}
+.tc-khu .bieu svg{display:block}
 .tc-khu .chu{min-width:0;display:flex;flex-direction:column}
 .tc-khu .ten{font:700 .84rem/1.25 'Baloo 2',system-ui;color:#4A3730}
 .tc-khu .phu{font-size:.72rem;color:var(--muc-nhat);line-height:1.35;margin-top:.05rem}
@@ -4630,6 +4632,136 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
 
   let dangMoTC = false, nhipEl = null;
 
+  /* ---------- TRANH TUNG KHU ----------
+     Truoc day moi khu tren ban do chi la mot cham mau co con SO 1-8 o giua:
+     nhin vao khong biet cho do co gi, phai do xuong danh sach ben canh moi ro.
+     Nay moi khu la mot buc ve nho dung cong trinh co that o khu ay trong canh
+     3D - chong ho so va kinh lup, ruong kho bau, nha san sach, san khau tre,
+     bang lang, nha chinh, den long, hai dang.
+
+     Ve trong hop 32x32, nhung huy hieu la hinh TRON nen phai giu net trong
+     vong ban kinh 14 quanh (16,16); goc hop se loi ra ngoai vanh.
+
+     Do rong that: 38px tren may tinh, 28px tren dien thoai (da do). Nen moi
+     net day it nhat ~1px o co do - tranh net manh, dung mang dac la chinh.
+     So thu tu van con, nhung o danh sach ben canh, vi do moi la cho no lam
+     viec: no la phim tat 1-8. */
+  const TRANH_KHU = {
+'hoc-thuat':
+  '<ellipse cx="16" cy="27.4" rx="9.4" ry="1.9" fill="#3F5B4A" opacity=".13"/>'+
+  '<g transform="rotate(-3 16 24)"><rect x="6.4" y="22.2" width="19.2" height="3.5" rx="1.1" fill="#7FB88F"/></g>'+
+  '<g transform="rotate(2.6 16 20.6)"><rect x="7.4" y="18.9" width="17.2" height="3.3" rx="1.1" fill="#E8B84B"/></g>'+
+  '<g transform="rotate(-2 16 17.3)"><rect x="8.4" y="15.7" width="15.2" height="3.2" rx="1" fill="#C4596B"/></g>'+
+  '<g transform="rotate(3 16 14.2)"><rect x="9.4" y="12.7" width="13.2" height="3" rx="1" fill="#5C7FBF"/></g>'+
+  '<line x1="23.4" y1="9.4" x2="26.4" y2="13.2" stroke="#8A6A4A" stroke-width="2.3" stroke-linecap="round"/>'+
+  '<circle cx="20.8" cy="6.6" r="4.1" fill="#EAF2FF" stroke="#5C7FBF" stroke-width="2.1"/>'+
+  '<path d="M18.7 5.2a2.9 2.9 0 0 1 2.1-1.4" stroke="#FFF" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".9"/>',
+
+'du-an':
+  '<ellipse cx="16" cy="27.2" rx="9.6" ry="1.9" fill="#3F5B4A" opacity=".13"/>'+
+  '<circle cx="16" cy="6.6" r="2.5" fill="#7DB4FF"/>'+
+  '<circle cx="16" cy="6.6" r="4.4" fill="#7DB4FF" opacity=".22"/>'+
+  '<rect x="5.6" y="16.4" width="20.8" height="9.6" rx="1.8" fill="#B07B4B"/>'+
+  '<path d="M5.6 16.4a10.4 5.6 0 0 1 20.8 0z" fill="#C98F57"/>'+
+  '<rect x="5.6" y="15.4" width="20.8" height="2.4" rx="1.2" fill="#8A6A4A"/>'+
+  '<rect x="8.4" y="14.2" width="2.2" height="8.2" rx=".9" fill="#E8B84B"/>'+
+  '<rect x="21.4" y="14.2" width="2.2" height="8.2" rx=".9" fill="#E8B84B"/>'+
+  '<rect x="13.9" y="16.9" width="4.2" height="4.6" rx="1.3" fill="#FFD27A"/>'+
+  '<circle cx="16" cy="19.1" r="1" fill="#8A6A4A"/>',
+
+'thu-vien':
+  '<ellipse cx="16" cy="27.6" rx="9.6" ry="1.8" fill="#3F5B4A" opacity=".13"/>'+
+  '<rect x="8.2" y="21.4" width="2.1" height="5.6" rx="1" fill="#8A6A4A"/>'+
+  '<rect x="21.7" y="21.4" width="2.1" height="5.6" rx="1" fill="#8A6A4A"/>'+
+  '<path d="M16 3.4 27.4 12.2H4.6z" fill="#C4596B"/>'+
+  '<rect x="4.6" y="12.2" width="22.8" height="1.6" rx=".8" fill="#A8455A"/>'+
+  '<rect x="6.6" y="13.8" width="18.8" height="8.4" rx="1.2" fill="#D8B98E"/>'+
+  '<rect x="8.2" y="15" width="15.6" height="3.1" rx=".6" fill="#C4A377"/>'+
+  '<rect x="8.2" y="18.6" width="15.6" height="3.1" rx=".6" fill="#C4A377"/>'+
+  '<rect x="9" y="15.4" width="1.9" height="2.4" rx=".45" fill="#C4596B"/>'+
+  '<rect x="11.3" y="15.2" width="1.9" height="2.6" rx=".45" fill="#5C7FBF"/>'+
+  '<rect x="13.6" y="15.5" width="1.9" height="2.3" rx=".45" fill="#7FB88F"/>'+
+  '<rect x="15.9" y="15.2" width="1.9" height="2.6" rx=".45" fill="#E8B84B"/>'+
+  '<rect x="18.2" y="15.5" width="1.9" height="2.3" rx=".45" fill="#C99BD8"/>'+
+  '<rect x="20.5" y="15.3" width="1.9" height="2.5" rx=".45" fill="#F2A8C4"/>'+
+  '<rect x="9" y="19" width="1.9" height="2.4" rx=".45" fill="#E8B84B"/>'+
+  '<rect x="11.3" y="18.8" width="1.9" height="2.6" rx=".45" fill="#F2A8C4"/>'+
+  '<rect x="13.6" y="19.1" width="1.9" height="2.3" rx=".45" fill="#5C7FBF"/>'+
+  '<rect x="15.9" y="18.8" width="1.9" height="2.6" rx=".45" fill="#7FB88F"/>'+
+  '<rect x="18.2" y="19.1" width="1.9" height="2.3" rx=".45" fill="#C4596B"/>'+
+  '<rect x="20.5" y="18.9" width="1.9" height="2.5" rx=".45" fill="#C99BD8"/>'+
+  '<path d="M12.2 27 13.6 22.2M16.4 27 17.8 22.2" stroke="#8A6A4A" stroke-width="1.1" stroke-linecap="round"/>'+
+  '<path d="M13.1 25.4h3.6M13.8 23.8h3.6" stroke="#8A6A4A" stroke-width=".9" stroke-linecap="round"/>',
+
+'am-nhac':
+  '<ellipse cx="16" cy="27.4" rx="10" ry="1.9" fill="#3F5B4A" opacity=".13"/>'+
+  '<rect x="4.6" y="7" width="1.9" height="16" rx=".95" fill="#9FCF7F"/>'+
+  '<rect x="7.2" y="5.4" width="1.9" height="17.6" rx=".95" fill="#8FC06F"/>'+
+  '<rect x="23.1" y="6.2" width="1.9" height="16.8" rx=".95" fill="#9FCF7F"/>'+
+  '<rect x="25.7" y="8" width="1.9" height="15" rx=".95" fill="#8FC06F"/>'+
+  '<ellipse cx="16" cy="23.4" rx="9.4" ry="3.1" fill="#F3DCE4"/>'+
+  '<path d="M6.6 23.4v-1.6a9.4 3.1 0 0 1 18.8 0v1.6z" fill="#E7C2CE"/>'+
+  '<rect x="16.5" y="6.2" width="1.9" height="10.2" rx=".95" fill="#D9749B"/>'+
+  '<path d="M18.4 6.2c3 .7 4.6 2.2 4.4 4.5-1-1.6-2.5-2.3-4.4-2.4z" fill="#D9749B"/>'+
+  '<ellipse cx="14" cy="16.8" rx="3.7" ry="2.9" fill="#D9749B" transform="rotate(-18 14 16.8)"/>',
+
+'bang-tin':
+  '<ellipse cx="16" cy="27.4" rx="9" ry="1.8" fill="#3F5B4A" opacity=".13"/>'+
+  '<rect x="9.4" y="16" width="2.3" height="10.6" rx="1.1" fill="#8A6A4A"/>'+
+  '<rect x="20.3" y="16" width="2.3" height="10.6" rx="1.1" fill="#8A6A4A"/>'+
+  '<rect x="4.6" y="5.6" width="22.8" height="14" rx="2" fill="#8A6A4A"/>'+
+  '<rect x="6.5" y="7.4" width="19" height="10.4" rx="1.2" fill="#FFF8EE"/>'+
+  '<rect x="7.8" y="8.6" width="5.2" height="3.9" rx=".6" fill="#F2A8C4" transform="rotate(-3 10.4 10.5)"/>'+
+  '<rect x="13.6" y="8.8" width="5.2" height="3.9" rx=".6" fill="#BFE3EE" transform="rotate(2 16.2 10.7)"/>'+
+  '<rect x="19.4" y="8.6" width="5.2" height="3.9" rx=".6" fill="#E8DFA8" transform="rotate(-2 22 10.5)"/>'+
+  '<rect x="8.6" y="13.4" width="5.2" height="3.4" rx=".6" fill="#C8E8C0" transform="rotate(2 11.2 15.1)"/>'+
+  '<rect x="15" y="13.2" width="6.4" height="3.6" rx=".6" fill="#E3D2F0" transform="rotate(-2 18.2 15)"/>',
+
+'gioi-thieu':
+  '<ellipse cx="16" cy="27.4" rx="9.6" ry="1.9" fill="#3F5B4A" opacity=".13"/>'+
+  '<path d="M16 3.8 28 13.4H4z" fill="#C4596B"/>'+
+  '<rect x="6.4" y="13.4" width="19.2" height="12.6" rx="1.6" fill="#FFF8EE"/>'+
+  '<rect x="6.4" y="13.4" width="19.2" height="1.6" fill="#EFE2D2"/>'+
+  '<rect x="13.5" y="18.4" width="5" height="7.6" rx="1.1" fill="#8A6A4A"/>'+
+  '<circle cx="17.7" cy="22.2" r=".65" fill="#E8B84B"/>'+
+  '<rect x="8" y="17.6" width="4.2" height="4.2" rx=".9" fill="#BFE3EE"/>'+
+  '<rect x="19.8" y="17.6" width="4.2" height="4.2" rx=".9" fill="#BFE3EE"/>'+
+  '<circle cx="16" cy="16.4" r="1.25" fill="#E8B84B"/>'+
+  '<circle cx="16" cy="16.4" r="2.6" fill="#FFD98A" opacity=".3"/>',
+
+'loi-ke-chuyen':
+  '<ellipse cx="16" cy="27.4" rx="8.4" ry="1.8" fill="#3F5B4A" opacity=".13"/>'+
+  '<line x1="3" y1="5.4" x2="29" y2="5.4" stroke="#8A6A4A" stroke-width="1.5" stroke-linecap="round"/>'+
+  '<g opacity=".62"><line x1="6.6" y1="5.4" x2="6.6" y2="8.6" stroke="#8A6A4A" stroke-width="1.1"/>'+
+  '<ellipse cx="6.6" cy="11.6" rx="3" ry="3.4" fill="#E08A3C"/>'+
+  '<line x1="6.6" y1="14.8" x2="6.6" y2="17.4" stroke="#C77A2E" stroke-width="1.1"/></g>'+
+  '<g opacity=".62"><line x1="25.4" y1="5.4" x2="25.4" y2="8.6" stroke="#8A6A4A" stroke-width="1.1"/>'+
+  '<ellipse cx="25.4" cy="11.6" rx="3" ry="3.4" fill="#E08A3C"/>'+
+  '<line x1="25.4" y1="14.8" x2="25.4" y2="17.4" stroke="#C77A2E" stroke-width="1.1"/></g>'+
+  '<line x1="16" y1="5.4" x2="16" y2="9.2" stroke="#8A6A4A" stroke-width="1.5"/>'+
+  '<rect x="12.6" y="8.6" width="6.8" height="1.8" rx=".8" fill="#8A6A4A"/>'+
+  '<ellipse cx="16" cy="16.4" rx="5.6" ry="6.2" fill="#C77A2E"/>'+
+  '<ellipse cx="16" cy="16.4" rx="2.4" ry="6.2" fill="#E8A055" opacity=".75"/>'+
+  '<ellipse cx="16" cy="16.4" rx="5.6" ry="6.2" fill="none" stroke="#A85F1E" stroke-width=".9"/>'+
+  '<rect x="12.6" y="22.2" width="6.8" height="1.8" rx=".8" fill="#8A6A4A"/>'+
+  '<line x1="16" y1="24" x2="16" y2="27" stroke="#C4596B" stroke-width="1.6" stroke-linecap="round"/>',
+
+'kho-tuong-lai':
+  '<ellipse cx="16" cy="27.4" rx="9" ry="1.9" fill="#3F5B4A" opacity=".13"/>'+
+  '<path d="M10.6 26.2 11.8 20h8.4l1.2 6.2z" fill="#EFE6F8"/>'+
+  '<path d="M11.8 20 12.6 15.8h6.8l.8 4.2z" fill="#8A6FBF"/>'+
+  '<path d="M12.6 15.8 13.2 12.2h5.6l.6 3.6z" fill="#EFE6F8"/>'+
+  '<path d="M13.2 12.2 13.7 9.2h4.6l.5 3z" fill="#8A6FBF"/>'+
+  '<rect x="9.6" y="25.4" width="12.8" height="1.9" rx=".95" fill="#EBD9C4"/>'+
+  '<rect x="12.6" y="6.6" width="6.8" height="2.9" rx="1" fill="#F7C4CC"/>'+
+  '<rect x="12.1" y="8.9" width="7.8" height="1.3" rx=".65" fill="#8A6FBF"/>'+
+  '<path d="M16 2.6 18.9 6.6h-5.8z" fill="#C4596B"/>'+
+  '<path d="M12.4 8.1 5.4 5.6M19.6 8.1 26.6 5.6M12.4 8.9 5.8 10.8M19.6 8.9 26.2 10.8" stroke="#FFE8A8" stroke-width="1.5" stroke-linecap="round" opacity=".75"/>'+
+  '<circle cx="24.6" cy="14.6" r="1.1" fill="#D9B3FF"/>'+
+  '<circle cx="7.6" cy="16.4" r=".9" fill="#D9B3FF"/>'+
+  '<circle cx="23.2" cy="19.6" r=".75" fill="#D9B3FF"/>'
+};
+
   function veBanDoLon(){
     const p = [];
     // dong song: dung dung cong thuc sin cua canh that
@@ -4642,22 +4774,33 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
     // duong mon vong quanh ao sen
     p.push('<circle cx="200" cy="200" r="86" fill="none" stroke="#F0DEC0" stroke-width="11" opacity=".85"/>');
     // ao sen + dai phun o chinh giua
-    p.push('<circle cx="200" cy="200" r="15" fill="#9FD3E8" stroke="#E8C9A8" stroke-width="5"/>');
-    p.push('<text x="200" y="204" text-anchor="middle" font-size="11" opacity=".92">🌸</text>');
-    p.push('<text x="200" y="232" text-anchor="middle" font-size="10" fill="#5C6B66"'+
+    /* Ao sen nho lai mot chut: huy hieu khu nay to hon truoc (r 16 -> 17) ma
+       Nha chinh chi cach tam ao 26 don vi, de bi dinh vao nhau. */
+    p.push('<circle cx="200" cy="200" r="12" fill="#9FD3E8" stroke="#E8C9A8" stroke-width="4"/>');
+    p.push('<text x="200" y="203.6" text-anchor="middle" font-size="10" opacity=".92">🌸</text>');
+    p.push('<text x="200" y="227" text-anchor="middle" font-size="10" fill="#5C6B66"'+
       ' font-family="Be Vietnam Pro, system-ui" opacity=".75">'+(vi()?'ao sen':'lotus pond')+'</text>');
 
     diemKhu.forEach((k,i)=>{
       const x = toaX(k.x), z = toaZ(k.z), mau = k.khu.mau;
       const xong = daGhe.has(k.khu.id);
       const ten = (k.khu.ten && k.khu.ten[NG]) ? k.khu.ten[NG] : k.khu.id;
+      const tranh = TRANH_KHU[k.khu.id] || '';
       p.push(
         '<g class="tc-pin'+(xong?' da':'')+'" data-khu="'+k.khu.id+'" role="button" tabindex="0"'+
-        ' aria-label="'+ten.replace(/"/g,'&quot;')+'">'+
+        ' aria-label="'+ten.replace(/"/g,'&quot;')+(xong?(vi()?' (đã ghé)':' (visited)'):'')+'">'+
         '<title>'+ten.replace(/</g,'&lt;')+'</title>'+
-        '<circle class="vien" cx="'+x.toFixed(1)+'" cy="'+z.toFixed(1)+'" r="16" fill="#FFF8EE" opacity="'+(xong?'.95':'.7')+'"/>'+
-        '<circle class="nen" cx="'+x.toFixed(1)+'" cy="'+z.toFixed(1)+'" r="13" fill="'+mau+'"/>'+
-        '<text x="'+x.toFixed(1)+'" y="'+(z+4.2).toFixed(1)+'" text-anchor="middle">'+(i+1)+'</text>'+
+        '<circle class="vien" cx="'+x.toFixed(1)+'" cy="'+z.toFixed(1)+'" r="17" fill="#FFF8EE" opacity="'+(xong?'.97':'.88')+'"/>'+
+        '<circle class="nen" cx="'+x.toFixed(1)+'" cy="'+z.toFixed(1)+'" r="15.4" fill="none" stroke="'+mau+'"'+
+          ' stroke-width="'+(xong?'3.2':'2.2')+'"/>'+
+        '<g class="tranh" transform="translate('+(x-16).toFixed(1)+' '+(z-16).toFixed(1)+')"'+
+          (xong?'':' opacity=".9"')+'>'+tranh+'</g>'+
+        /* Dau da ghe: mau dung bang mau o chu giai duoi ban do, khong thi chu
+           giai noi mot dang ma ban do ve mot dang. */
+        (xong ? '<g class="dau-ghe"><circle cx="'+(x+11.6).toFixed(1)+'" cy="'+(z+11.6).toFixed(1)+'" r="5.4"'+
+                ' fill="#6B8F71" stroke="#FFF8EE" stroke-width="1.6"/>'+
+                '<path d="M'+(x+9.2).toFixed(1)+' '+(z+11.6).toFixed(1)+'l1.8 1.9 3.3-3.6" fill="none"'+
+                ' stroke="#FFF8EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></g>' : '')+
         '</g>');
     });
 
@@ -4707,7 +4850,9 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
       b.className = 'tc-di';
       b.innerHTML =
         '<span class="so" style="background:'+kh.mau+'">'+(i+1)+'</span>'+
-        '<span class="bieu" aria-hidden="true">'+(kh.icon||'')+'</span>'+
+        '<span class="bieu" aria-hidden="true">'+(TRANH_KHU[kh.id]
+          ? '<svg viewBox="0 0 32 32" width="24" height="24">'+TRANH_KHU[kh.id]+'</svg>'
+          : (kh.icon||''))+'</span>'+
         '<span class="chu"><span class="ten">'+ten+'</span>'+
         '<span class="phu">'+(kh.phu[NG]||'')+'</span>'+
         '<span class="dau">'+(vi()?'✓ đã ghé':'✓ visited')+'</span></span>';
@@ -4745,8 +4890,8 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
       ? (vi()?'⏹ Dừng tour':'⏹ Stop tour')
       : (vi()?'🗺 Tour quanh vườn':'🗺 Tour the estate');
     meoEl.innerHTML = vi()
-      ? 'Số trên bản đồ cũng là phím tắt: bấm <kbd>1</kbd>–<kbd>'+tong+'</kbd> để đi thẳng tới khu. <kbd>M</kbd> mở lại bản đồ này, <kbd>E</kbd> vào khu đang đứng cạnh.'
-      : 'The numbers are also shortcuts: press <kbd>1</kbd>–<kbd>'+tong+'</kbd> to walk to a zone. <kbd>M</kbd> reopens this map, <kbd>E</kbd> enters the zone you stand beside.';
+      ? 'Số ở danh sách bên cạnh cũng là phím tắt: bấm <kbd>1</kbd>–<kbd>'+tong+'</kbd> để đi thẳng tới khu. <kbd>M</kbd> mở lại bản đồ này, <kbd>E</kbd> vào khu đang đứng cạnh.'
+      : 'The numbers beside the list are also shortcuts: press <kbd>1</kbd>–<kbd>'+tong+'</kbd> to walk to a zone. <kbd>M</kbd> reopens this map, <kbd>E</kbd> enters the zone you stand beside.';
   }
 
   function veLai(){ veBanDoLon(); veDanhSach(); veChu(); }

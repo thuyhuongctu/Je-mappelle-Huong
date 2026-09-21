@@ -117,6 +117,37 @@ Trang viên chỉ có **hai thứ tiếng** (vi/en), không có tiếng Pháp.
 - Bảng nội dung một khu và bảng trợ giúp dùng chung một bảng; cả hai đều phải
   đặt lớp `body.dang-doc-khu` để các cụm nổi ẩn đi.
 
+## Tám bức vẽ trên bản đồ trang viên
+
+Bảng «Bản đồ trang viên» (`#toancanh`) trước đây đánh số 1–8 lên từng khu; nay
+mỗi khu là một huy hiệu tròn có **bức vẽ đúng công trình có thật ở khu ấy trong
+cảnh 3D** — chồng hồ sơ và kính lúp, rương kho báu, nhà sàn sách, sân khấu tre,
+bảng làng, nhà chính, đèn lồng, hải đăng. Bảng `TRANH_KHU` nằm ngay trên
+`veBanDoLon()`.
+
+Ba điều ràng buộc, đã đo chứ không đoán:
+
+- **Vẽ trong hộp 32×32, nhưng huy hiệu là hình tròn.** Nửa đường chéo của hộp
+  là 22,6 trong khi vành chỉ bán kính 17, nên bốn góc hộp lòi ra ngoài. Giữ nét
+  trong vòng bán kính 14 quanh `(16,16)`.
+- **Cỡ thật: 38px trên máy tính, 28px trên điện thoại.** Khung SVG 400 đơn vị
+  hiện ra 446px ở bề ngang 1180 và 338px ở bề ngang 390. Nét mảnh hơn ~1,2 đơn
+  vị sẽ biến mất ở cỡ điện thoại — dùng mảng đặc, đừng dùng nét.
+- **Đừng để hai khu cùng một dáng.** Thư viện và Nhà chính trong cảnh 3D đều
+  mái đỏ; vẽ y như thế thì ở 28px không phân biệt nổi. Thư viện vẽ thành nhà
+  sàn có cột và thang (đúng như phụ đề «Nhà sàn tri thức»), khác hẳn dáng nhà
+  chính có cửa sát đất.
+
+Huy hiệu to lên (bán kính 16 → 17) nên **ao sen giữa bản đồ phải nhỏ lại** (15
+→ 12): khu Nhà chính chỉ cách tâm ao 26 đơn vị, để nguyên thì hai hình dính vào
+nhau.
+
+Số thứ tự vẫn còn, nhưng ở **danh sách bên cạnh**, vì đó mới là chỗ nó làm
+việc: nó là phím tắt 1–8. Dòng mẹo dưới bảng phải nói đúng chỗ ấy.
+
+Bảng «Đi đâu?» (`bd-chon`, mở từ bản đồ tròn ở góc) vẫn dùng emoji — `TRANH_KHU`
+khai trong phạm vi của `#toancanh` nên chỗ kia không với tới.
+
 ## Cảnh tháp mượn từ ThreeUI (`assets/canh/thap.html`)
 
 Bóc từ `src/shaders/japanese-tower/Towers.html` của
