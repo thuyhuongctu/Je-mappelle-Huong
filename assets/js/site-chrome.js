@@ -23,7 +23,9 @@
   function tat(x) { return bo.indexOf(x) > -1; }
 
   function ng() {
-    var l = (root.getAttribute('lang') || 'vi').slice(0, 2).toLowerCase();
+    /* Trang mặc định mở ra bằng tiếng Anh, nên khi chưa có thuộc tính lang
+       thì rơi về en chứ không phải vi. */
+    var l = (root.getAttribute('lang') || 'en').slice(0, 2).toLowerCase();
     return (l === 'en' || l === 'fr') ? l : 'vi';
   }
   /* chon chuoi theo ngon ngu dang hien; thieu tieng Phap thi dung tieng Anh */
@@ -354,6 +356,10 @@
         '<div class="sf-fine"><div class="sf-row">' +
         '<span>© ' + nam + ' ' + t('Đỗ Thùy Hương · Cần Thơ, Việt Nam', 'Do Thuy Huong · Can Tho, Vietnam', 'Do Thuy Huong · Cần Thơ, Vietnam') + '</span>' +
         '<span>' + t('HTML/CSS/JS thuần · PWA chạy offline', 'Plain HTML/CSS/JS · offline-capable PWA', 'HTML/CSS/JS · PWA hors ligne') + '</span>' +
+        /* DOI khái niệm của chính trang này (mọi phiên bản), không phải của một bản
+           phát hành lẻ. Trước đây chỉ có trong README và CITATION.cff, tức là
+           người đọc trang không thấy đường nào để trích dẫn. */
+        '<span>' + t('Trích dẫn trang: ', 'Cite this site: ', 'Citer ce site : ') + '<a href="https://doi.org/10.5281/zenodo.22003853" target="_blank" rel="noopener">DOI 10.5281/zenodo.22003853</a></span>' +
         '</div></div>' +
         '</div>';
     }

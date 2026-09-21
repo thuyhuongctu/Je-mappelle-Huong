@@ -86,9 +86,7 @@
 
   var NG = 'vi';
   try {
-    NG = localStorage.getItem('huong_lang') ||
-      (/^en/i.test(navigator.language) ? 'en' :
-        (/^fr/i.test(navigator.language) ? 'fr' : 'vi'));
+    NG = localStorage.getItem('huong_lang') || 'en';   /* mặc định tiếng Anh */
   } catch (e) { NG = 'vi'; }
 
   /* ---------- ENGINE ---------- */

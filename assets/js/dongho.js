@@ -8,7 +8,9 @@
 
   function ngonNgu(){
     var l = 'vi';
-    try{ l = localStorage.getItem('huong_lang') || navigator.language || 'vi'; }catch(e){}
+    /* Không dò ngôn ngữ trình duyệt nữa: trang mở ra bằng tiếng Anh cho mọi
+       khách, trừ khi chính khách đã chọn thứ tiếng khác. */
+    try{ l = localStorage.getItem('huong_lang') || 'en'; }catch(e){}
     return l;
   }
 

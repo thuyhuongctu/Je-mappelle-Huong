@@ -1,4 +1,4 @@
-<!doctype html><html lang="vi"><head>
+<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Vườn số · Digital Garden - Je m'appelle Hương</title>
 <meta name="description" content="The digital garden of Do Thuy Huong: the 3D clay estate, Huong AI the virtual character, music and songbook, Vietnamese-history games and a live World Bank data globe.">
@@ -488,7 +488,7 @@ footer.wrap{position:relative;overflow:hidden}
   btns.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-lang'));});});
   fr.addEventListener('click',function(){set('fr');});
   var start='vi';
-  try{start=localStorage.getItem('huong_lang')||(/^en/i.test(navigator.language)?'en':(/^fr/i.test(navigator.language)?'fr':'vi'));}catch(e){}
+  try{start=localStorage.getItem('huong_lang')||'en';}catch(e){}
   set(start);
 })();
 (function(){

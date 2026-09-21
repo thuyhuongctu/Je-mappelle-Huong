@@ -51,6 +51,19 @@ Mỗi trang tự khai ba lần: mặc định, `@media(prefers-color-scheme:dark
 Ba thứ tiếng bằng lớp `.lang-vi` / `.lang-en` / `.lang-fr`, ẩn hiện theo
 thuộc tính `lang` của `<html>`; khoá nhớ là `huong_lang`, `huong_theme`.
 
+**Mặc định là tiếng Anh, cho mọi khách.** Trước đây có dò `navigator.language`
+rồi rơi về `vi`; nay bỏ hẳn phần dò ấy: quy tắc chỉ còn *lựa chọn đã lưu của
+khách → `en`*. Khách bấm nút đổi sang thứ tiếng khác thì lựa chọn ấy được nhớ
+và vẫn thắng. Thẻ `<html lang>` tĩnh cũng phải là `"en"`, nếu không thì loé
+tiếng Việt một nhịp trước khi JavaScript chạy.
+
+Quy tắc ấy nằm rải ở **mười trang HTML** (mỗi trang một bản chép), cộng
+`site-chrome.js`, `dongho.js`, `music.js`. Thêm trang mới thì nhớ cả ba tệp
+dùng chung. Năm mô-đun trò chơi và `assets/canh/thap.html` không cần sửa vì
+chúng đọc thẳng `document.documentElement.lang`; riêng cảnh tháp khi nhúng
+phải truyền `?lang=` tường minh cho **cả hai** thứ tiếng, vì trong iframe nó
+không thấy thẻ `<html>` của trang cha.
+
 Đầu trang và chân trang dùng chung do `assets/js/site-chrome.js` dựng, không
 viết lại trong từng tệp.
 
@@ -264,6 +277,11 @@ vẫn nhị phân, tức là chưa hề thu nhỏ.
 Đổi ảnh nhân vật thì nhớ `DANG_TL` trong `trangvien.html` và cặp
 `width`/`height` của ảnh chữ ký trong `music.html` — đọc thẳng từ tệp, đừng
 chép tay.
+
+Thêm `width`/`height` vào một thẻ `<img>` vốn chưa có thì **phải xem lớp CSS
+của nó có `height:auto` chưa**. Thiếu, mà CSS lại đè `width`, thì chiều cao
+lấy nguyên con số trong thuộc tính và ảnh bị bóp ngang — `.anh-nv` trong
+`trangvien.html` đã vấp đúng thế: ảnh vuông 360×360 hiện ra thành 210×360.
 
 ## Trước khi thêm tệp mới
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" data-chrome="no-util">
+<html lang="en" data-chrome="no-util">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
@@ -245,7 +245,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
   var bt=document.querySelectorAll('.langtog button[data-lang]');
   function set(l){ document.documentElement.setAttribute('lang',l); bt.forEach(function(x){ x.classList.toggle('active', x.getAttribute('data-lang')===l); }); try{localStorage.setItem('huong_lang',l);}catch(e){} bang(); }
   bt.forEach(function(x){ x.addEventListener('click', function(){ set(x.getAttribute('data-lang')); }); });
-  var s='vi'; try{ s = localStorage.getItem('huong_lang') || (/^en/i.test(navigator.language) ? 'en' : (/^fr/i.test(navigator.language) ? 'fr' : 'vi')); }catch(e){}
+  var s='vi'; try{ s = localStorage.getItem('huong_lang') || 'en'; }catch(e){}
   set(s); bang();
 })();</script>
 
