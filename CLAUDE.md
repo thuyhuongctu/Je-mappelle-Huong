@@ -664,7 +664,26 @@ Lớp `.hud-phu` do JS gắn lúc chạy theo lối **loại trừ** (`HUD_GIU` 
 cụm phải giữ), kèm `MutationObserver` trên `body` cho những cụm gắn muộn — vì
 năm mô-đun trò chơi tự gắn thẻ lúc chạy nên danh sách viết tay luôn lạc hậu.
 
-**Kiểm cái này thì đừng đặt `dungYen = 0`.** Vòng lặp cộng `dungYen += dt` mỗi
-khung hình nên chỉ 0,4 giây sau là lớp `dang-di` tự tắt, đo xong ra số gần như
-không đổi và tưởng là sửa không ăn thua. Đặt `dungYen = -1e6` để giữ trạng thái
-suốt phép đo.
+Đo được: **13,5% → 6,7%** trên máy tính 1280 và **27,5% → 11,8%** trên điện
+thoại 390. Con số 6,7 khớp đúng phần giữ lại — `hud-tren` 3,13 + `ban-do` 1,74
++ `can` 1,58 + `skip-link` 0,25 = 6,70.
+
+### Kiểm cái này: huỷ tour rồi bấm phím đi THẬT
+
+Mất ba lượt đo sai mới ra. Hai cách giả lập «đang đi» đều **không dùng được**:
+
+- `dungYen = 0`: vòng lặp cộng `dungYen += dt` nên 0,4 giây sau lớp `dang-di`
+  tự tắt, đo xong ra số gần như không đổi;
+- `dungYen = -1e6`: tưởng chắc ăn, nhưng **nhánh tour tự đi đặt lại
+  `dungYen = 0` mỗi khung hình**, ghi đè luôn. Nên kịch bản nào có bấm qua ba
+  bước hướng dẫn (tour chạy sau đó) thì ra một kết quả, kịch bản nào không bấm
+  lại ra kết quả ngược — hai lần đo mâu thuẫn nhau mà cả hai đều sai.
+
+Cách đúng: huỷ tour (`huyTour()`, `mucTieuDi = null`) rồi **giữ phím mũi tên**
+bằng `keyboard.down('ArrowUp')`. Đo xong thì đọc luôn
+`document.body.classList.contains('dang-di')` và `opacity` của một cụm mẫu để
+biết chắc trạng thái lúc đo, đừng tin là mình đã đặt đúng.
+
+Bài học chung: **giả lập trạng thái bằng cách gán biến thì phải kiểm xem có
+nhánh nào trong vòng lặp ghi đè biến ấy không.** Ở đây có, và nó làm hỏng hai
+lượt đo liền.
