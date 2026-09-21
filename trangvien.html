@@ -453,6 +453,23 @@ body.dang-ngam > *:not(#san):not(#ngam-meo){display:none !important}
 }
 body.dang-ngam #ngam-meo{display:block}
 
+/* ĐANG ĐI THÌ CỤM PHỤ MỜ ĐI.
+
+   Đo được: 13 cụm nổi che 13,5% màn hình máy tính và 27,5% màn hình điện
+   thoại - trên điện thoại là hơn một phần tư khung hình, gấp đôi máy tính.
+   Nhưng bỏ hẳn cụm nào cũng tiếc, vì lúc đứng lại khách cần chúng.
+
+   Nên: đang đi thì mờ còn 0,12, đứng lại 0,4 giây thì hiện về. Mờ chứ không
+   ẩn, để bố cục không nhảy và khách vẫn biết chúng ở đâu.
+
+   Lớp `.hud-phu` do JS gắn lúc chạy theo lối LOẠI TRỪ, không liệt kê tay:
+   năm mô-đun trò chơi tự gắn thẻ vào body nên danh sách viết tay luôn lạc
+   hậu - đúng bài học đã ghi ở chỗ dọn màn hình cho chế độ ngắm toàn cảnh. */
+.hud-phu{ transition:opacity .42s ease }
+body.dang-di:not(.dang-doc-khu):not(.dang-ngam) .hud-phu{
+  opacity:.12; pointer-events:none;
+}
+
 /* Khoảnh khắc ra tới cửa biển. Hiện đúng một lần mỗi lượt ghé, khi khách
    chèo xuồng ra khỏi trang viên. Đây là thứ khách mang về. */
 #cua-bien{
@@ -1154,6 +1171,25 @@ let bcChon = null;             // biểu cảm do người dùng chọn (null = 
 let khuGan = null;             // khu đang đứng gần
 let dangMo = false;            // bảng nội dung đang mở?
 let dungYen = 0;               // thời gian đứng yên
+let __dangDi = false;          // trạng thái hiện tại của lớp body.dang-di
+
+/* Đánh dấu cụm nổi PHỤ để lúc đang đi thì cho mờ bớt.
+
+   Viết theo lối loại trừ: kể ra những cụm PHẢI GIỮ rõ, còn lại tự động là
+   phụ. Năm mô-đun trò chơi gắn thẻ của chúng vào body lúc chạy, nên danh
+   sách viết tay luôn lạc hậu - đã thử một lần ở chế độ ngắm toàn cảnh và
+   sót đúng bốn cụm. MutationObserver lo nốt những cụm gắn muộn. */
+const HUD_GIU = new Set(['san','hud-tren','can','ban-do','bd-thang','toancanh',
+  'cua-bien','ngam-meo','goi-y','toast-sen','man','cong','nut-xe','nut-cham']);
+function danhDauHudPhu(){
+  for(const el of document.body.children){
+    if(el.id && HUD_GIU.has(el.id)) continue;
+    if(el.classList.contains('skip-link')) continue;   // phím tắt trợ năng
+    el.classList.add('hud-phu');
+  }
+}
+if(document.body) danhDauHudPhu();
+new MutationObserver(danhDauHudPhu).observe(document.body, {childList:true});
 
 /* ---------- 3. THREE.JS: KHỞI TẠO ---------- */
 const san = document.getElementById('san');
@@ -2288,6 +2324,99 @@ const KT_HH = {
 /* Ba bac them: [y, z, be rong]. Dat o phia +z, dung huong tam bien chi duong,
    tuc dung cho khach di toi. */
 const KT_BAC = [[.46, 5.78, 3.5], [.28, 6.34, 3.1], [.10, 6.90, 2.7]];
+
+/* DÁNG RIÊNG CHO TỪNG KHU.
+
+   Chặng 4 dựng bộ kiến trúc dùng chung và cho cả tám khu CÙNG thềm, CÙNG lan
+   can, CÙNG cổng, CÙNG mái. Tưởng là cho chúng hình hài, hoá ra xoá mất thứ
+   làm chúng khác nhau: nhìn từ xa là tám cái vòng y hệt, không nhận ra đâu là
+   Nghiên cứu đâu là Âm nhạc. Trớ trêu là CLAUDE.md có sẵn dòng «Đừng để hai
+   khu cùng một dáng» - đã theo khi vẽ tám huy hiệu bản đồ, rồi làm ngược lại
+   ngay trong cảnh 3D.
+
+   Nay mỗi khu vẫn dùng bộ chung nhưng đổi ba thứ quyết định BÓNG DÁNG:
+   vành lan can, mái che biển, và một nét dọc riêng. Nét dọc là thứ đọc được
+   xa nhất vì nó cắt lên nền trời. */
+const KT_DANG = {
+  'hoc-thuat':     { vong:'vuong', mai:false, tru:'thap'    },
+  'du-an':         { vong:'khong', mai:false, tru:'can-cau' },
+  'thu-vien':      { vong:'tron',  mai:true,  tru:'mai-cao' },
+  'am-nhac':       { vong:'khong', mai:false, tru:'vom'     },
+  'bang-tin':      { vong:'vuong', mai:false, tru:'cot-co'  },
+  'gioi-thieu':    { vong:'tron',  mai:true,  tru:null      },
+  'loi-ke-chuyen': { vong:'khong', mai:false, tru:'day-den' },
+  'kho-tuong-lai': { vong:'tron',  mai:false, tru:'cot-buom'}
+};
+/* Hình học của nét dọc khai một lần, dùng lại cho mọi khu - cùng nếp với bộ
+   kiến trúc chung, để số hình học không phình ra. */
+const TRU_HH = {
+  vuong:  new THREE.BoxGeometry(1, 1, 1),
+  tru:    new THREE.CylinderGeometry(.5, .5, 1, 8),
+  chop:   new THREE.ConeGeometry(.5, 1, 6),
+  cung:   new THREE.TorusGeometry(3.1, .16, 6, 20, Math.PI),
+  den:    new THREE.SphereGeometry(.3, 10, 8),
+  co:     new THREE.PlaneGeometry(1, 1)
+};
+function dungTru(g, khu, loai){
+  if(!loai) return;
+  const M = khu.mau;
+  if(loai === 'thap'){                      // tháp vuông thon - Nghiên cứu
+    for(let i = 0; i < 4; i++){
+      const k = khoi(TRU_HH.vuong, i % 2 ? '#F1E6D4' : M, .93);
+      k.scale.set(1.5 - i*.22, 1.5, 1.5 - i*.22);
+      k.position.set(-3.1, 1.3 + i*1.5, -2.6); g.add(k);
+    }
+    const c = khoi(TRU_HH.chop, M, .9);
+    c.scale.set(1.5, 1.4, 1.5); c.position.set(-3.1, 8.0, -2.6); g.add(c);
+  }else if(loai === 'can-cau'){             // khung chữ A nghiêng - Dự án mở
+    for(const b of [-1, 1]){
+      const t = khoi(TRU_HH.tru, '#B8845A', .94);
+      t.scale.set(.22, 7.4, .22); t.position.set(-2.4 + b*1.15, 4.2, -2.2);
+      t.rotation.z = -b*.19; g.add(t);
+    }
+    const ng = khoi(TRU_HH.tru, M, .92);
+    ng.scale.set(.17, 4.4, .17); ng.position.set(-1.0, 7.4, -2.2);
+    ng.rotation.z = Math.PI/2 - .5; g.add(ng);
+  }else if(loai === 'mai-cao'){             // mái nhà sàn dựng cao - Thư viện
+    for(const [ax, az] of [[-2.6,-2.6],[2.6,-2.6],[-2.6,1.0],[2.6,1.0]]){
+      const t = khoi(TRU_HH.tru, '#E0CDB0', .94);
+      t.scale.set(.26, 4.6, .26); t.position.set(ax, 2.9, az); g.add(t);
+    }
+    const m = khoi(TRU_HH.chop, '#C4596B', .93);
+    m.scale.set(8.4, 3.6, 8.4); m.rotation.y = Math.PI/4;
+    m.position.set(0, 7.0, -.8); g.add(m);
+  }else if(loai === 'vom'){                 // vòm sân khấu - Âm nhạc
+    const v = khoi(TRU_HH.cung, M, .9);
+    v.position.set(0, 1.0, -2.3); g.add(v);
+    const v2 = khoi(TRU_HH.cung, '#F1E6D4', .92);
+    v2.scale.set(.74, .74, .74); v2.position.set(0, 1.0, -2.9); g.add(v2);
+  }else if(loai === 'cot-co'){              // cột cờ có phướn - Bảng tin
+    const t = khoi(TRU_HH.tru, '#F1E6D4', .94);
+    t.scale.set(.16, 8.6, .16); t.position.set(-3.2, 4.9, -2.4); g.add(t);
+    const co = new THREE.Mesh(TRU_HH.co,
+      new THREE.MeshStandardMaterial({color:new THREE.Color(M), roughness:.9,
+        side:THREE.DoubleSide}));
+    co.scale.set(2.5, 1.5, 1); co.position.set(-1.9, 8.3, -2.4); g.add(co);
+  }else if(loai === 'day-den'){             // dãy đèn lồng trên cao - Lối kể chuyện
+    for(let i = 0; i < 3; i++){
+      const t = khoi(TRU_HH.tru, '#C9B79A', .94);
+      t.scale.set(.15, 6.2 + i*.7, .15);
+      t.position.set(-3.4 + i*3.4, 3.7 + i*.35, -2.6); g.add(t);
+      const d = new THREE.Mesh(TRU_HH.den, vlDenCong);
+      d.scale.set(1.5, 1.9, 1.5);
+      d.position.set(-3.4 + i*3.4, 6.9 + i*.7, -2.6); g.add(d); dsDenCong.push(d);
+    }
+  }else if(loai === 'cot-buom'){            // cột buồm - Kho tương lai
+    const t = khoi(TRU_HH.tru, '#F1E6D4', .94);
+    t.scale.set(.2, 9.4, .2); t.position.set(-3.0, 5.4, -2.5); g.add(t);
+    for(let i = 0; i < 2; i++){
+      const x = khoi(TRU_HH.tru, M, .92);
+      x.scale.set(.12, 3.4 - i*1.1, .12);
+      x.position.set(-3.0, 7.4 + i*1.9, -2.5);
+      x.rotation.z = Math.PI/2; g.add(x);
+    }
+  }
+}
 const dsDenCong = [];                 // de apThoiKhac() chinh do sang theo thoi khac
 const vlDenCong = new THREE.MeshStandardMaterial({
   color:new THREE.Color('#FFE6B4'), roughness:.55, metalness:0,
@@ -2313,19 +2442,37 @@ function dungKienTruc(g, khu){
   // 1. Them bac - InstancedMesh nen phai dat theo toa do THE GIOI, khong phai
   //    toa do trong nhom cua khu.
   KT_BAC.forEach(([y, z, rong]) => ktDat(ktBacIM, ktBacN++, vx, y, vz + z, 0, rong, 1, 1));
-  // 2. Lan can: vong tay vin cong + cot chong
-  const vong = khoi(KT_HH.tayVin, khu.mau, .88);
-  /* Torus nam trong mat phang XY, cung bat dau tu goc 0. Nhom bao ngoai xoay
-     -90 do quanh X de ha xuong mat phang XZ, khi ay diem goc phi roi xuong
-     (R.cos phi, 0, -R.sin phi) - nen muon khoang ho quay ve +z thi cung phai
-     bat dau o -90 do cong nua khoang ho. */
-  vong.rotation.z = -Math.PI/2 + KT_KHE;
-  const nhomVong = new THREE.Group();
-  nhomVong.rotation.x = -Math.PI/2; nhomVong.position.y = 1.23;
-  nhomVong.add(vong); g.add(nhomVong);
-  for(let i = 0; i < KT_SO_COT; i++){
-    const a = KT_KHE + (i + .5) / KT_SO_COT * (Math.PI*2 - KT_KHE*2);
-    ktDat(ktCotIM, ktCotN++, vx + Math.sin(a)*KT_BK, .94, vz + Math.cos(a)*KT_BK);
+  const dang = KT_DANG[khu.id] || { vong:'tron', mai:true, tru:null };
+
+  // 2. Lan can - ba kiểu, xem ghi chú ở KT_DANG
+  if(dang.vong === 'tron'){
+    const vong = khoi(KT_HH.tayVin, khu.mau, .88);
+    /* Torus nam trong mat phang XY, cung bat dau tu goc 0. Nhom bao ngoai xoay
+       -90 do quanh X de ha xuong mat phang XZ, khi ay diem goc phi roi xuong
+       (R.cos phi, 0, -R.sin phi) - nen muon khoang ho quay ve +z thi cung phai
+       bat dau o -90 do cong nua khoang ho. */
+    vong.rotation.z = -Math.PI/2 + KT_KHE;
+    const nhomVong = new THREE.Group();
+    nhomVong.rotation.x = -Math.PI/2; nhomVong.position.y = 1.23;
+    nhomVong.add(vong); g.add(nhomVong);
+    for(let i = 0; i < KT_SO_COT; i++){
+      const a = KT_KHE + (i + .5) / KT_SO_COT * (Math.PI*2 - KT_KHE*2);
+      ktDat(ktCotIM, ktCotN++, vx + Math.sin(a)*KT_BK, .94, vz + Math.cos(a)*KT_BK);
+    }
+  }else if(dang.vong === 'vuong'){
+    /* Lan can vuông: ba cạnh, chừa cạnh +z cho lối vào. Bóng dáng vuông đọc
+       khác hẳn vành tròn ở cỡ nhìn từ giữa trang viên. */
+    const C = 3.9;
+    const canh = [[0,-C,0,2*C],[-C,0,Math.PI/2,2*C],[C,0,Math.PI/2,2*C]];
+    for(const [cx, cz, ry, dai] of canh){
+      const t = khoi(TRU_HH.vuong, khu.mau, .9);
+      t.scale.set(dai, .14, .16);
+      t.position.set(cx, 1.30, cz); t.rotation.y = ry; g.add(t);
+    }
+    for(const [px, pz] of [[-C,-C],[C,-C],[-C,C*.55],[C,C*.55]])
+      ktDat(ktCotIM, ktCotN++, vx + px, .94, vz + pz);
+  }else{
+    // 'khong': để trống hẳn, chỉ còn nền và thềm - khu mở, nhìn thấu qua
   }
   /* 3. Hai cột cổng đứng ở CHÂN thềm, không phải trên nền - để khách đi
         xuyên qua cổng rồi mới bước lên, đúng thứ tự của một lối vào. Đặt trên
@@ -2338,16 +2485,21 @@ function dungKienTruc(g, khu){
     const m = khoi(KT_HH.muCong, khu.mau, .9);
     m.position.set(ben*2.45, 3.60, 6.30); g.add(m);
   }
-  // 4. Mai ngoi nho che bien chi duong
-  for(const ben of [-1, 1]){
-    const l = khoi(KT_HH.maiLop, '#C4596B', .93);
-    l.position.set(0, 4.74, 3.90 + ben*.62);
-    l.rotation.x = ben * .42;
-    l.scale.set(5.2, 1, 1.55);
-    g.add(l);
+  // 4. Mai ngoi nho che bien chi duong - chi o nhung khu khai mai:true
+  if(dang.mai){
+    for(const ben of [-1, 1]){
+      const l = khoi(KT_HH.maiLop, '#C4596B', .93);
+      l.position.set(0, 4.74, 3.90 + ben*.62);
+      l.rotation.x = ben * .42;
+      l.scale.set(5.2, 1, 1.55);
+      g.add(l);
+    }
+    const n = khoi(KT_HH.noc, '#A8455A', .92);
+    n.rotation.z = Math.PI/2; n.position.set(0, 5.00, 3.90); g.add(n);
   }
-  const n = khoi(KT_HH.noc, '#A8455A', .92);
-  n.rotation.z = Math.PI/2; n.position.set(0, 5.00, 3.90); g.add(n);
+
+  // 5. Net doc rieng - thu doc duoc xa nhat vi no cat len nen troi
+  dungTru(g, khu, dang.tru);
 }
 
 function dungKhu(khu){
@@ -2643,6 +2795,17 @@ function dungKhu(khu){
   diemKhu.push({khu, x:khu.vt[0], z:khu.vt[2]});
 }
 KHU.forEach(dungKhu);
+
+/* Cắt InstancedMesh về đúng số đã đặt.
+
+   Đây là chỗ SUÝT hỏng âm thầm: ktCotIM cấp phát KHU.length * KT_SO_COT = 64
+   thể hiện từ hồi cả tám khu đều có lan can tròn. Nay ba khu bỏ lan can hẳn
+   và hai khu dùng lan can vuông bốn cột, nên chỉ đặt hơn ba chục. Thể hiện
+   nào không đặt thì ma trận là đơn vị, tức cột hiện ra ngay GỐC TOẠ ĐỘ, chồng
+   lên nhau giữa trang viên - mà trang vẫn chạy bình thường nên dễ không để ý.
+   ktBacIM cũng vậy nếu sau này có khu bỏ thềm. */
+ktCotIM.count = ktCotN;
+ktBacIM.count = ktBacN;
 
 /* ---------- 7. NHÂN VẬT HƯƠNG AI ---------- */
 /* Giữ nguyên tạo hình: áo dài trắng cổ đứng, huy hiệu cờ Tổ quốc,
@@ -4892,6 +5055,15 @@ function vong(){
   }else{
     dungYen += dt;
   }
+
+  /* Đang đi thì mờ cụm phụ, đứng lại 0,4 giây thì hiện về. Chỉ đụng tới
+     classList khi trạng thái ĐỔI, kẻo mỗi khung hình một lần ghi DOM. */
+  const dangDiMoi = dungYen < .4;
+  if(dangDiMoi !== __dangDi){
+    __dangDi = dangDiMoi;
+    document.body.classList.toggle('dang-di', dangDiMoi);
+  }
+
   // xoay mượt về hướng đi
   let sai = huong - nhanVat.rotation.y;
   while(sai > Math.PI) sai -= Math.PI*2;
