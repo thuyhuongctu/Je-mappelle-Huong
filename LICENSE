@@ -23,11 +23,24 @@ citation to the record identified in CITATION.cff, is permitted under normal
 scholarly practice and applicable copyright exceptions.
 
 Third-party components included in or used by this repository remain governed
-by their own licences and are not covered by the reservation above:
+by their own licences and are not covered by the reservation above. The full
+inventory, with sources and the extent of any modification, is in
+THIRD-PARTY.md. In summary:
 
-  - three.js (r128), assets/vendor/three-r128.min.js — MIT Licence
+  - three.js (r128), assets/vendor/three-r128.min.js — MIT Licence,
+    used unmodified
+  - assets/canh/thap.html — derivative work of ThreeUI (MIT Licence,
+    Copyright (c) 2026 Meng To); licence text in
+    assets/vendor/threeui-LICENSE.txt
+  - assets/img/vn-outline.svg — outline derived from Natural Earth data,
+    public domain
+  - Be Vietnam Pro typeface — loaded from Google Fonts, SIL Open Font
+    Licence 1.1
   - huashu-design, .claude/skills/huashu-design/ — MIT Licence
   - MiniMax H3 skills, .claude/skills/ — see each skill's own terms
+
+The .claude/skills/ directory holds authoring tools only; none of it runs on
+the website and none of it forms part of the work.
 
 Permission requests and enquiries: thuyhuongctu@gmail.com
 
@@ -53,5 +66,8 @@ ngoại lệ của luật bản quyền.
 
 Các thành phần của bên thứ ba đi kèm hoặc được sử dụng trong kho mã này vẫn
 tuân theo giấy phép riêng của chúng và không thuộc phạm vi bảo lưu nêu trên.
+Bản kiểm kê đầy đủ, kèm nguồn gốc và mức độ sửa đổi, nằm ở tệp THIRD-PARTY.md.
+Đáng chú ý: tệp assets/canh/thap.html là tác phẩm phái sinh từ ThreeUI (giấy
+phép MIT, Copyright (c) 2026 Meng To), không phải tác phẩm của tác giả.
 
 Liên hệ xin phép sử dụng: thuyhuongctu@gmail.com
