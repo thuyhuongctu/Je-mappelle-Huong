@@ -71,6 +71,11 @@ header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:
 .pub-type.pub-conf{background:#7a6a58}
 .pub-type.pub-preprint{background:#a2634a}
 .pub-type.pub-other{background:var(--muted)}
+.pub-type.pub-soft{background:#5c7fbf}
+.pub-type.pub-data{background:#7fb88f}
+/* Dòng tác giả giữ đúng thứ tự đứng tên của ORCID; tên Hương in đậm. */
+.pub-authors{font-size:.8rem;line-height:1.5;color:var(--muted);margin:2px 0 4px}
+.pub-authors b{color:var(--ink);font-weight:700}
 .pub-title{font-size:clamp(1rem,2.6vw,1.16rem);line-height:1.35;margin:0 0 8px}
 .pub-venue{font-size:.84rem;color:var(--muted);overflow-wrap:anywhere;word-break:break-word;min-width:0}
 .pub-venue a{text-decoration:none;display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom;min-width:0;padding-block:5px;margin-block:-5px}
@@ -119,7 +124,8 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
   #bando{transition:transform .1s linear}
 }
 </style>  <meta property="og:image" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/assets/img/og-default.jpg">
-    <script type="application/ld+json">{
+    <script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -133,49 +139,234 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
       "itemListElement": [
         {
           "@type": "ScholarlyArticle",
-          "headline": "Unveiling the impact of Chinese Manufacturing SMEs &#x27; Internationalization on Performance",
+          "headline": "Institutional Completeness and the Internationalization - Performance Relationship: Capability Ceiling and Dual Substitution Evidence from Singapore",
           "datePublished": "2026",
-          "inLanguage": "en"
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            {
+              "@type": "Person",
+              "name": "Phan Anh Tu"
+            }
+          ],
+          "identifier": "https://doi.org/10.2139/ssrn.6620124",
+          "url": "https://doi.org/10.2139/ssrn.6620124"
+        },
+        {
+          "@type": "Dataset",
+          "headline": "ComDraft: teaching materials for Communication and Document Drafting Skills (EC1103)",
+          "datePublished": "2026",
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            }
+          ],
+          "identifier": "https://doi.org/10.5281/zenodo.22003676",
+          "url": "https://doi.org/10.5281/zenodo.22003676"
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "headline": "We Create Tomorrow: karaoke software for the anthem of School of Economics, Can Tho University",
+          "datePublished": "2026",
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Phan Anh Tu"
+            },
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            }
+          ],
+          "identifier": "https://doi.org/10.5281/zenodo.22080060",
+          "url": "https://doi.org/10.5281/zenodo.22080060"
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "headline": "Je m’appelle Hương: personal academic homepage",
+          "datePublished": "2026",
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            }
+          ],
+          "identifier": "https://doi.org/10.5281/zenodo.22003854",
+          "url": "https://doi.org/10.5281/zenodo.22003854"
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "headline": "EnQuiz: an offline-first bilingual quiz app for entrepreneurship revision",
+          "datePublished": "2026",
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            }
+          ],
+          "identifier": "https://doi.org/10.5281/zenodo.21879706",
+          "url": "https://doi.org/10.5281/zenodo.21879706"
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "headline": "BizOn Bật Nghiệp: A 3D claymorphism business-simulation game for entrepreneurship education",
+          "datePublished": "2026",
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            {
+              "@type": "Person",
+              "name": "Phan Anh Tu"
+            }
+          ],
+          "identifier": "https://doi.org/10.5281/zenodo.21628970",
+          "url": "https://doi.org/10.5281/zenodo.21628970"
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "headline": "M-AIDA: Meta-Analysis Intelligent Data Assistant",
+          "datePublished": "2026",
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            {
+              "@type": "Person",
+              "name": "Phan Anh Tu"
+            }
+          ],
+          "identifier": "https://doi.org/10.5281/zenodo.21282517",
+          "url": "https://doi.org/10.5281/zenodo.21282517"
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Unveiling the impact of Chinese Manufacturing SMEs’ Internationalization on Performance",
+          "datePublished": "2026",
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            {
+              "@type": "Person",
+              "name": "Phan Anh Tu"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "Journal of Finance and Accounting Research"
+          }
         },
         {
           "@type": "ScholarlyArticle",
           "headline": "Firm performance heterogeneity in emerging Asia",
           "datePublished": "2026",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Institutional Completeness and the Internationalization - Performance Relationship: Capability Ceiling and Dual Substitution Evidence from Singapore",
-          "datePublished": "2026",
-          "inLanguage": "en",
-          "identifier": "https://doi.org/10.2139/ssrn.6620124",
-          "url": "https://doi.org/10.2139/ssrn.6620124"
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            {
+              "@type": "Person",
+              "name": "Phan Anh Tu"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "Vietnam Economic & Financial Review"
+          }
         },
         {
           "@type": "ScholarlyArticle",
           "headline": "Nurturing the soul at work: spiritual values and psychological well-being in Vietnamese companies",
           "datePublished": "2025",
-          "inLanguage": "en",
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Cao Thanh Phong"
+            },
+            {
+              "@type": "Person",
+              "name": "Sébastien Point"
+            },
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "Human Resource Development International"
+          },
           "identifier": "https://doi.org/10.1080/13678868.2025.2549549",
           "url": "https://doi.org/10.1080/13678868.2025.2549549"
         },
         {
-          "@type": "ScholarlyArticle",
+          "@type": "Chapter",
           "headline": "Internationalization and Firm Performance of Firms in India: The Role of Top Management",
           "datePublished": "2025",
-          "inLanguage": "en"
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            {
+              "@type": "Person",
+              "name": "Phan Anh Tu"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "International Business Research - Traditional and Creative Approaches"
+          }
         },
         {
           "@type": "ScholarlyArticle",
           "headline": "TURNING IDYLLIC PANCHOR TOWN INTO A FUTURE RIVER TOURISM DESTINATION : WHAT DO THE LOCALS HAVE TO SAY ABOUT IT?",
           "datePublished": "2025",
-          "inLanguage": "en"
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "e-Journal of New Media (IIUM)"
+          }
         },
         {
           "@type": "ScholarlyArticle",
           "headline": "AI in Higher Education: Does AI Fear Hinder Learning Outcomes?",
           "datePublished": "2025",
-          "inLanguage": "en",
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Cao Thanh Phong"
+            },
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            {
+              "@type": "Person",
+              "name": "Duong Quoc Thinh"
+            },
+            {
+              "@type": "Person",
+              "name": "Nguyen Thanh Hoang"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "2024 Artificial Intelligence Revolutions (AIR)"
+          },
           "identifier": "https://doi.org/10.1109/air63653.2024.00013",
           "url": "https://doi.org/10.1109/air63653.2024.00013"
         },
@@ -183,79 +374,291 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
           "@type": "ScholarlyArticle",
           "headline": "Solutions for Sustainable Development of the Supply Chain of Mud Crab in the Mekong Delta",
           "datePublished": "2025",
-          "inLanguage": "en"
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Danh Le Ngoc"
+            },
+            {
+              "@type": "Person",
+              "name": "Nguyen Thi Thu An"
+            },
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            {
+              "@type": "Person",
+              "name": "Tran Manh Hoang"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "Review of Finance"
+          }
         },
         {
           "@type": "ScholarlyArticle",
           "headline": "Internationalization and Firm Performance: A meta - analysis Review",
           "datePublished": "2024",
-          "inLanguage": "en"
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            {
+              "@type": "Person",
+              "name": "Phan Anh Tu"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Sixth International Conference on Sustainable development in Economics, Business, and Finance"
+          }
         },
         {
           "@type": "ScholarlyArticle",
           "headline": "AI in Higher Education: Does AI Fear Hinder Learning Outcomes?",
           "datePublished": "2024",
-          "inLanguage": "en"
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Cao Thanh Phong"
+            },
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            {
+              "@type": "Person",
+              "name": "Duong Quoc Thinh"
+            },
+            {
+              "@type": "Person",
+              "name": "Nguyen Thanh Hoang"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "Artificial Intelligence Revolution 2024 (AIR)"
+          }
         },
         {
           "@type": "ScholarlyArticle",
           "headline": "Nghiên cứu tác động của việc ứng dụng trí tuệ nhân tạo đến kết quả học tập của sinh viên ngành kinh tế Trường Đại học Sư phạm Kỹ thuật Vĩnh Long (MS: 2023.KT-L23)",
           "datePublished": "2024",
-          "inLanguage": "en"
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            {
+              "@type": "Person",
+              "name": "Cao Thanh Phong"
+            }
+          ]
         },
         {
           "@type": "ScholarlyArticle",
           "headline": "Các nhân tố tác động đến dòng vốn đầu tư trực tiếp nước ngoài vào Việt Nam giai đoạn từ năm 2013 đến năm 2022: Ứng dụng mô hình lực hấp dẫn",
           "datePublished": "2024",
-          "inLanguage": "en"
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            {
+              "@type": "Person",
+              "name": "Nguyễn Phú Quí"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tạp chí Khoa học - VLUTE"
+          }
         },
         {
           "@type": "ScholarlyArticle",
           "headline": "Compassion, Self-Healing Psychological Well-being in the workplace: A study in Vietnam context",
           "datePublished": "2024",
-          "inLanguage": "en"
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Cao Thanh Phong"
+            },
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            {
+              "@type": "Person",
+              "name": "Sébastien Point"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "European Academy of Management (EURAM)"
+          }
         },
         {
           "@type": "ScholarlyArticle",
           "headline": "Nghiên cứu tác động của khuyến mại ảo đến cảm nhận và hành vi của người tiêu dùng đối với các sàn thương mại điện tử ở Việt Nam (T2023-L30)",
           "datePublished": "2024",
-          "inLanguage": "en"
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "Đại học Cần Thơ"
+          }
         },
         {
           "@type": "ScholarlyArticle",
           "headline": "The Impact of the Covid-19 Pandemic on the Business Performance of Construction Industry Enterprises in Can Tho City",
           "datePublished": "2023",
-          "inLanguage": "en",
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Phan Anh Tu"
+            },
+            {
+              "@type": "Person",
+              "name": "Dinh Xuan Toan"
+            },
+            {
+              "@type": "Person",
+              "name": "Nguyen Kim Hanh"
+            },
+            {
+              "@type": "Person",
+              "name": "Chau Thi Le Duyen"
+            },
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "Journal of Law and Sustainable Development"
+          },
           "identifier": "https://doi.org/10.55908/sdgs.v11i12.1751",
           "url": "https://doi.org/10.55908/sdgs.v11i12.1751"
         },
         {
-          "@type": "ScholarlyArticle",
+          "@type": "Chapter",
           "headline": "Internationalization and Turkish Manufacturing Firm Performance - Does Managerial Personality Matter?",
           "datePublished": "2021",
-          "inLanguage": "en",
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Phan Anh Tu"
+            },
+            {
+              "@type": "Person",
+              "name": "Le Khuong Ninh"
+            },
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "Accounting and Finance Innovations"
+          },
           "identifier": "https://doi.org/10.5772/intechopen.97432",
           "url": "https://doi.org/10.5772/intechopen.97432"
         },
         {
           "@type": "ScholarlyArticle",
-          "headline": "The Moderating Effects ofthe Manager’s Characteristics and Financial Obstacles On Internationalization andFirm Performance in Poland",
+          "headline": "The Moderating Effects of the Manager’s Characteristics and Financial Obstacles On Internationalization and Firm Performance in Poland",
           "datePublished": "2021",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "headline": "Tác động của khoảng cách, quy mô thị trường và dòng vốn FDI vào Việt Nam giai đoạn 2006-2015 ứng dụng mô hình lực hấp dẫn",
-          "datePublished": "2020",
-          "inLanguage": "en"
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Phan Anh Tu"
+            },
+            {
+              "@type": "Person",
+              "name": "Nguyen Van Song"
+            },
+            {
+              "@type": "Person",
+              "name": "Dinh Van Tien"
+            },
+            {
+              "@type": "Person",
+              "name": "Thai Van Ha"
+            },
+            {
+              "@type": "Person",
+              "name": "Nguyen Cong Tiep"
+            },
+            {
+              "@type": "Person",
+              "name": "Dao Quang Thang"
+            },
+            {
+              "@type": "Person",
+              "name": "Nguyen Van Luong"
+            },
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "PalArch’s Journal of Archaeology of Egypt / Egyptology"
+          }
         },
         {
           "@type": "ScholarlyArticle",
           "headline": "The moderating effects of managers’ experience and gender on internationalization and firm performance of manufacturing enterprises in Turkey",
           "datePublished": "2020",
-          "inLanguage": "en",
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Phan Anh Tu"
+            },
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            },
+            {
+              "@type": "Person",
+              "name": "Phan Minh Triet"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "Accounting"
+          },
           "identifier": "https://doi.org/10.5267/j.ac.2020.9.006",
           "url": "https://doi.org/10.5267/j.ac.2020.9.006"
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Tác động của khoảng cách, quy mô thị trường và dòng vốn FDI vào Việt Nam giai đoạn 2006-2015 ứng dụng mô hình lực hấp dẫn",
+          "datePublished": "2020",
+          "author": [
+            {
+              "@type": "Person",
+              "name": "Phan Anh Tu"
+            },
+            {
+              "@type": "Person",
+              "name": "Do Thuy Huong"
+            }
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tạp chí Quản lý và Kinh tế quốc tế"
+          }
         }
       ]
     },
@@ -279,7 +682,8 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
       ]
     }
   ]
-}</script>
+}
+</script>
 <script>/* Lua chon sang/toi dung chung ca site (khoa huong_theme). Dat trong <head>
    de trang khong nhay mau khi tai. */
 (function(){try{var s=localStorage.getItem('huong_theme');if(s)document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script>
@@ -311,7 +715,7 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
   <p class="sub"><span class="lang-vi">Danh mục đầy đủ các công trình đã công bố của Đỗ Thùy Hương - giảng viên và nhà nghiên cứu, Trường Kinh tế, Đại học Cần Thơ. Nguồn: ORCID 0000-0002-7711-2487, khớp với Google Scholar.</span><span class="lang-en">Complete list of published works by Do Thuy Huong - lecturer and researcher, School of Economics, Can Tho University. Source: ORCID 0000-0002-7711-2487, matching Google Scholar.</span><span class="lang-fr">Liste complète des travaux publiés de Do Thuy Huong - enseignante et chercheuse, École d'économie, Université de Cần Thơ. Source : ORCID 0000-0002-7711-2487, conforme à Google Scholar.</span></p>
 </header>
 <div class="academic-strip">
-  <span class="as-item"><span class="lang-vi">📄 </span><b>19</b><span class="lang-vi"> công trình · </span><span class="lang-en"> works · </span><span class="lang-fr"> travaux</span></span>
+  <span class="as-item"><span class="lang-vi">📄 </span><b>25</b><span class="lang-vi"> công trình · </span><span class="lang-en"> works · </span><span class="lang-fr"> travaux</span></span>
   <span class="as-item"><span class="lang-vi">🔗 </span><span class="lang-vi">DOI trực tiếp khi có · </span><span class="lang-en">Direct DOI links where available · </span><span class="lang-fr">Liens DOI directs lorsqu'ils existent</span></span>
   <span class="as-item"><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener"><span class="lang-vi">🆔 ORCID đầy đủ ↗</span><span class="lang-en">🆔 Full ORCID record ↗</span><span class="lang-fr">🆔 Dossier ORCID complet ↗</span></a></span>
   <span class="as-item"><a href="https://scholar.google.com/citations?user=jSvAVnsAAAAJ" target="_blank" rel="noopener"><span class="lang-vi">🎓 Google Scholar ↗</span><span class="lang-en">🎓 Google Scholar ↗</span><span class="lang-fr">🎓 Google Scholar ↗</span></a></span>
@@ -323,103 +727,161 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
   <button type="button" data-f="Book Chapter"><span class="lang-vi">Chương sách</span><span class="lang-en">Book chapters</span><span class="lang-fr">Chapitres</span></button>
   <button type="button" data-f="Conference Paper"><span class="lang-vi">Hội nghị</span><span class="lang-en">Conferences</span><span class="lang-fr">Conférences</span></button>
   <button type="button" data-f="Preprint"><span class="lang-vi">Preprint</span><span class="lang-en">Preprints</span><span class="lang-fr">Prépublications</span></button>
+  <button type="button" data-f="Software"><span class="lang-vi">Phần mềm</span><span class="lang-en">Software</span><span class="lang-fr">Logiciels</span></button>
+  <button type="button" data-f="Dataset"><span class="lang-vi">Dữ liệu</span><span class="lang-en">Datasets</span><span class="lang-fr">Jeux de données</span></button>
+  <button type="button" data-f="Working Paper,Review"><span class="lang-vi">Đề tài &amp; báo cáo</span><span class="lang-en">Projects &amp; reports</span><span class="lang-fr">Projets &amp; rapports</span></button>
 </div>
 <div class="pub-count" id="pub-count"></div>
 <main id="main">
+<article class="pub" data-year="2026" data-type="Preprint">
+      <div class="pub-head"><span class="pub-year">2026</span><span class="pub-type pub-preprint">Preprint / Working Paper</span></div>
+      <h3 class="pub-title">Institutional Completeness and the Internationalization - Performance Relationship: Capability Ceiling and Dual Substitution Evidence from Singapore</h3>
+      <div class="pub-authors"><b>Do Thuy Huong</b> · Phan Anh Tu</div>
+      <div class="pub-venue"><a href="https://doi.org/10.2139/ssrn.6620124" target="_blank" rel="noopener">DOI: 10.2139/ssrn.6620124</a></div>
+    </article>
+<article class="pub" data-year="2026" data-type="Dataset">
+      <div class="pub-head"><span class="pub-year">2026</span><span class="pub-type pub-data">Dataset</span></div>
+      <h3 class="pub-title">ComDraft: teaching materials for Communication and Document Drafting Skills (EC1103)</h3>
+      <div class="pub-authors"><b>Do Thuy Huong</b></div>
+      <div class="pub-venue"><a href="https://doi.org/10.5281/zenodo.22003676" target="_blank" rel="noopener">DOI: 10.5281/zenodo.22003676</a></div>
+    </article>
+<article class="pub" data-year="2026" data-type="Software">
+      <div class="pub-head"><span class="pub-year">2026</span><span class="pub-type pub-soft">Software</span></div>
+      <h3 class="pub-title">We Create Tomorrow: karaoke software for the anthem of School of Economics, Can Tho University</h3>
+      <div class="pub-authors">Phan Anh Tu · <b>Do Thuy Huong</b></div>
+      <div class="pub-venue"><a href="https://doi.org/10.5281/zenodo.22080060" target="_blank" rel="noopener">DOI: 10.5281/zenodo.22080060</a></div>
+    </article>
+<article class="pub" data-year="2026" data-type="Software">
+      <div class="pub-head"><span class="pub-year">2026</span><span class="pub-type pub-soft">Software</span></div>
+      <h3 class="pub-title">Je m’appelle Hương: personal academic homepage</h3>
+      <div class="pub-authors"><b>Do Thuy Huong</b></div>
+      <div class="pub-venue"><a href="https://doi.org/10.5281/zenodo.22003854" target="_blank" rel="noopener">DOI: 10.5281/zenodo.22003854</a></div>
+    </article>
+<article class="pub" data-year="2026" data-type="Software">
+      <div class="pub-head"><span class="pub-year">2026</span><span class="pub-type pub-soft">Software</span></div>
+      <h3 class="pub-title">EnQuiz: an offline-first bilingual quiz app for entrepreneurship revision</h3>
+      <div class="pub-authors"><b>Do Thuy Huong</b></div>
+      <div class="pub-venue"><a href="https://doi.org/10.5281/zenodo.21879706" target="_blank" rel="noopener">DOI: 10.5281/zenodo.21879706</a></div>
+    </article>
+<article class="pub" data-year="2026" data-type="Software">
+      <div class="pub-head"><span class="pub-year">2026</span><span class="pub-type pub-soft">Software</span></div>
+      <h3 class="pub-title">BizOn Bật Nghiệp: A 3D claymorphism business-simulation game for entrepreneurship education</h3>
+      <div class="pub-authors"><b>Do Thuy Huong</b> · Phan Anh Tu</div>
+      <div class="pub-venue"><a href="https://doi.org/10.5281/zenodo.21628970" target="_blank" rel="noopener">DOI: 10.5281/zenodo.21628970</a></div>
+    </article>
+<article class="pub" data-year="2026" data-type="Software">
+      <div class="pub-head"><span class="pub-year">2026</span><span class="pub-type pub-soft">Software</span></div>
+      <h3 class="pub-title">M-AIDA: Meta-Analysis Intelligent Data Assistant</h3>
+      <div class="pub-authors"><b>Do Thuy Huong</b> · Phan Anh Tu</div>
+      <div class="pub-venue"><a href="https://doi.org/10.5281/zenodo.21282517" target="_blank" rel="noopener">DOI: 10.5281/zenodo.21282517</a></div>
+    </article>
 <article class="pub" data-year="2026" data-type="Journal Article">
       <div class="pub-head"><span class="pub-year">2026</span><span class="pub-type pub-journal">Journal Article</span></div>
-      <h3 class="pub-title">Unveiling the impact of Chinese Manufacturing SMEs &#x27; Internationalization on Performance</h3>
+      <h3 class="pub-title">Unveiling the impact of Chinese Manufacturing SMEs’ Internationalization on Performance</h3>
+      <div class="pub-authors"><b>Do Thuy Huong</b> · Phan Anh Tu</div>
       <div class="pub-venue">Journal of Finance and Accounting Research</div>
     </article>
 <article class="pub" data-year="2026" data-type="Journal Article">
       <div class="pub-head"><span class="pub-year">2026</span><span class="pub-type pub-journal">Journal Article</span></div>
       <h3 class="pub-title">Firm performance heterogeneity in emerging Asia</h3>
+      <div class="pub-authors"><b>Do Thuy Huong</b> · Phan Anh Tu</div>
       <div class="pub-venue">Vietnam Economic &amp; Financial Review</div>
-    </article>
-<article class="pub" data-year="2026" data-type="Preprint / Working Paper">
-      <div class="pub-head"><span class="pub-year">2026</span><span class="pub-type pub-preprint">Preprint / Working Paper</span></div>
-      <h3 class="pub-title">Institutional Completeness and the Internationalization - Performance Relationship: Capability Ceiling and Dual Substitution Evidence from Singapore</h3>
-      <div class="pub-venue"><a href="https://doi.org/10.2139/ssrn.6620124" target="_blank" rel="noopener">DOI: 10.2139/ssrn.6620124</a></div>
     </article>
 <article class="pub" data-year="2025" data-type="Journal Article">
       <div class="pub-head"><span class="pub-year">2025</span><span class="pub-type pub-journal">Journal Article</span></div>
       <h3 class="pub-title">Nurturing the soul at work: spiritual values and psychological well-being in Vietnamese companies</h3>
+      <div class="pub-authors">Cao Thanh Phong · Sébastien Point · <b>Do Thuy Huong</b></div>
       <div class="pub-venue">Human Resource Development International · <a href="https://doi.org/10.1080/13678868.2025.2549549" target="_blank" rel="noopener">DOI: 10.1080/13678868.2025.2549549</a></div>
     </article>
 <article class="pub" data-year="2025" data-type="Book Chapter">
       <div class="pub-head"><span class="pub-year">2025</span><span class="pub-type pub-chapter">Book Chapter</span></div>
       <h3 class="pub-title">Internationalization and Firm Performance of Firms in India: The Role of Top Management</h3>
+      <div class="pub-authors"><b>Do Thuy Huong</b> · Phan Anh Tu</div>
       <div class="pub-venue">International Business Research - Traditional and Creative Approaches</div>
     </article>
 <article class="pub" data-year="2025" data-type="Journal Article">
       <div class="pub-head"><span class="pub-year">2025</span><span class="pub-type pub-journal">Journal Article</span></div>
       <h3 class="pub-title">TURNING IDYLLIC PANCHOR TOWN INTO A FUTURE RIVER TOURISM DESTINATION : WHAT DO THE LOCALS HAVE TO SAY ABOUT IT?</h3>
-      <div class="pub-venue">https://journals.iium.edu.my/enmjournal/index.php/enmj/index</div>
+      <div class="pub-authors"><b>Do Thuy Huong</b></div>
+      <div class="pub-venue">e-Journal of New Media (IIUM)</div>
     </article>
 <article class="pub" data-year="2025" data-type="Journal Article">
       <div class="pub-head"><span class="pub-year">2025</span><span class="pub-type pub-journal">Journal Article</span></div>
       <h3 class="pub-title">AI in Higher Education: Does AI Fear Hinder Learning Outcomes?</h3>
+      <div class="pub-authors">Cao Thanh Phong · <b>Do Thuy Huong</b> · Duong Quoc Thinh · Nguyen Thanh Hoang</div>
       <div class="pub-venue">2024 Artificial Intelligence Revolutions (AIR) · <a href="https://doi.org/10.1109/air63653.2024.00013" target="_blank" rel="noopener">DOI: 10.1109/air63653.2024.00013</a></div>
     </article>
 <article class="pub" data-year="2025" data-type="Journal Article">
       <div class="pub-head"><span class="pub-year">2025</span><span class="pub-type pub-journal">Journal Article</span></div>
       <h3 class="pub-title">Solutions for Sustainable Development of the Supply Chain of Mud Crab in the Mekong Delta</h3>
+      <div class="pub-authors">Danh Le Ngoc · Nguyen Thi Thu An · <b>Do Thuy Huong</b> · Tran Manh Hoang</div>
       <div class="pub-venue">Review of Finance</div>
     </article>
 <article class="pub" data-year="2024" data-type="Conference Paper">
       <div class="pub-head"><span class="pub-year">2024</span><span class="pub-type pub-conf">Conference Paper</span></div>
       <h3 class="pub-title">Internationalization and Firm Performance: A meta - analysis Review</h3>
+      <div class="pub-authors"><b>Do Thuy Huong</b> · Phan Anh Tu</div>
       <div class="pub-venue">The Sixth International Conference on Sustainable development in Economics, Business, and Finance</div>
     </article>
 <article class="pub" data-year="2024" data-type="Conference Paper">
       <div class="pub-head"><span class="pub-year">2024</span><span class="pub-type pub-conf">Conference Paper</span></div>
       <h3 class="pub-title">AI in Higher Education: Does AI Fear Hinder Learning Outcomes?</h3>
+      <div class="pub-authors">Cao Thanh Phong · <b>Do Thuy Huong</b> · Duong Quoc Thinh · Nguyen Thanh Hoang</div>
       <div class="pub-venue">Artificial Intelligence Revolution 2024 (AIR)</div>
     </article>
 <article class="pub" data-year="2024" data-type="Working Paper">
-      <div class="pub-head"><span class="pub-year">2024</span><span class="pub-type pub-other">Working Paper</span></div>
+      <div class="pub-head"><span class="pub-year">2024</span><span class="pub-type pub-preprint">Working Paper</span></div>
       <h3 class="pub-title">Nghiên cứu tác động của việc ứng dụng trí tuệ nhân tạo đến kết quả học tập của sinh viên ngành kinh tế Trường Đại học Sư phạm Kỹ thuật Vĩnh Long (MS: 2023.KT-L23)</h3>
-      <div class="pub-venue"><span class="pub-venue-na"> - </span></div>
+      <div class="pub-authors"><b>Do Thuy Huong</b> · Cao Thanh Phong</div>
+      <div class="pub-venue"></div>
     </article>
 <article class="pub" data-year="2024" data-type="Journal Article">
       <div class="pub-head"><span class="pub-year">2024</span><span class="pub-type pub-journal">Journal Article</span></div>
       <h3 class="pub-title">Các nhân tố tác động đến dòng vốn đầu tư trực tiếp nước ngoài vào Việt Nam giai đoạn từ năm 2013 đến năm 2022: Ứng dụng mô hình lực hấp dẫn</h3>
+      <div class="pub-authors"><b>Do Thuy Huong</b> · Nguyễn Phú Quí</div>
       <div class="pub-venue">Tạp chí Khoa học - VLUTE</div>
     </article>
 <article class="pub" data-year="2024" data-type="Conference Paper">
       <div class="pub-head"><span class="pub-year">2024</span><span class="pub-type pub-conf">Conference Paper</span></div>
       <h3 class="pub-title">Compassion, Self-Healing Psychological Well-being in the workplace: A study in Vietnam context</h3>
+      <div class="pub-authors">Cao Thanh Phong · <b>Do Thuy Huong</b> · Sébastien Point</div>
       <div class="pub-venue">European Academy of Management (EURAM)</div>
     </article>
 <article class="pub" data-year="2024" data-type="Review">
       <div class="pub-head"><span class="pub-year">2024</span><span class="pub-type pub-other">Review</span></div>
       <h3 class="pub-title">Nghiên cứu tác động của khuyến mại ảo đến cảm nhận và hành vi của người tiêu dùng đối với các sàn thương mại điện tử ở Việt Nam (T2023-L30)</h3>
-      <div class="pub-venue">Can Tho University</div>
+      <div class="pub-authors"><b>Do Thuy Huong</b></div>
+      <div class="pub-venue">Đại học Cần Thơ</div>
     </article>
 <article class="pub" data-year="2023" data-type="Journal Article">
       <div class="pub-head"><span class="pub-year">2023</span><span class="pub-type pub-journal">Journal Article</span></div>
       <h3 class="pub-title">The Impact of the Covid-19 Pandemic on the Business Performance of Construction Industry Enterprises in Can Tho City</h3>
+      <div class="pub-authors">Phan Anh Tu · Dinh Xuan Toan · Nguyen Kim Hanh · Chau Thi Le Duyen · <b>Do Thuy Huong</b></div>
       <div class="pub-venue">Journal of Law and Sustainable Development · <a href="https://doi.org/10.55908/sdgs.v11i12.1751" target="_blank" rel="noopener">DOI: 10.55908/sdgs.v11i12.1751</a></div>
     </article>
 <article class="pub" data-year="2021" data-type="Book Chapter">
       <div class="pub-head"><span class="pub-year">2021</span><span class="pub-type pub-chapter">Book Chapter</span></div>
       <h3 class="pub-title">Internationalization and Turkish Manufacturing Firm Performance - Does Managerial Personality Matter?</h3>
+      <div class="pub-authors">Phan Anh Tu · Le Khuong Ninh · <b>Do Thuy Huong</b></div>
       <div class="pub-venue">Accounting and Finance Innovations · <a href="https://doi.org/10.5772/intechopen.97432" target="_blank" rel="noopener">DOI: 10.5772/intechopen.97432</a></div>
     </article>
 <article class="pub" data-year="2021" data-type="Journal Article">
       <div class="pub-head"><span class="pub-year">2021</span><span class="pub-type pub-journal">Journal Article</span></div>
-      <h3 class="pub-title">The Moderating Effects ofthe Manager’s Characteristics and Financial Obstacles On Internationalization andFirm Performance in Poland</h3>
-      <div class="pub-venue">PalArch&#x27;s Journal of Archaeology of Egypt/ Egyptology</div>
-    </article>
-<article class="pub" data-year="2020" data-type="Journal Article">
-      <div class="pub-head"><span class="pub-year">2020</span><span class="pub-type pub-journal">Journal Article</span></div>
-      <h3 class="pub-title">Tác động của khoảng cách, quy mô thị trường và dòng vốn FDI vào Việt Nam giai đoạn 2006-2015 ứng dụng mô hình lực hấp dẫn</h3>
-      <div class="pub-venue">Tạp chí Quản lý và Kinh tế quốc tế</div>
+      <h3 class="pub-title">The Moderating Effects of the Manager’s Characteristics and Financial Obstacles On Internationalization and Firm Performance in Poland</h3>
+      <div class="pub-authors">Phan Anh Tu · Nguyen Van Song · Dinh Van Tien · Thai Van Ha · Nguyen Cong Tiep · Dao Quang Thang · Nguyen Van Luong · <b>Do Thuy Huong</b></div>
+      <div class="pub-venue">PalArch’s Journal of Archaeology of Egypt / Egyptology</div>
     </article>
 <article class="pub" data-year="2020" data-type="Journal Article">
       <div class="pub-head"><span class="pub-year">2020</span><span class="pub-type pub-journal">Journal Article</span></div>
       <h3 class="pub-title">The moderating effects of managers’ experience and gender on internationalization and firm performance of manufacturing enterprises in Turkey</h3>
+      <div class="pub-authors">Phan Anh Tu · <b>Do Thuy Huong</b> · Phan Minh Triet</div>
       <div class="pub-venue">Accounting · <a href="https://doi.org/10.5267/j.ac.2020.9.006" target="_blank" rel="noopener">DOI: 10.5267/j.ac.2020.9.006</a></div>
+    </article>
+<article class="pub" data-year="2020" data-type="Journal Article">
+      <div class="pub-head"><span class="pub-year">2020</span><span class="pub-type pub-journal">Journal Article</span></div>
+      <h3 class="pub-title">Tác động của khoảng cách, quy mô thị trường và dòng vốn FDI vào Việt Nam giai đoạn 2006-2015 ứng dụng mô hình lực hấp dẫn</h3>
+      <div class="pub-authors">Phan Anh Tu · <b>Do Thuy Huong</b></div>
+      <div class="pub-venue">Tạp chí Quản lý và Kinh tế quốc tế</div>
     </article>
 </main>
 
@@ -431,7 +893,12 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
   var arts=document.querySelectorAll('article.pub'), cnt=document.getElementById('pub-count');
   function filter(f){
     var n=0;arts.forEach(function(a){
-      if(f==='all'||a.getAttribute('data-type')===f||a.getAttribute('data-type').startsWith(f)){a.style.display='';n++;}else{a.style.display='none';}
+      /* data-f có thể là danh sách ngăn bằng dấu phẩy, để một nút gom được
+         mấy loại lẻ (working paper, review) mà nếu không thì không nút nào
+         với tới - trước đây hai mục ấy chỉ thấy khi bấm «Tất cả». */
+      var t=a.getAttribute('data-type');
+      var hop=f==='all'||f.split(',').some(function(x){return t===x||t.indexOf(x)===0;});
+      if(hop){a.style.display='';n++;}else{a.style.display='none';}
     });
     cnt.textContent=n+' / '+arts.length;
   }
