@@ -381,10 +381,14 @@ body.cham #ban-do canvas{width:84px;height:84px;pointer-events:none; }
 
 #tc-chan{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:.9rem;
   padding-top:.8rem;border-top:1px solid var(--vien)}
-#tc-tour{
+#tc-tour,#tc-ngam{
   padding:.5rem 1rem;border-radius:999px;background:#6B8F71;color:#fff;
-  font:700 .8rem 'Baloo 2',system-ui;
+  font:700 .8rem 'Baloo 2',system-ui;flex:none;
 }
+/* Nút ngắm toàn cảnh đứng cạnh nút tour nhưng khác màu: hai việc khác nhau -
+   một cái dẫn nhân vật đi, một cái nhấc máy quay lên khỏi nhân vật. */
+#tc-ngam{background:#5C7FBF}
+#tc-ngam:hover,#tc-tour:hover{filter:brightness(1.07)}
 #tc-tour:hover{background:#5C7F62}
 #tc-tour.dang{background:#E77E9A}
 #tc-meo{font-size:.74rem;color:var(--muc-nhat);line-height:1.45;flex:1 1 14rem;min-width:0}
@@ -432,6 +436,22 @@ body.dang-doc-khu #bd-thang,
 body.dang-doc-khu #ban-do,
 body.dang-doc-khu .th-side-actions,
 body.dang-doc-khu #th-onboarding-guide{display:none !important}
+/* Chế độ ngắm cảnh dọn sạch màn hình: ống kính dài nhìn toàn trang viên thì
+   mọi cụm nút đều là vật cản.
+
+   Liệt kê từng cụm thì không xuể và sẽ sót - năm mô-đun trò chơi tự gắn thẻ
+   của chúng vào body lúc chạy, nên danh sách viết tay luôn lạc hậu. Đã thử và
+   sót đúng bốn cụm. Nên làm ngược lại: ẩn mọi thứ ở cấp body, chừa đúng khung
+   vẽ và dòng mẹo. */
+body.dang-ngam > *:not(#san):not(#ngam-meo){display:none !important}
+#ngam-meo{
+  position:fixed; left:50%; bottom:calc(env(safe-area-inset-bottom,0px) + 26px);
+  transform:translateX(-50%); z-index:9600; display:none;
+  background:rgba(28,24,20,.6); color:#FFF8EE; backdrop-filter:blur(3px);
+  padding:.46rem 1rem; border-radius:999px; font:600 .82rem 'Be Vietnam Pro',system-ui;
+  letter-spacing:.01em; pointer-events:none;
+}
+body.dang-ngam #ngam-meo{display:block}
 /* The huong dan ba buoc va ban do toan canh deu nam giua man hinh, nen luc
    ban do mo thi the nap duoi no. Mo xong ban do la the hien lai. */
 body.dang-xem-ban-do #th-onboarding-guide,
@@ -676,6 +696,7 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important;z-index:920
   </div>
 </div>
 
+<div id="ngam-meo"></div>
 <div id="ban-do" title="Chọn điểm đến · Pick a destination"><canvas width="220" height="220"></canvas></div>
 <div id="bd-thang">
   <div id="bd-dau" role="button" tabindex="0" aria-label="Mở bảng chọn điểm đến">
@@ -704,6 +725,7 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important;z-index:920
     </div>
     <div id="tc-chan">
       <button type="button" id="tc-tour">🗺 Tour quanh vườn</button>
+      <button type="button" id="tc-ngam">🎞 Ngắm toàn cảnh</button>
       <p id="tc-meo"></p>
     </div>
   </div>
@@ -1122,7 +1144,18 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xBFE3EE);
 scene.fog = new THREE.Fog(0xC8E8F0, 55, 130);
 
-const camera = new THREE.PerspectiveCamera(46, innerWidth/innerHeight, .1, 300);
+/* Ống kính 46° là góc rộng của trò chơi bắn súng: phối cảnh mạnh, vật gần
+   phình ra, cả trang viên nhìn như đồ chơi rải trên bàn. Cảnh tháp mượn của
+   ThreeUI để 11° - gần như phép chiếu trực giao, đúng ngôn ngữ tranh kiến
+   trúc - nhưng 11° mà gắn lên máy quay bám nhân vật thì khách không định
+   hướng nổi, đi vài bước là lạc.
+
+   38° là chỗ dung hoà. Thu góc lại thì vật cũng nhỏ đi, nên khoảng cách máy
+   quay phải nhân lên tan(23°)/tan(19°) = 1,23 để khuôn hình giữ nguyên cỡ.
+   Chế độ ngắm cảnh mới thì được dùng ống kính dài thật, vì lúc ấy không phải
+   đi lại. */
+const GOC_ONG_KINH = 38, GOC_NGAM = 20;
+const camera = new THREE.PerspectiveCamera(GOC_ONG_KINH, innerWidth/innerHeight, .1, 300);
 let renderer;
 try{
   renderer = new THREE.WebGLRenderer({antialias:true, powerPreference:'high-performance'});
@@ -2803,6 +2836,11 @@ addEventListener('keydown', e=>{
   phim[e.key.toLowerCase()] = true;
   if(e.key === 'e' || e.key === 'E'){ if(!dangMo && khuGan) moBang(khuGan); }
   if(e.key === 'b' || e.key === 'B'){ doiXe(); }
+  if(e.key === 'c' || e.key === 'C'){ doiNgamCanh(); }
+  /* Bấm phím đi lại là thoát ngắm cảnh - khách muốn đi thì trả máy quay về
+     ngay, khỏi phải nhớ bấm gì. */
+  if(ngamCanh && ['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].includes(e.key.toLowerCase()))
+    doiNgamCanh(false);
   if(e.key === 'Escape' && dangMo) dongBang();
   const ki = parseInt(e.key);
   if(ki >= 1 && ki <= diemKhu.length && diemKhu[ki-1]) diToiKhu(diemKhu[ki-1].khu);
@@ -2812,8 +2850,46 @@ addEventListener('keyup', e=>{ phim[e.key.toLowerCase()] = false; });
 
 let tocDoAuto = 5.6;          // tốc độ tự đi: đi bộ - xem mục 10B để đổi khi đạp xe
 // camera khởi đầu đặt ngay tại đích (không lerp từ gốc) và lùi xa hơn lúc mở màn
-let xaDau = 16, tDau = 0;      // 16 đơn vị lúc đầu → dần thu về 8.2 sau ~2.5s
+let xaDau = 19.8, tDau = 0;    // 19,8 đơn vị lúc đầu → dần thu về 10,1 sau ~2,5s
 let gocMay = 0.6350;       // yaw camera - phía sau lưng nhân vật, nhìn vào vườn
+
+/* ---------- CHẾ ĐỘ NGẮM TOÀN CẢNH ----------
+   Máy quay rời nhân vật, bay chậm một vòng quanh trang viên bằng ống kính dài
+   20°. Đây là chỗ DUY NHẤT dùng được ống kính thật dài: lúc đi bộ mà góc hẹp
+   quá thì khách mất phương hướng, còn ở đây không phải đi đâu cả.
+
+   Khung bóng lúc ấy phải mở ra cả thế giới. Khung ±34 chạy theo tầm nhìn chỉ
+   hợp khi đi bộ; ở chế độ này cả trang viên nằm trong khuôn hình nên chỗ nào
+   mất bóng là thấy ngay. */
+const NGAM_BK = 104, NGAM_CAO = 50, NGAM_BONG = 58;
+let ngamCanh = false, ngamGoc = 2.1;
+function doiNgamCanh(bat){
+  const moi = (bat === undefined) ? !ngamCanh : !!bat;
+  if(moi === ngamCanh) return;
+  ngamCanh = moi;
+  document.body.classList.toggle('dang-ngam', ngamCanh);
+  camera.fov = ngamCanh ? GOC_NGAM : GOC_ONG_KINH;
+  camera.updateProjectionMatrix();
+  const nua = ngamCanh ? NGAM_BONG : BONG_NUA;
+  nang.shadow.camera.left = -nua; nang.shadow.camera.right = nua;
+  nang.shadow.camera.top  =  nua; nang.shadow.camera.bottom = -nua;
+  nang.shadow.camera.updateProjectionMatrix();
+  // Thoat thi dat lai may quay ngay sau lung, khong de no luot ve tu 104 don vi
+  if(!ngamCanh && camera.position) camera.position.__dat = false;
+  const m = document.getElementById('ngam-meo');
+  if(m) m.textContent = (typeof NG !== 'undefined' && NG === 'en')
+      ? 'Press C or an arrow key to walk again'
+      : 'Bấm C hoặc phím mũi tên để đi tiếp';
+  const b = document.getElementById('tc-ngam');
+  if(b) b.classList.toggle('dang', ngamCanh);
+  /* Mây bay ở độ cao 20-30, mà máy quay ngắm cảnh ở 50 và cách tâm 104 - có
+     đám rơi đúng trước ống kính, che nửa khuôn hình. Cất mây trong lúc ngắm;
+     trời vẫn còn dải gradient với mặt trời nên không trống. */
+  if(typeof may !== 'undefined') may.forEach(c=>{ c.visible = !ngamCanh; });
+  // Bấm phím C lúc bảng bản đồ đang mở thì bảng nằm đè lên khuôn hình
+  if(ngamCanh){ const d = document.getElementById('tc-dong'); if(d && document.getElementById('toancanh').classList.contains('mo')) d.click(); }
+  if(typeof apThoiKhac === 'function' && typeof thoiKhac !== 'undefined') apThoiKhac(thoiKhac);
+}
 let keo = null;
 const canT = document.getElementById('can'), canNut = canT.querySelector('i');
 let canVec = {x:0, y:0}, canId = null;
@@ -4143,8 +4219,13 @@ function apThoiKhac(k){
   thoiKhac = k;
   veTroi(cfg);
   scene.fog.color = new THREE.Color(cfg.suong);
-  scene.fog.near = cfg.suongGan != null ? cfg.suongGan : 55;
-  scene.fog.far  = cfg.suongXa  != null ? cfg.suongXa  : 130;
+  /* Ngắm toàn cảnh thì máy quay đứng cách tâm 104 đơn vị, mà sương vốn đặc
+     hẳn từ 130 - để nguyên thì cả trang viên chìm trong sương. Kéo xa ra gấp
+     2,6 lần. Tính ở đây chứ không tính lúc bật chế độ, để đổi thời khắc giữa
+     chừng vẫn đúng. */
+  const heSoSuong = (typeof ngamCanh !== 'undefined' && ngamCanh) ? 2.6 : 1;
+  scene.fog.near = (cfg.suongGan != null ? cfg.suongGan : 55) * heSoSuong;
+  scene.fog.far  = (cfg.suongXa  != null ? cfg.suongXa  : 130) * heSoSuong;
   nang.color = new THREE.Color(cfg.nangMau);
   nang.intensity = cfg.nangManh;
   datLechDen(cfg.nangViTri);
@@ -4670,10 +4751,23 @@ function vong(){
     else if(vTruoc > 1.5)           datBieuCam('vui');
   }
 
+  if(ngamCanh){
+    ngamGoc += dt * .05;
+    camera.position.set(Math.sin(ngamGoc)*NGAM_BK, NGAM_CAO, Math.cos(ngamGoc)*NGAM_BK);
+    camera.lookAt(0, 5, 0);
+    nang.target.position.set(0, 0, 0);
+    nang.position.set(nangLech.x, nangLech.y, nangLech.z);
+    vienSau.target.position.set(0, 0, 0);
+    vienSau.position.set(vienLech.x, vienLech.y, vienLech.z);
+    renderer.render(scene, camera);
+    tuDieuChinhChatLuong();
+    return;
+  }
+
   /* --- máy quay bám sau lưng --- */
-  const cao = phuongTien === 'xe' ? 4.6 : phuongTien === 'xuong' ? 4.2 : 3.8;
-  const xa  = phuongTien === 'xe' ? 10.5 : phuongTien === 'xuong' ? 9.6
-            : Math.max(8.2, xaDau - Math.min(tDau, 2.5) * 3.2);
+  const cao = phuongTien === 'xe' ? 5.2 : phuongTien === 'xuong' ? 4.7 : 4.3;
+  const xa  = phuongTien === 'xe' ? 12.9 : phuongTien === 'xuong' ? 11.8
+            : Math.max(10.1, xaDau - Math.min(tDau, 2.5) * 3.9);
   tamMay.set(nhanVat.position.x, nhanVat.position.y + 1.9, nhanVat.position.z);
   const mx = tamMay.x + Math.sin(gocMay)*xa;
   const mz = tamMay.z + Math.cos(gocMay)*xa;
@@ -5183,14 +5277,16 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
       '<span><i class="toi"></i>'+(vi()?'Hương đang ở đây':'Hương is here')+'</span>'+
       '<span><i class="da"></i>'+(vi()?'đã ghé':'visited')+'</span>'+
       '<span><i class="chua"></i>'+(vi()?'chưa ghé':'not yet')+'</span>';
+    const ngamBtn2 = document.getElementById('tc-ngam');
+    if(ngamBtn2) ngamBtn2.textContent = vi() ? '🎞 Ngắm toàn cảnh' : '🎞 Wide view';
     const chay = (typeof tourDangChay !== 'undefined' && tourDangChay);
     tourEl.className = chay ? 'dang' : '';
     tourEl.textContent = chay
       ? (vi()?'⏹ Dừng tour':'⏹ Stop tour')
       : (vi()?'🗺 Tour quanh vườn':'🗺 Tour the estate');
     meoEl.innerHTML = vi()
-      ? 'Số ở danh sách bên cạnh cũng là phím tắt: bấm <kbd>1</kbd>–<kbd>'+tong+'</kbd> để đi thẳng tới khu. <kbd>M</kbd> mở lại bản đồ này, <kbd>E</kbd> vào khu đang đứng cạnh.'
-      : 'The numbers beside the list are also shortcuts: press <kbd>1</kbd>–<kbd>'+tong+'</kbd> to walk to a zone. <kbd>M</kbd> reopens this map, <kbd>E</kbd> enters the zone you stand beside.';
+      ? 'Số ở danh sách bên cạnh cũng là phím tắt: bấm <kbd>1</kbd>–<kbd>'+tong+'</kbd> để đi thẳng tới khu. <kbd>M</kbd> mở lại bản đồ này, <kbd>C</kbd> ngắm toàn cảnh, <kbd>E</kbd> vào khu đang đứng cạnh.'
+      : 'The numbers beside the list are also shortcuts: press <kbd>1</kbd>–<kbd>'+tong+'</kbd> to walk to a zone. <kbd>M</kbd> reopens this map, <kbd>C</kbd> is the wide view, <kbd>E</kbd> enters the zone you stand beside.';
   }
 
   function veLai(){ veBanDoLon(); veDanhSach(); veChu(); }
@@ -5223,6 +5319,9 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
     if(typeof tourDangChay !== 'undefined' && tourDangChay){ huyTour(); veChu(); }
     else { batTour(); dong(); }
   });
+
+  const ngamBtn = document.getElementById('tc-ngam');
+  if(ngamBtn) ngamBtn.addEventListener('click', ()=>{ dong(); doiNgamCanh(true); });
 
   const nut = document.getElementById('nut-ban-do');
   if(nut) nut.addEventListener('click', ()=> dangMoTC ? dong() : mo());

@@ -292,6 +292,37 @@ và ảnh lấp kín cả khung trước khi vẽ viền.
 z 4,10 trước khung ở 3,9 thì vẫn bị khung che, vì mặt trước của khung ở 4,13.
 Phải 4,24.
 
+## Máy quay và chế độ ngắm toàn cảnh
+
+Ống kính đi bộ là **38°**, không phải 46° như trước. 46° là góc rộng của trò
+chơi bắn súng: phối cảnh mạnh, vật gần phình ra, cả trang viên nhìn như đồ
+chơi rải trên bàn. Cảnh tháp mượn của ThreeUI để **11°**, gần như phép chiếu
+trực giao — nhưng 11° gắn lên máy quay bám nhân vật thì khách mất phương
+hướng, đi vài bước là lạc.
+
+Thu góc lại thì vật cũng nhỏ đi, nên **khoảng cách máy quay phải nhân lên
+`tan(23°)/tan(19°) = 1,23`** mới giữ được cỡ khuôn hình. Độ cao nhân 1,12.
+Quên bước này thì nhân vật teo lại giữa màn hình.
+
+**Chế độ ngắm toàn cảnh** (`doiNgamCanh()`, phím `C`, nút trong bảng bản đồ):
+máy quay rời nhân vật, bay một vòng quanh trang viên ở bán kính 104, cao 50,
+ống kính **20°**. Đây là chỗ duy nhất dùng được ống kính thật dài. Ba thứ phải
+đổi theo, nếu không khuôn hình hỏng:
+
+- **Khung bóng mở ra ±58.** Khung ±34 chạy theo tầm nhìn chỉ hợp lúc đi bộ; ở
+  đây cả trang viên nằm trong khuôn hình nên chỗ nào mất bóng là thấy ngay.
+- **Sương kéo xa gấp 2,6 lần.** Sương vốn đặc hẳn từ 130 đơn vị, mà máy quay
+  đứng cách tâm 104 — để nguyên thì cả trang viên chìm trong sương. Tính hệ số
+  ngay trong `apThoiKhac()` chứ không tính lúc bật, để đổi thời khắc giữa
+  chừng vẫn đúng.
+- **Cất mây.** Mây bay ở độ cao 20–30 nên có đám rơi đúng trước ống kính, che
+  nửa khuôn hình.
+
+**Dọn màn hình thì làm ngược lại đừng liệt kê.** Năm mô-đun trò chơi tự gắn
+thẻ của chúng vào `body` lúc chạy, nên danh sách viết tay luôn lạc hậu — đã
+thử và sót đúng bốn cụm. Quy tắc dùng được là
+`body.dang-ngam > *:not(#san):not(#ngam-meo){display:none !important}`.
+
 ## Bảng màu trang viên
 
 ### Đếm màu cho đúng
