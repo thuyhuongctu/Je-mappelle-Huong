@@ -145,6 +145,10 @@ def check_links() -> list[str]:
             if href.startswith(SKIP_SCHEMES) or not href:
                 continue
             raw, _, frag = href.partition('#')
+            # Chuoi truy van khong phai mot phan ten tep: 'a.html?lang=en' van
+            # tro toi a.html. Truoc day kiem tra thang ca phan '?...' nen mot
+            # lien ket dung van bi bao la khong ton tai.
+            raw, _, _q = raw.partition('?')
             if not raw:
                 target = page                      # "#neo" tro chinh trang do
             else:
