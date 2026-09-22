@@ -545,6 +545,50 @@ của nó có `height:auto` chưa**. Thiếu, mà CSS lại đè `width`, thì c
 lấy nguyên con số trong thuộc tính và ảnh bị bóp ngang — `.anh-nv` trong
 `trangvien.html` đã vấp đúng thế: ảnh vuông 360×360 hiện ra thành 210×360.
 
+## Gỡ dấu chìm khỏi video
+
+Đã làm một lần cho dấu bốn cánh của Gemini ở `assets/video/trangvien-intro.mp4`.
+Ghi lại vì cách làm đúng khác hẳn cách làm đầu tiên nghĩ ra.
+
+**Đừng bôi xoá.** `delogo` của ffmpeg nội suy từ mép hộp, nên trên nền có nét —
+song cửa gỗ, lá sen — nó để lại một vệt nhoè trôi theo khung hình. Dấu chìm ở
+đây là **một lớp màu phủ có độ phủ cố định**, nên giải ngược được:
+
+    nền = (quan sát − α·trắng) / (1 − α)
+
+Khớp α thế nào: chọn những khung mà **vành quanh dấu chìm phẳng** (độ gồ ghề
+< 9 mức), coi nền dưới dấu bằng trung vị vành, rồi bình phương tối thiểu qua
+tất cả các khung ấy. Ở đây 81 khung, nền trải từ 20,7 tới 208,7 — đủ rộng để
+α không bị nền nào kéo lệch. Kết quả α tối đa 0,567; sai số còn lại trong lõi
+3,4 mức sáng.
+
+Ba chỗ đã vấp:
+
+- **Một khung không đủ.** Lấy α từ riêng thẻ kết (nền kem phẳng) thì ba kênh
+  R/G/B ra ba giá trị khác nhau 0,10 — dấu hiệu mô hình sai. Giải bằng **hai
+  nền phẳng rất khác nhau** (kem 229 và gỗ sẫm 48) thì ba kênh khớp nhau trong
+  0,003, và lộ ra lớp phủ đúng là **trắng**.
+- **Làm trong RGB thì sao còn ngả đỏ.** Vì video là `yuv420p`: màu chỉ có nửa
+  độ phân giải nên vệt màu của dấu chìm nhoè rộng hơn chính nó. Cách đúng là
+  **tách ra**: kênh sáng thì giải ngược, hai kênh màu thì **lấp lại** từ xung
+  quanh (nới mặt nạ thêm 2 px). Màu vốn trơn nên lấp không mất gì.
+- **Viền tối quanh sao** là nhiễu nén của bản gốc bị khuếch đại `1/(1−α)` ≈ 2,3
+  lần. Lấp riêng **dải mép** (nơi `|∇α| > 0,03`, ở đây 608 điểm = 0,066% khung
+  hình) bằng nghiệm Laplace, giữ nguyên phần lõi đã giải đúng.
+
+**Thước đo dùng được là tương quan với chính mặt nạ dấu chìm**, không phải
+«trung bình trong hộp so với vành» — thước sau đo nội dung cảnh chứ không đo
+dấu chìm, và đã cho kết quả vô nghĩa một lần (khung 24 ra −45 trong khi ảnh
+nhìn hoàn toàn bình thường). Đo tương quan: **0,862 → 0,071**, trong khi nền
+nhiễu tự nhiên đo ở sáu ô không hề có dấu chìm là 0,021. SSIM so bản gốc 0,989.
+
+Ảnh bìa cắt ra từ video cũng mang dấu chìm — nhớ dựng lại. Tìm đúng khung đã
+cắt bằng tương quan toàn ảnh (ở đây khung 49, giống 0,9998), và chọn chất lượng
+WebP sao cho **PSNR khớp bản cũ** (q=84 cho 39,28 dB so với 39,23 dB).
+
+Gỡ dấu chìm không đổi nguồn gốc tác phẩm: chỗ ghi nhận là `THIRD-PARTY.md`, và
+SynthID chìm vẫn còn trong tệp.
+
 ## Trước khi thêm tệp mới
 
 Đối chiếu đã. Nhiều tệp gửi tới hoá ra trùng với tệp đã có trong kho, hoặc là
