@@ -1472,7 +1472,7 @@ Je regarde seulement le ciel que tu n’as jamais quitté.</p>
 </div>
 
 <script>(function(){var r=document.documentElement;/* nho lua chon bang khoa huong_theme nhu trang chu, de ca trang cung mot che do */try{var s=localStorage.getItem('huong_theme');if(s)r.setAttribute('data-theme',s);}catch(e){}document.getElementById('tg').addEventListener('click',function(){var c=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('huong_theme',n);}catch(e2){}});})();</script>
-<script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="vi";try{s=localStorage.getItem("huong_lang")||"en";}catch(e){}set(s);})();</script>
+<script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="en";try{s=localStorage.getItem("huong_lang")||"en";}catch(e){}set(s);})();</script>
 <script>
 // Chỉ phát một bản tại một thời điểm
 document.querySelectorAll('audio').forEach(function(a){

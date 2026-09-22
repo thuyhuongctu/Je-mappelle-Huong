@@ -888,7 +888,7 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
 
 </div>
 <script>document.getElementById('tg').addEventListener('click',function(){var r=document.documentElement;var c=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('huong_theme',n);}catch(e){}});</script>
-<script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="vi";try{s=localStorage.getItem("huong_lang")||"en";}catch(e){}set(s);})();
+<script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="en";try{s=localStorage.getItem("huong_lang")||"en";}catch(e){}set(s);})();
 (function(){
   var arts=document.querySelectorAll('article.pub'), cnt=document.getElementById('pub-count');
   function filter(f){
