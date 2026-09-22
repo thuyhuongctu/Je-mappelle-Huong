@@ -39,6 +39,7 @@ research, teaching and open educational software.
 - [Technology](#technology)
 - [Repository structure](#repository-structure)
 - [Running locally and deployment](#running-locally-and-deployment)
+- [Privacy and security](#privacy-and-security)
 - [Authoring tools](#authoring-tools)
 - [How to cite](#how-to-cite)
 - [License and third-party components](#license-and-third-party-components)
@@ -150,20 +151,35 @@ playful half of the site, reachable by one link from the academic home.
 ├── cv.html                  Printable CV
 ├── garden.html              Digital garden: the map, character, music, globe
 ├── blog.html                Academic news blog
-├── trangvien.html           3D garden scene
-├── songbook.html            Songbook with synchronised lyrics
-├── music.html               Recordings
-├── audio.html               Audio index
-├── assets/                  css, js, img, audio, vendored libraries
-├── deck-ecosystem/          Ecosystem slide deck and design specification
-├── design-demos/            Design directions and approval record
-├── docs/                    Supporting documentation
+├── journey.html             Creative journal: how the site was made
+├── trangvien.html           3D estate scene
+├── music.html               Recordings, song list and synchronised lyrics
+├── audio.html               Narration studio: record the tour voice (VI/EN/FR)
+├── so-luu-niem.html         Guest book: a curated wall, plus a form to write in
+├── 404.html                 Recovers old and mis-cased URLs back into the site
+├── songbook.html            Redirect stub → music.html (old URL kept alive)
+├── quan-ly-songbook.html    Redirect stub → music.html (old URL kept alive)
+│
+├── assets/                  css, js, img, audio, data, vendored libraries
+│   └── vendor/              three.js r128 — the only third-party script, kept
+│                            in-repo so no page calls an external CDN
+├── scripts/                 rebuild-sitemap.py, check-site.py (integrity check)
+├── .github/workflows/       check-site.yml (every PR), update-sitemap.yml
+│
+├── deck-ecosystem/          Ecosystem slide deck, PDF export and design spec
+├── design-demos/            Design directions and the approval record
+├── docs/                    Working notes: music-video plan, estate work log
+├── ban-cu/                  Earlier versions kept on purpose — see its README
+├── ho-so-quyen-tac-gia/     Copyright-registration dossier (drafts, no ID data)
+│
 ├── icons/                   Application icon set
 ├── manifest.webmanifest     Web application manifest
 ├── sw.js                    Service worker (versioned offline cache)
-├── scripts/                 rebuild-sitemap.py, check-site.py (integrity check)
 ├── zenodo-stats.js          Live Zenodo download statistics
-└── sitemap.xml, robots.txt  Search-engine metadata
+├── sitemap.xml, robots.txt  Search-engine metadata
+├── CITATION.cff             Citation metadata (GitHub "Cite this repository")
+├── LICENSE, THIRD-PARTY.md  Terms of use; inventory of third-party components
+└── CLAUDE.md                Repository conventions for the coding assistant
 ```
 
 ## Running locally and deployment
@@ -179,6 +195,32 @@ installation prompt; individual pages also open directly from the file system.
 
 Deployment is handled by GitHub Pages from the repository's default branch at
 the root path. No build or release pipeline is involved.
+
+## Privacy and security
+
+The site is **static**. There is no server, no database, no login and no
+content-management system: GitHub Pages returns files exactly as they are
+committed here. A visitor therefore has no way to alter what anyone else sees —
+the only route to changing a page is write access to this repository, which is
+governed by GitHub account security and branch protection, not by anything in
+the code.
+
+What the site does, precisely:
+
+| Concern | How it stands |
+|---|---|
+| Credentials in the repository | None. No API key, token or password is used by any page; the site calls no authenticated service. |
+| Personal data | Only what the author publishes deliberately: name, affiliation, ORCID and a public contact address. The copyright dossier in `ho-so-quyen-tac-gia/` carries drafts only; identity-document fields are left as `«…»` placeholders, and `ho-so-quyen-tac-gia/rieng-tu/` is excluded by `.gitignore` for filled-in paperwork. |
+| Third-party scripts | None loaded from a CDN. three.js r128 is vendored in `assets/vendor/`, so no page depends on an external host that could change its contents under a fixed URL. |
+| Visitor-supplied text | The guest book wall is a curated file, `assets/data/so-luu-niem.json`, edited by hand after reading each message. Entries are rendered with `textContent`, never `innerHTML`, so no submitted text can execute as markup. The write box posts directly to a Google Form owned by the author; nothing is published automatically. |
+| Stored in the browser | `localStorage` only, for the visitor's own language (`huong_lang`) and theme (`huong_theme`) choice, and game progress in the 3D estate. Never read back by the site's author; no cookie is set. |
+| Analytics | [GoatCounter](https://www.goatcounter.com/), which collects no personal data and sets no cookie. |
+| Continuous integration | `check-site.yml` runs on pull requests with `permissions: contents: read` and `persist-credentials: false`, so an untrusted branch cannot obtain a writable token. `update-sitemap.yml` needs `contents: write` but fires only on pushes to the default branch or by manual dispatch. |
+
+`python3 scripts/check-site.py` guards three failure modes that are invisible
+in a browser: a service worker pre-caching a file that no longer exists, a
+sitemap that has drifted from the pages it describes, and internal links or
+anchors left pointing nowhere after a rename. It runs on every pull request.
 
 ## Authoring tools
 
