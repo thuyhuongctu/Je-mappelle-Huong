@@ -96,11 +96,18 @@ giả đối với tác phẩm này, tôi xin chịu trách nhiệm giải quy�
 ## Ghi chú khi điền
 
 **Về mục 2 — chỗ quan trọng nhất của giấy này.** Đây là căn cứ để tác phẩm
-không thuộc về đơn vị sử dụng lao động. Nếu trong hợp đồng lao động hoặc quy
-chế của trường có điều khoản về sở hữu trí tuệ đối với sản phẩm do giảng viên
-tạo ra, **nên đọc lại trước khi ký giấy này**. Trường hợp điều khoản ấy rộng
-tới mức bao cả sản phẩm ngoài giờ, cần trao đổi với trường để có văn bản xác
-nhận, tránh tranh chấp về sau.
+không thuộc về đơn vị sử dụng lao động.
+
+**Đã đối chiếu (22/09/2026).** Tác giả xác nhận **hợp đồng lao động không có
+điều khoản nào về sở hữu trí tuệ** đối với sản phẩm do người lao động tạo ra,
+và tác phẩm được tạo bằng **tài chính và thời gian cá nhân**. Như vậy không có
+thoả thuận nào kéo tác phẩm về phía đơn vị sử dụng lao động, và cam đoan ở mục
+2 có căn cứ thực tế chứ không chỉ là lời khai.
+
+Còn một chỗ chưa đối chiếu: ngoài hợp đồng, nhiều trường còn có **quy chế nội
+bộ về sở hữu trí tuệ** ban hành riêng, không nhắc trong hợp đồng nhưng vẫn ràng
+buộc. Nên hỏi phòng tổ chức cán bộ xem trường có quy chế ấy không; nếu có thì
+đọc điều khoản về sản phẩm ngoài giờ.
 
 Nếu trường sẵn lòng, **một văn bản của trường xác nhận tác phẩm nằm ngoài nhiệm
 vụ được giao** sẽ làm hồ sơ vững hơn hẳn so với chỉ có cam đoan của cá nhân.
