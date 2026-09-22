@@ -114,14 +114,36 @@ Gemini đang dùng, vì có gói buộc giữ nguyên dấu hiệu ấy.
 
 ## 5. Bộ chữ
 
+Hai bộ chữ, dùng cho trang viên 3D và ba bản demo bố cục. **Từ 22/09/2026 cả
+hai được chép vào kho, không còn nạp từ Google Fonts** — trước đó mỗi khách
+ghé đều gửi địa chỉ IP sang `fonts.googleapis.com` trước khi trang kịp vẽ chữ
+đầu tiên. Trang này không có máy chủ và không đặt cookie, nên không có lý do
+gì để địa chỉ ấy đi đâu khác.
+
 ### Be Vietnam Pro
 
 | | |
 | --- | --- |
-| Nạp từ | Google Fonts (`fonts.googleapis.com`) |
-| Giấy phép | SIL Open Font License 1.1 |
+| Tác giả | Be Type (Việt Nam) — Copyright 2021 The Be Vietnam Pro Project Authors |
+| Nguồn | <https://github.com/bettergui/BeVietnamPro>, lấy qua kho `google/fonts` (`ofl/bevietnampro`) |
+| Trong kho | `assets/fonts/bevietnampro-{400,500,600,700}-vn.woff2` |
+| Giấy phép | SIL Open Font License 1.1 — toàn văn ở `assets/fonts/OFL-BeVietnamPro.txt` |
 
-Không có tệp phông nào được chép vào kho; trang nạp thẳng từ Google Fonts.
+### Baloo 2
+
+| | |
+| --- | --- |
+| Tác giả | Ek Type (Ấn Độ) — Copyright 2019 The Baloo 2 Project Authors |
+| Nguồn | <https://github.com/EkType/Baloo2>, lấy qua kho `google/fonts` (`ofl/baloo2`) |
+| Trong kho | `assets/fonts/baloo2-vn.woff2` (phông biến thiên, trục `wght` 500–800) |
+| Giấy phép | SIL Open Font License 1.1 — toàn văn ở `assets/fonts/OFL-Baloo2.txt` |
+
+Cả hai đã **cắt bớt** xuống dải Latin + Latin mở rộng + tiếng Việt, giữ nguyên
+bảng `mark`/`mkmk` để dấu tiếng Việt vẫn chồng đúng chỗ. OFL cho phép sửa và
+phân phối lại với điều kiện giữ giấy phép và **không dùng lại tên dành riêng**;
+hai bộ này không đặt Reserved Font Name nào, và tên họ chữ giữ nguyên.
+
+Khai báo `@font-face` nằm ở `assets/css/fonts.css`.
 
 ---
 

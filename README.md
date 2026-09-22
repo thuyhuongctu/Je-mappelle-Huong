@@ -161,8 +161,10 @@ playful half of the site, reachable by one link from the academic home.
 ├── quan-ly-songbook.html    Redirect stub → music.html (old URL kept alive)
 │
 ├── assets/                  css, js, img, audio, data, vendored libraries
-│   └── vendor/              three.js r128 — the only third-party script, kept
-│                            in-repo so no page calls an external CDN
+│   ├── vendor/              three.js r128 — the only third-party script, kept
+│   │                        in-repo so no page calls an external CDN
+│   └── fonts/               Be Vietnam Pro and Baloo 2, subset to Vietnamese
+│                            and self-hosted; no page calls Google Fonts
 ├── scripts/                 rebuild-sitemap.py, check-site.py (integrity check)
 ├── .github/workflows/       check-site.yml (every PR), update-sitemap.yml
 │
@@ -212,6 +214,7 @@ What the site does, precisely:
 | Credentials in the repository | None. No API key, token or password is used by any page; the site calls no authenticated service. |
 | Personal data | Only what the author publishes deliberately: name, affiliation, ORCID and a public contact address. The copyright dossier in `ho-so-quyen-tac-gia/` carries drafts only; identity-document fields are left as `«…»` placeholders, and `ho-so-quyen-tac-gia/rieng-tu/` is excluded by `.gitignore` for filled-in paperwork. |
 | Third-party scripts | None loaded from a CDN. three.js r128 is vendored in `assets/vendor/`, so no page depends on an external host that could change its contents under a fixed URL. |
+| Web fonts | Self-hosted in `assets/fonts/`. No page contacts Google Fonts, so a visitor's IP address is never sent to a font server before the first character is drawn. |
 | Visitor-supplied text | The guest book wall is a curated file, `assets/data/so-luu-niem.json`, edited by hand after reading each message. Entries are rendered with `textContent`, never `innerHTML`, so no submitted text can execute as markup. The write box posts directly to a Google Form owned by the author; nothing is published automatically. |
 | Stored in the browser | `localStorage` only, for the visitor's own language (`huong_lang`) and theme (`huong_theme`) choice, and game progress in the 3D estate. Never read back by the site's author; no cookie is set. |
 | Analytics | [GoatCounter](https://www.goatcounter.com/), which collects no personal data and sets no cookie. |
@@ -302,6 +305,8 @@ not covered by the reservation above:
 | Component | Use | Licence |
 |---|---|---|
 | [three.js](https://threejs.org/) r128 | 3D scenes, vendored in `assets/vendor/` | MIT |
+| [Be Vietnam Pro](https://github.com/bettergui/BeVietnamPro) | Body typeface, subset into `assets/fonts/` | OFL 1.1 |
+| [Baloo 2](https://github.com/EkType/Baloo2) | Display typeface, subset into `assets/fonts/` | OFL 1.1 |
 | [huashu-design](https://github.com/alchaincyf/huashu-design) | Design skill, `.claude/skills/` | MIT |
 | [OpenMontage](https://github.com/calesthio/OpenMontage) | External video tool, not vendored | AGPL-3.0 |
 
