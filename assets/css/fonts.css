@@ -1,0 +1,62 @@
+/* =======================================================================
+   Hai bộ chữ của trang viên, tự chứa trong kho — không gọi Google Fonts.
+   -----------------------------------------------------------------------
+   Vì sao: `<link>` tới fonts.googleapis.com gửi địa chỉ IP của mọi khách
+   ghé sang Google trước khi trang kịp vẽ chữ đầu tiên. Trang này không có
+   máy chủ, không đặt cookie, không có gì để Google cần biết.
+
+   Tệp ở `assets/fonts/`, cắt từ bản gốc trong kho `google/fonts` xuống
+   dải Latin + Latin mở rộng + tiếng Việt (giữ nguyên `mark`/`mkmk` để dấu
+   tiếng Việt vẫn chồng đúng chỗ). Cả năm tệp cộng lại 200 KB.
+
+   `Baloo2[wght]` là **phông biến thiên**: một tệp lo cả bốn độ đậm
+   500-800, nên khai `font-weight: 500 800` chứ không phải một con số.
+   Be Vietnam Pro không có bản biến thiên nên vẫn là bốn tệp tĩnh.
+
+   `font-display: swap` để chữ hiện ngay bằng phông hệ thống rồi mới đổi —
+   trang không bao giờ trắng chữ trong lúc chờ.
+
+   Giấy phép: cả hai theo SIL Open Font License 1.1, toàn văn ở
+   `assets/fonts/OFL-Baloo2.txt` và `assets/fonts/OFL-BeVietnamPro.txt`.
+   ===================================================================== */
+
+@font-face {
+  font-family: 'Baloo 2';
+  src: url('../fonts/baloo2-vn.woff2') format('woff2-variations'),
+       url('../fonts/baloo2-vn.woff2') format('woff2');
+  font-weight: 500 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('../fonts/bevietnampro-400-vn.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('../fonts/bevietnampro-500-vn.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('../fonts/bevietnampro-600-vn.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('../fonts/bevietnampro-700-vn.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

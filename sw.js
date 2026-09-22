@@ -1,5 +1,5 @@
 /* Service worker - Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v136';
+const CACHE = 'jshuong-v137';
 const CORE = [
   './',
   'index.html',
@@ -22,6 +22,15 @@ const CORE = [
   'assets/js/so-luu-niem.js',
   'assets/data/so-luu-niem.json',
   'assets/css/site-chrome.css',
+  // Hai bo chu tu chua trong kho. Phai nam trong CORE vi trangvien.html
+  // duoc luu san: thieu font thi ngoai tuyen trang viên roi ve phong he thong.
+  // Ca sau tep cong lai 203 KB, tuc CORE tang 4,2%.
+  'assets/css/fonts.css',
+  'assets/fonts/baloo2-vn.woff2',
+  'assets/fonts/bevietnampro-400-vn.woff2',
+  'assets/fonts/bevietnampro-500-vn.woff2',
+  'assets/fonts/bevietnampro-600-vn.woff2',
+  'assets/fonts/bevietnampro-700-vn.woff2',
   'manifest.webmanifest',
   'assets/img/huong_clay_portrait.webp',
   'assets/img/vn-map-3d.webp',
