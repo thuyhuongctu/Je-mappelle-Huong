@@ -245,7 +245,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
   var bt=document.querySelectorAll('.langtog button[data-lang]');
   function set(l){ document.documentElement.setAttribute('lang',l); bt.forEach(function(x){ x.classList.toggle('active', x.getAttribute('data-lang')===l); }); try{localStorage.setItem('huong_lang',l);}catch(e){} bang(); }
   bt.forEach(function(x){ x.addEventListener('click', function(){ set(x.getAttribute('data-lang')); }); });
-  var s='vi'; try{ s = localStorage.getItem('huong_lang') || 'en'; }catch(e){}
+  var s='en'; try{ s = localStorage.getItem('huong_lang') || 'en'; }catch(e){}
   set(s); bang();
 })();</script>
 
