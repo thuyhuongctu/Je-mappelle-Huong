@@ -474,7 +474,7 @@ body.dang-di:not(.dang-doc-khu):not(.dang-ngam) .hud-phu{
    chèo xuồng ra khỏi trang viên. Đây là thứ khách mang về. */
 #cua-bien{
   position:fixed; left:50%; top:26%; transform:translate(-50%,-10px);
-  z-index:9700; max-width:min(30rem, calc(100vw - 2.4rem));
+  z-index:9700; max-width:min(30rem, calc(100vw - 2.4rem)); width:max-content;
   background:rgba(28,24,20,.72); color:#FFF8EE; backdrop-filter:blur(6px);
   padding:1.05rem 1.35rem; border-radius:1.1rem; text-align:center;
   font:400 .95rem/1.55 'Be Vietnam Pro',system-ui; letter-spacing:.005em;
@@ -1722,10 +1722,10 @@ function hienCuaBien(){
   const el = document.getElementById('cua-bien'); if(!el) return;
   const vi = document.documentElement.lang !== 'en';
   el.innerHTML = vi
-    ? '<b>Cửa sông</b>Từ đây là biển lớn. Tôi nghiên cứu chuyện doanh nghiệp '
-      + 'Việt bước ra thế giới — và điều gì xảy ra với họ sau đó.'
-    : '<b>The river mouth</b>Beyond it, the open sea. I study Vietnamese firms '
-      + 'venturing abroad — and what becomes of them after.';
+    ? '<b>Cửa sông</b>Con sông nào cũng ra biển. Nhưng không phải doanh nghiệp '
+      + 'nào ra biển cũng lớn lên — đó là câu hỏi tôi theo đuổi.'
+    : '<b>The river mouth</b>Every river reaches the sea. But not every firm '
+      + 'that ventures out grows from it — that is the question I follow.';
   el.classList.add('hien');
   clearTimeout(hienCuaBien._h);
   hienCuaBien._h = setTimeout(() => el.classList.remove('hien'), 11000);
