@@ -78,7 +78,31 @@ mảnh, `currentColor`, các chấm đánh dấu quần đảo — là của tá
 
 ---
 
-## 4. Bộ chữ
+## 4. Video giới thiệu trang viên
+
+### `assets/video/trangvien-intro.mp4`
+
+| | |
+| --- | --- |
+| Phần **hình** | Do **Google Gemini** sinh ra từ lời nhắc của tác giả |
+| Phần **tiếng** | Trích từ «Mekong Sunfire — Rise with the River», **tác phẩm của tác giả** |
+| Ghép và nén | Tác giả |
+
+Đây là chỗ dễ nhầm nên ghi tách bạch: **phần hình không phải tác phẩm của tác
+giả**. Nó do một công cụ sinh ảnh động tạo ra, nên theo điều khoản của Google
+về nội dung sinh ra, không theo [`LICENSE`](LICENSE) của kho này. Phần nhạc
+nền thì ngược lại — là bài hát của tác giả.
+
+**Không nằm trong phạm vi đăng ký quyền tác giả** đối với trang viên, cùng lý
+do với cảnh tháp ở mục 2: cái được đăng ký là cảnh 3D do tác giả dựng, không
+phải đoạn phim giới thiệu nó.
+
+Ảnh bìa `assets/img/trangvien-intro-poster.webp` cắt từ chính video này nên
+cùng tình trạng.
+
+---
+
+## 5. Bộ chữ
 
 ### Be Vietnam Pro
 
@@ -91,7 +115,7 @@ Không có tệp phông nào được chép vào kho; trang nạp thẳng từ G
 
 ---
 
-## 5. Dịch vụ ngoài
+## 6. Dịch vụ ngoài
 
 ### GoatCounter
 
@@ -104,7 +128,7 @@ Là dịch vụ gọi từ xa, không phải mã trong kho.
 
 ---
 
-## 6. Không thuộc tác phẩm
+## 7. Không thuộc tác phẩm
 
 Thư mục `.claude/skills/` chứa mười một bộ hướng dẫn soạn thảo của bên thứ ba
 (`hallmark`, `huashu-design`, `h3-prompt-writing`, và các bộ khác). Chúng là
@@ -127,7 +151,7 @@ web dùng tới. Xem [`ban-cu/README.md`](ban-cu/README.md).
 
 ---
 
-## 7. Phần thuộc về tác giả
+## 8. Phần thuộc về tác giả
 
 Mọi thứ còn lại. Đo tại thời điểm lập bản kiểm kê này:
 
@@ -140,7 +164,7 @@ Mọi thứ còn lại. Đo tại thời điểm lập bản kiểm kê này:
 | CSS | 443 dòng |
 | Ảnh WebP (gồm ảnh nhân vật do tác giả dựng) | 86 tệp |
 | Ghi âm | 113 tệp |
-| Video | 12 tệp |
+| Video | **12** tệp (kho có 13; `trangvien-intro.mp4` ở mục 4 là của bên thứ ba) |
 
 Cảnh 3D trang viên — bố cục tám khu, mặt đất theo màu đỉnh, mạng lối mòn, bốn
 thời khắc ánh sáng, bộ kiến trúc dùng chung, chế độ ngắm toàn cảnh, tám bức vẽ
