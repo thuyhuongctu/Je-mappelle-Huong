@@ -100,6 +100,16 @@ phải đoạn phim giới thiệu nó.
 Ảnh bìa `assets/img/trangvien-intro-poster.webp` cắt từ chính video này nên
 cùng tình trạng.
 
+**Đã gỡ dấu hiệu bốn cánh của Gemini** khỏi góc dưới phải — một lớp trắng mờ
+48×48 điểm ảnh, độ phủ 0,57 ở lõi, đè lên cả 240 khung hình. Gỡ bằng cách khớp
+độ phủ trên 81 khung có nền phẳng rồi giải ngược phép trộn, không phải bôi xoá.
+Ảnh bìa dựng lại từ khung đã gỡ.
+
+Gỡ dấu hiệu **không** làm phần hình trở thành tác phẩm của tác giả: nguồn gốc
+khai ở ngay mục này mới là chỗ ghi nhận, và dấu chìm SynthID mà Google nhúng
+sẵn thì vẫn còn trong tệp. Trước khi dùng rộng rãi nên đối chiếu điều khoản gói
+Gemini đang dùng, vì có gói buộc giữ nguyên dấu hiệu ấy.
+
 ---
 
 ## 5. Bộ chữ
