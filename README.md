@@ -13,6 +13,19 @@ research, teaching and open educational software.
 
 **[▶ Live site: thuyhuongctu.github.io/Je-mappelle-Huong](https://thuyhuongctu.github.io/Je-mappelle-Huong/)**
 
+<br>
+
+<a href="https://thuyhuongctu.github.io/Je-mappelle-Huong/trangvien.html">
+  <img src="assets/img/trangvien-intro-poster.webp" width="560"
+       alt="Do Thuy Huong in a white ao dai rowing a boat of lotus flowers past stilt houses and bamboo bridges, from the introduction to the 3D estate">
+</a>
+
+**Trang viên — the 3D estate**
+
+[▶ Watch the 10-second introduction](assets/video/trangvien-intro.mp4) · [Step into the estate](https://thuyhuongctu.github.io/Je-mappelle-Huong/trangvien.html)
+
+<sub>Visuals generated with Google Gemini; music by the author. See [`THIRD-PARTY.md`](THIRD-PARTY.md#4-video-giới-thiệu-trang-viên).</sub>
+
 </div>
 
 ---

@@ -1,7 +1,7 @@
 # Brand spec — Hệ sinh thái «Je m'appelle Hương»
 
 ## Chủ thể
-Đỗ Thùy Hương — giảng viên, NCS tiến sĩ QTKD (Đại học Cần Thơ). Hệ sinh thái học thuật số
+Đỗ Thùy Hương — NCS tiến sĩ QTKD (Đại học Cần Thơ). Hệ sinh thái học thuật số
 gồm luận án + 4 phần mềm mở có mặt trên Zenodo/GitHub Pages.
 
 ## Tài sản thật (đã có trong repo, không cần lấy thêm)
