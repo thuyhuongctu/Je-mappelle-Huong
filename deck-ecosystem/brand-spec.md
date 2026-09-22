@@ -15,7 +15,7 @@ gồm luận án + 4 phần mềm mở có mặt trên Zenodo/GitHub Pages.
 - M-AIDA: 109 views · 5 downloads · DOI 10.5281/zenodo.21282516
 - BizOn: 70 views · 10 downloads · DOI 10.5281/zenodo.21592241
 - GitHub: 464 commits / 6 repos riêng tháng 8/2026; tham gia 31/12/2025
-- Luận án: quốc tế hóa & hiệu quả DN, dữ liệu 50 nền kinh tế (WBES)
+- Luận án: quốc tế hóa & hiệu quả hoạt động kinh doanh của doanh nghiệp, dữ liệu 50 nền kinh tế (WBES)
 
 ## Vùng cấm
 - Không tím gradient AI-slop, không emoji thay icon, không bịa số liệu
