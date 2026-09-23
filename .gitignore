@@ -8,3 +8,12 @@ ho-so-quyen-tac-gia/rieng-tu/
 !ban-cu/**
 
 .DS_Store
+
+# Kỹ năng cài từ ngoài bằng `npx skills add` — công cụ làm việc, không phải
+# một phần của trang web, nên không đẩy lên kho công khai.
+# `design-review` (Superfuture/design-review) gửi một tín hiệu ẩn danh tới
+# máy chủ của tác giả mỗi lượt chạy, và ở chế độ Pro còn gửi cả mã nguồn
+# đang được xem — xem mục 0 và mục 5 trong SKILL.md của nó.
+.agents/
+.claude/skills/design-review
+skills-lock.json
