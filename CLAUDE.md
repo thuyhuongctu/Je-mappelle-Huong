@@ -589,6 +589,29 @@ WebP sao cho **PSNR khớp bản cũ** (q=84 cho 39,28 dB so với 39,23 dB).
 Gỡ dấu chìm không đổi nguồn gốc tác phẩm: chỗ ghi nhận là `THIRD-PARTY.md`, và
 SynthID chìm vẫn còn trong tệp.
 
+## Văn phòng nghiên cứu có HAI bản, phải sửa cả hai
+
+`vanphong.html` trong kho này và `index.html` của kho
+`thuyhuongctu/van-phong-nghien-cuu` là **cùng một tệp**. Kho riêng là bản
+chính thức để trích dẫn (có DOI Zenodo); bản ở đây là bản trưng bày trong hệ
+sinh thái trang cá nhân.
+
+Khác nhau đúng **hai chỗ**, và chỉ hai chỗ ấy:
+
+- hai liên kết về trang chủ (`href="index.html"`) đổi thành địa chỉ tuyệt đối
+  `https://thuyhuongctu.github.io/Je-mappelle-Huong/`;
+- kho riêng có thêm `README.md`, `LICENSE`, `CITATION.cff`, `THIRD-PARTY.md`,
+  `manifest.webmanifest` riêng và quy trình dựng Pages riêng.
+
+Sửa nội dung văn phòng thì **chép sang cả hai rồi kiểm cả hai**. Quên một bên
+thì bản có DOI và bản đang chạy nói khác nhau — mà DOI là thứ người ta trích
+dẫn. Lý do tách kho ghi ở `ho-so-quyen-tac-gia/05-ung-vien-tiep-theo.md`.
+
+Kho riêng **tự chứa**: three.js, năm tệp phông, sáu tranh nhân vật đều chép
+sang. Thêm một tệp mới vào văn phòng thì phải chép cả tệp ấy sang kho riêng,
+nếu không bản có DOI sẽ 404 đúng chỗ ấy mà bản ở đây vẫn chạy bình thường —
+lại thêm một kiểu hỏng âm thầm.
+
 ## Trước khi thêm tệp mới
 
 Đối chiếu đã. Nhiều tệp gửi tới hoá ra trùng với tệp đã có trong kho, hoặc là
