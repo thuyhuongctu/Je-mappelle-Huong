@@ -51,6 +51,41 @@ lộ ra, cả hồ sơ mất giá trị; nêu ra thì phần thuộc về tác g
 > phương án đều do tôi đặt ra yêu cầu, xem xét và quyết định giữ lại hay sửa
 > đổi.
 
+### A.3b. Phần âm nhạc: mười ba bản thu được dựng bằng công cụ sinh nhạc
+
+Đo ngày 26/09/2026, đọc thẳng thẻ ID3 của **toàn bộ 87 tệp mp3** trong kho:
+
+| | |
+| --- | --- |
+| Tệp tự khai trong thẻ ghi chú là dựng bằng công cụ sinh nhạc | **13** |
+| Tệp có thẻ ID3 nhưng không khai gì | 73 |
+| Tệp không có thẻ ID3 | 1 |
+
+Mười ba tệp ấy nằm rải ở cả album lẫn thư mục `assets/audio/bizon/`, trong đó
+có `vua-du-de-bay-cao.mp3` — một trong bốn bài được `LICENSE` của kho BizOn
+nêu đích danh.
+
+Nói ra ở đây vì hai lẽ, đúng theo nguyên tắc đã viết ở A.2 là **không giấu
+việc có dùng công cụ**:
+
+1. **Đây là chuyện chung của mười ba tệp, không phải của riêng bài nào.** Có
+   lúc `THIRD-PARTY.md` từng khai riêng một bài «Returning to Shore» là bản
+   thu do máy sinh, trong khi mười hai tệp cùng loại thì không khai. Khai một
+   mà bỏ mười hai thì vừa không nhất quán vừa gợi sai rằng những tệp kia là
+   loại khác. Nay gom về đây, chỗ nói về công cụ.
+
+2. **Công cụ, không phải đồng tác giả.** Phần do tác giả quyết định là **lời
+   bài hát, bố cục bài, và việc chọn giữ hay bỏ từng bản dựng** — cùng loại
+   quyết định như đã liệt kê ở A.3. Đó là phần đứng vững khi đăng ký. Phần
+   giai điệu và giọng hát do máy dựng ra thì không nên đưa vào phạm vi đăng
+   ký, giống như cảnh tháp ở mục B.2 đã cố ý để ngoài.
+
+**Việc cần làm:** khi hỏi Cục Bản quyền tác giả về mục A.4, hỏi luôn cách khai
+phần âm nhạc — đăng ký **lời** như tác phẩm văn học thì rõ ràng hơn là đăng ký
+cả bản ghi âm.
+
+---
+
 ### A.4. Hai điều nên cân nhắc trước khi nộp
 
 **Thứ nhất — mức độ mô tả.** Càng mô tả cụ thể các quyết định sáng tạo của
