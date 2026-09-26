@@ -94,7 +94,12 @@ canvas{display:block;width:100vw;height:100vh;touch-action:none}
 #thoai{position:fixed;left:50%;transform:translateX(-50%);
        bottom:max(12px,env(safe-area-inset-bottom));width:min(640px,94vw);
        padding:16px 18px;z-index:40;display:none}
-#thoai header{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px}
+#thoai header{display:flex;align-items:center;gap:11px;margin-bottom:8px}
+#thoai header .ten-vai{flex:1;min-width:0}
+/* Chân dung dùng ĐÚNG chỗ nó hợp: ảnh trong kho là bán thân cắt ngang vai,
+   dựng đứng giữa phòng thì thành cái đầu lơ lửng. */
+#chdung{width:46px;height:46px;border-radius:50%;flex:0 0 auto;object-fit:cover;
+        object-position:top center;border:2px solid var(--line);background:var(--paper);display:none}
 #thoai h2{margin:0;font:700 .98rem var(--hien);color:var(--clay)}
 #thoai .vai{font-size:.7rem;color:var(--muted)}
 #loi{margin:0 0 10px;font-size:.84rem;line-height:1.62;max-height:34vh;overflow-y:auto;
@@ -155,7 +160,7 @@ html[lang=fr] .l-en{display:inline}
 </div>
 
 <div id="thoai" class="hop" role="dialog" aria-modal="false" aria-labelledby="ten">
-  <header><h2 id="ten"></h2><span class="vai" id="vai"></span></header>
+  <header><img id="chdung" alt=""><span class="ten-vai"><h2 id="ten"></h2><br><span class="vai" id="vai"></span></span></header>
   <div id="loi"></div>
   <div id="hoi"></div>
   <p id="ghi"></p>
@@ -262,77 +267,86 @@ var NGUOI = [
         a: { vi: 'CVP Studio làm đồ thị CVP, điểm hòa vốn, lợi nhuận mục tiêu và biên an toàn. CMR Lab làm số dư đảm phí và đòn bẩy kinh doanh. Hai buổi chuyên đề khác nhau, dùng được độc lập.',
              en: 'CVP Studio covers the CVP chart, break-even, target profit and margin of safety. CMR Lab covers contribution margin and operating leverage. Two separate sessions, each usable on its own.' } },
       { q: { vi: 'Các nhân vật ở đây là người thật à?', en: 'Are the people here real?' },
-        a: { vi: 'Chỉ mình là người thật. Năm người còn lại là nhân vật hư cấu của đội demo BizOn — năm vai trong trò chơi, không ứng với ai ngoài đời. Trang này cố ý không đưa đồng nghiệp hay người hướng dẫn vào, vì đó là chuyện phải hỏi ý họ trước.',
-             en: "Only me. The other five are fictional characters from the BizOn demo team — five roles in the game, not portraits of anyone. This page deliberately leaves out colleagues and supervisors, because that would need their consent first." } },
+        a: { vi: 'Chỉ mình là người thật. Năm người còn lại là nhân vật của trang viên — Mai, Linh, Tùng, An và Minh — hư cấu cả, không ứng với ai ngoài đời. Trang này cố ý không đưa đồng nghiệp hay người hướng dẫn vào, vì đó là chuyện phải hỏi ý họ trước.',
+             en: "Only me. The other five are characters from the estate — Mai, Linh, Tung, An and Minh — all fictional, not portraits of anyone. This page deliberately leaves out colleagues and supervisors, because that would need their consent first." } },
       { q: { vi: 'Trang này có gửi gì ra ngoài không?', en: 'Does this page send anything out?' },
         a: { vi: 'Không. Không một lời gọi mạng nào. Mọi câu trả lời nằm sẵn trong tệp, three.js lấy từ bản chép trong kho, bộ chữ cũng tự chứa. Đóng mạng thì trang vẫn chạy y hệt.',
              en: 'No. Not a single network call. Every answer is written into the file, three.js is served from a copy in the repository, and the fonts are self-hosted too. Pull the network and the page behaves identically.' } }
     ]
   },
   {
-    id: 'ceo', ten: 'Minh Long', vai: { vi: 'CEO · đội demo', en: 'CEO · demo team' },
+    id: 'mai', ten: 'Mai', vai: { vi: 'Người nghiên cứu thực địa', en: 'Field researcher' },
+    anh: 'assets/img/npc-mai.webp',
     cho: [-5.2, -1.0], ao: '#3f6f68', quan: '#2d3a36', da: '#e8bd97', toc: '#241a12',
-    chao: { vi: 'Mình là Minh Long, CEO của đội demo trong BizOn. Nhân vật hư cấu thôi nhé.',
-            en: "I'm Minh Long, CEO of the demo team inside BizOn. A fictional character, mind you." },
+    chao: { vi: 'Mình là Mai, người nghiên cứu thực địa của trang viên. Mình lo phần số liệu.',
+            en: "I'm Mai, the estate's field researcher. The data side is mine." },
     hoi: [
-      { q: { vi: 'Một ván BizOn diễn ra thế nào?', en: 'How does a round of BizOn go?' },
-        a: { vi: 'Năm đội cùng chạy trên một thị trường đa tác tử, lõi tài chính tất định. Mỗi vòng là một chuỗi quyết định chiến lược, rồi số liệu phản ứng lại. Học phần EC1314 dùng bản này.',
-             en: 'Five teams share one multi-agent market with a deterministic finance core. Each round is a chain of strategic decisions, then the numbers answer back. Course EC1314 uses it.' } },
-      { q: { vi: 'Vì sao lõi tài chính phải tất định?', en: 'Why must the finance core be deterministic?' },
-        a: { vi: 'Vì cùng một chuỗi quyết định phải luôn cho cùng một kết quả. Có thế giảng viên mới chấm được lập luận của sinh viên, và mới đem ra thảo luận lại sau buổi học.',
-             en: 'Because the same chain of decisions must always give the same result. Only then can an instructor grade the reasoning, and revisit it in a debrief.' } }
+      { q: { vi: 'Số liệu của luận án lấy từ đâu?', en: 'Where does the dissertation data come from?' },
+        a: { vi: 'Khảo sát doanh nghiệp của Ngân hàng Thế giới — WBES — trên 50 nền kinh tế châu Á - Thái Bình Dương, ghép với bộ chỉ số quản trị toàn cầu WGI theo cặp quốc gia - năm.',
+             en: 'The World Bank Enterprise Surveys across 50 Asia-Pacific economies, matched to the Worldwide Governance Indicators by country-year.' } },
+      { q: { vi: 'Vì sao phải ghép theo cặp quốc gia - năm?', en: 'Why match by country-year?' },
+        a: { vi: 'Vì chất lượng thể chế đổi theo thời gian. Ghép đúng năm khảo sát thì mới nói được doanh nghiệp ấy hoạt động trong môi trường thể chế nào, chứ không phải môi trường của mười năm sau.',
+             en: 'Because institutional quality changes over time. Matching the survey year is what lets you say which institutional setting a firm actually operated in — not the one ten years later.' } }
     ]
   },
   {
-    id: 'cfo', ten: 'Thu Hà', vai: { vi: 'CFO · đội demo', en: 'CFO · demo team' },
+    id: 'linh', ten: 'Linh', vai: { vi: 'Người giữ Thư viện sáng tạo', en: 'Keeper of the Creative Library' },
+    anh: 'assets/img/npc-linh.webp',
     cho: [5.0, -1.0], ao: '#b8842c', quan: '#4a3a24', da: '#f2cba6', toc: '#2b1d12',
-    chao: { vi: 'Thu Hà, phụ trách tài chính của đội demo. Mình là nhân vật hư cấu.',
-            en: "Thu Ha, finance for the demo team. I'm a fictional character." },
+    chao: { vi: 'Linh đây, mình giữ Thư viện sáng tạo. Hỏi mình chuyện công bố với tài liệu.',
+            en: "Linh here, I keep the Creative Library. Ask me about publications and materials." },
     hoi: [
-      { q: { vi: 'Điểm hòa vốn nói lên điều gì?', en: 'What does break-even tell you?' },
-        a: { vi: 'Mức doanh thu mà lãi bằng không. Dưới ngưỡng ấy thì mỗi sản phẩm bán thêm vẫn chưa bù hết định phí. CVP Studio vẽ đúng đồ thị này.',
-             en: 'The revenue level where profit is zero. Below it, each extra unit still has not covered fixed costs. CVP Studio draws exactly this chart.' } },
-      { q: { vi: 'Biên an toàn để làm gì?', en: 'What is margin of safety for?' },
-        a: { vi: 'Đo xem doanh thu được phép tụt bao nhiêu trước khi chạm hòa vốn. Biên mỏng nghĩa là một quý kém cũng đủ làm lỗ.',
-             en: 'It measures how far revenue may fall before it touches break-even. A thin margin means a single weak quarter is enough to turn a loss.' } }
+      { q: { vi: 'Tìm danh mục công bố đầy đủ ở đâu?', en: 'Where is the full publication list?' },
+        a: { vi: 'Trang Công bố có danh mục lọc được theo loại và theo năm. Bản chính thức thì nằm trên ORCID — đó mới là chỗ trích dẫn.',
+             en: 'The publications page has the list, filterable by type and year. The authoritative record is on ORCID — that is what you cite.' } },
+      { q: { vi: 'M-AIDA có phải phần mềm mở không?', en: 'Is M-AIDA open source?' },
+        a: { vi: 'Có, mã nguồn mở và lưu trữ trên Zenodo. Nó trích xuất mức độ ảnh hưởng từ PDF bằng mô hình ngôn ngữ lớn, nhưng 100% được người kiểm lại rồi mới khoá bất biến.',
+             en: 'Yes — open-source and archived on Zenodo. It extracts effect sizes from PDFs with large language models, but every one is human-verified before it is locked.' } }
     ]
   },
   {
-    id: 'cmo', ten: 'Lan Chi', vai: { vi: 'CMO · đội demo', en: 'CMO · demo team' },
+    id: 'tung', ten: 'Tùng', vai: { vi: 'Người làm ở Dự án đang mở', en: 'Open Projects maker' },
+    anh: 'assets/img/npc-tung.webp',
     cho: [-5.0, 3.0], ao: '#c45c3a', quan: '#3a2a22', da: '#f0c49f', toc: '#3a2415',
-    chao: { vi: 'Lan Chi, phụ trách thị trường. Nhân vật hư cấu của đội demo.',
-            en: 'Lan Chi, marketing. A fictional character from the demo team.' },
+    chao: { vi: 'Tùng, mình làm ở khu Dự án đang mở. Phần mềm nào cũng qua tay mình.',
+            en: "Tung. I work in Open Projects — every piece of software passes through here." },
     hoi: [
-      { q: { vi: 'Chọn thị trường quốc tế dựa vào gì?', en: 'How do you choose an international market?' },
-        a: { vi: 'Trong Hộ Chiếu Thương Hiệu, mỗi thị trường có quy mô, thuế suất và mức độ số hóa riêng. Không có thị trường nào tốt nhất — chỉ có thị trường hợp với năng lực xuất phát của doanh nghiệp.',
-             en: 'In Brand Passport each market has its own size, tariff and digital-readiness level. No market is best — only a market that fits the firm’s starting capabilities.' } },
-      { q: { vi: 'Vì sao thị trường gần lại dễ hơn?', en: 'Why is a nearby market easier?' },
-        a: { vi: 'Khoảng cách văn hóa nhỏ thì chi phí thích nghi nhỏ. Lần đầu ra khơi, chọn thị trường gần về văn hóa để học trước — rồi mới đi xa.',
-             en: 'Less cultural distance means less adaptation cost. On a first venture abroad, pick a culturally near market to learn in — then go further.' } }
+      { q: { vi: 'Có những phần mềm nào?', en: 'What software is there?' },
+        a: { vi: 'M-AIDA cho phương pháp nghiên cứu, BizOn cho mô phỏng kinh doanh, EnQuiz cho khởi nghiệp, ComDraft cho kỹ năng soạn thảo, và hai phòng lab CVP Studio với CMR Lab cho phân tích hoạt động kinh doanh.',
+             en: 'M-AIDA for research methods, BizOn for business simulation, EnQuiz for entrepreneurship, ComDraft for document drafting, and two labs — CVP Studio and CMR Lab — for business performance analysis.' } },
+      { q: { vi: 'Học phần Kinh doanh quốc tế dùng cái nào?', en: 'Which one does International Business use?' },
+        a: { vi: 'Hộ Chiếu Thương Hiệu — mô phỏng quốc tế hóa sáu quý. Bảng trên tường kia kể bảy phương thức thâm nhập và lý thuyết neo cho từng bậc.',
+             en: 'Brand Passport — a six-quarter internationalization simulation. The board on that wall lists the seven entry modes and the theory anchoring each rung.' } }
     ]
   },
   {
-    id: 'coo', ten: 'Bảo Ngọc', vai: { vi: 'COO · đội demo', en: 'COO · demo team' },
+    id: 'an', ten: 'An', vai: { vi: 'Người giữ Bảng tin', en: 'Noticeboard archivist' },
+    anh: 'assets/img/npc-an.webp',
     cho: [5.0, 3.2], ao: '#6b7f5a', quan: '#32392a', da: '#e9bf9b', toc: '#271a11',
-    chao: { vi: 'Bảo Ngọc, vận hành. Mình cũng là nhân vật hư cấu.',
-            en: "Bao Ngoc, operations. I'm a fictional character too." },
+    chao: { vi: 'An, mình giữ Bảng tin. Có gì mới mình đều ghi lại.',
+            en: "An, I keep the noticeboard. Anything new gets written down here." },
     hoi: [
-      { q: { vi: 'Đòn bẩy kinh doanh là gì?', en: 'What is operating leverage?' },
-        a: { vi: 'Tỉ trọng định phí trong cơ cấu chi phí. Định phí càng lớn thì lợi nhuận càng nhạy với doanh thu — lên thì lên nhanh, xuống cũng xuống nhanh. CMR Lab đo cái này.',
-             en: 'The weight of fixed costs in the cost structure. The larger they are, the more profit swings with revenue — fast up, fast down. CMR Lab measures it.' } }
+      { q: { vi: 'Trang này có gửi gì ra ngoài không?', en: 'Does this page send anything out?' },
+        a: { vi: 'Không một lời gọi mạng nào. Câu trả lời nằm sẵn trong tệp, three.js lấy từ bản chép trong kho, bộ chữ cũng tự chứa. Đóng mạng thì trang chạy y hệt.',
+             en: 'Not a single network call. The answers are written into the file, three.js is served from a copy in the repository, and the fonts are self-hosted. Pull the network and nothing changes.' } },
+      { q: { vi: 'Các nhân vật ở đây là ai?', en: 'Who are the people here?' },
+        a: { vi: 'Hương là người thật. Còn bốn người kia với mình là nhân vật của trang viên — Mai, Linh, Tùng và Minh — cùng một nhà, chỉ sang đây làm việc.',
+             en: 'Huong is real. The rest of us — Mai, Linh, Tung, Minh and me — are the estate\'s characters, from the same household, just working over here.' } }
     ]
   },
   {
-    id: 'sec', ten: 'Gia Hân', vai: { vi: 'Thư ký pháp chế · đội demo', en: 'Legal secretary · demo team' },
+    id: 'minh', ten: 'Minh', vai: { vi: 'Người giữ bến nhạc', en: 'Keeper of the music dock' },
+    anh: 'assets/img/npc-minh.webp',
     cho: [-4.2, 6.4], ao: '#7a6a8c', quan: '#332c3c', da: '#f2cdaa', toc: '#20160f',
-    chao: { vi: 'Gia Hân, pháp chế của đội demo. Nhân vật hư cấu.',
-            en: 'Gia Han, legal for the demo team. A fictional character.' },
+    chao: { vi: 'Minh, giữ bến nhạc. Ở đây yên quá thì ghé bến mình.',
+            en: "Minh, keeper of the music dock. If it is too quiet here, come down to the dock." },
     hoi: [
-      { q: { vi: 'Nhượng quyền khác cấp phép ở chỗ nào?', en: 'How does franchising differ from licensing?' },
-        a: { vi: 'Cấp phép là cho dùng một quyền — sáng chế, nhãn hiệu. Nhượng quyền là cho dùng cả mô hình kinh doanh kèm ràng buộc vận hành. Kiểm soát nhiều hơn, mà nghĩa vụ cũng nặng hơn.',
-             en: 'Licensing grants the use of one right — a patent, a trademark. Franchising grants a whole business model with operating obligations attached. More control, heavier duties.' } }
+      { q: { vi: 'Bến nhạc có gì?', en: 'What is at the music dock?' },
+        a: { vi: 'Trang Âm nhạc: 27 bản thu, sáu bài chính cùng một bản bonus, có cả phần lời và ghi chú về từng bài.',
+             en: 'The music page: 27 recordings, six main tracks plus a bonus, with lyrics and notes for each.' } }
     ]
   }
+
 ];
 
 /* =============================== CẢNH 3D ================================== */
@@ -760,6 +774,7 @@ function chamVao(e) {
 /* =============================== HỘI THOẠI ================================ */
 var elThoai = document.getElementById('thoai'), elTen = document.getElementById('ten'),
     elVai = document.getElementById('vai'), elLoi = document.getElementById('loi'),
+    elCD = document.getElementById('chdung'),
     elHoi = document.getElementById('hoi'), elGhi = document.getElementById('ghi'),
     elDong = document.getElementById('dong'), elNhac = document.getElementById('nhac');
 var dangMo = null, gan = null, daHoi = [];
@@ -777,6 +792,8 @@ function veBangThoai(g, moi) {
   var n = g.userData.n;
   elTen.textContent = n.ten;
   elVai.textContent = L(n.vai);
+  if (n.anh) { elCD.src = n.anh; elCD.alt = n.ten; elCD.style.display = 'block'; }
+  else elCD.style.display = 'none';
   elLoi.innerHTML = '';
   var p = document.createElement('p');
   p.className = 'ai';
@@ -803,8 +820,8 @@ function veBangThoai(g, moi) {
   elGhi.textContent = n.chu
     ? L({ vi: 'Câu trả lời viết sẵn, lấy từ chính các trang khác của site. Trang này không gọi mạng.',
           en: 'Answers are written in advance, drawn from other pages of this site. This page makes no network calls.' })
-    : L({ vi: 'Nhân vật hư cấu của đội demo BizOn — không ứng với người thật nào.',
-          en: 'A fictional character from the BizOn demo team — not a portrait of any real person.' });
+    : L({ vi: 'Nhân vật của trang viên — hư cấu, không ứng với người thật nào.',
+          en: "A character from the estate — fictional, not a portrait of any real person." });
   elDong.textContent = L({ vi: 'Đóng', en: 'Close' });
 }
 function veNhacNho() {

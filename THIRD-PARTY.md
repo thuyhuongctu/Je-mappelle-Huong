@@ -121,6 +121,7 @@ Gemini đang dùng, vì có gói buộc giữ nguyên dấu hiệu ấy.
 | Bản khởi đầu | Do **Grok (xAI)** sinh ra từ lời nhắc của tác giả — một tệp HTML rời và một workspace React |
 | Bản trong kho | Tác giả viết lại, **không dùng lại mã của bản kia** |
 | Lời thoại | Tác giả viết, lấy từ chính các trang khác của kho này |
+| Tranh nhân vật | `assets/img/huong-ai-chao.webp` và năm chân dung `assets/img/npc-*.webp` — đều đã có sẵn trong kho này |
 | three.js | Bản chép trong kho, xem mục 1 |
 
 Ghi tách bạch vì hai bản khác nhau rất xa. Bản do máy sinh không dùng thẳng
