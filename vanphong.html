@@ -288,6 +288,7 @@ var NGUOI = [
   {
     id: 'mai', ten: 'Mai', vai: { vi: 'Người nghiên cứu thực địa', en: 'Field researcher' },
     anh: 'assets/img/npc-mai.webp',
+    dung: 'assets/img/npc-mai-dung.webp', dungTL: 0.3707,
     cho: [-5.2, -1.0], ao: '#3f6f68', quan: '#2d3a36', da: '#e8bd97', toc: '#241a12',
     chao: { vi: 'Mình là Mai, người nghiên cứu thực địa của trang viên. Mình lo phần số liệu.',
             en: "I'm Mai, the estate's field researcher. The data side is mine." },
@@ -303,6 +304,7 @@ var NGUOI = [
   {
     id: 'linh', ten: 'Linh', vai: { vi: 'Người giữ Thư viện sáng tạo', en: 'Keeper of the Creative Library' },
     anh: 'assets/img/npc-linh.webp',
+    dung: 'assets/img/npc-linh-dung.webp', dungTL: 0.3476,
     cho: [5.0, -1.0], ao: '#b8842c', quan: '#4a3a24', da: '#f2cba6', toc: '#2b1d12',
     chao: { vi: 'Linh đây, mình giữ Thư viện sáng tạo. Hỏi mình chuyện công bố với tài liệu.',
             en: "Linh here, I keep the Creative Library. Ask me about publications and materials." },
@@ -318,6 +320,7 @@ var NGUOI = [
   {
     id: 'tung', ten: 'Tùng', vai: { vi: 'Người làm ở Dự án đang mở', en: 'Open Projects maker' },
     anh: 'assets/img/npc-tung.webp',
+    dung: 'assets/img/npc-tung-dung.webp', dungTL: 0.4549,
     cho: [-5.0, 3.0], ao: '#c45c3a', quan: '#3a2a22', da: '#f0c49f', toc: '#3a2415',
     chao: { vi: 'Tùng, mình làm ở khu Dự án đang mở. Phần mềm nào cũng qua tay mình.',
             en: "Tung. I work in Open Projects — every piece of software passes through here." },
@@ -333,6 +336,7 @@ var NGUOI = [
   {
     id: 'an', ten: 'An', vai: { vi: 'Người giữ Bảng tin', en: 'Noticeboard archivist' },
     anh: 'assets/img/npc-an.webp',
+    dung: 'assets/img/npc-an-dung.webp', dungTL: 0.3610, dungPhan: 0.857,
     cho: [5.0, 3.2], ao: '#6b7f5a', quan: '#32392a', da: '#e9bf9b', toc: '#271a11',
     chao: { vi: 'An, mình giữ Bảng tin. Có gì mới mình đều ghi lại.',
             en: "An, I keep the noticeboard. Anything new gets written down here." },
@@ -348,6 +352,7 @@ var NGUOI = [
   {
     id: 'minh', ten: 'Minh', vai: { vi: 'Người giữ bến nhạc', en: 'Keeper of the music dock' },
     anh: 'assets/img/npc-minh.webp',
+    dung: 'assets/img/npc-minh-dung.webp', dungTL: 0.4085,
     cho: [-4.2, 6.4], ao: '#7a6a8c', quan: '#332c3c', da: '#f2cdaa', toc: '#20160f',
     chao: { vi: 'Minh, giữ bến nhạc. Ở đây yên quá thì ghé bến mình - máy trên bàn đang có sẵn một bài.',
             en: "Minh, keeper of the music dock. If it is too quiet here, come down to the dock - there is a track cued up on the desk." },
@@ -359,8 +364,8 @@ var NGUOI = [
     },
     hoi: [
       { q: { vi: 'Bài đang có trên máy là bài gì?', en: 'What is the track on the player?' },
-        a: { vi: '«Returning to Shore» - trở về bờ, một đĩa đơn ngoài album. Lời là của chị Hương; còn bản thu thì do máy sinh, chính tệp mp3 tự khai «made with suno» trong thẻ ghi chú của nó. Ghi rõ ở đây vì hai thứ ấy khác chủ.',
-             en: '«Returning to Shore», a single outside the album. The lyrics are the author\'s; the recording is machine-generated - the mp3 declares «made with suno» in its own comment tag. Said plainly here because those two have different owners.' } },
+        a: { vi: '«Returning to Shore» - trở về bờ, một đĩa đơn ngoài album, lời và nhạc của chị Hương, thu tháng 9/2026. Phần lời và ghi chú đầy đủ nằm ở trang Âm nhạc.',
+             en: '«Returning to Shore», a single outside the album - words and music by Hương, recorded in September 2026. The full lyrics and notes are on the music page.' } },
       { q: { vi: 'Bến nhạc có gì?', en: 'What is at the music dock?' },
         a: { vi: 'Trang Âm nhạc: 28 bản thu, sáu bài chính cùng một bản bonus, có cả phần lời và ghi chú về từng bài.',
              en: 'The music page: 28 recordings, six main tracks plus a bonus, with lyrics and notes for each.' } }
@@ -672,16 +677,27 @@ var ANH_CAO   = 1.95;
 
 function nhanVatMoi(n) {
   var g = new T.Group();
-  if (n.chu) {
-    /* Hương dùng chính tranh nhân vật của chị, đã có sẵn trong kho này và
-       thuộc giấy phép của kho này. KHÔNG dùng tạo hình từ kho BizOn: giấy
-       phép BizOn khai «Tạo hình các nhân vật: Lumina…, Đội Demo 5 thành
-       viên» là tài sản ĐỒNG SỞ HỮU của hai tác giả, bảo lưu mọi quyền. */
-    var tx = new T.TextureLoader().load(ANH_NGUOI);
+  /* Ai có tranh toàn thân thì dựng bằng ảnh phẳng; ai chưa có thì vẫn là khối
+     đất sét ở nhánh dưới. Tranh của Hương vốn đã có trong kho này và thuộc
+     giấy phép của kho này; bốn tranh npc-*-dung.webp là tranh của chính tác
+     giả, tách nền từ ảnh nguồn nền đen. KHÔNG dùng tạo hình từ kho BizOn:
+     giấy phép BizOn khai «Tạo hình các nhân vật: Lumina…, Đội Demo 5 thành
+     viên» là tài sản ĐỒNG SỞ HỮU của hai tác giả. */
+  if (n.chu || n.dung) {
+    var tep = n.dung || ANH_NGUOI;
+    var tl  = n.dung ? n.dungTL : ANH_TL;   /* đo thẳng từ tệp, không chép tay */
+    /* dungPhan: phần chiều cao ảnh mà NGƯỜI chiếm. Tranh của An chụp cả cái
+       bục gỗ dưới chân, và không cắt rời được - màu giày [109,68,49] chỉ cách
+       màu gỗ [75,58,46] có 35,6, riêng giày phải gần như trùng màu gỗ. Nên
+       thay vì cắt, phóng ảnh to lên theo tỉ lệ ấy rồi dìm phần bục xuống dưới
+       mặt sàn; sàn che đi, người vẫn cao đúng 1,95 như mọi người khác. */
+    var phan = n.dungPhan || 1;
+    var cao  = ANH_CAO / phan;
+    var tx = new T.TextureLoader().load(tep);
     if (T.sRGBEncoding !== undefined) tx.encoding = T.sRGBEncoding;
     var sp = new T.Sprite(new T.SpriteMaterial({ map: tx, transparent: true }));
-    sp.scale.set(ANH_CAO * ANH_TL, ANH_CAO, 1);
-    sp.position.y = ANH_CAO / 2;
+    sp.scale.set(cao * tl, cao, 1);
+    sp.position.y = cao / 2 - (cao - ANH_CAO);
     g.add(sp);
     g.position.set(n.cho[0], 0, n.cho[1]);
     g.userData = { n: n, goc: new T.Vector3(n.cho[0], 0, n.cho[1]),

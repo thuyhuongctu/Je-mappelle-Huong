@@ -6,7 +6,20 @@ ENGLISH
 This repository and the website it produces — including the source code, the
 written content, the design, the images and the "Hương AI" character artwork,
 the audio recordings, and the slide decks — are the copyrighted work of the
-author.
+author, with one exception stated below.
+
+JOINTLY OWNED MATERIAL. Two bodies of work in this repository are jointly owned
+by Đỗ Thùy Hương AND Phan Anh Tú, and all rights in them are reserved to both:
+
+  - the character artwork of the BizOn project (Lumina / "Je m'appelle Hương",
+    Tú Phan, and the five-member demo team), wherever it appears; and
+  - the twenty sound recordings in assets/audio/bizon/, which include
+    "Hương on Return", "Vừa Đủ Để Bay Cao", "Hương sans frontières" and
+    "Bật Nghiệp".
+
+This matches the LICENSE of the repository thuyhuongctu/BizOn, so that the two
+licences now say the same thing about the same material. Permission for any use
+of that material must come from both authors.
 
 The material is published so that it can be read, consulted and cited. It is
 NOT released under an open-source or open-content licence.
@@ -50,7 +63,20 @@ TIẾNG VIỆT
 
 Toàn bộ kho mã và trang web sinh ra từ kho mã này — bao gồm mã nguồn, nội dung
 chữ viết, thiết kế, hình ảnh và tạo hình nhân vật "Hương AI", các bản thu âm và
-bộ slide — là tác phẩm thuộc bản quyền của tác giả.
+bộ slide — là tác phẩm thuộc bản quyền của tác giả, trừ một phần nói ngay dưới
+đây.
+
+PHẦN ĐỒNG SỞ HỮU. Hai nhóm tài sản trong kho này thuộc quyền sở hữu chung của
+Đỗ Thùy Hương VÀ Phan Anh Tú, hai tác giả bảo lưu mọi quyền:
+
+  - tạo hình nhân vật của dự án BizOn (Lumina / "Je m'appelle Hương", Tú Phan,
+    và Đội Demo 5 thành viên), ở bất cứ chỗ nào chúng xuất hiện; và
+  - hai mươi bản thu trong assets/audio/bizon/, trong đó có "Hương on Return",
+    "Vừa Đủ Để Bay Cao", "Hương sans frontières" và "Bật Nghiệp".
+
+Điều này khớp với LICENSE của kho thuyhuongctu/BizOn, để hai giấy phép nói
+cùng một điều về cùng một tài sản. Muốn dùng phần ấy vào việc gì thì phải được
+cả hai tác giả đồng ý.
 
 Tài liệu được công bố để đọc, tham khảo và trích dẫn. Đây KHÔNG phải là tác
 phẩm phát hành theo giấy phép nguồn mở hay nội dung mở.

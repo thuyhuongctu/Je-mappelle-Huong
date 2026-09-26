@@ -147,36 +147,6 @@ Trường Kinh tế, Đại học Cần Thơ.
 
 ---
 
-## 4c. Bài «Returning to Shore» — bản thu do máy sinh
-
-### `assets/audio/returning-to-shore.mp3`
-
-| | |
-| --- | --- |
-| **Lời** | Tác giả viết |
-| **Bản thu** (giai điệu, hoà âm, giọng hát) | Do **Suno** sinh ra từ lời và lời nhắc của tác giả |
-| Ngày | 26/09/2026 |
-
-Không phải suy đoán: chính tệp khai điều ấy. Thẻ `COMM` trong ID3 của nó ghi
-nguyên văn `made with suno`, kèm mốc thời gian và mã bản dựng. Thẻ `TIT2` ghi
-«Returning to Shore», `TPE1` ghi `thuyhuongctu`.
-
-Nên tách bạch như mục 4 đã tách cho video: **phần lời là của tác giả, phần bản
-thu thì không**. Bản thu theo điều khoản của Suno về nội dung sinh ra, không
-theo [`LICENSE`](LICENSE) của kho này. Trước khi dùng vào việc gì ngoài trang
-cá nhân — nhất là việc có thu tiền — nên đối chiếu lại điều khoản của gói đang
-dùng, vì quyền thương mại hoá tuỳ gói.
-
-**Ảnh hưởng tới hồ sơ đăng ký quyền tác giả:** nếu về sau đăng ký phần âm nhạc,
-cái đăng ký được là **lời**, không phải bản thu. Ghi ở đây để khỏi lẫn, giống
-như mục 4 đã ghi cho phần hình của video giới thiệu.
-
-Hai mươi bản thu khác trong `assets/audio/bizon/` là chuyện riêng, chưa rõ và
-đang treo — xem `ho-so-quyen-tac-gia/05-ung-vien-tiep-theo.md`, mục «Cùng một
-bộ bản thu, hai giấy phép nói khác nhau».
-
----
-
 ## 5. Bộ chữ
 
 Hai bộ chữ, dùng cho trang viên 3D và ba bản demo bố cục. **Từ 22/09/2026 cả
@@ -250,7 +220,8 @@ web dùng tới. Xem [`ban-cu/README.md`](ban-cu/README.md).
 
 ## 8. Phần thuộc về tác giả
 
-Mọi thứ còn lại. Đo tại thời điểm lập bản kiểm kê này:
+Mọi thứ còn lại, **trừ phần đồng sở hữu nói ngay dưới bảng**. Đo tại thời điểm
+lập bản kiểm kê này:
 
 | Hạng mục | Số lượng |
 | --- | --- |
@@ -260,8 +231,15 @@ Mọi thứ còn lại. Đo tại thời điểm lập bản kiểm kê này:
 | JavaScript và script khác | 3 104 dòng |
 | CSS | 443 dòng |
 | Ảnh WebP (gồm ảnh nhân vật do tác giả dựng) | 86 tệp |
-| Ghi âm (tệp âm thanh được git theo dõi, trừ `.claude/`) | 113 tệp |
+| Ghi âm (tệp âm thanh được git theo dõi, trừ `.claude/`) | 113 tệp, **trong đó 20 tệp trong `assets/audio/bizon/` là đồng sở hữu** |
 | Video | **12** tệp (kho có 13; `trangvien-intro.mp4` ở mục 4 là của bên thứ ba) |
+
+**Phần đồng sở hữu với Phan Anh Tú.** Hai thứ trong kho này thuộc về hai tác
+giả chứ không phải một: **tạo hình nhân vật của dự án BizOn**, và **hai mươi
+bản thu trong `assets/audio/bizon/`**. Điều này khớp với `LICENSE` của kho
+`thuyhuongctu/BizOn`; trước đây hai giấy phép nói khác nhau về cùng một bộ bản
+thu, nay thì không. Xem [`LICENSE`](LICENSE) và
+`ho-so-quyen-tac-gia/05-ung-vien-tiep-theo.md`.
 
 Cảnh 3D trang viên — bố cục tám khu, mặt đất theo màu đỉnh, mạng lối mòn, bốn
 thời khắc ánh sáng, bộ kiến trúc dùng chung, chế độ ngắm toàn cảnh, tám bức vẽ
