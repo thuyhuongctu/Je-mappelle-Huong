@@ -470,9 +470,84 @@ tran.rotation.x = Math.PI / 2; tran.position.y = CAO; canh.add(tran);
   bang.position.set(-PH_R + 0.08, 2.5, -3.5); bang.rotation.y = Math.PI / 2; canh.add(bang);
 })();
 
-/* ---- bàn làm việc -------------------------------------------------------- */
 var vlGo = new T.MeshStandardMaterial({ color: 0x9c6f45, roughness: 0.7 });
 var vlKim = new T.MeshStandardMaterial({ color: 0x8a8079, roughness: 0.35, metalness: 0.7 });
+
+/* ---- góc Kinh doanh quốc tế -----------------------------------------------
+   Nội dung là kiến thức KDQT phổ thông trong giáo trình - thang phương thức
+   thâm nhập và lý thuyết neo cho từng bậc. CỐ Ý không chép bảng số liệu thị
+   trường của BizOn sang: kho ấy là tài sản đồng sở hữu, bảo lưu mọi quyền.
+   Muốn xem số thì bấm sang Hộ Chiếu Thương Hiệu. -------------------------- */
+var bangIB = null;
+function veBangIB() {
+  var vi = NG() === 'vi';
+  var cv = document.createElement('canvas'); cv.width = 1100; cv.height = 620;
+  var g = cv.getContext('2d');
+  g.fillStyle = '#fffcf5'; g.fillRect(0, 0, 1100, 620);
+  g.strokeStyle = '#e2d8c7'; g.lineWidth = 7; g.strokeRect(4, 4, 1092, 612);
+  g.fillStyle = '#c45c3a'; g.font = 'bold 42px Georgia, serif';
+  g.fillText(vi ? 'Thang phương thức thâm nhập'
+                : 'The entry-mode ladder', 44, 74);
+  g.fillStyle = '#6f6459'; g.font = 'italic 25px Georgia, serif';
+  g.fillText(vi ? 'cam kết nguồn lực tăng dần  ·  lý thuyết neo cho từng bậc'
+                : 'rising resource commitment  ·  the theory anchoring each rung', 44, 112);
+  var hang = vi ? [
+    ['Xuất khẩu',          'cam kết thấp, rút lui dễ',        'mô hình Uppsala'],
+    ['Cấp phép',           'cho dùng một quyền',              'chi phí giao dịch'],
+    ['Nhượng quyền',       'nhân rộng bằng vốn đối tác',      'lý thuyết đại diện'],
+    ['Liên doanh',         'chia rủi ro, mượn hiểu biết bản địa', 'khung CAGE'],
+    ['Liên minh chiến lược','trao đổi nguồn lực bổ sung',      'quan điểm dựa trên nguồn lực'],
+    ['Nền tảng số',        'sinh ra đã toàn cầu',             'born-global'],
+    ['Đầu tư trực tiếp',   'kiểm soát tối đa, thoái lui đắt', 'mô hình OLI (Dunning)']
+  ] : [
+    ['Export',             'low commitment, easy exit',       'Uppsala model'],
+    ['Licensing',          'granting the use of one right',   'transaction costs'],
+    ['Franchising',        "scaling on the partner's capital", 'agency theory'],
+    ['Joint venture',      'shared risk, borrowed local knowledge', 'the CAGE framework'],
+    ['Strategic alliance', 'exchanging complementary resources', 'resource-based view'],
+    ['Digital platform',   'born global from day one',        'born-global'],
+    ['Greenfield FDI',     'maximum control, costly exit',    'the OLI model (Dunning)']
+  ];
+  hang.forEach(function (r, i) {
+    var y = 172 + i * 62;
+    g.fillStyle = '#3f6f68'; g.fillRect(44, y - 22, 7, 30);
+    g.fillStyle = '#1c1814'; g.font = 'bold 29px Georgia, serif';
+    g.fillText(r[0], 66, y);
+    g.fillStyle = '#6f6459'; g.font = '24px Georgia, serif';
+    g.fillText(r[1], 400, y);
+    g.fillStyle = '#b8842c'; g.font = 'italic 24px Georgia, serif';
+    g.fillText(r[2], 790, y);
+  });
+  g.fillStyle = '#6f6459'; g.font = 'italic 22px Georgia, serif';
+  g.fillText(vi ? 'Hộ Chiếu Thương Hiệu cho chạy thử bảy thị trường với bảng số thật.'
+                : 'Brand Passport lets you test seven markets with real figures.', 44, 596);
+  var tx = anhSRGB(cv);
+  if (bangIB) {
+    if (bangIB.material.map) bangIB.material.map.dispose();
+    bangIB.material.map = tx; bangIB.material.needsUpdate = true;
+    return;
+  }
+  bangIB = new T.Mesh(new T.PlaneGeometry(6.2, 3.5),
+    new T.MeshStandardMaterial({ map: tx, roughness: 0.6 }));
+  bangIB.position.set(PH_R - 0.08, 2.5, -2.0);
+  bangIB.rotation.y = -Math.PI / 2;
+  canh.add(bangIB);
+}
+
+/* quả địa cầu trên bệ, ngay dưới bảng */
+(function () {
+  var be = new T.Mesh(new T.CylinderGeometry(0.3, 0.38, 0.9, 12), vlGo);
+  be.position.set(PH_R - 1.35, 0.45, -5.2); be.castShadow = true; canh.add(be);
+  var cau = new T.Mesh(new T.SphereGeometry(0.42, 20, 16),
+    new T.MeshStandardMaterial({ color: 0x3f6f68, roughness: 0.45 }));
+  cau.position.set(PH_R - 1.35, 1.34, -5.2); cau.castShadow = true; canh.add(cau);
+  /* vành nghiêng quanh quả cầu - đủ để đọc ra là địa cầu chứ không phải quả bóng */
+  var vanh = new T.Mesh(new T.TorusGeometry(0.5, 0.025, 8, 28),
+    new T.MeshStandardMaterial({ color: 0xb8842c, roughness: 0.35, metalness: 0.6 }));
+  vanh.position.copy(cau.position); vanh.rotation.set(0.4, 0, 0.35); canh.add(vanh);
+})();
+
+/* ---- bàn làm việc -------------------------------------------------------- */
 function ban(x, z, xoay) {
   var g = new T.Group();
   var mat = new T.Mesh(new T.BoxGeometry(2.4, 0.09, 1.15), vlGo);
@@ -496,7 +571,7 @@ ban(-5.2, -2.4); ban(5.0, -2.4); ban(-5.0, 1.8); ban(5.0, 2.0); ban(-4.2, 5.5);
 /* ---- kệ sách ------------------------------------------------------------- */
 (function () {
   [-PH_R + 0.5, PH_R - 0.5].forEach(function (x, k) {
-    [-9, 1, 6].forEach(function (z) {
+    (k ? [4.5, 8.5] : [-9, 1, 6]).forEach(function (z) {
       var g = new T.Group();
       var t = new T.Mesh(new T.BoxGeometry(0.4, 2.3, 2.6), vlGo);
       t.position.y = 1.15; t.castShadow = true; g.add(t);
@@ -531,8 +606,35 @@ ban(-5.2, -2.4); ban(5.0, -2.4); ban(-5.0, 1.8); ban(5.0, 2.0); ban(-4.2, 5.5);
    Người là khối đất sét đơn giản, không phải ảnh phẳng: phòng nhỏ nên khách
    đi vòng quanh được, mà ảnh phẳng luôn xoay về máy quay thì lộ ngay. ----- */
 var DAN = [];
+/* Ảnh nhân vật: tỉ lệ PHẢI đúng bằng rộng/cao của chính tệp ảnh. Đặt sai thì
+   người bị kéo bè ngang mà nhìn không ra, vì viền trong suốt quanh người che
+   mất - đúng cái bẫy đã ghi trong CLAUDE.md cho trang viên. */
+var ANH_NGUOI = 'assets/img/huong-ai-chao.webp';
+var ANH_TL    = 307 / 820;          /* đo thẳng từ tệp, không chép tay */
+var ANH_CAO   = 1.95;
+
 function nhanVatMoi(n) {
   var g = new T.Group();
+  if (n.chu) {
+    /* Hương dùng chính tranh nhân vật của chị, đã có sẵn trong kho này và
+       thuộc giấy phép của kho này. KHÔNG dùng tạo hình từ kho BizOn: giấy
+       phép BizOn khai «Tạo hình các nhân vật: Lumina…, Đội Demo 5 thành
+       viên» là tài sản ĐỒNG SỞ HỮU của hai tác giả, bảo lưu mọi quyền. */
+    var tx = new T.TextureLoader().load(ANH_NGUOI);
+    if (T.sRGBEncoding !== undefined) tx.encoding = T.sRGBEncoding;
+    var sp = new T.Sprite(new T.SpriteMaterial({ map: tx, transparent: true }));
+    sp.scale.set(ANH_CAO * ANH_TL, ANH_CAO, 1);
+    sp.position.y = ANH_CAO / 2;
+    g.add(sp);
+    g.position.set(n.cho[0], 0, n.cho[1]);
+    g.userData = { n: n, goc: new T.Vector3(n.cho[0], 0, n.cho[1]),
+                   pha: Math.random() * 6.28, anh: true };
+    canh.add(g); DAN.push(g);
+    var nh0 = new T.Sprite(new T.SpriteMaterial({ transparent: true }));
+    nh0.position.y = 2.28; nh0.scale.set(1.12, 0.29, 1);
+    g.add(nh0); g.userData.nhan = nh0;
+    return g;
+  }
   var vlDa  = new T.MeshStandardMaterial({ color: n.da, roughness: 0.75 });
   var vlAo  = new T.MeshStandardMaterial({ color: n.ao, roughness: 0.7 });
   var vlQ   = new T.MeshStandardMaterial({ color: n.quan, roughness: 0.8 });
@@ -562,11 +664,6 @@ function nhanVatMoi(n) {
       new T.MeshStandardMaterial({ color: 0x1c1814 }));
     mat.position.set(s * 0.068, 1.86, 0.185); g.add(mat);
   });
-  if (n.chu) {           /* đoá sen trên tay — đúng tạo hình Lumina của BizOn */
-    var sen = new T.Mesh(new T.SphereGeometry(0.1, 10, 8),
-      new T.MeshStandardMaterial({ color: 0xf2a8c4, roughness: 0.6 }));
-    sen.position.set(0.3, 1.0, 0.16); sen.scale.set(1, 0.72, 1); g.add(sen);
-  }
 
   g.position.set(n.cho[0], 0, n.cho[1]);
   g.userData = { n: n, goc: new T.Vector3(n.cho[0], 0, n.cho[1]), pha: Math.random() * 6.28 };
@@ -599,8 +696,13 @@ function veNhan(g) {
 }
 /* Có thể được gọi TRƯỚC khi dàn nhân vật kịp dựng: đoạn đặt ngôn ngữ chạy ngay
    đầu tệp để chữ không loé sai một nhịp, mà lúc ấy DAN còn chưa gán. */
-function veNhanTatCa() { if (!DAN) return; DAN.forEach(veNhan); }
+function veNhanTatCa() {
+  if (!DAN) return;
+  DAN.forEach(veNhan);
+  if (typeof veBangIB === 'function' && bangIB !== undefined) veBangIB();
+}
 NGUOI.forEach(nhanVatMoi);
+veBangIB();
 veNhanTatCa();
 apNen();
 
@@ -742,8 +844,9 @@ function ve() {
     g.position.x = d.goc.x + Math.sin(t * 0.32 + d.pha) * 0.34;
     g.position.z = d.goc.z + Math.cos(t * 0.24 + d.pha) * 0.26;
     g.position.y = Math.abs(Math.sin(t * 2.1 + d.pha)) * 0.014;
-    g.lookAt(may.position.x, 0, may.position.z);
-    g.rotation.x = g.rotation.z = 0;
+    /* Nhóm chứa Sprite thì KHÔNG xoay: Sprite tự quay về máy quay rồi, xoay
+       thêm nhóm chỉ làm ảnh trượt khỏi chỗ đứng. */
+    if (!d.anh) { g.lookAt(may.position.x, 0, may.position.z); g.rotation.x = g.rotation.z = 0; }
     var kc = Math.hypot(g.position.x - nguoiXem.x, g.position.z - nguoiXem.z);
     /* Nhan o xa mo di: dung het do dam thi sau nguoi cung mot luc thanh mot
        dam chu chen nhau, khong doc duoc cai nao. */

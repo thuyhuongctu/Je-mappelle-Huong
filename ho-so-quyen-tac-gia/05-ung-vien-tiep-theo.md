@@ -112,3 +112,68 @@ Kho BizOn đã có sẵn chỗ để xử việc này, không cần dựng mới
 Cả hai câu hỏi đều nên hỏi người hành nghề luật sở hữu trí tuệ — cùng lúc với
 hai việc đang treo đã ghi ở tệp `01` và `04`: loại hình đăng ký, và cách khai
 phần do máy hỗ trợ.
+
+---
+
+## Văn phòng nghiên cứu (`vanphong.html`) — cũng đóng gói được
+
+Thêm ngày 26/09/2026. Cùng loại với hai phòng lab ở trên: **một tệp HTML tự
+chứa**, nhưng nằm trong **chính kho này**, không phải kho BizOn.
+
+| | |
+| --- | --- |
+| Đường dẫn | `vanphong.html` |
+| Nạp từ ngoài | **0** — three.js lấy từ bản chép trong kho, bộ chữ tự chứa |
+| Gọi mạng lúc chạy | **0** — đo bằng Chromium, không một yêu cầu nào ra ngoài |
+| Tranh nhân vật | `assets/img/huong-ai-chao.webp` — đã có sẵn trong kho này |
+| Nội dung hỏi đáp | tác giả viết, lấy từ các trang khác của kho |
+
+Nội dung góc Kinh doanh quốc tế là **kiến thức giáo trình phổ thông** — thang
+phương thức thâm nhập và lý thuyết neo cho từng bậc (Uppsala, chi phí giao
+dịch, lý thuyết đại diện, khung CAGE, quan điểm dựa trên nguồn lực,
+born-global, mô hình OLI). Cách trình bày là của tác giả; bản thân các lý
+thuyết thì không ai độc quyền.
+
+---
+
+## Hai chỗ về giấy phép phải làm rõ TRƯỚC khi nộp bất cứ hồ sơ nào
+
+Phát hiện khi đối chiếu hai kho, ngày 26/09/2026. Không phải việc sửa mã, mà
+là việc của tác giả và người đồng sở hữu.
+
+### 1. Tạo hình nhân vật BizOn là tài sản đồng sở hữu
+
+`LICENSE` của kho `thuyhuongctu/BizOn`, mục «PHẠM VI BẢO HỘ», ghi nguyên văn:
+
+> Bản quyền © 2026 Đỗ Thùy Hương **và Phan Anh Tú**. BẢO LƯU MỌI QUYỀN.
+> […] **Tạo hình các nhân vật: Lumina (Je m'appelle Hương), Tú Phan, Đội Demo
+> 5 thành viên**, cùng mọi tài sản đồ họa 3D claymorphism trong `assets/`
+
+Và `docs/ip/BIZON_AUTHORSHIP_OWNERSHIP_MATRIX_2026-08-03.md` ghi phần nhân vật
+là *«Hương & Tú, trừ quyền hình ảnh cá nhân và bên thứ ba»*, trạng thái
+*«Cần hồ sơ riêng»*.
+
+**Hệ quả cho văn phòng:** đã cân nhắc chép sáu tấm ảnh nhân vật đã cắt nền từ
+BizOn sang cho đẹp hơn, nhưng **không làm**. Chép sang thì `vanphong.html`
+không còn là tác phẩm một tác giả, tức phải có thoả thuận với người đồng sở
+hữu trước khi đăng ký. Hiện chỉ Hương dùng tranh của chính kho này; năm nhân
+vật đội demo vẫn là khối hình đơn giản.
+
+### 2. Cùng một bộ bản thu, hai giấy phép nói khác nhau
+
+| | |
+| --- | --- |
+| `LICENSE` của **kho này** | «© 2026 Đỗ Thùy Hương. All rights reserved… **the audio recordings**… are the copyrighted work of **the author**» — một tác giả |
+| `LICENSE` của **BizOn** | «© 2026 Đỗ Thùy Hương **và Phan Anh Tú**» — phạm vi bảo hộ gồm «Kho âm nhạc gốc (**«Hương on Return», «Vừa Đủ Để Bay Cao», «Hương sans frontières», «Bật Nghiệp»**…)» |
+
+Mà kho này đang chứa **20 tệp** trong `assets/audio/bizon/`, trong đó có đúng
+`huong-on-return.mp3`, `vua-du-de-bay-cao.mp3`, `huong-sans-frontieres.mp3`,
+`bat-nghiep.mp3`.
+
+Hai văn bản đang nói khác nhau về cùng một bộ bản thu. Có thể giải thích được
+— ví dụ tác giả là người sáng tác duy nhất còn giấy phép BizOn quét rộng để
+bảo hộ cả gói — nhưng **đó là lời giải thích cần được viết ra và hai bên xác
+nhận**, chứ không nên để hai giấy phép công khai mâu thuẫn nhau khi hồ sơ đăng
+ký đang chuẩn bị.
+
+Hai việc này nên hỏi cùng lúc với ba việc đang treo ở tệp `01` và `04`.
