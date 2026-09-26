@@ -536,9 +536,78 @@ lọt vào. Chỉ `an` (tóc bạc) đo được: 315. Phải phóng to mà nhì
 dùng được là **số pixel mép có độ phủ từng phần**: nếu gần bằng 0 thì alpha
 vẫn nhị phân, tức là chưa hề thu nhỏ.
 
-Đổi ảnh nhân vật thì nhớ `DANG_TL` trong `trangvien.html` và cặp
-`width`/`height` của ảnh chữ ký trong `music.html` — đọc thẳng từ tệp, đừng
-chép tay.
+### Năm tranh TOÀN THÂN cho văn phòng (`npc-*-dung.webp`)
+
+Nguồn thứ ba, lại hỏng ở chỗ khác nữa. Năm tấm này dựng đứng trong
+`vanphong.html`, cao 820 cho khớp tám dáng của Hương. Bốn tấm nền đen; riêng
+An là chuyện riêng, xem dưới.
+
+**Ngưỡng 12 ăn mất quần sẫm.** Ngưỡng ấy là của ảnh Hương. Đo diện tích cụm
+lớn nhất theo ngưỡng, so ngưỡng 12 với ngưỡng 2: Tùng mất **11,4%** diện tích
+thân, trong khi An 3,0%, Minh 5,7%, Linh 6,0%, Mai 6,2%. Quần và giày sẫm của
+Tùng nằm sát mức ngưỡng. Nền ở đây đúng bằng 0 tới **99,88–100%** số pixel
+viền, nên hạ ngưỡng được.
+
+**Nhưng hạ ngưỡng thì nhiễu nén JPEG quanh người lọt vào thành viền đen xơ.**
+Chỗ hỏng là **hình dạng** mặt nạ, không phải màu — nên thay màu viền không cứu
+được. Cách đúng: **làm mượt TRƯỚC KHI ngưỡng**, lọc Gauss rồi mới so ngưỡng,
+và chỉ dùng bản đã làm mượt để dựng mặt nạ; màu vẫn lấy từ ảnh gốc.
+
+Thước đo độ xù xì: **chu vi chia căn bậc hai diện tích**, càng thấp càng mượt.
+Đo trên lưới sigma × ngưỡng thì **sigma 2,0 ngưỡng 4** thắng rõ — giữ 99,2–100%
+diện tích mà độ xù xì giảm khoảng 30%:
+
+| | An | Linh | Mai | Minh | Tùng |
+| --- | --- | --- | --- | --- | --- |
+| sigma 0, ngưỡng 2 | 7,35 | 8,65 | 9,22 | 8,38 | 9,76 |
+| sigma 2,0, ngưỡng 4 | **4,85** | **6,22** | **6,92** | **5,65** | **7,34** |
+
+Ba bước còn lại giữ nguyên như trên: khép mép 3×3, giữ cụm lớn nhất, lấp lỗ
+theo **thành phần** chứ không theo diện tích, thay màu dải mép, rồi thu nhỏ
+bằng LANCZOS. Lần này thân nguồn cao 1049–1372 px, đích 820, tỉ lệ 0,60–0,78 —
+đều là **thu nhỏ**, nên mép có độ phủ từng phần thật: đo được 7 692–8 431
+pixel, cùng khoảng với tám dáng Hương (6 825–31 538).
+
+### An: nền XÁM và một cái BỤC GỖ — đừng cắt bục, hãy dìm nó
+
+Tấm của An là ảnh chụp màn hình ứng dụng: nền **xám (~120)** chứ không đen,
+người đứng trên một **bục gỗ**, còn cả thanh trạng thái. Ba cách đã thử rồi
+bỏ, ghi lại để khỏi thử lại:
+
+1. **Mô hình nền theo từng hàng** (trung vị 90 cột ngoài cùng mỗi bên) rồi
+   ngưỡng: **đục thủng khăn xám và tóc bạc**. Đo được chỗ nhạt nhất của khăn
+   chỉ lệch **31** so với nền, trong khi nền lệch 12 và áo dài lệch 122. Lại
+   dính cả vệt bóng đổ trên phông nền.
+2. **Phân loại giày/gỗ bằng màu: không được.** Màu giày `[109,68,49]` chỉ cách
+   màu gỗ `[75,58,46]` đúng **35,6**; riêng giày phải `[93,52,34]` gần như
+   trùng màu gỗ. Thử thật thì bộ lọc **xoá luôn giày phải**.
+3. **Đánh dấu cả dải mặt bục là nền rồi chừa hai hộp bàn chân:** GrabCut **bỏ
+   luôn hai bàn chân**, vì chúng bị nền bao quanh từ mọi phía.
+
+Cách chạy được: **GrabCut một lượt cho cả người KÈM bục** — bục lệch **435** so
+với nền nên tách rất dễ, khác hẳn việc tách giày khỏi gỗ. Rồi trong cảnh 3D thì
+phóng ảnh to lên theo tỉ lệ phần thân và **dìm phần bục xuống dưới mặt sàn**;
+sàn che đi, người vẫn cao đúng 1,95 như bốn người kia.
+
+Đo đế giày bằng chỗ **bề rộng nhảy vọt** (mặt bục rộng hơn đôi chân): hàng 703
+của 820, tức thân chiếm **0,857** chiều cao ảnh. Trường `dungPhan` trong
+`vanphong.html` giữ con số ấy, mặc định 1 — ai không khai thì chạy y như cũ,
+nên không phải viết trường hợp riêng cho An.
+
+Nền xám thì GrabCut hợp, còn nền rối thì không: cắt sáu người khỏi
+`nhom-nhan-vat.webp` bằng GrabCut đã hỏng hẳn — mất đầu, lấy cả lá cây và bậc
+thềm. Nền mượt mới là chỗ GrabCut chạy tốt.
+
+### Đối chiếu hai kho thì so TỆP, đừng so ảnh chụp
+
+Đã mất công một lần: trừ pixel hai ảnh chụp văn phòng của hai kho ra 3,6–10,1%
+khác nhau, tưởng hai bản lệch nhau. Không phải — mỗi nhân vật có
+`pha: Math.random()*6.28` nên nhịp nhún khác nhau mỗi lần tải.
+
+Đổi ảnh nhân vật thì nhớ `DANG_TL` trong `trangvien.html`, cặp `dungTL` /
+`dungPhan` trong `vanphong.html` **và bản sao của nó bên kho Research-Office**,
+cùng cặp `width`/`height` của ảnh chữ ký trong `music.html` — đọc thẳng từ tệp,
+đừng chép tay.
 
 Thêm `width`/`height` vào một thẻ `<img>` vốn chưa có thì **phải xem lớp CSS
 của nó có `height:auto` chưa**. Thiếu, mà CSS lại đè `width`, thì chiều cao
