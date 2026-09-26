@@ -112,6 +112,40 @@ Gemini đang dùng, vì có gói buộc giữ nguyên dấu hiệu ấy.
 
 ---
 
+## 4b. Văn phòng nghiên cứu — dựng lại từ một bản do máy sinh
+
+### `vanphong.html`
+
+| | |
+| --- | --- |
+| Bản khởi đầu | Do **Grok (xAI)** sinh ra từ lời nhắc của tác giả — một tệp HTML rời và một workspace React |
+| Bản trong kho | Tác giả viết lại, **không dùng lại mã của bản kia** |
+| Lời thoại | Tác giả viết, lấy từ chính các trang khác của kho này |
+| three.js | Bản chép trong kho, xem mục 1 |
+
+Ghi tách bạch vì hai bản khác nhau rất xa. Bản do máy sinh không dùng thẳng
+được, và **ba chỗ phải bỏ hẳn** chứ không phải sửa cho gọn:
+
+1. **Lời gọi API của một hãng AI ngay trong trình duyệt khách.** Trang này là
+   trang tĩnh trên GitHub Pages, không có máy chủ để giữ khoá; mà kho vừa gỡ
+   Google Fonts đúng để địa chỉ IP của khách không đi tới đâu khác. Nay mọi câu
+   trả lời nằm sẵn trong tệp — đo bằng Chromium: **0 yêu cầu ra ngoài**.
+2. **three.js nạp từ cdnjs.** Đó chính là thứ kho này đã cố ý loại bỏ. Nay dùng
+   bản chép trong kho.
+3. **Những người có thật.** Bản kia đưa người hướng dẫn và vài nhà nghiên cứu
+   vào làm nhân vật, rồi để mô hình ngôn ngữ **sinh lời thay họ**; một bản còn
+   gán một người không có thật vào một trường đại học có thật. Đã bỏ hẳn. Trong
+   kho chỉ còn tác giả là người thật; năm nhân vật đội demo BizOn là hư cấu, và
+   mỗi bảng hội thoại đều nói rõ điều đó.
+
+Cũng sửa hai con số bản kia ghi sai so với chính kho này: phân tích tổng hợp là
+**236 nghiên cứu** chứ không phải «300+», và tác giả là **nghiên cứu sinh** tại
+Trường Kinh tế, Đại học Cần Thơ.
+
+Ảnh bìa `assets/img/vanphong-bia.webp` chụp từ chính cảnh này.
+
+---
+
 ## 5. Bộ chữ
 
 Hai bộ chữ, dùng cho trang viên 3D và ba bản demo bố cục. **Từ 22/09/2026 cả

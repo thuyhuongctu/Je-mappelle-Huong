@@ -1,5 +1,5 @@
 /* Service worker - Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v143';
+const CACHE = 'jshuong-v144';
 const CORE = [
   './',
   'index.html',
@@ -10,6 +10,7 @@ const CORE = [
   'music.html',
   'songbook.html',
   'trangvien.html',
+  'vanphong.html',
   'blog.html',
   'so-luu-niem.html',
   'assets/vendor/three-r128.min.js',
