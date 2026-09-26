@@ -600,8 +600,9 @@ Khác nhau đúng **hai chỗ**, và chỉ hai chỗ ấy:
 
 - hai liên kết về trang chủ (`href="index.html"`) đổi thành địa chỉ tuyệt đối
   `https://thuyhuongctu.github.io/Je-mappelle-Huong/`;
-- kho riêng có thêm `README.md`, `LICENSE`, `CITATION.cff`, `THIRD-PARTY.md`,
-  `manifest.webmanifest` riêng và quy trình dựng Pages riêng.
+- kho riêng có thêm `README.md`, `LICENSE`, `CITATION.cff`, `.zenodo.json`,
+  `THIRD-PARTY.md`, `manifest.webmanifest` riêng, `.nojekyll` và quy trình dựng
+  Pages riêng.
 
 Sửa nội dung văn phòng thì **chép sang cả hai rồi kiểm cả hai**. Quên một bên
 thì bản có DOI và bản đang chạy nói khác nhau — mà DOI là thứ người ta trích
@@ -611,6 +612,29 @@ Kho riêng **tự chứa**: three.js, năm tệp phông, sáu tranh nhân vật 
 sang. Thêm một tệp mới vào văn phòng thì phải chép cả tệp ấy sang kho riêng,
 nếu không bản có DOI sẽ 404 đúng chỗ ấy mà bản ở đây vẫn chạy bình thường —
 lại thêm một kiểu hỏng âm thầm.
+
+### Siêu dữ liệu Zenodo của kho riêng khai ở HAI tệp
+
+`.zenodo.json` **đứng trên** `CITATION.cff` khi Zenodo dựng bản ghi cho một bản
+phát hành. Đổi tiêu đề, tóm tắt hay từ khoá thì sửa cả hai — quên một bên thì
+GitHub hiện một đằng (đọc `CITATION.cff`) còn Zenodo ghi một nẻo.
+
+Hai chỗ đã đo, đừng dò lại:
+
+- **Trường `license` chỉ nhận một mã trong bộ từ vựng có sẵn.** Tra
+  `/api/vocabularies/licenses` thì cả bộ có đúng **một** mã không-mở dùng được:
+  `other-closed` («Other (Not Open)»). Nên `.zenodo.json` **không** khai được
+  câu chữ giấy phép đầy đủ; muốn đẹp thì sau mỗi lần phát hành vào Edit sửa một
+  ô. Đánh đổi có chủ ý: được cái không bao giờ rơi lại vào mặc định
+  `cc-by-4.0` — thứ nguy hiểm thật, vì nó cho phép người khác phát tán lại.
+- **Đừng đặt `access_right: restricted`** dù tài liệu Zenodo có gợi ý thế cho
+  tác phẩm không mở. `restricted` nghĩa là không ai tải được tệp, mà `LICENSE`
+  của kho ấy viết rõ công trình «được công bố để đọc, tham khảo và trích dẫn».
+  Đúng là `open` cộng giấy phép đóng.
+
+`.zenodo.json` **cố ý không khai `version`**, để Zenodo lấy thẳng tên thẻ. Nên
+đặt thẻ là `v1.1`, **không phải** `v.1.1` — bản đầu tiên đã lỡ mang tên `v.1.0`
+đúng vì lẽ ấy và phải sửa tay.
 
 ## Trước khi thêm tệp mới
 
