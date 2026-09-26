@@ -191,10 +191,12 @@ giải mã đúng cỡ (307×820 và năm tấm 360×360).
 
 ---
 
-## Hai chỗ về giấy phép phải làm rõ TRƯỚC khi nộp bất cứ hồ sơ nào
+## Hai chỗ về giấy phép — ĐÃ QUYẾT ngày 26/09/2026
 
-Phát hiện khi đối chiếu hai kho, ngày 26/09/2026. Không phải việc sửa mã, mà
-là việc của tác giả và người đồng sở hữu.
+Phát hiện khi đối chiếu hai kho sáng 26/09/2026; chiều cùng ngày tác giả đã
+quyết cả hai. Quyết định: **ghi hai tác giả cho cả tạo hình nhân vật lẫn bộ
+bản thu**. Hai mục dưới đây giữ nguyên phần mô tả vấn đề, và ghi thêm cách đã
+xử lý.
 
 ### 1. Tạo hình nhân vật BizOn là tài sản đồng sở hữu
 
@@ -209,10 +211,21 @@ là *«Hương & Tú, trừ quyền hình ảnh cá nhân và bên thứ ba»*, 
 *«Cần hồ sơ riêng»*.
 
 **Hệ quả cho văn phòng:** đã cân nhắc chép sáu tấm ảnh nhân vật đã cắt nền từ
-BizOn sang cho đẹp hơn, nhưng **không làm**. Chép sang thì `vanphong.html`
-không còn là tác phẩm một tác giả, tức phải có thoả thuận với người đồng sở
-hữu trước khi đăng ký. Hiện chỉ Hương dùng tranh của chính kho này; năm nhân
-vật đội demo vẫn là khối hình đơn giản.
+BizOn sang cho đẹp hơn, nhưng lúc ấy **không làm**. Chép sang thì
+`vanphong.html` không còn là tác phẩm một tác giả, tức phải có thoả thuận với
+người đồng sở hữu trước khi đăng ký.
+
+**Đã quyết (26/09/2026):** ghi nhận **Đỗ Thùy Hương và Phan Anh Tú** là đồng
+tác giả của tạo hình nhân vật, và `LICENSE` của kho này nay nói đúng như vậy —
+xem mục «PHẦN ĐỒNG SỞ HỮU». Hai giấy phép công khai không còn nói khác nhau.
+
+Việc ấy **mở đường** cho văn phòng dùng sáu tấm tranh toàn thân của BizOn, thứ
+đang thiếu: năm nhân vật đội demo hiện vẫn là khối hình đơn giản vì trong kho
+này chỉ có ảnh **bán thân 360×360** của họ, dựng đứng lên thì thành cái đầu lơ
+lửng. Nhưng **chưa chép sang**: chép là làm `vanphong.html` thành tác phẩm hai
+tác giả, kéo theo phải sửa trường `creators` của bản ghi Zenodo (hiện chỉ có
+một tác giả, gắn ORCID 0000-0002-7711-2487) và phải phát hành phiên bản mới.
+Đó là một việc riêng, cần quyết riêng.
 
 ### 2. Cùng một bộ bản thu, hai giấy phép nói khác nhau
 
@@ -225,10 +238,12 @@ Mà kho này đang chứa **20 tệp** trong `assets/audio/bizon/`, trong đó c
 `huong-on-return.mp3`, `vua-du-de-bay-cao.mp3`, `huong-sans-frontieres.mp3`,
 `bat-nghiep.mp3`.
 
-Hai văn bản đang nói khác nhau về cùng một bộ bản thu. Có thể giải thích được
-— ví dụ tác giả là người sáng tác duy nhất còn giấy phép BizOn quét rộng để
-bảo hộ cả gói — nhưng **đó là lời giải thích cần được viết ra và hai bên xác
-nhận**, chứ không nên để hai giấy phép công khai mâu thuẫn nhau khi hồ sơ đăng
-ký đang chuẩn bị.
+Hai văn bản đang nói khác nhau về cùng một bộ bản thu.
 
-Hai việc này nên hỏi cùng lúc với ba việc đang treo ở tệp `01` và `04`.
+**Đã quyết (26/09/2026):** lấy theo bản rộng hơn — **hai tác giả**. `LICENSE`
+của kho này nay ghi rõ hai mươi tệp trong `assets/audio/bizon/` là đồng sở hữu
+của Đỗ Thùy Hương và Phan Anh Tú, khớp với `LICENSE` bên BizOn.
+`THIRD-PARTY.md` mục 8 cũng ghi lại điều ấy, nên bảng «phần thuộc về tác giả»
+không còn gộp nhầm hai mươi tệp ấy vào phần một tác giả.
+
+Ba việc còn treo ở tệp `01` và `04` thì vẫn treo.
