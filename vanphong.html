@@ -117,6 +117,15 @@ canvas{display:block;width:100vw;height:100vh;touch-action:none}
 #ghi{margin:9px 0 0;padding-top:9px;border-top:1px solid var(--line);
      font-size:.66rem;color:var(--muted);line-height:1.5}
 
+/* Máy phát ở bàn của Minh. Khối này nằm NGOÀI #loi và không bao giờ bị xoá:
+   #loi vẽ lại mỗi lần khách bấm một câu hỏi, mà dựng lại thẻ <audio> thì bài
+   đang nghe đứt ngang. */
+#maynhac{display:none;margin:0 0 11px;padding:10px 12px;border-radius:11px;
+         background:var(--paper);border:1px solid var(--line)}
+#maynhac b{display:block;font:700 .8rem var(--hien);color:var(--clay);margin-bottom:2px}
+#maynhac .phu{display:block;font-size:.68rem;color:var(--muted);line-height:1.5}
+#maynhac audio{width:100%;height:34px;margin-top:8px;display:block}
+
 .skip-link{position:absolute;left:-9999px;top:0;background:var(--surface);color:var(--clay);
    padding:10px 14px;border-radius:0 0 10px 0;z-index:60;font:600 .8rem var(--sans)}
 .skip-link:focus{left:0}
@@ -161,6 +170,7 @@ html[lang=fr] .l-en{display:inline}
 
 <div id="thoai" class="hop" role="dialog" aria-modal="false" aria-labelledby="ten">
   <header><img id="chdung" alt=""><span class="ten-vai"><h2 id="ten"></h2><br><span class="vai" id="vai"></span></span></header>
+  <div id="maynhac"></div>
   <div id="loi"></div>
   <div id="hoi"></div>
   <p id="ghi"></p>
@@ -339,12 +349,21 @@ var NGUOI = [
     id: 'minh', ten: 'Minh', vai: { vi: 'Người giữ bến nhạc', en: 'Keeper of the music dock' },
     anh: 'assets/img/npc-minh.webp',
     cho: [-4.2, 6.4], ao: '#7a6a8c', quan: '#332c3c', da: '#f2cdaa', toc: '#20160f',
-    chao: { vi: 'Minh, giữ bến nhạc. Ở đây yên quá thì ghé bến mình.',
-            en: "Minh, keeper of the music dock. If it is too quiet here, come down to the dock." },
+    chao: { vi: 'Minh, giữ bến nhạc. Ở đây yên quá thì ghé bến mình - máy trên bàn đang có sẵn một bài.',
+            en: "Minh, keeper of the music dock. If it is too quiet here, come down to the dock - there is a track cued up on the desk." },
+    nhac: {
+      tep: 'assets/audio/returning-to-shore.mp3',
+      ten: 'Returning to Shore',
+      phu: { vi: 'Đĩa đơn, ngoài album · 5:49. Nhạc vẫn chạy khi bạn đi tiếp; quay lại chỗ Minh để tắt.',
+             en: 'A single, outside the album · 5:49. The music keeps playing as you walk on; come back to Minh to stop it.' }
+    },
     hoi: [
+      { q: { vi: 'Bài đang có trên máy là bài gì?', en: 'What is the track on the player?' },
+        a: { vi: '«Returning to Shore» - trở về bờ, một đĩa đơn ngoài album. Lời là của chị Hương; còn bản thu thì do máy sinh, chính tệp mp3 tự khai «made with suno» trong thẻ ghi chú của nó. Ghi rõ ở đây vì hai thứ ấy khác chủ.',
+             en: '«Returning to Shore», a single outside the album. The lyrics are the author\'s; the recording is machine-generated - the mp3 declares «made with suno» in its own comment tag. Said plainly here because those two have different owners.' } },
       { q: { vi: 'Bến nhạc có gì?', en: 'What is at the music dock?' },
-        a: { vi: 'Trang Âm nhạc: 27 bản thu, sáu bài chính cùng một bản bonus, có cả phần lời và ghi chú về từng bài.',
-             en: 'The music page: 27 recordings, six main tracks plus a bonus, with lyrics and notes for each.' } }
+        a: { vi: 'Trang Âm nhạc: 28 bản thu, sáu bài chính cùng một bản bonus, có cả phần lời và ghi chú về từng bài.',
+             en: 'The music page: 28 recordings, six main tracks plus a bonus, with lyrics and notes for each.' } }
     ]
   }
 
@@ -583,6 +602,29 @@ function ban(x, z, xoay) {
    mo trang ra la mat ban chiem tron nua duoi khung hinh. */
 ban(-5.2, -2.4); ban(5.0, -2.4); ban(-5.0, 1.8); ban(5.0, 2.0); ban(-4.2, 5.5);
 
+/* ---- máy hát trên bàn của Minh -------------------------------------------
+   Bàn của Minh ở (-4.2, 5.5), mặt bàn dày 0,09 đặt ở y = 0,74 nên mặt trên là
+   0,785 - đặt máy đúng cao độ ấy thì không phải đoán. Lệch sang trái 0,65 vì
+   màn hình máy tính của bàn nằm ngay giữa (local x = 0); đặt giữa thì máy hát
+   khuất sau màn hình đúng từ phía khách đi vào. ------------------------- */
+(function () {
+  var g = new T.Group();
+  var hop = new T.Mesh(new T.BoxGeometry(0.52, 0.12, 0.42), vlGo);
+  hop.position.y = 0.06; hop.castShadow = true; g.add(hop);
+  var dia = new T.Mesh(new T.CylinderGeometry(0.15, 0.15, 0.012, 20),
+    new T.MeshStandardMaterial({ color: 0x241b15, roughness: 0.5 }));
+  dia.position.set(-0.06, 0.126, 0); g.add(dia);
+  var nhan = new T.Mesh(new T.CylinderGeometry(0.05, 0.05, 0.014, 16),
+    new T.MeshStandardMaterial({ color: 0xc45c3a, roughness: 0.7 }));
+  nhan.position.set(-0.06, 0.128, 0); g.add(nhan);
+  var can = new T.Mesh(new T.BoxGeometry(0.2, 0.014, 0.022), vlKim);
+  can.position.set(0.11, 0.14, -0.06); can.rotation.y = -0.6; g.add(can);
+  var loa = new T.Mesh(new T.CylinderGeometry(0.055, 0.075, 0.09, 14),
+    new T.MeshStandardMaterial({ color: 0xb8842c, roughness: 0.55, metalness: 0.4 }));
+  loa.position.set(0.19, 0.17, 0.1); loa.rotation.z = -0.5; g.add(loa);
+  g.position.set(-4.85, 0.785, 5.5); canh.add(g);
+})();
+
 /* ---- kệ sách ------------------------------------------------------------- */
 (function () {
   [-PH_R + 0.5, PH_R - 0.5].forEach(function (x, k) {
@@ -777,7 +819,8 @@ var elThoai = document.getElementById('thoai'), elTen = document.getElementById(
     elVai = document.getElementById('vai'), elLoi = document.getElementById('loi'),
     elCD = document.getElementById('chdung'),
     elHoi = document.getElementById('hoi'), elGhi = document.getElementById('ghi'),
-    elDong = document.getElementById('dong'), elNhac = document.getElementById('nhac');
+    elDong = document.getElementById('dong'), elNhac = document.getElementById('nhac'),
+    elMay = document.getElementById('maynhac');
 var dangMo = null, gan = null, daHoi = [];
 
 function moThoai(g) {
@@ -795,6 +838,7 @@ function veBangThoai(g, moi) {
   elVai.textContent = L(n.vai);
   if (n.anh) { elCD.src = n.anh; elCD.alt = n.ten; elCD.style.display = 'block'; }
   else elCD.style.display = 'none';
+  veMayNhac(n);
   elLoi.innerHTML = '';
   var p = document.createElement('p');
   p.className = 'ai';
@@ -824,6 +868,30 @@ function veBangThoai(g, moi) {
     : L({ vi: 'Nhân vật của trang viên — hư cấu, không ứng với người thật nào.',
           en: "A character from the estate — fictional, not a portrait of any real person." });
   elDong.textContent = L({ vi: 'Đóng', en: 'Close' });
+}
+/* Máy phát ở bàn Minh. Thẻ <audio> dựng ĐÚNG MỘT LẦN rồi giữ mãi: bảng hội
+   thoại vẽ lại mỗi lần khách bấm một câu hỏi và mỗi lần đổi ngôn ngữ, mà
+   dựng lại thẻ thì bài đang nghe đứt ngang, tua lại từ đầu. Chỉ phần chữ là
+   vẽ lại. Người không có nhạc thì ẩn khối đi, KHÔNG xoá nội dung - nhờ thế
+   khách rời Minh sang người khác rồi quay lại vẫn thấy bài đang chạy dở. */
+var theNhac = null, mayCua = null;
+function veMayNhac(n) {
+  if (!elMay) return;
+  if (!n.nhac) { elMay.style.display = 'none'; return; }
+  if (mayCua !== n.id) {
+    if (!theNhac) {
+      theNhac = document.createElement('audio');
+      theNhac.controls = true; theNhac.preload = 'none';
+    }
+    theNhac.src = n.nhac.tep;
+    elMay.innerHTML = '';
+    var t = document.createElement('b'); t.textContent = n.nhac.ten; elMay.appendChild(t);
+    var s = document.createElement('span'); s.className = 'phu'; elMay.appendChild(s);
+    elMay.appendChild(theNhac);
+    mayCua = n.id;
+  }
+  elMay.querySelector('.phu').textContent = L(n.nhac.phu);
+  elMay.style.display = 'block';
 }
 function veNhacNho() {
   if (!elNhac) return;          /* cũng có thể được gọi trước khi các phần tử kịp gán */
