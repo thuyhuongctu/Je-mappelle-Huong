@@ -336,6 +336,7 @@ var NGUOI = [
   {
     id: 'an', ten: 'An', vai: { vi: 'Người giữ Bảng tin', en: 'Noticeboard archivist' },
     anh: 'assets/img/npc-an.webp',
+    dung: 'assets/img/npc-an-dung.webp', dungTL: 0.3610, dungPhan: 0.857,
     cho: [5.0, 3.2], ao: '#6b7f5a', quan: '#32392a', da: '#e9bf9b', toc: '#271a11',
     chao: { vi: 'An, mình giữ Bảng tin. Có gì mới mình đều ghi lại.',
             en: "An, I keep the noticeboard. Anything new gets written down here." },
@@ -685,11 +686,18 @@ function nhanVatMoi(n) {
   if (n.chu || n.dung) {
     var tep = n.dung || ANH_NGUOI;
     var tl  = n.dung ? n.dungTL : ANH_TL;   /* đo thẳng từ tệp, không chép tay */
+    /* dungPhan: phần chiều cao ảnh mà NGƯỜI chiếm. Tranh của An chụp cả cái
+       bục gỗ dưới chân, và không cắt rời được - màu giày [109,68,49] chỉ cách
+       màu gỗ [75,58,46] có 35,6, riêng giày phải gần như trùng màu gỗ. Nên
+       thay vì cắt, phóng ảnh to lên theo tỉ lệ ấy rồi dìm phần bục xuống dưới
+       mặt sàn; sàn che đi, người vẫn cao đúng 1,95 như mọi người khác. */
+    var phan = n.dungPhan || 1;
+    var cao  = ANH_CAO / phan;
     var tx = new T.TextureLoader().load(tep);
     if (T.sRGBEncoding !== undefined) tx.encoding = T.sRGBEncoding;
     var sp = new T.Sprite(new T.SpriteMaterial({ map: tx, transparent: true }));
-    sp.scale.set(ANH_CAO * tl, ANH_CAO, 1);
-    sp.position.y = ANH_CAO / 2;
+    sp.scale.set(cao * tl, cao, 1);
+    sp.position.y = cao / 2 - (cao - ANH_CAO);
     g.add(sp);
     g.position.set(n.cho[0], 0, n.cho[1]);
     g.userData = { n: n, goc: new T.Vector3(n.cho[0], 0, n.cho[1]),
