@@ -592,7 +592,7 @@ SynthID chìm vẫn còn trong tệp.
 ## Văn phòng nghiên cứu có HAI bản, phải sửa cả hai
 
 `vanphong.html` trong kho này và `index.html` của kho
-`thuyhuongctu/van-phong-nghien-cuu` là **cùng một tệp**. Kho riêng là bản
+`thuyhuongctu/Research-Office` là **cùng một tệp**. Kho riêng là bản
 chính thức để trích dẫn (có DOI Zenodo); bản ở đây là bản trưng bày trong hệ
 sinh thái trang cá nhân.
 

@@ -139,7 +139,7 @@ thuyết thì không ai độc quyền.
 ### Tách ra kho riêng, và vì sao
 
 Quyết ngày 26/09/2026: văn phòng **tách sang kho riêng
-`thuyhuongctu/van-phong-nghien-cuu`**, không lưu trữ Zenodo từ chính kho này.
+`thuyhuongctu/Research-Office`**, không lưu trữ Zenodo từ chính kho này.
 
 Lý do là chuyện ranh giới tác phẩm, đo được:
 
@@ -164,10 +164,24 @@ khác, không phải chen vào DOI ấy.
 hệ sinh thái trang cá nhân; kho riêng là **bản chính thức để trích dẫn**. Đổi
 nội dung thì phải sửa cả hai — quy tắc ấy đã ghi vào `CLAUDE.md`.
 
-Kho riêng gồm: `index.html` (chính là `vanphong.html`, chỉ đổi hai liên kết về
-trang chủ thành địa chỉ tuyệt đối), three.js r128, năm tệp phông, sáu tranh
-nhân vật, bộ biểu tượng, cùng `README.md` hai thứ tiếng, `LICENSE`,
+Kho riêng gồm **31 tệp**: `index.html` (chính là `vanphong.html`, chỉ đổi hai
+liên kết về trang chủ thành địa chỉ tuyệt đối), three.js r128, năm tệp phông,
+bảy tranh, bộ biểu tượng, cùng `README.md` hai thứ tiếng, `LICENSE`,
 `CITATION.cff`, `THIRD-PARTY.md` và một quy trình dựng GitHub Pages.
+
+Đã đẩy lên ngày 26/09/2026, commit `fb43d90`, nhánh `main`:
+<https://github.com/thuyhuongctu/Research-Office>.
+
+**Hai bước còn lại là việc của tác giả**, không ai làm thay được vì đều cần
+đăng nhập Zenodo:
+
+1. Bật công tắc cho kho `Research-Office` tại
+   <https://zenodo.org/account/settings/github/>. Phải bật **trước** khi phát
+   hành — Zenodo chỉ nghe những bản phát hành *sau* lúc bật.
+2. Phát hành `v1.0` trên GitHub. Zenodo cấp **hai** DOI: một DOI khái niệm đại
+   diện mọi phiên bản, và một DOI riêng cho v1.0. Điền **DOI khái niệm** vào
+   dòng `doi:` đang chú thích ở cuối `CITATION.cff` của kho ấy, rồi thêm vào
+   `publications.html` của kho này.
 
 Đã kiểm cả gói khi tách ra, chạy bằng Chromium trên máy chủ tại chỗ:
 **0 yêu cầu ra ngoài, 0 phản hồi ≥ 400, 0 lỗi trang, 0 tràn ngang**, cả tiếng
