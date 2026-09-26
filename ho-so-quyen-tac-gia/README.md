@@ -20,6 +20,10 @@ trong kho này.
 | `02-ban-mo-ta-tac-pham.md` | Bản mô tả tác phẩm — phần cốt lõi, chứng minh tính nguyên gốc |
 | `03-cam-doan-ngoai-nhiem-vu.md` | Cam đoan tác phẩm tạo ra ngoài nhiệm vụ được giao |
 | `04-cong-cu-ho-tro.md` | Tuyên bố về công cụ hỗ trợ và phần của bên thứ ba |
+| `05-ung-vien-tiep-theo.md` | **Ghi chú**, không thuộc hồ sơ Trang viên: hai phòng lab CVP Studio và CMR Lab ở kho `BizOn` đóng gói đăng ký được |
+
+Bốn tệp `01`–`04` là hồ sơ cho Trang viên. Tệp `05` chỉ là ghi chú về **hai tác
+phẩm khác, ở kho khác**; chỗ ở thật của nó là `docs/ip/` bên kho BizOn.
 
 Chỗ nào cần điền thì đánh dấu bằng ngoặc kép nhọn: «…».
 
