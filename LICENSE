@@ -34,8 +34,10 @@ THIRD-PARTY.md. In summary:
     assets/vendor/threeui-LICENSE.txt
   - assets/img/vn-outline.svg — outline derived from Natural Earth data,
     public domain
-  - Be Vietnam Pro typeface — loaded from Google Fonts, SIL Open Font
-    Licence 1.1
+  - Be Vietnam Pro and Baloo 2 typefaces, assets/fonts/ — SIL Open Font
+    Licence 1.1, self-hosted in this repository (subset to Latin, Latin
+    Extended and Vietnamese); licence texts in assets/fonts/OFL-BeVietnamPro.txt
+    and assets/fonts/OFL-Baloo2.txt
   - huashu-design, .claude/skills/huashu-design/ — MIT Licence
   - MiniMax H3 skills, .claude/skills/ — see each skill's own terms
 

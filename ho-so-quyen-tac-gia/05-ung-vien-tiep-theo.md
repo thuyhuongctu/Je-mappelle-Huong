@@ -136,6 +136,61 @@ thuyết thì không ai độc quyền.
 
 ---
 
+### Tách ra kho riêng, và vì sao
+
+Quyết ngày 26/09/2026: văn phòng **tách sang kho riêng
+`thuyhuongctu/Research-Office`**, không lưu trữ Zenodo từ chính kho này.
+
+Lý do là chuyện ranh giới tác phẩm, đo được:
+
+| | |
+| --- | --- |
+| Kho `Je-mappelle-Huong` | **887 tệp, 361 MB** — riêng `assets/audio/` đã 306 MB |
+| `vanphong.html` | 52 KB |
+| Cả gói văn phòng kèm phụ thuộc | **≈ 1,3 MB** |
+
+Liên kết Zenodo–GitHub lưu trữ ở mức **kho**: mỗi bản phát hành, Zenodo tải cả
+ảnh chụp kho rồi cấp DOI cho ảnh chụp ấy. Bật ở kho này thì bản ghi Zenodo của
+«văn phòng» sẽ gồm 20 bản thu nhạc, các video và toàn bộ 41 trang — tức là
+gộp vào đúng những thứ mà mục **«Hai chỗ về giấy phép phải làm rõ»** bên dưới
+đang nói là chưa rõ chủ sở hữu. Kho riêng thì ranh giới gọn hẳn: **một tác
+giả, hai thành phần bên thứ ba, không tệp âm thanh nào.**
+
+Kho này vốn đã có DOI khái niệm riêng cho cả trang web —
+`10.5281/zenodo.22003853`, khai trong `CITATION.cff`. Văn phòng cần một DOI
+khác, không phải chen vào DOI ấy.
+
+**Bản trong kho này không xoá.** `vanphong.html` ở lại làm bản trưng bày trong
+hệ sinh thái trang cá nhân; kho riêng là **bản chính thức để trích dẫn**. Đổi
+nội dung thì phải sửa cả hai — quy tắc ấy đã ghi vào `CLAUDE.md`.
+
+Kho riêng gồm **31 tệp**: `index.html` (chính là `vanphong.html`, chỉ đổi hai
+liên kết về trang chủ thành địa chỉ tuyệt đối), three.js r128, năm tệp phông,
+bảy tranh, bộ biểu tượng, cùng `README.md` hai thứ tiếng, `LICENSE`,
+`CITATION.cff`, `THIRD-PARTY.md` và một quy trình dựng GitHub Pages.
+
+Đã đẩy lên ngày 26/09/2026, commit `fb43d90`, nhánh `main`:
+<https://github.com/thuyhuongctu/Research-Office>.
+
+**Hai bước còn lại là việc của tác giả**, không ai làm thay được vì đều cần
+đăng nhập Zenodo:
+
+1. Bật công tắc cho kho `Research-Office` tại
+   <https://zenodo.org/account/settings/github/>. Phải bật **trước** khi phát
+   hành — Zenodo chỉ nghe những bản phát hành *sau* lúc bật.
+2. Phát hành `v1.0` trên GitHub. Zenodo cấp **hai** DOI: một DOI khái niệm đại
+   diện mọi phiên bản, và một DOI riêng cho v1.0. Điền **DOI khái niệm** vào
+   dòng `doi:` đang chú thích ở cuối `CITATION.cff` của kho ấy, rồi thêm vào
+   `publications.html` của kho này.
+
+Đã kiểm cả gói khi tách ra, chạy bằng Chromium trên máy chủ tại chỗ:
+**0 yêu cầu ra ngoài, 0 phản hồi ≥ 400, 0 lỗi trang, 0 tràn ngang**, cả tiếng
+Việt lẫn tiếng Anh; **20/20 đường dẫn** được nhắc trong `index.html`,
+`fonts.css` và `manifest.webmanifest` đều phân giải được; sáu tranh nhân vật
+giải mã đúng cỡ (307×820 và năm tấm 360×360).
+
+---
+
 ## Hai chỗ về giấy phép phải làm rõ TRƯỚC khi nộp bất cứ hồ sơ nào
 
 Phát hiện khi đối chiếu hai kho, ngày 26/09/2026. Không phải việc sửa mã, mà
