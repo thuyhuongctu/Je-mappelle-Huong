@@ -51,28 +51,45 @@ lộ ra, cả hồ sơ mất giá trị; nêu ra thì phần thuộc về tác g
 > phương án đều do tôi đặt ra yêu cầu, xem xét và quyết định giữ lại hay sửa
 > đổi.
 
-### A.3b. Phần âm nhạc: mười ba bản thu được dựng bằng công cụ sinh nhạc
+### A.3b. Phần âm nhạc: phần lớn bản thu được dựng bằng công cụ sinh nhạc
 
-Đo ngày 26/09/2026, đọc thẳng thẻ ID3 của **toàn bộ 87 tệp mp3** trong kho:
+Đo lại ngày 27/09/2026, đọc thẳng thẻ ID3 của **toàn bộ 88 tệp mp3** trong
+kho:
 
 | | |
 | --- | --- |
-| Tệp tự khai trong thẻ ghi chú là dựng bằng công cụ sinh nhạc | **13** |
-| Tệp có thẻ ID3 nhưng không khai gì | 73 |
+| Tệp tự khai trong thẻ ghi chú là dựng bằng công cụ sinh nhạc | **52** |
+| Tệp có thẻ ID3 nhưng không khai gì | 35 |
 | Tệp không có thẻ ID3 | 1 |
 
-Mười ba tệp ấy nằm rải ở cả album lẫn thư mục `assets/audio/bizon/`, trong đó
-có `vua-du-de-bay-cao.mp3` — một trong bốn bài được `LICENSE` của kho BizOn
-nêu đích danh.
+**Con số ghi ở bản trước — «13 tệp» — là sai, và sai nhiều.** Lần đo ngày
+26/09 chỉ nhận ra 13 tệp; đo lại bằng **hai cách độc lập** thì ra 52, và hai
+cách khớp nhau từng tệp: (a) đọc siêu dữ liệu bằng `ffmpeg -i`, (b) đọc thô
+đúng vùng thẻ ID3v2 — lấy độ dài thẻ từ bốn byte synchsafe của tiêu đề thẻ
+rồi tìm chuỗi trong đúng vùng ấy. Bản trước hụt 39 tệp; lý do gần như chắc là
+cách tách khung `COMM` khi đó chỉ đúng với một dạng byte mã hoá. Ghi lại chỗ
+sai này để hồ sơ không mang một con số không đo lại được: **khi khai với cơ
+quan thì lấy con số 52/88, không lấy 13/87.**
+
+Năm mươi hai tệp ấy nằm rải khắp: album trên trang Âm nhạc, thư mục
+`assets/audio/bizon/` (17 tệp, trong đó có `vua-du-de-bay-cao.mp3` — một
+trong bốn bài được `LICENSE` của kho BizOn nêu đích danh), và thư mục
+`assets/audio/maida/` (9 tệp).
+
+Ba mươi lăm tệp **không** khai gì thì đúng như trông đợi, không có gì lẫn
+lộn: 24 tệp lời dẫn tour đọc bằng máy đọc chữ, 2 tệp tiếng nền
+(`ambient/birds`, `ambient/stream`), 2 tệp sóng thư giãn solfeggio, và 7 tệp
+nhạc vốn không có dòng ghi chú ấy trong thẻ. Chỗ 26 tệp còn lại tự khai thì
+nằm ngay ở `assets/audio/`, tức các bản thu của album trên trang Âm nhạc.
 
 Nói ra ở đây vì hai lẽ, đúng theo nguyên tắc đã viết ở A.2 là **không giấu
 việc có dùng công cụ**:
 
-1. **Đây là chuyện chung của mười ba tệp, không phải của riêng bài nào.** Có
-   lúc `THIRD-PARTY.md` từng khai riêng một bài «Returning to Shore» là bản
-   thu do máy sinh, trong khi mười hai tệp cùng loại thì không khai. Khai một
-   mà bỏ mười hai thì vừa không nhất quán vừa gợi sai rằng những tệp kia là
-   loại khác. Nay gom về đây, chỗ nói về công cụ.
+1. **Đây là chuyện chung của phần lớn tệp nhạc, không phải của riêng bài
+   nào.** Có lúc `THIRD-PARTY.md` từng khai riêng một bài «Returning to
+   Shore» là bản thu do máy sinh, trong khi mọi tệp cùng loại thì không khai.
+   Khai một mà bỏ năm mươi mốt tệp kia thì vừa không nhất quán vừa gợi sai
+   rằng những tệp ấy là loại khác. Nay gom về đây, chỗ nói về công cụ.
 
 2. **Công cụ, không phải đồng tác giả.** Phần do tác giả quyết định là **lời
    bài hát, bố cục bài, và việc chọn giữ hay bỏ từng bản dựng** — cùng loại
