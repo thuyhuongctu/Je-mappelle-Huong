@@ -457,6 +457,24 @@ Ba giới hạn của môi trường kiểm, **không phải lỗi của trang**
 Vào trang viên phải: chờ `#nut-vao` hết `disabled` rồi bấm, sau đó bấm hết ba
 bước của `#th-guide-next`.
 
+### Kiểm bản ĐANG CHẠY trên github.io
+
+`curl` tới `thuyhuongctu.github.io` **bị cổng ra mạng chặn** — trả về
+`CONNECT tunnel failed, response 403`. Đọc trang thật phải qua Firecrawl
+(`firecrawl_scrape`, đặt `maxAge: 0` để khỏi lấy bản lưu).
+
+**Cách rẻ nhất để biết commit nào đang phục vụ là đọc `sw.js`**, không phải
+đọc trang: tệp ấy bé, và số `jshuong-vNN` trong đó nói thẳng bản nào đã lên.
+Pages dựng lại cả cây tệp một lượt, nên số đệm đúng nghĩa là mọi tệp của
+commit ấy — kể cả tệp nhạc vài megabyte không đọc nổi qua công cụ — đều đã
+lên theo.
+
+Đối chiếu HTML thì nhớ **Firecrawl trả về trang đã qua trình duyệt**, không
+phải tệp gốc: đường dẫn tương đối bị viết thành tuyệt đối, `controls` thành
+`controls=""`, và các nút do JavaScript của trang tự chèn (nút «Hiện lời bài
+hát») cũng nằm trong đó. Đo mục `#shore` ra **11 dòng khác nhau mà không dòng
+nào là khác nội dung**. So chữ nghĩa, đừng so từng byte.
+
 ## Lời commit
 
 Viết tiếng Việt, giọng bình thường. Nói **vì sao** chứ không chỉ nói đã đổi
@@ -613,6 +631,95 @@ Thêm `width`/`height` vào một thẻ `<img>` vốn chưa có thì **phải xe
 của nó có `height:auto` chưa**. Thiếu, mà CSS lại đè `width`, thì chiều cao
 lấy nguyên con số trong thuộc tính và ảnh bị bóp ngang — `.anh-nv` trong
 `trangvien.html` đã vấp đúng thế: ảnh vuông 360×360 hiện ra thành 210×360.
+
+## Thêm một bài hát vào trang Âm nhạc
+
+Làm lần đầu cho «Returning to Shore» và bản lời Việt «Trở về bờ» của nó. Bốn
+chỗ mất thì giờ, ghi lại cả bốn.
+
+### Công cụ: `ffmpeg` không cài sẵn, `ffprobe` không có
+
+Lấy đường dẫn bằng Python, gói `imageio-ffmpeg` đã có trong máy:
+
+```python
+import imageio_ffmpeg; imageio_ffmpeg.get_ffmpeg_exe()
+```
+
+`ffprobe` thì **không có bản nào** — muốn đọc siêu dữ liệu thì chạy
+`ffmpeg -i <tệp>` rồi đọc phần in ra `stderr`.
+
+### Mã lại hay chép nguyên dòng, tuỳ nguồn
+
+- Nguồn `.m4a` chứa **Opus** thì phải mã sang mp3. Đặt bitrate **cao hơn
+  nguồn** để chỗ chuyển mã khỏi ăn thêm: Opus 133 kb/s đã cho mp3 192 kb/s.
+- Nguồn **đã là mp3** thì `-c:a copy`, chỉ đặt thêm `-metadata title` và
+  `-metadata artist`. **Mã lại chỉ để sửa thẻ là mất chất lượng không vì cái
+  gì.**
+- Nhớ `-map 0:a:0`: tệp `.m4a` xuất ra từ công cụ sinh nhạc có kèm một dòng
+  phụ đề `mov_text`, mp3 không chứa được.
+
+### Độ to: đo rồi hãy quyết, thường là đừng chuẩn hoá
+
+Đo bằng `-af ebur128=peak=true`, so với **bản nằm ngay cạnh nó trên trang**:
+
+| | bản Anh | lời Việt (5:23) | lời Việt (4:28) |
+| --- | --- | --- | --- |
+| Độ to tích hợp | −14,3 LUFS | −15,4 | **−14,6** |
+| Đỉnh | 0,1 dBFS | 0,3 | −0,5 |
+
+Chênh **dưới khoảng 1 LU thì để yên**. Chuẩn hoá là phải mã lại lần nữa, tức
+mất chất lượng thật để đổi lấy chỗ chênh tai không nhận ra.
+
+### Thẻ ID3 giữ nguyên dòng ghi chú của nguồn
+
+Đúng nguyên tắc A.2 của `ho-so-quyen-tac-gia/04-cong-cu-ho-tro.md`: **không
+giấu việc có dùng công cụ**. Chỉ đặt thêm `title` và `artist` cho khớp bản
+cùng bài.
+
+**Đếm số tệp tự khai thì đừng đọc một cửa sổ cố định.** Đọc 4096 byte đầu mỗi
+tệp thì ra 50; đọc đúng vùng thẻ — lấy độ dài từ **bốn byte synchsafe** của
+tiêu đề ID3v2 — thì ra **52 trên 88**. Hai tệp hụt là tệp có ảnh bìa nhúng,
+thẻ dài hơn 4096 byte nên dòng ghi chú nằm sau ảnh. Mục A.3b từng ghi «13
+trong 87» chính vì đo hụt kiểu này; con số đúng là 52/88.
+
+### Đổi tệp nhạc thì vẫn phải nâng số bộ nhớ đệm
+
+Tệp `.mp3` **không** khai trong `CORE` của `sw.js` (nặng, mà trang vẫn đọc
+được khi mất mạng). Nhưng hễ `music.html` đổi thì vẫn nâng `jshuong-vNN` như
+thường.
+
+### Hai bản lời của cùng một bài: MỘT khối `.lyrics`, không phải hai
+
+Script cuối `music.html` dựng nút «Hiện lời bài hát» cho **mọi** phần tử
+`.lyrics`. Tách hai bản lời thành hai khối là ra **hai cái nút giống hệt nhau
+trong một mục**, khách không biết nút nào mở gì.
+
+Phân bản bằng lớp **`.lyr-ver`**, không dùng thẳng `h3`: `.lyrics h3` là kiểu
+của *tên đoạn* (KHỔ 1, ĐIỆP KHÚC) — chữ hoa, màu đất nung — nên hai dòng phân
+bản mà giống hệt tên đoạn thì không phân bản được gì.
+
+Cũng **đừng mượn khung hai cột `.bilingual-lyrics`** của Track 05: quy tắc
+`.lyric-panel h3` khai *sau* `.lyrics h3` nên sẽ đè kiểu lên hết tên đoạn,
+gạch chân từng chữ «KHỔ 1» một. Track 05 hợp khung ấy vì lời nó là văn xuôi
+trong thẻ `pre`.
+
+Chỉ dẫn diễn trong ngoặc vuông (tiếng biển, cách hát, nhạc cụ) đặt vào thẻ
+`.note` của từng mục — đúng lối phần lời tiếng Anh vẫn dùng sẵn.
+
+### Thay bản thu thì ĐO THỜI LƯỢNG rồi đối chiếu lời
+
+Bản thu thay vào ngắn hơn bản cũ **55 giây, tức 17%**. Hoá ra không phải cùng
+lời dựng gọn mà là **bỏ hẳn 9 khổ**: khổ thứ hai của Khổ 1, Khổ 2 và Khổ 3,
+nguyên mục Tiền điệp khúc 2, nguyên lần lặp điệp khúc giữa bài, khổ cuối của
+điệp khúc cuối, và hai khổ ở phần Kết. Để nguyên thì **trang in những câu bản
+thu không hát** — hỏng âm thầm đúng kiểu mục đầu tệp này cảnh báo.
+
+Nên: lệch thời lượng quá vài giây thì **hỏi lời của chính bản thu ấy**, đừng
+giả định lời cũ còn đúng. Nghe thì không nghe được, nhưng thời lượng thì đo
+được.
+
+Tên bài viết **thường** theo lối tiếng Việt: «Trở về bờ», không phải «Trở Về
+Bờ». Đã một lần chép nhầm cách viết hoa từ tên tệp gửi tới rồi phải sửa lại.
 
 ## Gỡ dấu chìm khỏi video
 
