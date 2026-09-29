@@ -326,7 +326,6 @@
         '<div class="sf-cols">' +
         '<div class="sf-col"><div class="sf-ch">' + t('Học thuật', 'Academic', 'Académique') + '</div>' +
         '<div><a href="index.html">' + t('Trang chủ', 'Home', 'Accueil') + '</a></div>' +
-        '<div><a href="publications.html">' + t('Công bố', 'Publications', 'Publications') + '</a></div>' +
         '<div><a href="cv.html">CV</a></div>' +
         '<div><a href="blog.html">Blog</a></div></div>' +
 
