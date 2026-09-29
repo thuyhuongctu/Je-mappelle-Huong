@@ -231,7 +231,7 @@ lập bản kiểm kê này:
 | JavaScript và script khác | 3 104 dòng |
 | CSS | 443 dòng |
 | Ảnh WebP (gồm ảnh nhân vật do tác giả dựng) | 86 tệp |
-| Ghi âm (tệp âm thanh được git theo dõi, trừ `.claude/`) | 114 tệp, **trong đó 20 tệp trong `assets/audio/bizon/` là đồng sở hữu** |
+| Ghi âm (tệp âm thanh được git theo dõi, trừ `.claude/`) | 115 tệp, **trong đó 20 tệp trong `assets/audio/bizon/` là đồng sở hữu** |
 | Video | **12** tệp (kho có 13; `trangvien-intro.mp4` ở mục 4 là của bên thứ ba) |
 
 **Phần đồng sở hữu với Phan Anh Tú.** Hai thứ trong kho này thuộc về hai tác
