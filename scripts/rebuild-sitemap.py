@@ -13,7 +13,7 @@ Nguồn dữ liệu:
 - blog.html   : dò mọi <article class="post ...">, lấy ngày đăng từ .post-meta
                 (định dạng «DD · MM · YYYY») làm lastmod; slug sinh từ tên bài
                 Việt ở .post-title.
-- các trang tĩnh (publications.html, cv.html, garden.html, trangvien.html,
+- các trang tĩnh (cv.html, garden.html, trangvien.html,
                 music.html) : ngày sửa đổi của file.
 - index.html  : luôn ưu tiên lastmod mới nhất của toàn bộ các trang HTML.
 
@@ -93,7 +93,6 @@ PAGE_CONF = [
     # (url_tail, lastmod_override_file, priority, changefreq)
     # lop hoc thuat - trang chu, cong bo, CV
     ('/', 'index.html', '1.0', 'weekly'),
-    ('/publications.html', 'publications.html', '0.9', 'weekly'),
     ('/cv.html', 'cv.html', '0.8', 'monthly'),
     ('/blog.html', 'blog.html', '0.9', 'weekly'),
     # lop vuon so
