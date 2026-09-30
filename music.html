@@ -57,6 +57,24 @@ section{margin-top:36px}
 .track{display:flex;flex-direction:column;gap:6px}
 .track-name{font-size:.9rem;font-weight:600}
 .track-name .len{font-weight:400;color:var(--muted)}
+/* Cap ban thu noi bat cua mot bai hat: ban dang duoc chon dat len dau khoi
+   .tracks, va ban cung bai o thu tieng kia nam ngay duoi trong cung mot the.
+   Vien trai mau dat nung tach han voi vien mau song cua ca muc, nen the nay
+   doc duoc ngay ca khi luot nhanh. */
+.track-noi{background:var(--surface);border:1px solid var(--line);
+  border-left:4px solid var(--accent);border-radius:14px;padding:15px 17px;
+  box-shadow:var(--shadow)}
+.track-noi .track+.track{margin-top:14px;padding-top:14px;
+  border-top:1px solid var(--line)}
+.track-noi .track-name{font-size:1.04rem;line-height:1.35}
+.track-noi .track-doi .track-name{font-size:.92rem;color:var(--muted)}
+.track-noi .track-doi .track-name b{color:var(--text);font-weight:600}
+.nhan-noi{display:inline-block;font-size:.68rem;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--accent);
+  border:1px solid var(--accent);border-radius:999px;padding:2px 10px;
+  margin-bottom:10px}
+.nhan-khac{font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);margin:6px 0 -6px}
 audio{width:100%;height:38px}
 /* Doan phim cua mot bai hat: hien tron khung, bam moi phat, co tieng nen
    khong tu chay. */
@@ -1389,6 +1407,19 @@ Je regarde seulement le ciel que tu n’as jamais quitté.</p>
       </p>
 
       <div class="tracks">
+        <div class="track-noi">
+          <span class="nhan-noi"><span class="lang-vi">Bản nổi bật</span><span class="lang-en">Featured</span></span>
+          <div class="track">
+            <div class="track-name">«Trở về bờ» <span class="lang-vi">· bản 4 · lời Việt</span><span class="lang-en">· take 4 · Vietnamese lyrics</span> <span class="len">· 4:16</span></div>
+            <audio controls preload="none" src="assets/audio/tro-ve-bo-4.mp3"></audio>
+          </div>
+          <div class="track track-doi">
+            <div class="track-name"><span class="lang-vi">Cùng bài, lời tiếng Anh · </span><span class="lang-en">Same song, English lyrics · </span><b>«Returning to Shore»</b> <span class="lang-vi">· bản 5</span><span class="lang-en">· take 5</span> <span class="len">· 3:58</span></div>
+            <audio controls preload="none" src="assets/audio/tro-ve-bo-5.mp3"></audio>
+          </div>
+        </div>
+
+        <p class="nhan-khac"><span class="lang-vi">Các bản thu khác</span><span class="lang-en">Other recordings</span></p>
         <div class="track">
           <div class="track-name">«Returning to Shore» <span class="lang-vi">· lời Anh</span><span class="lang-en">· English lyrics</span> <span class="len">· 5:49</span></div>
           <audio controls preload="none" src="assets/audio/returning-to-shore.mp3"></audio>
@@ -1404,14 +1435,6 @@ Je regarde seulement le ciel que tu n’as jamais quitté.</p>
         <div class="track">
           <div class="track-name">«Returning to Shore» <span class="lang-vi">· bản 2 · lời Anh</span><span class="lang-en">· take 2 · English lyrics</span> <span class="len">· 3:55</span></div>
           <audio controls preload="none" src="assets/audio/returning-to-shore-2.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">«Trở về bờ» <span class="lang-vi">· bản 4 · lời Việt</span><span class="lang-en">· take 4 · Vietnamese lyrics</span> <span class="len">· 4:16</span></div>
-          <audio controls preload="none" src="assets/audio/tro-ve-bo-4.mp3"></audio>
-        </div>
-        <div class="track">
-          <div class="track-name">«Returning to Shore» <span class="lang-vi">· bản 5 · lời Anh</span><span class="lang-en">· take 5 · English lyrics</span> <span class="len">· 3:58</span></div>
-          <audio controls preload="none" src="assets/audio/tro-ve-bo-5.mp3"></audio>
         </div>
       </div>
     </div>
