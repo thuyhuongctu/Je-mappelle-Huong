@@ -147,6 +147,45 @@ Trường Kinh tế, Đại học Cần Thơ.
 
 ---
 
+## 4c. Phim giới thiệu M-AIDA
+
+### `assets/video/maida-film.mp4`
+
+| | |
+| --- | --- |
+| **Giọng đọc** | **Giọng của chính tác giả** |
+| **Tạo hình nhân vật** | **Tác giả dựng** |
+| Nội dung và lời trên màn hình | Tác giả, lấy từ chính dự án M-AIDA |
+| Dựng chuyển động | Soạn trong **Claude Design**, theo chỉ dẫn của tác giả |
+| Xuất ra mp4 | Chụp từng khung rồi nén |
+
+Khác với mục 4: ở đây **không có phần nào của bên thứ ba**. Hai thứ dễ
+bị cho là do máy sinh thì đều không phải: giọng đọc là giọng thật của tác
+giả, và hai hình nhân vật là tạo hình do tác giả dựng. Công cụ chỉ làm phần
+dựng chuyển động — ghi ra đây theo đúng nguyên tắc A.2 của
+`ho-so-quyen-tac-gia/04-cong-cu-ho-tro.md`: không giấu việc có dùng công cụ.
+
+Bản gửi tới **không phải tệp video** mà là một trang HTML tự chứa: cảnh vẽ
+lại từng khung theo một trục thời gian. Trang ấy không nằm trong kho; thứ được
+git theo dõi chỉ là tệp mp4 xuất ra, 1 932 khung ở 30 hình/giây.
+
+**Nhân vật đầu phim lật ngang so với ảnh gốc**, có chủ đích: mọi nội dung của
+cảnh ấy nằm bên trái, nên cử chỉ phải mở vào trong khung chứ không dắt mắt ra
+khỏi nó. Nhân vật cuối phim **giữ nguyên chiều**: tay vẫy là vẫy người xem nên
+phải hướng ra, và tà áo dài cài bên phải nên lật ngang là cài sai bên.
+
+Chữ trong phim dùng Inter, JetBrains Mono và Source Serif 4 — đều SIL OFL. Chúng
+đã thành điểm ảnh trong tệp mp4, **không thêm tệp phông nào vào kho**, nên mục 5
+không đổi.
+
+Thẻ cuối phim ghi **«Do Thuy Huong · Phan Anh Tu»** cùng DOI Zenodo của M-AIDA
+— đúng theo bản ghi của chính dự án ấy, không phải do phim tự đặt ra.
+
+Ảnh bìa `assets/img/maida-film-poster.webp` cắt từ chính tệp mp4 này nên cùng
+tình trạng.
+
+---
+
 ## 5. Bộ chữ
 
 Hai bộ chữ, dùng cho trang viên 3D và ba bản demo bố cục. **Từ 22/09/2026 cả
