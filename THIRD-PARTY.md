@@ -169,6 +169,11 @@ Bản gửi tới **không phải tệp video** mà là một trang HTML tự ch
 lại từng khung theo một trục thời gian. Trang ấy không nằm trong kho; thứ được
 git theo dõi chỉ là tệp mp4 xuất ra, 1 932 khung ở 30 hình/giây.
 
+**Nhân vật đầu phim lật ngang so với ảnh gốc**, có chủ đích: mọi nội dung của
+cảnh ấy nằm bên trái, nên cử chỉ phải mở vào trong khung chứ không dắt mắt ra
+khỏi nó. Nhân vật cuối phim **giữ nguyên chiều**: tay vẫy là vẫy người xem nên
+phải hướng ra, và tà áo dài cài bên phải nên lật ngang là cài sai bên.
+
 Chữ trong phim dùng Inter, JetBrains Mono và Source Serif 4 — đều SIL OFL. Chúng
 đã thành điểm ảnh trong tệp mp4, **không thêm tệp phông nào vào kho**, nên mục 5
 không đổi.
