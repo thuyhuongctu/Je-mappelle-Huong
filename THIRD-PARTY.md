@@ -167,7 +167,17 @@ dựng chuyển động — ghi ra đây theo đúng nguyên tắc A.2 của
 
 Bản gửi tới **không phải tệp video** mà là một trang HTML tự chứa: cảnh vẽ
 lại từng khung theo một trục thời gian. Trang ấy không nằm trong kho; thứ được
-git theo dõi chỉ là tệp mp4 xuất ra, 1 932 khung ở 30 hình/giây.
+git theo dõi chỉ là tệp mp4 xuất ra, 2 024 khung ở 30 hình/giây.
+
+**Bản thu lời đọc đã thay một lần**, từ 1:04,40 sang **1:07,45**. Bản sau đọc chậm
+hơn chứ không đổi lời — căn hai bản bằng DTW trên phổ log tám dải cho sai số còn
+1,090, trong khi ghép ngẫu nhiên là 3,298. Ba giây dôi ra **không nằm ở đầu hay
+cuối** mà rải trong bài, trôi dần tới +4,3 giây ở giữa. Nên phải **dựng lại cả
+phần hình theo nhịp mới**, không ghép tiếng vào bản hình cũ được: ghép thẳng thì
+lời đọc tả một cảnh đã trôi qua. Mốc sáu cảnh lấy từ chính đường căn ấy.
+
+Độ to hai bản lệch 0,4 LU (−13,7 so với −14,1 LUFS) — dưới ngưỡng 1 LU nên
+**không chuẩn hoá**, giữ nguyên bản thu.
 
 **Nhân vật đầu phim lật ngang so với ảnh gốc**, có chủ đích: mọi nội dung của
 cảnh ấy nằm bên trái, nên cử chỉ phải mở vào trong khung chứ không dắt mắt ra
