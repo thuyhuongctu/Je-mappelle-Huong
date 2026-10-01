@@ -184,6 +184,19 @@ cảnh ấy nằm bên trái, nên cử chỉ phải mở vào trong khung chứ
 khỏi nó. Nhân vật cuối phim **giữ nguyên chiều**: tay vẫy là vẫy người xem nên
 phải hướng ra, và tà áo dài cài bên phải nên lật ngang là cài sai bên.
 
+**Nhạc nền** là `assets/maida_song_instrumental.mp3` lấy từ kho
+[`thuyhuongctu/M-AIDA`](https://github.com/thuyhuongctu/M-AIDA) — bản không lời
+tách ra từ chính bài hát của dự án M-AIDA, mà trang `index.html` của kho ấy gọi
+là «bản không lời (hoà tấu) — tách từ bản chính thức để nghe làm nhạc nền». Kho
+ấy cũng của tác giả (AGPL-3.0, Copyright 2026 Do Thuy Huong và Phan Anh Tu), nên
+không phải tài nguyên của bên thứ ba.
+
+Lấy 67,45 giây đầu của bản dài 3:01, mở dần 1,5 giây và tắt dần 2,5 giây,
+hạ **11 dB** — đo ra nằm **14,6 dB dưới lời đọc**, đủ nghe mà không tranh với
+tiếng nói. Độ to của cả trái giữ đúng mức cũ (−14,7 LUFS) để ô này không to hơn
+các clip khác trong lưới Dự án. Phần hình **không mã lại**: chép nguyên dòng
+hình, md5 trước và sau bằng nhau.
+
 Chữ trong phim dùng Inter, JetBrains Mono và Source Serif 4 — đều SIL OFL. Chúng
 đã thành điểm ảnh trong tệp mp4, **không thêm tệp phông nào vào kho**, nên mục 5
 không đổi.
