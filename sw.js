@@ -1,5 +1,5 @@
 /* Service worker - Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v177';
+const CACHE = 'jshuong-v178';
 const CORE = [
   './',
   'index.html',
