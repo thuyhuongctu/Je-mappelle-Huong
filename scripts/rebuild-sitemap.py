@@ -32,8 +32,12 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_URL = 'https://thuyhuongctu.github.io/Je-mappelle-Huong'
 
 # ---------- đọc cấu trúc bài viết từ blog.html ----------
+# Thuoc tinh class KHONG phai thu cuoi cung trong the <article>: bai dau trang
+# luon mang them id="main" (moc cua skip-link). Mau cu doi dau '>' ngay sau
+# class nen bo sot dung bai moi nhat, va nhanh 'featured -> 0.8' ben duoi vi the
+# chua bao gio chay. Nay nhan them thuoc tinh phia sau.
 POST_PATTERN = re.compile(
-    r'<article class="post[ a-z]*">.*?'
+    r'<article class="post[ a-z]*"[^>]*>.*?'
     r'<div class="post-meta">(\d{2}) \u00b7 (\d{2}) \u00b7 (\d{4}) \u00b7 .*?</div>.*?'
     r'<h2 class="post-title">\s*<span class="lang-vi">(.*?)</span>',
     re.S | re.DOTALL,
