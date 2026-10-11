@@ -219,7 +219,7 @@ tình trạng.
 | Nhân vật trong phim | Dàn nhân vật của chính văn phòng, xem mục 4b |
 | Nội dung và lời trên màn hình | Tác giả, lấy từ chính dự án Văn phòng nghiên cứu |
 | Dựng chuyển động | Soạn trong **Claude Design**, theo chỉ dẫn của tác giả |
-| Nhạc nền | **Chưa có** — xem đoạn đo ở dưới |
+| Nhạc nền | `assets/audio/bizon-theme.mp3` lấy từ kho [`thuyhuongctu/BizOn`](https://github.com/thuyhuongctu/BizOn) — bản không lời |
 | Xuất ra mp4 | Chụp từng khung rồi nén |
 
 Giống mục 4c và khác mục 4: ở đây **không có phần nào của bên thứ ba**. Thứ dễ
@@ -242,12 +242,38 @@ chép: trùng khớp (`2b6959c6a657293ebc03ef23e84fd7c3`).
 trang là −14,7 LUFS; lệch 0,2 LU, dưới ngưỡng 1 LU nên **không chuẩn hoá** —
 mã lại chỉ để chỉnh chừng ấy là mất chất lượng không vì cái gì.
 
-**Đo ra là chưa có nhạc nền**, đừng nhầm đuôi vang là nhạc. Trong các khoảng
-giữa hai câu nói, mức trung bình là **−45,1 dB** trong khi đoạn có lời là
-**−15,3 dB** — thấp hơn 30 dB. Quan trọng hơn: ở dải **trên 6 kHz** những
-khoảng ấy gần như trống (−81,9 dB), mà nhạc thật bao giờ cũng có phần trên ấy.
-Vậy thứ lấp vào giữa các câu chỉ là đuôi vang của chính giọng đọc cộng nhiễu
-nền. Để so: phim M-AIDA đặt nhạc ở **−11 dB** dưới giọng, tức nghe rõ.
+**Nhạc nền thêm vào sau**, khi bản gửi tới còn chưa có. Nguồn là
+`assets/audio/bizon-theme.mp3` của kho BizOn — chính danh mục nhạc trong kho ấy
+khai nó là `title: BizOn Theme`, `version: Instrumental`, `duration: 181`, và
+`use: «Nền chung khi phát phiếu, debrief, checklist — không lời.»` Cùng một tác
+giả, nên như mục 4c: **không có phần nào của bên thứ ba**.
+
+Cách trộn, theo đúng công thức đã dùng cho phim M-AIDA: cắt 63 giây đầu, vuốt
+vào 1,5 giây và vuốt ra 2,5 giây ở cuối, hạ **13,5 dB** để nền nằm **14,6 LU**
+dưới giọng (nền −16,0 LUFS, giọng −14,9 LUFS), trộn với `normalize=0` để
+`amix` khỏi tự chia đôi mức, rồi hạn biên ở −1 dBFS. **Bù mức đặt SAU khâu hạn
+biên** (−0,4 dB) đúng như bài học ở mục 4c: đặt trước thì hạn biên ăn mất một
+phần và chỉnh không ra số mong muốn.
+
+Kết quả đo: **−14,9 LUFS, đỉnh −0,5 dBFS** — bằng đúng độ to của bản chưa có
+nhạc, nên phần giọng nghe không khác. Nền nghe thấy được: đo năm khoảng giữa
+các câu nói, mức dâng từ −44,8…−51,7 dB lên **−28,4…−33,1 dB**.
+
+Hai điều đã vấp khi làm, ghi lại để lần sau khỏi dò lại:
+
+- **Trộn lại là mất faststart.** ffmpeg viết `moov` xuống cuối tệp, trang vẫn
+  chạy nhưng trình duyệt phải tải hết mới phát được. Phải ghép lại một lượt với
+  `-movflags +faststart`; kiểm bằng cách tìm `moov` trong 200 KB đầu — phải ra
+  byte 36 như các video khác trong kho.
+- **Đừng lấy dải trên 6 kHz làm thước đo «có nhạc hay không» cho riêng phim
+  này.** `bizon-theme` là bản nặng trầm: ba dải đo được −17,8 / −30,3 / −46,6 dB,
+  nên thêm nhạc vào mà dải trên 6 kHz gần như không nhúc nhích. Thước dùng được
+  ở đây là mức trung bình trong các khoảng giữa hai câu.
+
+**Phần hình không bị đụng tới.** Trộn bằng `-c:v copy`; md5 của riêng dòng hình
+trước và sau khi thêm nhạc trùng khớp (`1037585aa847e18dae267e69ab98658d`).
+Tệp từ 3 775 379 lên 4 288 766 byte, dòng tiếng mã lại thành AAC 194 kb/s —
+cao hơn bản gốc 129 kb/s để chỗ chuyển mã khỏi ăn thêm.
 
 Hình nền của thẻ trên trang chủ **dùng lại `assets/img/vanphong-bia.webp` đã
 có**, không cắt ảnh mới từ phim — nên khác mục 4c, không phát sinh tệp ảnh nào.
