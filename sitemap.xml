@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
@@ -55,9 +55,16 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#ba-phong-lab-moi-cho-lop-hoc-gravity-lab-nha-may-fdi-ho-chieu-sau-rieng</loc>
+    <lastmod>2026-10-11</lastmod>
+    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <!-- Ba phòng lab mới cho lớp học: Gravity Lab, Nhà máy FDI, Hộ Chiếu Sầu Riêng -->
+  </url>
+  <url>
     <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#enquiz-len-google-play-phan-mem-thu-hai-ra-cua-hang-ung-dung-mo-cho-177-quoc-gia</loc>
     <lastmod>2026-10-07</lastmod>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- EnQuiz lên Google Play: phần mềm thứ hai ra cửa hàng ứng dụng, mở cho 177 quốc g -->
   </url>
