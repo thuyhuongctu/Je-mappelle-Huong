@@ -55,9 +55,16 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#ba-phong-lab-moi-cho-lop-hoc-gravity-lab-nha-may-fdi-ho-chieu-sau-rieng</loc>
+    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#van-phong-nghien-cuu-ban-de-trich-dan-nay-co-loi-vao-tu-trang-chu</loc>
     <lastmod>2026-10-11</lastmod>
     <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <!-- Văn phòng nghiên cứu: bản để trích dẫn nay có lối vào từ trang chủ -->
+  </url>
+  <url>
+    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#ba-phong-lab-moi-cho-lop-hoc-gravity-lab-nha-may-fdi-ho-chieu-sau-rieng</loc>
+    <lastmod>2026-10-11</lastmod>
+    <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- Ba phòng lab mới cho lớp học: Gravity Lab, Nhà máy FDI, Hộ Chiếu Sầu Riêng -->
   </url>
