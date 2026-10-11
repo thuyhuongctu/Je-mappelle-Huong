@@ -209,6 +209,51 @@ tình trạng.
 
 ---
 
+## 4d. Phim giới thiệu Văn phòng nghiên cứu
+
+### `assets/video/vanphong-intro.mp4`
+
+| | |
+| --- | --- |
+| **Giọng đọc** | **Giọng của chính tác giả** |
+| Nhân vật trong phim | Dàn nhân vật của chính văn phòng, xem mục 4b |
+| Nội dung và lời trên màn hình | Tác giả, lấy từ chính dự án Văn phòng nghiên cứu |
+| Dựng chuyển động | Soạn trong **Claude Design**, theo chỉ dẫn của tác giả |
+| Nhạc nền | **Chưa có** — xem đoạn đo ở dưới |
+| Xuất ra mp4 | Chụp từng khung rồi nén |
+
+Giống mục 4c và khác mục 4: ở đây **không có phần nào của bên thứ ba**. Thứ dễ
+bị cho là do máy sinh — giọng đọc — thì không phải: đó là giọng thật của tác
+giả. Công cụ chỉ làm phần dựng chuyển động, ghi ra đây theo đúng nguyên tắc A.2
+của `ho-so-quyen-tac-gia/04-cong-cu-ho-tro.md`: không giấu việc có dùng công cụ.
+
+Nội dung trên màn hình đều lấy từ chính văn phòng: bảng bảy phương thức thâm
+nhập thị trường, phần luận án «Firms meet institutions» (WBES × WGI, 50 nền
+kinh tế), tấm «No network calls», và cách đi lại bằng WASD với phím E. Góc trên
+phải đóng dấu `© 2026 Đỗ Thùy Hương · DOI 10.5281/zenodo.22971293` suốt phim —
+đúng DOI của bản ghi Zenodo, không phải do phim tự đặt ra.
+
+**Tệp chép nguyên, không mã lại.** Bản gửi tới đã là h264 High 1280×720 ở 30
+hình/giây, AAC đôi 129 kb/s, 1:03,00, và `moov` nằm ở byte 36 tức đã faststart
+giống `maida-film.mp4`. Đối chiếu md5 của dòng hình cộng tiếng trước và sau khi
+chép: trùng khớp (`2b6959c6a657293ebc03ef23e84fd7c3`).
+
+**Độ to −14,9 LUFS, đỉnh −0,6 dBFS.** Phim M-AIDA nằm ngay cạnh nó trên cùng
+trang là −14,7 LUFS; lệch 0,2 LU, dưới ngưỡng 1 LU nên **không chuẩn hoá** —
+mã lại chỉ để chỉnh chừng ấy là mất chất lượng không vì cái gì.
+
+**Đo ra là chưa có nhạc nền**, đừng nhầm đuôi vang là nhạc. Trong các khoảng
+giữa hai câu nói, mức trung bình là **−45,1 dB** trong khi đoạn có lời là
+**−15,3 dB** — thấp hơn 30 dB. Quan trọng hơn: ở dải **trên 6 kHz** những
+khoảng ấy gần như trống (−81,9 dB), mà nhạc thật bao giờ cũng có phần trên ấy.
+Vậy thứ lấp vào giữa các câu chỉ là đuôi vang của chính giọng đọc cộng nhiễu
+nền. Để so: phim M-AIDA đặt nhạc ở **−11 dB** dưới giọng, tức nghe rõ.
+
+Hình nền của thẻ trên trang chủ **dùng lại `assets/img/vanphong-bia.webp` đã
+có**, không cắt ảnh mới từ phim — nên khác mục 4c, không phát sinh tệp ảnh nào.
+
+---
+
 ## 5. Bộ chữ
 
 Hai bộ chữ, dùng cho trang viên 3D và ba bản demo bố cục. **Từ 22/09/2026 cả
