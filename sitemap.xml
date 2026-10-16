@@ -1,152 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/</loc>
+    <loc>https://jemappellehuong.id.vn/</loc>
     <lastmod>2026-10-13</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/cv.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <loc>https://jemappellehuong.id.vn/cv.html</loc>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html</loc>
     <lastmod>2026-10-13</lastmod>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/garden.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <loc>https://jemappellehuong.id.vn/garden.html</loc>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/music.html</loc>
+    <loc>https://jemappellehuong.id.vn/music.html</loc>
     <lastmod>2026-10-13</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/trangvien.html</loc>
-    <lastmod>2026-09-28</lastmod>
+    <loc>https://jemappellehuong.id.vn/trangvien.html</loc>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/vanphong.html</loc>
-    <lastmod>2026-09-26</lastmod>
+    <loc>https://jemappellehuong.id.vn/vanphong.html</loc>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/so-luu-niem.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <loc>https://jemappellehuong.id.vn/so-luu-niem.html</loc>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/journey.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <loc>https://jemappellehuong.id.vn/journey.html</loc>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#cac-phong-lab-tach-thanh-kho-rieng-de-co-doi-danh-muc-cong-bo-them-bon-muc</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html#cac-phong-lab-tach-thanh-kho-rieng-de-co-doi-danh-muc-cong-bo-them-bon-muc</loc>
     <lastmod>2026-10-13</lastmod>
     <priority>0.8</priority>
     <changefreq>yearly</changefreq>
     <!-- Các phòng lab tách thành kho riêng để có DOI: danh mục công bố thêm bốn mục -->
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#van-phong-nghien-cuu-ban-de-trich-dan-nay-co-loi-vao-tu-trang-chu</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html#van-phong-nghien-cuu-ban-de-trich-dan-nay-co-loi-vao-tu-trang-chu</loc>
     <lastmod>2026-10-11</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- Văn phòng nghiên cứu: bản để trích dẫn nay có lối vào từ trang chủ -->
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#ba-phong-lab-moi-cho-lop-hoc-gravity-lab-nha-may-fdi-ho-chieu-sau-rieng</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html#ba-phong-lab-moi-cho-lop-hoc-gravity-lab-nha-may-fdi-ho-chieu-sau-rieng</loc>
     <lastmod>2026-10-11</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- Ba phòng lab mới cho lớp học: Gravity Lab, Nhà máy FDI, Hộ Chiếu Sầu Riêng -->
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#enquiz-len-google-play-phan-mem-thu-hai-ra-cua-hang-ung-dung-mo-cho-177-quoc-gia</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html#enquiz-len-google-play-phan-mem-thu-hai-ra-cua-hang-ung-dung-mo-cho-177-quoc-gia</loc>
     <lastmod>2026-10-07</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- EnQuiz lên Google Play: phần mềm thứ hai ra cửa hàng ứng dụng, mở cho 177 quốc g -->
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#bizon-len-google-play-phan-mem-dau-tien-cua-he-sinh-thai-ra-cua-hang-ung-dung-cong-khai</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html#bizon-len-google-play-phan-mem-dau-tien-cua-he-sinh-thai-ra-cua-hang-ung-dung-cong-khai</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- BizOn lên Google Play: phần mềm đầu tiên của hệ sinh thái ra cửa hàng ứng dụng c -->
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#enquiz-vuot-100-luot-xem-va-31-luot-tai-chua-day-3-ngay-sau-khi-cong-bo</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html#enquiz-vuot-100-luot-xem-va-31-luot-tai-chua-day-3-ngay-sau-khi-cong-bo</loc>
     <lastmod>2026-08-12</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- EnQuiz vượt 100 lượt xem và 31 lượt tải - chưa đầy 3 ngày sau khi công bố -->
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#m-aida-can-moc-100-luot-xem-tren-zenodo-phan-mem-dau-tien-cua-he-sinh-thai-cham-ba-chu-so</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html#m-aida-can-moc-100-luot-xem-tren-zenodo-phan-mem-dau-tien-cua-he-sinh-thai-cham-ba-chu-so</loc>
     <lastmod>2026-08-11</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- M-AIDA cán mốc 100 lượt xem trên Zenodo - phần mềm đầu tiên của hệ sinh thái chạ -->
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#enquiz-tang-toc-52-luot-xem-sau-ba-ngay-phien-ban-1-2-vua-phat-hanh</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html#enquiz-tang-toc-52-luot-xem-sau-ba-ngay-phien-ban-1-2-vua-phat-hanh</loc>
     <lastmod>2026-08-11</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- EnQuiz tăng tốc: 52 lượt xem sau ba ngày, phiên bản 1.2 vừa phát hành -->
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#bizon-bat-nghiep-tren-zenodo-62-luot-xem-10-luot-tai-du-tep-da-dat-che-do-han-che</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html#bizon-bat-nghiep-tren-zenodo-62-luot-xem-10-luot-tai-du-tep-da-dat-che-do-han-che</loc>
     <lastmod>2026-08-11</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- BizOn Bật Nghiệp trên Zenodo: 62 lượt xem, 10 lượt tải - dù tệp đã đặt chế độ hạ -->
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#enquiz-1-0-len-zenodo-ung-dung-on-tap-khoi-nghiep-co-doi-chay-offline-song-ngu</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html#enquiz-1-0-len-zenodo-ung-dung-on-tap-khoi-nghiep-co-doi-chay-offline-song-ngu</loc>
     <lastmod>2026-08-09</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- EnQuiz 1.0 lên Zenodo: ứng dụng ôn tập Khởi nghiệp có DOI, chạy offline, song ng -->
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#pgs-ts-phan-anh-tu-tren-tap-chi-mot-the-gioi-doi-moi-sang-tao-o-can-tho-diem-sang-va-khoang-trong-phat-trien</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html#pgs-ts-phan-anh-tu-tren-tap-chi-mot-the-gioi-doi-moi-sang-tao-o-can-tho-diem-sang-va-khoang-trong-phat-trien</loc>
     <lastmod>2026-07-30</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- PGS.TS. Phan Anh Tú trên tạp chí Một Thế Giới: Đổi mới sáng tạo ở Cần Thơ: điểm  -->
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#tuoi-tre-online-doi-moi-sang-tao-co-the-tao-ra-dong-di-cu-moi-ve-dong-bang-song-cuu-long</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html#tuoi-tre-online-doi-moi-sang-tao-co-the-tao-ra-dong-di-cu-moi-ve-dong-bang-song-cuu-long</loc>
     <lastmod>2026-07-27</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- Tuổi Trẻ Online: Đổi mới sáng tạo có thể tạo ra dòng di cư mới về Đồng bằng sông -->
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#bizon-bat-nghiep-khi-lop-hoc-khoi-nghiep-tro-thanh-mot-ban-co-dat-set</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html#bizon-bat-nghiep-khi-lop-hoc-khoi-nghiep-tro-thanh-mot-ban-co-dat-set</loc>
     <lastmod>2026-07-27</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
     <!-- BizOn Bật Nghiệp: khi lớp học khởi nghiệp trở thành một bàn cờ đất sét -->
   </url>
   <url>
-    <loc>https://thuyhuongctu.github.io/Je-mappelle-Huong/blog.html#vi-sao-toi-xay-m-aida-de-may-doc-con-nguoi-quyet-dinh</loc>
+    <loc>https://jemappellehuong.id.vn/blog.html#vi-sao-toi-xay-m-aida-de-may-doc-con-nguoi-quyet-dinh</loc>
     <lastmod>2026-07-19</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
