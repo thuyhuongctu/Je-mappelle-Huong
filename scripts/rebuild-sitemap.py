@@ -17,7 +17,7 @@ Nguồn dữ liệu:
                 music.html) : ngày sửa đổi của file.
 - index.html  : luôn ưu tiên lastmod mới nhất của toàn bộ các trang HTML.
 
-URL dùng tiền tố công khai https://thuyhuongctu.github.io/Je-mappelle-Huong/.
+URL dùng tiền tố công khai https://jemappellehuong.id.vn/.
 """
 from __future__ import annotations
 
@@ -29,7 +29,7 @@ import sys
 from datetime import date, datetime
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_URL = 'https://thuyhuongctu.github.io/Je-mappelle-Huong'
+BASE_URL = 'https://jemappellehuong.id.vn'
 
 # ---------- đọc cấu trúc bài viết từ blog.html ----------
 # Thuoc tinh class KHONG phai thu cuoi cung trong the <article>: bai dau trang

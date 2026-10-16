@@ -32,8 +32,18 @@ kéo nhánh ấy tiến lên nhánh chính rồi làm tiếp.
 python3 -m http.server 8899        # rồi mở http://127.0.0.1:8899/
 ```
 
-`404.html` dùng đường dẫn tuyệt đối theo đường dẫn thật trên GitHub Pages, nên
-muốn thử riêng trang ấy thì phải phục vụ dưới đúng tên `/Je-mappelle-Huong/`.
+`404.html` dùng đường dẫn tuyệt đối tính từ gốc tên miền (`/`), nên thử tại chỗ
+bằng `http.server` ở gốc kho là đúng.
+
+## Tên miền riêng
+
+Site phục vụ tại **https://jemappellehuong.id.vn** (tệp `CNAME`), không còn
+ở `thuyhuongctu.github.io/Je-mappelle-Huong/`. GitHub tự chuyển hướng địa chỉ
+cũ sang tên miền mới, nên liên kết cũ ở kho khác (Research-Office, BizOn…)
+vẫn chạy. Tên miền đăng ký ở P.A Việt Nam, **hết hạn mỗi năm vào 17/10** —
+quên gia hạn thì cả site tắt. Đổi lại địa chỉ gốc thì sửa `BASE_URL` trong
+`scripts/rebuild-sitemap.py`, `BASE_PATH` trong `scripts/check-site.py`, rồi
+chạy lại `rebuild-sitemap.py --apply`.
 
 ## Bộ màu đất sét
 

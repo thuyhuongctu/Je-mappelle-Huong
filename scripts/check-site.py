@@ -24,9 +24,9 @@ import subprocess
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# GitHub Pages phục vụ site dưới tiền tố này, nên đường dẫn tuyệt đối
-# kiểu /Je-mappelle-Huong/blog.html là hợp lệ và phải quy về gốc repo.
-BASE_PATH = '/Je-mappelle-Huong/'
+# Site phục vụ ở gốc tên miền riêng, nên đường dẫn tuyệt đối
+# kiểu /blog.html (tên miền riêng jemappellehuong.id.vn) là hợp lệ và phải quy về gốc repo.
+BASE_PATH = '/'
 SKIP_SCHEMES = ('http://', 'https://', 'mailto:', 'tel:', 'data:', 'javascript:', '//')
 # Thư mục không được GitHub Pages phục vụ như trang thật.
 SKIP_DIRS = {'.git', 'node_modules', '__pycache__'}
