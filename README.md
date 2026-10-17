@@ -171,7 +171,6 @@ playful half of the site, reachable by one link from the academic home.
 ├── deck-ecosystem/          Ecosystem slide deck, PDF export and design spec
 ├── design-demos/            Design directions and the approval record
 ├── docs/                    Working notes: music-video plan, estate work log
-├── ban-cu/                  Earlier versions kept on purpose — see its README
 ├── ho-so-quyen-tac-gia/     Copyright-registration dossier (drafts, no ID data)
 │
 ├── icons/                   Application icon set
