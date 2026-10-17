@@ -42,7 +42,7 @@ còn chấp nhận tại `…/sitemap.xml`. Để đối chiếu:
 
 ```bash
 python3 -c "import xml.etree.ElementTree as t; t.parse('sitemap.xml'); print('XML hợp lệ')"
-curl -s https://thuyhuongctu.github.io/Je-mappelle-Huong/sitemap.xml | head -20
+curl -s https://jemappellehuong.id.vn/sitemap.xml | head -20
 ```
 
 > **Lưu ý:** script ghi đè **toàn bộ** `sitemap.xml` từ danh sách `PAGE_CONF`

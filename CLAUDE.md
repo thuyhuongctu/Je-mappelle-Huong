@@ -32,8 +32,17 @@ kéo nhánh ấy tiến lên nhánh chính rồi làm tiếp.
 python3 -m http.server 8899        # rồi mở http://127.0.0.1:8899/
 ```
 
-`404.html` dùng đường dẫn tuyệt đối theo đường dẫn thật trên GitHub Pages, nên
-muốn thử riêng trang ấy thì phải phục vụ dưới đúng tên `/Je-mappelle-Huong/`.
+`404.html` dùng đường dẫn tuyệt đối tính từ gốc tên miền (`/blog.html`), nên
+muốn thử riêng trang ấy thì phục vụ thư mục kho ở gốc như lệnh trên.
+
+## Tên miền
+
+Site chạy ở **https://jemappellehuong.id.vn** (tên miền P.A Việt Nam, gắn từ
+18/10/2026, DNS trỏ 4 bản ghi A về GitHub Pages + CNAME `www`). Địa chỉ cũ
+`thuyhuongctu.github.io/Je-mappelle-Huong/` được GitHub tự chuyển hướng sang
+đây. Không thêm tệp `CNAME`: site deploy bằng GitHub Actions, tên miền khai ở
+Settings → Pages. Mọi URL tuyệt đối (canonical, og:, sitemap) dùng tên miền
+mới; đường dẫn tuyệt đối nội bộ không còn tiền tố `/Je-mappelle-Huong/`.
 
 ## Bộ màu đất sét
 
@@ -775,7 +784,7 @@ sinh thái trang cá nhân.
 Khác nhau đúng **hai chỗ**, và chỉ hai chỗ ấy:
 
 - hai liên kết về trang chủ (`href="index.html"`) đổi thành địa chỉ tuyệt đối
-  `https://thuyhuongctu.github.io/Je-mappelle-Huong/`;
+  `https://jemappellehuong.id.vn/`;
 - kho riêng có thêm `README.md`, `LICENSE`, `CITATION.cff`, `.zenodo.json`,
   `THIRD-PARTY.md`, `manifest.webmanifest` riêng, `.nojekyll` và quy trình dựng
   Pages riêng.

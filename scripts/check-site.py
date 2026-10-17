@@ -24,9 +24,9 @@ import subprocess
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# GitHub Pages phục vụ site dưới tiền tố này, nên đường dẫn tuyệt đối
-# kiểu /Je-mappelle-Huong/blog.html là hợp lệ và phải quy về gốc repo.
-BASE_PATH = '/Je-mappelle-Huong/'
+# Site phục vụ ở gốc tên miền riêng jemappellehuong.id.vn, nên đường dẫn
+# tuyệt đối kiểu /blog.html là hợp lệ và quy về gốc repo.
+BASE_PATH = '/'
 SKIP_SCHEMES = ('http://', 'https://', 'mailto:', 'tel:', 'data:', 'javascript:', '//')
 # Thư mục không được GitHub Pages phục vụ như trang thật.
 SKIP_DIRS = {'.git', 'node_modules', '__pycache__'}
@@ -152,12 +152,12 @@ def check_links() -> list[str]:
             if not raw:
                 target = page                      # "#neo" tro chinh trang do
             else:
-                if raw.startswith(BASE_PATH):
-                    target = raw[len(BASE_PATH):]
-                elif raw.startswith('/'):
-                    errors.append(f'{page}: duong dan tuyet doi khong co tien to '
-                                  f'{BASE_PATH} — {href}')
+                if raw.startswith('/Je-mappelle-Huong/'):
+                    errors.append(f'{page}: con tien to cu /Je-mappelle-Huong/ '
+                                  f'(site da o goc ten mien) — {href}')
                     continue
+                elif raw.startswith(BASE_PATH):
+                    target = raw[len(BASE_PATH):]
                 else:
                     target = os.path.normpath(os.path.join(base, raw))
                 # "./", "thu-muc/" hay tien to Pages tran tro toi trang chi muc
