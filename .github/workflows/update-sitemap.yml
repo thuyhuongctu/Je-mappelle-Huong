@@ -74,8 +74,8 @@ jobs:
             echo 'Sitemap khong doi - khong can commit moi.'
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
-            git config user.name 'github-actions[bot]'
-            git config user.email 'github-actions[bot]@users.noreply.github.com'
+            git config user.name "Je m'appelle Huong"
+            git config user.email 'thuyhuongctu@gmail.com'
             git add sitemap.xml
             git commit -F /tmp/sitemap_commit.txt
             git push origin HEAD
