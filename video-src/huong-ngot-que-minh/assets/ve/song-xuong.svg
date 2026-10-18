@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="troi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f6f68"/><stop offset=".45" stop-color="#e3a65a"/><stop offset=".62" stop-color="#f1c27d"/></linearGradient>
+    <linearGradient id="nuoc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c98a4b"/><stop offset="1" stop-color="#5a3f2c"/></linearGradient>
+    <radialGradient id="mat" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff3d6"/><stop offset=".6" stop-color="#f6d08f"/><stop offset="1" stop-color="#f6d08f" stop-opacity="0"/></radialGradient>
+    <g id="dua"><path d="M0 0 C 6 -120 2 -230 -10 -330" stroke="#2a1f19" stroke-width="10" fill="none"/>
+      <g transform="translate(-10 -330)" fill="#2a1f19"><path d="M0 0 C -60 -30 -120 -10 -170 40 C -110 0 -60 -5 0 4z"/><path d="M0 0 C 60 -35 130 -15 180 30 C 120 -5 60 -5 0 4z"/><path d="M0 0 C -30 -70 -90 -100 -150 -95 C -90 -80 -40 -50 0 2z"/><path d="M0 0 C 30 -70 90 -105 150 -100 C 90 -82 40 -50 0 2z"/><path d="M0 0 C -5 -60 5 -110 20 -140 C 10 -100 6 -50 2 2z"/></g></g>
+  </defs>
+  <rect width="1920" height="700" fill="url(#troi)"/>
+  <circle cx="1240" cy="600" r="210" fill="url(#mat)"/>
+  <circle cx="1240" cy="610" r="80" fill="#fff1d0"/>
+  <path d="M0 640 C 300 610 520 630 760 620 C 1100 606 1500 628 1920 612 L1920 700 L0 700z" fill="#4a3a2a" opacity=".55"/>
+  <g transform="translate(140 690) scale(1.1)"><use href="#dua"/></g>
+  <g transform="translate(330 690) scale(.8)"><use href="#dua"/></g>
+  <g transform="translate(1660 690) scale(1.2)"><use href="#dua"/></g>
+  <g transform="translate(1820 690) scale(.75)"><use href="#dua"/></g>
+  <rect y="690" width="1920" height="390" fill="url(#nuoc)"/>
+  <g fill="#fff1d0" opacity=".55"><rect x="1180" y="720" width="120" height="5" rx="2"/><rect x="1150" y="760" width="180" height="5" rx="2"/><rect x="1195" y="805" width="90" height="4" rx="2"/><rect x="1120" y="860" width="240" height="5" rx="2"/><rect x="1170" y="930" width="140" height="4" rx="2"/></g>
+  <g transform="translate(700 820)" fill="#2a1f19">
+    <path d="M-260 0 C -150 40 150 40 260 -6 L 230 18 C 120 52 -120 52 -230 18z"/>
+    <path d="M-20 -8 C -26 -70 -14 -110 0 -120 C 14 -110 26 -70 20 -8z"/>
+    <path d="M-60 -118 L 0 -168 L 60 -118z"/>
+    <path d="M10 -90 L 150 40" stroke="#2a1f19" stroke-width="7"/>
+    <path d="M140 30 L 190 80 L 175 88 L 128 40z"/>
+  </g>
+  <rect y="1040" width="1920" height="40" fill="#2a1f19" opacity=".25"/>
+</svg>
