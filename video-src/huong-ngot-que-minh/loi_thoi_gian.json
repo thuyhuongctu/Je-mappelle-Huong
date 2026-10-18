@@ -1,0 +1,552 @@
+[
+ {
+  "muc": "Câu hò: Nữ, ngân tự do",
+  "loi": "Hò… ơ…",
+  "t0": 0.2,
+  "khop": 0.0,
+  "t1": 2.53,
+  "noisuy": true
+ },
+ {
+  "muc": "Câu hò: Nữ, ngân tự do",
+  "loi": "Gió đưa hương ngọt vườn nhà,",
+  "t0": 5.459999999999999,
+  "t1": 9.74,
+  "khop": 0.83
+ },
+ {
+  "muc": "Câu hò: Nữ, ngân tự do",
+  "loi": "Đưa mùa trái chín đi xa… cùng người…",
+  "t0": 11.6,
+  "t1": 17.34,
+  "khop": 0.88
+ },
+ {
+  "muc": "Câu hò: Nữ, ngân tự do",
+  "loi": "Hò… ơ…",
+  "t0": 17.54,
+  "khop": 0.0,
+  "t1": 19.08,
+  "noisuy": true
+ },
+ {
+  "muc": "Câu hò: Nữ, ngân tự do",
+  "loi": "Sông quê con nước đầy vơi,",
+  "t0": 21.22,
+  "t1": 24.4,
+  "khop": 0.83
+ },
+ {
+  "muc": "Câu hò: Nữ, ngân tự do",
+  "loi": "Người đi mang cả một trời… phù sa…",
+  "t0": 23.62,
+  "t1": 29.46,
+  "khop": 0.88
+ },
+ {
+  "muc": "Đoạn 1: Nữ",
+  "loi": "Sớm mai chim gọi ngoài vườn,",
+  "t0": 39.0,
+  "khop": 0.0,
+  "t1": 44.0,
+  "noisuy": "sua-tay"
+ },
+ {
+  "muc": "Đoạn 1: Nữ",
+  "loi": "Nắng nghiêng qua lá, còn vương giọt ngà.",
+  "t0": 44.4,
+  "khop": 0.0,
+  "t1": 49.4,
+  "noisuy": "sua-tay"
+ },
+ {
+  "muc": "Đoạn 1: Nữ",
+  "loi": "Má ngồi lựa trái hiên nhà,",
+  "t0": 49.8,
+  "khop": 0.0,
+  "t1": 54.8,
+  "noisuy": "sua-tay"
+ },
+ {
+  "muc": "Đoạn 1: Nữ",
+  "loi": "Cha hong chiếc áo bạc màu nắng mưa.",
+  "t0": 55.2,
+  "khop": 0.0,
+  "t1": 60.2,
+  "noisuy": "sua-tay"
+ },
+ {
+  "muc": "Đoạn 1: Nữ",
+  "loi": "Sầu riêng thơm cả buổi trưa,",
+  "t0": 60.46,
+  "t1": 65.96,
+  "khop": 1.0
+ },
+ {
+  "muc": "Đoạn 1: Nữ",
+  "loi": "Thấm công của má, đượm mùa cha chăm.",
+  "t0": 65.96,
+  "t1": 72.32,
+  "khop": 0.75
+ },
+ {
+  "muc": "Đoạn 1: Nữ",
+  "loi": "Ngọt từ bao tháng bao năm,",
+  "t0": 73.16,
+  "t1": 75.86,
+  "khop": 0.83
+ },
+ {
+  "muc": "Đoạn 1: Nữ",
+  "loi": "Từ lời ru má, từ bàn tay cha.",
+  "t0": 75.56,
+  "t1": 81.14,
+  "khop": 0.75
+ },
+ {
+  "muc": "Đối đáp: Nam",
+  "loi": "Em ơi, con nước xuôi dòng,",
+  "t0": 83.18,
+  "t1": 88.02,
+  "khop": 0.83
+ },
+ {
+  "muc": "Đối đáp: Nam",
+  "loi": "Trái quê đi với tấm lòng quê ta.",
+  "t0": 88.02,
+  "t1": 94.14,
+  "khop": 0.88
+ },
+ {
+  "muc": "Đối đáp: Nữ",
+  "loi": "Anh ơi, dẫu có đi xa,",
+  "t0": 95.18,
+  "t1": 99.9,
+  "khop": 1.0
+ },
+ {
+  "muc": "Đối đáp: Nữ",
+  "loi": "Đừng quên chút nắng trước nhà ngày xưa.",
+  "t0": 100.16,
+  "t1": 106.08,
+  "khop": 1.0
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Hương ngọt quê mình, thương hoài anh ơi,",
+  "t0": 106.96,
+  "t1": 111.86,
+  "khop": 0.75
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Một dòng sông nhỏ, chảy trong lòng người.",
+  "t0": 112.9,
+  "t1": 117.78,
+  "khop": 0.75
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Trái quê đi mãi qua miền đất mới,",
+  "t0": 118.82,
+  "t1": 123.58,
+  "khop": 1.0
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Vẫn thơm mùi nắng, vẫn đượm tình quê.",
+  "t0": 124.44,
+  "t1": 129.38,
+  "khop": 0.88
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Hương ngọt quê mình, mang theo em ơi,",
+  "t0": 130.38,
+  "t1": 135.4,
+  "khop": 0.75
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Lời ru của má, công cha một đời.",
+  "t0": 136.78,
+  "t1": 141.48,
+  "khop": 0.62
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Mai qua phố lạ, nghe hương trái chín,",
+  "t0": 140.7,
+  "t1": 146.56,
+  "khop": 0.88
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Ngỡ gió quê nhà vừa ghé bên hiên.",
+  "t0": 147.54,
+  "t1": 153.96,
+  "khop": 0.88
+ },
+ {
+  "muc": "Câu hò: Nam, trầm ấm",
+  "loi": "Hò… ơ…",
+  "t0": 154.16,
+  "khop": 0.0,
+  "t1": 155.78,
+  "noisuy": true
+ },
+ {
+  "muc": "Câu hò: Nam, trầm ấm",
+  "loi": "Xuồng ai khua nước bên bờ,",
+  "t0": 158.0,
+  "t1": 162.22,
+  "khop": 0.67
+ },
+ {
+  "muc": "Câu hò: Nam, trầm ấm",
+  "loi": "Làm câu thương nhớ ngẩn ngơ giữa chiều.",
+  "t0": 163.1,
+  "t1": 168.3,
+  "khop": 1.0
+ },
+ {
+  "muc": "Câu hò: Nam, trầm ấm",
+  "loi": "Hò… ơ…",
+  "t0": 168.5,
+  "khop": 0.0,
+  "t1": 168.92,
+  "noisuy": true
+ },
+ {
+  "muc": "Câu hò: Nam, trầm ấm",
+  "loi": "Trái quê chở biết bao điều,",
+  "t0": 169.94,
+  "t1": 173.76,
+  "khop": 0.67
+ },
+ {
+  "muc": "Câu hò: Nam, trầm ấm",
+  "loi": "Chở mưa, chở nắng, chở nhiều… yêu thương…",
+  "t0": 174.56,
+  "t1": 179.98,
+  "khop": 0.62
+ },
+ {
+  "muc": "Đoạn 2: Nam",
+  "loi": "Chiều nghiêng bóng xuống hàng dừa,",
+  "t0": 178.96,
+  "t1": 184.84,
+  "khop": 0.83
+ },
+ {
+  "muc": "Đoạn 2: Nam",
+  "loi": "Bến sông còn đợi người chưa kịp về.",
+  "t0": 184.84,
+  "t1": 191.66,
+  "khop": 0.75
+ },
+ {
+  "muc": "Đoạn 2: Nam",
+  "loi": "Bạn hàng ghé lại miền quê,",
+  "t0": 192.98,
+  "t1": 197.42,
+  "khop": 1.0
+ },
+ {
+  "muc": "Đoạn 2: Nam",
+  "loi": "Chén trà vừa rót, lời quê nối lời.",
+  "t0": 198.14,
+  "t1": 203.88,
+  "khop": 0.88
+ },
+ {
+  "muc": "Đoạn 2: Nam",
+  "loi": "Thương nhau từ những nụ cười,",
+  "t0": 204.88,
+  "t1": 209.6,
+  "khop": 1.0
+ },
+ {
+  "muc": "Đoạn 2: Nam",
+  "loi": "Quý nhau qua những lời mời thật lòng.",
+  "t0": 209.94,
+  "t1": 215.46,
+  "khop": 1.0
+ },
+ {
+  "muc": "Đoạn 2: Nam",
+  "loi": "Trái ngon trao cả niềm mong,",
+  "t0": 216.88,
+  "t1": 221.12,
+  "khop": 0.83
+ },
+ {
+  "muc": "Đoạn 2: Nam",
+  "loi": "Giữ lời đã hứa, cho lòng người tin.",
+  "t0": 220.64,
+  "t1": 226.44,
+  "khop": 0.75
+ },
+ {
+  "muc": "Đối đáp: Nữ",
+  "loi": "Anh ơi, qua những thăng trầm,",
+  "t0": 226.44,
+  "t1": 232.36,
+  "khop": 0.83
+ },
+ {
+  "muc": "Đối đáp: Nữ",
+  "loi": "Có nhau, mình lại ươm mầm mùa sau.",
+  "t0": 233.88,
+  "t1": 239.26,
+  "khop": 0.88
+ },
+ {
+  "muc": "Đối đáp: Nam",
+  "loi": "Em ơi, qua mấy nhịp cầu,",
+  "t0": 240.6,
+  "t1": 245.04,
+  "khop": 1.0
+ },
+ {
+  "muc": "Đối đáp: Nam",
+  "loi": "Bàn tay còn ấm, còn nhau trên đường.",
+  "t0": 245.7,
+  "t1": 250.88,
+  "khop": 0.88
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Hương ngọt quê mình, thương hoài anh ơi,",
+  "t0": 251.88,
+  "t1": 256.8,
+  "khop": 0.75
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Một dòng sông nhỏ, chảy trong lòng người.",
+  "t0": 258.14,
+  "t1": 262.92,
+  "khop": 0.75
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Trái quê đi mãi qua miền đất mới,",
+  "t0": 263.88,
+  "t1": 268.66,
+  "khop": 1.0
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Vẫn thơm mùi nắng, vẫn đượm tình quê.",
+  "t0": 269.64,
+  "t1": 274.5,
+  "khop": 0.62
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Hương ngọt quê mình, mang theo em ơi,",
+  "t0": 275.5,
+  "t1": 281.84,
+  "khop": 0.75
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Lời ru của má, công cha một đời.",
+  "t0": 281.96,
+  "t1": 286.62,
+  "khop": 0.75
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Mai qua phố lạ, nghe hương trái chín,",
+  "t0": 287.5,
+  "t1": 292.68,
+  "khop": 1.0
+ },
+ {
+  "muc": "Điệp khúc: Nam nữ hòa giọng",
+  "loi": "Ngỡ gió quê nhà vừa ghé bên hiên.",
+  "t0": 293.46,
+  "t1": 298.8,
+  "khop": 0.88
+ },
+ {
+  "muc": "Đoạn lắng: Nữ",
+  "loi": "Đêm về má vẫn chong đèn,",
+  "t0": 297.6,
+  "t1": 303.36,
+  "khop": 0.67
+ },
+ {
+  "muc": "Đoạn lắng: Nữ",
+  "loi": "Nghe tin trái ngọt tới miền xa xôi.",
+  "t0": 303.36,
+  "t1": 309.48,
+  "khop": 0.88
+ },
+ {
+  "muc": "Đoạn lắng: Nữ",
+  "loi": "Cha cười, chẳng nói nên lời,",
+  "t0": 311.66,
+  "t1": 316.1,
+  "khop": 1.0
+ },
+ {
+  "muc": "Đoạn lắng: Nữ",
+  "loi": "Chỉ nhìn ra phía khoảng trời ngoài sân.",
+  "t0": 315.2,
+  "t1": 321.3,
+  "khop": 0.88
+ },
+ {
+  "muc": "Đoạn nâng: Nam nữ",
+  "loi": "Từ vườn nhỏ, những bước chân,",
+  "t0": 320.52,
+  "t1": 326.58,
+  "khop": 0.5
+ },
+ {
+  "muc": "Đoạn nâng: Nam nữ",
+  "loi": "Mang hương đất mẹ đến gần muôn nơi.",
+  "t0": 326.36,
+  "t1": 329.58,
+  "khop": 1.0
+ },
+ {
+  "muc": "Đoạn nâng: Nam nữ",
+  "loi": "Mai này thêm những mùa vui,",
+  "t0": 330.08,
+  "t1": 332.34,
+  "khop": 1.0
+ },
+ {
+  "muc": "Đoạn nâng: Nam nữ",
+  "loi": "Bên sông lại rộn tiếng cười quê ta.",
+  "t0": 332.34,
+  "t1": 337.24,
+  "khop": 0.88
+ },
+ {
+  "muc": "Câu hò cao trào: Nữ",
+  "loi": "Hò… ơ…",
+  "t0": 337.44,
+  "khop": 0.0,
+  "t1": 339.36,
+  "noisuy": true
+ },
+ {
+  "muc": "Câu hò cao trào: Nữ",
+  "loi": "Nắng vàng trải khắp vườn nhà,",
+  "t0": 341.88,
+  "t1": 345.76,
+  "khop": 0.5
+ },
+ {
+  "muc": "Câu hò cao trào: Nữ",
+  "loi": "Vương trên tóc mẹ, hong tà áo cha.",
+  "t0": 344.92,
+  "t1": 351.12,
+  "khop": 0.88
+ },
+ {
+  "muc": "Câu hò cao trào: Nữ",
+  "loi": "Hò… ơ…",
+  "t0": 351.32,
+  "khop": 0.0,
+  "t1": 353.93,
+  "noisuy": true
+ },
+ {
+  "muc": "Câu hò cao trào: Nữ",
+  "loi": "Gió đưa hương ngọt đi xa,",
+  "t0": 357.14,
+  "t1": 360.66,
+  "khop": 0.83
+ },
+ {
+  "muc": "Câu hò cao trào: Nữ",
+  "loi": "Cho người thương nhớ quê nhà… nhiều hơn…",
+  "t0": 359.7,
+  "t1": 368.2,
+  "khop": 0.62
+ },
+ {
+  "muc": "Điệp khúc cuối: Sáng, đầy cảm xúc",
+  "loi": "Hương ngọt quê mình, thương hoài anh ơi,",
+  "t0": 368.2,
+  "t1": 374.82,
+  "khop": 0.5
+ },
+ {
+  "muc": "Điệp khúc cuối: Sáng, đầy cảm xúc",
+  "loi": "Một dòng sông nhỏ, chảy trong lòng người.",
+  "t0": 374.38,
+  "t1": 383.28,
+  "khop": 0.5
+ },
+ {
+  "muc": "Điệp khúc cuối: Sáng, đầy cảm xúc",
+  "loi": "Trái quê đi mãi qua miền đất mới,",
+  "t0": 382.92,
+  "t1": 388.42,
+  "khop": 0.88
+ },
+ {
+  "muc": "Điệp khúc cuối: Sáng, đầy cảm xúc",
+  "loi": "Vẫn thơm mùi nắng, vẫn đượm tình quê.",
+  "t0": 387.1,
+  "t1": 393.12,
+  "khop": 0.62
+ },
+ {
+  "muc": "Điệp khúc cuối: Sáng, đầy cảm xúc",
+  "loi": "Hương ngọt quê mình, mang theo em ơi,",
+  "t0": 393.12,
+  "t1": 399.02,
+  "khop": 0.75
+ },
+ {
+  "muc": "Điệp khúc cuối: Sáng, đầy cảm xúc",
+  "loi": "Lời ru của má, công cha một đời.",
+  "t0": 398.46,
+  "t1": 404.62,
+  "khop": 0.5
+ },
+ {
+  "muc": "Điệp khúc cuối: Sáng, đầy cảm xúc",
+  "loi": "Đi xa để những mùa sau thêm ngọt,",
+  "t0": 406.40000000000003,
+  "t1": 411.40000000000003,
+  "khop": 0.88
+ },
+ {
+  "muc": "Điệp khúc cuối: Sáng, đầy cảm xúc",
+  "loi": "Để tiếng cười về ấm lại bờ sông.",
+  "t0": 412.06,
+  "t1": 419.14,
+  "khop": 1.0
+ },
+ {
+  "muc": "Câu hò kết: Nữ, ngân tự do",
+  "loi": "Hò… ơ…",
+  "t0": 419.34,
+  "khop": 0.0,
+  "t1": 421.27,
+  "noisuy": true
+ },
+ {
+  "muc": "Câu hò kết: Nữ, ngân tự do",
+  "loi": "Mai này đi khắp gần xa,",
+  "t0": 423.8,
+  "t1": 428.44,
+  "khop": 0.67
+ },
+ {
+  "muc": "Câu hò kết: Nữ, ngân tự do",
+  "loi": "Nghe hương trái chín, nhớ nhà… nghe anh…",
+  "t0": 428.44,
+  "t1": 434.92,
+  "khop": 0.75
+ }
+]
