@@ -405,9 +405,15 @@
 
   /* Nhạc tần số thư giãn (solfeggio) khi khách dạo ngoài khuôn viên - chưa vào khu nào */
   function playNhacKhuonVien() {
-    if (!nhacNenActive) { nhacNenActive = true; khuDangChoi = '__khuon-vien__'; }
+    /* Đang phat nhac khuon vien roi thi thoi. Chot cu so sanh dangPhat voi key
+       VUA tinh, ma kvChiSo da tang o lan goi truoc nen key luon la ban KIA -
+       chot khong bao gio giu duoc. Them audio.paused van true ngay sau play()
+       vi play() bat dong bo. Hau qua do duoc: 10 lan nap solfeggio_528 va 9 lan
+       solfeggio_432 trong 6 giay dau, ~38 MB tai thua. Nay xet theo dangPhat co
+       nam trong danh sach nhac khuon vien khong, khong dung audio.paused. */
+    if (khuDangChoi === '__khuon-vien__' && NHAC_KHUONVIEN.indexOf(dangPhat) > -1) return;
+    if (!nhacNenActive) { nhacNenActive = true; }
     var key = NHAC_KHUONVIEN[kvChiSo % NHAC_KHUONVIEN.length];
-    if (khuDangChoi === '__khuon-vien__' && dangPhat === key && !audio.paused) return;
     kvChiSo++;
     playSong(key, { loop: true, vol: Math.min(vol * 0.45, 0.3) });
     khuDangChoi = '__khuon-vien__';

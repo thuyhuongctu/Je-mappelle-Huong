@@ -1171,6 +1171,7 @@ let bcChon = null;             // biểu cảm do người dùng chọn (null = 
 let khuGan = null;             // khu đang đứng gần
 let dangMo = false;            // bảng nội dung đang mở?
 let dungYen = 0;               // thời gian đứng yên
+let henKhuonVien = 0;          // bộ đếm đang chờ để bật nhạc khuôn viên (0 = không có)
 let __dangDi = false;          // trạng thái hiện tại của lớp body.dang-di
 
 /* Đánh dấu cụm nổi PHỤ để lúc đang đi thì cho mờ bớt.
@@ -5143,8 +5144,11 @@ function vong(){
     }else{
       oGoiY.classList.remove('hien');
       /* rời khỏi khu - dạo khuôn viên nghe nhạc tần số thư giãn (solfeggio) */
-      if(!dangMo && window.HUONG_MUSIC && window.HUONG_MUSIC.playNhacKhuonVien){
-        setTimeout(function(){
+      /* chỉ hẹn MỘT bộ đếm: khối này chạy mỗi nhịp quét, không chặn thì mỗi
+         nhịp lại hẹn thêm một lần gọi nữa */
+      if(!dangMo && !henKhuonVien && window.HUONG_MUSIC && window.HUONG_MUSIC.playNhacKhuonVien){
+        henKhuonVien = setTimeout(function(){
+          henKhuonVien = 0;
           /* chỉ bật nếu vẫn chưa vào khu nào mới */
           if(!khuGan && !dangMo) window.HUONG_MUSIC.playNhacKhuonVien();
         }, 700);

@@ -195,3 +195,17 @@ img,video{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none;-we
   .bv-khong-in body{display:none !important}
   .bv-khong-in::after{content:"\00a9  2026 \0110\1ED7  Th\00F9y  H\01B0\01A1ng \00B7  jemappellehuong.id.vn";display:block;padding:40mm 20mm;font:16pt serif;color:#1c1814;text-align:center}
 }
+
+/* Nut doi ngon ngu khi DANG BAT: chu trang tren dat nung chi dat 4,25 (nen sang)
+   va 2,84 (nen toi) - duoi nguong WCAG AA 4,5. Nut TAT thi khong sao (5,63 / 6,23).
+   Khong doi token --clay/--accent vi bo mau dat set la neo cua ca trang; chi
+   chinh rieng nut nay:
+     nen sang: dat nung sam hon 4% (#b45535) -> 4,89 voi chu trang;
+     nen toi : giu nen, doi chu thanh muc sam  -> 6,50. */
+.lang button.on, .langtog button.active { background: #b45535; color: #fff; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme=light]) .lang button.on,
+  :root:not([data-theme=light]) .langtog button.active { background: var(--accent); color: #17130f; }
+}
+:root[data-theme=dark] .lang button.on,
+:root[data-theme=dark] .langtog button.active { background: var(--accent); color: #17130f; }
