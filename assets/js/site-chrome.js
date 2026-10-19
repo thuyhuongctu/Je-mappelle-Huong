@@ -5,6 +5,8 @@
      1. Ban do Viet Nam chim  - #vnmark
      2. Ngan keo tien ich "..." - am thanh & tour, dong ho the gioi, chia se
      3. Chan trang dung chung  - .sitefoot
+     4. Bao ve anh va video     - chan chuot phai, keo tha, tai video, in trang;
+                                  dong dau (c) len anh va video
 
    Chu trong khung nay do JavaScript ve theo thuoc tinh lang cua <html>, khong
    dung cac the .lang-vi/.lang-en cua trang, vi moi trang khai bao bo CSS ngon
@@ -13,7 +15,8 @@
    Cach dung: them <script src="assets/js/site-chrome.js" defer></script>
    vao cuoi <body>. Tep tu nap assets/css/site-chrome.css.
    Trang muon bo mot phan nao thi dat thuoc tinh tren <html>, vi du
-   <html data-chrome="no-foot"> (gia tri: no-map, no-util, no-foot).
+   <html data-chrome="no-foot"> (gia tri: no-map, no-util, no-foot,
+   no-protect: bo phan 4; cho-in: van cho in trang, nhu cv.html co nut In/PDF).
    ============================================================ */
 (function () {
   'use strict';
@@ -368,11 +371,92 @@
     veLai.push(function () { f.innerHTML = noiDung(); });
   }
 
+  /* ---------- 4. bao ve anh va video ----------
+     Trinh duyet khong cho trang nao chan phim chup man hinh hay cong cu quay
+     man hinh cua may: phan nay chi lam kho viec luu anh/video thong thuong,
+     va dong dau ten tac gia len anh de anh chup lai van mang ten. Chu tren
+     trang van boi chon duoc, de nguoi doc chep trich dan va DOI.
+     Chan chuot phai chi tren anh/video, khong tren canvas: trang vien 3D can
+     chuot phai de xoay may quay. */
+  var DAU = '\u00a9 2026 \u0110\u1ed7 Th\u00f9y H\u01b0\u01a1ng';
+  function laMedia(el) { return el && el.closest && el.closest('img,video,picture'); }
+  function khungDau(el) {
+    /* khung de dong dau: figure, hoac to tien gan nhat (toi da ba bac) ma anh phu it nhat 60%
+       dien tich - the nut xem phim, khung ban do, ... Anh dung tran trong mot khoi lon (bang ron
+       blog) thi boc rieng anh trong mot the span. Tra ve false khi chua do duoc (anh dang an). */
+    var m = el.getBoundingClientRect(), sm = m.width * m.height;
+    if (!sm) return false;
+    if (m.width < 200) return null;                                  /* hien ra nho (logo): khong dong dau */
+    for (var p = el.parentElement, d = 0; p && d < 3; p = p.parentElement, d++) {
+      if (p === document.body || p.closest('.sitefoot,.sc-drawer,#vnmark')) break;
+      if (p.tagName === 'FIGURE') return p;
+      var r = p.getBoundingClientRect();
+      if (sm >= 0.6 * r.width * r.height && getComputedStyle(p).display !== 'inline') return p;
+    }
+    if (getComputedStyle(el).display !== 'block') return null;
+    var boc = document.createElement('span');
+    boc.style.display = 'block';
+    el.parentNode.insertBefore(boc, el); boc.appendChild(el);
+    return boc;
+  }
+  function baoVe(goc) {
+    var ds = goc.querySelectorAll ? goc.querySelectorAll('img,video') : [];
+    for (var i = 0; i < ds.length; i++) {
+      var el = ds[i];
+      if (!el.bvChan) {
+        el.bvChan = true;
+        el.setAttribute('draggable', 'false');
+        if (el.tagName === 'VIDEO') {
+          el.setAttribute('controlslist', 'nodownload noremoteplayback');
+          el.disablePictureInPicture = true;
+        }
+      }
+      if (el.bvXong) continue;
+      /* anh nho (bieu tuong, logo, anh dai dien tron) khong dong dau */
+      var w = +(el.getAttribute('width') || el.naturalWidth || 0);
+      if (!w && el.tagName === 'IMG' && !el.complete) {          /* anh nap cham chua biet co: xet lai khi nap xong */
+        if (!el.bvCho) { el.bvCho = true; el.addEventListener('load', function () { baoVe(this.parentElement || document); }, { once: true }); }
+        continue;
+      }
+      if ((w && w < 240) || el.classList.contains('avatar') || el.closest('header,.sitefoot,.sc-drawer,#vnmark')) { el.bvXong = true; continue; }
+      var k = khungDau(el);
+      if (k === false) continue;                                   /* dang an (bang dong): de lan sau */
+      el.bvXong = true;
+      if (k && !k.querySelector(':scope > .bv-dau-chu')) {
+        /* the con rieng, khong dung ::after: vai trang da dung ::after cua khung (herofilm) */
+        k.classList.add('bv-dau');
+        var c = document.createElement('span');
+        c.className = 'bv-dau-chu'; c.setAttribute('aria-hidden', 'true'); c.textContent = DAU;
+        k.appendChild(c);
+        /* chi dat relative khi khung chua co vi tri, dung ghi de absolute/sticky san co */
+        if (getComputedStyle(k).position === 'static') k.style.position = 'relative';
+      }
+    }
+  }
+  function veBaoVe() {
+    if (!tat('cho-in')) root.classList.add('bv-khong-in');
+    document.addEventListener('contextmenu', function (e) { if (laMedia(e.target)) e.preventDefault(); });
+    document.addEventListener('dragstart', function (e) { if (laMedia(e.target)) e.preventDefault(); });
+    baoVe(document);
+    /* nam mo-dun tro choi va bang noi dung tu gan anh/video luc chay */
+    if ('MutationObserver' in window) {
+      var cho = false;
+      new MutationObserver(function () {
+        if (cho) return; cho = true;
+        requestAnimationFrame(function () { cho = false; baoVe(document); });
+      }).observe(document.body, { childList: true, subtree: true });
+    }
+    /* anh trong bang dang dong chua do duoc: xet lai khi bam (mo bang) hay doi co cua so */
+    document.addEventListener('click', function () { setTimeout(function () { baoVe(document); }, 400); }, true);
+    addEventListener('resize', function () { baoVe(document); });
+  }
+
   /* ---------- khoi dong ---------- */
   function chay() {
     veBanDo();
     veNganKeo();
     veChanTrang();
+    if (!tat('no-protect')) veBaoVe();
     setInterval(nhipDongHo, 30000);
     if ('MutationObserver' in window) {
       new MutationObserver(function () {
