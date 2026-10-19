@@ -37,12 +37,27 @@ muốn thử riêng trang ấy thì phục vụ thư mục kho ở gốc như l�
 
 ## Tên miền
 
-Site chạy ở **https://jemappellehuong.id.vn** (tên miền P.A Việt Nam, gắn từ
-18/10/2026, DNS trỏ 4 bản ghi A về GitHub Pages + CNAME `www`). Địa chỉ cũ
-`thuyhuongctu.github.io/Je-mappelle-Huong/` được GitHub tự chuyển hướng sang
-đây. Không thêm tệp `CNAME`: site deploy bằng GitHub Actions, tên miền khai ở
-Settings → Pages. Mọi URL tuyệt đối (canonical, og:, sitemap) dùng tên miền
-mới; đường dẫn tuyệt đối nội bộ không còn tiền tố `/Je-mappelle-Huong/`.
+Site chạy ở **https://jemappellehuong.com** (tên miền P.A Việt Nam, đăng ký
+20/10/2026). Không thêm tệp `CNAME`: site deploy bằng GitHub Actions, tên miền
+khai ở Settings → Pages. Mọi URL tuyệt đối (canonical, og:, sitemap, JSON-LD)
+dùng tên miền này; đường dẫn tuyệt đối nội bộ không có tiền tố
+`/Je-mappelle-Huong/`.
+
+**Hai địa chỉ cũ phải giữ chuyển hướng, đừng bỏ:**
+`thuyhuongctu.github.io/Je-mappelle-Huong/` (GitHub tự lo khi khai tên miền
+riêng) và `jemappellehuong.id.vn` (dùng từ 18/10 tới 20/10/2026 — ngắn, nhưng
+đủ để có nơi trỏ tới; phải trỏ 301 sang `.com` và duy trì, không để hết hạn).
+
+**Đổi tên miền thì nhớ cả những chỗ ngoài tệp HTML:** `robots.txt`,
+`CITATION.cff`, `BASE_URL` trong `scripts/rebuild-sitemap.py`, dòng `curl` đối
+chiếu trong `.github/workflows/update-sitemap.yml`, `scripts/check-site.py`,
+`assets/css/site-chrome.css`, và `README.md`. Lần chuyển sang `.com` đếm được
+**92 chỗ trên 26 tệp**.
+
+Hai chỗ **ngoài kho này** cũng ghi địa chỉ trang: `index.html` của kho
+`Research-Office` (hai liên kết về trang chủ) và các bản ghi Zenodo đã công bố.
+Bản ghi Zenodo đã phát hành thì không sửa được — đó chính là lý do phải giữ
+chuyển hướng từ địa chỉ cũ vĩnh viễn.
 
 ## Bộ màu đất sét
 
@@ -784,7 +799,7 @@ sinh thái trang cá nhân.
 Khác nhau đúng **hai chỗ**, và chỉ hai chỗ ấy:
 
 - hai liên kết về trang chủ (`href="index.html"`) đổi thành địa chỉ tuyệt đối
-  `https://jemappellehuong.id.vn/`;
+  `https://jemappellehuong.com/`;
 - kho riêng có thêm `README.md`, `LICENSE`, `CITATION.cff`, `.zenodo.json`,
   `THIRD-PARTY.md`, `manifest.webmanifest` riêng, `.nojekyll` và quy trình dựng
   Pages riêng.

@@ -9,20 +9,20 @@ research, teaching and open educational software.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22003853.svg)](https://doi.org/10.5281/zenodo.22003853)
 [![Copyright](https://img.shields.io/badge/©%202026-all%20rights%20reserved-8d7166.svg)](#license-and-third-party-components)
-[![Site](https://img.shields.io/badge/site-live-2ea44f)](https://jemappellehuong.id.vn/)
+[![Site](https://img.shields.io/badge/site-live-2ea44f)](https://jemappellehuong.com/)
 
-**[▶ Live site: jemappellehuong.id.vn](https://jemappellehuong.id.vn/)**
+**[▶ Live site: jemappellehuong.com](https://jemappellehuong.com/)**
 
 <br>
 
-<a href="https://jemappellehuong.id.vn/trangvien.html">
+<a href="https://jemappellehuong.com/trangvien.html">
   <img src="assets/img/trangvien-intro-poster.webp" width="560"
        alt="Do Thuy Huong in a white ao dai rowing a boat of lotus flowers past stilt houses and bamboo bridges, from the introduction to the 3D estate">
 </a>
 
 **Trang viên — the 3D estate**
 
-[▶ Watch the 10-second introduction](assets/video/trangvien-intro.mp4) · [Step into the estate](https://jemappellehuong.id.vn/trangvien.html)
+[▶ Watch the 10-second introduction](assets/video/trangvien-intro.mp4) · [Step into the estate](https://jemappellehuong.com/trangvien.html)
 
 <sub>Visuals generated with Google Gemini; music by the author. See [`THIRD-PARTY.md`](THIRD-PARTY.md#4-video-giới-thiệu-trang-viên).</sub>
 
