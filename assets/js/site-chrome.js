@@ -291,6 +291,46 @@
   /* ============================================================
      3. CHAN TRANG DUNG CHUNG
      ============================================================ */
+  /* ----------------------------------------------------------
+     BAO VE NOI DUNG
+     Chan chuot phai va keo-tha tren anh/video, va chan in ra PDF.
+     KHONG chan duoc chup man hinh hay quay man hinh - web khong co
+     cach nao lam duoc viec do. Day la rao can cho nguoi tien tay;
+     thu bao ve that la LICENSE ("Bao luu moi quyen") va cac DOI.
+     Tieu de, DOI va ten bai van chon chep duoc de con trich dan.
+     ---------------------------------------------------------- */
+  function baoVe() {
+    var CHON = 'img, video, canvas, picture, figure, .nhanvat, .songpic';
+    document.addEventListener('contextmenu', function (e) {
+      if (e.target.closest && e.target.closest(CHON)) e.preventDefault();
+    });
+    document.addEventListener('dragstart', function (e) {
+      if (e.target.closest && e.target.closest(CHON)) e.preventDefault();
+    });
+
+    if (tat('print-ok')) return;
+    root.classList.add('bv-khong-in');
+    function loiNhan() {
+      document.body.setAttribute('data-bv-in', t(
+        'Trang này không in được.\n\n'
+          + 'Nội dung, hình ảnh và bản thu trên trang thuộc bản quyền của Đỗ Thùy Hương '
+          + '(bảo lưu mọi quyền). Mời bạn đọc trực tuyến tại jemappellehuong.id.vn.\n\n'
+          + 'Cần trích dẫn thì dùng DOI ghi ở chân trang.',
+        'This page is not available for printing.\n\n'
+          + 'The text, images and recordings on this site are the copyrighted work of '
+          + 'Do Thuy Huong (all rights reserved). You are welcome to read it online at '
+          + 'jemappellehuong.id.vn.\n\n'
+          + 'To cite it, please use the DOI given in the footer.',
+        'Cette page ne peut pas être imprimée.\n\n'
+          + 'Les textes, images et enregistrements de ce site sont l’œuvre protégée de '
+          + 'Do Thuy Huong (tous droits réservés). Vous pouvez la lire en ligne sur '
+          + 'jemappellehuong.id.vn.\n\n'
+          + 'Pour la citer, utilisez le DOI indiqué en bas de page.'));
+    }
+    loiNhan();
+    new MutationObserver(loiNhan).observe(root, {attributes: true, attributeFilter: ['lang']});
+  }
+
   function veChanTrang() {
     if (tat('no-foot') || document.querySelector('.sitefoot')) return;
 
@@ -353,7 +393,9 @@
         '</div>' +
         '<div class="sf-rule"></div>' +
         '<div class="sf-fine"><div class="sf-row">' +
-        '<span>© ' + nam + ' ' + t('Đỗ Thùy Hương · Cần Thơ, Việt Nam', 'Do Thuy Huong · Can Tho, Vietnam', 'Do Thuy Huong · Cần Thơ, Vietnam') + '</span>' +
+        '<span>© ' + nam + ' ' + t('Đỗ Thùy Hương · Cần Thơ, Việt Nam', 'Do Thuy Huong · Can Tho, Vietnam', 'Do Thuy Huong · Cần Thơ, Vietnam') + ' · ' +
+        '<a href="https://github.com/thuyhuongctu/Je-mappelle-Huong/blob/main/LICENSE" target="_blank" rel="noopener">' +
+        t('Bảo lưu mọi quyền', 'All rights reserved', 'Tous droits réservés') + '</a></span>' +
         '<span>' + t('HTML/CSS/JS thuần · PWA chạy offline', 'Plain HTML/CSS/JS · offline-capable PWA', 'HTML/CSS/JS · PWA hors ligne') + '</span>' +
         /* DOI khái niệm của chính trang này (mọi phiên bản), không phải của một bản
            phát hành lẻ. Trước đây chỉ có trong README và CITATION.cff, tức là
@@ -370,6 +412,7 @@
 
   /* ---------- khoi dong ---------- */
   function chay() {
+    baoVe();
     veBanDo();
     veNganKeo();
     veChanTrang();

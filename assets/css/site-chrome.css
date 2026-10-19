@@ -183,3 +183,37 @@ body{background:transparent}
 }
 
 @media print{.sitefoot{display:none}}
+
+/* ============================================================
+   BAO VE NOI DUNG - rao can nhe, co y KHONG pha viec trich dan.
+   Khong co cach nao chan chup/quay man hinh tren web; day chi la
+   rao can cho nguoi tien tay. Thu bao ve that la LICENSE va DOI.
+   Tieu de, DOI, ten bai VAN chon va chep duoc.
+   ============================================================ */
+img, video, canvas, .nhanvat, .songpic img, figure img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+/* Loi bai hat: khoi chep nguyen khoi. Ten doan va tieu de van chon duoc. */
+.lyrics p, .lyrics pre, .lyric-panel p, .lyric-panel pre, .taglines {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* In ra PDF la duong lay noi dung duy nhat trang CHAN duoc that.
+   Trang nao muon giu in thi khai <html data-chrome="print-ok">;
+   cv.html va index.html dung dung the. */
+@media print {
+  html.bv-khong-in body > * { display: none !important; }
+  html.bv-khong-in body::after {
+    content: attr(data-bv-in);
+    display: block;
+    padding: 28mm 18mm;
+    font: 400 11pt/1.7 Georgia, "Times New Roman", serif;
+    color: #1c1814;
+    white-space: pre-line;
+  }
+}
