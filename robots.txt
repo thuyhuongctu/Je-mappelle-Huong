@@ -1,7 +1,7 @@
 # robots.txt — Je m'appelle Hương (trang học thuật cá nhân)
-# Phục vụ trên GitHub Pages tại https://jemappellehuong.id.vn/
+# Phục vụ trên GitHub Pages tại https://jemappellehuong.com/
 
 User-agent: *
 Allow: /
 
-Sitemap: https://jemappellehuong.id.vn/sitemap.xml
+Sitemap: https://jemappellehuong.com/sitemap.xml

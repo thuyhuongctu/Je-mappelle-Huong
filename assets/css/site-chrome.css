@@ -193,7 +193,7 @@ img,video{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none;-we
   text-shadow:0 0 3px rgba(0,0,0,.65),0 1px 2px rgba(0,0,0,.5)}
 @media print{
   .bv-khong-in body{display:none !important}
-  .bv-khong-in::after{content:"\00a9  2026 \0110\1ED7  Th\00F9y  H\01B0\01A1ng \00B7  jemappellehuong.id.vn";display:block;padding:40mm 20mm;font:16pt serif;color:#1c1814;text-align:center}
+  .bv-khong-in::after{content:"\00a9  2026 \0110\1ED7  Th\00F9y  H\01B0\01A1ng \00B7  jemappellehuong.com";display:block;padding:40mm 20mm;font:16pt serif;color:#1c1814;text-align:center}
 }
 
 /* Nut doi ngon ngu khi DANG BAT: chu trang tren dat nung chi dat 4,25 (nen sang)

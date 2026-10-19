@@ -24,7 +24,7 @@ import subprocess
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# Site phục vụ ở gốc tên miền riêng jemappellehuong.id.vn, nên đường dẫn
+# Site phục vụ ở gốc tên miền riêng jemappellehuong.com, nên đường dẫn
 # tuyệt đối kiểu /blog.html là hợp lệ và quy về gốc repo.
 BASE_PATH = '/'
 SKIP_SCHEMES = ('http://', 'https://', 'mailto:', 'tel:', 'data:', 'javascript:', '//')
