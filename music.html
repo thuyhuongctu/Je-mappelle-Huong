@@ -331,6 +331,46 @@ footer a:hover{color:var(--accent)}
 }
 .playback-mode:hover, .playback-mode[aria-pressed="true"] { border-color: var(--lam); background: var(--lam); color: #fff; }
 .playback-mode:focus-visible { outline: 3px solid color-mix(in srgb, var(--lam) 42%, transparent); outline-offset: 3px; }
+.playlist-bar { flex-direction: column; align-items: stretch; gap: 10px; }
+.pl-row { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; }
+.pl-sep { width: 1px; align-self: stretch; background: var(--line); margin: 0 3px; }
+.pl-play {
+  display: inline-flex; align-items: center; gap: 8px;
+  appearance: none; cursor: pointer;
+  border: 1px solid var(--lam); border-radius: 999px;
+  background: var(--lam); color: #fff;
+  font: 800 .84rem/1 var(--sans); letter-spacing: .02em;
+  padding: 11px 18px;
+}
+.pl-play:hover { filter: brightness(1.08); }
+.pl-play:focus-visible { outline: 3px solid color-mix(in srgb, var(--lam) 42%, transparent); outline-offset: 3px; }
+.pl-play .pl-ico { font-size: .9rem; }
+.pl-step { padding: 10px 13px; font-size: .95rem; line-height: 1; }
+.pl-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.pl-now {
+  appearance: none; border: 0; background: transparent; cursor: pointer;
+  color: var(--muted); font: 600 .82rem/1.4 var(--sans);
+  text-align: left; padding: 4px 2px; margin-left: 2px;
+}
+.pl-now:hover { color: var(--accent); text-decoration: underline; }
+.pl-count { margin: 0; color: var(--muted); font: .75rem/1.3 var(--sans); }
+/* Nen toi: chu trang tren nen bac ha chi dat 2,38:1, duoi nguong WCAG AA 4,5.
+   Chu sam tren chinh nen ay dat 7,75:1. (Loi nay co san o .playback-mode da nhan.) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme=light]) .pl-play,
+  :root:not([data-theme=light]) .playback-mode[aria-pressed="true"],
+  :root:not([data-theme=light]) .playback-mode:hover { color: #17130f; }
+}
+:root[data-theme=dark] .pl-play,
+:root[data-theme=dark] .playback-mode[aria-pressed="true"],
+:root[data-theme=dark] .playback-mode:hover { color: #17130f; }
+@media (max-width: 560px) {
+  .pl-row-main { gap: 7px; }
+  .pl-play { flex: 1 1 100%; justify-content: center; }
+  .pl-now { flex: 1 1 100%; }
+  .pl-sep { display: none; }
+}
+
 @media (max-width: 560px) { .playback-modes-label { width: 100%; } }
 
 /* Song search across track titles, metadata and lyrics. */
@@ -2545,51 +2585,193 @@ document.addEventListener('play', function (e) {
 </script>
 
 <script>
-/* Songbook UX: loop the current recording or shuffle through all recordings. */
+/* Songbook UX: phat lien mach ca album hoac ca trang, khong phai mo tung bai. */
 (function(){
-  var audios = Array.from(document.querySelectorAll('audio'));
-  var state = {loop: false, shuffle: false};
+  var ALL = Array.from(document.querySelectorAll('audio'));
+  if(!ALL.length) return;
+
+  var state = {scope: 'album', depth: 'one', loop: false, shuffle: false};
+  try {
+    var sc = localStorage.getItem('huong_pl_scope'); if(sc) state.scope = sc;
+    var dp = localStorage.getItem('huong_pl_depth'); if(dp) state.depth = dp;
+  } catch(e){ /* rieng tu / da chan: dung mac dinh */ }
+  function remember(){
+    try {
+      localStorage.setItem('huong_pl_scope', state.scope);
+      localStorage.setItem('huong_pl_depth', state.depth);
+    } catch(e){ /* khong luu duoc thi thoi */ }
+  }
+
+  /* Hang doi dung tu DOM, khong co danh sach chep tay. */
+  function sections(){
+    return Array.from(document.querySelectorAll('section[id]'))
+      .filter(function(s){ return s.querySelector('audio'); });
+  }
+  var queue = [], idx = -1;
+  function build(){
+    var secs = sections();
+    if(state.scope === 'album') secs = secs.filter(function(s){ return /^t\d+$/.test(s.id); });
+    queue = [];
+    secs.forEach(function(s){
+      var list = state.depth === 'one'
+        ? [s.querySelector('.tracks audio') || s.querySelector('audio')]
+        : Array.from(s.querySelectorAll('audio'));
+      list.forEach(function(a){ if(a) queue.push({audio: a, section: s}); });
+    });
+  }
+  function at(audio){
+    for(var i = 0; i < queue.length; i++) if(queue[i].audio === audio) return i;
+    return -1;
+  }
+
   var panel = document.createElement('div');
-  panel.className = 'playback-modes';
-  panel.setAttribute('aria-label', 'Playback modes');
-  panel.innerHTML = '<span class="playback-modes-label"><span class="lang-vi">Chế độ phát</span><span class="lang-en">Playback</span></span>' +
-    '<button type="button" class="playback-mode" data-mode="loop" aria-pressed="false"><span class="lang-vi">↻ Lặp lại</span><span class="lang-en">↻ Loop</span></button>' +
-    '<button type="button" class="playback-mode" data-mode="shuffle" aria-pressed="false"><span class="lang-vi">⤨ Ngẫu nhiên</span><span class="lang-en">⤨ Shuffle</span></button>';
+  panel.className = 'playback-modes playlist-bar';
+  panel.setAttribute('aria-label', 'Playback');
+  panel.innerHTML =
+    '<div class="pl-row pl-row-main">' +
+      '<button type="button" class="pl-play" aria-pressed="false">' +
+        '<span class="pl-ico" aria-hidden="true">▶</span>' +
+        '<span class="lang-vi">Phát tất cả</span><span class="lang-en">Play all</span></button>' +
+      '<button type="button" class="playback-mode pl-step" data-step="-1">' +
+        '<span aria-hidden="true">⏮</span><span class="pl-sr"><span class="lang-vi">Bài trước</span><span class="lang-en">Previous</span></span></button>' +
+      '<button type="button" class="playback-mode pl-step" data-step="1">' +
+        '<span aria-hidden="true">⏭</span><span class="pl-sr"><span class="lang-vi">Bài sau</span><span class="lang-en">Next</span></span></button>' +
+      '<button type="button" class="pl-now" hidden></button>' +
+    '</div>' +
+    '<div class="pl-row">' +
+      '<span class="playback-modes-label"><span class="lang-vi">Phạm vi</span><span class="lang-en">Scope</span></span>' +
+      '<button type="button" class="playback-mode" data-scope="album"><span class="lang-vi">Album</span><span class="lang-en">The album</span></button>' +
+      '<button type="button" class="playback-mode" data-scope="page"><span class="lang-vi">Cả trang</span><span class="lang-en">Whole page</span></button>' +
+      '<span class="pl-sep" aria-hidden="true"></span>' +
+      '<span class="playback-modes-label"><span class="lang-vi">Bản thu</span><span class="lang-en">Recordings</span></span>' +
+      '<button type="button" class="playback-mode" data-depth="one"><span class="lang-vi">Mỗi bài một bản</span><span class="lang-en">One per song</span></button>' +
+      '<button type="button" class="playback-mode" data-depth="all"><span class="lang-vi">Mọi bản thu</span><span class="lang-en">Every master</span></button>' +
+      '<span class="pl-sep" aria-hidden="true"></span>' +
+      '<button type="button" class="playback-mode" data-mode="loop"><span class="lang-vi">↻ Lặp bản này</span><span class="lang-en">↻ Repeat one</span></button>' +
+      '<button type="button" class="playback-mode" data-mode="shuffle"><span class="lang-vi">⤨ Ngẫu nhiên</span><span class="lang-en">⤨ Shuffle</span></button>' +
+    '</div>' +
+    '<p class="pl-count"></p>';
   var anchor = document.querySelector('#main');
-  if(anchor) anchor.parentNode.insertBefore(panel, anchor);
-  function updateButtons(){
+  if(!anchor) return;
+  anchor.parentNode.insertBefore(panel, anchor);
+
+  var btnPlay = panel.querySelector('.pl-play');
+  var now = panel.querySelector('.pl-now');
+  var count = panel.querySelector('.pl-count');
+
+  function vi(){ return document.documentElement.lang !== 'en'; }
+  function label(item){
+    var h = item.section.querySelector('.shead h2');
+    var name = h ? h.innerText.replace(/\s+/g, ' ').trim() : item.section.id;
+    name = name.replace(/\s*(Phát bài hát|Play song|Tạm dừng|Pause)\s*$/, '').trim();
+    var tr = item.audio.closest('.track');
+    var tn = tr && tr.querySelector('.track-name');
+    var sub = tn ? tn.innerText.replace(/\s+/g, ' ').trim() : '';
+    return sub && state.depth === 'all' ? name + ' — ' + sub : name;
+  }
+  function paint(){
+    panel.querySelectorAll('[data-scope]').forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-scope') === state.scope)); });
+    panel.querySelectorAll('[data-depth]').forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-depth') === state.depth)); });
     panel.querySelector('[data-mode="loop"]').setAttribute('aria-pressed', String(state.loop));
     panel.querySelector('[data-mode="shuffle"]').setAttribute('aria-pressed', String(state.shuffle));
+    var playing = idx >= 0 && queue[idx] && !queue[idx].audio.paused;
+    btnPlay.setAttribute('aria-pressed', String(playing));
+    btnPlay.classList.toggle('is-playing', playing);
+    btnPlay.querySelector('.pl-ico').textContent = playing ? '❚❚' : '▶';
+    btnPlay.querySelector('.lang-vi').textContent = playing ? 'Tạm dừng' : 'Phát tất cả';
+    btnPlay.querySelector('.lang-en').textContent = playing ? 'Pause' : 'Play all';
+    if(idx >= 0 && queue[idx]){
+      now.hidden = false;
+      now.textContent = (vi() ? 'Đang phát: ' : 'Now playing: ') + label(queue[idx]) +
+        '  (' + (idx + 1) + '/' + queue.length + ')';
+    } else { now.hidden = true; }
+    count.textContent = vi()
+      ? queue.length + ' bản thu trong danh sách phát'
+      : queue.length + ' recordings in the queue';
   }
-  panel.querySelectorAll('.playback-mode').forEach(function(button){
-    button.addEventListener('click', function(){
-      var mode = button.getAttribute('data-mode');
-      state[mode] = !state[mode];
-      if(state[mode]) state[mode === 'loop' ? 'shuffle' : 'loop'] = false;
-      updateButtons();
+  function pauseOthers(keep){
+    ALL.forEach(function(a){ if(a !== keep && !a.paused) a.pause(); });
+  }
+  function playAt(i){
+    if(i < 0 || i >= queue.length){ idx = -1; paint(); return; }
+    idx = i;
+    var a = queue[i].audio;
+    pauseOthers(a);
+    a.play().catch(function(){ paint(); });
+    paint();
+  }
+  function step(d){
+    if(!queue.length) return;
+    if(idx < 0){ playAt(d > 0 ? 0 : queue.length - 1); return; }
+    playAt(idx + d);
+  }
+
+  btnPlay.addEventListener('click', function(){
+    if(idx >= 0 && queue[idx] && !queue[idx].audio.paused){ queue[idx].audio.pause(); paint(); return; }
+    playAt(idx >= 0 ? idx : 0);
+  });
+  panel.querySelectorAll('.pl-step').forEach(function(b){
+    b.addEventListener('click', function(){ step(Number(b.getAttribute('data-step'))); });
+  });
+  now.addEventListener('click', function(){
+    if(idx >= 0 && queue[idx]) queue[idx].section.scrollIntoView({behavior: 'smooth', block: 'start'});
+  });
+  panel.querySelectorAll('[data-scope]').forEach(function(b){
+    b.addEventListener('click', function(){
+      state.scope = b.getAttribute('data-scope'); remember(); rebuild(); });
+  });
+  panel.querySelectorAll('[data-depth]').forEach(function(b){
+    b.addEventListener('click', function(){
+      state.depth = b.getAttribute('data-depth'); remember(); rebuild(); });
+  });
+  panel.querySelectorAll('[data-mode]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var m = b.getAttribute('data-mode');
+      state[m] = !state[m];
+      if(state[m]) state[m === 'loop' ? 'shuffle' : 'loop'] = false;
+      paint();
     });
   });
-  function playNext(current){
-    if(!audios.length) return false;
-    if(state.loop){
-      current.currentTime = 0;
-      current.play().catch(function(){});
-      return true;
-    }
-    if(state.shuffle){
-      var choices = audios.filter(function(audio){ return audio !== current; });
-      var next = choices[Math.floor(Math.random() * choices.length)] || current;
-      next.play().catch(function(){});
-      return true;
-    }
-    var nextSequential = audios[audios.indexOf(current) + 1];
-    if(nextSequential){ nextSequential.play().catch(function(){}); return true; }
-    return false;
+
+  /* Doi pham vi / do sau thi giu nguyen bai dang phat neu no con trong hang doi. */
+  function rebuild(){
+    var cur = idx >= 0 && queue[idx] ? queue[idx].audio : null;
+    build();
+    idx = cur ? at(cur) : -1;
+    paint();
   }
-  audios.forEach(function(audio){
-    audio.addEventListener('ended', function(){ playNext(audio); });
+
+  ALL.forEach(function(a){
+    a.addEventListener('play', function(){
+      pauseOthers(a);
+      var i = at(a);
+      if(i >= 0) idx = i;
+      paint();
+    });
+    a.addEventListener('pause', function(){ paint(); });
+    a.addEventListener('ended', function(){
+      if(state.loop){ a.currentTime = 0; a.play().catch(function(){}); return; }
+      var i = at(a);
+      if(i < 0){
+        /* Ban thu ngoai hang doi: giu nep cu, sang the audio ke tiep theo DOM. */
+        var j = ALL.indexOf(a);
+        if(ALL[j + 1]) ALL[j + 1].play().catch(function(){});
+        return;
+      }
+      if(state.shuffle && queue.length > 1){
+        var pick = i;
+        while(pick === i) pick = Math.floor(Math.random() * queue.length);
+        playAt(pick);
+        return;
+      }
+      playAt(i + 1);
+    });
   });
-  updateButtons();
+
+  new MutationObserver(paint).observe(document.documentElement, {attributes: true, attributeFilter: ['lang']});
+  build(); paint();
 })();
 </script>
 
