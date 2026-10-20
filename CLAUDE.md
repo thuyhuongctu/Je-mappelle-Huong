@@ -823,13 +823,41 @@ kết quả ngay, chẳng có gì nhắc phải chép về. Nếp duy nhất ch�
 phòng ở **đâu** cũng chép sang bên kia **trong cùng một lần**, đừng để sang
 hôm sau.
 
-Khác nhau đúng **hai chỗ**, và chỉ hai chỗ ấy:
+Khác nhau đúng **ba chỗ**, và chỉ ba chỗ ấy:
 
 - hai liên kết về trang chủ (`href="index.html"`) đổi thành địa chỉ tuyệt đối
   `https://jemappellehuong.com/`;
+- **thẻ `<link rel=canonical>` tự trỏ về chính mình**: bên này là
+  `https://jemappellehuong.com/vanphong.html`, bên kho riêng là
+  `https://thuyhuongctu.github.io/Research-Office/`. Cố ý **không** cho cả hai
+  cùng trỏ về `.com`: làm thế là bảo công cụ tìm kiếm bỏ qua bản có DOI, mà
+  bản ấy mới là bản để trích dẫn. Tự trỏ về mình là nếp của mọi trang khác
+  trong kho này, và không bên nào dìm bên nào;
 - kho riêng có thêm `README.md`, `LICENSE`, `CITATION.cff`, `.zenodo.json`,
   `THIRD-PARTY.md`, `manifest.webmanifest` riêng, `.nojekyll` và quy trình dựng
   Pages riêng.
+
+### Dải dưới màn hình điện thoại chỉ đủ chỗ cho hai cụm
+
+Ở 390px có bốn thứ tranh nhau khoảng 180px cuối màn hình: cần gạt `#can`
+(y 708–824), nhóm nút `#dieu` (770–824), thẻ «Chạm» `#nhac` (649–692) và dòng
+mẹo `#goiy-tay`. Đặt dòng mẹo **bên cạnh** cần gạt thì nó đâm vào `#dieu` —
+đo được chồng **37px ở 430, 77px ở 390, 107px ở 360**, càng hẹp càng nặng.
+
+Dời lên **trên** cần gạt (`left:18px`, `bottom: safe + 128px`) là hết chồng với
+`#can` và `#dieu`, nhưng lại đâm vào `#nhac` 66px khi đứng gần nhân vật. Chỗ ấy
+không còn khoảng trống nào để né nữa.
+
+Nên giải bằng **loại trừ, không bằng toạ độ**: `veNhacNho()` bật lớp
+`body.co-nhac`, và `body.co-nhac #goiy-tay{display:none}`. Lúc có người đứng
+gần thì thẻ «Chạm» quan trọng hơn dòng mẹo kéo cần gạt. Đo lại ở 360/390/430,
+cả hai trạng thái: **0 cặp chồng nhau**.
+
+Đo thì phải ép **cả hai trạng thái**: thêm `body.tay` rồi thêm `#nhac.hien` +
+`body.co-nhac`. Chỉ đo một trạng thái thì bỏ sót đúng cái chồng nặng nhất.
+
+Còn một chỗ chồng **3px** giữa `#bang` và `#the` ở riêng 360px — có sẵn từ
+trước, chưa sửa.
 
 Sửa nội dung văn phòng thì **chép sang cả hai rồi kiểm cả hai**. Quên một bên
 thì bản có DOI và bản đang chạy nói khác nhau — mà DOI là thứ người ta trích
