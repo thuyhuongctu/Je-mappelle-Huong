@@ -1,148 +1,200 @@
 <div align="center">
 
-# Je m'appelle Hương
+<h1>Je m'appelle Hương</h1>
 
-### Personal Academic Homepage of Đỗ Thùy Hương
+**The personal academic homepage of Đỗ Thùy Hương** — and the hub of a research,
+teaching and creative ecosystem that is archived, citable and entirely static.
 
-The standalone academic homepage and central hub of a digital ecosystem for
-research, teaching and open educational software.
+[![Live site](https://img.shields.io/badge/jemappellehuong.com-live-2ea44f?style=flat-square)](https://jemappellehuong.com/)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22003853-1682D4?style=flat-square)](https://doi.org/10.5281/zenodo.22003853)
+[![Build](https://img.shields.io/badge/build-none%20required-6f6459?style=flat-square)](#-run-it-locally)
+[![Languages](https://img.shields.io/badge/languages-VI%20·%20EN%20·%20FR-c45c3a?style=flat-square)](#-two-front-doors)
+[![Copyright](https://img.shields.io/badge/©%202026-all%20rights%20reserved-8d7166?style=flat-square)](#-licence)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22003853.svg)](https://doi.org/10.5281/zenodo.22003853)
-[![Copyright](https://img.shields.io/badge/©%202026-all%20rights%20reserved-8d7166.svg)](#license-and-third-party-components)
-[![Site](https://img.shields.io/badge/site-live-2ea44f)](https://jemappellehuong.com/)
-
-**[▶ Live site: jemappellehuong.com](https://jemappellehuong.com/)**
+### [▶ Open the site](https://jemappellehuong.com/)
 
 <br>
 
-<a href="https://jemappellehuong.com/trangvien.html">
-  <img src="assets/img/trangvien-intro-poster.webp" width="560"
-       alt="Do Thuy Huong in a white ao dai rowing a boat of lotus flowers past stilt houses and bamboo bridges, from the introduction to the 3D estate">
-</a>
+<table>
+<tr>
+<td width="33%" align="center">
+  <a href="https://jemappellehuong.com/trangvien.html">
+    <img src="assets/img/trangvien-intro-poster.webp" alt="A woman in a white ao dai rows a boat of lotus flowers past stilt houses and bamboo bridges in the 3D estate">
+  </a>
+  <br><b>Trang viên</b><br><sub>A 3D estate of eight districts,<br>with a time-of-day cycle</sub>
+</td>
+<td width="33%" align="center">
+  <a href="https://jemappellehuong.com/vanphong.html">
+    <img src="assets/video/le-bureau-intro-poster.webp" alt="The 3D research office: desks, a bookshelf and five characters under hanging lamps">
+  </a>
+  <br><b>Le Bureau</b><br><sub>A 3D research office with a<br>seven-rung entry-mode ladder</sub>
+</td>
+<td width="33%" align="center">
+  <a href="https://jemappellehuong.com/music.html">
+    <img src="assets/img/music-cover-ba-cong-con.webp" alt="A father carries his daughter on his shoulders along a village road beside the river at sunset">
+  </a>
+  <br><b>Songbook</b><br><sub>Original recordings with<br>synchronised lyrics</sub>
+</td>
+</tr>
+</table>
 
-**Trang viên — the 3D estate**
-
-[▶ Watch the 10-second introduction](assets/video/trangvien-intro.mp4) · [Step into the estate](https://jemappellehuong.com/trangvien.html)
-
-<sub>Visuals generated with Google Gemini; music by the author. See [`THIRD-PARTY.md`](THIRD-PARTY.md#4-video-giới-thiệu-trang-viên).</sub>
+<sub>Visuals generated with Google Gemini; music by the author. See [`THIRD-PARTY.md`](THIRD-PARTY.md).</sub>
 
 </div>
 
 ---
 
-## Contents
+## At a glance
 
-- [Overview](#overview)
-- [Tóm tắt tiếng Việt](#tóm-tắt-tiếng-việt)
-- [Digital ecosystem](#digital-ecosystem)
-- [Site contents](#site-contents)
-- [Technology](#technology)
-- [Repository structure](#repository-structure)
-- [Running locally and deployment](#running-locally-and-deployment)
-- [Privacy and security](#privacy-and-security)
-- [Authoring tools](#authoring-tools)
-- [How to cite](#how-to-cite)
-- [License and third-party components](#license-and-third-party-components)
-- [Author and contact](#author-and-contact)
+| | |
+|---|---|
+| **Who** | Đỗ Thùy Hương — PhD candidate in Business Administration, Can Tho University |
+| **Research** | Internationalization and firm performance among enterprises in Asia |
+| **Evidence base** | World Bank Enterprise Surveys × WGI, 50 economies; a meta-analysis of 236 coded studies (K = 286 effects, 49 economies) |
+| **Site** | Eleven pages plus a 404 recovery page, three languages, light and dark themes, installable, works offline |
+| **Stack** | Plain HTML, CSS and vanilla JavaScript. No framework, no bundler, no server |
+| **Published** | GitHub Pages on every push; releases archived on Zenodo with a DOI |
 
-## Overview
+> **Why no build step?** This repository is both the source and the deployable
+> artefact. The archived release opens and reads without any toolchain — the
+> property that makes a software deposit still useful in ten years.
 
-**Je m'appelle Hương** is the personal academic homepage of **Đỗ Thùy Hương**,
-PhD candidate in Business Administration at Can Tho University, whose research
-concerns the relationship between internationalization and firm performance
-among enterprises in Asia.
+## ⚡ Run it locally
 
-The site serves three purposes. It presents a trilingual (Vietnamese, English,
-French) academic profile covering research, teaching and publications. It acts
-as the central hub linking the author's open software projects, each of which is
-separately archived and citable. And it functions as a public dissemination
-channel, carrying an academic news blog, an interactive data globe backed by
-World Bank Open Data, an illustrated virtual-guide character, an interactive
-3D garden, and a songbook of original recordings.
+```bash
+git clone https://github.com/thuyhuongctu/Je-mappelle-Huong.git
+cd Je-mappelle-Huong
+python3 -m http.server 8000      # → http://localhost:8000
+```
 
-These two roles are kept on separate pages. The home page is the academic
-profile and nothing else; the creative half of the site lives behind a single
-link to the digital garden (`garden.html`). A first-time visitor meets the
-researcher before being invited into the garden.
+That is the whole setup. Serving over HTTP is needed only for the service
+worker and the install prompt; individual pages also open straight from disk.
 
-The entire site is plain HTML, CSS and JavaScript. It requires no build step,
-no framework and no server-side component, and is published as a static site on
-GitHub Pages. This repository is therefore both the source code and the
-deployable artefact: the archived release can be opened and read without any
-toolchain, which is the property that makes the deposit useful in the long term.
+Before pushing, one script guards three failures a browser never shows you:
 
-## Tóm tắt tiếng Việt
+```bash
+python3 scripts/check-site.py
+```
+
+It catches a service worker pre-caching a file that no longer exists, a sitemap
+that has drifted from the pages it describes, and internal links or anchors left
+pointing nowhere after a rename. It also runs on every pull request.
+
+<details>
+<summary><b>🇻🇳 Tóm tắt tiếng Việt</b></summary>
+
+<br>
 
 **Je m'appelle Hương** là trang học thuật cá nhân của **Đỗ Thùy Hương** —
 nghiên cứu sinh tiến sĩ ngành Quản trị kinh doanh tại Trường Đại học Cần Thơ,
-nghiên cứu về quốc tế hóa và hiệu quả hoạt động kinh doanh của doanh nghiệp
-ở châu Á.
+nghiên cứu về quốc tế hóa và hiệu quả hoạt động kinh doanh của doanh nghiệp ở
+châu Á.
 
-Trang có hai cửa tách bạch. **Trang chủ là hồ sơ học thuật**: tên, đơn vị công
+Trang có **hai cửa tách bạch**. *Trang chủ là hồ sơ học thuật*: tên, đơn vị công
 tác, một câu nghiên cứu, CV, ORCID và email ngay màn hình đầu; rồi nghiên cứu,
-công bố chọn lọc chia theo tầng bằng chứng, học phần giảng dạy và các dự án
-phần mềm. **Vườn số** (`garden.html`) giữ toàn bộ phần sáng tạo: bản đồ trang
-viên, nhân vật Hương AI, âm nhạc và songbook, trang viên 3D, trò chơi lịch sử
-và quả cầu dữ liệu World Bank — chỉ cách trang chủ đúng một liên kết.
+công bố chọn lọc chia theo tầng bằng chứng, học phần giảng dạy và các dự án phần
+mềm. *Vườn số* (`garden.html`) giữ toàn bộ phần sáng tạo: bản đồ trang viên,
+nhân vật Hương AI, âm nhạc và songbook, trang viên 3D, văn phòng nghiên cứu 3D,
+trò chơi lịch sử và quả cầu dữ liệu World Bank — chỉ cách trang chủ đúng một
+liên kết.
+
+Khách lần đầu gặp người nghiên cứu trước, rồi mới được mời vào vườn.
 
 Toàn bộ viết bằng HTML/CSS/JS thuần, không cần cài đặt, không cần build, chạy
 trên GitHub Pages.
 
-## Digital ecosystem
+</details>
 
-| Project | Description | Link | DOI |
-|---|---|---|---|
-| 🎓 **PhD dissertation** | *Internationalization and firm performance among enterprises in Asia* (World Bank Enterprise Surveys, 50 economies). Full page to follow on publication | *Forthcoming* | — |
-| 🧩 **M-AIDA** | Meta-Analysis Intelligent Data Assistant: human-verified extraction of effect sizes for meta-analysis | [Site](https://thuyhuongctu.github.io/M-AIDA/) | — |
-| 🎲 **BizOn AI** | Multi-agent "living market" business simulation game for higher education | [Site](https://thuyhuongctu.github.io/BizOn/) | — |
-| 📝 **EnQuiz** | Bilingual revision app for an entrepreneurship course (300 questions, installable, offline) | [Site](https://thuyhuongctu.github.io/EnQuiz/) | [10.5281/zenodo.21850735](https://doi.org/10.5281/zenodo.21850735) |
-| 📚 **ComDraft** | Teaching package for the course Communication and Document Drafting Skills: five lecture decks, three computer-lab workbooks, a 200-question bank, eight subtitled videos and an offline revision app | [Site](https://thuyhuongctu.github.io/ComDraft/) | [10.5281/zenodo.22003676](https://doi.org/10.5281/zenodo.22003676) |
-| 🎵 **We Create Tomorrow** | Bilingual karaoke app for the anthem of the School of Economics, Can Tho University; co-authored with Assoc. Prof. Dr. Phan Anh Tu | [Site](https://thuyhuongctu.github.io/we-create-tomorrow/) | [10.5281/zenodo.22080061](https://doi.org/10.5281/zenodo.22080061) |
-| 🎮 **ThuyHuong Digital 2026 — Games** | Vietnamese history game portal: Vân Đồn (1149), Bắc Hải Đảo (1780, 2D and 3D), Chợ Nổi (19th century) | [Site](https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/) | [10.5281/zenodo.21850564](https://doi.org/10.5281/zenodo.21850564) |
+## 🚪 Two front doors
 
-## Site contents
+The site is deliberately split in two, and the split is the design.
 
-The site has two front doors, kept deliberately separate.
+<table>
+<tr><th width="50%">The academic layer</th><th width="50%">The garden layer</th></tr>
+<tr><td valign="top">
 
-**The academic layer** — `index.html`, `publications.html`, `cv.html` — is the
-default entry point. A visitor should be able to tell who this is, what she
-researches, and where the CV and papers are within the first screen, in any
+`index.html` · `publications.html` · `cv.html`
+
+The default entry point. A visitor should be able to tell who this is, what she
+researches, and where the CV and papers are **within the first screen**, in any
 language, on any device.
 
-- **Identity first**: name, affiliation, a one-sentence research statement, and
-  CV / ORCID / email above the fold — no floating widgets over the name
-- **Research**: the dissertation question, its data (WBES, 50 economies;
-  236 coded studies) and its methods
-- **Selected publications**, tiered by evidence: journal articles, book chapters
-  and conference papers, working papers under review — each with its DOI
-- **Teaching**: courses taught, one line each, linked to open course material
-- **Projects**: M-AIDA, BizOn AI, EnQuiz and ComDraft
-- Trilingual (Vietnamese, English, French), light and dark themes
+- **Identity first** — name, affiliation, a one-sentence research statement and
+  CV / ORCID / email above the fold; no floating widget covers the name
+- **Research** — the dissertation question, its data and its methods
+- **Publications**, tiered by evidence: journal articles, book chapters and
+  conference papers, working papers under review — each with its DOI
+- **Teaching** — courses taught, one line each, linked to open material
+- **Projects** — every tool below, with its archive
 
-**The garden layer** — `garden.html` and everything behind it — keeps the
-playful half of the site, reachable by one link from the academic home.
+</td><td valign="top">
 
-- **Garden map**: a hand-drawn estate map whose signs a 3D character cycles to
-- **Hương AI virtual character** and an opt-in narrated bicycle tour
-- **Trang viên (3D garden)**: an explorable scene with a time-of-day cycle,
-  ambient audio and a small game
-- **Songbook and music**: original recordings with synchronised lyrics
-- **Interactive 3D globe** with live World Bank Open Data charts
-- **Academic news blog**, creative journal and an ecosystem slide deck
+`garden.html` and everything behind it
 
-## Technology
+The playful half, one link from the academic home — never in front of it.
+
+- **Garden map** — a hand-drawn estate map a 3D character walks you through
+- **Trang viên** — an explorable 3D estate: eight districts, four times of day,
+  three ways to travel, ambient audio and a small game
+- **Le Bureau** — a 3D research office where five characters answer
+  pre-written questions about the dissertation
+- **Songbook** — original recordings with synchronised lyrics and music videos
+- **Data globe** — live World Bank Open Data on an interactive 3D globe
+- **Blog**, creative journal, guest book and an ecosystem slide deck
+
+</td></tr>
+</table>
+
+## 🧩 The ecosystem
+
+Every tool below runs in a browser, needs no installation, and is archived with
+its own DOI. The pattern is always the same: **the running copy stays in the
+ecosystem, the citable copy moves to its own repository**, deposited on Zenodo.
+
+### Research and method
+
+| Project | What it does | | |
+|---|---|---|---|
+| **M-AIDA** | Meta-Analysis Intelligent Data Assistant — LLM extraction of effect sizes with 100 % human verification | [site](https://thuyhuongctu.github.io/M-AIDA/) | [`10.5281/zenodo.21282517`](https://doi.org/10.5281/zenodo.21282517) |
+| **Gravity Lab** | A browser-based gravity-model laboratory for FDI into Vietnam | [site](https://thuyhuongctu.github.io/Gravity-Lab/) | [`10.5281/zenodo.23330642`](https://doi.org/10.5281/zenodo.23330642) |
+| **Distance, FDI and Trade** | Research code and data mappings (DA0–DA4) for the Vietnam FDI paper | — | [`10.5281/zenodo.23115783`](https://doi.org/10.5281/zenodo.23115783) |
+| **AIBIS Global Market Engine** | A deterministic engine for choosing international market-entry modes | [site](https://thuyhuongctu.github.io/BizOn/aibis-entry-mode-preview.html) | [`10.5281/zenodo.23317597`](https://doi.org/10.5281/zenodo.23317597) |
+| **Research Office** | An offline 3D research office with a mode-of-entry board for International Business teaching | [site](https://thuyhuongctu.github.io/Research-Office/) | [`10.5281/zenodo.22971293`](https://doi.org/10.5281/zenodo.22971293) |
+
+### Teaching
+
+| Project | What it does | | |
+|---|---|---|---|
+| **BizOn Bật Nghiệp** | A 3D claymorphism business-simulation game for entrepreneurship education | [site](https://thuyhuongctu.github.io/BizOn/) | [`10.5281/zenodo.21628970`](https://doi.org/10.5281/zenodo.21628970) |
+| **EnQuiz** | An offline-first bilingual quiz app for entrepreneurship revision — 300 questions, installable | [site](https://thuyhuongctu.github.io/EnQuiz/) | [`10.5281/zenodo.21879706`](https://doi.org/10.5281/zenodo.21879706) |
+| **ComDraft** | A full teaching package: five lecture decks, three lab workbooks, a 200-question bank, eight subtitled videos and an offline revision app | [site](https://thuyhuongctu.github.io/ComDraft/) | [`10.5281/zenodo.22003676`](https://doi.org/10.5281/zenodo.22003676) |
+| **Vietnamese history games** | Vân Đồn (1149), Bắc Hải Đảo (1780, 2D and 3D), Chợ Nổi (19th century) | [site](https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/) | [`10.5281/zenodo.21850564`](https://doi.org/10.5281/zenodo.21850564) |
+
+### Music
+
+| Project | What it does | | |
+|---|---|---|---|
+| **We Create Tomorrow** | Bilingual karaoke for the anthem of the School of Economics, Can Tho University — with Assoc. Prof. Dr. Phan Anh Tu | [site](https://thuyhuongctu.github.io/we-create-tomorrow/) | [`10.5281/zenodo.22080060`](https://doi.org/10.5281/zenodo.22080060) |
+| **Chansonia** | A lyrics-synchronised player for the album «La lampe, le fleuve et les couleurs» | [site](https://thuyhuongctu.github.io/Chansonia/) | [`10.5281/zenodo.22172794`](https://doi.org/10.5281/zenodo.22172794) |
+
+> 🎓 **PhD dissertation** — *Internationalization and firm performance among
+> enterprises in Asia*, on World Bank Enterprise Survey data across 50
+> economies. A full page follows on publication.
+
+<details>
+<summary><b>🛠 Technology and repository layout</b></summary>
+
+<br>
 
 | Layer | Implementation |
 |---|---|
 | Pages | Plain HTML5, CSS and vanilla JavaScript; no framework, no build step |
-| 3D | [three.js](https://threejs.org/) r128, vendored in `assets/vendor/` for offline operation |
+| 3D | [three.js](https://threejs.org/) r128, vendored in `assets/vendor/` so no page calls a CDN |
 | Data | World Bank Open Data API; Zenodo API for live download statistics |
 | Audio | Web Audio API for ambience; HTML5 audio for recordings |
-| App platform | Progressive Web App: web manifest, service worker with versioned cache |
-| Hosting | GitHub Pages, deployed automatically on each push to the default branch |
-| Archiving | Releases are deposited in [Zenodo](https://doi.org/10.5281/zenodo.22003853) with a DOI |
-
-## Repository structure
+| App platform | Progressive Web App — web manifest, service worker with a versioned cache |
+| Hosting | GitHub Pages, deployed by Actions on every push to the default branch |
+| Archiving | Releases deposited in [Zenodo](https://doi.org/10.5281/zenodo.22003853) with a DOI |
 
 ```
 .
@@ -153,6 +205,7 @@ playful half of the site, reachable by one link from the academic home.
 ├── blog.html                Academic news blog
 ├── journey.html             Creative journal: how the site was made
 ├── trangvien.html           3D estate scene
+├── vanphong.html            3D research office — display copy of Research-Office
 ├── music.html               Recordings, song list and synchronised lyrics
 ├── audio.html               Narration studio: record the tour voice (VI/EN/FR)
 ├── so-luu-niem.html         Guest book: a curated wall, plus a form to write in
@@ -160,13 +213,14 @@ playful half of the site, reachable by one link from the academic home.
 ├── songbook.html            Redirect stub → music.html (old URL kept alive)
 ├── quan-ly-songbook.html    Redirect stub → music.html (old URL kept alive)
 │
-├── assets/                  css, js, img, audio, data, vendored libraries
-│   ├── vendor/              three.js r128 — the only third-party script, kept
-│   │                        in-repo so no page calls an external CDN
+├── assets/
+│   ├── css, js, img, audio, video, data
+│   ├── js/office-builder.js, js/characters.js   The office, split into modules
+│   ├── vendor/              three.js r128 — the only third-party script
 │   └── fonts/               Be Vietnam Pro and Baloo 2, subset to Vietnamese
 │                            and self-hosted; no page calls Google Fonts
-├── scripts/                 rebuild-sitemap.py, check-site.py (integrity check)
-├── .github/workflows/       check-site.yml (every PR), update-sitemap.yml
+├── scripts/                 rebuild-sitemap.py, check-site.py
+├── .github/workflows/       check-site.yml (every PR), update-sitemap.yml, pages.yml
 │
 ├── deck-ecosystem/          Ecosystem slide deck, PDF export and design spec
 ├── design-demos/            Design directions and the approval record
@@ -183,57 +237,44 @@ playful half of the site, reachable by one link from the academic home.
 └── CLAUDE.md                Repository conventions for the coding assistant
 ```
 
-## Running locally and deployment
+</details>
 
-```bash
-git clone https://github.com/thuyhuongctu/Je-mappelle-Huong.git
-cd Je-mappelle-Huong
-python3 -m http.server 8000     # then open http://localhost:8000
-```
+<details>
+<summary><b>🔒 Privacy and security</b></summary>
 
-Serving the directory over HTTP is required only for the service worker and the
-installation prompt; individual pages also open directly from the file system.
-
-Deployment is handled by GitHub Pages from the repository's default branch at
-the root path. No build or release pipeline is involved.
-
-## Privacy and security
+<br>
 
 The site is **static**. There is no server, no database, no login and no
-content-management system: GitHub Pages returns files exactly as they are
-committed here. A visitor therefore has no way to alter what anyone else sees —
-the only route to changing a page is write access to this repository, which is
-governed by GitHub account security and branch protection, not by anything in
-the code.
-
-What the site does, precisely:
+content-management system: GitHub Pages returns files exactly as committed here.
+A visitor has no way to alter what anyone else sees — the only route to changing
+a page is write access to this repository, governed by GitHub account security
+and branch protection, not by anything in the code.
 
 | Concern | How it stands |
 |---|---|
 | Credentials in the repository | None. No API key, token or password is used by any page; the site calls no authenticated service. |
-| Personal data | Only what the author publishes deliberately: name, affiliation, ORCID and a public contact address. The copyright dossier in `ho-so-quyen-tac-gia/` carries drafts only; identity-document fields are left as `«…»` placeholders, and `ho-so-quyen-tac-gia/rieng-tu/` is excluded by `.gitignore` for filled-in paperwork. |
-| Third-party scripts | None loaded from a CDN. three.js r128 is vendored in `assets/vendor/`, so no page depends on an external host that could change its contents under a fixed URL. |
-| Web fonts | Self-hosted in `assets/fonts/`. No page contacts Google Fonts, so a visitor's IP address is never sent to a font server before the first character is drawn. |
-| Visitor-supplied text | The guest book wall is a curated file, `assets/data/so-luu-niem.json`, edited by hand after reading each message. Entries are rendered with `textContent`, never `innerHTML`, so no submitted text can execute as markup. The write box posts directly to a Google Form owned by the author; nothing is published automatically. |
-| Stored in the browser | `localStorage` only, for the visitor's own language (`huong_lang`) and theme (`huong_theme`) choice, and game progress in the 3D estate. Never read back by the site's author; no cookie is set. |
+| Personal data | Only what the author publishes deliberately: name, affiliation, ORCID and a public contact address. The dossier in `ho-so-quyen-tac-gia/` carries drafts only; identity-document fields are left as `«…»` placeholders, and `ho-so-quyen-tac-gia/rieng-tu/` is excluded by `.gitignore`. |
+| Third-party scripts | None loaded from a CDN. three.js r128 is vendored, so no page depends on an external host that could change its contents under a fixed URL. |
+| Web fonts | Self-hosted. No page contacts Google Fonts, so a visitor's IP is never sent to a font server before the first character is drawn. |
+| Visitor-supplied text | The guest-book wall is a curated file, `assets/data/so-luu-niem.json`, edited by hand after reading each message. Entries render with `textContent`, never `innerHTML`, so no submitted text can execute as markup. The write box posts to a Google Form owned by the author; nothing is published automatically. |
+| Stored in the browser | `localStorage` only — the visitor's own language (`huong_lang`) and theme (`huong_theme`) choice, and game progress in the 3D estate. Never read back by the author; no cookie is set. |
 | Analytics | [GoatCounter](https://www.goatcounter.com/), which collects no personal data and sets no cookie. |
 | Continuous integration | `check-site.yml` runs on pull requests with `permissions: contents: read` and `persist-credentials: false`, so an untrusted branch cannot obtain a writable token. `update-sitemap.yml` needs `contents: write` but fires only on pushes to the default branch or by manual dispatch. |
 
-`python3 scripts/check-site.py` guards three failure modes that are invisible
-in a browser: a service worker pre-caching a file that no longer exists, a
-sitemap that has drifted from the pages it describes, and internal links or
-anchors left pointing nowhere after a rename. It runs on every pull request.
+</details>
 
-## Authoring tools
+<details>
+<summary><b>🎬 Authoring tools</b></summary>
 
-The repository carries agent skills used to produce the site's media, kept
-under `.claude/skills/`:
+<br>
+
+Agent skills used to produce the site's media live under `.claude/skills/`:
 
 - **MiniMax H3 video skills** (from
   [thuyhuongctu/MiniMax-H3](https://github.com/thuyhuongctu/MiniMax-H3)) for
   short-form video: prompt writing, brand promotion, 3D animation, music-video
-  subtitling, product advertising, and several illustrated explainer styles.
-  Rendering is performed through [hailuoai.video](https://hailuoai.video/tools/minimax-h3)
+  subtitling, product advertising and several illustrated explainer styles.
+  Rendering runs through [hailuoai.video](https://hailuoai.video/tools/minimax-h3)
   or the MiniMax API.
 - **huashu-design** (MIT, from
   [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)) for
@@ -241,18 +282,19 @@ under `.claude/skills/`:
   review. Installed in reduced form; see
   `.claude/skills/huashu-design/LOCAL-NOTE.md`.
 
-Longer-form video is produced with
-[OpenMontage](https://github.com/calesthio/OpenMontage) (AGPL-3.0), used as an
-external tool and deliberately **not** vendored into this repository:
+Longer-form video uses [OpenMontage](https://github.com/calesthio/OpenMontage)
+(AGPL-3.0) as an external tool, deliberately **not** vendored here:
 
 ```bash
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/calesthio/openmontage
 ```
 
-It requires Python 3.10 or later, FFmpeg and Node 18 or later, and offers a
-fully free generation path (Piper TTS, Pexels, Archive.org) without API keys.
+It needs Python 3.10+, FFmpeg and Node 18+, and offers a fully free generation
+path (Piper TTS, Pexels, Archive.org) without API keys.
 
-## How to cite
+</details>
+
+## 📑 How to cite
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22003853.svg)](https://doi.org/10.5281/zenodo.22003853)
 
@@ -274,14 +316,14 @@ Citation metadata is maintained in [`CITATION.cff`](CITATION.cff); GitHub's
 }
 ```
 
-The DOI above is the **concept DOI**, which represents all versions and always
-resolves to the most recent release. Individual releases carry their own DOIs:
+The DOI above is the **concept DOI**: it represents all versions and always
+resolves to the most recent release. Individual releases carry their own:
 
 | Version | Released | DOI |
 |---|---|---|
 | 1.0 | 18 August 2026 | [10.5281/zenodo.22003854](https://doi.org/10.5281/zenodo.22003854) |
 
-## License and third-party components
+## 📜 Licence
 
 **© 2026 Đỗ Thùy Hương. All rights reserved.**
 
@@ -289,17 +331,17 @@ This work is published for reading, consultation and citation. It is **not**
 released under an open-source or open-content licence. No permission is granted
 to copy, redistribute, republish, modify, translate or reuse the site, its
 source code, its written content, its images, its recordings or the *Hương AI*
-character, in whole or in part, whether for commercial or non-commercial
-purposes, without the prior written permission of the author.
+character, in whole or in part, for any purpose, without the prior written
+permission of the author.
 
 Quotation for academic purposes, with attribution and a citation to the record
-below, is permitted under normal scholarly practice and applicable copyright
+above, is permitted under normal scholarly practice and applicable copyright
 exceptions.
 
-Permission requests: [thuyhuongctu@gmail.com](mailto:thuyhuongctu@gmail.com)
+Permission requests → [thuyhuongctu@gmail.com](mailto:thuyhuongctu@gmail.com)
 
-Third-party components used by the site remain under their own licences and are
-not covered by the reservation above:
+Third-party components keep their own licences and are not covered by the
+reservation above:
 
 | Component | Use | Licence |
 |---|---|---|
@@ -309,20 +351,21 @@ not covered by the reservation above:
 | [huashu-design](https://github.com/alchaincyf/huashu-design) | Design skill, `.claude/skills/` | MIT |
 | [OpenMontage](https://github.com/calesthio/OpenMontage) | External video tool, not vendored | AGPL-3.0 |
 
-## Author and contact
+The full inventory, including every generated image, video and recording, is in
+[`THIRD-PARTY.md`](THIRD-PARTY.md).
+
+## 👤 Author
 
 **Đỗ Thùy Hương** (Do Thuy Huong)
 PhD candidate in Business Administration, Can Tho University
 
-- ORCID: [0000-0002-7711-2487](https://orcid.org/0000-0002-7711-2487)
-- Google Scholar: [profile](https://scholar.google.com/citations?hl=vi&user=jSvAVnsAAAAJ)
-- OSF: [m25qs](https://osf.io/m25qs/)
-- Email: [thuyhuongctu@gmail.com](mailto:thuyhuongctu@gmail.com)
+[![ORCID](https://img.shields.io/badge/ORCID-0000--0002--7711--2487-A6CE39?style=flat-square)](https://orcid.org/0000-0002-7711-2487)
+[![Scholar](https://img.shields.io/badge/Google_Scholar-profile-4285F4?style=flat-square)](https://scholar.google.com/citations?hl=vi&user=jSvAVnsAAAAJ)
+[![OSF](https://img.shields.io/badge/OSF-m25qs-05C3DE?style=flat-square)](https://osf.io/m25qs/)
+[![Email](https://img.shields.io/badge/email-thuyhuongctu@gmail.com-c45c3a?style=flat-square)](mailto:thuyhuongctu@gmail.com)
 
 ---
 
 <div align="center">
-
-© 2026 Đỗ Thùy Hương. All rights reserved.
-
+<sub>© 2026 Đỗ Thùy Hương. All rights reserved.</sub>
 </div>
