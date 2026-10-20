@@ -28,6 +28,27 @@ Dùng cho cảnh 3D của trang viên (`trangvien.html`) và cảnh tháp
 Trang `design-demos/gardenhub3d.html` nạp cùng thư viện ấy qua cdnjs thay vì bản
 trong kho; đó là trang thử nghiệm, không nằm trong phần điều hướng chính.
 
+### GLTFLoader (three.js r128)
+
+| | |
+| --- | --- |
+| Đường dẫn | `assets/vendor/GLTFLoader-r128.js` |
+| Nguồn | gói npm `three@0.128.0`, `examples/js/loaders/GLTFLoader.js` — cùng bản với `three-r128.min.js` |
+| Giấy phép | MIT — three.js authors |
+| Đã sửa? | **Không.** |
+
+Dùng để nạp mô hình `.glb` (dừa ven sông) trong `trangvien.html`. Thiếu tệp thì
+cảnh vẫn chạy, chỉ không có dừa.
+
+### Kenney Nature Kit 2.1 — ba cây dừa
+
+| | |
+| --- | --- |
+| Đường dẫn | `assets/models/kenney/tree_palm.glb`, `tree_palmBend.glb`, `tree_palmShort.glb` |
+| Nguồn | <https://kenney.nl/assets/nature-kit> |
+| Giấy phép | **CC0 1.0** (`assets/models/kenney/LICENSE-kenney-nature-kit.txt`) — không bắt buộc ghi công, vẫn ghi cho rõ nguồn |
+| Đã sửa? | Tệp giữ nguyên. Lúc chạy thay vật liệu bằng hai màu sẵn có của cảnh (`#C08A5A`, `#79B25C`) và đặt `metalness` về 0. |
+
 ---
 
 ## 2. Cảnh tháp — tác phẩm phái sinh

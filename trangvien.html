@@ -910,6 +910,7 @@ body.cham #nut-msg{bottom:calc(1rem + 84px + 54px + 68px) !important;z-index:920
 </script>
 
 <script src="assets/vendor/three-r128.min.js"></script>
+<script src="assets/vendor/GLTFLoader-r128.js"></script>
 <script>
 /* ==========================================================================
    TRANG VIÊN ĐỔI MỚI SÁNG TẠO - thế giới 3D đất sét
@@ -1428,11 +1429,12 @@ bien.position.set(172, .046, -14);
 bien.receiveShadow = false;
 theGioi.add(bien);
 
-/* Khoảng cách từ một điểm tới mặt sông, để tô dải cát ven bờ và để giữ phẳng
-   chỗ sông cắt qua vành ngoài. Trả 0 nếu điểm nằm trên nước. */
-function xaSong(x, z){
+/* Khoảng cách từ (x,z) tới MÉP sông, dù điểm ở trên nước hay trên bờ.
+   Đặt thứ gì ven bờ phía trong nước (sen, thuyền neo) thì cần đúng cái này:
+   xaSong() trả 0 cho mọi điểm trên nước nên không phân biệt được sát bờ với
+   giữa dòng. */
+function canhBo(x, z){
   if(!vienSong) return 999;
-  if(trenNuoc(x, z)) return 0;
   let gan = Infinity;
   for(let i = 0, j = vienSong.length - 1; i < vienSong.length; j = i++){
     const ax = vienSong[j][0], az = vienSong[j][1];
@@ -1446,6 +1448,28 @@ function xaSong(x, z){
     if(b < gan) gan = b;
   }
   return Math.sqrt(gan);
+}
+/* Hướng của mép sông gần (x,z) nhất, tính bằng góc quay quanh trục y để một
+   vật có trục dài theo z nằm dọc bờ. */
+function huongBo(x, z){
+  let gan = Infinity, goc = 0;
+  for(let i = 0, j = vienSong.length - 1; i < vienSong.length; j = i++){
+    const ax = vienSong[j][0], az = vienSong[j][1];
+    const vx = vienSong[i][0] - ax, vz = vienSong[i][1] - az;
+    const dd = vx*vx + vz*vz;
+    let k = dd > 1e-9 ? ((x - ax)*vx + (z - az)*vz) / dd : 0;
+    k = k < 0 ? 0 : k > 1 ? 1 : k;
+    const dx = x - (ax + vx*k), dz = z - (az + vz*k);
+    if(dx*dx + dz*dz < gan){ gan = dx*dx + dz*dz; goc = Math.atan2(vx, vz); }
+  }
+  return goc;
+}
+/* Khoảng cách từ một điểm tới mặt sông, để tô dải cát ven bờ và để giữ phẳng
+   chỗ sông cắt qua vành ngoài. Trả 0 nếu điểm nằm trên nước. */
+function xaSong(x, z){
+  if(!vienSong) return 999;
+  if(trenNuoc(x, z)) return 0;
+  return canhBo(x, z);
 }
 
 /* Tô vân cho mặt đất và nâng gò ở vành ngoài.
@@ -1839,15 +1863,26 @@ function boSen(){
   nhuy.scale.y=.6; nhuy.position.y=.45; g.add(nhuy);
   return g;
 }
-for(let i=0;i<26;i++){
-  const s = boSen();
-  const x = -50 + Math.random()*105;
-  const z = Math.sin(x*.05)*7 + 8 + (Math.random()-.5)*8;
-  s.position.set(x, .1, z);
-  s.scale.setScalar(.7 + Math.random()*.7);
-  s.rotation.y = Math.random()*3;
-  theGioi.add(s);
-}
+/* Sen đặt theo chính đa giác mặt sông. Trước đây vị trí lấy từ công thức sin
+   chép tay `z = sin(x*.05)*7 + 8` (z từ 1 tới 15) trong khi sông thật nằm ở z
+   từ -31 tới 3 - đo trong cảnh đang chạy: 0 trên 26 bông nằm trên nước, cả 26
+   mọc trên cỏ. Đây là lần thứ tư cùng một công thức sai ấy (xem CLAUDE.md).
+   Chỉ đặt ven bờ (cách mép 1,2-3,4), chừa giữa dòng cho xuồng chèo. */
+(function datSen(){
+  let dat = 0, thu = 0;
+  while(dat < 26 && thu++ < 6000){
+    const x = -50 + Math.random()*100, z = -32 + Math.random()*36;
+    if(Math.hypot(x, z) > BAN_KINH - 2 || !trenNuoc(x, z)) continue;
+    const d = canhBo(x, z);
+    if(d < 1.2 || d > 3.4) continue;
+    const s = boSen();
+    s.position.set(x, .1, z);
+    s.scale.setScalar(.7 + Math.random()*.7);
+    s.rotation.y = Math.random()*3;
+    theGioi.add(s);
+    dat++;
+  }
+})();
 
 // 5.8 thuyền nan
 function thuyen(){
@@ -1860,10 +1895,20 @@ function thuyen(){
   g.add(trong);
   return g;
 }
-[[-34,10,.6],[26,12,-.9],[-8,4,.2]].forEach(p=>{
-  const t = thuyen();
-  t.position.set(p[0], .2, p[1]); t.rotation.y = p[2];
-  theGioi.add(t);
+/* Ba thuyền neo sát bờ, nằm dọc theo mép nước. Vị trí cũ [-34,10], [26,12],
+   [-8,4] lấy theo công thức sin sai nên cả ba nằm trên cỏ (đo: 0/3 trên nước).
+   Giữ nguyên ba hoành độ ấy, dò từ bờ bắc xuống tìm chỗ nước cách mép
+   1,6-2,4 đơn vị. */
+[-34, 26, -8].forEach(x=>{
+  for(let z = 4; z > -32; z -= .25){
+    if(!trenNuoc(x, z)) continue;
+    const d = canhBo(x, z);
+    if(d < 1.6 || d > 2.4) continue;
+    const t = thuyen();
+    t.position.set(x, .2, z); t.rotation.y = huongBo(x, z);
+    theGioi.add(t);
+    break;
+  }
 });
 
 // 5.9 khóm tre
@@ -2082,6 +2127,68 @@ for(let i=0;i<14;i++){
   theGioi.add(k);
 }
 
+
+/* 5.9b DỪA VEN SÔNG - mô hình CC0 của Kenney (Nature Kit 2.1, kenney.nl),
+   assets/models/kenney/. Trang viên có tre, sen, thuyền nhưng chưa có dừa -
+   thứ đọc ra «miền Tây» rõ nhất khi nhìn từ xa, vì tán dừa cắt lên nền trời.
+
+   Gom thành 5 cụm ven bờ chứ không rải đều (xem «Mật độ» trong CLAUDE.md):
+   tâm cụm cách mép nước 3-6 đơn vị, tránh tám khu, hai cầu và lối mòn.
+
+   Màu lấy lại đúng hai màu đã có trong cảnh - gỗ thuyền #C08A5A và lá tre
+   #79B25C - qua vatLieu(), nên bảng màu đã gom không thêm màu nào.
+   Nature Kit khai metallicFactor = 1 cho mọi vật liệu; giữ nguyên thì vật hiện
+   gần đen vì cảnh không có ảnh môi trường. vatLieu() đặt metalness 0. */
+(function duaVenSong(){
+  if(!THREE.GLTFLoader) return;
+  const CAU = [[-12, 9], [34, 10]];
+  const doanMon = [];
+  TUYEN_MON.forEach(t => { for(let i = 1; i < t.length; i++) doanMon.push([t[i-1], t[i]]); });
+  const xaMon = (x, z) => Math.min(...doanMon.map(([a, b]) => {
+    const vx = b[0]-a[0], vz = b[1]-a[1], dd = vx*vx + vz*vz;
+    let k = ((x-a[0])*vx + (z-a[1])*vz) / dd; k = k < 0 ? 0 : k > 1 ? 1 : k;
+    return Math.hypot(x - a[0] - vx*k, z - a[1] - vz*k);
+  }));
+  const choTot = (x, z, gan, xa) => {
+    if(Math.hypot(x, z) > BAN_KINH - 4 || trenNuoc(x, z)) return false;
+    const d = canhBo(x, z);
+    if(d < gan || d > xa) return false;
+    if(KHU.some(k => Math.hypot(x - k.vt[0], z - k.vt[2]) < 11)) return false;
+    if(CAU.some(c => Math.hypot(x - c[0], z - c[1]) < 6)) return false;
+    return xaMon(x, z) > 2.5;
+  };
+  const tam = [];
+  for(let thu = 0; tam.length < 5 && thu < 3000; thu++){
+    const x = -48 + Math.random()*96, z = -36 + Math.random()*46;
+    if(choTot(x, z, 3, 6) && tam.every(t => Math.hypot(x - t[0], z - t[1]) > 15)) tam.push([x, z]);
+  }
+  const cay = [];
+  tam.forEach(t => {
+    const muon = 2 + ((Math.random()*3)|0);
+    for(let thu = 0, co = 0; co < muon && thu < 200; thu++){
+      const x = t[0] + (Math.random()-.5)*7, z = t[1] + (Math.random()-.5)*7;
+      if(!choTot(x, z, 2.2, 8) || cay.some(c => Math.hypot(x - c[0], z - c[1]) < 2.4)) continue;
+      cay.push([x, z]); co++;
+    }
+  });
+  const MAU = { woodBark: vatLieu('#C08A5A', .95), leafsGreen: vatLieu('#79B25C', .96) };
+  const TEP = ['tree_palm', 'tree_palmBend', 'tree_palmShort'];
+  const nap = new THREE.GLTFLoader(), mau = {};
+  TEP.forEach(ten => nap.load('assets/models/kenney/' + ten + '.glb', g => {
+    g.scene.traverse(o => { if(o.isMesh){ o.material = MAU[o.material.name] || vatLieu('#79B25C', .96); o.castShadow = true; o.receiveShadow = true; } });
+    const hop = new THREE.Box3().setFromObject(g.scene);
+    mau[ten] = { goc: g.scene, cao: hop.max.y - hop.min.y };
+    if(Object.keys(mau).length < TEP.length) return;
+    cay.forEach(([x, z], i) => {
+      const m = mau[TEP[i % TEP.length]], o = m.goc.clone(true);
+      o.scale.setScalar((6 + Math.random()*2.6) / m.cao);   // cao 6-8,6, ngang khóm tre
+      o.position.set(x, 0, z);
+      o.rotation.y = Math.random()*Math.PI*2;
+      theGioi.add(o);
+    });
+    window.__duaVenSong = cay.length;
+  }, undefined, () => {}));   // thiếu tệp thì thôi, cảnh vẫn chạy
+})();
 
 /* ---------- 5.13 CHI TIẾT NÂNG CAO - hàng rào tre, đèn lồng, bụi hoa, chim bay ---------- */
 // (a) hàng rào tre vòng cung quanh trung tâm
@@ -3821,14 +3928,17 @@ function veBanDo(){
   bd.fillStyle = 'rgba(169,221,160,.55)';
   bd.beginPath(); bd.arc(R,R,R-6,0,7); bd.fill();
   // sông
-  bd.strokeStyle = 'rgba(159,211,232,.9)'; bd.lineWidth = 10; bd.lineCap='round';
+  /* Vẽ thẳng từ `vienSong`, như bản đồ lớn. Trước đây bản đồ góc vẫn dùng
+     công thức sin chép tay nên vẽ sông ở z 1…15, đúng phía ngược với sông thật
+     (z -31…3) - bản đồ lớn đã sửa từ trước, chỗ này thì sót. Cắt theo vòng
+     tròn của bản đồ vì sông chạy ra ngoài vòng đi lại. */
+  bd.save();
+  bd.beginPath(); bd.arc(R,R,R-6,0,7); bd.clip();
+  bd.fillStyle = 'rgba(159,211,232,.9)';
   bd.beginPath();
-  for(let x=-52;x<=52;x+=6){
-    const z = Math.sin(x*.05)*7 + 8;
-    const px = R + x*TL, py = R + z*TL;
-    x===-52 ? bd.moveTo(px,py) : bd.lineTo(px,py);
-  }
-  bd.stroke();
+  vienSong.forEach((pt, i) => { const px = R + pt[0]*TL, py = R + pt[1]*TL; i ? bd.lineTo(px,py) : bd.moveTo(px,py); });
+  bd.closePath(); bd.fill();
+  bd.restore();
   // các khu
   diemKhu.forEach(k=>{
     const px = R + k.x*TL, py = R + k.z*TL;

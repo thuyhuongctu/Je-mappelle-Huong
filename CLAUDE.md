@@ -221,6 +221,18 @@ thức sai, cùng một kiểu hỏng:
 Quy tắc rút ra: hễ thấy một hằng số hình học viết tay ở chỗ thứ hai, đi tìm
 nguồn của nó. Ba lần rồi.
 
+**Lần thứ tư, 20/10:** công thức ấy còn nằm ở **ba chỗ nữa** mà ba lần trước
+không ai dò tới — **26 bông sen**, **3 thuyền nan** và **bản đồ tròn ở góc**
+(bản đồ lớn `#toancanh` đã sửa, bản đồ góc `veBanDo()` thì sót). Đo trong cảnh
+đang chạy: **0/26** sen và **0/3** thuyền nằm trên nước. Nay sen và thuyền đặt
+bằng `trenNuoc()` + `canhBo()`, bản đồ góc tô thẳng đa giác `vienSong`; đo lại
+được 26/26 và 3/3. Dò bằng `grep -n "sin(x\*\.05)"`: nay chỉ còn trong chú thích.
+
+`canhBo(x, z)` là khoảng cách tới **mép** sông dù điểm ở trên nước hay trên bờ;
+`xaSong()` nay gọi nó và trả 0 khi điểm trên nước. Đặt thứ gì ven bờ **phía
+trong nước** (sen, thuyền neo) thì phải dùng `canhBo()`, vì `xaSong()` không
+phân biệt sát bờ với giữa dòng. `huongBo()` cho góc quay để vật nằm dọc bờ.
+
 Danh sách lối mòn cũ là **một đường đi liền mạch**, nên muốn rẽ nhánh phải
 quay ngược lại — mỗi lần quay ngược dựng thêm một tấm phẳng nằm đè khít lên
 tấm cũ, cùng `y = 0,07`, hai mặt tranh nhau. Đếm được 16 tấm cho 11 đoạn thật.
@@ -229,6 +241,22 @@ tấm cho đủ **tám** khu.
 
 Trước đó hai khu **không hề có lối mòn nào dẫn tới** — «Lối kể chuyện»
 `(-16,42)` và «Kho tương lai» `(-12,-38)`.
+
+## Mô hình ngoài (Kenney) trong trang viên
+
+Dừa ven sông (`duaVenSong()`) là mô hình CC0 của Kenney nạp bằng `GLTFLoader`.
+Hai chỗ đã vấp ở cảnh thử, đừng mắc lại khi thêm mô hình Kenney khác:
+
+- **Nature Kit khai `metallicFactor = 1` cho mọi vật liệu.** Trang viên không có
+  ảnh môi trường nên vật «kim loại» hiện gần đen. Gán vật liệu qua `vatLieu()`
+  (đặt `metalness: 0`), đừng giữ vật liệu gốc.
+- **Watercraft Kit dùng ảnh màu ngoài** `Textures/colormap.png`, chép thiếu thì
+  nạp lỗi. Nature Kit thì không.
+
+Màu: dùng lại màu **đã có** trong cảnh (gỗ thuyền `#C08A5A`, lá tre `#79B25C`),
+đừng nhuộm sang màu mới — bảng màu cảnh 3D đã gom có chủ đích (mục «Bảng màu
+trang viên»). Đặt thì **gom cụm** tránh nước, tám khu, cầu, lối mòn; 17 cây chỉ
+thêm 37 mesh.
 
 ## Ánh sáng trang viên
 
