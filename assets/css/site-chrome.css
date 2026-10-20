@@ -185,12 +185,9 @@ body{background:transparent}
 @media print{.sitefoot{display:none}}
 
 /* ---------- 4. bao ve anh va video (site-chrome.js) ----------
-   Dau (c) o goc tren phai cua khung anh (the .bv-dau-chu do JS chen); pointer-events:none de khong chan bam.
-   -webkit-touch-callout:none tat menu luu anh khi nhan giu tren iPhone. */
+   -webkit-touch-callout:none tat menu luu anh khi nhan giu tren iPhone.
+   Dau (c) dong len anh da bo ngay 20/10, cung voi lop .bv-dau-chu cua no. */
 img,video{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
-.bv-dau-chu{position:absolute;top:8px;right:10px;z-index:2;pointer-events:none;
-  font:600 11px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;color:rgba(255,255,255,.82);
-  text-shadow:0 0 3px rgba(0,0,0,.65),0 1px 2px rgba(0,0,0,.5)}
 @media print{
   .bv-khong-in body{display:none !important}
   .bv-khong-in::after{content:"\00a9  2026 \0110\1ED7  Th\00F9y  H\01B0\01A1ng \00B7  jemappellehuong.com";display:block;padding:40mm 20mm;font:16pt serif;color:#1c1814;text-align:center}
