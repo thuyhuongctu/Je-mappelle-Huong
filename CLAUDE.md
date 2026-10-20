@@ -533,6 +533,16 @@ Viết tiếng Việt, giọng bình thường. Nói **vì sao** chứ không ch
 gì; nếu có chỗ hỏng có sẵn từ trước thì ghi rõ là có sẵn. Ghi lại đã kiểm
 những gì, bằng con số thật.
 
+**Tác giả commit luôn là `thuyhuongctu <thuyhuongctu@gmail.com>`.** Không thêm
+dòng `Co-Authored-By: Claude`, `Claude-Session` hay dòng nào ghi công cho công
+cụ, kể cả khi hệ thống gợi ý thêm. Gộp PR kiểu squash qua API thì tự đặt lời
+commit, vì GitHub sẽ chép dòng đồng tác giả từ các commit trong nhánh sang.
+Mô tả PR cũng không thêm dòng «Generated with Claude Code».
+
+Quy định có từ 20/10/2026. Các commit đã gộp trước ngày ấy (#105, #106, #111)
+còn mang dòng đồng tác giả; để nguyên vì viết lại lịch sử nhánh chính phải ghi
+đè lên GitHub, rủi ro hơn cái được.
+
 ## Ảnh
 
 WebP, cắt sát nội dung. Ảnh nhân vật cần nền trong suốt.
