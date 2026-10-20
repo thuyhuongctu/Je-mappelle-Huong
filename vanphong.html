@@ -9,6 +9,7 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <title>Le Bureau de Hương</title>
 <meta name="description" content="A small 3D research office of Je m'appelle Hương: walk in, meet the five estate characters and read what the dissertation actually studies. Answers are written in advance - nothing is generated live.">
+<link rel="canonical" href="https://jemappellehuong.com/vanphong.html">
 <meta name="author" content="thuyhuongctu (Đỗ Thùy Hương)">
 <meta name="theme-color" content="#f6f1e7">
 <meta name="apple-mobile-web-app-title" content="Le Bureau">
@@ -76,8 +77,12 @@ body.mo-ben #dieu{right:calc(min(420px,42vw) + 24px)}
 #can::before{content:'';position:absolute;inset:26px;border-radius:50%;border:1px dashed var(--line)}
 #nut{position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:var(--clay);
   box-shadow:0 4px 12px rgba(196,92,58,.4);transition:transform .08s}
-#goiy-tay{position:fixed;left:146px;bottom:calc(max(16px,env(safe-area-inset-bottom)) + 44px);font-size:.66rem;color:var(--muted);z-index:21;display:none;max-width:120px;line-height:1.4}
+/* Dat TREN can gat, khong phai ben canh: ben canh thi o 390px no dam vao
+   #dieu (do chong 37-107px ngang) va vao #nhac khi dung gan nhan vat. */
+#goiy-tay{position:fixed;left:18px;bottom:calc(max(16px,env(safe-area-inset-bottom)) + 128px);font-size:.66rem;color:var(--muted);z-index:21;display:none;max-width:150px;line-height:1.4}
 body.tay #can,body.tay #goiy-tay{display:block}
+/* Dong meo va the «Cham» dung chung dai duoi man hinh, nen loai tru nhau. */
+body.co-nhac #goiy-tay{display:none}
 body.tay #nhac{bottom:calc(max(16px,env(safe-area-inset-bottom)) + 136px)}
 body.tay .chi-may{display:none}
 body.tay #dieu{bottom:calc(max(16px,env(safe-area-inset-bottom)) + 4px)}
@@ -811,6 +816,9 @@ function veNhacNho() {
       : L({ vi: 'Nói chuyện với ', en: 'Talk to ' }) + mucGan.userData.n.ten;
     $('nhac-phim').textContent = TAY ? L({ vi: 'Chạm', en: 'Tap' }) : 'E';
   } else el.classList.remove('hien');
+  /* Dong meo keo can gat va the «Cham» tranh cho nhau o dai duoi man hinh
+     dien thoai, nen khong bao gio de hien cung luc. */
+  document.body.classList.toggle('co-nhac', el.classList.contains('hien'));
 }
 
 /* =============================== BẢNG THANG ================================ */
