@@ -185,9 +185,9 @@
                'Sent. Thank you for passing by — Hương will read it.',
                'Envoyé. Merci de votre passage — Hương le lira.'), 'xong');
     }).catch(function () {
-      noiBao(t('Không gửi được. Xin thử lại, hoặc nhắn thư về thuyhuongctu@gmail.com',
-               'It would not send. Please try again, or write to thuyhuongctu@gmail.com',
-               'L’envoi a échoué. Réessayez, ou écrivez à thuyhuongctu@gmail.com'), 'hong');
+      noiBao(t('Không gửi được. Xin thử lại, hoặc nhắn thư về contact@jemappellehuong.com',
+               'It would not send. Please try again, or write to contact@jemappellehuong.com',
+               'L’envoi a échoué. Réessayez, ou écrivez à contact@jemappellehuong.com'), 'hong');
     }).then(function () {
       nut.disabled = false;
     });

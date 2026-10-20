@@ -322,7 +322,7 @@
         '<div class="an">' + t('Đỗ Thùy Hương', 'Do Thuy Huong', 'Do Thuy Huong') + '</div>' +
         '<div class="ar">' + t('Giảng viên &amp; Nhà nghiên cứu', 'Lecturer &amp; Researcher', 'Enseignante &amp; Chercheuse') + '</div>' +
         '<div class="ao"><a href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID 0000-0002-7711-2487</a></div>' +
-        '<div class="ao"><a href="mailto:thuyhuongctu@gmail.com">thuyhuongctu@gmail.com</a></div>' +
+        '<div class="ao"><a href="mailto:contact@jemappellehuong.com">contact@jemappellehuong.com</a></div>' +
         '</div></div>' +
         '</div>' +
 

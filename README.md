@@ -338,7 +338,7 @@ Quotation for academic purposes, with attribution and a citation to the record
 above, is permitted under normal scholarly practice and applicable copyright
 exceptions.
 
-Permission requests → [thuyhuongctu@gmail.com](mailto:thuyhuongctu@gmail.com)
+Permission requests → [contact@jemappellehuong.com](mailto:contact@jemappellehuong.com)
 
 Third-party components keep their own licences and are not covered by the
 reservation above:
@@ -362,7 +362,7 @@ PhD candidate in Business Administration, Can Tho University
 [![ORCID](https://img.shields.io/badge/ORCID-0000--0002--7711--2487-A6CE39?style=flat-square)](https://orcid.org/0000-0002-7711-2487)
 [![Scholar](https://img.shields.io/badge/Google_Scholar-profile-4285F4?style=flat-square)](https://scholar.google.com/citations?hl=vi&user=jSvAVnsAAAAJ)
 [![OSF](https://img.shields.io/badge/OSF-m25qs-05C3DE?style=flat-square)](https://osf.io/m25qs/)
-[![Email](https://img.shields.io/badge/email-thuyhuongctu@gmail.com-c45c3a?style=flat-square)](mailto:thuyhuongctu@gmail.com)
+[![Email](https://img.shields.io/badge/email-contact@jemappellehuong.com-c45c3a?style=flat-square)](mailto:contact@jemappellehuong.com)
 
 ---
 

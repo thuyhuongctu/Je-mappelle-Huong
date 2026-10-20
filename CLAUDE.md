@@ -59,6 +59,34 @@ Hai chỗ **ngoài kho này** cũng ghi địa chỉ trang: `index.html` của k
 Bản ghi Zenodo đã phát hành thì không sửa được — đó chính là lý do phải giữ
 chuyển hướng từ địa chỉ cũ vĩnh viễn.
 
+## Hai địa chỉ email, đừng lẫn
+
+Từ 20/10/2026 kho dùng **hai** địa chỉ, mỗi cái một việc:
+
+| địa chỉ | dùng ở đâu |
+| --- | --- |
+| `contact@jemappellehuong.com` | mọi chỗ **khách nhìn thấy**: trang web, `LICENSE`, `README.md`, `CITATION.cff`, JSON-LD, chân trang dùng chung |
+| `thuyhuongctu@gmail.com` | **danh tính commit** và chỉ thế |
+
+`contact@` chuyển tiếp về hộp chính `huong@jemappellehuong.com`. Lý do tách:
+`LICENSE` trỏ người xin phép về một địa chỉ — đó là một **việc**, không phải
+một **người**, nên đổi nơi nhận được mà không phải sửa thứ đã in ra.
+
+**Ba nhóm tệp cố ý vẫn giữ gmail, đừng “sửa nốt”:**
+
+- `CLAUDE.md` và `.github/workflows/update-sitemap.yml` — là `git config
+  user.email`, phải khớp quy định tác giả commit ở mục «Lời commit»;
+- `design-demos/*.html`, `deck-ecosystem/slides/09-ket.html`,
+  `ho-so-quyen-tac-gia/05-ung-vien-tiep-theo.md` — tài liệu **lưu vết tại thời
+  điểm**, viết lại là sửa lịch sử.
+
+Đổi địa chỉ hiển thị thì sửa **14 tệp** (32 chỗ): chín trang HTML, hai tệp JS
+dùng chung, `CITATION.cff`, `LICENSE`, `README.md`. Rà bằng
+`grep -rn "@gmail" --exclude-dir=.git .` rồi đối chiếu với bảng trên.
+
+**Các bản ghi Zenodo đã phát hành vẫn mang gmail** và không sửa được — nên
+đừng bao giờ bỏ hộp Gmail, y như lý do phải giữ chuyển hướng tên miền cũ.
+
 ## Bộ màu đất sét
 
 Dùng chung cho mọi trang, khai lại ở đầu mỗi tệp HTML:
