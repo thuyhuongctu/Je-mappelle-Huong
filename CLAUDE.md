@@ -796,6 +796,33 @@ SynthID chìm vẫn còn trong tệp.
 chính thức để trích dẫn (có DOI Zenodo); bản ở đây là bản trưng bày trong hệ
 sinh thái trang cá nhân.
 
+**Văn phòng không còn là một tệp.** Từ 20/10 nó là bốn tệp, phải chép sang cả
+hai kho cùng lúc:
+
+| tệp | là gì |
+| --- | --- |
+| `vanphong.html` / `index.html` | trang, HUD, hội thoại, hai bảng, vòng lặp |
+| `assets/js/office-builder.js` | `xayVanPhong()` dựng phòng, `lamNguoi()` dựng người |
+| `assets/js/characters.js` | `window.NGUOI` — sáu người và câu trả lời viết sẵn |
+| `assets/video/le-bureau-intro.mp4` + `-poster.webp` | phim giới thiệu 63 giây |
+
+Hai tệp JS **phải nằm trong `CORE` của `sw.js`**: thiếu một trong hai thì trang
+mở ra cảnh trống, mà khi có mạng lại chạy y hệt. Video thì **không** — 3,8 MB,
+`preload="none"`, mở trong bảng riêng, thiếu nó văn phòng vẫn chạy (đúng tiền
+lệ cảnh tháp).
+
+### Đã lệch nhau một lần, ba tuần mới phát hiện
+
+Kho riêng được dựng lại riêng và kho này không hay biết: đo ngày 20/10 thì
+`index.html` bên ấy sửa lần cuối **17/10** còn `vanphong.html` bên này từ
+**26/9**, hai tệp 977 dòng mà chỉ **227 dòng chung**. Đã gộp bằng cách lấy bản
+mới của kho riêng.
+
+Lệch được vì **kho riêng tự chứa và tự chạy**, nên sửa bên ấy xong là xem thấy
+kết quả ngay, chẳng có gì nhắc phải chép về. Nếp duy nhất chặn được: sửa văn
+phòng ở **đâu** cũng chép sang bên kia **trong cùng một lần**, đừng để sang
+hôm sau.
+
 Khác nhau đúng **hai chỗ**, và chỉ hai chỗ ấy:
 
 - hai liên kết về trang chủ (`href="index.html"`) đổi thành địa chỉ tuyệt đối

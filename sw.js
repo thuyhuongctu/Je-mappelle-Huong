@@ -1,5 +1,5 @@
 /* Service worker - Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v202';
+const CACHE = 'jshuong-v203';
 const CORE = [
   './',
   'index.html',
@@ -14,6 +14,10 @@ const CORE = [
   'blog.html',
   'so-luu-niem.html',
   'assets/vendor/three-r128.min.js',
+  // Văn phòng tách thành hai mô-đun từ 20/10. Thiếu một trong hai thì trang
+  // mở ra cảnh trống, mà khi có mạng lại chạy y hệt — đúng kiểu hỏng âm thầm.
+  'assets/js/office-builder.js',
+  'assets/js/characters.js',
   'assets/js/huong3d.js',
   'assets/js/clayhero.js',
   'assets/js/vn-shape.js',
