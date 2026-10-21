@@ -699,16 +699,18 @@ lấy nguyên con số trong thuộc tính và ảnh bị bóp ngang — `.anh-n
 Làm lần đầu cho «Returning to Shore» và bản lời Việt «Trở về bờ» của nó. Bốn
 chỗ mất thì giờ, ghi lại cả bốn.
 
-### Công cụ: `ffmpeg` không cài sẵn, `ffprobe` không có
+### Công cụ: đo lại trước khi tin, môi trường có đổi
 
-Lấy đường dẫn bằng Python, gói `imageio-ffmpeg` đã có trong máy:
+Ghi 10/10: `ffmpeg` không cài sẵn, phải lấy đường dẫn qua `imageio-ffmpeg`, và
+`ffprobe` không có bản nào.
 
-```python
-import imageio_ffmpeg; imageio_ffmpeg.get_ffmpeg_exe()
-```
+**Đo lại 21/10 thì ngược hẳn:** `/usr/bin/ffmpeg` và `/usr/bin/ffprobe` đều có
+sẵn, còn gói `imageio-ffmpeg` thì **không** cài được nữa (`pip install` chạy
+xong mà `import` vẫn hỏng). Nên cứ `command -v ffmpeg ffprobe` trước, đừng tin
+dòng này.
 
-`ffprobe` thì **không có bản nào** — muốn đọc siêu dữ liệu thì chạy
-`ffmpeg -i <tệp>` rồi đọc phần in ra `stderr`.
+Cũng vậy: `numpy` chỉ có ở `/usr/bin/python3` (bản chạy Playwright), không có ở
+`python3` mặc định. Lúc cần cả hai thứ thì dùng `/usr/bin/python3`.
 
 ### Mã lại hay chép nguyên dòng, tuỳ nguồn
 
@@ -925,9 +927,107 @@ Hai chỗ đã đo, đừng dò lại:
   của kho ấy viết rõ công trình «được công bố để đọc, tham khảo và trích dẫn».
   Đúng là `open` cộng giấy phép đóng.
 
+  **Nhưng đặt `open` cũng KHÔNG ăn** — đo 21/10 trên kho `Le-Domaine-de-Huong`:
+  `.zenodo.json` khai `"access_right": "open"`, kho để **public**, vậy mà cả hai
+  bản ghi `v1.0.0` và `v1.0.1` đều hiện **Restricted** — «The record is publicly
+  accessible, but files are restricted to users with access». Chưa rõ Zenodo bỏ
+  hẳn trường cũ ấy hay nó suy từ giấy phép `other-closed` ra; chưa đo được nên
+  đừng ghi là đã biết.
+
+  Hệ quả dùng được: **sau mỗi lần phát hành, mở bản ghi ra nhìn mục Files.** Nếu
+  là Restricted thì vào Edit đặt lại Public — không sửa bằng commit được. Trạng
+  thái ấy đi ngược hẳn câu chữ trong `LICENSE`, nên để nguyên là tự mâu thuẫn.
+
 `.zenodo.json` **cố ý không khai `version`**, để Zenodo lấy thẳng tên thẻ. Nên
 đặt thẻ là `v1.1`, **không phải** `v.1.1` — bản đầu tiên đã lỡ mang tên `v.1.0`
-đúng vì lẽ ấy và phải sửa tay.
+đúng vì lẽ ấy và phải sửa tay. Thẻ ba số (`v1.0.0`) cũng được, miễn là
+`CITATION.cff` khai `version` **khớp tên thẻ**; hai chỗ ấy lệch nhau thì nút
+«Cite this repository» của GitHub nói một đằng, Zenodo ghi một nẻo.
+
+**Chỗ chưa sửa:** `.zenodo.json` của kho `Research-Office` hiện vẫn để
+`access_right: "restricted"`, trái đúng điều vừa nói ở trên. Bản ghi đã phát
+hành nên chỉ sửa được trong trang Edit của Zenodo, không sửa bằng commit.
+
+## Trang viên cũng có HAI bản, từ 21/10
+
+`trangvien.html` trong kho này và `index.html` của kho
+`thuyhuongctu/Le-Domaine-de-Huong` là **cùng một cảnh**. Kho riêng là bản chính
+thức để trích dẫn (có DOI Zenodo); bản ở đây là bản trưng bày trong hệ sinh
+thái trang cá nhân. Nếp y như văn phòng: **sửa ở đâu cũng chép sang bên kia
+trong cùng một lần.**
+
+Tên tác phẩm là «Le Domaine de Hương», song song với «Le Bureau de Hương» của
+kho văn phòng. Tên **tác phẩm** và tên **kho** là hai thứ tách bạch: đổi tên
+kho là gãy địa chỉ và gãy liên kết trong bản ghi DOI đã phát hành.
+
+### Kho riêng KHÔNG phải bản chép nguyên
+
+Khác hẳn văn phòng. Gói đầy đủ của trang viên đo được **132 tệp, 32,0 MB**;
+bản tách chỉ **93 tệp, 19 MB**. Ba nhóm cố ý bỏ, và lý do không phải dung
+lượng mà là **ranh giới tác phẩm**:
+
+- **Đoạn trích 15 giây «Mekong Sunfire»** (`docs/mv/mekong-sunfire-hook-15s.mp3`).
+  Đo tương quan tín hiệu với `assets/audio/bizon/bat-nghiep-mekong-sunfire.mp3`:
+  **0,9996 tại giây 181**, nền 0,0089 — tức trích đoạn nguyên văn của một bản
+  thu **đồng sở hữu với Phan Anh Tú**. Để lại thì tác phẩm lưu trữ thành hai
+  tác giả, đúng cái bẫy mục «Hai chỗ về giấy phép» đã cảnh báo.
+- **Thư viện nhạc trong `music.js`**, rút 34 bài xuống 2 (hai bản solfeggio của
+  khuôn viên). Bản gốc liệt kê 10 bài `bizon/` cũng thuộc phần đồng sở hữu.
+- **Ba bài hát và cả `deck-ecosystem/`** — tác phẩm khác, có hồ sơ riêng.
+
+Giọng đọc lấy bản `_vi` và `_en`, bỏ `_fr`: trang viên chỉ có hai thứ tiếng.
+
+### Ba nhóm tệp mà phép duyệt tĩnh KHÔNG thấy
+
+Dò phụ thuộc bằng cách đọc `src=` / `href=` thì sót, vì ba chỗ này ghép chuỗi
+**lúc chạy**. Đo bằng Chromium mới lộ ra, đúng ba chỗ 404:
+
+- `assets/css/site-chrome.css` — `site-chrome.js` tự chèn;
+- `assets/audio/solfeggio_528.mp3` và `_432` — `music.js` ghép từ biến `A`;
+- `assets/voice/voice_{kieu}_{NG}.mp3` — khuôn tên dựng lúc chạy.
+
+**Đừng duyệt qua `sw.js`.** Tệp ấy khai 96 mục đệm cho *cả trang web*, nên phép
+duyệt kéo vào 112 tệp thay vì 62.
+
+### Kiểm thì phải ĐI BỘ THẬT, đừng nhảy bằng lệnh
+
+Đặt thẳng `nhanVat.position` để nhảy vào một khu thì vòng lặp âm thanh đặt
+`volume` thành NaN và sinh ra **193–194 lỗi console giả** — trên *cả* bản gốc
+lẫn bản tách. Giữ phím mũi tên năm giây thì cả hai ra **0 lỗi**. Lại đúng bài
+học ở mục «Cụm nổi»: giả lập trạng thái bằng cách gán biến thì phải kiểm xem
+vòng lặp có ghi đè không.
+
+Số đo của bản tách: **0** yêu cầu ra ngoài, **0** phản hồi ≥ 400, **0** lỗi
+trang, **1719** mesh (đúng bằng bản gốc), 8 khu, đổi vi/en chạy đúng, 60 mục
+`sw.js` CORE đều tồn tại.
+
+### Bản sao trong phiên đám mây là bản NÔNG
+
+`git log` ở phiên này cắt ở **86 commit**, mốc sớm nhất 22/09/2026 — **không
+phải** ngày tạo thật. Hồ sơ quyền tác giả cần ngày hoàn thành chính xác (mục
+`01` dặn «lấy từ lịch sử git, đừng ghi ước chừng»), nên phải
+`git fetch --unshallow` rồi mới lấy số. Đo lại đủ: **367 commit**, và
+`trangvien.html` tạo **12/08/2026**, **103 commit** chạm vào tệp, **một** địa
+chỉ tác giả duy nhất.
+
+### Hai chỗ vấp khi dựng kho mới
+
+- **GitHub App của phiên không tạo được kho** — `403 Resource not accessible by
+  integration`. Tác giả phải tự tạo kho rỗng trước, rồi mới `add_repo`.
+- **Thẻ git không đẩy được qua cổng mạng** của phiên: commit lên bình thường,
+  thẻ thì đứt sideband mỗi lần, kể cả với refspec tường minh. Không sao — tạo
+  thẻ bằng giao diện GitHub lúc phát hành là xong, mà đằng nào Zenodo cũng chỉ
+  nghe **release** chứ không nghe thẻ trần.
+
+### Công tắc Zenodo: đừng suy, hãy mở ra nhìn
+
+Zenodo chỉ nghe bản phát hành **sau** lúc bật công tắc, không hồi tố. Nhưng
+đừng suy ra trạng thái từ lời kể: lần này đã kết luận nhầm rằng `v1.0.0` trượt
+và ghi hẳn điều ấy vào một lời commit, trong khi nó đã Published. Phải mở
+<https://zenodo.org/account/settings/github/> mà nhìn.
+
+Và nhớ `CITATION.cff` phải điền **DOI khái niệm** (dòng «Cite all versions» ở
+trang bản ghi), không phải DOI của riêng một bản phát hành.
 
 ## Trước khi thêm tệp mới
 
