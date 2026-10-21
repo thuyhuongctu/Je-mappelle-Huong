@@ -2,16 +2,18 @@
 
 <h1>Je m'appelle Hương</h1>
 
-**The personal academic homepage of Đỗ Thùy Hương** — and the hub of a research,
-teaching and creative ecosystem that is archived, citable and entirely static.
+### A research homepage where the citable work and the playful work share one repository — and neither pretends to be the other.
 
-[![Live site](https://img.shields.io/badge/jemappellehuong.com-live-2ea44f?style=flat-square)](https://jemappellehuong.com/)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22003853-1682D4?style=flat-square)](https://doi.org/10.5281/zenodo.22003853)
-[![Build](https://img.shields.io/badge/build-none%20required-6f6459?style=flat-square)](#-run-it-locally)
-[![Languages](https://img.shields.io/badge/languages-VI%20·%20EN%20·%20FR-c45c3a?style=flat-square)](#-two-front-doors)
-[![Copyright](https://img.shields.io/badge/©%202026-all%20rights%20reserved-8d7166?style=flat-square)](#-licence)
+**Đỗ Thùy Hương** · PhD candidate in Business Administration, Can Tho University
 
-### [▶ Open the site](https://jemappellehuong.com/)
+[![Live](https://img.shields.io/badge/jemappellehuong.com-live-3f6f68?style=for-the-badge&labelColor=1c1814)](https://jemappellehuong.com/)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22003853-c45c3a?style=for-the-badge&labelColor=1c1814)](https://doi.org/10.5281/zenodo.22003853)
+[![Languages](https://img.shields.io/badge/VI%20·%20EN%20·%20FR-trilingual-b8842c?style=for-the-badge&labelColor=1c1814)](#-two-front-doors)
+
+[![Build](https://img.shields.io/badge/build_step-none-6f6459?style=flat-square&labelColor=f6f1e7)](#-run-it)
+[![Dependencies](https://img.shields.io/badge/npm_install-never-6f6459?style=flat-square&labelColor=f6f1e7)](#-run-it)
+[![Offline](https://img.shields.io/badge/works-offline-6f6459?style=flat-square&labelColor=f6f1e7)](#-run-it)
+[![Licence](https://img.shields.io/badge/©_2026-all_rights_reserved-6f6459?style=flat-square&labelColor=f6f1e7)](#-licence)
 
 <br>
 
@@ -21,13 +23,13 @@ teaching and creative ecosystem that is archived, citable and entirely static.
   <a href="https://jemappellehuong.com/trangvien.html">
     <img src="assets/img/trangvien-intro-poster.webp" alt="A woman in a white ao dai rows a boat of lotus flowers past stilt houses and bamboo bridges in the 3D estate">
   </a>
-  <br><b>Trang viên</b><br><sub>A 3D estate of eight districts,<br>with a time-of-day cycle</sub>
+  <br><b>Trang viên</b><br><sub>Eight districts, four times of day,<br>three ways to travel</sub>
 </td>
 <td width="33%" align="center">
   <a href="https://jemappellehuong.com/vanphong.html">
     <img src="assets/video/le-bureau-intro-poster.webp" alt="The 3D research office: desks, a bookshelf and five characters under hanging lamps">
   </a>
-  <br><b>Le Bureau</b><br><sub>A 3D research office with a<br>seven-rung entry-mode ladder</sub>
+  <br><b>Le Bureau</b><br><sub>Five characters answer questions<br>about the dissertation</sub>
 </td>
 <td width="33%" align="center">
   <a href="https://jemappellehuong.com/music.html">
@@ -38,47 +40,77 @@ teaching and creative ecosystem that is archived, citable and entirely static.
 </tr>
 </table>
 
-<sub>Visuals generated with Google Gemini; music by the author. See [`THIRD-PARTY.md`](THIRD-PARTY.md).</sub>
+### [▶&nbsp; Open the site](https://jemappellehuong.com/)
+
+<sub>Visuals generated with Google Gemini; music by the author. Full inventory in [`THIRD-PARTY.md`](THIRD-PARTY.md).</sub>
 
 </div>
 
 ---
 
-## At a glance
+## The short version
 
-| | |
-|---|---|
-| **Who** | Đỗ Thùy Hương — PhD candidate in Business Administration, Can Tho University |
-| **Research** | Internationalization and firm performance among enterprises in Asia |
-| **Evidence base** | World Bank Enterprise Surveys × WGI, 50 economies; a meta-analysis of 236 coded studies (K = 286 effects, 49 economies) |
-| **Site** | Eleven pages plus a 404 recovery page, three languages, light and dark themes, installable, works offline |
-| **Stack** | Plain HTML, CSS and vanilla JavaScript. No framework, no bundler, no server |
-| **Published** | GitHub Pages on every push; releases archived on Zenodo with a DOI |
+|  |  |
+|---:|---|
+| **11** | pages, plus a `404.html` that repairs old and mis-cased URLs instead of apologising |
+| **3** | languages on every page — Vietnamese, English, French — switched without a reload |
+| **13** | works archived on Zenodo, each with its own DOI |
+| **1** | third-party script in the whole site: three.js, vendored so no page calls a CDN |
+| **0** | build steps, bundlers, package managers, servers or databases |
 
 > **Why no build step?** This repository is both the source and the deployable
-> artefact. The archived release opens and reads without any toolchain — the
-> property that makes a software deposit still useful in ten years.
+> artefact. The archived release opens and reads without any toolchain — the one
+> property that keeps a software deposit useful in ten years.
 
-## ⚡ Run it locally
+## 🚪 Two front doors
 
-```bash
-git clone https://github.com/thuyhuongctu/Je-mappelle-Huong.git
-cd Je-mappelle-Huong
-python3 -m http.server 8000      # → http://localhost:8000
+The site is split in two, and the split *is* the design: a visitor meets the
+researcher first, and is then invited into the garden.
+
+```mermaid
+flowchart LR
+    V(("visitor")) --> A["index.html<br>academic layer"]
+    A --> P["publications.html<br>cv.html"]
+    A --> G["garden.html<br>garden layer"]
+    G --> T["trangvien.html<br>display copy"]
+    G --> B["vanphong.html<br>display copy"]
+    G --> M["music · globe<br>games · journal"]
+    T -. "citable copy" .-> TZ["Le-Domaine-de-Huong<br>zenodo.23539409"]
+    B -. "citable copy" .-> BZ["Research-Office<br>zenodo.22971293"]
+
+    classDef v fill:#e2d8c7,stroke:#6f6459,color:#1c1814
+    classDef home fill:#c45c3a,stroke:#c45c3a,color:#fffcf5
+    classDef garden fill:#3f6f68,stroke:#3f6f68,color:#fffcf5
+    classDef archive fill:#fffcf5,stroke:#b8842c,color:#1c1814
+    class V v
+    class A,P home
+    class G,T,B,M garden
+    class TZ,BZ archive
 ```
 
-That is the whole setup. Serving over HTTP is needed only for the service
-worker and the install prompt; individual pages also open straight from disk.
+**The academic layer** — `index.html` · `publications.html` · `cv.html`
 
-Before pushing, one script guards three failures a browser never shows you:
+A visitor should be able to tell who this is, what she researches, and where the
+CV and papers are **within the first screen**, in any language, on any device.
+Identity above the fold with no floating widget over the name; the dissertation
+question with its data and methods; publications tiered by evidence, each with
+its DOI; courses taught, one line each, linked to open material.
 
-```bash
-python3 scripts/check-site.py
-```
+**The garden layer** — `garden.html` and everything behind it
 
-It catches a service worker pre-caching a file that no longer exists, a sitemap
-that has drifted from the pages it describes, and internal links or anchors left
-pointing nowhere after a rename. It also runs on every pull request.
+A hand-drawn estate map that a 3D character walks you through; an explorable 3D
+estate with ambient audio and a small game; a 3D office where five characters
+answer pre-written questions; original recordings with synchronised lyrics; live
+World Bank data on a 3D globe; a blog, a creative journal and a guest book.
+
+### The rule that holds it together
+
+**The running copy stays in the ecosystem; the citable copy moves to its own
+repository and is deposited on Zenodo.** `trangvien.html` and `vanphong.html` are
+display copies — the versions a reviewer cites live in
+[`Le-Domaine-de-Huong`](https://github.com/thuyhuongctu/Le-Domaine-de-Huong) and
+[`Research-Office`](https://github.com/thuyhuongctu/Research-Office), each
+self-contained, each with a DOI that freezes a single state of the work.
 
 <details>
 <summary><b>🇻🇳 Tóm tắt tiếng Việt</b></summary>
@@ -100,86 +132,73 @@ liên kết.
 
 Khách lần đầu gặp người nghiên cứu trước, rồi mới được mời vào vườn.
 
+**Một nếp xuyên suốt:** bản *đang chạy* ở lại trong hệ sinh thái, còn bản *để
+trích dẫn* tách sang kho riêng rồi nộp lên Zenodo lấy DOI. Trang viên và văn
+phòng trên site này là bản trưng bày; bản có DOI nằm ở hai kho riêng.
+
 Toàn bộ viết bằng HTML/CSS/JS thuần, không cần cài đặt, không cần build, chạy
 trên GitHub Pages.
 
 </details>
 
-## 🚪 Two front doors
+## ⚡ Run it
 
-The site is deliberately split in two, and the split is the design.
+```bash
+git clone https://github.com/thuyhuongctu/Je-mappelle-Huong.git
+cd Je-mappelle-Huong
+python3 -m http.server 8000      # → http://localhost:8000
+```
 
-<table>
-<tr><th width="50%">The academic layer</th><th width="50%">The garden layer</th></tr>
-<tr><td valign="top">
+That is the whole setup. Serving over HTTP is needed only for the service worker
+and the install prompt; individual pages also open straight from disk.
 
-`index.html` · `publications.html` · `cv.html`
+Before pushing, one script guards three failures a browser never shows you:
 
-The default entry point. A visitor should be able to tell who this is, what she
-researches, and where the CV and papers are **within the first screen**, in any
-language, on any device.
+```bash
+python3 scripts/check-site.py
+```
 
-- **Identity first** — name, affiliation, a one-sentence research statement and
-  CV / ORCID / email above the fold; no floating widget covers the name
-- **Research** — the dissertation question, its data and its methods
-- **Publications**, tiered by evidence: journal articles, book chapters and
-  conference papers, working papers under review — each with its DOI
-- **Teaching** — courses taught, one line each, linked to open material
-- **Projects** — every tool below, with its archive
-
-</td><td valign="top">
-
-`garden.html` and everything behind it
-
-The playful half, one link from the academic home — never in front of it.
-
-- **Garden map** — a hand-drawn estate map a 3D character walks you through
-- **Trang viên** — an explorable 3D estate: eight districts, four times of day,
-  three ways to travel, ambient audio and a small game
-- **Le Bureau** — a 3D research office where five characters answer
-  pre-written questions about the dissertation
-- **Songbook** — original recordings with synchronised lyrics and music videos
-- **Data globe** — live World Bank Open Data on an interactive 3D globe
-- **Blog**, creative journal, guest book and an ecosystem slide deck
-
-</td></tr>
-</table>
+It catches a service worker pre-caching a file that no longer exists, a sitemap
+that has drifted from the pages it describes, and internal links or anchors left
+pointing nowhere after a rename. Each of those keeps the page looking perfectly
+fine while something underneath is broken. It also runs on every pull request.
 
 ## 🧩 The ecosystem
 
 Every tool below runs in a browser, needs no installation, and is archived with
-its own DOI. The pattern is always the same: **the running copy stays in the
-ecosystem, the citable copy moves to its own repository**, deposited on Zenodo.
+its own DOI.
 
 ### Research and method
 
 | Project | What it does | | |
 |---|---|---|---|
-| **M-AIDA** | Meta-Analysis Intelligent Data Assistant — LLM extraction of effect sizes with 100 % human verification | [site](https://thuyhuongctu.github.io/M-AIDA/) | [`10.5281/zenodo.21282517`](https://doi.org/10.5281/zenodo.21282517) |
-| **Gravity Lab** | A browser-based gravity-model laboratory for FDI into Vietnam | [site](https://thuyhuongctu.github.io/Gravity-Lab/) | [`10.5281/zenodo.23330642`](https://doi.org/10.5281/zenodo.23330642) |
-| **Distance, FDI and Trade** | Research code and data mappings (DA0–DA4) for the Vietnam FDI paper | — | [`10.5281/zenodo.23115783`](https://doi.org/10.5281/zenodo.23115783) |
-| **AIBIS Global Market Engine** | A deterministic engine for choosing international market-entry modes | [site](https://bizonland.com/aibis-entry-mode-preview.html) | [`10.5281/zenodo.23317597`](https://doi.org/10.5281/zenodo.23317597) |
-| **Research Office** | An offline 3D research office with a mode-of-entry board for International Business teaching | [site](https://thuyhuongctu.github.io/Research-Office/) | [`10.5281/zenodo.22971293`](https://doi.org/10.5281/zenodo.22971293) |
+| **M-AIDA** | Meta-Analysis Intelligent Data Assistant — LLM extraction of effect sizes with 100 % human verification | [site](https://thuyhuongctu.github.io/M-AIDA/) | [`zenodo.21282517`](https://doi.org/10.5281/zenodo.21282517) |
+| **Gravity Lab** | A browser-based gravity-model laboratory for FDI into Vietnam | [site](https://thuyhuongctu.github.io/Gravity-Lab/) | [`zenodo.23330642`](https://doi.org/10.5281/zenodo.23330642) |
+| **Distance, FDI and Trade** | Research code and data mappings (DA0–DA4) for the Vietnam FDI paper | — | [`zenodo.23115783`](https://doi.org/10.5281/zenodo.23115783) |
+| **AIBIS Global Market Engine** | A deterministic engine for choosing international market-entry modes | [site](https://bizonland.com/aibis-entry-mode-preview.html) | [`zenodo.23317597`](https://doi.org/10.5281/zenodo.23317597) |
+| **Le Bureau de Hương** | An offline 3D research office with a mode-of-entry board for International Business teaching | [site](https://thuyhuongctu.github.io/Research-Office/) | [`zenodo.22971293`](https://doi.org/10.5281/zenodo.22971293) |
+| **Le Domaine de Hương** | The 3D estate as a standalone work: eight zones, four lighting states, five gameplay modules, no network request at all | [site](https://thuyhuongctu.github.io/Le-Domaine-de-Huong/) | [`zenodo.23539409`](https://doi.org/10.5281/zenodo.23539409) |
 
 ### Teaching
 
 | Project | What it does | | |
 |---|---|---|---|
-| **BizOn Bật Nghiệp** | A 3D claymorphism business-simulation game for entrepreneurship education | [site](https://bizonland.com/) | [`10.5281/zenodo.21628970`](https://doi.org/10.5281/zenodo.21628970) |
-| **EnQuiz** | An offline-first bilingual quiz app for entrepreneurship revision — 300 questions, installable | [site](https://thuyhuongctu.github.io/EnQuiz/) | [`10.5281/zenodo.21879706`](https://doi.org/10.5281/zenodo.21879706) |
-| **ComDraft** | A full teaching package: five lecture decks, three lab workbooks, a 200-question bank, eight subtitled videos and an offline revision app | [site](https://thuyhuongctu.github.io/ComDraft/) | [`10.5281/zenodo.22003676`](https://doi.org/10.5281/zenodo.22003676) |
-| **Vietnamese history games** | Vân Đồn (1149), Bắc Hải Đảo (1780, 2D and 3D), Chợ Nổi (19th century) | [site](https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/) | [`10.5281/zenodo.21850564`](https://doi.org/10.5281/zenodo.21850564) |
+| **BizOn Bật Nghiệp** | A 3D claymorphism business-simulation game for entrepreneurship education | [site](https://bizonland.com/) · [Play](https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.bizon) | [`zenodo.21628970`](https://doi.org/10.5281/zenodo.21628970) |
+| **EnQuiz** | An offline-first bilingual quiz app for entrepreneurship revision — 300 questions, installable | [site](https://thuyhuongctu.github.io/EnQuiz/) · [Play](https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.enquiz) | [`zenodo.21879706`](https://doi.org/10.5281/zenodo.21879706) |
+| **ComDraft** | A full teaching package: five lecture decks, three lab workbooks, a 200-question bank, eight subtitled videos and an offline revision app | [site](https://thuyhuongctu.github.io/ComDraft/) | [`zenodo.22003676`](https://doi.org/10.5281/zenodo.22003676) |
+| **Vietnamese history games** | Vân Đồn (1149), Bắc Hải Đảo (1780, 2D and 3D), Chợ Nổi (19th century) | [site](https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/) | [`zenodo.21850564`](https://doi.org/10.5281/zenodo.21850564) |
 
 ### Music
 
 | Project | What it does | | |
 |---|---|---|---|
-| **We Create Tomorrow** | Bilingual karaoke for the anthem of the School of Economics, Can Tho University — with Assoc. Prof. Dr. Phan Anh Tu | [site](https://thuyhuongctu.github.io/we-create-tomorrow/) | [`10.5281/zenodo.22080060`](https://doi.org/10.5281/zenodo.22080060) |
-| **Chansonia** | A lyrics-synchronised player for the album «La lampe, le fleuve et les couleurs» | [site](https://thuyhuongctu.github.io/Chansonia/) | [`10.5281/zenodo.22172794`](https://doi.org/10.5281/zenodo.22172794) |
+| **We Create Tomorrow** | Bilingual karaoke for the anthem of the School of Economics, Can Tho University — with Assoc. Prof. Dr. Phan Anh Tu | [site](https://thuyhuongctu.github.io/we-create-tomorrow/) | [`zenodo.22080060`](https://doi.org/10.5281/zenodo.22080060) |
+| **Chansonia** | A lyrics-synchronised player for the album «La lampe, le fleuve et les couleurs» | [site](https://thuyhuongctu.github.io/Chansonia/) | [`zenodo.22172794`](https://doi.org/10.5281/zenodo.22172794) |
 
 > 🎓 **PhD dissertation** — *Internationalization and firm performance among
-> enterprises in Asia*, on World Bank Enterprise Survey data across 50
-> economies. A full page follows on publication.
+> enterprises in Asia*, on World Bank Enterprise Survey data across 50 economies,
+> with a meta-analysis of 236 coded studies (K = 286 effects, 49 economies).
+> A full page follows on publication.
 
 <details>
 <summary><b>🛠 Technology and repository layout</b></summary>
@@ -204,7 +223,7 @@ ecosystem, the citable copy moves to its own repository**, deposited on Zenodo.
 ├── garden.html              Digital garden: the map, character, music, globe
 ├── blog.html                Academic news blog
 ├── journey.html             Creative journal: how the site was made
-├── trangvien.html           3D estate scene
+├── trangvien.html           3D estate — display copy of Le-Domaine-de-Huong
 ├── vanphong.html            3D research office — display copy of Research-Office
 ├── music.html               Recordings, song list and synchronised lyrics
 ├── audio.html               Narration studio: record the tour voice (VI/EN/FR)
@@ -359,10 +378,10 @@ The full inventory, including every generated image, video and recording, is in
 **Đỗ Thùy Hương** (Do Thuy Huong)
 PhD candidate in Business Administration, Can Tho University
 
-[![ORCID](https://img.shields.io/badge/ORCID-0000--0002--7711--2487-A6CE39?style=flat-square)](https://orcid.org/0000-0002-7711-2487)
-[![Scholar](https://img.shields.io/badge/Google_Scholar-profile-4285F4?style=flat-square)](https://scholar.google.com/citations?hl=vi&user=jSvAVnsAAAAJ)
-[![OSF](https://img.shields.io/badge/OSF-m25qs-05C3DE?style=flat-square)](https://osf.io/m25qs/)
-[![Email](https://img.shields.io/badge/email-thuyhuongctu@gmail.com-c45c3a?style=flat-square)](mailto:thuyhuongctu@gmail.com)
+[![ORCID](https://img.shields.io/badge/ORCID-0000--0002--7711--2487-3f6f68?style=flat-square&labelColor=1c1814)](https://orcid.org/0000-0002-7711-2487)
+[![Scholar](https://img.shields.io/badge/Google_Scholar-profile-3f6f68?style=flat-square&labelColor=1c1814)](https://scholar.google.com/citations?hl=vi&user=jSvAVnsAAAAJ)
+[![OSF](https://img.shields.io/badge/OSF-m25qs-3f6f68?style=flat-square&labelColor=1c1814)](https://osf.io/m25qs/)
+[![Email](https://img.shields.io/badge/email-thuyhuongctu@gmail.com-c45c3a?style=flat-square&labelColor=1c1814)](mailto:thuyhuongctu@gmail.com)
 
 ---
 
