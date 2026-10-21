@@ -46,8 +46,12 @@
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#17130f;--surface:#201914;--sunk:#120e0b;--ink:#efe6d8;--text:#efe6d8;--muted:#a6998a;--line:#332a22;--accent:#e08055;--accent2:#79b3a6;--accent-soft:#3a251c;--gold:#d6a24e;--shadow:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42)}}
 :root[data-theme=dark]{--paper:#17130f;--surface:#201914;--sunk:#120e0b;--ink:#efe6d8;--text:#efe6d8;--muted:#a6998a;--line:#332a22;--accent:#e08055;--accent2:#79b3a6;--accent-soft:#3a251c;--gold:#d6a24e;--shadow:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42)}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;
-min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
-.card{max-width:560px;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:clamp(24px,5vw,44px);text-align:center}
+min-height:100vh;display:flex;flex-direction:column;padding:24px}
+/* Chan trang do site-chrome.js gan thang vao <body>, nen no la mot O FLEX
+   nhu the card. Khi body xep theo HANG thi chan trang dung canh card chu
+   khong nam duoi - tren dien thoai card bi ep con mot cot hep. Xep theo COT
+   roi cho card margin:auto: card van giua khoang trong, chan trang xuong day. */
+.card{max-width:560px;margin:auto;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:clamp(24px,5vw,44px);text-align:center}
 .code{font-family:var(--serif);font-size:3.2rem;font-weight:600;background:linear-gradient(92deg,var(--accent) 10%,var(--accent2) 80%);-webkit-background-clip:text;background-clip:text;color:transparent;margin:0}
 h1{font-family:var(--serif);font-size:1.3rem;font-weight:600;margin:.4em 0 .2em}
 p{color:var(--muted);font-size:.95rem;margin:.4em 0}
