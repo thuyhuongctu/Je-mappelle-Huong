@@ -886,19 +886,43 @@ kết quả ngay, chẳng có gì nhắc phải chép về. Nếp duy nhất ch�
 phòng ở **đâu** cũng chép sang bên kia **trong cùng một lần**, đừng để sang
 hôm sau.
 
-Khác nhau đúng **ba chỗ**, và chỉ ba chỗ ấy:
+Trong chính tệp trang, khác nhau đúng **bốn chỗ** — và cả bốn đều là **tự
+trỏ về mình**, không chỗ nào là khác nội dung. Từ 21/10 là bốn chứ không còn
+ba như ghi chú cũ: hai chỗ sau sinh ra khi thêm mã DOI.
 
-- hai liên kết về trang chủ (`href="index.html"`) đổi thành địa chỉ tuyệt đối
-  `https://jemappellehuong.com/`;
-- **thẻ `<link rel=canonical>` tự trỏ về chính mình**: bên này là
-  `https://jemappellehuong.com/vanphong.html`, bên kho riêng là
-  `https://thuyhuongctu.github.io/Research-Office/`. Cố ý **không** cho cả hai
-  cùng trỏ về `.com`: làm thế là bảo công cụ tìm kiếm bỏ qua bản có DOI, mà
-  bản ấy mới là bản để trích dẫn. Tự trỏ về mình là nếp của mọi trang khác
-  trong kho này, và không bên nào dìm bên nào;
-- kho riêng có thêm `README.md`, `LICENSE`, `CITATION.cff`, `.zenodo.json`,
-  `THIRD-PARTY.md`, `manifest.webmanifest` riêng, `.nojekyll` và quy trình dựng
-  Pages riêng.
+| chỗ | bên `Je-mappelle-Huong` | bên `Research-Office` |
+| --- | --- | --- |
+| hai liên kết về trang chủ | `href="index.html"` | `https://jemappellehuong.com/` |
+| `<link rel=canonical>` | `…com/vanphong.html` | `…github.io/Research-Office/` |
+| `url` trong JSON-LD | `…com/vanphong.html` | `…github.io/Research-Office/` |
+| câu trích dẫn ở bảng mở đầu | «đây là **bản trưng bày**, bản để trích dẫn ở kho riêng» | «đây **là** bản để trích dẫn» |
+
+**Cố ý không cho cả hai cùng trỏ về `.com`**: làm thế là bảo công cụ tìm kiếm
+bỏ qua bản có DOI, mà bản ấy mới là bản để trích dẫn. Tự trỏ về mình là nếp
+của mọi trang khác trong kho này, và không bên nào dìm bên nào. Câu trích dẫn
+theo đúng lẽ ấy: mỗi bên nói đúng vai của chính nó.
+
+Ngoài tệp trang, kho riêng còn có thêm `README.md`, `LICENSE`, `CITATION.cff`,
+`.zenodo.json`, `THIRD-PARTY.md`, `manifest.webmanifest` riêng, `.nojekyll` và
+quy trình dựng Pages riêng. Kho ấy **không có `sw.js`**, nên sửa bên ấy không
+phải nâng số bộ nhớ đệm — khác với `Le-Domaine-de-Huong`, kho ấy có.
+
+Trang viên cũng có **đúng bốn chỗ tự trỏ về mình ấy** (canonical, `og:url`,
+`url` trong JSON-LD, câu trích dẫn trong khu Nhà chính) — nhưng **đừng suy ra
+hai tệp chỉ khác nhau bốn chỗ**. Kho `Le-Domaine-de-Huong` không phải bản chép
+nguyên: đo ngày 21/10 thì `trangvien.html` và `index.html` bên ấy lệch nhau
+**68 dòng**, phần lớn là những chỗ cố ý cắt — tám thẻ nhạc (18 xuống 10) và
+các liên kết nội bộ viết thành tuyệt đối — đã kể ở mục «Kho riêng KHÔNG phải
+bản chép nguyên». Chỉ văn phòng mới là cặp chép nguyên, nên chỉ ở đó mới
+đếm được đúng bốn.
+
+### Gộp từ bản sao NÔNG thì `origin/<nhánh>` không có
+
+Vấp 21/10 ở kho `research-office`. Đẩy nhánh lên bình thường, nhưng
+`git merge --squash origin/claude/doi-trich-dan` báo **«not something we can
+merge»**: bản sao nông chỉ theo dõi nhánh chính nên không có ref
+`origin/<nhánh>` dù nhánh ấy đã nằm trên GitHub. Gộp từ **nhánh cục bộ**
+(`git merge --squash claude/doi-trich-dan`) là xong. Đừng tưởng đẩy hỏng.
 
 ### Dải dưới màn hình điện thoại chỉ đủ chỗ cho hai cụm
 
