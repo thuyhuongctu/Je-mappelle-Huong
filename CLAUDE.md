@@ -927,6 +927,17 @@ Hai chỗ đã đo, đừng dò lại:
   của kho ấy viết rõ công trình «được công bố để đọc, tham khảo và trích dẫn».
   Đúng là `open` cộng giấy phép đóng.
 
+  **Nhưng đặt `open` cũng KHÔNG ăn** — đo 21/10 trên kho `Le-Domaine-de-Huong`:
+  `.zenodo.json` khai `"access_right": "open"`, kho để **public**, vậy mà cả hai
+  bản ghi `v1.0.0` và `v1.0.1` đều hiện **Restricted** — «The record is publicly
+  accessible, but files are restricted to users with access». Chưa rõ Zenodo bỏ
+  hẳn trường cũ ấy hay nó suy từ giấy phép `other-closed` ra; chưa đo được nên
+  đừng ghi là đã biết.
+
+  Hệ quả dùng được: **sau mỗi lần phát hành, mở bản ghi ra nhìn mục Files.** Nếu
+  là Restricted thì vào Edit đặt lại Public — không sửa bằng commit được. Trạng
+  thái ấy đi ngược hẳn câu chữ trong `LICENSE`, nên để nguyên là tự mâu thuẫn.
+
 `.zenodo.json` **cố ý không khai `version`**, để Zenodo lấy thẳng tên thẻ. Nên
 đặt thẻ là `v1.1`, **không phải** `v.1.1` — bản đầu tiên đã lỡ mang tên `v.1.0`
 đúng vì lẽ ấy và phải sửa tay. Thẻ ba số (`v1.0.0`) cũng được, miễn là
