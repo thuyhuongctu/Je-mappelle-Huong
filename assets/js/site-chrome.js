@@ -347,7 +347,7 @@
 
         '<div class="sf-col"><div class="sf-ch">' + t('Dự án', 'Projects', 'Projets') + '</div>' +
         '<div><a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA</a></div>' +
-        '<div><a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn</a></div>' +
+        '<div><a href="https://bizonland.com/" target="_blank" rel="noopener">BizOn</a></div>' +
         '<div><a href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener">EnQuiz</a></div>' +
         '<div><a href="https://thuyhuongctu.github.io/ComDraft/" target="_blank" rel="noopener">ComDraft</a></div>' +
         '<div><a href="https://thuyhuongctu.github.io/we-create-tomorrow/" target="_blank" rel="noopener">We Create Tomorrow</a></div>' +
