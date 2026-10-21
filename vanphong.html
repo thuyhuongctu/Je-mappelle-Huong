@@ -10,6 +10,21 @@
 <title>Le Bureau de Hương</title>
 <meta name="description" content="A small 3D research office of Je m'appelle Hương: walk in, meet the five estate characters and read what the dissertation actually studies. Answers are written in advance - nothing is generated live.">
 <link rel="canonical" href="https://jemappellehuong.com/vanphong.html">
+<!-- Ban de trich dan la kho rieng Research-Office; DOI khai niem o day dai dien
+     cho moi phien ban. Khai o JSON-LD de cong cu doc duoc, con cho nguoi doc
+     thi o the danh tinh goc tren phai. -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CreativeWork",
+ "name":"Le Bureau de Hương (Văn phòng nghiên cứu · Research Office)",
+ "author":{"@type":"Person","name":"Đỗ Thùy Hương",
+           "sameAs":"https://orcid.org/0000-0002-7711-2487"},
+ "url":"https://jemappellehuong.com/vanphong.html",
+ "identifier":"https://doi.org/10.5281/zenodo.22971293",
+ "sameAs":["https://doi.org/10.5281/zenodo.22971293","https://github.com/thuyhuongctu/Research-Office"],
+ "inLanguage":["vi","en"],
+ "copyrightYear":2026,
+ "copyrightHolder":{"@type":"Person","name":"Đỗ Thùy Hương"}}
+</script>
 <meta name="author" content="thuyhuongctu (Đỗ Thùy Hương)">
 <meta name="theme-color" content="#f6f1e7">
 <meta name="apple-mobile-web-app-title" content="Le Bureau">
@@ -199,6 +214,12 @@ body.mo-thoai #can,body.mo-thoai #goiy-tay{display:none}
   background:color-mix(in srgb,var(--paper) 55%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 #vao.an{display:none}
 #vao .hop{position:relative;max-width:440px;width:100%;padding:26px 26px 22px}
+/* Dong trich dan duoi bang mo dau. Dat o DAY chu khong o the danh tinh goc
+   tren phai: the ay o 360px da chong 2px voi #bang tu truoc, them mot dong
+   nua chi lam dai them vung chong. Bang mo dau thi rong rai va ai cung thay. */
+#vao .trich-dan{margin:14px 0 0;font:400 .72rem/1.55 var(--sans);color:var(--muted);text-align:center}
+#vao .trich-dan a{color:var(--river);font-weight:600;text-decoration:none;white-space:nowrap}
+#vao .trich-dan a:hover{color:var(--clay);text-decoration:underline}
 #vao h2{margin:0 0 4px;font:700 1.7rem/1.1 var(--hien);color:var(--clay)}
 #vao .phu{margin:0 0 16px;font-size:.84rem;color:var(--muted);line-height:1.55}
 #vao ul{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:7px}
@@ -354,6 +375,11 @@ body.mo-thoai #can,body.mo-thoai #goiy-tay{display:none}
     </ul>
     <button id="batdau" type="button"><span class="l-vi">Bước vào</span><span class="l-en">Step inside</span></button>
     <button id="xemphim" type="button">▶ <span class="l-vi">Xem phim giới thiệu (63 giây, lời tiếng Anh)</span><span class="l-en">Watch the intro (63 s)</span></button>
+    <p class="trich-dan">
+      <span class="l-vi">Đây là bản trưng bày. Bản chính thức để trích dẫn nằm ở kho riêng, lưu trữ trên Zenodo:</span>
+      <span class="l-en">This is the display copy. The citable version lives in its own repository, archived on Zenodo:</span>
+      <a href="https://doi.org/10.5281/zenodo.22971293" target="_blank" rel="noopener">DOI 10.5281/zenodo.22971293</a>
+    </p>
   </div>
 </div>
 
