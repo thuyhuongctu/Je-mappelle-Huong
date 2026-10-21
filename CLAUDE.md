@@ -509,23 +509,46 @@ Ba giới hạn của môi trường kiểm, **không phải lỗi của trang**
 Vào trang viên phải: chờ `#nut-vao` hết `disabled` rồi bấm, sau đó bấm hết ba
 bước của `#th-guide-next`.
 
-### Kiểm bản ĐANG CHẠY trên github.io
+### Kiểm bản ĐANG CHẠY
 
-`curl` tới `thuyhuongctu.github.io` **bị cổng ra mạng chặn** — trả về
-`CONNECT tunnel failed, response 403`. Đọc trang thật phải qua Firecrawl
-(`firecrawl_scrape`, đặt `maxAge: 0` để khỏi lấy bản lưu).
+**Chỗ cần đọc vẫn là `sw.js`, không phải trang.** Tệp ấy bé, và số
+`jshuong-vNN` trong đó nói thẳng commit nào đang phục vụ. Pages dựng lại cả
+cây tệp một lượt, nên số đệm đúng nghĩa là mọi tệp của commit ấy — kể cả tệp
+nhạc vài megabyte không đọc nổi qua công cụ — đều đã lên theo.
 
-**Cách rẻ nhất để biết commit nào đang phục vụ là đọc `sw.js`**, không phải
-đọc trang: tệp ấy bé, và số `jshuong-vNN` trong đó nói thẳng bản nào đã lên.
-Pages dựng lại cả cây tệp một lượt, nên số đệm đúng nghĩa là mọi tệp của
-commit ấy — kể cả tệp nhạc vài megabyte không đọc nổi qua công cụ — đều đã
-lên theo.
+**Nhưng từ phiên đám mây thì hiện KHÔNG đọc được.** Đo lại 21/10, cả ba
+đường đều tắc:
 
-Đối chiếu HTML thì nhớ **Firecrawl trả về trang đã qua trình duyệt**, không
-phải tệp gốc: đường dẫn tương đối bị viết thành tuyệt đối, `controls` thành
-`controls=""`, và các nút do JavaScript của trang tự chèn (nút «Hiện lời bài
-hát») cũng nằm trong đó. Đo mục `#shore` ra **11 dòng khác nhau mà không dòng
-nào là khác nội dung**. So chữ nghĩa, đừng so từng byte.
+| đường | kết quả |
+| --- | --- |
+| `curl https://jemappellehuong.com/...` | `connect_rejected` — cổng ra mạng từ chối host |
+| Chromium (Playwright) | `ERR_TUNNEL_CONNECTION_FAILED`, cùng cổng ấy |
+| Firecrawl `firecrawl_scrape` | **hết hạn mức tài khoản** |
+
+Ghi chú cũ bảo «chặn `thuyhuongctu.github.io`, đọc qua Firecrawl» — nay sai
+cả hai vế: chặn **cả tên miền `.com`**, và Firecrawl không còn dùng được.
+Đừng thử lại ba đường ấy rồi tưởng trang hỏng.
+
+**Ba cách còn dùng được, theo thứ tự:**
+
+1. **Tác giả tự mở** `https://jemappellehuong.com/sw.js` rồi gửi ảnh chụp.
+   Đây là chứng cứ đọc tận nơi, chắc nhất. Trình duyệt trả bản cũ thì thêm
+   `?t=1` vào cuối địa chỉ.
+2. **Đọc lần chạy `Deploy to GitHub Pages`** của đúng commit ấy qua API
+   GitHub. Thành công nghĩa là cả cây tệp của commit ấy đã phát hành — suy
+   ra được, nhưng là **suy từ bản dựng chứ không phải đọc tệp thật**, nên
+   nói đúng mức ấy, đừng nói chắc như đã đọc.
+3. **Mở cổng mạng** cho phiên: trình đơn môi trường đám mây ở thanh tiêu đề
+   → *Edit* → *Network access*, thêm `jemappellehuong.com` vào *Allowed
+   domains*, giữ nguyên ô *Allow package managers*.
+   <https://code.claude.com/docs/en/cloud-environments#network-access>
+
+Nếu sau này Firecrawl dùng lại được: nhớ **nó trả về trang đã qua trình
+duyệt**, không phải tệp gốc. Đường dẫn tương đối bị viết thành tuyệt đối,
+`controls` thành `controls=""`, và các nút do JavaScript của trang tự chèn
+(nút «Hiện lời bài hát») cũng nằm trong đó. Đo mục `#shore` ra **11 dòng
+khác nhau mà không dòng nào là khác nội dung**. So chữ nghĩa, đừng so từng
+byte. Và đặt `maxAge: 0` để khỏi lấy bản lưu.
 
 ## Lời commit
 
