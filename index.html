@@ -266,16 +266,37 @@ section[id],span[id]{scroll-margin-top:76px}
 .puball{margin:4px 0 0}
 .morelink{font:600 .86rem var(--sans);text-decoration:none;display:inline-block;padding:7px 3px;margin:-7px -3px}
 
-/* teaching */
+/* teaching - moi hoc lieu la mot the co bieu tuong noi ro no la loai gi.
+   Truoc day ca muoi lam lien ket deu la chu xanh kem mui ten, nen mot phong
+   lab web, mot app Android va mot ban ghi DOI nhin y het nhau. */
 .courses{list-style:none;margin:0;padding:0}
-.courses li{display:grid;grid-template-columns:minmax(min(100%,13rem),1fr) auto;gap:10px 16px;align-items:baseline;
-  padding:11px 2px;border-bottom:1px solid var(--line);font-size:.93rem}
+.courses li{display:grid;grid-template-columns:minmax(min(100%,14rem),1fr) auto;gap:10px 18px;
+  align-items:center;padding:13px 2px;border-bottom:1px solid var(--line)}
 .courses li:last-child{border-bottom:0}
-.courses .mat{font:600 .8rem var(--sans);text-decoration:none;white-space:nowrap;
-  display:inline-block;padding-block:6px}
-.courses .mat.none{color:var(--muted);font-weight:500}
-.courses .mats{display:flex;flex-wrap:wrap;gap:0 14px}
-@media(max-width:560px){.courses li{grid-template-columns:1fr;gap:2px}.courses .mat.none{display:none}}
+.courses .c-ten{font:600 .95rem/1.35 var(--sans)}
+.courses .mats{display:flex;flex-wrap:wrap;gap:7px;justify-content:flex-end}
+.courses .mat{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  font:600 .78rem/1 var(--sans);text-decoration:none;color:var(--ink);
+  padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--surface);
+  transition:border-color .16s,transform .16s,box-shadow .16s}
+.courses .mat .ico{width:13px;height:13px;flex:none;fill:var(--accent2)}
+.courses .mat:hover,.courses .mat:focus-visible{border-color:var(--accent2);transform:translateY(-1px);
+  box-shadow:0 3px 10px rgba(0,0,0,.08)}
+/* bon loai hoc lieu, moi loai mot mau lay tu bo mau dat set san co */
+.courses .mat[data-loai=ba] .ico{fill:var(--accent)}
+.courses .mat[data-loai=ba]:hover,.courses .mat[data-loai=ba]:focus-visible{border-color:var(--accent)}
+.courses .mat[data-loai=app] .ico{fill:var(--gold)}
+.courses .mat[data-loai=app]:hover,.courses .mat[data-loai=app]:focus-visible{border-color:var(--gold)}
+.courses .mat[data-loai=doi]{font-weight:500;font-size:.72rem;color:var(--muted);border-style:dashed}
+.courses .mat[data-loai=doi] .ico{fill:var(--muted)}
+.courses .mat[data-loai=doi]:hover,.courses .mat[data-loai=doi]:focus-visible{border-color:var(--muted)}
+/* hoc phan chua co hoc lieu mo: noi thang ra, dung de dong trong nhin nhu hong */
+.courses .mat.none{color:var(--muted);font-weight:500;font-size:.74rem;
+  border-style:dashed;background:transparent;cursor:default}
+@media(max-width:560px){
+  .courses li{grid-template-columns:1fr;gap:9px;padding:14px 2px}
+  .courses .mats{justify-content:flex-start}
+}
 
 /* projects - clay objects on the desk */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -734,15 +755,24 @@ footer.wrap{position:relative;overflow:hidden}
       <h2><span class="lang-vi">Học phần giảng dạy</span><span class="lang-en">Courses taught</span><span class="lang-fr">Cours enseignés</span></h2>
       <p><span class="lang-vi">Học phần nào có học liệu mở thì được liên kết kèm theo.</span><span class="lang-en">Where open course material exists, it is linked with the course.</span><span class="lang-fr">Le matériel ouvert, s'il existe, est lié au cours.</span></p>
     </div>
+    <!-- Bon bieu tuong hoc lieu, khai mot lan roi dung lai bang <use>.
+         Hinh ve bang mang DAC chu khong dung net: o co that 13px thi net
+         manh bien mat, dung bai hoc da ghi o muc tam bieu tuong ban do. -->
+    <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+      <symbol id="i-web" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 2.5h14v11H1zM2.6 6v6h10.8V6z"/></symbol>
+      <symbol id="i-ba" viewBox="0 0 16 16"><path d="M8 1.2 14.6 4.8 8 8.4 1.4 4.8zM1.4 6.1 7.3 9.3v5.5L1.4 11.6zM14.6 6.1 8.7 9.3v5.5l5.9-3.2z"/></symbol>
+      <symbol id="i-app" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 1h8v14H4zM5.6 3.2v9.6h4.8V3.2z"/></symbol>
+      <symbol id="i-doi" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M3 1h6.5L13 4.5V15H3zM5 7h6v1.4H5zM5 10h6v1.4H5z"/></symbol>
+    </svg>
     <ul class="courses">
-      <li><span><span class="lang-vi">Kinh tế lượng</span><span class="lang-en">Econometrics</span><span class="lang-fr">Économétrie</span></span><a class="mat" href="https://thuyhuongctu.github.io/Gravity-Lab/" target="_blank" rel="noopener">Gravity Lab ↗</a></li>
-      <li><span><span class="lang-vi">Phương pháp nghiên cứu trong kinh tế</span><span class="lang-en">Research Methods in Economics</span><span class="lang-fr">Méthodes de recherche</span></span><a class="mat" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA ↗</a></li>
-      <li><span><span class="lang-vi">Phân tích hoạt động kinh doanh</span><span class="lang-en">Business Performance Analysis</span><span class="lang-fr">Analyse de la performance</span></span><span class="mats"><a class="mat" href="https://bizonland.com/lab/cvp-studio.html" target="_blank" rel="noopener">CVP Studio ↗</a><a class="mat" href="https://bizonland.com/lab/cmr-lab.html" target="_blank" rel="noopener">CMR Lab ↗</a></span></li>
-      <li><span><span class="lang-vi">Kinh doanh quốc tế</span><span class="lang-en">International Business</span><span class="lang-fr">Commerce international</span></span><span class="mats"><a class="mat" href="https://bizonland.com/brand-passport.html" target="_blank" rel="noopener">Brand Passport ↗</a><a class="mat" href="https://bizonland.com/Ho%20Chieu%20Thuong%20Hieu%203D.html" target="_blank" rel="noopener">Brand Passport 3D ↗</a><a class="mat" href="https://bizonland.com/lab/nha-may-fdi.html" target="_blank" rel="noopener"><span class="lang-vi">Nhà máy FDI ↗</span><span class="lang-en">FDI Factory ↗</span><span class="lang-fr">Usine IDE ↗</span></a><a class="mat" href="https://thuyhuongctu.github.io/Gravity-Lab/" target="_blank" rel="noopener">Gravity Lab ↗</a><a class="mat" href="vanphong.html"><span class="lang-vi">Văn phòng ↗</span><span class="lang-en">Office ↗</span><span class="lang-fr">Bureau ↗</span></a><a class="mat" href="https://doi.org/10.5281/zenodo.22971293" target="_blank" rel="noopener">DOI: 10.5281/zenodo.22971293 ↗</a></span></li>
-      <li><span><span class="lang-vi">Thương mại điện tử</span><span class="lang-en">E-commerce</span><span class="lang-fr">Commerce électronique</span></span><span class="mat none">—</span></li>
-      <li><span><span class="lang-vi">Mô phỏng tình huống trong kinh doanh (EC1314)</span><span class="lang-en">Business Simulation (EC1314)</span><span class="lang-fr">Simulation d'entreprise (EC1314)</span></span><span class="mats"><a class="mat" href="https://bizonland.com/" target="_blank" rel="noopener">BizOn ↗</a><a class="mat" href="https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.bizon" target="_blank" rel="noopener"><span class="lang-vi">BizOn trên CH Play ↗</span><span class="lang-en">BizOn on Google Play ↗</span><span class="lang-fr">BizOn sur Google Play ↗</span></a><a class="mat" href="https://bizonland.com/lab/ho-chieu-sau-rieng.html" target="_blank" rel="noopener"><span class="lang-vi">Hộ Chiếu Sầu Riêng ↗</span><span class="lang-en">Sầu Riêng Passport ↗</span><span class="lang-fr">Passeport Durian ↗</span></a></span></li>
-      <li><span><span class="lang-vi">Khởi nghiệp &amp; khởi sự doanh nghiệp</span><span class="lang-en">Entrepreneurship &amp; New Venture Creation</span><span class="lang-fr">Entrepreneuriat</span></span><span class="mats"><a class="mat" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener">EnQuiz ↗</a><a class="mat" href="https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.enquiz" target="_blank" rel="noopener"><span class="lang-vi">EnQuiz trên CH Play ↗</span><span class="lang-en">EnQuiz on Google Play ↗</span><span class="lang-fr">EnQuiz sur Google Play ↗</span></a></span></li>
-      <li><span><span class="lang-vi">Kỹ năng giao tiếp &amp; soạn thảo văn bản (EC1103)</span><span class="lang-en">Communication &amp; Document Drafting Skills (EC1103)</span><span class="lang-fr">Communication &amp; rédaction (EC1103)</span></span><a class="mat" href="https://thuyhuongctu.github.io/ComDraft/" target="_blank" rel="noopener">ComDraft ↗</a></li>
+      <li><span class="c-ten"><span class="lang-vi">Kinh tế lượng</span><span class="lang-en">Econometrics</span><span class="lang-fr">Économétrie</span></span><span class="mats"><a class="mat" data-loai="web" href="https://thuyhuongctu.github.io/Gravity-Lab/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>Gravity Lab ↗</a></span></li>
+      <li><span class="c-ten"><span class="lang-vi">Phương pháp nghiên cứu trong kinh tế</span><span class="lang-en">Research Methods in Economics</span><span class="lang-fr">Méthodes de recherche</span></span><span class="mats"><a class="mat" data-loai="web" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>M-AIDA ↗</a></span></li>
+      <li><span class="c-ten"><span class="lang-vi">Phân tích hoạt động kinh doanh</span><span class="lang-en">Business Performance Analysis</span><span class="lang-fr">Analyse de la performance</span></span><span class="mats"><a class="mat" data-loai="web" href="https://bizonland.com/lab/cvp-studio.html" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>CVP Studio ↗</a><a class="mat" data-loai="web" href="https://bizonland.com/lab/cmr-lab.html" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>CMR Lab ↗</a></span></li>
+      <li><span class="c-ten"><span class="lang-vi">Kinh doanh quốc tế</span><span class="lang-en">International Business</span><span class="lang-fr">Commerce international</span></span><span class="mats"><a class="mat" data-loai="web" href="https://bizonland.com/brand-passport.html" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>Brand Passport ↗</a><a class="mat" data-loai="ba" href="https://bizonland.com/Ho%20Chieu%20Thuong%20Hieu%203D.html" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-ba"/></svg>Brand Passport 3D ↗</a><a class="mat" data-loai="web" href="https://bizonland.com/lab/nha-may-fdi.html" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg><span class="lang-vi">Nhà máy FDI ↗</span><span class="lang-en">FDI Factory ↗</span><span class="lang-fr">Usine IDE ↗</span></a><a class="mat" data-loai="web" href="https://thuyhuongctu.github.io/Gravity-Lab/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>Gravity Lab ↗</a><a class="mat" data-loai="ba" href="vanphong.html"><svg class="ico" aria-hidden="true"><use href="#i-ba"/></svg><span class="lang-vi">Văn phòng ↗</span><span class="lang-en">Office ↗</span><span class="lang-fr">Bureau ↗</span></a><a class="mat" data-loai="doi" href="https://doi.org/10.5281/zenodo.22971293" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-doi"/></svg>DOI: 10.5281/zenodo.22971293 ↗</a></span></li>
+      <li><span class="c-ten"><span class="lang-vi">Thương mại điện tử</span><span class="lang-en">E-commerce</span><span class="lang-fr">Commerce électronique</span></span><span class="mats"><span class="mat none"><span class="lang-vi">Chưa có học liệu mở</span><span class="lang-en">No open material yet</span><span class="lang-fr">Pas encore de matériel ouvert</span></span></span></li>
+      <li><span class="c-ten"><span class="lang-vi">Mô phỏng tình huống trong kinh doanh (EC1314)</span><span class="lang-en">Business Simulation (EC1314)</span><span class="lang-fr">Simulation d'entreprise (EC1314)</span></span><span class="mats"><a class="mat" data-loai="web" href="https://bizonland.com/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>BizOn ↗</a><a class="mat" data-loai="app" href="https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.bizon" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-app"/></svg><span class="lang-vi">BizOn trên CH Play ↗</span><span class="lang-en">BizOn on Google Play ↗</span><span class="lang-fr">BizOn sur Google Play ↗</span></a><a class="mat" data-loai="web" href="https://bizonland.com/lab/ho-chieu-sau-rieng.html" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg><span class="lang-vi">Hộ Chiếu Sầu Riêng ↗</span><span class="lang-en">Sầu Riêng Passport ↗</span><span class="lang-fr">Passeport Durian ↗</span></a></span></li>
+      <li><span class="c-ten"><span class="lang-vi">Khởi nghiệp &amp; khởi sự doanh nghiệp</span><span class="lang-en">Entrepreneurship &amp; New Venture Creation</span><span class="lang-fr">Entrepreneuriat</span></span><span class="mats"><a class="mat" data-loai="web" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>EnQuiz ↗</a><a class="mat" data-loai="app" href="https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.enquiz" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-app"/></svg><span class="lang-vi">EnQuiz trên CH Play ↗</span><span class="lang-en">EnQuiz on Google Play ↗</span><span class="lang-fr">EnQuiz sur Google Play ↗</span></a></span></li>
+      <li><span class="c-ten"><span class="lang-vi">Kỹ năng giao tiếp &amp; soạn thảo văn bản (EC1103)</span><span class="lang-en">Communication &amp; Document Drafting Skills (EC1103)</span><span class="lang-fr">Communication &amp; rédaction (EC1103)</span></span><span class="mats"><a class="mat" data-loai="web" href="https://thuyhuongctu.github.io/ComDraft/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>ComDraft ↗</a></span></li>
     </ul>
     <p style="font-size:.86rem;color:var(--muted);margin:16px 0 0">
       <span class="lang-vi"><b>Phản biện tạp chí:</b> International Journal of Economics, Management and Accounting (IJEMA).</span>
