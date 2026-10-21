@@ -861,7 +861,7 @@ function veAB(dungLai) {
   $('ab-td').textContent = L(CHU_AB.td); $('ab-phu').textContent = L(CHU_AB.phu);
   $('ab-dong').textContent = L({ vi: 'Đóng ✕', en: 'Close ✕' });
   $('ab-nguon').innerHTML = ''; var sp = document.createElement('span'); sp.textContent = L(CHU_AB.nguon) + ' · '; $('ab-nguon').appendChild(sp);
-  var a = document.createElement('a'); a.href = 'https://thuyhuongctu.github.io/BizOn/aibis-entry-mode-preview.html'; a.target = '_blank'; a.rel = 'noopener'; a.textContent = L({ vi: 'mở bản gốc', en: 'open the original' }); $('ab-nguon').appendChild(a);
+  var a = document.createElement('a'); a.href = 'https://bizonland.com/aibis-entry-mode-preview.html'; a.target = '_blank'; a.rel = 'noopener'; a.textContent = L({ vi: 'mở bản gốc', en: 'open the original' }); $('ab-nguon').appendChild(a);
   $('ab-phim').textContent = TAY ? '' : L({ vi: 'Esc đóng', en: 'Esc to close' });
   var ob = $('ab-buoc'); ob.innerHTML = ''; AB.buoc.forEach(function (b, i) { var li = document.createElement('li'); li.textContent = L(b); if (i === 2) li.className = 'dang'; ob.appendChild(li); });
   $('ab-nb').textContent = L({ vi: 'Nhật Bản', en: 'Japan' });
