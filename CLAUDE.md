@@ -969,21 +969,22 @@ Hai chỗ đã đo, đừng dò lại:
   câu chữ giấy phép đầy đủ; muốn đẹp thì sau mỗi lần phát hành vào Edit sửa một
   ô. Đánh đổi có chủ ý: được cái không bao giờ rơi lại vào mặc định
   `cc-by-4.0` — thứ nguy hiểm thật, vì nó cho phép người khác phát tán lại.
-- **Đừng đặt `access_right: restricted`** dù tài liệu Zenodo có gợi ý thế cho
-  tác phẩm không mở. `restricted` nghĩa là không ai tải được tệp, mà `LICENSE`
-  của kho ấy viết rõ công trình «được công bố để đọc, tham khảo và trích dẫn».
-  Đúng là `open` cộng giấy phép đóng.
+- **`access_right: restricted` là CÓ CHỦ Ý — đừng mở ra.** Tác giả khoá tệp vì
+  bản quyền không cho tải. Mục Files của bản ghi hiện **Restricted** là đúng ý,
+  không phải chỗ hỏng; thấy thế thì **để yên**, đừng vào Edit đặt lại Public.
 
-  **Nhưng đặt `open` cũng KHÔNG ăn** — đo 21/10 trên kho `Le-Domaine-de-Huong`:
-  `.zenodo.json` khai `"access_right": "open"`, kho để **public**, vậy mà cả hai
-  bản ghi `v1.0.0` và `v1.0.1` đều hiện **Restricted** — «The record is publicly
-  accessible, but files are restricted to users with access». Chưa rõ Zenodo bỏ
-  hẳn trường cũ ấy hay nó suy từ giấy phép `other-closed` ra; chưa đo được nên
-  đừng ghi là đã biết.
+  Ghi chú trước đây dặn ngược hẳn — bảo đặt `open` vì «`LICENSE` viết rõ công
+  trình được công bố để đọc, tham khảo và trích dẫn». Đọc kỹ lại thì câu ấy cho
+  **đọc và trích dẫn**, chưa bao giờ hứa cho **tải**. Suy từ một câu sang một
+  quyền nó không nói là chỗ sai, và đã khiến tôi ba lần giục mở khoá thứ tác
+  giả cố ý khoá.
 
-  Hệ quả dùng được: **sau mỗi lần phát hành, mở bản ghi ra nhìn mục Files.** Nếu
-  là Restricted thì vào Edit đặt lại Public — không sửa bằng commit được. Trạng
-  thái ấy đi ngược hẳn câu chữ trong `LICENSE`, nên để nguyên là tự mâu thuẫn.
+  Đo 21/10 trên `Le-Domaine-de-Huong`: `.zenodo.json` khai `"access_right":
+  "open"`, kho để **public**, vậy mà cả hai bản ghi `v1.0.0` và `v1.0.1` vẫn
+  hiện Restricted — «The record is publicly accessible, but files are restricted
+  to users with access». Chưa rõ Zenodo bỏ hẳn trường cũ ấy hay suy từ giấy phép
+  `other-closed` ra; chưa đo được nên đừng ghi là đã biết. Dù sao kết quả cũng
+  trùng ý tác giả, nên không phải can thiệp.
 
 `.zenodo.json` **cố ý không khai `version`**, để Zenodo lấy thẳng tên thẻ. Nên
 đặt thẻ là `v1.1`, **không phải** `v.1.1` — bản đầu tiên đã lỡ mang tên `v.1.0`
@@ -991,9 +992,9 @@ Hai chỗ đã đo, đừng dò lại:
 `CITATION.cff` khai `version` **khớp tên thẻ**; hai chỗ ấy lệch nhau thì nút
 «Cite this repository» của GitHub nói một đằng, Zenodo ghi một nẻo.
 
-**Chỗ chưa sửa:** `.zenodo.json` của kho `Research-Office` hiện vẫn để
-`access_right: "restricted"`, trái đúng điều vừa nói ở trên. Bản ghi đã phát
-hành nên chỉ sửa được trong trang Edit của Zenodo, không sửa bằng commit.
+Cả hai kho nay cùng khai `access_right: "restricted"`. `Research-Office` vốn
+đã thế; `Le-Domaine-de-Huong` sửa ngày 22/10 từ `open` sang, cho tệp khai
+đúng ý tác giả thay vì xin Zenodo mở tệp.
 
 ## Trang viên cũng có HAI bản, từ 21/10
 
