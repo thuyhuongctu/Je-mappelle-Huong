@@ -63,6 +63,10 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .tour h2{font-size:1.12rem;margin:0 0 4px}
 .tour p{margin:0 0 13px;font-size:.92rem;color:var(--muted)}
 .tour .vthumb{margin:0}
+/* Bo phat thay the .vthumb bang mot the <video> TRAN, khong thua kieu nao.
+   Trong .tile da co quy tac rieng; o day thi khong, nen video hien ra dung
+   be ngang goc 960px va day ca trang truot ngang tren dien thoai. */
+.tour video{display:block;width:100%;height:auto;border-radius:12px;background:#0e0c0b}
 
 /* ===== header: one row, identity first ================================== */
 .top{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);
