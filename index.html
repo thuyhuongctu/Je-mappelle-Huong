@@ -59,6 +59,10 @@ html:not([lang="en"]) .lang-en{display:none}
 html[lang="fr"] .lang-vi{display:none}
 html[lang="fr"] .lang-en{display:none}
 html:not([lang="fr"]) .lang-fr{display:none}
+.tour{max-width:900px;margin:34px auto 0;text-align:center}
+.tour h2{font-size:1.12rem;margin:0 0 4px}
+.tour p{margin:0 0 13px;font-size:.92rem;color:var(--muted)}
+.tour .vthumb{margin:0}
 
 /* ===== header: one row, identity first ================================== */
 .top{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);
@@ -480,6 +484,17 @@ footer.wrap{position:relative;overflow:hidden}
   </div>
 
 
+  <section class="tour rv" id="tour">
+    <h2><span class="lang-vi">Một phút đi qua trang này</span><span class="lang-en">One minute through this site</span><span class="lang-fr">Une minute à travers ce site</span></h2>
+    <p><span class="lang-vi">Phim giới thiệu: nghiên cứu, giảng dạy và các phần mềm — thuyết minh tiếng Anh.</span><span class="lang-en">A guided walkthrough of the research, the teaching and the software — narrated in English.</span><span class="lang-fr">Une visite guidée de la recherche, de l'enseignement et des logiciels — narration en anglais.</span></p>
+    <button class="vthumb" type="button" data-vid="assets/video/trang-web-intro.mp4" data-poster="assets/img/trang-web-intro-poster.webp">
+      <img src="assets/img/trang-web-intro-poster.webp" width="960" height="540" loading="lazy" decoding="async" alt="End card of the site walkthrough: the clay LR seal above the name Do Thuy Huong, the line PhD Candidate, School of Economics, Can Tho University, and the address jemappellehuong.com in gold">
+      <span class="vplay" aria-hidden="true">▶</span>
+      <span class="vlen" aria-hidden="true">1:07</span>
+      <span class="vsr"><span class="lang-vi">Xem phim giới thiệu trang</span><span class="lang-en">Watch the site walkthrough</span><span class="lang-fr">Voir la visite du site</span></span>
+    </button>
+  </section>
+
   <figure class="vnband rv">
     <div class="vnmap3d">
       <img src="assets/img/vn-map-3d.webp" width="768" height="1376" loading="lazy" decoding="async"
@@ -799,8 +814,8 @@ footer.wrap{position:relative;overflow:hidden}
         <a class="go" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><span class="lang-vi">Mở M-AIDA ↗</span><span class="lang-en">Open M-AIDA ↗</span><span class="lang-fr">Ouvrir M-AIDA ↗</span></a>
       </div>
       <div class="tile">
-        <button class="vthumb" type="button" data-vid="assets/video/bizon-intro.mp4" data-poster="assets/img/bizon-intro-poster.webp">
-          <img src="assets/img/bizon-intro-poster.webp" width="960" height="540" loading="lazy" decoding="async" alt="Closing card of the BizOn tour: the BizOn wordmark with a Start with Bến Phù Sa button and bizonland.com, beside two clay figures in áo dài, the game’s dragon mascot and a passport, over a stylised river">
+        <button class="vthumb" type="button" data-vid="assets/video/bizon-intro-en.mp4" data-poster="assets/img/bizon-intro-en-poster.webp">
+          <img src="assets/img/bizon-intro-en-poster.webp" width="960" height="540" loading="lazy" decoding="async" alt="Closing card of the BizOn tour: the BizOn wordmark with a Start with Bến Phù Sa button and bizonland.com, beside two clay figures in áo dài, the game’s dragon mascot and a passport, over a stylised river">
           <span class="vplay" aria-hidden="true">▶</span>
           <span class="vlen" aria-hidden="true">1:03</span>
           <span class="vsr"><span class="lang-vi">Xem giới thiệu BizOn</span><span class="lang-en">Watch the BizOn intro</span><span class="lang-fr">Voir la présentation de BizOn</span></span>
@@ -915,7 +930,10 @@ footer.wrap{position:relative;overflow:hidden}
   }
   btns.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-lang'));});});
   fr.addEventListener('click',function(){set('fr');});
-  var start='vi';
+  /* Mac dinh tieng Anh cho MOI khach. Gia tri khoi tao cung phai la 'en':
+     localStorage nem loi o che do rieng tu thi nhanh catch khong chay set(),
+     va bien nay la thu con lai. */
+  var start='en';
   try{start=localStorage.getItem('huong_lang')||'en';}catch(e){}
   set(start);
 })();

@@ -301,6 +301,91 @@ có**, không cắt ảnh mới từ phim — nên khác mục 4c, không phát 
 
 ---
 
+## 4e. Clip nền ở cổng trang viên
+
+### `assets/video/cong-sen-chao.mp4`
+
+| | |
+| --- | --- |
+| Phần **hình** | Do một **công cụ sinh video** tạo ra từ lời nhắc của tác giả |
+| Phần **tiếng** | Không có — tệp không mang dòng tiếng nào |
+| Cắt, nối và nén | Tác giả |
+
+Đây là clip chạy nền ở màn cổng (`#cong`) của `trangvien.html`: Hương áo dài
+đứng trên sạp gỗ bên ao sen, lối tạo hình đất sét. **Phần hình không phải tác
+phẩm của tác giả** — cùng lẽ với `trangvien-intro.mp4` ở mục 4: cái được đăng
+ký là cảnh 3D do tác giả dựng bằng three.js, không phải đoạn phim mở đầu nó.
+
+Phần của tác giả ở đây là **dựng lại để lặp liền mạch**. Đo trong chính tệp:
+310 khung, mà khung `i` đối xứng với khung `309−i` ở mức tương quan **0,9988
+tới 1,0000** — tức chỉ có **155 khung thật** (6,46 giây ở 24 hình/giây), phần
+sau là chính nó chạy ngược. Lời commit đưa tệp vào (17/09/2026) ghi đoạn cắt
+là giây **13,5–20** của một bản dài hơn; bản dài hơn ấy **không nằm trong
+kho**.
+
+Ảnh bìa `assets/video/cong-sen-chao-poster.webp` cắt từ chính tệp này nên cùng
+tình trạng — đo tương quan: khớp **khung 37/310 ở mức 0,9994**, nền 0,475.
+
+**Không truy được công cụ nào đã sinh ra nó.** Tệp đã mã lại bằng ffmpeg
+(`Lavf61.1.100` / `libx264`) nên siêu dữ liệu của nguồn không còn; bốn góc
+khung hình không có dấu chìm nhìn thấy được. Khuôn tệp 1280×720 ở 24 hình/giây
+**trùng** với `trangvien-intro.mp4` ở mục 4 — thứ mục ấy khai là của Google
+Gemini — nhưng trùng khuôn tệp chỉ là **dấu hiệu, không phải bằng chứng**, nên
+ở đây viết «một công cụ sinh video» cho đến khi tác giả xác nhận tên.
+
+### `assets/video/cong-hoang-hon.mp4` và ảnh bìa của nó — **không còn dùng**
+
+Đây là clip cổng **đời trước**, dùng từ 10/09 tới 17/09/2026. Lời commit đưa
+nó vào gọi thẳng là *«the Hương AI riverside-sunset animation»* — tức cũng do
+máy sinh, và **người trong hình không phải tác giả**. Ảnh bìa kèm theo
+(`cong-hoang-hon-poster.webp`) lại là **một cảnh khác hẳn** — sa mạc và nền
+nhà cao tầng Dubai; đo tương quan với mọi khung của chính video ấy, cao nhất
+chỉ **−0,05**, tức không phải một khung của nó.
+
+Cả hai tệp nay **không trang nào tham chiếu tới**:
+
+```
+$ grep -rn "cong-hoang-hon" --include=*.html --include=*.js --include=*.py .
+(không kết quả)
+```
+
+Chúng nằm lại trong kho từ lần thay clip cổng, cộng **1,76 MB**. Giữ hay xoá
+là việc của tác giả; chừng nào còn trong kho thì khai ở đây, vì **không thuộc
+phạm vi đăng ký quyền tác giả**.
+
+---
+
+## 4f. Phim giới thiệu trang web
+
+### `assets/video/trang-web-intro.mp4`
+
+| | |
+| --- | --- |
+| Dàn dựng và chuyển động | Bản bàn giao thiết kế do tác giả đặt làm — mã React, không phải tệp video |
+| Nội dung trong khung hình | Chính trang này: chữ, số liệu, ảnh lấy từ kho |
+| Giọng đọc | Sáu đoạn, bản bàn giao ghi là do tác giả thu |
+| Nhạc nền | «BizOn — And The World Say Hello», đi kèm bản bàn giao |
+| Kết xuất, trộn tiếng, nén | Tác giả |
+
+Bản bàn giao **không chứa tệp video**: nó là mã React chạy được kèm bảng đặc
+tả (bảy cảnh, mốc thời gian, đường máy quay, bảng trộn tiếng). Phim mp4 dựng
+lại từ chính mã ấy — bắt 2 010 khung ở 1920×1080, 30 hình/giây, qua đúng giao
+kèo xuất video mà bộ máy dựng sẵn có (`data-om-seek-to-time-frame`), nên mỗi
+khung là một lần vẽ tất định tại mốc thời gian đó chứ không phải quay màn hình.
+
+**Chỗ chưa rõ, cần tác giả xác nhận: nhạc nền.** Tên bài nhắc tới dự án BizOn,
+mà hai mươi bản thu trong `assets/audio/bizon/` thì mục 8 khai là **đồng sở hữu
+với Phan Anh Tú**. Đã đo tương quan tín hiệu của nhạc này với toàn bộ tệp mp3
+trong kho, có trượt theo thời gian: cao nhất chỉ **0,053** — tức **không phải**
+bản nào đang có trong kho (để so sánh, lần đối chiếu «Mekong Sunfire» ở mục
+«Kho riêng KHÔNG phải bản chép nguyên» cho 0,9996). Vậy đây là một bản thu mới,
+chưa khai ở đâu. Nếu nó thuộc dự án BizOn thì phải khai là đồng sở hữu, y như
+hai mươi bản kia; nếu không thì nói rõ nó của ai.
+
+Ảnh bìa `assets/img/trang-web-intro-poster.webp` cắt từ chính phim này.
+
+---
+
 ## 5. Bộ chữ
 
 Hai bộ chữ, dùng cho trang viên 3D và ba bản demo bố cục. **Từ 22/09/2026 cả
@@ -378,9 +463,9 @@ lập bản kiểm kê này:
 | Năm mô-đun trò chơi trong `assets/js/` | 260 dòng |
 | JavaScript và script khác | 3 104 dòng |
 | CSS | 443 dòng |
-| Ảnh WebP (gồm ảnh nhân vật do tác giả dựng) | 86 tệp |
+| Ảnh WebP (gồm ảnh nhân vật do tác giả dựng) | **96** tệp (kho có 97; `cong-hoang-hon-poster.webp` ở mục 4e là của bên thứ ba) |
 | Ghi âm (tệp âm thanh được git theo dõi, trừ `.claude/`) | 121 tệp, **trong đó 20 tệp trong `assets/audio/bizon/` là đồng sở hữu** |
-| Video | **12** tệp (kho có 13; `trangvien-intro.mp4` ở mục 4 là của bên thứ ba) |
+| Video | **13** tệp (kho có 16; ba tệp của bên thứ ba: `trangvien-intro.mp4` ở mục 4, `cong-sen-chao.mp4` và `cong-hoang-hon.mp4` ở mục 4e. `trang-web-intro.mp4` ở mục 4f là của tác giả, trừ nhạc nền còn chờ xác nhận) |
 
 **Phần đồng sở hữu với Phan Anh Tú.** Hai thứ trong kho này thuộc về hai tác
 giả chứ không phải một: **tạo hình nhân vật của dự án BizOn**, và **hai mươi
