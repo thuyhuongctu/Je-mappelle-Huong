@@ -38,6 +38,8 @@
     maida_monhistoire:     { t: 'M-AIDA · Mon Histoire',       f: A + 'maida/maida_song_mon_histoire.mp3' },
     maida_larecherche:     { t: 'M-AIDA · La Recherche (r2)',  f: A + 'maida/maida_song_la_recherche_remix2.mp3' },
     maida_scholars:        { t: 'M-AIDA · Scholars Final Say', f: A + 'maida/maida_song_scholars_final_say.mp3' },
+    maida_heartbeat_v8:    { t: 'M-AIDA · The Heartbeat of M-AIDA', f: A + 'maida-heartbeat-of-maida.mp3' },
+    maida_preuves_v8:      { t: 'M-AIDA · Que les preuves décident', f: A + 'maida-que-les-preuves-decident.mp3' },
 
     // BizOn
     bizon_batnghiep:   { t: 'BizOn · Bật Nghiệp',            f: A + 'bizon/bat-nghiep.mp3' },
