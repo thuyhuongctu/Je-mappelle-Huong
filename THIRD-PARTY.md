@@ -428,14 +428,13 @@ lại từ chính mã ấy — bắt 2 010 khung ở 1920×1080, 30 hình/giây,
 kèo xuất video mà bộ máy dựng sẵn có (`data-om-seek-to-time-frame`), nên mỗi
 khung là một lần vẽ tất định tại mốc thời gian đó chứ không phải quay màn hình.
 
-**Chỗ chưa rõ, cần tác giả xác nhận: nhạc nền.** Tên bài nhắc tới dự án BizOn,
-mà hai mươi bản thu trong `assets/audio/bizon/` thì mục 8 khai là **đồng sở hữu
-với Phan Anh Tú**. Đã đo tương quan tín hiệu của nhạc này với toàn bộ tệp mp3
-trong kho, có trượt theo thời gian: cao nhất chỉ **0,053** — tức **không phải**
-bản nào đang có trong kho (để so sánh, lần đối chiếu «Mekong Sunfire» ở mục
-«Kho riêng KHÔNG phải bản chép nguyên» cho 0,9996). Vậy đây là một bản thu mới,
-chưa khai ở đâu. Nếu nó thuộc dự án BizOn thì phải khai là đồng sở hữu, y như
-hai mươi bản kia; nếu không thì nói rõ nó của ai.
+**Nhạc nền là của tác giả** — tác giả xác nhận ngày 24/10/2026. Chỗ này từng
+để ngỏ vì tên bài nhắc tới dự án BizOn, mà hai mươi bản thu trong
+`assets/audio/bizon/` thì mục 8 khai là đồng sở hữu với Phan Anh Tú. Đo tương
+quan tín hiệu của nhạc này với toàn bộ tệp mp3 trong kho, có trượt theo thời
+gian, thì cao nhất chỉ **0,053** — tức không phải bản nào đang có trong kho (để
+so sánh, lần đối chiếu «Mekong Sunfire» cho 0,9996). Vậy nó là một bản thu
+riêng, **không** nằm trong phần đồng sở hữu.
 
 Ảnh bìa `assets/img/trang-web-intro-poster.webp` cắt từ chính phim này.
 
@@ -520,7 +519,7 @@ lập bản kiểm kê này:
 | CSS | 443 dòng |
 | Ảnh WebP (gồm ảnh nhân vật do tác giả dựng) | **96** tệp (kho có 97; `cong-hoang-hon-poster.webp` ở mục 4e là của bên thứ ba) |
 | Ghi âm (tệp âm thanh được git theo dõi, trừ `.claude/`) | 121 tệp, **trong đó 20 tệp trong `assets/audio/bizon/` là đồng sở hữu** |
-| Video | **13** tệp (kho có 16; ba tệp của bên thứ ba: `trangvien-intro.mp4` ở mục 4, `cong-sen-chao.mp4` và `cong-hoang-hon.mp4` ở mục 4e. `trang-web-intro.mp4` ở mục 4f là của tác giả, trừ nhạc nền còn chờ xác nhận) |
+| Video | **13** tệp (kho có 16; ba tệp của bên thứ ba: `trangvien-intro.mp4` ở mục 4, `cong-sen-chao.mp4` và `cong-hoang-hon.mp4` ở mục 4e. `trang-web-intro.mp4` ở mục 4f là của tác giả, nhạc nền cũng vậy) |
 
 **Phần đồng sở hữu với Phan Anh Tú.** Hai thứ trong kho này thuộc về hai tác
 giả chứ không phải một: **tạo hình nhân vật của dự án BizOn**, và **hai mươi
