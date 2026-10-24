@@ -229,7 +229,28 @@ section[id],span[id]{scroll-margin-top:76px}
 .atlchi .atl-cau{fill:var(--sunk);stroke:var(--line)}
 .atlchi .atl-luoi{fill:none;stroke:var(--line);stroke-width:.5;opacity:.55}
 .atlchi .atl-vien{fill:none;stroke:var(--surface);stroke-width:.4;opacity:.75}
+.atlchi .atl-ve{position:relative;cursor:grab;touch-action:none}
+.atlchi .atl-ve.dang-keo{cursor:grabbing}
+.atlchi .atl-svg:focus-visible{outline:2px solid var(--accent2);outline-offset:-2px}
 .atlchi .atl-nuoc{cursor:pointer;stroke:none}
+/* Net phai giu nguyen be khi phong to, neu khong zoom 24 lan thi vien day
+   bang ca nuoc. vector-effect lo viec ay, khong phai tinh lai stroke-width. */
+.atlchi .atl-vien,.atlchi .atl-luoi,.atlchi .atl-cau,
+.atlchi .atl-nuoc{vector-effect:non-scaling-stroke}
+.atlchi .atl-dieu{position:absolute;right:10px;bottom:10px;display:grid;gap:5px}
+.atlchi .atl-dieu button{width:30px;height:30px;font:inherit;font-size:.96rem;line-height:1;
+  color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:9px;
+  cursor:pointer;box-shadow:0 2px 8px rgba(28,24,20,.12)}
+.atlchi .atl-dieu button:hover{border-color:var(--accent2);color:var(--accent2)}
+.atlchi .atl-meo{position:absolute;pointer-events:none;background:var(--surface);
+  border:1px solid var(--line);border-radius:9px;padding:6px 9px;font-size:.74rem;
+  box-shadow:0 4px 14px rgba(28,24,20,.14);max-width:170px}
+.atlchi .atl-meo b{display:block;color:var(--ink)}
+.atlchi .atl-meo span{color:var(--muted)}
+.atlchi .atl-doc-giua{margin:9px 0 0}
+.atlchi .atl-giua{font:inherit;font-size:.76rem;color:var(--accent2);background:none;border:0;
+  padding:0;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.atlchi .atl-giua:hover{color:var(--clay)}
 .atlchi .atl-nuoc:hover{stroke:var(--ink);stroke-width:.8}
 .atlchi .atl-chon{stroke:var(--clay);stroke-width:1.4;paint-order:stroke}
 /* Chu giai noi tren ban do nhu ban goc: de nguyen o cot phai thi cot ay
