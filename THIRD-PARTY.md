@@ -99,6 +99,61 @@ mảnh, `currentColor`, các chấm đánh dấu quần đảo — là của tá
 
 ---
 
+### d3-geo 3.1.1, d3-array 3.2.4, topojson-client 3.1.0
+
+| | |
+| --- | --- |
+| Đường dẫn | `assets/vendor/d3-geo.min.js`, `d3-array.min.js`, `topojson-client.min.js` |
+| Giấy phép | ISC |
+| Tình trạng | Dùng nguyên bản từ npm, không sửa một ký tự |
+
+Ba thư viện này vẽ tấm **Atlas chỉ số** đặt dưới bản đồ khung dữ liệu ở trang
+chủ: `d3-geo` lo phép chiếu và sinh đường, `topojson-client` giải mã hình thể,
+`d3-array` là phụ thuộc mà `d3-geo` khai trong bản UMD.
+
+**Phải nạp `d3-array` TRƯỚC `d3-geo`.** Bản UMD của `d3-geo` gọi `d3.Adder`
+của `d3-array`; nạp sau hoặc nạp song song thì nó ném
+`t.Adder is not a constructor` ngay lúc nạp, và tấm bản đồ không hiện. Đã vấp
+đúng lỗi ấy một lần.
+
+Cả ba **chỉ nạp khi khối bản đồ vào khung nhìn**, không nạp sẵn: cộng với hai
+tệp dữ liệu thì khối này nặng 230 KB, quá nhiều để bắt mọi khách tải trong khi
+phần lớn không cuộn tới.
+
+### world-atlas 2.0.2 — hình thể thế giới
+
+| | |
+| --- | --- |
+| Đường dẫn | `assets/data/countries-110m.json` (105 KB) |
+| Giấy phép | ISC cho gói; dữ liệu biên giới thuộc phạm vi công cộng |
+| Nguồn gốc | Dựng từ Natural Earth, cùng nguồn với bản đồ khung dữ liệu ở mục 3 |
+
+Chọn bản **110m** chứ không phải 50m (739 KB): ở cỡ bản đồ trên trang, biên
+giới thô hơn gần như không nhìn ra, mà nhẹ hơn bảy lần.
+
+### Số liệu trong Atlas chỉ số
+
+| | |
+| --- | --- |
+| Đường dẫn | `assets/data/atlas-chi-so.json` (66 KB) |
+| Nguồn | Ngân hàng Thế giới (bốn chỉ số) và UNDP qua Our World in Data (HDI) |
+| Lấy ngày | 24/10/2026 |
+
+Năm chỉ số, mỗi chỉ số ghi kèm mã gốc của Ngân hàng Thế giới ngay trên giao
+diện (`NY.GDP.PCAP.PP.CD`, `NE.TRD.GNFS.ZS`, `BX.KLT.DINV.WD.GD.ZS`,
+`IT.NET.USER.ZS`). Số liệu của các tổ chức ấy, **không phải của tác giả**.
+
+**Đây không phải dữ liệu luận án.** Luận án dùng khảo sát doanh nghiệp WBES
+ghép bộ chỉ số WGI; năm chỉ số này là bối cảnh phát triển chung. Chú thích
+dưới tấm bản đồ nói thẳng điều đó, để người đọc không nhầm.
+
+Phần dàn dựng và tạo hình do tác giả đặt làm, giao lại dưới dạng một ứng dụng
+React; trang này không có bước build nên phần vẽ **viết lại bằng JavaScript
+thuần** (`assets/js/atlas.js`), giữ nguyên phép chiếu Natural Earth, cách chia
+ngũ phân vị và bảng màu của bản giao.
+
+---
+
 ## 4. Video giới thiệu trang viên
 
 ### `assets/video/trangvien-intro.mp4`

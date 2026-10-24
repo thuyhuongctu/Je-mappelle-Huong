@@ -206,6 +206,54 @@ section[id],span[id]{scroll-margin-top:76px}
 /* Ban do atlas: khung du lieu cua luan an. Ve bang SVG noi tuyen chu khong
    phai anh, de mau tu doi theo che do sang/toi va de trinh doc man hinh doc
    duoc ten tung nen kinh te qua the <title> trong moi hinh. */
+/* Atlas chi so: choropleth the gioi dat NGAY DUOI ban do khung du lieu. Day la
+   boi canh, khong phai du lieu luan an - chu thich noi ro dieu do. Nang 171 KB
+   du lieu nen atlas.js chi nap khi khoi nay vao khung nhin. */
+.atlchi{margin:18px 0 0;background:var(--surface);border:1px solid var(--line);
+  border-radius:22px;padding:16px;box-shadow:0 8px 24px rgba(28,24,20,.08),var(--press);
+  --atl-b0:#d7e6e0;--atl-b1:#a9cfc4;--atl-b2:#6aada0;--atl-b3:#2f7a6e;--atl-b4:#143e38;
+  --atl-thieu:var(--line)}
+:root[data-theme=dark] .atlchi{--atl-thieu:#3a342c}
+.atlchi .atl-tab{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px;padding:0}
+.atlchi .atl-nut{font:inherit;font-size:.78rem;font-weight:600;color:var(--muted);
+  background:none;border:1px solid var(--line);border-radius:99px;padding:5px 11px;cursor:pointer}
+.atlchi .atl-nut b{color:var(--accent2);font-weight:700;margin-right:3px}
+.atlchi .atl-nut.on{color:var(--ink);border-color:var(--accent2);background:var(--sunk)}
+.atlchi .atl-nut:hover{border-color:var(--accent2)}
+.atlchi .atl-khung{display:grid;grid-template-columns:minmax(0,1fr) 228px;gap:16px;align-items:start}
+@media(max-width:760px){.atlchi .atl-khung{grid-template-columns:minmax(0,1fr)}}
+.atlchi .atl-san{position:relative;min-height:120px}
+.atlchi .atl-ve{border-radius:14px;overflow:hidden;background:var(--sunk);min-height:120px}
+.atlchi .atl-cho{margin:0;padding:38px 10px;text-align:center;color:var(--muted);font-size:.86rem}
+.atlchi .atl-svg{display:block;width:100%;height:auto}
+.atlchi .atl-cau{fill:var(--sunk);stroke:var(--line)}
+.atlchi .atl-luoi{fill:none;stroke:var(--line);stroke-width:.5;opacity:.55}
+.atlchi .atl-vien{fill:none;stroke:var(--surface);stroke-width:.4;opacity:.75}
+.atlchi .atl-nuoc{cursor:pointer;stroke:none}
+.atlchi .atl-nuoc:hover{stroke:var(--ink);stroke-width:.8}
+.atlchi .atl-chon{stroke:var(--clay);stroke-width:1.4;paint-order:stroke}
+/* Chu giai noi tren ban do nhu ban goc: de nguyen o cot phai thi cot ay
+   cao hon ban do 182px, ho mot khoang trong lon o duoi ben trai. */
+.atlchi .atl-chu{font-size:.74rem;color:var(--muted);position:absolute;left:10px;top:10px;
+  max-width:176px;background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:10px 12px;box-shadow:0 4px 14px rgba(28,24,20,.10)}
+@media(max-width:760px){.atlchi .atl-chu{position:static;max-width:none;margin-top:10px;box-shadow:none}}
+.atlchi .atl-chu-t{margin:0 0 7px;font-weight:700;color:var(--ink);font-size:.76rem;line-height:1.3}
+.atlchi .atl-chu-t span{font-weight:400;color:var(--muted)}
+.atlchi .atl-chu ul{list-style:none;margin:0;padding:0;display:grid;gap:3px}
+.atlchi .atl-chu li{display:flex;align-items:center;gap:7px}
+.atlchi .atl-chu i{width:15px;height:11px;border-radius:2px;flex:none}
+.atlchi .atl-chu-n{margin:9px 0 0;font-size:.7rem}
+.atlchi .atl-doc{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.atlchi .atl-doc-iso{margin:0;font-size:.68rem;letter-spacing:.14em;color:var(--muted)}
+.atlchi .atl-doc h4{margin:1px 0 0;font-size:1.22rem;font-family:var(--serif);font-weight:600}
+.atlchi .atl-doc-phu{margin:0;font-size:.78rem;color:var(--muted)}
+.atlchi .atl-doc-so{margin:9px 0 0;font-size:.82rem;color:var(--muted)}
+.atlchi .atl-doc-so b{font-size:1.5rem;color:var(--ink);font-family:var(--serif)}
+.atlchi .atl-doc-hang,.atlchi .atl-doc-ss{margin:2px 0 0;font-size:.76rem;color:var(--muted)}
+.atlchi .atl-doc-ng{margin:9px 0 0;font-size:.76rem}
+.atlchi .atl-doc-ngu{margin:5px 0 0;font-size:.68rem;color:var(--muted)}
+.atlchi figcaption{margin-top:12px;font-size:.8rem;color:var(--muted);line-height:1.55}
 .band.atlas{background:var(--surface);border:1px solid var(--line);border-radius:22px;
   padding:16px 16px 12px;box-shadow:0 8px 24px rgba(28,24,20,.08),var(--press)}
 .atlwrap{border-radius:14px;overflow:hidden}
@@ -755,6 +803,22 @@ footer.wrap{position:relative;overflow:hidden}
       </figcaption>
     </figure>
 
+    <figure class="atlchi rv" id="atlas-chiso">
+      <div class="atl-tab"></div>
+      <div class="atl-khung">
+        <div class="atl-san">
+          <div class="atl-ve"><p class="atl-cho">…</p></div>
+          <div class="atl-chu"></div>
+        </div>
+        <div class="atl-doc"></div>
+      </div>
+      <figcaption>
+        <span class="lang-vi"><b>Bối cảnh, không phải dữ liệu luận án.</b> Năm chỉ số phát triển chung trên 202 nền kinh tế, để đặt 50 nền kinh tế của khung dữ liệu phía trên vào bức tranh thế giới. Luận án dùng dữ liệu doanh nghiệp WBES ghép WGI, không dùng năm chỉ số này. Tô theo ngũ phân vị; nguồn Ngân hàng Thế giới và UNDP qua Our World in Data, lấy 24/10/2026. Biên giới Natural Earth.</span>
+        <span class="lang-en"><b>Context, not the dissertation’s data.</b> Five general development indicators across 202 economies, to place the 50 economies of the frame above within the wider picture. The dissertation uses WBES firm-level data matched to the WGI, not these five indicators. Shaded by quintile; sources World Bank and UNDP via Our World in Data, retrieved 24 October 2026. Boundaries from Natural Earth.</span>
+        <span class="lang-fr"><b>Contexte, et non les données de la thèse.</b> Cinq indicateurs de développement sur 202 économies, pour situer les 50 économies du cadre ci-dessus. La thèse s’appuie sur les données d’entreprises WBES appariées aux WGI, pas sur ces cinq indicateurs. Quintiles ; sources Banque mondiale et PNUD via Our World in Data, relevé le 24 octobre 2026. Frontières : Natural Earth.</span>
+      </figcaption>
+    </figure>
+
     <div class="qa">
       <div>
         <h3><span class="lang-vi">Dữ liệu</span><span class="lang-en">Data</span><span class="lang-fr">Données</span></h3>
@@ -1110,4 +1174,5 @@ footer.wrap{position:relative;overflow:hidden}
 </script>
 <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="assets/js/site-chrome.js" defer></script>
+<script src="assets/js/atlas.js" defer></script>
 </body></html>

@@ -240,7 +240,7 @@ trên GitHub Pages.
 | **11** | pages, plus a `404.html` that repairs old and mis-cased URLs instead of apologising |
 | **3** | languages on every page — Vietnamese, English, French — switched without a reload |
 | **13** | works archived on Zenodo, each with its own DOI |
-| **1** | third-party script in the whole site: three.js, vendored so no page calls a CDN |
+| **4** | third-party libraries, every one vendored in `assets/vendor/` so no page calls a CDN |
 | **0** | build steps, bundlers, package managers, servers or databases |
 
 > **Why no build step?** This repository is both the source and the deployable
@@ -256,6 +256,7 @@ trên GitHub Pages.
 |---|---|
 | Pages | Plain HTML5, CSS and vanilla JavaScript; no framework, no build step |
 | 3D | [three.js](https://threejs.org/) r128, vendored in `assets/vendor/` so no page calls a CDN |
+| Maps | [d3-geo](https://d3js.org/d3-geo/) with d3-array and [topojson-client](https://github.com/topojson/topojson-client), vendored; boundaries from [Natural Earth](https://www.naturalearthdata.com/) via world-atlas |
 | Data | World Bank Open Data API; Zenodo API for live download statistics |
 | Audio | Web Audio API for ambience; HTML5 audio for recordings |
 | App platform | Progressive Web App — web manifest, service worker with a versioned cache |
@@ -432,6 +433,9 @@ reservation above:
 | Component | Use | Licence |
 |---|---|---|
 | [three.js](https://threejs.org/) r128 | 3D scenes, vendored in `assets/vendor/` | MIT |
+| [d3-geo](https://d3js.org/d3-geo/) 3.1.1 · [d3-array](https://d3js.org/d3-array/) 3.2.4 | Projection and path generation for the indicator atlas, vendored | ISC |
+| [topojson-client](https://github.com/topojson/topojson-client) 3.1.0 | Decoding the world topology, vendored | ISC |
+| [world-atlas](https://github.com/topojson/world-atlas) 2.0.2 | `countries-110m` topology, built from Natural Earth | ISC (data public domain) |
 | [Be Vietnam Pro](https://github.com/bettergui/BeVietnamPro) | Body typeface, subset into `assets/fonts/` | OFL 1.1 |
 | [Baloo 2](https://github.com/EkType/Baloo2) | Display typeface, subset into `assets/fonts/` | OFL 1.1 |
 | [ThreeUI](https://github.com/MengTo/threeui) | Tower scene, adapted in `assets/canh/thap.html` | MIT |
