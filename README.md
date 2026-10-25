@@ -52,26 +52,26 @@ walkthrough of the research, the teaching and the software
 institutional conditions does that relationship strengthen or break down?**
 
 The dissertation answers that question from two independent bodies of evidence,
-each preregistered before analysis.
+each with an analysis plan registered on OSF.
 
-| | Evidence base | Preregistration |
+| | Evidence base | Registration on OSF |
 |---|---|---|
 | **I** | World Bank Enterprise Surveys across **50 Asia-Pacific economies**, **107 country-year waves (2006–2026)**, matched to the Worldwide Governance Indicators by country-year | Secondary-data preregistration, 6 September 2026 |
-| **II** | Random-effects meta-analysis of the published literature: **k = 236 studies**, **K = 286 effect sizes**, **49 economies** | Generalized systematic review registration, OSF Registries, 18 May 2026 |
+| **II** | Three-level random-effects meta-analysis of the published literature; coding table under re-audit against the primary studies | Registered analysis plan, 18 May 2026 ([10.17605/OSF.IO/Z37KN](https://doi.org/10.17605/OSF.IO/Z37KN)); audit and re-analysis plan, 25 October 2026 ([10.17605/OSF.IO/K5CZT](https://doi.org/10.17605/OSF.IO/K5CZT)) |
 
 **Methods.** Firm-level econometrics with moderation tests; three-level
-random-effects meta-analysis. Effect sizes for the synthesis were extracted with
-[M-AIDA](https://thuyhuongctu.github.io/M-AIDA/) — large-language-model assistance
-with **100 % human verification** and immutable locking of every accepted record,
-so that no coded effect in the dataset rests on an unreviewed machine reading.
+random-effects meta-analysis. The current coding table of the synthesis was not
+extracted with [M-AIDA](https://thuyhuongctu.github.io/M-AIDA/); it is being
+re-audited value by value against the primary studies, under the plan registered
+on OSF on 25 October 2026. M-AIDA, developed alongside the dissertation, provides
+large-language-model assistance with human verification and immutable locking.
 
 **Open materials.** Projects, preregistrations and data documentation:
 [osf.io/m25qs](https://osf.io/m25qs/). Publications with DOIs:
 [jemappellehuong.com/publications.html](https://jemappellehuong.com/publications.html).
 
-> **Status.** The dissertation is being finalised. Pooled correlation from the
-> synthesis as currently locked: *r* = 0.074, 95 % CI [0.060, 0.088]. Figures
-> here track the live dataset and will move until the work is defended.
+> **Status.** The dissertation is being finalised. Pooled meta-analytic results
+> are withheld until the audited coding table is re-locked.
 
 ---
 
@@ -209,10 +209,10 @@ nghiên cứu về quốc tế hóa và hiệu quả hoạt động kinh doanh c
 châu Á.
 
 Luận án trả lời một câu hỏi từ **hai nguồn bằng chứng độc lập**, cả hai đều đăng
-ký trước khi phân tích: dữ liệu doanh nghiệp WBES trên 50 nền kinh tế châu Á –
+ký kế hoạch phân tích trên OSF: dữ liệu doanh nghiệp WBES trên 50 nền kinh tế châu Á –
 Thái Bình Dương (107 đợt khảo sát theo quốc gia-năm, 2006–2026, ghép với bộ chỉ
-số quản trị toàn cầu WGI), và phân tích tổng hợp 236 nghiên cứu đã công bố (286
-mức độ ảnh hưởng, 49 nền kinh tế).
+số quản trị toàn cầu WGI), và phân tích tổng hợp ba cấp các nghiên cứu đã công bố
+(bảng mã hóa đang được kiểm toán lại với bài gốc).
 
 Trang có **hai cửa tách bạch**. *Trang chủ là hồ sơ học thuật*: tên, đơn vị công
 tác, một câu nghiên cứu, CV, ORCID và email ngay màn hình đầu; rồi nghiên cứu,
