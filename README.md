@@ -120,7 +120,7 @@ own repository and is deposited.
 
 | Work | What it does | | |
 |---|---|---|---|
-| **M-AIDA** | Meta-Analysis Intelligent Data Assistant — LLM extraction of effect sizes with 100 % human verification and immutable locking | [site](https://thuyhuongctu.github.io/M-AIDA/) | [`zenodo.21850575`](https://doi.org/10.5281/zenodo.21850575) |
+| **M-AIDA** | Meta-Analysis Intelligent Data Assistant — LLM extraction of effect sizes with 100 % human verification and immutable locking | [site](https://thuyhuongctu.github.io/M-AIDA/) | [`zenodo.21282516`](https://doi.org/10.5281/zenodo.21282516) |
 | **Gravity Lab** | A browser-based gravity-model laboratory for FDI into Vietnam | [site](https://thuyhuongctu.github.io/Gravity-Lab/) | [`zenodo.23307832`](https://doi.org/10.5281/zenodo.23307832) |
 | **Distance, FDI and Trade** | Research code and data mappings (DA0–DA4) for the Vietnam FDI paper | — | [`zenodo.23115783`](https://doi.org/10.5281/zenodo.23115783) |
 | **AIBIS Global Market Engine** | A deterministic engine for choosing international market-entry modes | [site](https://bizonland.com/aibis-entry-mode-preview.html) | [`zenodo.23317596`](https://doi.org/10.5281/zenodo.23317596) |
