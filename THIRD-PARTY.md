@@ -440,6 +440,40 @@ riêng, **không** nằm trong phần đồng sở hữu.
 
 ---
 
+## 4g. Trailer Gravity Lab
+
+### `assets/video/gravity-lab-trailer.mp4`
+
+| | |
+| --- | --- |
+| Tác phẩm được giới thiệu | Gravity Lab — DOI khái niệm 10.5281/zenodo.23307832 |
+| Quyền tác giả ghi trên khung hình | «© 2026 Assoc. Prof. Dr. Phan Anh Tu and Do Thuy Huong (PhD candidate), School of Economics, Can Tho University» |
+| Dàn dựng và nội dung trong khung hình | **chưa khai** — chờ tác giả xác nhận |
+| Đóng gói | ffmpeg: `Lavf60.16.100`, hình `libx264` (`Lavc60.31.102`), tiếng AAC |
+
+Số đo: 1920×1080, 30 hình/giây, đúng **1 800 khung = 60,000 giây**, H.264
+~1,27 Mb/s, tiếng AAC 48 kHz hai kênh, 9 557 571 byte.
+
+Đặt vào kho **nguyên vẹn, không mã lại**: md5 của tệp trong kho bằng đúng md5
+bản tác giả gửi (`3b0eb6716e87800376f6750461b6683e`). Có thử nén lại ở CRF 26
+thì còn 7,4 MB, tức bớt **19%** — quá ít để đánh đổi chất lượng của một phim
+dựng 3D nhiều dải chuyển màu, nên giữ bản gốc. Tệp **không** khai trong `CORE`
+của `sw.js`, đúng tiền lệ các phim giới thiệu khác: nặng, lại đặt
+`preload="none"` nên chỉ tải khi khách bấm.
+
+Ảnh bìa `assets/img/gravity-lab-trailer-poster.webp` cắt từ chính phim này,
+khung ở giây 40 (tấm «FDI ROOM — Does distance matter for capital flows into
+Viet Nam?» với hệ số −0,38), thu về 1000×562 bằng LANCZOS, WebP chất lượng 84,
+28 694 byte — cùng khoảng với các ảnh bìa đã có (23–64 KB).
+
+**Đồng sở hữu với Phan Anh Tú.** Dòng bản quyền in trên khung hình ghi hai tác
+giả, và `publications.html` cũng khai Gravity Lab là «Phan Anh Tu · Do Thuy
+Huong». Nên phim này và ảnh bìa cắt từ nó nằm trong phần đồng sở hữu ở mục 8,
+cùng loại với tạo hình nhân vật BizOn và hai mươi bản thu trong
+`assets/audio/bizon/`.
+
+---
+
 ## 5. Bộ chữ
 
 Hai bộ chữ, dùng cho trang viên 3D và ba bản demo bố cục. **Từ 22/09/2026 cả
@@ -517,13 +551,14 @@ lập bản kiểm kê này:
 | Năm mô-đun trò chơi trong `assets/js/` | 260 dòng |
 | JavaScript và script khác | 3 104 dòng |
 | CSS | 443 dòng |
-| Ảnh WebP (gồm ảnh nhân vật do tác giả dựng) | **96** tệp (kho có 97; `cong-hoang-hon-poster.webp` ở mục 4e là của bên thứ ba) |
+| Ảnh WebP (gồm ảnh nhân vật do tác giả dựng) | **97** tệp (kho có 99; `cong-hoang-hon-poster.webp` ở mục 4e là của bên thứ ba, `gravity-lab-trailer-poster.webp` ở mục 4g là đồng sở hữu). Con số cũ ghi 96 trên 97 là **đếm hụt một tệp**: đo lại tại chính commit đặt ra nó thì kho đã có 98 tệp webp |
 | Ghi âm (tệp âm thanh được git theo dõi, trừ `.claude/`) | 121 tệp, **trong đó 20 tệp trong `assets/audio/bizon/` là đồng sở hữu** |
-| Video | **13** tệp (kho có 16; ba tệp của bên thứ ba: `trangvien-intro.mp4` ở mục 4, `cong-sen-chao.mp4` và `cong-hoang-hon.mp4` ở mục 4e. `trang-web-intro.mp4` ở mục 4f là của tác giả, nhạc nền cũng vậy) |
+| Video | **13** tệp (kho có 17; ba tệp của bên thứ ba: `trangvien-intro.mp4` ở mục 4, `cong-sen-chao.mp4` và `cong-hoang-hon.mp4` ở mục 4e; `gravity-lab-trailer.mp4` ở mục 4g là đồng sở hữu. `trang-web-intro.mp4` ở mục 4f là của tác giả, nhạc nền cũng vậy) |
 
-**Phần đồng sở hữu với Phan Anh Tú.** Hai thứ trong kho này thuộc về hai tác
-giả chứ không phải một: **tạo hình nhân vật của dự án BizOn**, và **hai mươi
-bản thu trong `assets/audio/bizon/`**. Điều này khớp với `LICENSE` của kho
+**Phần đồng sở hữu với Phan Anh Tú.** Ba thứ trong kho này thuộc về hai tác
+giả chứ không phải một: **tạo hình nhân vật của dự án BizOn**, **hai mươi
+bản thu trong `assets/audio/bizon/`**, và **trailer Gravity Lab cùng ảnh bìa
+cắt từ nó** (mục 4g). Điều này khớp với `LICENSE` của kho
 `thuyhuongctu/BizOn`; trước đây hai giấy phép nói khác nhau về cùng một bộ bản
 thu, nay thì không. Xem [`LICENSE`](LICENSE) và
 `ho-so-quyen-tac-gia/05-ung-vien-tiep-theo.md`.
