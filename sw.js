@@ -1,5 +1,5 @@
 /* Service worker - Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v235';
+const CACHE = 'jshuong-v236';
 const CORE = [
   './',
   'index.html',
@@ -48,6 +48,7 @@ const CORE = [
   'assets/img/wct-trailer-poster.webp',
   'assets/img/comdraft-character.webp',
   'assets/img/comdraft-app.webp',
+  'assets/img/cham-tan-loc-poster.webp',
   'assets/img/mekong-sunfire-cover.webp',
   'assets/img/music-cover-ba-cong-con.webp',
   'assets/img/ba-goi-con-ve-poster.webp',
