@@ -172,12 +172,12 @@ html:not([lang="fr"]) .lang-fr{display:none}
 /* ===== clip gioi thieu trong the du an =================================
    Bam moi phat, vi cac clip nay co tieng - khong tu chay khi mo trang.
    Anh nen hien tron khung (height:auto), khong cat. */
-.vthumb{position:relative;display:block;width:100%;margin:0 0 13px;padding:0;border:1px solid var(--line);
+.vthumb,.cthumb{position:relative;display:block;width:100%;margin:0 0 13px;padding:0;border:1px solid var(--line);
   border-radius:12px;overflow:hidden;background:var(--sunk);cursor:pointer}
 /* Anh nen hien tron; clip doc (ban ghi man hinh dien thoai) chi bi thu nho
    cho vua chieu cao toi da de the du an khong cao lech nhau, khong bi cat. */
-.vthumb img{display:block;width:100%;height:auto;max-height:270px;object-fit:contain}
-.vthumb:hover{border-color:var(--clay)}
+.vthumb img,.cthumb img{display:block;width:100%;height:auto;max-height:270px;object-fit:contain}
+.vthumb:hover,.cthumb:hover{border-color:var(--clay)}
 .vplay{position:absolute;inset:0;display:grid;place-items:center;font:400 1.5rem/1 var(--sans);color:#fff;
   text-shadow:0 2px 12px rgba(0,0,0,.55);background:linear-gradient(180deg,rgba(28,24,20,.04),rgba(28,24,20,.34))}
 .vlen{position:absolute;right:8px;bottom:8px;background:rgba(28,24,20,.74);color:#fff;
@@ -956,6 +956,15 @@ footer.wrap{position:relative;overflow:hidden}
         <h3>ComDraft</h3>
         <p><span class="lang-vi">Bộ học liệu học phần Kỹ năng giao tiếp và soạn thảo văn bản: 5 bộ slide có ghi chú, 3 bài thực hành phòng máy, ngân hàng 200 câu và 8 video phụ đề tiếng Việt.</span><span class="lang-en">A complete teaching package for Communication &amp; Document Drafting Skills: five lecture decks with notes, three lab workbooks, a 200-question bank and eight subtitled videos.</span><span class="lang-fr">Ensemble pédagogique pour Communication &amp; rédaction : cinq diaporamas, trois TP, 200 questions, huit vidéos sous-titrées.</span></p>
         <a class="go" href="https://thuyhuongctu.github.io/ComDraft/" target="_blank" rel="noopener"><span class="lang-vi">Mở ComDraft ↗</span><span class="lang-en">Open ComDraft ↗</span><span class="lang-fr">Ouvrir ComDraft ↗</span></a>
+      </div>
+      <div class="tile">
+        <a class="cthumb" href="https://bizonland.com/cham-homestay.html" target="_blank" rel="noopener">
+          <img src="assets/img/cham-tan-loc-poster.webp" width="1000" height="562" loading="lazy" decoding="async"
+               alt="Opening of the CHAM Homestay case: the title “CHAM Homestay: one night on Tân Lộc island” on a cream card, above the case context">
+        </a>
+        <h3>CHAM · Tân Lộc</h3>
+        <p><span class="lang-vi">Dự án homestay sinh thái 6 căn nhà lá trên cù lao Tân Lộc (Cần Thơ), xã đảo từ 07/8/2026 – kế hoạch kinh doanh của tôi, nay là tình huống dạy học trên BizOn. «Một đêm trên cù lao».</span><span class="lang-en">An eco-homestay of six thatched rooms on Tân Lộc river island (Cần Thơ), an island commune since 7 August 2026 – my own business plan, now a teaching case on BizOn. “A night on the river island”.</span><span class="lang-fr">Un écogîte de six maisons au toit de chaume sur l'île fluviale de Tân Lộc (Cần Thơ) – mon propre projet d'entreprise, devenu une étude de cas sur BizOn. « Une nuit sur l'île ».</span></p>
+        <a class="go" href="https://bizonland.com/cham-homestay.html" target="_blank" rel="noopener"><span class="lang-vi">Đọc tình huống ↗</span><span class="lang-en">Read the case ↗</span><span class="lang-fr">Lire l'étude de cas ↗</span></a>
       </div>
       <div class="tile">
         <button class="vthumb" type="button" data-vid="assets/video/gravity-lab-trailer.mp4" data-poster="assets/img/gravity-lab-trailer-poster.webp">
