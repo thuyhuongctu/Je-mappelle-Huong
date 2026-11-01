@@ -343,7 +343,8 @@
         '<div><a href="https://scholar.google.com/citations?user=jSvAVnsAAAAJ" target="_blank" rel="noopener">Google Scholar</a></div>' +
         '<div><a href="https://www.researchgate.net/profile/Do-Thuy-Huong" target="_blank" rel="noopener">ResearchGate</a></div>' +
         '<div><a href="https://osf.io/m25qs/" target="_blank" rel="noopener">OSF</a></div>' +
-        '<div><a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener">GitHub</a></div></div>' +
+        '<div><a href="https://github.com/thuyhuongctu" target="_blank" rel="noopener">GitHub</a></div>' +
+        '<div><a href="https://www.youtube.com/@JemappelleHu%C6%B0%C6%A1ng" target="_blank" rel="noopener">YouTube</a></div></div>' +
 
         '<div class="sf-col"><div class="sf-ch">' + t('Dự án', 'Projects', 'Projets') + '</div>' +
         '<div><a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA</a></div>' +
