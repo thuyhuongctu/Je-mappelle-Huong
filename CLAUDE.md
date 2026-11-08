@@ -87,8 +87,8 @@ tối : --clay-ink #e08055  --on-clay #17130f   (6,2 chữ mực)
   Chữ trắng trên `#e08055` ở chế độ tối chỉ 2,84.
 - `site-chrome.css` viết `var(--clay-ink,var(--accent,#c45c3a))` để trang chưa
   khai vẫn chạy.
-- `vanphong.html` và `trangvien.html` **chưa** chuyển: văn phòng phải sửa cùng
-  lúc với kho Research-Office.
+- `vanphong.html` đã chuyển ngày 08/11/2026, cùng lúc với `index.html` của kho
+  Research-Office. `trangvien.html` **chưa** chuyển.
 
 Ba thứ tiếng bằng lớp `.lang-vi` / `.lang-en` / `.lang-fr`, ẩn hiện theo
 thuộc tính `lang` của `<html>`; khoá nhớ là `huong_lang`, `huong_theme`.
