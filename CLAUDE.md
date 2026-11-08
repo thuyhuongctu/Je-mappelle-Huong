@@ -72,6 +72,24 @@ Dùng chung cho mọi trang, khai lại ở đầu mỗi tệp HTML:
 Mỗi trang tự khai ba lần: mặc định, `@media(prefers-color-scheme:dark)` có bọc
 `:root:not([data-theme=light])`, và `:root[data-theme=dark]`.
 
+**Chữ màu đất nung thì dùng `--clay-ink`, đừng dùng `--clay`/`--accent`** (từ
+08/11/2026). Đất nung `#c45c3a` làm chữ trên nền giấy chỉ đạt **3,4–4,1**, dưới
+ngưỡng WCAG 4,5. Đo bằng axe ra khoảng 200 chỗ trên 11 trang. Nên có hai cặp
+khai cạnh `--clay`/`--accent`:
+
+```
+sáng: --clay-ink #a54d31  --on-clay #fff      (4,57 trên #f3e4da, 5,67 chữ trắng)
+tối : --clay-ink #e08055  --on-clay #17130f   (6,2 chữ mực)
+```
+
+- `--clay` vẫn giữ nguyên cho mảng màu, viền, bản đồ: đấy là neo.
+- Nút nền đất nung có chữ dùng `background:var(--clay-ink);color:var(--on-clay)`.
+  Chữ trắng trên `#e08055` ở chế độ tối chỉ 2,84.
+- `site-chrome.css` viết `var(--clay-ink,var(--accent,#c45c3a))` để trang chưa
+  khai vẫn chạy.
+- `vanphong.html` và `trangvien.html` **chưa** chuyển: văn phòng phải sửa cùng
+  lúc với kho Research-Office.
+
 Ba thứ tiếng bằng lớp `.lang-vi` / `.lang-en` / `.lang-fr`, ẩn hiện theo
 thuộc tính `lang` của `<html>`; khoá nhớ là `huong_lang`, `huong_theme`.
 
