@@ -390,6 +390,17 @@ section[id],span[id]{scroll-margin-top:76px}
 /* projects - clay objects on the desk */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:620px){.grid{grid-template-columns:1fr}}
+/* Dien thoai: luoi Du an cao 3834px (9 the, moi the mot anh phim). Hien 4 the dau,
+   con lai sau nut "Xem them". JS moi gan lop .thu-gon, nen tat JS van thay du 9 the.
+   May tinh hien du, khong doi. */
+.xem-them{display:none}
+@media(max-width:720px){
+  #projects .grid.thu-gon>.tile:nth-child(n+5){display:none}
+  .xem-them{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin:14px 0 0;
+    border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);
+    font:700 .9rem var(--sans,system-ui);cursor:pointer}
+  .xem-them[hidden]{display:none}
+}
 .tile{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;
   box-shadow:var(--press),var(--lift);display:flex;flex-direction:column}
 .tile h3{font-size:1.02rem}
@@ -896,7 +907,7 @@ footer.wrap{position:relative;overflow:hidden}
       <span class="k"><span class="lang-vi">Dự án</span><span class="lang-en">Projects</span><span class="lang-fr">Projets</span></span>
       <h2><span class="lang-vi">Phần mềm cho nghiên cứu và giảng dạy</span><span class="lang-en">Software for research and teaching</span><span class="lang-fr">Logiciels pour la recherche et l'enseignement</span></h2>
     </div>
-    <div class="grid">
+    <div class="grid" id="du-an-luoi">
       <div class="tile">
         <button class="vthumb" type="button" data-vid="assets/video/maida-film.mp4" data-poster="assets/img/maida-film-poster.webp">
           <img src="assets/img/maida-film-poster.webp" width="1000" height="562" loading="lazy" decoding="async" alt="Opening film for M-AIDA: beside the line Many studies. One question. a forest plot builds eight unverified study rows, with a 3D figure of Huong presenting at the right">
@@ -1013,6 +1024,7 @@ footer.wrap{position:relative;overflow:hidden}
         </div>
       </div>
     </div>
+    <button class="xem-them" type="button" hidden aria-expanded="false" aria-controls="du-an-luoi"><span class="lang-vi">Xem thêm <span class="xt-so"></span> dự án</span><span class="lang-en">Show <span class="xt-so"></span> more projects</span><span class="lang-fr">Voir <span class="xt-so"></span> projets de plus</span></button>
     <div class="gardenband">
       <p><span class="lang-vi">Âm nhạc, songbook, trò chơi lịch sử, nhân vật ảo và trang viên 3D sống ở một cửa riêng.</span><span class="lang-en">Music, the songbook, history games, the virtual character and the 3D estate live behind their own door.</span><span class="lang-fr">La musique, le songbook, les jeux, le personnage et le domaine 3D vivent derrière leur propre porte.</span></p>
       <a href="garden.html">🪷 <span class="lang-vi">Mở vườn số →</span><span class="lang-en">Open the digital garden →</span><span class="lang-fr">Ouvrir le jardin numérique →</span></a>
@@ -1235,4 +1247,20 @@ footer.wrap{position:relative;overflow:hidden}
 <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="assets/js/site-chrome.js" defer></script>
 <script src="assets/js/atlas.js" defer></script>
+<script>
+/* Luoi Du an thu gon tren dien thoai (xem CSS .thu-gon). Neo # tro vao the dang an
+   thi tu mo ra, de lien ket tu trang khac khong roi vao khoang trong. */
+(function(){
+  var g=document.getElementById('du-an-luoi'), b=document.querySelector('.xem-them');
+  if(!g||!b) return;
+  var an=g.querySelectorAll(':scope>.tile:nth-child(n+5)').length;
+  if(!an) return;
+  b.querySelectorAll('.xt-so').forEach(function(x){x.textContent=an;});
+  g.classList.add('thu-gon'); b.hidden=false;
+  function mo(){ g.classList.remove('thu-gon'); b.hidden=true; b.setAttribute('aria-expanded','true'); }
+  b.addEventListener('click',function(){ mo(); var t=g.querySelectorAll(':scope>.tile')[4]; if(t){ var l=t.querySelector('a,button'); if(l) l.focus({preventScroll:false}); } });
+  function theoNeo(){ var h=location.hash&&document.getElementById(location.hash.slice(1)); if(h&&g.contains(h)) mo(); }
+  theoNeo(); addEventListener('hashchange',theoNeo);
+})();
+</script>
 </body></html>
