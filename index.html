@@ -103,8 +103,10 @@ html:not([lang="fr"]) .lang-fr{display:none}
 /* ===== dai phim dau trang: clip la co, tu phat, khong tieng =============
    Chieu cao co gioi han de ten nguoi van nam trong man hinh dau tien. */
 /* ===== dai phim dau trang: clip la co, tu phat, khong tieng =============
-   Chieu cao co gioi han de ten nguoi van nam trong man hinh dau tien. */
-.herofilm{position:relative;aspect-ratio:16/9;margin:14px 0 0;border-radius:22px;overflow:hidden;
+   Dat SAU khoi ten (.hero), khong phai truoc. Truoc 08/11/2026 phim dung dau va
+   cao 461px o 1280x800, nen ten nam o 660-709px va nut Cong bo/CV o 915px:
+   khach mo trang thay anh truoc, phai cuon moi biet day la ai. */
+.herofilm{position:relative;aspect-ratio:16/9;margin:0 0 clamp(8px,2vw,18px);border-radius:22px;overflow:hidden;
   border:1px solid var(--line);box-shadow:var(--press),var(--lift);background:var(--sunk)}
 /* contain, khong cover: thu nho cho vua khung chu khong cat mat phan nao cua hinh */
 .herofilm img,.herofilm video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
@@ -513,17 +515,6 @@ footer.wrap{position:relative;overflow:hidden}
 
 <main class="wrap" id="main">
 
-  <figure class="herofilm">
-    <img src="assets/img/hero-co-poster.webp" width="854" height="480" fetchpriority="high"
-         alt="Do Thuy Huong in a white ao dai holding the Vietnamese flag on a riverbank lined with clay pots at sunset">
-    <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-    <button class="filmsound" id="filmsound" type="button" hidden aria-pressed="false">
-      <span class="fsico" aria-hidden="true">🔇</span>
-      <span class="fslabel"><span class="lang-vi">Bật tiếng</span><span class="lang-en">Sound on</span><span class="lang-fr">Activer le son</span></span>
-    </button>
-  </figure>
-
-
   <div class="hero">
     <div>
       <div class="byline">
@@ -562,6 +553,17 @@ footer.wrap{position:relative;overflow:hidden}
       </div>
     </figure>
   </div>
+
+
+  <figure class="herofilm">
+    <img src="assets/img/hero-co-poster.webp" width="854" height="480" fetchpriority="high"
+         alt="Do Thuy Huong in a white ao dai holding the Vietnamese flag on a riverbank lined with clay pots at sunset">
+    <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+    <button class="filmsound" id="filmsound" type="button" hidden aria-pressed="false">
+      <span class="fsico" aria-hidden="true">🔇</span>
+      <span class="fslabel"><span class="lang-vi">Bật tiếng</span><span class="lang-en">Sound on</span><span class="lang-fr">Activer le son</span></span>
+    </button>
+  </figure>
 
 
   <section class="tour rv" id="tour">
