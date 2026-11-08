@@ -170,8 +170,12 @@ html:not([lang="fr"]) .lang-fr{display:none}
   background:radial-gradient(118% 96% at 28% 16%,var(--surface) 8%,var(--sunk))}
 #claysan{position:relative;width:100%;aspect-ratio:1/1}
 .claypost{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s ease}
-@media(max-width:720px){.heroart{justify-self:center;max-width:min(306px,42vh);max-height:42vh}}
-@media(max-width:560px){.heroart{max-width:min(250px,42vh)}.avatar{width:54px;height:54px}}
+/* Chan dung nho canh chuc danh (.avatar) va anh lon ben phai (.heroart) la CUNG MOT tep
+   huong_clay_portrait.webp. clayhero.js (canh 3D thay anh) khong duoc nap o trang nay, nen
+   truoc 08/11/2026 hai ban hien canh nhau. May tinh giu anh lon, dien thoai giu anh nho. */
+@media(min-width:721px){.byline .avatar{display:none}}
+@media(max-width:720px){.heroart{display:none}}
+@media(max-width:560px){.avatar{width:54px;height:54px}}
 
 /* ===== clip gioi thieu trong the du an =================================
    Bam moi phat, vi cac clip nay co tieng - khong tu chay khi mo trang.
@@ -554,7 +558,6 @@ footer.wrap{position:relative;overflow:hidden}
     </figure>
   </div>
 
-
   <figure class="herofilm">
     <img src="assets/img/hero-co-poster.webp" width="854" height="480" fetchpriority="high"
          alt="Do Thuy Huong in a white ao dai holding the Vietnamese flag on a riverbank lined with clay pots at sunset">
@@ -564,7 +567,6 @@ footer.wrap{position:relative;overflow:hidden}
       <span class="fslabel"><span class="lang-vi">Bật tiếng</span><span class="lang-en">Sound on</span><span class="lang-fr">Activer le son</span></span>
     </button>
   </figure>
-
 
   <section class="tour rv" id="tour">
     <h2><span class="lang-vi">Một phút đi qua trang này</span><span class="lang-en">One minute through this site</span><span class="lang-fr">Une minute à travers ce site</span></h2>
@@ -576,21 +578,6 @@ footer.wrap{position:relative;overflow:hidden}
       <span class="vsr"><span class="lang-vi">Xem phim giới thiệu trang</span><span class="lang-en">Watch the site walkthrough</span><span class="lang-fr">Voir la visite du site</span></span>
     </button>
   </section>
-
-  <figure class="vnband rv">
-    <div class="vnmap3d">
-      <img src="assets/img/vn-map-3d.webp" width="768" height="1376" loading="lazy" decoding="async"
-           alt="Three-dimensional clay map of Vietnam divided by economic region, with the Hoàng Sa and Trường Sa archipelagos offshore">
-      <span class="vnlb" style="left:73.3%;top:10.2%"><span class="lang-vi">Miền Bắc</span><span class="lang-en">Northern Vietnam</span><span class="lang-fr">Nord</span></span>
-      <span class="vnlb sea" style="left:84.0%;top:28.9%"><span class="lang-vi">Hoàng Sa</span><span class="lang-en">Hoàng Sa</span><span class="lang-fr">Hoàng Sa</span></span>
-      <span class="vnlb" style="left:36.8%;top:40.0%"><span class="lang-vi">Miền Trung</span><span class="lang-en">Central Vietnam</span><span class="lang-fr">Centre</span></span>
-      <span class="vnlb" style="left:49.9%;top:61.4%"><span class="lang-vi">Tây Nguyên</span><span class="lang-en">Central Highlands</span><span class="lang-fr">Hauts Plateaux</span></span>
-      <span class="vnlb wide" style="left:24.5%;top:74.3%"><span class="lang-vi">Đồng bằng sông Cửu Long</span><span class="lang-en">Mekong Delta</span><span class="lang-fr">Delta du Mékong</span></span>
-      <span class="vnlb" style="left:60.0%;top:86.0%"><span class="lang-vi">Nam Bộ</span><span class="lang-en">Southern Vietnam</span><span class="lang-fr">Sud</span></span>
-      <span class="vnlb sea right" style="left:97.0%;top:81.0%"><span class="lang-vi">Trường Sa</span><span class="lang-en">Trường Sa</span><span class="lang-fr">Trường Sa</span></span>
-    </div>
-    <figcaption><span class="lang-vi">Bản đồ trong <a href="https://bizonland.com/" target="_blank" rel="noopener">BizOn</a> — trò chơi mô phỏng khởi nghiệp tôi dựng cho lớp học. Quần đảo Hoàng Sa và Trường Sa thuộc chủ quyền Việt Nam.</span><span class="lang-en">The map from <a href="https://bizonland.com/" target="_blank" rel="noopener">BizOn</a>, the business simulation game I built for my classroom. The Hoàng Sa and Trường Sa archipelagos are Vietnamese sovereign territory.</span><span class="lang-fr">La carte de <a href="https://bizonland.com/" target="_blank" rel="noopener">BizOn</a>, le jeu de simulation d’entreprise que j’ai conçu pour mes cours. Les archipels de Hoàng Sa et Trường Sa relèvent de la souveraineté vietnamienne.</span></figcaption>
-  </figure>
 
   <section id="research" class="rv">
     <span id="about"></span>
@@ -1032,6 +1019,21 @@ footer.wrap{position:relative;overflow:hidden}
     </div>
   </section>
 
+  <figure class="vnband rv">
+    <div class="vnmap3d">
+      <img src="assets/img/vn-map-3d.webp" width="768" height="1376" loading="lazy" decoding="async"
+           alt="Three-dimensional clay map of Vietnam divided by economic region, with the Hoàng Sa and Trường Sa archipelagos offshore">
+      <span class="vnlb" style="left:73.3%;top:10.2%"><span class="lang-vi">Miền Bắc</span><span class="lang-en">Northern Vietnam</span><span class="lang-fr">Nord</span></span>
+      <span class="vnlb sea" style="left:84.0%;top:28.9%"><span class="lang-vi">Hoàng Sa</span><span class="lang-en">Hoàng Sa</span><span class="lang-fr">Hoàng Sa</span></span>
+      <span class="vnlb" style="left:36.8%;top:40.0%"><span class="lang-vi">Miền Trung</span><span class="lang-en">Central Vietnam</span><span class="lang-fr">Centre</span></span>
+      <span class="vnlb" style="left:49.9%;top:61.4%"><span class="lang-vi">Tây Nguyên</span><span class="lang-en">Central Highlands</span><span class="lang-fr">Hauts Plateaux</span></span>
+      <span class="vnlb wide" style="left:24.5%;top:74.3%"><span class="lang-vi">Đồng bằng sông Cửu Long</span><span class="lang-en">Mekong Delta</span><span class="lang-fr">Delta du Mékong</span></span>
+      <span class="vnlb" style="left:60.0%;top:86.0%"><span class="lang-vi">Nam Bộ</span><span class="lang-en">Southern Vietnam</span><span class="lang-fr">Sud</span></span>
+      <span class="vnlb sea right" style="left:97.0%;top:81.0%"><span class="lang-vi">Trường Sa</span><span class="lang-en">Trường Sa</span><span class="lang-fr">Trường Sa</span></span>
+    </div>
+    <figcaption><span class="lang-vi">Bản đồ trong <a href="https://bizonland.com/" target="_blank" rel="noopener">BizOn</a> — trò chơi mô phỏng khởi nghiệp tôi dựng cho lớp học. Quần đảo Hoàng Sa và Trường Sa thuộc chủ quyền Việt Nam.</span><span class="lang-en">The map from <a href="https://bizonland.com/" target="_blank" rel="noopener">BizOn</a>, the business simulation game I built for my classroom. The Hoàng Sa and Trường Sa archipelagos are Vietnamese sovereign territory.</span><span class="lang-fr">La carte de <a href="https://bizonland.com/" target="_blank" rel="noopener">BizOn</a>, le jeu de simulation d’entreprise que j’ai conçu pour mes cours. Les archipels de Hoàng Sa et Trường Sa relèvent de la souveraineté vietnamienne.</span></figcaption>
+  </figure>
+
   <section id="inspiration" class="rv">
     <div class="note">
       <blockquote>
@@ -1044,7 +1046,6 @@ footer.wrap{position:relative;overflow:hidden}
   </section>
 
 </main>
-
 
 <script>
 /* language: VI | EN in the bar, FR in the menu - shared key with the rest of the site */
