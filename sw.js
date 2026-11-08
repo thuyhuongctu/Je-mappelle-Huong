@@ -1,5 +1,5 @@
 /* Service worker - Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v257';
+const CACHE = 'jshuong-v260';
 const CORE = [
   './',
   'index.html',
@@ -58,8 +58,9 @@ const CORE = [
   'assets/img/vn-outline.svg',
   'assets/img/huong_clay_full.webp',
   'assets/img/huong-ai-chan-dung.webp',
-  'assets/img/lr-je-mappelle-huong.webp',
+  'assets/img/lr-je-mappelle-huong-480.webp',
   'assets/img/lr-seal-round.webp',
+  'assets/img/lr-seal-round-144.webp',
   'assets/img/garden_hub.webp',
   'assets/img/greet_hero.webp',
   'assets/img/huong-ai-chan-dung.webp',
@@ -77,8 +78,8 @@ const CORE = [
   'assets/img/cheo-xuong-dong-sen.webp',
   'assets/img/huong_chi.webp',
   'assets/img/huong_xedap_full.webp',
-  'assets/img/huong_silver_tablet.webp',
-  'assets/img/huong_silver_room.webp',
+  'assets/img/huong_silver_tablet-480.webp',
+  'assets/img/huong_silver_room-480.webp',
   'assets/img/pose_gioithieu_fix.webp',
   'assets/img/pose_gioithieu2_fix.webp',
   'assets/img/pose_reo_fix.webp',
