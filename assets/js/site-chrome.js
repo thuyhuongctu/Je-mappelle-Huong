@@ -203,7 +203,9 @@
       if (nn) nn.addEventListener('click', function () {
         /* assets/js/music.js dung nut nhac noi #hm-nut; bam ho nguoi doc. */
         var hm = document.getElementById('hm-nut');
-        if (hm) { hm.click(); hm.scrollIntoView({ block: 'nearest' }); }
+        if (hm) { hm.click(); hm.scrollIntoView({ block: 'nearest' }); return; }
+        /* Trang khong nap music.js thi dua sang trang Am nhac, dung de nut bam ma im lang. */
+        location.href = 'music.html';
       });
       veDongHo();
     }
