@@ -509,12 +509,36 @@ GSAP, Iconify, Google Fonts, và ảnh từ kho Supabase riêng của tác giả
 
 ## Kiểm bằng trình duyệt thật
 
-Dùng Playwright với Chromium sẵn có:
+**Playwright chạy ở Node, không ở Python.** Đo lại 10/11/2026: không bản
+`python3` nào trong máy `import playwright` được — cả `/usr/bin/python3` lẫn
+`python3` mặc định đều không. Gói nằm ở
+`/opt/node-tools/node_modules/playwright` (1.63.0). Ghi chú cũ bảo dùng bản
+Python ở `/usr/bin/python3`; nay sai, đừng thử lại.
 
+```js
+import pw from '/opt/node-tools/node_modules/playwright/index.js';
+const { chromium } = pw;
+const b = await chromium.launch({
+  executablePath: '/opt/pw-browsers/chromium',
+  args: ['--enable-unsafe-swiftshader', '--use-gl=swiftshader'] });
 ```
-executable_path=/opt/pw-browsers/chromium
-args=["--enable-unsafe-swiftshader","--use-gl=swiftshader"]
-```
+
+Riêng dòng `import` ấy vấp hai lần mới qua, cả hai đều không đoán ra:
+
+- **`import ... from 'playwright'` không tìm ra gói** nếu script nằm ngoài
+  `/opt/node-tools` (`ERR_MODULE_NOT_FOUND`): ESM phân giải theo thư mục của
+  chính tệp script, và `NODE_PATH` không áp dụng cho ESM. Phải viết đường dẫn
+  tuyệt đối. Đứng ở `/opt/node-tools` mà chạy thì cũng được, nhưng script
+  vẫn phải nằm trong đó.
+- **Gói là CommonJS**, nên `import { chromium } from '…/index.js'` báo
+  «Named export 'chromium' not found». Phải nhập mặc định rồi rút ra, như trên.
+
+Máy chủ thử tại chỗ thì viết luôn bằng `http` của Node cho cùng một tiến
+trình — khỏi phải bắc cầu sang Python, và Node vốn đa luồng nên không dính
+chỗ nghẽn ở mục «Đo thế nào». Muốn kiểm `manifest.webmanifest` thì
+`fetch` thẳng rồi `json()` ngay trong script ấy, không cần trình duyệt: cách
+này bắt được JSON hỏng và đối chiếu được từng `url` của `shortcuts` với tệp
+có thật.
 
 Ba giới hạn của môi trường kiểm, **không phải lỗi của trang**:
 
@@ -750,8 +774,10 @@ sẵn, còn gói `imageio-ffmpeg` thì **không** cài được nữa (`pip inst
 xong mà `import` vẫn hỏng). Nên cứ `command -v ffmpeg ffprobe` trước, đừng tin
 dòng này.
 
-Cũng vậy: `numpy` chỉ có ở `/usr/bin/python3` (bản chạy Playwright), không có ở
-`python3` mặc định. Lúc cần cả hai thứ thì dùng `/usr/bin/python3`.
+Cũng vậy, đo 10/11/2026: `numpy` chỉ có ở `/usr/bin/python3`, không có ở
+`python3` mặc định; `PIL` thì **cả hai** bản đều có; `cv2` thì **không bản
+nào** có. Dòng này trước đây gọi `/usr/bin/python3` là «bản chạy Playwright» —
+nay không còn đúng, xem mục «Kiểm bằng trình duyệt thật».
 
 ### Mã lại hay chép nguyên dòng, tuỳ nguồn
 
