@@ -1,5 +1,5 @@
 /* Service worker - Je m'appelle Hương (trang học thuật cá nhân) */
-const CACHE = 'jshuong-v263';
+const CACHE = 'jshuong-v264';
 const CORE = [
   './',
   'index.html',
@@ -104,6 +104,10 @@ const CORE = [
   'icons/icon-maskable-192.png',
   'icons/icon-maskable-512.png',
   'icons/apple-touch-icon.png',
+  'icons/shortcut-trangvien.png',
+  'icons/shortcut-vanphong.png',
+  'icons/shortcut-garden.png',
+  'icons/shortcut-music.png',
   'zenodo-stats.js',
   'sitemap.xml',
   'robots.txt'
