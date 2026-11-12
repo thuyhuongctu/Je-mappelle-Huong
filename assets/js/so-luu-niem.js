@@ -181,9 +181,9 @@
       body: d
     }).then(function () {
       mau.reset();
-      noiBao(t('Đã gửi. Cảm ơn bạn đã ghé qua — Hương sẽ đọc.',
-               'Sent. Thank you for passing by — Hương will read it.',
-               'Envoyé. Merci de votre passage — Hương le lira.'), 'xong');
+      noiBao(t('Đã gửi. Cảm ơn bạn đã ghé qua, Hương sẽ đọc.',
+               'Sent. Thank you for passing by; Hương will read it.',
+               'Envoyé. Merci de votre passage ; Hương le lira.'), 'xong');
     }).catch(function () {
       noiBao(t('Không gửi được. Xin thử lại, hoặc nhắn thư về thuyhuongctu@gmail.com',
                'It would not send. Please try again, or write to thuyhuongctu@gmail.com',

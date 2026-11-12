@@ -2,7 +2,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Đỗ Thùy Hương · Do Thuy Huong - PhD Candidate, Can Tho University</title>
 <meta name="description" content="Do Thuy Huong - PhD candidate at Can Tho University. Research on internationalization and firm performance in Asia: WBES firm-level data, meta-analysis, institutions. Publications, teaching and CV.">
-<link rel="canonical" href="https://thuyhuongctu.github.io/Je-mappelle-Huong/">
+<link rel="canonical" href="https://jemappellehuong.com/">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="icon" href="favicon.ico" sizes="48x48">
@@ -13,14 +13,14 @@
 <meta property="og:title" content="Đỗ Thùy Hương · Do Thuy Huong - PhD Candidate, Can Tho University">
 <meta property="og:description" content="Research on internationalization and firm performance in Asia: WBES firm-level data, meta-analysis, institutions. Publications, teaching and CV.">
 <meta property="og:type" content="profile">
-<meta property="og:url" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/">
-<meta property="og:image" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/assets/img/og-default-2.jpg">
+<meta property="og:url" content="https://jemappellehuong.com/">
+<meta property="og:image" content="https://jemappellehuong.com/assets/img/og-default-2.jpg">
 <style>
 /* ===== Academic clay: paper + ink + terracotta =========================== */
 :root{
   --paper:#f6f1e7;--surface:#fffcf5;--sunk:#efe8dc;
   --ink:#1c1814;--muted:#6f6459;--line:#e2d8c7;
-  --clay:#c45c3a;--clay-soft:#f3e4da;--river:#3f6f68;--amber:#b8842c;
+  --clay:#c45c3a;--clay-ink:#a54d31;--on-clay:#fff;--clay-soft:#f3e4da;--river:#3f6f68;--amber:#b8842c;
   --serif:"Iowan Old Style",Georgia,"Times New Roman",serif;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --lift:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09);
@@ -32,13 +32,13 @@
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){
   --paper:#17130f;--surface:#201914;--sunk:#120e0b;
   --ink:#efe6d8;--muted:#a6998a;--line:#332a22;
-  --clay:#e08055;--clay-soft:#3a251c;--river:#79b3a6;--amber:#d6a24e;
+  --clay:#e08055;--clay-ink:#e08055;--on-clay:#17130f;--clay-soft:#3a251c;--river:#79b3a6;--amber:#d6a24e;
   --lift:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42);
   --press:inset 0 2px 0 rgba(255,255,255,.05),inset 0 -2px 0 rgba(0,0,0,.28)}}
 :root[data-theme=dark]{
   --paper:#17130f;--surface:#201914;--sunk:#120e0b;
   --ink:#efe6d8;--muted:#a6998a;--line:#332a22;
-  --clay:#e08055;--clay-soft:#3a251c;--river:#79b3a6;--amber:#d6a24e;
+  --clay:#e08055;--clay-ink:#e08055;--on-clay:#17130f;--clay-soft:#3a251c;--river:#79b3a6;--amber:#d6a24e;
   --lift:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42);
   --press:inset 0 2px 0 rgba(255,255,255,.05),inset 0 -2px 0 rgba(0,0,0,.28)}
 
@@ -47,11 +47,11 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.62 var(--sans);-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance;letter-spacing:-.01em}
 a{color:var(--river)}
-a:hover{color:var(--clay)}
+a:hover{color:var(--clay-ink)}
 img{max-width:100%}
 :focus-visible{outline:2.5px solid var(--clay);outline-offset:2px;border-radius:6px}
 .wrap{max-width:var(--w);margin:0 auto;padding-inline:20px}
-.skip{position:fixed;left:12px;top:-60px;z-index:200;background:var(--clay);color:#fff;font:700 .8rem var(--sans);padding:8px 14px;border-radius:8px;text-decoration:none;transition:top .2s}
+.skip{position:fixed;left:12px;top:-60px;z-index:200;background:var(--clay-ink);color:var(--on-clay);font:700 .8rem var(--sans);padding:8px 14px;border-radius:8px;text-decoration:none;transition:top .2s}
 .skip:focus{top:10px}
 /* language visibility - same contract as the rest of the site */
 html[lang="en"] .lang-vi{display:none}
@@ -59,6 +59,14 @@ html:not([lang="en"]) .lang-en{display:none}
 html[lang="fr"] .lang-vi{display:none}
 html[lang="fr"] .lang-en{display:none}
 html:not([lang="fr"]) .lang-fr{display:none}
+.tour{max-width:900px;margin:34px auto 0;text-align:center}
+.tour h2{font-size:1.12rem;margin:0 0 4px}
+.tour p{margin:0 0 13px;font-size:.92rem;color:var(--muted)}
+.tour .vthumb{margin:0}
+/* Bo phat thay the .vthumb bang mot the <video> TRAN, khong thua kieu nao.
+   Trong .tile da co quy tac rieng; o day thi khong, nen video hien ra dung
+   be ngang goc 960px va day ca trang truot ngang tren dien thoai. */
+.tour video{display:block;width:100%;height:auto;border-radius:12px;background:#0e0c0b}
 
 /* ===== header: one row, identity first ================================== */
 .top{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);
@@ -71,12 +79,12 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .mainnav{display:flex;gap:2px;margin-left:auto}
 .mainnav a{font:600 .82rem var(--sans);color:var(--muted);text-decoration:none;padding:7px 10px;border-radius:9px}
 .mainnav a:hover{color:var(--ink);background:var(--sunk)}
-.mainnav a.garden{color:var(--clay)}
+.mainnav a.garden{color:var(--clay-ink)}
 .ctl{display:flex;align-items:center;gap:7px;flex-shrink:0}
 .mainnav+.ctl{margin-left:6px}
 .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
 .lang button{border:0;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:8px 11px;cursor:pointer}
-.lang button.on{background:var(--clay);color:#fff}
+.lang button.on{background:var(--clay-ink);color:var(--on-clay)}
 .morebtn{width:32px;height:32px;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--muted);
   font:700 1rem/1 var(--sans);cursor:pointer;box-shadow:var(--press)}
 .morebtn:hover{color:var(--ink);border-color:var(--clay)}
@@ -86,8 +94,8 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .menu h4:first-child{margin-top:2px}
 .menu a,.menu button{display:flex;width:100%;align-items:center;gap:8px;text-align:left;background:none;border:0;
   font:500 .85rem var(--sans);color:var(--ink);text-decoration:none;padding:7px 8px;border-radius:10px;cursor:pointer}
-.menu a:hover,.menu button:hover{background:var(--sunk);color:var(--clay)}
-.menu button.on{background:var(--clay);color:#fff;font-weight:600}
+.menu a:hover,.menu button:hover{background:var(--sunk);color:var(--clay-ink)}
+.menu button.on{background:var(--clay-ink);color:var(--on-clay);font-weight:600}
 .menu .navdup{display:none}
 @media(max-width:860px){.mainnav{display:none}.menu .navdup{display:flex}.mark small{display:none}}
 @media(max-width:400px){.mark b{font-size:.84rem}}
@@ -95,8 +103,10 @@ html:not([lang="fr"]) .lang-fr{display:none}
 /* ===== dai phim dau trang: clip la co, tu phat, khong tieng =============
    Chieu cao co gioi han de ten nguoi van nam trong man hinh dau tien. */
 /* ===== dai phim dau trang: clip la co, tu phat, khong tieng =============
-   Chieu cao co gioi han de ten nguoi van nam trong man hinh dau tien. */
-.herofilm{position:relative;aspect-ratio:16/9;margin:14px 0 0;border-radius:22px;overflow:hidden;
+   Dat SAU khoi ten (.hero), khong phai truoc. Truoc 08/11/2026 phim dung dau va
+   cao 461px o 1280x800, nen ten nam o 660-709px va nut Cong bo/CV o 915px:
+   khach mo trang thay anh truoc, phai cuon moi biet day la ai. */
+.herofilm{position:relative;aspect-ratio:16/9;margin:0 0 clamp(8px,2vw,18px);border-radius:22px;overflow:hidden;
   border:1px solid var(--line);box-shadow:var(--press),var(--lift);background:var(--sunk)}
 /* contain, khong cover: thu nho cho vua khung chu khong cat mat phan nao cua hinh */
 .herofilm img,.herofilm video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
@@ -125,7 +135,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(20px,4vw,40px);align-items:center;
   padding-block:clamp(30px,6vw,54px) clamp(24px,4vw,38px)}
 @media(max-width:720px){.hero{grid-template-columns:1fr;gap:24px}}
-.eyebrow{font:700 .68rem var(--sans);letter-spacing:.17em;text-transform:uppercase;color:var(--clay);margin:0 0 10px}
+.eyebrow{font:700 .68rem var(--sans);letter-spacing:.17em;text-transform:uppercase;color:var(--clay-ink);margin:0 0 10px}
 .hero h1{font-size:clamp(2rem,6vw,2.9rem);line-height:1.06;margin:0 0 12px}
 .affil{color:var(--muted);font-size:.94rem;margin:0 0 18px}
 .affil b{color:var(--ink);font-weight:600}
@@ -141,10 +151,12 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .btn{display:inline-flex;align-items:center;gap:7px;font:600 .85rem var(--sans);text-decoration:none;
   border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:11px;padding:9px 16px;
   box-shadow:var(--press),var(--lift)}
-.btn:hover{border-color:var(--clay);color:var(--clay)}
-.btn.primary{background:var(--clay);border-color:var(--clay);color:#fff;box-shadow:inset 0 2px 0 rgba(255,255,255,.22),var(--lift)}
-.btn.primary:hover{background:#ad4e2f;color:#fff}
-:root[data-theme=dark] .btn.primary,:root:not([data-theme=light]) .btn.primary{color:#1c1814}
+.btn:hover{border-color:var(--clay);color:var(--clay-ink)}
+.btn.primary{background:var(--clay-ink);border-color:var(--clay-ink);color:var(--on-clay);box-shadow:inset 0 2px 0 rgba(255,255,255,.22),var(--lift)}
+/* Nut chinh: nen --clay-ink (sang #a54d31 / toi #e08055) va chu --on-clay (trang / muc).
+   Ban cu dat chu muc bang :root:not([data-theme=light]) ma KHONG boc @media, nen o che do
+   sang chu cung thanh muc tren dat nung: 4,15, duoi nguong 4,5. */
+.btn.primary:hover{filter:brightness(.9);color:var(--on-clay)}
 /* chan dung nho dat canh ten - giu mat nguoi o dau trang */
 .byline{display:flex;align-items:center;gap:13px;margin:0 0 14px}
 .byline .eyebrow{margin:0}
@@ -158,18 +170,22 @@ html:not([lang="fr"]) .lang-fr{display:none}
   background:radial-gradient(118% 96% at 28% 16%,var(--surface) 8%,var(--sunk))}
 #claysan{position:relative;width:100%;aspect-ratio:1/1}
 .claypost{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s ease}
-@media(max-width:720px){.heroart{justify-self:center;max-width:min(306px,42vh);max-height:42vh}}
-@media(max-width:560px){.heroart{max-width:min(250px,42vh)}.avatar{width:54px;height:54px}}
+/* Chan dung nho canh chuc danh (.avatar) va anh lon ben phai (.heroart) la CUNG MOT tep
+   huong_clay_portrait.webp. clayhero.js (canh 3D thay anh) khong duoc nap o trang nay, nen
+   truoc 08/11/2026 hai ban hien canh nhau. May tinh giu anh lon, dien thoai giu anh nho. */
+@media(min-width:721px){.byline .avatar{display:none}}
+@media(max-width:720px){.heroart{display:none}}
+@media(max-width:560px){.avatar{width:54px;height:54px}}
 
 /* ===== clip gioi thieu trong the du an =================================
    Bam moi phat, vi cac clip nay co tieng - khong tu chay khi mo trang.
    Anh nen hien tron khung (height:auto), khong cat. */
-.vthumb{position:relative;display:block;width:100%;margin:0 0 13px;padding:0;border:1px solid var(--line);
+.vthumb,.cthumb{position:relative;display:block;width:100%;margin:0 0 13px;padding:0;border:1px solid var(--line);
   border-radius:12px;overflow:hidden;background:var(--sunk);cursor:pointer}
 /* Anh nen hien tron; clip doc (ban ghi man hinh dien thoai) chi bi thu nho
    cho vua chieu cao toi da de the du an khong cao lech nhau, khong bi cat. */
-.vthumb img{display:block;width:100%;height:auto;max-height:270px;object-fit:contain}
-.vthumb:hover{border-color:var(--clay)}
+.vthumb img,.cthumb img{display:block;width:100%;height:auto;max-height:270px;object-fit:contain}
+.vthumb:hover,.cthumb:hover{border-color:var(--clay)}
 .vplay{position:absolute;inset:0;display:grid;place-items:center;font:400 1.5rem/1 var(--sans);color:#fff;
   text-shadow:0 2px 12px rgba(0,0,0,.55);background:linear-gradient(180deg,rgba(28,24,20,.04),rgba(28,24,20,.34))}
 .vlen{position:absolute;right:8px;bottom:8px;background:rgba(28,24,20,.74);color:#fff;
@@ -185,7 +201,7 @@ section{padding-block:clamp(26px,4vw,40px);border-top:1px solid var(--line)}
    tieu de muc chui xuong duoi no. */
 section[id],span[id]{scroll-margin-top:76px}
 .shead{margin:0 0 18px}
-.shead .k{font:700 .64rem var(--sans);letter-spacing:.17em;text-transform:uppercase;color:var(--clay)}
+.shead .k{font:700 .64rem var(--sans);letter-spacing:.17em;text-transform:uppercase;color:var(--clay-ink)}
 .shead h2{font-size:1.5rem;margin:4px 0 0}
 .shead p{color:var(--muted);font-size:.92rem;margin:8px 0 0;max-width:62ch}
 .lead{max-width:64ch;margin:0 0 16px}
@@ -198,6 +214,75 @@ section[id],span[id]{scroll-margin-top:76px}
 /* Ban do atlas: khung du lieu cua luan an. Ve bang SVG noi tuyen chu khong
    phai anh, de mau tu doi theo che do sang/toi va de trinh doc man hinh doc
    duoc ten tung nen kinh te qua the <title> trong moi hinh. */
+/* Atlas chi so: choropleth the gioi dat NGAY DUOI ban do khung du lieu. Day la
+   boi canh, khong phai du lieu luan an - chu thich noi ro dieu do. Nang 171 KB
+   du lieu nen atlas.js chi nap khi khoi nay vao khung nhin. */
+.atlchi{margin:18px 0 0;background:var(--surface);border:1px solid var(--line);
+  border-radius:22px;padding:16px;box-shadow:0 8px 24px rgba(28,24,20,.08),var(--press);
+  --atl-b0:#d7e6e0;--atl-b1:#a9cfc4;--atl-b2:#6aada0;--atl-b3:#2f7a6e;--atl-b4:#143e38;
+  --atl-thieu:var(--line)}
+:root[data-theme=dark] .atlchi{--atl-thieu:#3a342c}
+.atlchi .atl-tab{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px;padding:0}
+.atlchi .atl-nut{font:inherit;font-size:.78rem;font-weight:600;color:var(--muted);
+  background:none;border:1px solid var(--line);border-radius:99px;padding:5px 11px;cursor:pointer}
+.atlchi .atl-nut b{color:var(--accent2);font-weight:700;margin-right:3px}
+.atlchi .atl-nut.on{color:var(--ink);border-color:var(--accent2);background:var(--sunk)}
+.atlchi .atl-nut:hover{border-color:var(--accent2)}
+.atlchi .atl-khung{display:grid;grid-template-columns:minmax(0,1fr) 228px;gap:16px;align-items:start}
+@media(max-width:760px){.atlchi .atl-khung{grid-template-columns:minmax(0,1fr)}}
+.atlchi .atl-san{position:relative;min-height:120px}
+.atlchi .atl-ve{border-radius:14px;overflow:hidden;background:var(--sunk);min-height:120px}
+.atlchi .atl-cho{margin:0;padding:38px 10px;text-align:center;color:var(--muted);font-size:.86rem}
+.atlchi .atl-svg{display:block;width:100%;height:auto}
+.atlchi .atl-cau{fill:var(--sunk);stroke:var(--line)}
+.atlchi .atl-luoi{fill:none;stroke:var(--line);stroke-width:.5;opacity:.55}
+.atlchi .atl-vien{fill:none;stroke:var(--surface);stroke-width:.4;opacity:.75}
+.atlchi .atl-ve{position:relative;cursor:grab;touch-action:none}
+.atlchi .atl-ve.dang-keo{cursor:grabbing}
+.atlchi .atl-svg:focus-visible{outline:2px solid var(--accent2);outline-offset:-2px}
+.atlchi .atl-nuoc{cursor:pointer;stroke:none}
+/* Net phai giu nguyen be khi phong to, neu khong zoom 24 lan thi vien day
+   bang ca nuoc. vector-effect lo viec ay, khong phai tinh lai stroke-width. */
+.atlchi .atl-vien,.atlchi .atl-luoi,.atlchi .atl-cau,
+.atlchi .atl-nuoc{vector-effect:non-scaling-stroke}
+.atlchi .atl-dieu{position:absolute;right:10px;bottom:10px;display:grid;gap:5px}
+.atlchi .atl-dieu button{width:30px;height:30px;font:inherit;font-size:.96rem;line-height:1;
+  color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:9px;
+  cursor:pointer;box-shadow:0 2px 8px rgba(28,24,20,.12)}
+.atlchi .atl-dieu button:hover{border-color:var(--accent2);color:var(--accent2)}
+.atlchi .atl-meo{position:absolute;pointer-events:none;background:var(--surface);
+  border:1px solid var(--line);border-radius:9px;padding:6px 9px;font-size:.74rem;
+  box-shadow:0 4px 14px rgba(28,24,20,.14);max-width:170px}
+.atlchi .atl-meo b{display:block;color:var(--ink)}
+.atlchi .atl-meo span{color:var(--muted)}
+.atlchi .atl-doc-giua{margin:9px 0 0}
+.atlchi .atl-giua{font:inherit;font-size:.76rem;color:var(--accent2);background:none;border:0;
+  padding:0;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.atlchi .atl-giua:hover{color:var(--clay-ink)}
+.atlchi .atl-nuoc:hover{stroke:var(--ink);stroke-width:.8}
+.atlchi .atl-chon{stroke:var(--clay);stroke-width:1.4;paint-order:stroke}
+/* Chu giai noi tren ban do nhu ban goc: de nguyen o cot phai thi cot ay
+   cao hon ban do 182px, ho mot khoang trong lon o duoi ben trai. */
+.atlchi .atl-chu{font-size:.74rem;color:var(--muted);position:absolute;left:10px;top:10px;
+  max-width:176px;background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:10px 12px;box-shadow:0 4px 14px rgba(28,24,20,.10)}
+@media(max-width:760px){.atlchi .atl-chu{position:static;max-width:none;margin-top:10px;box-shadow:none}}
+.atlchi .atl-chu-t{margin:0 0 7px;font-weight:700;color:var(--ink);font-size:.76rem;line-height:1.3}
+.atlchi .atl-chu-t span{font-weight:400;color:var(--muted)}
+.atlchi .atl-chu ul{list-style:none;margin:0;padding:0;display:grid;gap:3px}
+.atlchi .atl-chu li{display:flex;align-items:center;gap:7px}
+.atlchi .atl-chu i{width:15px;height:11px;border-radius:2px;flex:none}
+.atlchi .atl-chu-n{margin:9px 0 0;font-size:.7rem}
+.atlchi .atl-doc{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.atlchi .atl-doc-iso{margin:0;font-size:.68rem;letter-spacing:.14em;color:var(--muted)}
+.atlchi .atl-doc h4{margin:1px 0 0;font-size:1.22rem;font-family:var(--serif);font-weight:600}
+.atlchi .atl-doc-phu{margin:0;font-size:.78rem;color:var(--muted)}
+.atlchi .atl-doc-so{margin:9px 0 0;font-size:.82rem;color:var(--muted)}
+.atlchi .atl-doc-so b{font-size:1.5rem;color:var(--ink);font-family:var(--serif)}
+.atlchi .atl-doc-hang,.atlchi .atl-doc-ss{margin:2px 0 0;font-size:.76rem;color:var(--muted)}
+.atlchi .atl-doc-ng{margin:9px 0 0;font-size:.76rem}
+.atlchi .atl-doc-ngu{margin:5px 0 0;font-size:.68rem;color:var(--muted)}
+.atlchi figcaption{margin-top:12px;font-size:.8rem;color:var(--muted);line-height:1.55}
 .band.atlas{background:var(--surface);border:1px solid var(--line);border-radius:22px;
   padding:16px 16px 12px;box-shadow:0 8px 24px rgba(28,24,20,.08),var(--press)}
 .atlwrap{border-radius:14px;overflow:hidden}
@@ -255,31 +340,67 @@ section[id],span[id]{scroll-margin-top:76px}
 .pitem .v{font-size:.83rem;color:var(--muted);margin-top:3px}
 .pitem .v a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line);
   display:inline-block;padding:5px 3px;margin:-5px -3px}
-.pitem .v a:hover{color:var(--clay)}
+.pitem .v a:hover{color:var(--clay-ink)}
 .pitem .au{font-size:.83rem;color:var(--muted);margin-top:4px}
 .pitem .au b{font-weight:700;color:var(--ink)}
 .ptag{display:inline-block;vertical-align:2px;margin-left:7px;white-space:nowrap;
   font:700 .6rem/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;
   color:var(--muted);background:var(--sunk);border:1px solid var(--line);
   border-radius:999px;padding:4px 9px}
-.ptag.core{color:var(--clay);border-color:var(--clay);background:none;letter-spacing:.04em}
+.ptag.core{color:var(--clay-ink);border-color:var(--clay);background:none;letter-spacing:.04em}
 .puball{margin:4px 0 0}
 .morelink{font:600 .86rem var(--sans);text-decoration:none;display:inline-block;padding:7px 3px;margin:-7px -3px}
 
-/* teaching */
+/* teaching - moi hoc lieu la mot the co bieu tuong noi ro no la loai gi.
+   Truoc day ca muoi lam lien ket deu la chu xanh kem mui ten, nen mot phong
+   lab web, mot app Android va mot ban ghi DOI nhin y het nhau. */
 .courses{list-style:none;margin:0;padding:0}
-.courses li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;align-items:baseline;
-  padding:11px 2px;border-bottom:1px solid var(--line);font-size:.93rem}
+.courses li{display:grid;grid-template-columns:minmax(min(100%,14rem),1fr) auto;gap:10px 18px;
+  align-items:center;padding:13px 2px;border-bottom:1px solid var(--line)}
 .courses li:last-child{border-bottom:0}
-.courses .mat{font:600 .8rem var(--sans);text-decoration:none;white-space:nowrap;
-  display:inline-block;padding-block:6px}
-.courses .mat.none{color:var(--muted);font-weight:500}
-.courses .mats{display:flex;flex-wrap:wrap;gap:0 14px}
-@media(max-width:560px){.courses li{grid-template-columns:1fr;gap:2px}.courses .mat.none{display:none}}
+.courses .c-ten{font:600 .95rem/1.35 var(--sans)}
+.courses .mats{display:flex;flex-wrap:wrap;gap:7px;justify-content:flex-end}
+.courses .mat{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  font:600 .78rem/1 var(--sans);text-decoration:none;color:var(--ink);
+  padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--surface);
+  transition:border-color .16s,transform .16s,box-shadow .16s}
+.courses .mat .ico{width:13px;height:13px;flex:none;fill:var(--accent2)}
+.courses .mat:hover,.courses .mat:focus-visible{border-color:var(--accent2);transform:translateY(-1px);
+  box-shadow:0 3px 10px rgba(0,0,0,.08)}
+/* bon loai hoc lieu, moi loai mot mau lay tu bo mau dat set san co */
+.courses .mat[data-loai=ba] .ico{fill:var(--accent)}
+.courses .mat[data-loai=ba]:hover,.courses .mat[data-loai=ba]:focus-visible{border-color:var(--accent)}
+/* Tro choi dung chung mau dat nung voi canh 3D: bang mau da dong,
+   va hinh tay cam da du de phan biet voi khoi 3D. */
+.courses .mat[data-loai=game] .ico{fill:var(--accent)}
+.courses .mat[data-loai=game]:hover,.courses .mat[data-loai=game]:focus-visible{border-color:var(--accent)}
+.courses .mat[data-loai=app] .ico{fill:var(--gold)}
+.courses .mat[data-loai=app]:hover,.courses .mat[data-loai=app]:focus-visible{border-color:var(--gold)}
+.courses .mat[data-loai=doi]{font-weight:500;font-size:.72rem;color:var(--muted);border-style:dashed}
+.courses .mat[data-loai=doi] .ico{fill:var(--muted)}
+.courses .mat[data-loai=doi]:hover,.courses .mat[data-loai=doi]:focus-visible{border-color:var(--muted)}
+/* hoc phan chua co hoc lieu mo: noi thang ra, dung de dong trong nhin nhu hong */
+.courses .mat.none{color:var(--muted);font-weight:500;font-size:.74rem;
+  border-style:dashed;background:transparent;cursor:default}
+@media(max-width:560px){
+  .courses li{grid-template-columns:1fr;gap:9px;padding:14px 2px}
+  .courses .mats{justify-content:flex-start}
+}
 
 /* projects - clay objects on the desk */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:620px){.grid{grid-template-columns:1fr}}
+/* Dien thoai: luoi Du an cao 3834px (9 the, moi the mot anh phim). Hien 4 the dau,
+   con lai sau nut "Xem them". JS moi gan lop .thu-gon, nen tat JS van thay du 9 the.
+   May tinh hien du, khong doi. */
+.xem-them{display:none}
+@media(max-width:720px){
+  #projects .grid.thu-gon>.tile:nth-child(n+5){display:none}
+  .xem-them{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin:14px 0 0;
+    border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);
+    font:700 .9rem var(--sans,system-ui);cursor:pointer}
+  .xem-them[hidden]{display:none}
+}
 .tile{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;
   box-shadow:var(--press),var(--lift);display:flex;flex-direction:column}
 .tile h3{font-size:1.02rem}
@@ -295,7 +416,7 @@ section[id],span[id]{scroll-margin-top:76px}
 .gardenband{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;justify-content:space-between;
   background:var(--clay-soft);border:1px solid var(--line);border-radius:18px;padding:16px 20px;margin-top:16px}
 .gardenband p{margin:0;font-size:.9rem;color:var(--muted);max-width:48ch}
-.gardenband a{font:600 .9rem var(--sans);text-decoration:none;color:var(--clay);white-space:nowrap;
+.gardenband a{font:600 .9rem var(--sans);text-decoration:none;color:var(--clay-ink);white-space:nowrap;
   display:inline-flex;align-items:center;min-height:34px}
 
 /* a quiet note, not a stage */
@@ -307,7 +428,7 @@ section[id],span[id]{scroll-margin-top:76px}
 footer{border-top:1px solid var(--line);margin-top:10px;padding-block:26px 46px;font-size:.85rem;color:var(--muted)}
 .fnav{display:flex;flex-wrap:wrap;gap:0 18px;margin:0 0 10px;padding:0;list-style:none}
 .fnav a{text-decoration:none;color:var(--ink);display:inline-block;padding-block:6px}
-.fnav a:hover{color:var(--clay)}
+.fnav a:hover{color:var(--clay-ink)}
 /* ===== hinh chim: duong vien Viet Nam o chan trang ======================
    Dung mask nen net ban do lay mau tu token, tu doi theo che do sang/toi.
    Trinh duyet khong ho tro mask thi khong hien - chi la hinh trang tri. */
@@ -339,15 +460,17 @@ footer.wrap{position:relative;overflow:hidden}
    "alternateName": "Đỗ Thùy Hương",
    "jobTitle": "PhD Candidate in Business Administration, School of Economics, Can Tho University",
    "email": "mailto:thuyhuongctu@gmail.com",
-   "url": "https://thuyhuongctu.github.io/Je-mappelle-Huong/",
-   "image": "https://thuyhuongctu.github.io/Je-mappelle-Huong/assets/img/huong_clay_portrait.webp",
+   "url": "https://jemappellehuong.com/",
+   "image": "https://jemappellehuong.com/assets/img/huong_clay_portrait.webp",
    "sameAs": [
     "https://orcid.org/0000-0002-7711-2487",
+    "https://www.scopus.com/authid/detail.uri?authorId=59893762500",
     "https://scholar.google.com/citations?user=jSvAVnsAAAAJ",
     "https://www.researchgate.net/profile/Do-Thuy-Huong",
     "https://sciprofiles.com/profile/4613966",
     "https://osf.io/m25qs/",
-    "https://github.com/thuyhuongctu"
+    "https://github.com/thuyhuongctu",
+    "https://www.youtube.com/channel/UCNt0O_5hQ5nxsSGeTfRFAgA"
    ],
    "alumniOf": {
     "@type": "CollegeOrUniversity",
@@ -374,13 +497,14 @@ footer.wrap{position:relative;overflow:hidden}
 <header class="top">
   <div class="bar">
     <a class="mark" href="./">
-      <img src="assets/img/lr-seal-round.webp" alt="" onerror="this.style.display='none'">
+      <img src="assets/img/lr-seal-round-144.webp" alt="" onerror="this.style.display='none'">
       <span><b>Je m'appelle Hương</b><small>Lecturer &amp; Researcher</small></span>
     </a>
     <nav class="mainnav" aria-label="Sections">
       <a href="#research"><span class="lang-vi">Nghiên cứu</span><span class="lang-en">Research</span><span class="lang-fr">Recherche</span></a>
       <a href="#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span><span class="lang-fr">Enseignement</span></a>
       <a href="#projects"><span class="lang-vi">Dự án</span><span class="lang-en">Projects</span><span class="lang-fr">Projets</span></a>
+      <a href="publications.html"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></a>
       <a class="garden" href="garden.html">🪷 <span class="lang-vi">Vườn</span><span class="lang-en">Garden</span><span class="lang-fr">Jardin</span></a>
     </nav>
     <div class="ctl">
@@ -394,6 +518,7 @@ footer.wrap{position:relative;overflow:hidden}
     <a class="navdup" href="#teaching"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span><span class="lang-fr">Enseignement</span></a>
     <a class="navdup" href="#projects"><span class="lang-vi">Dự án</span><span class="lang-en">Projects</span><span class="lang-fr">Projets</span></a>
     <h4><span class="lang-vi">Thêm</span><span class="lang-en">More</span><span class="lang-fr">Plus</span></h4>
+    <a href="publications.html">📚 <span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></a>
     <a href="cv.html">📄 CV</a>
     <a href="garden.html">🪷 <span class="lang-vi">Vườn số</span><span class="lang-en">Digital garden</span><span class="lang-fr">Jardin numérique</span></a>
     <a href="blog.html">📰 Blog</a>
@@ -405,17 +530,6 @@ footer.wrap{position:relative;overflow:hidden}
 </header>
 
 <main class="wrap" id="main">
-
-  <figure class="herofilm">
-    <img src="assets/img/hero-co-poster.webp" width="854" height="480" fetchpriority="high"
-         alt="Do Thuy Huong in a white ao dai holding the Vietnamese flag on a riverbank lined with clay pots at sunset">
-    <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-    <button class="filmsound" id="filmsound" type="button" hidden aria-pressed="false">
-      <span class="fsico" aria-hidden="true">🔇</span>
-      <span class="fslabel"><span class="lang-vi">Bật tiếng</span><span class="lang-en">Sound on</span><span class="lang-fr">Activer le son</span></span>
-    </button>
-  </figure>
-
 
   <div class="hero">
     <div>
@@ -441,8 +555,10 @@ footer.wrap{position:relative;overflow:hidden}
         <li><span class="lang-vi">Thể chế</span><span class="lang-en">Institutions</span><span class="lang-fr">Institutions</span></li>
       </ul>
       <div class="acts">
-        <a class="btn primary" href="cv.html">📄 CV</a>
+        <a class="btn primary" href="publications.html">📚 <span class="lang-vi">Công bố</span><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></a>
+        <a class="btn" href="cv.html">📄 CV</a>
         <a class="btn" href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener">ORCID</a>
+        <a class="btn" href="https://www.scopus.com/authid/detail.uri?authorId=59893762500" target="_blank" rel="noopener">Scopus</a>
         <a class="btn" href="mailto:thuyhuongctu@gmail.com">✉ <span class="lang-vi">Email</span><span class="lang-en">Email</span><span class="lang-fr">Courriel</span></a>
       </div>
     </div>
@@ -455,21 +571,26 @@ footer.wrap{position:relative;overflow:hidden}
     </figure>
   </div>
 
-
-  <figure class="vnband rv">
-    <div class="vnmap3d">
-      <img src="assets/img/vn-map-3d.webp" width="768" height="1376" loading="lazy" decoding="async"
-           alt="Three-dimensional clay map of Vietnam divided by economic region, with the Hoàng Sa and Trường Sa archipelagos offshore">
-      <span class="vnlb" style="left:73.3%;top:10.2%"><span class="lang-vi">Miền Bắc</span><span class="lang-en">Northern Vietnam</span><span class="lang-fr">Nord</span></span>
-      <span class="vnlb sea" style="left:84.0%;top:28.9%"><span class="lang-vi">Hoàng Sa</span><span class="lang-en">Hoàng Sa</span><span class="lang-fr">Hoàng Sa</span></span>
-      <span class="vnlb" style="left:36.8%;top:40.0%"><span class="lang-vi">Miền Trung</span><span class="lang-en">Central Vietnam</span><span class="lang-fr">Centre</span></span>
-      <span class="vnlb" style="left:49.9%;top:61.4%"><span class="lang-vi">Tây Nguyên</span><span class="lang-en">Central Highlands</span><span class="lang-fr">Hauts Plateaux</span></span>
-      <span class="vnlb wide" style="left:24.5%;top:74.3%"><span class="lang-vi">Đồng bằng sông Cửu Long</span><span class="lang-en">Mekong Delta</span><span class="lang-fr">Delta du Mékong</span></span>
-      <span class="vnlb" style="left:60.0%;top:86.0%"><span class="lang-vi">Nam Bộ</span><span class="lang-en">Southern Vietnam</span><span class="lang-fr">Sud</span></span>
-      <span class="vnlb sea right" style="left:97.0%;top:81.0%"><span class="lang-vi">Trường Sa</span><span class="lang-en">Trường Sa</span><span class="lang-fr">Trường Sa</span></span>
-    </div>
-    <figcaption><span class="lang-vi">Bản đồ trong <a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn</a> — trò chơi mô phỏng khởi nghiệp tôi dựng cho lớp học. Quần đảo Hoàng Sa và Trường Sa thuộc chủ quyền Việt Nam.</span><span class="lang-en">The map from <a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn</a>, the business simulation game I built for my classroom. The Hoàng Sa and Trường Sa archipelagos are Vietnamese sovereign territory.</span><span class="lang-fr">La carte de <a href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn</a>, le jeu de simulation d’entreprise que j’ai conçu pour mes cours. Les archipels de Hoàng Sa et Trường Sa relèvent de la souveraineté vietnamienne.</span></figcaption>
+  <figure class="herofilm">
+    <img src="assets/img/hero-co-poster.webp" width="854" height="480" fetchpriority="high"
+         alt="Do Thuy Huong in a white ao dai holding the Vietnamese flag on a riverbank lined with clay pots at sunset">
+    <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+    <button class="filmsound" id="filmsound" type="button" hidden aria-pressed="false">
+      <span class="fsico" aria-hidden="true">🔇</span>
+      <span class="fslabel"><span class="lang-vi">Bật tiếng</span><span class="lang-en">Sound on</span><span class="lang-fr">Activer le son</span></span>
+    </button>
   </figure>
+
+  <section class="tour rv" id="tour">
+    <h2><span class="lang-vi">Một phút đi qua trang này</span><span class="lang-en">One minute through this site</span><span class="lang-fr">Une minute à travers ce site</span></h2>
+    <p><span class="lang-vi">Phim giới thiệu: nghiên cứu, giảng dạy và các phần mềm. Thuyết minh tiếng Anh.</span><span class="lang-en">A guided walkthrough of the research, the teaching and the software. Narrated in English.</span><span class="lang-fr">Une visite guidée de la recherche, de l'enseignement et des logiciels. Narration en anglais.</span></p>
+    <button class="vthumb" type="button" data-vid="assets/video/trang-web-intro.mp4" data-poster="assets/img/trang-web-intro-poster.webp">
+      <img src="assets/img/trang-web-intro-poster.webp" width="960" height="540" loading="lazy" decoding="async" alt="End card of the site walkthrough: the clay LR seal above the name Do Thuy Huong, the line PhD Candidate, School of Economics, Can Tho University, and the address jemappellehuong.com in gold">
+      <span class="vplay" aria-hidden="true">▶</span>
+      <span class="vlen" aria-hidden="true">1:07</span>
+      <span class="vsr"><span class="lang-vi">Xem phim giới thiệu trang</span><span class="lang-en">Watch the site walkthrough</span><span class="lang-fr">Voir la visite du site</span></span>
+    </button>
+  </section>
 
   <section id="research" class="rv">
     <span id="about"></span>
@@ -484,14 +605,23 @@ footer.wrap{position:relative;overflow:hidden}
     </p>
 
     <div class="pgroup prereg">
-      <h3><span class="lang-vi">Tiền đăng ký trên OSF</span><span class="lang-en">Preregistrations on OSF</span><span class="lang-fr">Préenregistrements sur OSF</span></h3>
+      <h3><span class="lang-vi">Đăng ký trên OSF</span><span class="lang-en">Registrations on OSF</span><span class="lang-fr">Enregistrements sur OSF</span></h3>
       <div class="pitem">
         <div class="t">Institutional context, digital adoption, and the internationalization–performance relationship: a three-level meta-analysis</div>
         <div class="v">
-          <span class="lang-vi">Tiền đăng ký tổng quan hệ thống · OSF Registries · 18/05/2026 · k = 236 nghiên cứu, K = 286 hiệu ứng, 49 nền kinh tế · </span>
-          <span class="lang-en">Generalized systematic review registration · OSF Registries · 18 May 2026 · k = 236 studies, K = 286 effects, 49 economies · </span>
-          <span class="lang-fr">Préenregistrement de revue systématique · OSF Registries · 18 mai 2026 · k = 236 études, K = 286 effets, 49 économies · </span>
+          <span class="lang-vi">Kế hoạch phân tích đã đăng ký · OSF Registries · 18/05/2026 · bảng mã hóa đang được kiểm toán lại · </span>
+          <span class="lang-en">Registered analysis plan · OSF Registries · 18 May 2026 · coding table under re-audit · </span>
+          <span class="lang-fr">Plan d'analyse enregistré · OSF Registries · 18 mai 2026 · table de codage en cours de nouvel audit · </span>
           <a href="https://doi.org/10.17605/OSF.IO/Z37KN" target="_blank" rel="noopener">10.17605/OSF.IO/Z37KN</a>
+        </div>
+      </div>
+      <div class="pitem">
+        <div class="t">Audit, verification and re-analysis plan for a three-level meta-analysis of internationalization and firm performance</div>
+        <div class="v">
+          <span class="lang-vi">Kế hoạch kiểm toán, đối chiếu và phân tích lại · OSF Registries · 25/10/2026 · lập trước khi đối chiếu các mức độ ảnh hưởng còn lại với bài gốc · </span>
+          <span class="lang-en">Audit and re-analysis plan · OSF Registries · 25 October 2026 · filed before the remaining effect sizes are traced to the primary studies · </span>
+          <span class="lang-fr">Plan d'audit et de réanalyse · OSF Registries · 25 octobre 2026 · déposé avant la vérification des tailles d'effet restantes dans les études sources · </span>
+          <a href="https://doi.org/10.17605/OSF.IO/K5CZT" target="_blank" rel="noopener">10.17605/OSF.IO/K5CZT</a>
         </div>
       </div>
       <div class="pitem">
@@ -708,10 +838,26 @@ footer.wrap{position:relative;overflow:hidden}
       </figcaption>
     </figure>
 
+    <figure class="atlchi rv" id="atlas-chiso">
+      <div class="atl-tab"></div>
+      <div class="atl-khung">
+        <div class="atl-san">
+          <div class="atl-ve"><p class="atl-cho">…</p></div>
+          <div class="atl-chu"></div>
+        </div>
+        <div class="atl-doc"></div>
+      </div>
+      <figcaption>
+        <span class="lang-vi"><b>Bối cảnh, không phải dữ liệu luận án.</b> Năm chỉ số phát triển chung trên 202 nền kinh tế, để đặt 50 nền kinh tế của khung dữ liệu phía trên vào bức tranh thế giới. Luận án dùng dữ liệu doanh nghiệp WBES ghép WGI, không dùng năm chỉ số này. Tô theo ngũ phân vị; nguồn Ngân hàng Thế giới và UNDP qua Our World in Data, lấy 24/10/2026. Biên giới Natural Earth.</span>
+        <span class="lang-en"><b>Context, not the dissertation’s data.</b> Five general development indicators across 202 economies, to place the 50 economies of the frame above within the wider picture. The dissertation uses WBES firm-level data matched to the WGI, not these five indicators. Shaded by quintile; sources World Bank and UNDP via Our World in Data, retrieved 24 October 2026. Boundaries from Natural Earth.</span>
+        <span class="lang-fr"><b>Contexte, et non les données de la thèse.</b> Cinq indicateurs de développement sur 202 économies, pour situer les 50 économies du cadre ci-dessus. La thèse s’appuie sur les données d’entreprises WBES appariées aux WGI, pas sur ces cinq indicateurs. Quintiles ; sources Banque mondiale et PNUD via Our World in Data, relevé le 24 octobre 2026. Frontières : Natural Earth.</span>
+      </figcaption>
+    </figure>
+
     <div class="qa">
       <div>
         <h3><span class="lang-vi">Dữ liệu</span><span class="lang-en">Data</span><span class="lang-fr">Données</span></h3>
-        <p><span class="lang-vi">WBES cấp doanh nghiệp, 50 nền kinh tế; 236 nghiên cứu được mã hóa cho phân tích tổng hợp.</span><span class="lang-en">Firm-level WBES across 50 economies; 236 studies coded for the meta-analysis.</span><span class="lang-fr">WBES au niveau des entreprises, 50 économies ; 236 études codées pour la méta-analyse.</span></p>
+        <p><span class="lang-vi">WBES cấp doanh nghiệp, 50 nền kinh tế; bảng mã hóa của phân tích tổng hợp đang được kiểm toán lại với bài gốc.</span><span class="lang-en">Firm-level WBES across 50 economies; the meta-analysis coding table is under re-audit against the primary studies.</span><span class="lang-fr">WBES au niveau des entreprises, 50 économies ; la table de codage de la méta-analyse fait l'objet d'un nouvel audit au regard des études sources.</span></p>
       </div>
       <div>
         <h3><span class="lang-vi">Phương pháp</span><span class="lang-en">Methods</span><span class="lang-fr">Méthodes</span></h3>
@@ -719,7 +865,7 @@ footer.wrap{position:relative;overflow:hidden}
       </div>
       <div>
         <h3><span class="lang-vi">Công cụ</span><span class="lang-en">Tooling</span><span class="lang-fr">Outils</span></h3>
-        <p><span class="lang-vi">M-AIDA: trích xuất mức độ ảnh hưởng bằng LLM, kiểm chứng con người 100%, khóa bất biến.</span><span class="lang-en">M-AIDA: LLM-assisted effect-size extraction with 100% human verification and immutable locking.</span><span class="lang-fr">M-AIDA : extraction des tailles d'effet assistée par LLM, vérifiée à 100 % par l'humain.</span></p>
+        <p><span class="lang-vi">M-AIDA (phát triển song song với luận án): trích xuất mức độ ảnh hưởng bằng LLM, kiểm chứng con người 100%, khóa bất biến.</span><span class="lang-en">M-AIDA (developed alongside the dissertation): LLM-assisted effect-size extraction with 100% human verification and immutable locking.</span><span class="lang-fr">M-AIDA (développé en parallèle de la thèse) : extraction des tailles d'effet assistée par LLM, vérifiée à 100 % par l'humain.</span></p>
       </div>
     </div>
 
@@ -731,15 +877,25 @@ footer.wrap{position:relative;overflow:hidden}
       <h2><span class="lang-vi">Học phần giảng dạy</span><span class="lang-en">Courses taught</span><span class="lang-fr">Cours enseignés</span></h2>
       <p><span class="lang-vi">Học phần nào có học liệu mở thì được liên kết kèm theo.</span><span class="lang-en">Where open course material exists, it is linked with the course.</span><span class="lang-fr">Le matériel ouvert, s'il existe, est lié au cours.</span></p>
     </div>
+    <!-- Bon bieu tuong hoc lieu, khai mot lan roi dung lai bang <use>.
+         Hinh ve bang mang DAC chu khong dung net: o co that 13px thi net
+         manh bien mat, dung bai hoc da ghi o muc tam bieu tuong ban do. -->
+    <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+      <symbol id="i-web" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 2.5h14v11H1zM2.6 6v6h10.8V6z"/></symbol>
+      <symbol id="i-game" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.3 3.6h7.4c2.4 0 4.3 2.4 3.8 4.8l-.8 3.6c-.4 1.9-2.9 2.4-4 .8L9.5 11h-3l-1.2 1.8c-1.1 1.6-3.6 1.1-4-.8L.5 8.4C0 6 1.9 3.6 4.3 3.6zM3.8 5.5v1.6H2.2v1.8h1.6v1.6h1.8V8.9h1.6V7.1H5.6V5.5zM10.7 5.9a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6zM12.8 8.7a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6z"/></symbol>
+      <symbol id="i-ba" viewBox="0 0 16 16"><path d="M8 1.2 14.6 4.8 8 8.4 1.4 4.8zM1.4 6.1 7.3 9.3v5.5L1.4 11.6zM14.6 6.1 8.7 9.3v5.5l5.9-3.2z"/></symbol>
+      <symbol id="i-app" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 1h8v14H4zM5.6 3.2v9.6h4.8V3.2z"/></symbol>
+      <symbol id="i-doi" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M3 1h6.5L13 4.5V15H3zM5 7h6v1.4H5zM5 10h6v1.4H5z"/></symbol>
+    </svg>
     <ul class="courses">
-      <li><span><span class="lang-vi">Kinh tế lượng</span><span class="lang-en">Econometrics</span><span class="lang-fr">Économétrie</span></span><span class="mat none">—</span></li>
-      <li><span><span class="lang-vi">Phương pháp nghiên cứu trong kinh tế</span><span class="lang-en">Research Methods in Economics</span><span class="lang-fr">Méthodes de recherche</span></span><a class="mat" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA ↗</a></li>
-      <li><span><span class="lang-vi">Phân tích hoạt động kinh doanh</span><span class="lang-en">Business Performance Analysis</span><span class="lang-fr">Analyse de la performance</span></span><span class="mats"><a class="mat" href="https://thuyhuongctu.github.io/BizOn/lab/cvp-studio.html" target="_blank" rel="noopener">CVP Studio ↗</a><a class="mat" href="https://thuyhuongctu.github.io/BizOn/lab/cmr-lab.html" target="_blank" rel="noopener">CMR Lab ↗</a></span></li>
-      <li><span><span class="lang-vi">Kinh doanh quốc tế</span><span class="lang-en">International Business</span><span class="lang-fr">Commerce international</span></span><span class="mats"><a class="mat" href="https://thuyhuongctu.github.io/BizOn/brand-passport.html" target="_blank" rel="noopener">Brand Passport ↗</a><a class="mat" href="vanphong.html"><span class="lang-vi">Văn phòng ↗</span><span class="lang-en">Office ↗</span><span class="lang-fr">Bureau ↗</span></a></span></li>
-      <li><span><span class="lang-vi">Thương mại điện tử</span><span class="lang-en">E-commerce</span><span class="lang-fr">Commerce électronique</span></span><span class="mat none">—</span></li>
-      <li><span><span class="lang-vi">Mô phỏng tình huống trong kinh doanh (EC1314)</span><span class="lang-en">Business Simulation (EC1314)</span><span class="lang-fr">Simulation d'entreprise (EC1314)</span></span><a class="mat" href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener">BizOn ↗</a></li>
-      <li><span><span class="lang-vi">Khởi nghiệp &amp; khởi sự doanh nghiệp</span><span class="lang-en">Entrepreneurship &amp; New Venture Creation</span><span class="lang-fr">Entrepreneuriat</span></span><a class="mat" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener">EnQuiz ↗</a></li>
-      <li><span><span class="lang-vi">Kỹ năng giao tiếp &amp; soạn thảo văn bản (EC1103)</span><span class="lang-en">Communication &amp; Document Drafting Skills (EC1103)</span><span class="lang-fr">Communication &amp; rédaction (EC1103)</span></span><a class="mat" href="https://thuyhuongctu.github.io/ComDraft/" target="_blank" rel="noopener">ComDraft ↗</a></li>
+      <li><span class="c-ten"><span class="lang-vi">Kinh tế lượng</span><span class="lang-en">Econometrics</span><span class="lang-fr">Économétrie</span></span><span class="mats"><a class="mat" data-loai="web" href="https://thuyhuongctu.github.io/Gravity-Lab/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>Gravity Lab ↗</a></span></li>
+      <li><span class="c-ten"><span class="lang-vi">Phương pháp nghiên cứu trong kinh tế</span><span class="lang-en">Research Methods in Economics</span><span class="lang-fr">Méthodes de recherche</span></span><span class="mats"><a class="mat" data-loai="web" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>M-AIDA ↗</a></span></li>
+      <li><span class="c-ten"><span class="lang-vi">Phân tích hoạt động kinh doanh</span><span class="lang-en">Business Performance Analysis</span><span class="lang-fr">Analyse de la performance</span></span><span class="mats"><a class="mat" data-loai="web" href="https://bizonland.com/lab/cvp-studio.html" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>CVP Studio ↗</a><a class="mat" data-loai="web" href="https://bizonland.com/lab/cmr-lab.html" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>CMR Lab ↗</a></span></li>
+      <li><span class="c-ten"><span class="lang-vi">Kinh doanh quốc tế</span><span class="lang-en">International Business</span><span class="lang-fr">Commerce international</span></span><span class="mats"><a class="mat" data-loai="web" href="https://bizonland.com/brand-passport.html" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>Brand Passport ↗</a><a class="mat" data-loai="ba" href="https://bizonland.com/Ho%20Chieu%20Thuong%20Hieu%203D.html" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-ba"/></svg>Brand Passport 3D ↗</a><a class="mat" data-loai="game" href="https://bizonland.com/lab/nha-may-fdi.html" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-game"/></svg><span class="lang-vi">Nhà máy FDI ↗</span><span class="lang-en">FDI Factory ↗</span><span class="lang-fr">Usine IDE ↗</span></a><a class="mat" data-loai="web" href="https://thuyhuongctu.github.io/Gravity-Lab/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>Gravity Lab ↗</a><a class="mat" data-loai="ba" href="vanphong.html"><svg class="ico" aria-hidden="true"><use href="#i-ba"/></svg><span class="lang-vi">Văn phòng ↗</span><span class="lang-en">Office ↗</span><span class="lang-fr">Bureau ↗</span></a><a class="mat" data-loai="doi" href="https://doi.org/10.5281/zenodo.22971293" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-doi"/></svg>DOI: 10.5281/zenodo.22971293 ↗</a></span></li>
+      <li><span class="c-ten"><span class="lang-vi">Thương mại điện tử</span><span class="lang-en">E-commerce</span><span class="lang-fr">Commerce électronique</span></span><span class="mats"><span class="mat none"><span class="lang-vi">Chưa có học liệu mở</span><span class="lang-en">No open material yet</span><span class="lang-fr">Pas encore de matériel ouvert</span></span></span></li>
+      <li><span class="c-ten"><span class="lang-vi">Mô phỏng tình huống trong kinh doanh</span><span class="lang-en">Business Simulation</span><span class="lang-fr">Simulation d'entreprise</span></span><span class="mats"><a class="mat" data-loai="game" href="https://bizonland.com/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-game"/></svg>BizOn ↗</a><a class="mat" data-loai="app" href="https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.bizon" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-app"/></svg><span class="lang-vi">BizOn trên CH Play ↗</span><span class="lang-en">BizOn on Google Play ↗</span><span class="lang-fr">BizOn sur Google Play ↗</span></a><a class="mat" data-loai="game" href="https://bizonland.com/lab/ho-chieu-sau-rieng.html" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-game"/></svg><span class="lang-vi">Hộ Chiếu Sầu Riêng ↗</span><span class="lang-en">Sầu Riêng Passport ↗</span><span class="lang-fr">Passeport Durian ↗</span></a></span></li>
+      <li><span class="c-ten"><span class="lang-vi">Khởi nghiệp &amp; khởi sự doanh nghiệp</span><span class="lang-en">Entrepreneurship &amp; New Venture Creation</span><span class="lang-fr">Entrepreneuriat</span></span><span class="mats"><a class="mat" data-loai="web" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>EnQuiz ↗</a><a class="mat" data-loai="app" href="https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.enquiz" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-app"/></svg><span class="lang-vi">EnQuiz trên CH Play ↗</span><span class="lang-en">EnQuiz on Google Play ↗</span><span class="lang-fr">EnQuiz sur Google Play ↗</span></a></span></li>
+      <li><span class="c-ten"><span class="lang-vi">Kỹ năng giao tiếp &amp; soạn thảo văn bản</span><span class="lang-en">Communication &amp; Document Drafting Skills</span><span class="lang-fr">Communication &amp; rédaction</span></span><span class="mats"><a class="mat" data-loai="web" href="https://thuyhuongctu.github.io/ComDraft/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-web"/></svg>ComDraft ↗</a></span></li>
     </ul>
     <p style="font-size:.86rem;color:var(--muted);margin:16px 0 0">
       <span class="lang-vi"><b>Phản biện tạp chí:</b> International Journal of Economics, Management and Accounting (IJEMA).</span>
@@ -753,7 +909,7 @@ footer.wrap{position:relative;overflow:hidden}
       <span class="k"><span class="lang-vi">Dự án</span><span class="lang-en">Projects</span><span class="lang-fr">Projets</span></span>
       <h2><span class="lang-vi">Phần mềm cho nghiên cứu và giảng dạy</span><span class="lang-en">Software for research and teaching</span><span class="lang-fr">Logiciels pour la recherche et l'enseignement</span></h2>
     </div>
-    <div class="grid">
+    <div class="grid" id="du-an-luoi">
       <div class="tile">
         <button class="vthumb" type="button" data-vid="assets/video/maida-film.mp4" data-poster="assets/img/maida-film-poster.webp">
           <img src="assets/img/maida-film-poster.webp" width="1000" height="562" loading="lazy" decoding="async" alt="Opening film for M-AIDA: beside the line Many studies. One question. a forest plot builds eight unverified study rows, with a 3D figure of Huong presenting at the right">
@@ -766,16 +922,16 @@ footer.wrap{position:relative;overflow:hidden}
         <a class="go" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><span class="lang-vi">Mở M-AIDA ↗</span><span class="lang-en">Open M-AIDA ↗</span><span class="lang-fr">Ouvrir M-AIDA ↗</span></a>
       </div>
       <div class="tile">
-        <button class="vthumb" type="button" data-vid="assets/video/bizon-intro.mp4" data-poster="assets/img/bizon-intro-poster.webp">
-          <img src="assets/img/bizon-intro-poster.webp" loading="lazy" decoding="async" alt="Clay-modelled opening of BizOn: a boy rowing a wooden boat on a Mekong branch at sunset">
+        <button class="vthumb" type="button" data-vid="assets/video/bizon-intro-en.mp4" data-poster="assets/img/bizon-intro-en-poster.webp">
+          <img src="assets/img/bizon-intro-en-poster.webp" width="960" height="540" loading="lazy" decoding="async" alt="Closing card of the BizOn tour: the BizOn wordmark with a Start with Bến Phù Sa button and bizonland.com, beside two clay figures in áo dài, the game’s dragon mascot and a passport, over a stylised river">
           <span class="vplay" aria-hidden="true">▶</span>
-          <span class="vlen" aria-hidden="true">0:10</span>
+          <span class="vlen" aria-hidden="true">1:03</span>
           <span class="vsr"><span class="lang-vi">Xem giới thiệu BizOn</span><span class="lang-en">Watch the BizOn intro</span><span class="lang-fr">Voir la présentation de BizOn</span></span>
         </button>
         <h3>BizOn AI</h3>
-        <p><span class="lang-vi">Trò chơi mô phỏng kinh doanh cho đại học: năm đội trên một thị trường đa tác tử, lõi tài chính tất định. Dùng trong học phần EC1314.</span><span class="lang-en">A business-simulation game for higher education: five teams on one multi-agent market with a deterministic finance core. Used in EC1314.</span><span class="lang-fr">Jeu de simulation d'entreprise : cinq équipes, marché multi-agents, cœur financier déterministe.</span></p>
+        <p><span class="lang-vi">Trò chơi mô phỏng kinh doanh cho đại học: năm đội trên một thị trường đa tác tử, lõi tài chính tất định.</span><span class="lang-en">A business-simulation game for higher education: five teams on one multi-agent market with a deterministic finance core.</span><span class="lang-fr">Jeu de simulation d'entreprise : cinq équipes, marché multi-agents, cœur financier déterministe.</span></p>
         <div class="gos">
-          <a class="go" href="https://thuyhuongctu.github.io/BizOn/" target="_blank" rel="noopener"><span class="lang-vi">Mở BizOn ↗</span><span class="lang-en">Open BizOn ↗</span><span class="lang-fr">Ouvrir BizOn ↗</span></a>
+          <a class="go" href="https://bizonland.com/" target="_blank" rel="noopener"><span class="lang-vi">Mở BizOn ↗</span><span class="lang-en">Open BizOn ↗</span><span class="lang-fr">Ouvrir BizOn ↗</span></a>
           <a class="go" href="https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.bizon" target="_blank" rel="noopener"><span class="lang-vi">Tải trên Google Play ↗</span><span class="lang-en">Get it on Google Play ↗</span><span class="lang-fr">Télécharger sur Google Play ↗</span></a>
         </div>
       </div>
@@ -789,7 +945,10 @@ footer.wrap{position:relative;overflow:hidden}
         </button>
         <h3>EnQuiz</h3>
         <p><span class="lang-vi">Ứng dụng ôn tập học phần Khởi nghiệp: 300 câu theo 5 chương, thi thử có đếm giờ, lưu câu sai; song ngữ, cài được, chạy offline.</span><span class="lang-en">A revision app for the Entrepreneurship course: 300 questions across 5 chapters, timed mock exams, missed-question tracking; bilingual, installable, offline.</span><span class="lang-fr">Application de révision : 300 questions, examens chronométrés, bilingue, hors ligne.</span></p>
-        <a class="go" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><span class="lang-vi">Mở EnQuiz ↗</span><span class="lang-en">Open EnQuiz ↗</span><span class="lang-fr">Ouvrir EnQuiz ↗</span></a>
+        <div class="gos">
+          <a class="go" href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener"><span class="lang-vi">Mở EnQuiz ↗</span><span class="lang-en">Open EnQuiz ↗</span><span class="lang-fr">Ouvrir EnQuiz ↗</span></a>
+          <a class="go" href="https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.enquiz" target="_blank" rel="noopener"><span class="lang-vi">Tải trên Google Play ↗</span><span class="lang-en">Get it on Google Play ↗</span><span class="lang-fr">Télécharger sur Google Play ↗</span></a>
+        </div>
       </div>
       <div class="tile">
         <button class="vthumb" type="button" data-vid="assets/video/comdraft-promo.mp4" data-poster="assets/img/comdraft-app.webp">
@@ -800,8 +959,32 @@ footer.wrap{position:relative;overflow:hidden}
           <span class="vsr"><span class="lang-vi">Xem giới thiệu ComDraft</span><span class="lang-en">Watch the ComDraft intro</span><span class="lang-fr">Voir la présentation de ComDraft</span></span>
         </button>
         <h3>ComDraft</h3>
-        <p><span class="lang-vi">Bộ học liệu học phần EC1103: 5 bộ slide có ghi chú, 3 bài thực hành phòng máy, ngân hàng 200 câu và 8 video phụ đề tiếng Việt.</span><span class="lang-en">A complete teaching package for EC1103: five lecture decks with notes, three lab workbooks, a 200-question bank and eight subtitled videos.</span><span class="lang-fr">Ensemble pédagogique pour EC1103 : cinq diaporamas, trois TP, 200 questions, huit vidéos sous-titrées.</span></p>
+        <p><span class="lang-vi">Bộ học liệu học phần Kỹ năng giao tiếp và soạn thảo văn bản: 5 bộ slide có ghi chú, 3 bài thực hành phòng máy, ngân hàng 200 câu và 8 video phụ đề tiếng Việt.</span><span class="lang-en">A complete teaching package for Communication &amp; Document Drafting Skills: five lecture decks with notes, three lab workbooks, a 200-question bank and eight subtitled videos.</span><span class="lang-fr">Ensemble pédagogique pour Communication &amp; rédaction : cinq diaporamas, trois TP, 200 questions, huit vidéos sous-titrées.</span></p>
         <a class="go" href="https://thuyhuongctu.github.io/ComDraft/" target="_blank" rel="noopener"><span class="lang-vi">Mở ComDraft ↗</span><span class="lang-en">Open ComDraft ↗</span><span class="lang-fr">Ouvrir ComDraft ↗</span></a>
+      </div>
+      <div class="tile">
+        <a class="cthumb" href="https://bizonland.com/cham-homestay.html" target="_blank" rel="noopener">
+          <img src="assets/img/cham-tan-loc-poster.webp" width="1000" height="562" loading="lazy" decoding="async"
+               alt="Opening of the CHAM Homestay case: the title “CHAM Homestay: one night on Tân Lộc island” on a cream card, above the case context">
+        </a>
+        <h3>CHAM · Tân Lộc</h3>
+        <p><span class="lang-vi">Dự án homestay sinh thái 6 căn nhà lá trên cù lao Tân Lộc (Cần Thơ), xã đảo từ 07/8/2026 – kế hoạch kinh doanh của tôi, nay là tình huống dạy học trên BizOn. «Một đêm trên cù lao».</span><span class="lang-en">An eco-homestay of six thatched rooms on Tân Lộc river island (Cần Thơ), an island commune since 7 August 2026 – my own business plan, now a teaching case on BizOn. “A night on the river island”.</span><span class="lang-fr">Un écogîte de six maisons au toit de chaume sur l'île fluviale de Tân Lộc (Cần Thơ) – mon propre projet d'entreprise, devenu une étude de cas sur BizOn. « Une nuit sur l'île ».</span></p>
+        <div class="gos">
+          <a class="go" href="https://bizonland.com/cham-homestay.html" target="_blank" rel="noopener"><span class="lang-vi">Đọc tình huống ↗</span><span class="lang-en">Read the case ↗</span><span class="lang-fr">Lire l'étude de cas ↗</span></a>
+          <a class="go" href="https://doi.org/10.5281/zenodo.23720576" target="_blank" rel="noopener">DOI 10.5281/zenodo.23720576 ↗</a>
+        </div>
+      </div>
+      <div class="tile">
+        <button class="vthumb" type="button" data-vid="assets/video/gravity-lab-trailer.mp4" data-poster="assets/img/gravity-lab-trailer-poster.webp">
+          <img src="assets/img/gravity-lab-trailer-poster.webp" width="1000" height="562" loading="lazy" decoding="async"
+               alt="From the Gravity Lab trailer: a gold three-dimensional map of Vietnam with Ha Noi and Can Tho marked, beside the FDI Room question “Does distance matter for capital flows into Viet Nam?” and the answer −0.38, the coefficient on geographic distance">
+          <span class="vplay" aria-hidden="true">▶</span>
+          <span class="vlen" aria-hidden="true">1:00</span>
+          <span class="vsr"><span class="lang-vi">Xem trailer Gravity Lab</span><span class="lang-en">Watch the Gravity Lab trailer</span><span class="lang-fr">Voir la bande-annonce de Gravity Lab</span></span>
+        </button>
+        <h3>Gravity Lab</h3>
+        <p><span class="lang-vi">Mô hình lực hấp dẫn cho dòng vốn FDI vào Việt Nam: tám mô hình lồng nhau đọc theo khoảng tin cậy, mô phỏng một yếu tố đổi thì FDI đổi bao nhiêu, và ước lượng OLS/PPML ngay trên bộ dữ liệu bảng người học tự nạp.</span><span class="lang-en">A gravity model of FDI into Vietnam: eight nested models read through their confidence intervals, a simulator for how much FDI moves when one factor changes, and OLS/PPML estimation on a panel dataset you load yourself.</span><span class="lang-fr">Un modèle de gravité des IDE au Viêt Nam : huit modèles emboîtés lus par leurs intervalles de confiance, un simulateur, et une estimation OLS/PPML sur vos propres données de panel.</span></p>
+        <a class="go" href="https://thuyhuongctu.github.io/Gravity-Lab/" target="_blank" rel="noopener"><span class="lang-vi">Mở Gravity Lab ↗</span><span class="lang-en">Open Gravity Lab ↗</span><span class="lang-fr">Ouvrir Gravity Lab ↗</span></a>
       </div>
       <div class="tile">
         <button class="vthumb" type="button" data-vid="assets/video/wct-trailer.mp4" data-poster="assets/img/wct-trailer-poster.webp">
@@ -828,21 +1011,42 @@ footer.wrap{position:relative;overflow:hidden}
         <a class="go" href="trangvien.html"><span class="lang-vi">Vào trang viên →</span><span class="lang-en">Enter the estate →</span><span class="lang-fr">Entrer dans le domaine →</span></a>
       </div>
         <div class="tile">
-        <a class="vthumb" href="vanphong.html">
-        <img src="assets/img/vanphong-bia.webp" width="1200" height="675" loading="lazy" decoding="async"
-        alt="The 3D research office: a cream room with a wooden floor, Do Thuy Huong in a white ao dai holding a lotus at the centre, and two clay figures from the BizOn demo team at desks on either side">
-        <span class="vsr"><span class="lang-vi">Vào văn phòng</span><span class="lang-en">Enter the office</span><span class="lang-fr">Entrer dans le bureau</span></span>
-        </a>
+        <button class="vthumb" type="button" data-vid="assets/video/vanphong-intro.mp4" data-poster="assets/img/vanphong-bia.webp">
+          <img src="assets/img/vanphong-bia.webp" width="1200" height="675" loading="lazy" decoding="async" alt="The 3D research office: a cream room with a wooden floor, Do Thuy Huong in a white ao dai holding a lotus at the centre, and two clay figures from the BizOn demo team at desks on either side">
+          <span class="vplay" aria-hidden="true">▶</span>
+          <span class="vlen" aria-hidden="true">1:03</span>
+          <span class="vsr"><span class="lang-vi">Xem phim giới thiệu văn phòng</span><span class="lang-en">Watch the office intro film</span><span class="lang-fr">Voir le film de présentation du bureau</span></span>
+        </button>
         <h3><span class="lang-vi">Văn phòng nghiên cứu</span><span class="lang-en">Research office</span><span class="lang-fr">Bureau de recherche</span></h3>
-        <p><span class="lang-vi">Một căn phòng 3D nhỏ: đi vào, chạm vào một người để hỏi về luận án, các học phần và những sản phẩm số. Câu trả lời viết sẵn — trang không gọi mạng, chạy được cả khi ngoại tuyến.</span><span class="lang-en">A small 3D room: walk in and tap someone to ask about the dissertation, the courses and the software. The answers are written in advance — the page makes no network calls and works offline.</span><span class="lang-fr">Une petite pièce en 3D : entrez et touchez quelqu'un pour poser des questions. Les réponses sont écrites à l'avance ; la page ne fait aucun appel réseau.</span></p>
-        <a class="go" href="vanphong.html"><span class="lang-vi">Mở văn phòng →</span><span class="lang-en">Open the office →</span><span class="lang-fr">Ouvrir le bureau →</span></a>
+        <p><span class="lang-vi">Một căn phòng 3D nhỏ: đi vào, chạm vào một người để hỏi về luận án, các học phần và những sản phẩm số. Câu trả lời viết sẵn: trang không gọi mạng, chạy được cả khi ngoại tuyến. Bản chính thức để trích dẫn nằm ở kho riêng, lưu trữ trên Zenodo kèm DOI.</span><span class="lang-en">A small 3D room: walk in and tap someone to ask about the dissertation, the courses and the software. The answers are written in advance: the page makes no network calls and works offline. The citable edition lives in its own repository, archived on Zenodo with a DOI.</span><span class="lang-fr">Une petite pièce en 3D : entrez et touchez quelqu'un pour poser des questions. Les réponses sont écrites à l'avance ; la page ne fait aucun appel réseau. L’édition citable réside dans son propre dépôt, archivée sur Zenodo avec un DOI.</span></p>
+        <div class="gos">
+          <a class="go" href="vanphong.html"><span class="lang-vi">Mở văn phòng →</span><span class="lang-en">Open the office →</span><span class="lang-fr">Ouvrir le bureau →</span></a>
+          <a class="go" href="https://thuyhuongctu.github.io/Research-Office/" target="_blank" rel="noopener"><span class="lang-vi">Bản chính thức ↗</span><span class="lang-en">Citable edition ↗</span><span class="lang-fr">Édition citable ↗</span></a>
+          <a class="go" href="https://doi.org/10.5281/zenodo.22971293" target="_blank" rel="noopener">DOI: 10.5281/zenodo.22971293 ↗</a>
+        </div>
       </div>
     </div>
+    <button class="xem-them" type="button" hidden aria-expanded="false" aria-controls="du-an-luoi"><span class="lang-vi">Xem thêm <span class="xt-so"></span> dự án</span><span class="lang-en">Show <span class="xt-so"></span> more projects</span><span class="lang-fr">Voir <span class="xt-so"></span> projets de plus</span></button>
     <div class="gardenband">
       <p><span class="lang-vi">Âm nhạc, songbook, trò chơi lịch sử, nhân vật ảo và trang viên 3D sống ở một cửa riêng.</span><span class="lang-en">Music, the songbook, history games, the virtual character and the 3D estate live behind their own door.</span><span class="lang-fr">La musique, le songbook, les jeux, le personnage et le domaine 3D vivent derrière leur propre porte.</span></p>
       <a href="garden.html">🪷 <span class="lang-vi">Mở vườn số →</span><span class="lang-en">Open the digital garden →</span><span class="lang-fr">Ouvrir le jardin numérique →</span></a>
     </div>
   </section>
+
+  <figure class="vnband rv">
+    <div class="vnmap3d">
+      <img src="assets/img/vn-map-3d.webp" width="768" height="1376" loading="lazy" decoding="async"
+           alt="Three-dimensional clay map of Vietnam divided by economic region, with the Hoàng Sa and Trường Sa archipelagos offshore">
+      <span class="vnlb" style="left:73.3%;top:10.2%"><span class="lang-vi">Miền Bắc</span><span class="lang-en">Northern Vietnam</span><span class="lang-fr">Nord</span></span>
+      <span class="vnlb sea" style="left:84.0%;top:28.9%"><span class="lang-vi">Hoàng Sa</span><span class="lang-en">Hoàng Sa</span><span class="lang-fr">Hoàng Sa</span></span>
+      <span class="vnlb" style="left:36.8%;top:40.0%"><span class="lang-vi">Miền Trung</span><span class="lang-en">Central Vietnam</span><span class="lang-fr">Centre</span></span>
+      <span class="vnlb" style="left:49.9%;top:61.4%"><span class="lang-vi">Tây Nguyên</span><span class="lang-en">Central Highlands</span><span class="lang-fr">Hauts Plateaux</span></span>
+      <span class="vnlb wide" style="left:24.5%;top:74.3%"><span class="lang-vi">Đồng bằng sông Cửu Long</span><span class="lang-en">Mekong Delta</span><span class="lang-fr">Delta du Mékong</span></span>
+      <span class="vnlb" style="left:60.0%;top:86.0%"><span class="lang-vi">Nam Bộ</span><span class="lang-en">Southern Vietnam</span><span class="lang-fr">Sud</span></span>
+      <span class="vnlb sea right" style="left:97.0%;top:81.0%"><span class="lang-vi">Trường Sa</span><span class="lang-en">Trường Sa</span><span class="lang-fr">Trường Sa</span></span>
+    </div>
+    <figcaption><span class="lang-vi">Bản đồ trong <a href="https://bizonland.com/" target="_blank" rel="noopener">BizOn</a>, trò chơi mô phỏng khởi nghiệp tôi dựng cho lớp học. Quần đảo Hoàng Sa và Trường Sa thuộc chủ quyền Việt Nam.</span><span class="lang-en">The map from <a href="https://bizonland.com/" target="_blank" rel="noopener">BizOn</a>, the business simulation game I built for my classroom. The Hoàng Sa and Trường Sa archipelagos are Vietnamese sovereign territory.</span><span class="lang-fr">La carte de <a href="https://bizonland.com/" target="_blank" rel="noopener">BizOn</a>, le jeu de simulation d’entreprise que j’ai conçu pour mes cours. Les archipels de Hoàng Sa et Trường Sa relèvent de la souveraineté vietnamienne.</span></figcaption>
+  </figure>
 
   <section id="inspiration" class="rv">
     <div class="note">
@@ -856,7 +1060,6 @@ footer.wrap{position:relative;overflow:hidden}
   </section>
 
 </main>
-
 
 <script>
 /* language: VI | EN in the bar, FR in the menu - shared key with the rest of the site */
@@ -874,7 +1077,10 @@ footer.wrap{position:relative;overflow:hidden}
   }
   btns.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-lang'));});});
   fr.addEventListener('click',function(){set('fr');});
-  var start='vi';
+  /* Mac dinh tieng Anh cho MOI khach. Gia tri khoi tao cung phai la 'en':
+     localStorage nem loi o che do rieng tu thi nhanh catch khong chay set(),
+     va bien nay la thu con lai. */
+  var start='en';
   try{start=localStorage.getItem('huong_lang')||'en';}catch(e){}
   set(start);
 })();
@@ -1042,4 +1248,25 @@ footer.wrap{position:relative;overflow:hidden}
 </script>
 <script data-goatcounter="https://thuyhuongctu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="assets/js/site-chrome.js" defer></script>
+<!-- Nhac nen cua trang chu: nut «Mo bang nhac» trong menu chung (site-chrome.js) bam ho nut #hm-nut do
+     music.js dung. Commit 0c12122 (14/09) bo dai phim co tieng va bo luon music.js, nen tu do nut ay bam khong ra gi.
+     Nhac van chi phat khi nguoi xem bam. -->
+<script src="assets/js/music.js" defer></script>
+<script src="assets/js/atlas.js" defer></script>
+<script>
+/* Luoi Du an thu gon tren dien thoai (xem CSS .thu-gon). Neo # tro vao the dang an
+   thi tu mo ra, de lien ket tu trang khac khong roi vao khoang trong. */
+(function(){
+  var g=document.getElementById('du-an-luoi'), b=document.querySelector('.xem-them');
+  if(!g||!b) return;
+  var an=g.querySelectorAll(':scope>.tile:nth-child(n+5)').length;
+  if(!an) return;
+  b.querySelectorAll('.xt-so').forEach(function(x){x.textContent=an;});
+  g.classList.add('thu-gon'); b.hidden=false;
+  function mo(){ g.classList.remove('thu-gon'); b.hidden=true; b.setAttribute('aria-expanded','true'); }
+  b.addEventListener('click',function(){ mo(); var t=g.querySelectorAll(':scope>.tile')[4]; if(t){ var l=t.querySelector('a,button'); if(l) l.focus({preventScroll:false}); } });
+  function theoNeo(){ var h=location.hash&&document.getElementById(location.hash.slice(1)); if(h&&g.contains(h)) mo(); }
+  theoNeo(); addEventListener('hashchange',theoNeo);
+})();
+</script>
 </body></html>

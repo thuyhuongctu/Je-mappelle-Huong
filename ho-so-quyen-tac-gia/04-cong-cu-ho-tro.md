@@ -103,6 +103,47 @@ cả bản ghi âm.
 
 ---
 
+### A.3c. Phần phim: ba tệp video là hình do máy sinh
+
+Cùng một lẽ với A.3b, và cũng là chỗ **từng khai thiếu**. Đo ngày 22/10/2026
+trên **15 tệp mp4** được git theo dõi:
+
+| | |
+| --- | --- |
+| Hình do máy sinh, **không thuộc phạm vi đăng ký** | **3** |
+| Do tác giả dựng hoặc kết xuất từ cảnh của tác giả | 12 |
+
+Ba tệp ấy là `assets/video/trangvien-intro.mp4`,
+`assets/video/cong-sen-chao.mp4` và `assets/video/cong-hoang-hon.mp4` (kèm ảnh
+bìa `cong-hoang-hon-poster.webp`). Chi tiết từng tệp ở
+[`../THIRD-PARTY.md`](../THIRD-PARTY.md) mục 4 và 4e.
+
+**Hai tệp cổng trước đây không khai ở đâu cả.** `cong-sen-chao.mp4` vào kho
+17/09/2026 và chạy làm nền màn cổng của trang viên từ đó, mà `THIRD-PARTY.md`
+chỉ khai `trangvien-intro.mp4`. Khai một tệp mà bỏ hai tệp cùng loại thì đúng
+vào chỗ A.3b vừa chỉ ra ở phần nhạc: vừa không nhất quán, vừa gợi sai rằng hai
+tệp kia là loại khác. Bảng đếm ở mục 8 của `THIRD-PARTY.md` cũng vì thế mà ghi
+«12 trên 13, một tệp của bên thứ ba»; con số đúng là **12 trên 15, ba tệp**.
+
+**Công cụ, không phải đồng tác giả** — y như phần nhạc. Phần do tác giả quyết
+định ở đây là **lời nhắc, việc chọn giữ hay bỏ từng bản sinh ra, và cách dựng
+lại để dùng được**: riêng `cong-sen-chao.mp4` là cắt 155 khung rồi nối thêm
+chính nó chạy ngược để lặp liền mạch (đo được tương quan 0,9988–1,0000 giữa
+khung `i` và khung `309−i`). Phần hình thì do máy sinh, nên **để ngoài phạm vi
+đăng ký**, giống cảnh tháp ở B.2.
+
+Cái được đăng ký là **cảnh 3D do tác giả dựng bằng three.js**, không phải đoạn
+phim giới thiệu hay clip chạy nền ở màn cổng.
+
+**Việc cần làm:** `THIRD-PARTY.md` mục 4 khai rõ `trangvien-intro.mp4` là của
+**Google Gemini**, còn hai tệp cổng thì **chưa truy được tên công cụ** — tệp đã
+mã lại bằng ffmpeg nên siêu dữ liệu nguồn không còn, bốn góc khung hình cũng
+không có dấu chìm nhìn thấy được. Tác giả còn nhớ thì điền tên công cụ vào mục
+4e; chưa nhớ ra thì cứ để nguyên câu «một công cụ sinh video», vì khai chung
+chung mà đúng vẫn hơn khai cụ thể mà đoán.
+
+---
+
 ### A.4. Hai điều nên cân nhắc trước khi nộp
 
 **Thứ nhất — mức độ mô tả.** Càng mô tả cụ thể các quyết định sáng tạo của

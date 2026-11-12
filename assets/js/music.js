@@ -38,6 +38,8 @@
     maida_monhistoire:     { t: 'M-AIDA · Mon Histoire',       f: A + 'maida/maida_song_mon_histoire.mp3' },
     maida_larecherche:     { t: 'M-AIDA · La Recherche (r2)',  f: A + 'maida/maida_song_la_recherche_remix2.mp3' },
     maida_scholars:        { t: 'M-AIDA · Scholars Final Say', f: A + 'maida/maida_song_scholars_final_say.mp3' },
+    maida_heartbeat_v8:    { t: 'M-AIDA · The Heartbeat of M-AIDA', f: A + 'maida-heartbeat-of-maida.mp3' },
+    maida_preuves_v8:      { t: 'M-AIDA · Que les preuves décident', f: A + 'maida-que-les-preuves-decident.mp3' },
 
     // BizOn
     bizon_batnghiep:   { t: 'BizOn · Bật Nghiệp',            f: A + 'bizon/bat-nghiep.mp3' },
@@ -405,9 +407,15 @@
 
   /* Nhạc tần số thư giãn (solfeggio) khi khách dạo ngoài khuôn viên - chưa vào khu nào */
   function playNhacKhuonVien() {
-    if (!nhacNenActive) { nhacNenActive = true; khuDangChoi = '__khuon-vien__'; }
+    /* Đang phat nhac khuon vien roi thi thoi. Chot cu so sanh dangPhat voi key
+       VUA tinh, ma kvChiSo da tang o lan goi truoc nen key luon la ban KIA -
+       chot khong bao gio giu duoc. Them audio.paused van true ngay sau play()
+       vi play() bat dong bo. Hau qua do duoc: 10 lan nap solfeggio_528 va 9 lan
+       solfeggio_432 trong 6 giay dau, ~38 MB tai thua. Nay xet theo dangPhat co
+       nam trong danh sach nhac khuon vien khong, khong dung audio.paused. */
+    if (khuDangChoi === '__khuon-vien__' && NHAC_KHUONVIEN.indexOf(dangPhat) > -1) return;
+    if (!nhacNenActive) { nhacNenActive = true; }
     var key = NHAC_KHUONVIEN[kvChiSo % NHAC_KHUONVIEN.length];
-    if (khuDangChoi === '__khuon-vien__' && dangPhat === key && !audio.paused) return;
     kvChiSo++;
     playSong(key, { loop: true, vol: Math.min(vol * 0.45, 0.3) });
     khuDangChoi = '__khuon-vien__';

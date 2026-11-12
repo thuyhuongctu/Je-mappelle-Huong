@@ -2,7 +2,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Âm nhạc · Music - Je m'appelle Hương</title>
 <meta name="description" content="Songbook album of Do Thuy Huong: five songs blending Vietnamese identity and French chanson, with clay-art visuals.">
-<link rel="canonical" href="https://thuyhuongctu.github.io/Je-mappelle-Huong/music.html">
+<link rel="canonical" href="https://jemappellehuong.com/music.html">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="icon" href="favicon.ico" sizes="48x48">
@@ -13,11 +13,11 @@
 <style>
 /* Bảng màu đất sét - cùng một bộ token với trang chủ, vườn số và CV.
    Mặc định là giấy sáng; tối theo cài đặt hệ thống hoặc data-theme=dark. */
-:root{--paper:#f6f1e7;--surface:#fffcf5;--sunk:#efe8dc;--ink:#1c1814;--text:#1c1814;--muted:#6f6459;--line:#e2d8c7;--accent:#c45c3a;--accent2:#3f6f68;--accent-soft:#f3e4da;--lam:#3f6f68;--mint:#3f6f68;--sky:#f3e4da;--gold:#b8842c;--shadow:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09);--press:inset 0 2px 0 rgba(255,255,255,.72),inset 0 -2px 0 rgba(120,85,60,.06);
+:root{--paper:#f6f1e7;--surface:#fffcf5;--sunk:#efe8dc;--ink:#1c1814;--text:#1c1814;--muted:#6f6459;--line:#e2d8c7;--accent:#c45c3a;--clay-ink:#a54d31;--on-clay:#fff;--accent2:#3f6f68;--accent-soft:#f3e4da;--lam:#3f6f68;--mint:#3f6f68;--sky:#f3e4da;--gold:#b8842c;--shadow:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09);--press:inset 0 2px 0 rgba(255,255,255,.72),inset 0 -2px 0 rgba(120,85,60,.06);
 --serif:"Iowan Old Style",Georgia,"Times New Roman",serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#17130f;--surface:#201914;--sunk:#120e0b;--ink:#efe6d8;--text:#efe6d8;--muted:#a6998a;--line:#332a22;--accent:#e08055;--accent2:#79b3a6;--accent-soft:#3a251c;--lam:#79b3a6;--mint:#79b3a6;--sky:#3a251c;--gold:#d6a24e;--shadow:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42);--press:inset 0 2px 0 rgba(255,255,255,.05),inset 0 -2px 0 rgba(0,0,0,.28)}}
-:root[data-theme=dark]{--paper:#17130f;--surface:#201914;--sunk:#120e0b;--ink:#efe6d8;--text:#efe6d8;--muted:#a6998a;--line:#332a22;--accent:#e08055;--accent2:#79b3a6;--accent-soft:#3a251c;--lam:#79b3a6;--mint:#79b3a6;--sky:#3a251c;--gold:#d6a24e;--shadow:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42);--press:inset 0 2px 0 rgba(255,255,255,.05),inset 0 -2px 0 rgba(0,0,0,.28)}
-:root[data-theme=light]{--paper:#f6f1e7;--surface:#fffcf5;--sunk:#efe8dc;--ink:#1c1814;--text:#1c1814;--muted:#6f6459;--line:#e2d8c7;--accent:#c45c3a;--accent2:#3f6f68;--accent-soft:#f3e4da;--lam:#3f6f68;--mint:#3f6f68;--sky:#f3e4da;--gold:#b8842c;--shadow:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09);--press:inset 0 2px 0 rgba(255,255,255,.72),inset 0 -2px 0 rgba(120,85,60,.06)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#17130f;--surface:#201914;--sunk:#120e0b;--ink:#efe6d8;--text:#efe6d8;--muted:#a6998a;--line:#332a22;--accent:#e08055;--clay-ink:#e08055;--on-clay:#17130f;--accent2:#79b3a6;--accent-soft:#3a251c;--lam:#79b3a6;--mint:#79b3a6;--sky:#3a251c;--gold:#d6a24e;--shadow:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42);--press:inset 0 2px 0 rgba(255,255,255,.05),inset 0 -2px 0 rgba(0,0,0,.28)}}
+:root[data-theme=dark]{--paper:#17130f;--surface:#201914;--sunk:#120e0b;--ink:#efe6d8;--text:#efe6d8;--muted:#a6998a;--line:#332a22;--accent:#e08055;--clay-ink:#e08055;--on-clay:#17130f;--accent2:#79b3a6;--accent-soft:#3a251c;--lam:#79b3a6;--mint:#79b3a6;--sky:#3a251c;--gold:#d6a24e;--shadow:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42);--press:inset 0 2px 0 rgba(255,255,255,.05),inset 0 -2px 0 rgba(0,0,0,.28)}
+:root[data-theme=light]{--paper:#f6f1e7;--surface:#fffcf5;--sunk:#efe8dc;--ink:#1c1814;--text:#1c1814;--muted:#6f6459;--line:#e2d8c7;--accent:#c45c3a;--clay-ink:#a54d31;--on-clay:#fff;--accent2:#3f6f68;--accent-soft:#f3e4da;--lam:#3f6f68;--mint:#3f6f68;--sky:#f3e4da;--gold:#b8842c;--shadow:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09);--press:inset 0 2px 0 rgba(255,255,255,.72),inset 0 -2px 0 rgba(120,85,60,.06)}
 html{scroll-behavior:smooth}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
 .wrap{max-width:820px;margin:0 auto;padding:clamp(20px,4vw,48px)}
@@ -25,8 +25,8 @@ html{scroll-behavior:smooth}
    khong co dong nay thi tren dien thoai hang nut VI/EN - Sang/Toi de len ten trang. */
 .wrap{padding-top:96px}
 h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
-a{color:var(--accent)}
-.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:700;color:var(--accent)}
+a{color:var(--clay-ink)}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:700;color:var(--clay-ink)}
 .brandmini{position:fixed;top:10px;left:12px;z-index:6;display:none;width:min(230px,calc(100vw - 190px));height:auto;text-decoration:none;line-height:0}
 .brandmini img{display:block;width:100%;height:auto;object-fit:contain}
 @media(max-width:560px){.brandmini{top:6px;left:6px;width:96px;background:rgba(255,253,248,.7);border-radius:14px;padding:3px 8px}}
@@ -35,12 +35,12 @@ a{color:var(--accent)}
 .toggle{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 13px;font-size:.74rem;cursor:pointer;box-shadow:var(--shadow)}
 .langtog{display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
 .langtog button{border:none;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:6px 11px;cursor:pointer}
-.langtog button.active{background:var(--accent);color:#fff}
+.langtog button.active{background:var(--clay-ink);color:var(--on-clay)}
 html[lang="en"] .lang-vi{display:none}
 html:not([lang="en"]) .lang-en{display:none}
 header.page{margin:40px 0 14px;text-align:center;border-bottom:none;padding-bottom:0;position:relative}
 header.page h1{font-size:clamp(1.7rem,5vw,2.5rem);margin:0 0 8px}
-.page-kicker{margin:0 0 6px;font:700 .7rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.page-kicker{margin:0 0 6px;font:700 .7rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--clay-ink)}
 header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--mint,#cdeacf),var(--accent-soft),var(--sky,#dde6f6))}
 .sub{color:var(--muted)}
 section{margin-top:36px}
@@ -70,7 +70,7 @@ section{margin-top:36px}
 .track-noi .track-doi .track-name{font-size:.92rem;color:var(--muted)}
 .track-noi .track-doi .track-name b{color:var(--text);font-weight:600}
 .nhan-noi{display:inline-block;font-size:.68rem;font-weight:700;
-  letter-spacing:.09em;text-transform:uppercase;color:var(--accent);
+  letter-spacing:.09em;text-transform:uppercase;color:var(--clay-ink);
   border:1px solid var(--accent);border-radius:999px;padding:2px 10px;
   margin-bottom:10px}
 .nhan-khac{font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
@@ -109,7 +109,7 @@ audio{width:100%;height:38px}
   background:radial-gradient(62% 62% at 50% 50%,rgba(18,15,14,.10),rgba(18,15,14,.44))}
 .songclip .mv-play{position:absolute;left:50%;top:50%;translate:-50% -50%;z-index:1;
   display:grid;place-items:center;width:68px;height:68px;padding-left:5px;border-radius:50%;
-  background:var(--accent);color:#fff;font-size:1.45rem;line-height:1;
+  background:var(--clay-ink);color:var(--on-clay);font-size:1.45rem;line-height:1;
   box-shadow:0 8px 22px rgba(60,40,28,.45)}
 .songclip .mv-yt:hover .mv-play,.songclip .mv-yt:focus-visible .mv-play{scale:1.08}
 @media(prefers-reduced-motion:no-preference){.songclip .mv-play{transition:scale .18s ease}}
@@ -144,45 +144,45 @@ audio{width:100%;height:38px}
    nếu không nó chiếm mất cả màn hình trước khi đọc được tên album. */
 .nhanvat.dung{width:auto;height:min(268px,38vh)}
 .lyrics{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:26px clamp(20px,4vw,36px)}
-.lyrics h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:26px 0 8px;font-family:var(--sans);font-weight:700}
+.lyrics h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--clay-ink);margin:26px 0 8px;font-family:var(--sans);font-weight:700}
 .lyrics h3:first-child{margin-top:0}
 .lyrics h3 .note{text-transform:none;letter-spacing:0;color:var(--muted);font-weight:400;font-style:italic}
 .lyrics p{font-family:var(--serif);font-size:1.02rem;line-height:1.85;margin:0 0 4px;white-space:pre-line}
-.lyrics .refrain p{color:var(--accent)}
+.lyrics .refrain p{color:var(--clay-ink)}
 .lyrics .lyr-ver{font-size:.95rem;text-transform:none;letter-spacing:.01em;color:var(--accent2);border-bottom:1px solid var(--line);padding-bottom:9px;margin:58px 0 20px}
 .dedication{background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 8%,var(--surface)),var(--surface));border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:1.2rem 1.5rem;font-size:.95rem;color:var(--muted)}
 .dedication b{color:var(--ink)}
 .taglines{font-family:var(--serif);font-style:italic;text-align:center;color:var(--muted);line-height:1.9;margin:14px 0}
-.taglines b{color:var(--accent);font-style:normal}
+.taglines b{color:var(--clay-ink);font-style:normal}
 .motifs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.motifs span{font-size:.78rem;background:var(--accent-soft);color:var(--accent);padding:4px 11px;border-radius:20px}
+.motifs span{font-size:.78rem;background:var(--accent-soft);color:var(--clay-ink);padding:4px 11px;border-radius:20px}
 .tracklist{width:100%;border-collapse:collapse;font-size:.86rem;margin-top:6px}
 .tracklist th{font-family:var(--sans);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:2px solid var(--ink)}
 .tracklist td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
-.tracklist td:first-child{font-family:var(--serif);font-weight:700;color:var(--accent);white-space:nowrap}
+.tracklist td:first-child{font-family:var(--serif);font-weight:700;color:var(--clay-ink);white-space:nowrap}
 .tracklist a{text-decoration:none;font-weight:600}
 .prod{font-size:.82rem;color:var(--muted);margin:6px 0 0;line-height:1.7}
 .prod b{color:var(--ink)}
-.keyline{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:.95rem;margin-top:6px}
+.keyline{font-family:var(--serif);font-style:italic;color:var(--clay-ink);font-size:.95rem;margin-top:6px}
 .norec{font-size:.85rem;color:var(--muted);font-style:italic;background:var(--accent-soft);border-radius:9px;padding:8px 14px;display:inline-block;margin-top:4px}
 footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
 footer a{color:var(--muted)}
-footer a:hover{color:var(--accent)}
+footer a:hover{color:var(--clay-ink)}
 .skip-link{position:absolute;top:-52px;left:12px;background:#a8394e;color:#fff;font:700 .85rem sans-serif;padding:10px 16px;z-index:100;border-radius:0 0 10px 10px;text-decoration:none;transition:top .2s}.skip-link:focus{top:0;outline:3px solid #a8394e;outline-offset:2px}</style>
 
-<meta property="og:image" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/assets/img/music-og-ba-cong-con.jpg">
+<meta property="og:image" content="https://jemappellehuong.com/assets/img/music-og-ba-cong-con.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Songbook La lampe, le fleuve et les couleurs - album 6 bài hát của Đỗ Thùy Hương">
 <meta property="og:title" content="Âm nhạc · Music - Je m'appelle Hương">
-<meta property="og:url" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/music.html">
+<meta property="og:url" content="https://jemappellehuong.com/music.html">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Je m'appelle Hương - Đỗ Thùy Hương">
+<meta property="og:site_name" content="Je m'appelle Hương">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Âm nhạc · Music - Je m'appelle Hương">
 <meta name="twitter:description" content="Album La lampe, le fleuve et les couleurs - mini song-cycle 6 bài hát về sự vắng mặt, sự trưởng thành và những giấc mơ đổi cây cọ của Đỗ Thùy Hương.">
-<meta name="twitter:image" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/assets/img/huong_songbook_hero.jpg">
+<meta name="twitter:image" content="https://jemappellehuong.com/assets/img/huong_songbook_hero.jpg">
 <style>
 /* ===== DeepMind-style header ===== */
 .dmnav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:10px;padding:10px 16px;
@@ -196,9 +196,9 @@ footer a:hover{color:var(--accent)}
 .dmnav .dmright{margin-left:auto;display:flex;align-items:center;gap:6px;overflow-x:auto;max-width:calc(100vw - 170px)}
 .dmnav .dmright a{color:var(--ink);text-decoration:none;font:500 .76rem/1.4 var(--sans);padding:6px 8px;white-space:nowrap;
   background-image:linear-gradient(var(--accent),var(--accent));background-size:0% 1.5px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .28s ease,color .2s}
-.dmnav .dmright a:hover{color:var(--accent);background-size:100% 1.5px}
+.dmnav .dmright a:hover{color:var(--clay-ink);background-size:100% 1.5px}
 .dmnav .dmico{display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border-radius:50%;color:var(--muted);font-size:.9rem;text-decoration:none;transition:color .2s,background .2s}
-.dmnav .dmico:hover{color:var(--accent);background:var(--accent-soft)}
+.dmnav .dmico:hover{color:var(--clay-ink);background:var(--accent-soft)}
 @media(max-width:760px){.dmnav{padding:7px 10px;gap:6px;flex-wrap:nowrap}.dmnav .dmlabel small{display:none}.dmnav .dmlabel{font-size:.7rem}
 .dmnav .dmright{max-width:calc(100vw - 150px);flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
 .dmnav .dmright::-webkit-scrollbar{display:none}
@@ -248,7 +248,7 @@ footer a:hover{color:var(--accent)}
 }
 .lyrics-toggle::after { content: '＋'; font-size: 1.1rem; line-height: 1; }
 .lyrics-open .lyrics-toggle::after { content: '−'; }
-.lyrics-toggle:hover { color: var(--accent); }
+.lyrics-toggle:hover { color:var(--clay-ink); }
 .lyrics-toggle:focus-visible { outline: 3px solid color-mix(in srgb, var(--lam) 42%, transparent); outline-offset: 4px; border-radius: 4px; }
 
 /* One-click playback for each song section. */
@@ -331,6 +331,46 @@ footer a:hover{color:var(--accent)}
 }
 .playback-mode:hover, .playback-mode[aria-pressed="true"] { border-color: var(--lam); background: var(--lam); color: #fff; }
 .playback-mode:focus-visible { outline: 3px solid color-mix(in srgb, var(--lam) 42%, transparent); outline-offset: 3px; }
+.playlist-bar { flex-direction: column; align-items: stretch; gap: 10px; }
+.pl-row { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; }
+.pl-sep { width: 1px; align-self: stretch; background: var(--line); margin: 0 3px; }
+.pl-play {
+  display: inline-flex; align-items: center; gap: 8px;
+  appearance: none; cursor: pointer;
+  border: 1px solid var(--lam); border-radius: 999px;
+  background: var(--lam); color: #fff;
+  font: 800 .84rem/1 var(--sans); letter-spacing: .02em;
+  padding: 11px 18px;
+}
+.pl-play:hover { filter: brightness(1.08); }
+.pl-play:focus-visible { outline: 3px solid color-mix(in srgb, var(--lam) 42%, transparent); outline-offset: 3px; }
+.pl-play .pl-ico { font-size: .9rem; }
+.pl-step { padding: 10px 13px; font-size: .95rem; line-height: 1; }
+.pl-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.pl-now {
+  appearance: none; border: 0; background: transparent; cursor: pointer;
+  color: var(--muted); font: 600 .82rem/1.4 var(--sans);
+  text-align: left; padding: 4px 2px; margin-left: 2px;
+}
+.pl-now:hover { color:var(--clay-ink); text-decoration: underline; }
+.pl-count { margin: 0; color: var(--muted); font: .75rem/1.3 var(--sans); }
+/* Nen toi: chu trang tren nen bac ha chi dat 2,38:1, duoi nguong WCAG AA 4,5.
+   Chu sam tren chinh nen ay dat 7,75:1. (Loi nay co san o .playback-mode da nhan.) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme=light]) .pl-play,
+  :root:not([data-theme=light]) .playback-mode[aria-pressed="true"],
+  :root:not([data-theme=light]) .playback-mode:hover { color: #17130f; }
+}
+:root[data-theme=dark] .pl-play,
+:root[data-theme=dark] .playback-mode[aria-pressed="true"],
+:root[data-theme=dark] .playback-mode:hover { color: #17130f; }
+@media (max-width: 560px) {
+  .pl-row-main { gap: 7px; }
+  .pl-play { flex: 1 1 100%; justify-content: center; }
+  .pl-now { flex: 1 1 100%; }
+  .pl-sep { display: none; }
+}
+
 @media (max-width: 560px) { .playback-modes-label { width: 100%; } }
 
 /* Song search across track titles, metadata and lyrics. */
@@ -357,7 +397,7 @@ footer a:hover{color:var(--accent)}
 }
 .song-search input:focus { outline: 3px solid color-mix(in srgb, var(--lam) 35%, transparent); outline-offset: 2px; border-color: var(--lam); }
 .song-search-clear { display: none; appearance: none; border: 0; background: transparent; color: var(--muted); cursor: pointer; font: 700 .82rem/1 var(--sans); padding: 7px; }
-.song-search-clear:hover { color: var(--accent); }
+.song-search-clear:hover { color:var(--clay-ink); }
 .song-search.has-query .song-search-clear { display: inline-block; }
 .song-search-status { margin: 0 0 18px; color: var(--muted); font: .82rem/1.4 var(--sans); }
 .song-search-status:empty { display: none; }
@@ -450,7 +490,7 @@ footer a:hover{color:var(--accent)}
 (function(){try{var s=localStorage.getItem('huong_theme');if(s)document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script>
 </head><body>
   <div class="dmnav" id="dmnav">
-    <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
+    <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round-144.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
     <div class="dmright">
       <a href="index.html#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
       <a class="hide-xs" href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></a>
@@ -462,14 +502,14 @@ footer a:hover{color:var(--accent)}
     </div>
   </div>
 
-<a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Logo LR - Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
+<a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img loading="lazy" src="assets/img/lr-je-mappelle-huong-480.webp" alt="Logo LR - Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
 <div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span></button><button class="toprefresh" id="nut-ref" type="button"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button></div>
 
 <div class="wrap">
   <header class="page">
     <div class="page-kicker"><span class="lang-vi">Kho nhạc cá nhân</span><span class="lang-en">Personal music</span></div>
     <h1><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></h1>
-    <p class="sub"><span class="lang-vi">Các sáng tác riêng của Đỗ Thùy Hương: một album kèm lời, và vài bản nhạc ngoài album. Nhạc của các dự án nằm ở <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Bài hát</a> và <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a>.</span><span class="lang-en">Personal compositions by Do Thuy Huong: one album with lyrics, and a few pieces outside it. Project music lives at <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Songs</a> and <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a>.</span></p>
+    <p class="sub"><span class="lang-vi">Các sáng tác riêng của Đỗ Thùy Hương: một album kèm lời, và vài bản nhạc ngoài album. Nhạc của BizOn nằm ở <a href="https://bizonland.com/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a>.</span><span class="lang-en">Personal compositions by Do Thuy Huong: one album with lyrics, and a few pieces outside it. BizOn’s music lives at <a href="https://bizonland.com/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a>.</span></p>
   </header>
 
   <figure class="pagecover">
@@ -481,12 +521,13 @@ footer a:hover{color:var(--accent)}
 
   <section class="reveal" id="main">
     <div class="shead"><h2><span class="lang-vi">Album «Je m'appelle Hương»</span><span class="lang-en">The album «Je m'appelle Hương»</span></h2><span class="ln"></span></div>
-    <p class="song-desc" style="max-width:100%;margin:0 0 14px"><span class="lang-vi">Sáu bài chính cùng một bản bonus · 25 bản thu · sáng tác 07 - 13/08/2026.</span><span class="lang-en">Six main songs plus one bonus · 25 recordings · composed 7 - 13 Aug 2026.</span></p>
+    <p class="song-desc" style="max-width:100%;margin:0 0 14px"><span class="lang-vi">Sáu bài chính, một bản bonus và một bài viết thêm · 23 bản thu · sáng tác 07 - 13/08/2026, riêng Track 08 ngày 18/10/2026.</span><span class="lang-en">Six main songs, one bonus and one later addition · 23 recordings · composed 7 - 13 Aug 2026, with Track 08 on 18 Oct 2026.</span></p>
     <div class="song" style="padding:22px 24px">
       <img class="nhanvat dung" src="assets/img/huong-ai-sen.webp" width="262" height="900" loading="lazy" decoding="async"
            alt="Hình đất sét: Hương AI trong áo dài trắng, một đoá sen trên tay">
       <div class="song-title" style="text-align:center">La lampe, le fleuve et les couleurs</div>
       <p class="song-desc" style="max-width:100%;text-align:center;margin:6px auto 0"><span class="lang-vi">Một mini song-cycle / EP gồm 6 bài hát về sự vắng mặt, sự trưởng thành, và những giấc mơ thay hình đổi dạng · Sáng tác 07 - 13/08/2026.</span><span class="lang-en">A six-song mini song-cycle / EP about absence, growing up, and dreams that change their shape · Composed 7 - 13 Aug 2026.</span></p>
+      <p class="song-desc" style="max-width:100%;text-align:center;margin:8px auto 0"><span class="lang-vi">Nghe cả album với lời chạy theo nhạc ở <a href="https://thuyhuongctu.github.io/Chansonia/" target="_blank" rel="noopener">Chansonia ↗</a>. Đó là trình phát đồng bộ lời dựng riêng cho đĩa này, có <a href="https://doi.org/10.5281/zenodo.22172794" target="_blank" rel="noopener">DOI 10.5281/zenodo.22172794</a> để trích dẫn. Chứa sáu bài của đĩa gốc; Track 08 viết sau nên chưa có trong đó.</span><span class="lang-en">Hear the album with the lyrics scrolling in time at <a href="https://thuyhuongctu.github.io/Chansonia/" target="_blank" rel="noopener">Chansonia ↗</a>. It is a lyrics-synchronised player built for this record, with <a href="https://doi.org/10.5281/zenodo.22172794" target="_blank" rel="noopener">DOI 10.5281/zenodo.22172794</a> for citation. It holds the six songs of the original record; Track 08 came later and is not in it yet.</span></p>
       <div class="taglines">
         Some dreams don't disappear. They change their brush.<br>
         Certains rêves ne disparaissent pas. Ils changent seulement de pinceau.<br>
@@ -507,10 +548,11 @@ footer a:hover{color:var(--accent)}
         <tr><td>01</td><td><a href="#t01">Je voudrais te parler</a></td><td><span class="lang-vi">Người trưởng thành lên tiếng</span><span class="lang-en">The adult speaks</span></td><td><span class="lang-vi">Mong manh</span><span class="lang-en">Fragile</span></td><td><span class="lang-vi">Đêm, lời chưa nói</span><span class="lang-en">Night, unsaid words</span></td></tr>
         <tr><td>02</td><td><a href="#t02">La lampe brûle encore</a></td><td><span class="lang-vi">Nguồn gốc khoảng lặng</span><span class="lang-en">Where the silence began</span></td><td><span class="lang-vi">Mất mát, ấm áp</span><span class="lang-en">Loss, warmth</span></td><td><span class="lang-vi">Ghế trống, hai mái chèo</span><span class="lang-en">Empty chair, two oars</span></td></tr>
         <tr><td>03</td><td><a href="#t03">The Lamp Still Burns</a></td><td><span class="lang-vi">Góc nhìn thứ 3 bao quát</span><span class="lang-en">A third-person embrace</span></td><td><span class="lang-vi">An ủi, cho phép nghỉ</span><span class="lang-en">Comfort, permission to rest</span></td><td><span class="lang-vi">Đèn, sông</span><span class="lang-en">Lamp, river</span></td></tr>
-        <tr style="background:var(--accent-soft); border-left:4px solid var(--accent)"><td>04</td><td><a href="#t04" style="color:var(--accent); font-weight:800">26 Năm Sau (v2) ★</a></td><td><span class="lang-vi"><b>BÀI HÁT CHỦ ĐỀ</b></span><span class="lang-en"><b>TITLE TRACK</b></span></td><td><span class="lang-vi">Hồi sinh, ngộ ra</span><span class="lang-en">Rebirth, realization</span></td><td><span class="lang-vi">Hộp màu, màn hình, code</span><span class="lang-en">Paint box, screen, code</span></td></tr>
+        <tr style="background:var(--accent-soft); border-left:4px solid var(--accent)"><td>04</td><td><a href="#t04" style="color:var(--clay-ink); font-weight:800">26 Năm Sau (v2) ★</a></td><td><span class="lang-vi"><b>BÀI HÁT CHỦ ĐỀ</b></span><span class="lang-en"><b>TITLE TRACK</b></span></td><td><span class="lang-vi">Hồi sinh, ngộ ra</span><span class="lang-en">Rebirth, realization</span></td><td><span class="lang-vi">Hộp màu, màn hình, code</span><span class="lang-en">Paint box, screen, code</span></td></tr>
         <tr style="background:var(--accent-soft)"><td>05</td><td><a href="#t05" style="color:var(--accent2);font-weight:700">A Father’s Song to His Little Girl</a></td><td><span class="lang-vi">Lời nhắn nhủ từ người cha</span><span class="lang-en">A message from father</span></td><td><span class="lang-vi">Thấu hiểu, chữa lành</span><span class="lang-en">Healing, understanding</span></td><td><span class="lang-vi">Dòng sông, đôi vai</span><span class="lang-en">The river, shoulders</span></td></tr>
         <tr><td>06</td><td><a href="#t06">Je m'appelle Hương (Symphonic)</a></td><td><span class="lang-vi">Hợp nhất mọi phiên bản</span><span class="lang-en">All selves unite</span></td><td><span class="lang-vi">Trở về, bình yên</span><span class="lang-en">Return, peace</span></td><td><span class="lang-vi">Con đường, hòn đảo</span><span class="lang-en">The road, the island</span></td></tr>
-        <tr style="background:var(--accent-soft)"><td>07</td><td><a href="#t07" style="color:var(--accent); font-weight:700">Le ciel que tu n’as jamais quitté</a></td><td><span class="lang-vi">Bonus track · Ngoại truyện</span><span class="lang-en">Bonus track · Epilogue</span></td><td><span class="lang-vi">Tôn trọng, chờ đợi</span><span class="lang-en">Respect, waiting</span></td><td><span class="lang-vi">Bầu trời, mái hiên</span><span class="lang-en">Sky, doorstep</span></td></tr>
+        <tr style="background:var(--accent-soft)"><td>07</td><td><a href="#t07" style="color:var(--clay-ink); font-weight:700">Le ciel que tu n’as jamais quitté</a></td><td><span class="lang-vi">Bonus track · Ngoại truyện</span><span class="lang-en">Bonus track · Epilogue</span></td><td><span class="lang-vi">Tôn trọng, chờ đợi</span><span class="lang-en">Respect, waiting</span></td><td><span class="lang-vi">Bầu trời, mái hiên</span><span class="lang-en">Sky, doorstep</span></td></tr>
+        <tr style="background:var(--accent-soft)"><td>08</td><td><a href="#t08" style="color:var(--accent2);font-weight:700">Nhà vẫn sáng đèn</a></td><td><span class="lang-vi">Bài viết thêm · 18/10/2026</span><span class="lang-en">A later addition · 18 Oct 2026</span></td><td><span class="lang-vi">Chia sẻ, cho phép trở về</span><span class="lang-en">Sharing, permission to come home</span></td><td><span class="lang-vi">Hộp màu, ghế cũ, ngọn đèn</span><span class="lang-en">Paint box, the old chair, the lamp</span></td></tr>
       </table>
     </div>
   </section>
@@ -519,7 +561,7 @@ footer a:hover{color:var(--accent)}
     <div class="shead"><h2>Track 01 - Je voudrais te parler</h2><span class="ln"></span></div>
     <div class="song">
       <div class="song-head">
-        <img class="cover" src="assets/img/huong_silver_tablet.webp" alt="Huong AI in a silver ao dai - cover art" loading="lazy">
+        <img class="cover" src="assets/img/huong_silver_tablet-480.webp" alt="Huong AI in a silver ao dai - cover art" loading="lazy">
         <div>
           <div class="song-title">Je voudrais te parler <span style="font-family:var(--sans);font-size:.8rem;font-weight:400;color:var(--muted)">· Parler à mon père, moi aussi</span></div>
           <div class="song-meta"><span class="lang-vi">Tiếng Pháp · 3 bản thu</span><span class="lang-en">French · 3 recordings</span></div>
@@ -608,7 +650,7 @@ Et puis dormir.</p>
     <div class="shead"><h2>Track 02 - La lampe brûle encore <span style="font-size:.85em;color:var(--muted)">(Đèn vẫn còn sáng)</span></h2><span class="ln"></span></div>
     <div class="song">
       <div class="song-head">
-        <img class="cover" src="assets/img/huong_silver_room.webp" alt="Huong AI in a silver ao dai pointing at a holographic screen - cover art" loading="lazy">
+        <img class="cover" src="assets/img/huong_silver_room-480.webp" alt="Huong AI in a silver ao dai pointing at a holographic screen - cover art" loading="lazy">
         <div>
           <div class="song-title">La lampe brûle encore</div>
           <div class="song-meta"><span class="lang-vi">Việt - Pháp · các bản thu phối chung chương 02 - 03</span><span class="lang-en">Vietnamese - French · recordings blend chapters 02 - 03</span></div>
@@ -802,16 +844,16 @@ La nuit peut garder ce que tu ne peux plus porter.</p>
   </section>
 
     <section class="reveal" id="t04" style="border: 2px solid var(--accent); box-shadow: var(--shadow); border-radius: 24px; overflow: hidden; margin-top: 40px;">
-    <div class="shead" style="background:var(--accent); color:#fff; padding: 15px 25px;">
+    <div class="shead" style="background:var(--clay-ink); color:var(--on-clay); padding: 15px 25px;">
       <h2 style="color:#fff">Track 04 - 26 Năm Sau (v2) <span style="font-size:.7em; opacity:0.9; font-weight:400">★ Album Title Track</span></h2>
     </div>
     <div class="song" style="padding:25px;background:linear-gradient(180deg,var(--accent-soft) 0%,var(--surface) 100%)">
       <div class="song-head">
         <img class="cover" src="assets/img/huong_songbook_hero.jpg" alt="Huong in Sun-embroidered Ao Dai - Title Track Cover" style="border: 3px solid var(--accent); box-shadow: var(--shadow)">
         <div>
-          <div class="song-title" style="color:var(--accent); font-size:1.8rem">26 Năm Sau (v2) <span style="font-family:var(--sans);font-size:.8rem;font-weight:700;background:var(--accent);color:#fff;padding:2px 8px;border-radius:4px;vertical-align:middle;margin-left:10px">MAIN TRACK</span></div>
+          <div class="song-title" style="color:var(--clay-ink); font-size:1.8rem">26 Năm Sau (v2) <span style="font-family:var(--sans);font-size:.8rem;font-weight:700;background:var(--clay-ink);color:var(--on-clay);padding:2px 8px;border-radius:4px;vertical-align:middle;margin-left:10px">MAIN TRACK</span></div>
           <div class="song-meta"><span class="lang-vi">Việt, Anh, Pháp · Bản thu chính thức 2026</span><span class="lang-en">VN, EN, FR · Official 2026 Title Track</span></div>
-          <p class="keyline" style="color:var(--accent); font-size:1.1rem; border-left:3px solid var(--accent); padding-left:15px">«26 năm sau, em thấy mình trong những dòng code. / I found the light, I found the way.»</p>
+          <p class="keyline" style="color:var(--clay-ink); font-size:1.1rem; border-left:3px solid var(--accent); padding-left:15px">«26 năm sau, em thấy mình trong những dòng code. / I found the light, I found the way.»</p>
         </div>
       </div>
       <div class="picrow doi">
@@ -834,7 +876,7 @@ La nuit peut garder ce que tu ne peux plus porter.</p>
       </figure>
       <div class="tracks" style="background:var(--sunk); border-radius:16px; margin-top:20px">
         <div class="track" style="padding: 15px;">
-          <div class="track-name" style="color:var(--accent); font-weight:800">«26 Năm Sau (v2)» - Title Track <span class="len">· 5:03</span></div>
+          <div class="track-name" style="color:var(--clay-ink); font-weight:800">«26 Năm Sau (v2)» - Title Track <span class="len">· 5:03</span></div>
           <audio controls preload="auto" src="assets/audio/track04-26-nam-sau-v2.mp3"></audio>
         </div>
         <div class="track" style="padding: 10px 15px; opacity: 0.7;">
@@ -1393,17 +1435,169 @@ Je n’entre pas.
 Je regarde seulement le ciel que tu n’as jamais quitté.</p>
     </div>
   </section>
+<section class="reveal" id="t08" style="border-left:6px solid var(--accent2);background:var(--sunk);margin-top:40px;border-radius:0 20px 20px 0">
+    <div class="shead"><h2>Track 08 - Nhà vẫn sáng đèn</h2><span class="ln"></span></div>
+    <div class="song" style="padding:20px 24px">
+      <div class="song-meta"><span class="lang-vi">Tiếng Việt, lời cha dặn con · 1 bản thu · 7:19 · sáng tác 18/10/2026, sau album hai tháng · có MV.</span><span class="lang-en">Vietnamese, a father speaking to his child · 1 recording · 7:19 · composed 18 Oct 2026, two months after the album · with a music video.</span></div>
+      <p class="keyline" style="color:var(--accent2)">«Con không cần rực rỡ để được thương / Không cần thắng mới có đường về nhà.»</p>
+      <p class="song-desc" style="max-width:100%"><span class="lang-vi">Bài này nối tiếp <a href="#t05">Track 05</a> - vẫn là giọng người cha, nhưng hát bằng tiếng Việt và đi hết một vòng đời: từ cô bé ngồi trên vai ba với hộp màu trong tay, qua những năm giương buồm ra biển, tới chiếc ghế cũ không còn ai ngồi đợi. Mọi motif của album đều trở lại - ngọn đèn, con thuyền, chiếc ghế trống, hộp màu - và lần này có thêm dòng code: «Dẫu giờ đây con vẽ bằng dòng code / Vẫn nâng niu từng sắc nắng, giọt mưa.»</span><span class="lang-en">This song continues <a href="#t05">Track 05</a> - the father's voice again, but in Vietnamese, and across a whole life: from the small girl on her father's shoulders with a paint box in her hands, through the years of sailing out to sea, to the old chair with nobody waiting in it. Every motif of the album returns - the lamp, the boat, the empty chair, the paint box - and this time the code joins them: “Though you paint in lines of code now / you still cherish every shade of sun, every drop of rain.”</span></p>
+      <div class="tracks">
+        <div class="track">
+          <div class="track-name">«Nhà vẫn sáng đèn» <span class="len">· 7:19</span></div>
+          <audio controls preload="none" src="assets/audio/nha-van-sang-den.mp3"></audio>
+        </div>
+      </div>
+    </div>
+    <figure class="songclip" style="margin-top:18px">
+      <button type="button" class="mv-yt" data-yt="Hr70nStSOMs">
+        <img src="assets/img/ba-cong-con-tren-vai.webp" width="1400" height="788" loading="lazy" decoding="async"
+             alt="Ảnh bìa MV: người cha cõng con gái trên vai đi trên con đường làng lúc hoàng hôn bên dòng sông">
+        <span class="mv-play" aria-hidden="true">&#9654;</span>
+        <span class="chi-doc"><span class="lang-vi">Xem MV «Nhà vẫn sáng đèn» trên YouTube</span><span class="lang-en">Watch the music video “Nhà vẫn sáng đèn” on YouTube</span></span>
+      </button>
+      <figcaption>
+        <span class="lang-vi">MV «Nhà vẫn sáng đèn» - bấm để xem trên YouTube.</span>
+        <span class="lang-en">The music video for “Nhà vẫn sáng đèn” - press to watch on YouTube.</span>
+      </figcaption>
+    </figure>
+    <div class="lyrics" style="margin-top:14px">
+      <h3>Khổ 1 <span class="note"><span class="lang-vi">· giọng nam ấm, mở bằng dương cầm và cello</span><span class="lang-en">· warm male vocal, opening on piano and cello</span></span></h3>
+      <p>Ngày con bé, ngồi trên đôi vai ba
+Con đường làng mở ra bao điều mới
+Con ôm chặt hộp màu trong tay nhỏ
+Sợ về nhà, nắng tắt chẳng kịp tô.</p>
+      <p>Con vẽ nhà, cửa sổ mở thật to
+Vẽ ba đứng bên hàng cây trước ngõ
+Mặt trời đỏ, còn dòng sông màu tím
+Ba mỉm cười: “Con vẽ đẹp, con ơi.”</p>
+      <h3>Tiền điệp khúc</h3>
+      <p>Rồi con lớn, qua bao miền xa lạ
+Tập giấu buồn sau câu nói “con quen”
+Có những tối, giữa căn phòng lặng quá
+Con nhớ nhà, nhớ ánh sáng ngọn đèn.</p>
+      <div class="refrain">
+      <h3>Điệp khúc</h3>
+      <p>Con không cần rực rỡ để được thương
+Không cần thắng mới có đường về nhà
+Cứ đặt xuống những ngày dài nặng quá
+Ngồi bên thềm, cứ gọi một tiếng ba.</p>
+      <p>Con không cần mạnh mẽ suốt cuộc đời
+Buồn cứ khóc, mệt rồi con cứ nghỉ
+Dẫu ngoài kia chưa biết con là ai
+Ở nhà mình, con vẫn được yêu thương.</p>
+      </div>
+      <h3>Khổ 2 <span class="note"><span class="lang-vi">· sau một đoạn cello không lời</span><span class="lang-en">· after an instrumental cello motif</span></span></h3>
+      <p>Có những đêm con ngồi cùng trang viết
+Sửa bao lần mà vẫn thấy chưa yên
+Bữa cơm nguội, ngoài hiên trời sắp sáng
+Bao câu hỏi còn theo con suốt đêm.</p>
+      <p>Con tự hỏi mình có còn nhớ rõ
+Cô bé từng mong vẽ cả trời xanh
+Đôi tay đã làm bao điều mới mẻ
+Sao cầm cọ lại ngần ngại, mong manh?</p>
+      <p>Ba vẫn thấy trong khu vườn con dựng
+Một lối về quanh những khóm hoa xưa
+Dẫu giờ đây con vẽ bằng dòng code
+Vẫn nâng niu từng sắc nắng, giọt mưa.</p>
+      <h3>Khổ 3 <span class="note"><span class="lang-vi">· trầm xuống, dịu</span><span class="lang-en">· deep and tender</span></span></h3>
+      <p>Ba vẫn biết, vẫn dõi theo con đó
+Cả những điều con chẳng kể cùng ai
+Những vết xước trên da còn bỏng rát
+Sau bao ngày qua sóng gió biển khơi.</p>
+      <p>Chính con đã chọn giương buồm ra biển
+Muốn tận nhìn trời rộng đến nơi đâu
+Ba không trách vì con đi xa quá
+Cũng chẳng mong con phải giấu niềm đau.</p>
+      <p>Ba thương cả lòng con ham khám phá
+Thương đôi tay chai sạn giữ dây buồm
+Nếu có lúc cần quay thuyền vào bến
+Cứ trở về, đâu phải đã thua đâu.</p>
+      <div class="refrain">
+      <h3>Điệp khúc 2</h3>
+      <p>Con không cần rực rỡ để được thương
+Không cần thắng mới có đường về nhà
+Cứ đặt xuống những ngày dài nặng quá
+Ngồi bên thềm, cứ gọi một tiếng ba.</p>
+      <p>Con không cần mạnh mẽ suốt cuộc đời
+Buồn cứ khóc, mệt rồi con cứ nghỉ
+Những vết xước không làm con kém đẹp
+Đừng vì đau mà thấy có lỗi, con.</p>
+      </div>
+      <h3>Cầu nối <span class="note"><span class="lang-vi">· đệm rút về gần như trống</span><span class="lang-en">· stripped back</span></span></h3>
+      <p>Ba thương lắm những ngày con cần nhất
+Muốn ôm ba mà chẳng biết tìm đâu
+Chiếc ghế cũ không còn ba ngồi đợi
+Con một mình qua bao chuyện buồn đau.</p>
+      <p>Nếu được có thêm một chiều bên cửa
+Ba chẳng hỏi con đã tiến bao xa
+Chỉ muốn hỏi: “Hôm nay con vui chứ?
+Ăn cơm chưa? Đêm qua ngủ ngon không?”</p>
+      <h3>Dựng lên</h3>
+      <p>Đừng đợi hết những ngổn ngang mới sống
+Đừng cất hoài hộp màu đến ngày mai
+Mở cửa nhé, để nắng vào một chút
+Vẽ điều con còn ấp ủ bấy nay.</p>
+      <p>Rồi con khẽ gọi tên mình lần nữa
+Không cần thêm danh xưng để tự hào
+“Je m’appelle Hương…”
+Con vẫn là con đó
+Vẫn yêu màu như cô bé ngày xưa.</p>
+      <div class="refrain">
+      <h3>Điệp khúc cuối</h3>
+      <p>Con không cần rực rỡ để được thương
+Không cần giấu những nỗi buồn, con nhé
+Có những lúc chỉ cần nghe tiếng mẹ
+Gọi tên mình là lòng đã bình yên.</p>
+      <p>Con cứ làm những điều con muốn làm
+Cứ xây tiếp khu vườn còn dang dở
+Nếu nét vẽ chưa như điều con nghĩ
+Để ngày mai mình thử lại, nghe con.</p>
+      <p>Dẫu con chọn những chân trời xa nữa
+Hay neo thuyền bên một bến sông quen
+Ba vẫn thương như ngày con còn bé
+Nhà vẫn sáng đèn…
+Con cứ về thôi.</p>
+      </div>
+      <h3>Outro <span class="note"><span class="lang-vi">· giọng nam hát khẽ</span><span class="lang-en">· soft male singing</span></span></h3>
+      <p>Hộp màu cũ, con để đâu rồi nhỉ?
+Lấy ra xem, còn màu nắng không con?
+Mai thức dậy, con tô thêm một chút…
+Ba thương con
+Cả những ngày con mỏi
+Chẳng cần con phải giỏi hơn ai.</p>
+      <h3>Khúc kết <span class="note"><span class="lang-vi">· giọng nữ, dịu</span><span class="lang-en">· gentle female vocal</span></span></h3>
+      <p>Je m’appelle Hương…
+Con vẫn nhớ ngày bé
+Được ngồi trên vai ba
+Nhìn trời cao rộng quá.</p>
+      <p>Je m’appelle Hương…
+Con đã đi qua biển
+Mang đôi bàn tay xước
+Về mở lại hộp màu.</p>
+      <p>Con sẽ vẽ những chân trời đã gặp
+Vẽ cả ngày con sợ giữa trùng khơi
+Và vẽ ba ngồi bên khung cửa cũ
+Vẫn dịu dàng như thuở nhỏ, ba ơi.</p>
+      <p>Có những điều con tưởng đã xa rồi
+Bỗng trở lại khi con ngồi vẽ tiếp
+Ba trong tranh vẫn mỉm cười như trước…
+Con về rồi.
+Ba ơi…
+Con về rồi.</p>
+    </div>
+  </section>
+
 <section class="reveal" id="shore" style="border-left:6px solid var(--accent2);background:var(--sunk);margin-top:40px;border-radius:0 20px 20px 0">
     <div class="shead"><h2>Returning to Shore <span style="font-size:.85em;color:var(--muted)">· Trở về bờ</span></h2><span class="ln"></span></div>
     <div class="song" style="padding:20px 24px">
       <img class="nhanvat" src="assets/img/huong-ai-thuyen.webp" width="851" height="820" loading="lazy" decoding="async"
            alt="Hình đất sét: Hương trong áo dài trắng ngồi trên chiếc thuyền nhỏ giữa mặt nước lặng">
-      <div class="song-meta"><span class="lang-vi">Đĩa đơn, ngoài album · sáng tác 26/09/2026 · lời Anh và lời Việt, một câu thì thầm tiếng Pháp · 7 bản thu.</span><span class="lang-en">A single, outside the album · composed 26 Sept 2026 · English and Vietnamese lyrics, with one whispered French line · 7 recordings.</span></div>
+      <div class="song-meta"><span class="lang-vi">Đĩa đơn, ngoài album · sáng tác 26/09/2026 · lời Anh và lời Việt, một câu thì thầm tiếng Pháp · 8 bản thu.</span><span class="lang-en">A single, outside the album · composed 26 Sept 2026 · English and Vietnamese lyrics, with one whispered French line · 8 recordings.</span></div>
       <p class="keyline">«After every wrong direction, I come home again. / Je m'appelle Hương - I made it back to shore.»</p>
 
       <p class="song-desc" style="max-width:100%;margin-top:10px">
-        <span class="lang-vi">Bài này đi tiếp con sông của album - nhưng sông đã ra tới biển, và người kể chọn quay vào bờ. Không phải bờ của ngày cũ: «Tôi bước lên từ mặt nước, không còn là người đàn bà ngày trước.» Mô-típ quen thuộc vẫn còn - con thuyền, dòng nước, chữ ký thì thầm ở cuối - nhưng lần này không ai gọi về; là tự mình quyết định thôi trôi. Bản «Trở về bờ» là lời Việt của cùng bài này: giữ nguyên hình ảnh và mạch truyện, nhưng viết lại chứ không dịch từng câu, và dựng gọn hơn — mỗi khổ một đoạn, lược phần điệp khúc giữa bài.</span>
-        <span class="lang-en">The song carries on the album's river - only now the river has reached the sea, and the speaker chooses to turn back to shore. Not the shore she left: “I walked out from the water, not the woman from before.” The familiar motifs are still here - the boat, the water, the whispered signature at the end - but this time nobody calls her home; she simply decides to stop drifting. “Trở về bờ” is the Vietnamese lyric version of the same song: the imagery and the arc are kept, but the words are rewritten rather than translated line by line, and the arrangement is tighter — one stanza per verse, and the mid-song chorus dropped.</span>
+        <span class="lang-vi">Bài này đi tiếp con sông của album - nhưng sông đã ra tới biển, và người kể chọn quay vào bờ. Không phải bờ của ngày cũ: «Tôi bước lên từ mặt nước, không còn là người đàn bà ngày trước.» Mô-típ quen thuộc vẫn còn - con thuyền, dòng nước, chữ ký thì thầm ở cuối - nhưng lần này không ai gọi về; là tự mình quyết định thôi trôi. Bản «Trở về bờ» là lời Việt của cùng bài này: giữ nguyên hình ảnh và mạch truyện, nhưng viết lại chứ không dịch từng câu, và dựng gọn hơn: mỗi khổ một đoạn, lược phần điệp khúc giữa bài.</span>
+        <span class="lang-en">The song carries on the album's river - only now the river has reached the sea, and the speaker chooses to turn back to shore. Not the shore she left: “I walked out from the water, not the woman from before.” The familiar motifs are still here - the boat, the water, the whispered signature at the end - but this time nobody calls her home; she simply decides to stop drifting. “Trở về bờ” is the Vietnamese lyric version of the same song: the imagery and the arc are kept, but the words are rewritten rather than translated line by line, and the arrangement is tighter: one stanza per verse, and the mid-song chorus dropped.</span>
       </p>
 
       <div class="tracks">
@@ -1440,6 +1634,9 @@ Je regarde seulement le ciel que tu n’as jamais quitté.</p>
           <div class="track-name">«Returning to Shore» <span class="lang-vi">· bản 3 · lời Anh</span><span class="lang-en">· take 3 · English lyrics</span> <span class="len">· 5:09</span></div>
           <audio controls preload="none" src="assets/audio/returning-to-shore-3.mp3"></audio>
         </div>
+        <div class="track">
+          <div class="track-name">«Trở về bờ» <span class="lang-vi">· bản dài · lời Việt</span><span class="lang-en">· long version · Vietnamese lyrics</span> <span class="len">· 4:52</span></div>
+          <audio controls preload="none" src="assets/audio/tro-ve-bo-ban-dai.mp3"></audio>        </div>
       </div>
     </div>
 
@@ -1850,11 +2047,649 @@ Là ánh sáng trong ta</p>
       <h3>Kết <span class="note">trống tan dần, sóng biển trở lại, phong cầm Pháp êm</span></h3>
       <p>Je m'appelle Hương
 Ta trở về bờ</p>
+   
+      <div lang="vi">
+      <h3 class="lyr-ver"><span class="lang-vi">Lời tiếng Việt · bản dài 4:52</span><span class="lang-en">Vietnamese lyrics · the long 4:52 recording</span></h3>
+
+      <h3>Mở đầu <span class="note">dương cầm mộc êm, sóng biển ngoài xa, phong cầm nhẹ; chưa vào lời</span></h3>
+
+      <h3>Khổ 1</h3>
+      <p>Qua bao con sóng xô
+Ta rũ hết ưu phiền
+Qua những con đường dài
+Cuối cùng ta về bờ</p>
+      <p>Có những đêm rất sâu
+Chỉ nghe lòng thở dài
+Ta đi tìm một nơi
+Không gọi tên ngày mai</p>
+
+      <h3>Tiền điệp khúc</h3>
+      <p>Không cần chạy theo mãi
+Những giấc mơ xa vời
+Bao ồn ào mê lạc
+Dần tan vào biển khơi</p>
+
+      <div class="refrain">
+      <h3>Điệp khúc</h3>
+      <p>Gió cuốn làn sương mỏng
+Tim trở lại an yên
+Đã đi qua nhân thế
+Chỉ tìm một chốn yên</p>
+      <p>Dẫu tháng năm còn rộng
+Dẫu đời có đổi thay
+Sau bao lần lạc bước
+Ta về bên bờ này</p>
       </div>
+
+      <h3>Nhạc không lời <span class="note">phong cầm và kèn cla-ri-nét, dàn dây êm, sóng biển</span></h3>
+
+      <h3>Khổ 2</h3>
+      <p>Ta đã từng tin rằng
+Phía xa là bình minh
+Nên đi qua những mùa
+Mang đầy vết lặng im</p>
+      <p>Có những người đi qua
+Như cánh chim cuối trời
+Có những lời chưa nói
+Trôi theo ngàn con sóng</p>
+
+      <h3>Tiền điệp khúc 2</h3>
+      <p>Ta từng ôm hy vọng
+Trong đôi tay hao gầy
+Đến khi chiều buông xuống
+Mới hiểu mình cần đây</p>
+
+      <div class="refrain">
+      <h3>Điệp khúc</h3>
+      <p>Gió cuốn làn sương mỏng
+Tim trở lại an yên
+Đã đi qua nhân thế
+Chỉ tìm một chốn yên</p>
+      <p>Dẫu tháng năm còn rộng
+Dẫu đời có đổi thay
+Sau bao lần lạc bước
+Ta về bên bờ này</p>
+      </div>
+
+      <h3>Khổ 3</h3>
+      <p>Triều rút dần rất khẽ
+Cuộc phiêu dạt dừng đây
+Con đường thôi chao đảo
+Ta trở về bờ này</p>
+      <p>Không còn cần giải thích
+Cho những điều đã qua
+Không còn cần níu giữ
+Một bóng hình xa xa</p>
+
+      <h3>Đoạn nối</h3>
+      <p>Sau bao con sóng xô
+Biển khắc lên gương mặt
+Những vết thương nhức buốt
+Thấu tận vào xương sâu</p>
+      <p>Có những đêm lặng im
+Ta không còn chạy trốn
+Tự tay lau giọt mặn
+Tự ôm lấy thương đau</p>
+      <p>Từng vết thương trên da
+Ta kiên nhẫn chữa lành
+Từng mảnh tim rạn vỡ
+Ta dịu dàng vá lại</p>
+      <p>Ta bước ra khỏi biển
+Không phải là người xưa
+Ta sống thêm một đời
+Từ những lần đổ vỡ</p>
+
+      <h3>Thì thầm</h3>
+      <p>Je m'appelle Hương</p>
+
+      <div class="refrain">
+      <h3>Điệp khúc cuối</h3>
+      <p>Gió cuốn làn sương mỏng
+Tim trở lại an yên
+Đã đi qua nhân thế
+Chỉ tìm một chốn yên</p>
+      <p>Dẫu tháng năm còn rộng
+Dẫu đời có đổi thay
+Sau bao lần lạc bước
+Ta về bên bờ này</p>
+      <p>Ta không còn đi mãi
+Qua những miền xa xôi
+Điều ta từng tìm kiếm
+Là bình yên trong tôi</p>
+      </div>
+
+      <h3>Kết <span class="note">dương cầm và phong cầm rất êm, sóng biển xa dần</span></h3>
+      <p>Je m'appelle Hương
+Tôi vẫn là tôi thôi</p>
+      <p>Vẫn giữ trong đôi mắt
+Khoảng trời xanh ngày xưa
+Sau bao ngày phiêu dạt
+Ta trở về bờ thôi</p>
+      <p>Je m'appelle Hương
+Ta trở về bờ này</p>
+      </div>
+
+   </div>
+    </div>
+  </section>
+
+<section class="reveal" id="ben-phu-sa" style="border-left:6px solid var(--accent2);background:var(--sunk);margin-top:40px;border-radius:0 20px 20px 0">
+    <div class="shead"><h2>Bến Phù Sa</h2><span class="ln"></span></div>
+    <div class="song" style="padding:20px 24px">
+      <div class="song-meta"><span class="lang-vi">Đĩa đơn, ngoài album · sáng tác 29/10/2026 · lời Việt, song ca nam nữ · 2 bản thu · 2 MV · bài hát của game Bến Phù Sa (BizOn).</span><span class="lang-en">A single, outside the album · composed 29 Oct 2026 · Vietnamese lyrics, a male-female duet · 2 recordings · 2 music videos · the song of the BizOn game Bến Phù Sa.</span></div>
+      <p class="keyline" style="color:var(--accent2)">«Em thương anh, thương cả dòng sông / Nơi con nước nuôi hai mình khôn lớn.»</p>
+      <p class="song-desc" style="max-width:100%"><span class="lang-vi">Một bến sông miền Tây, một người đi, một người ở lại. Bài hát kể chuyện thương nhau không chỉ bằng lời hẹn, mà bằng tô canh bông điên điển của má, tấm lưng còng của cha giữa mùa màng, và mong được làm gì đó cho đất ven sông: bắt đầu từ điều nho nhỏ, một gánh hàng, một buổi chợ mai. Bài hát được dùng trong game <a href="https://bizonland.com/ben-phu-sa.html" target="_blank" rel="noopener">Bến Phù Sa</a> của BizOn.</span><span class="lang-en">A river landing in the Mekong Delta: one leaves and one stays behind. The song tells of a love that is more than a promise - a mother’s soup of điên điển flowers, a father’s back bent over the harvest, and a wish to give something back to the riverbank, starting small: a shoulder pole of goods, a morning market. The song is used in the BizOn game <a href="https://bizonland.com/ben-phu-sa.html" target="_blank" rel="noopener">Bến Phù Sa</a>.</span></p>
+      <div class="tracks">
+        <div class="track">
+          <div class="track-name">«Bến Phù Sa» <span class="lang-vi">· bản 2</span><span class="lang-en">· take 2</span> <span class="len">· 5:49</span></div>
+          <audio controls preload="none" src="assets/audio/ben-phu-sa-2.mp3"></audio>
+        </div>
+        <div class="track">
+          <div class="track-name">«Bến Phù Sa» <span class="lang-vi">· bản 1</span><span class="lang-en">· take 1</span> <span class="len">· 6:23</span></div>
+          <audio controls preload="none" src="assets/audio/ben-phu-sa.mp3"></audio>
+        </div>
+      </div>
+    </div>
+    <figure class="songclip" style="margin-top:18px">
+      <button type="button" class="mv-yt" data-yt="ynmGb3GqUdU">
+        <img src="assets/video/mv-ben-phu-sa-tranh-ve-poster.webp" width="1280" height="720" loading="lazy" decoding="async"
+             alt="Ảnh bìa MV «Bến Phù Sa» bản tranh vẽ: cây bần, cô gái đứng trên bờ, chàng trai trên xuồng, mặt trời cam">
+        <span class="mv-play" aria-hidden="true">&#9654;</span>
+        <span class="chi-doc"><span class="lang-vi">Xem MV «Bến Phù Sa» (tranh vẽ) trên YouTube</span><span class="lang-en">Watch the hand-drawn music video “Bến Phù Sa” on YouTube</span></span>
+      </button>
+      <figcaption>
+        <span class="lang-vi">MV «Bến Phù Sa» · bản tranh vẽ sáp màu và màu nước · 6:28 · theo bản 1 · bấm để xem trên YouTube.</span>
+        <span class="lang-en">The music video for “Bến Phù Sa” · crayon and watercolour version · 6:28 · set to take 1 · press to watch on YouTube.</span>
+      </figcaption>
+    </figure>
+    <figure class="songclip" style="margin-top:18px">
+      <button type="button" class="mv-yt" data-yt="LoIQxNs9ROo">
+        <img src="assets/video/mv-ben-phu-sa-chuyen-dong-poster.webp" width="1280" height="720" loading="lazy" decoding="async"
+             alt="Ảnh bìa MV «Bến Phù Sa» bản cảnh chuyển động: cô gái áo dài xanh và chàng trai nắm tay về bến lúc hoàng hôn, má ngồi hiên vẫy tay">
+        <span class="mv-play" aria-hidden="true">&#9654;</span>
+        <span class="chi-doc"><span class="lang-vi">Xem MV «Bến Phù Sa» (hoạt hình 3D) trên YouTube</span><span class="lang-en">Watch the 3D animated music video “Bến Phù Sa” on YouTube</span></span>
+      </button>
+      <figcaption>
+        <span class="lang-vi">MV «Bến Phù Sa» · hoạt hình 3D · 6:11 · theo bản 2, có phụ đề lời hát · bấm để xem trên YouTube.</span>
+        <span class="lang-en">The music video for “Bến Phù Sa” · 3D animation · 6:11 · set to take 2, with sung-lyric subtitles · press to watch on YouTube.</span>
+      </figcaption>
+    </figure>
+    <div class="lyrics" style="margin-top:14px">
+      <h3><span class="lang-vi">Mở đầu</span><span class="lang-en">Intro</span> <span class="note"><span class="lang-vi">· giọng nữ hát tự do</span><span class="lang-en">· free-time female voice</span></span></h3>
+      <p>Hò ơ...
+Nước đi còn nhớ lối về
+Người đi có nhớ câu thề bên sông
+Phù sa nằm lại với đồng
+Còn câu thương nhớ...
+Theo dòng về đâu...</p>
+      <h3><span class="lang-vi">Khổ 1</span><span class="lang-en">Verse 1</span> <span class="note"><span class="lang-vi">· giọng nữ</span><span class="lang-en">· female voice</span></span></h3>
+      <p>Chiều anh đi, bông bần rơi tím
+Em đứng nhìn con nước qua chân
+Có câu thương chưa thành tiếng gọi
+Đã nghe xa một tiếng máy xuồng</p>
+      <p>Anh ngoái lại, bờ tre khuất nửa
+Khói nhà ai vương phía sau vườn
+Em chỉ dặn, ngoài kia trở lạnh
+Nhớ giữ mình qua những mùa mưa</p>
+      <h3><span class="lang-vi">Tiền điệp khúc</span><span class="lang-en">Pre-chorus</span> <span class="note"><span class="lang-vi">· giọng nữ</span><span class="lang-en">· female voice</span></span></h3>
+      <p>Em không hỏi bao giờ anh lại
+Sợ câu chờ làm nặng bước chân
+Chỉ gói chút hương trà của má
+Để anh còn hơi ấm quê mình</p>
+      <h3><span class="lang-vi">Điệp khúc</span><span class="lang-en">Chorus</span> <span class="note"><span class="lang-vi">· song ca</span><span class="lang-en">· duet</span></span></h3>
+      <p>Em thương anh, thương cả dòng sông
+Nơi con nước nuôi hai mình khôn lớn
+Thương dáng má bên hiên chờ cơm muộn
+Thương lưng cha còng xuống giữa mùa màng</p>
+      <p>Em thương anh, đâu chỉ một lời thương
+Đâu chỉ một mái nhà che mưa nắng
+Nếu mai này mình về chung một bến
+Xin thương cùng những bờ bãi quê hương</p>
+      <h3><span class="lang-vi">Khổ 2</span><span class="lang-en">Verse 2</span> <span class="note"><span class="lang-vi">· giọng nam</span><span class="lang-en">· male voice</span></span></h3>
+      <p>Ở nơi xa, đèn khuya chưa tắt
+Anh nghe mưa trên những mái nhà
+Giữa phố đông, thèm nghe tiếng đất
+Dưới chân trần sau một trận mưa</p>
+      <p>Nhớ tô canh bông điên điển má nấu
+Nhớ cha ngồi vá lại tay chài
+Nhớ em nói, mùa này nước nổi
+Bến sau nhà đã ngập rồi anh</p>
+      <h3><span class="lang-vi">Tiền điệp khúc</span><span class="lang-en">Pre-chorus</span> <span class="note"><span class="lang-vi">· giọng nam</span><span class="lang-en">· male voice</span></span></h3>
+      <p>Anh đã nghĩ đi xa là lớn
+Đến khi lòng đau đáu một nơi
+Mới hiểu có những điều bé nhỏ
+Thiếu trong đời, chẳng thấy bình yên</p>
+      <h3><span class="lang-vi">Điệp khúc</span><span class="lang-en">Chorus</span> <span class="note"><span class="lang-vi">· song ca</span><span class="lang-en">· duet</span></span></h3>
+      <p>Anh thương em, thương cả dòng sông
+Nơi con nước nuôi hai mình khôn lớn
+Thương dáng má bên hiên chờ cơm muộn
+Thương lưng cha còng xuống giữa mùa màng</p>
+      <p>Anh thương em, đâu chỉ một lời thương
+Đâu chỉ một mái nhà che mưa nắng
+Nếu mai này mình về chung một bến
+Xin thương cùng những bờ bãi quê hương</p>
+      <h3><span class="lang-vi">Đoạn nối</span><span class="lang-en">Bridge</span> <span class="note"><span class="lang-vi">· giọng nữ</span><span class="lang-en">· female voice</span></span></h3>
+      <p>Em vẫn ước một ngày anh về
+Mình ngồi nghe mưa qua mái lá
+Nhưng anh ơi, bên kia con nước
+Còn chuyến đò chở những bàn chân</p>
+      <h3><span class="lang-vi">Đoạn nối</span><span class="lang-en">Bridge</span> <span class="note"><span class="lang-vi">· giọng nam</span><span class="lang-en">· male voice</span></span></h3>
+      <p>Anh sẽ về, không riêng lời hẹn
+Không chỉ vì có một người mong
+Muốn đôi tay qua nhiều năm tháng
+Được làm gì cho đất ven sông</p>
+      <h3><span class="lang-vi">Dựng lên</span><span class="lang-en">Build</span> <span class="note"><span class="lang-vi">· song ca</span><span class="lang-en">· duet</span></span></h3>
+      <p>Mình bắt đầu từ điều nho nhỏ
+Một gánh hàng, một buổi chợ mai
+Cho hạt lúa qua mùa mưa gió
+Đến tay người còn ấm công ai</p>
+      <h3><span class="lang-vi">Điệp khúc cuối</span><span class="lang-en">Final chorus</span> <span class="note"><span class="lang-vi">· song ca</span><span class="lang-en">· duet</span></span></h3>
+      <p>Ta thương nhau, thương cả dòng sông
+Thương con nước bao đời bồi bên lở
+Thương tiếng má ru qua thời khốn khó
+Thương cha già chưa một bữa thảnh thơi</p>
+      <p>Ta thương nhau, thương cả một miền quê
+Nơi có những người chưa quen mà nhớ
+Tình đôi lứa xin làm con sóng nhỏ
+Để hòa vào sông nước của quê hương</p>
+      <h3><span class="lang-vi">Kết</span><span class="lang-en">Outro</span> <span class="note"><span class="lang-vi">· giọng nữ</span><span class="lang-en">· female voice</span></span></h3>
+      <p>Mai mình có một mái nhà
+Xin chừa hiên rộng đón bà con qua
+Ngoài vườn trồng một nhành hoa
+Dưới sông con nước...
+Hiền hòa chảy xuôi</p>
+      <h3><span class="lang-vi">Kết</span><span class="lang-en">Outro</span> <span class="note"><span class="lang-vi">· song ca khẽ</span><span class="lang-en">· soft duet</span></span></h3>
+      <p>Bến Phù Sa...
+Mình về thôi...
+Bữa cơm chiều...
+Má còn chờ đó...</p>
     </div>
   </section>
 
 <section class="reveal" id="khac">
+    <div class="shead"><h2>M-AIDA <span style="font-size:.85em;color:var(--muted)">(Que les preuves décident)</span></h2><span class="ln"></span></div>
+    <div class="song" style="padding:20px 24px">
+      <p class="song-desc" style="max-width:100%">
+        <span class="lang-vi">Hai bài hát của dự án <a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA</a>, phần mềm trích xuất mức độ ảnh hưởng từ PDF, người kiểm chứng rồi khóa bản ghi. Đây là hai bài mà phần mềm 8.0 dùng làm nhạc nền. Câu chốt của cả hai: «con người phán đoán, AI đi bên cạnh».</span>
+        <span class="lang-en">The two songs of the <a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA</a> project, software that extracts effect sizes from PDFs, with a human verifying and then locking each record. These are the two the 8.0 application uses as its background music. Both close on the same line: “human judgment, AI by its side”.</span>
+      </p>
+      <div class="tracks">
+        <div class="track">
+          <div class="track-name">«The Heartbeat of M-AIDA» <span class="len">· 5:06</span></div>
+          <audio controls preload="none" src="assets/audio/maida-heartbeat-of-maida.mp3"></audio>
+        </div>
+        <div class="track">
+          <div class="track-name">«M-AIDA · Que les preuves décident» <span class="len">· 4:22</span></div>
+          <audio controls preload="none" src="assets/audio/maida-que-les-preuves-decident.mp3"></audio>
+        </div>
+      </div>
+      <p class="song-desc" style="max-width:100%;margin-top:12px;font-size:.8rem">
+        <span class="lang-vi"><b>Phong cách đặt cho công cụ dựng:</b> <i>Industrial dark trap with heavy metal and dubstep weight; distorted screaming male lead shifts between rhythmic rap and controlled low spoken lines, layered with strained melodic phrases; soft heartbeat pulse, calm cinematic synth pads, metallic impacts and sub-bass; deliberate half-time groove with sudden glitch stutters; bitcrushed vocals and fractured digital edits.</i></span>
+        <span class="lang-en"><b>Style brief given to the generation tool:</b> <i>Industrial dark trap with heavy metal and dubstep weight; distorted screaming male lead shifts between rhythmic rap and controlled low spoken lines, layered with strained melodic phrases; soft heartbeat pulse, calm cinematic synth pads, metallic impacts and sub-bass; deliberate half-time groove with sudden glitch stutters; bitcrushed vocals and fractured digital edits.</i></span>
+      </p>
+    </div>
+    <div class="lyrics" style="margin-top:14px">
+      <p class="song-desc" style="max-width:100%;margin:0 0 18px;font-size:.82rem">
+        <span class="lang-vi">Hai bản lời tác giả đưa cho công cụ dựng nhạc, mỗi bài một bản. Tiếng Anh xen tiếng Pháp, có một đoạn tiếng Việt; phần in nghiêng trong ngoặc là chỉ dẫn diễn.</span>
+        <span class="lang-en">The two lyric sheets the author gave the generation tool, one per song. English woven with French, with one Vietnamese passage; the italics in brackets are performance directions.</span>
+      </p>
+
+      <h3 class="lyr-ver">«The Heartbeat of M-AIDA» <span class="note"><span class="lang-vi">· bản 5:06</span><span class="lang-en">· the 5:06 recording</span></span></h3>
+
+      <h3>Intro <span class="note">soft heartbeat pulse, calm cinematic synth pads</span></h3>
+      <p>Thump-thump...
+Thump-thump...</p>
+      <p>Je m'appelle Hương.
+Voici mon histoire.
+La recherche, c'est ma passion.</p>
+      <p>M-AIDA.
+Que les preuves décident.</p>
+
+      <h3>Verse 1</h3>
+      <p>In twenty twenty-one,
+My master's journey started,
+Meta-analysis calling
+Like a digital dawn.</p>
+      <p>Through the WBES data,
+Scanning line by line,
+I learned to pool the evidence
+And make the numbers shine.</p>
+      <p>At CTU, with guidance,
+The vision came alive,
+We built the core foundation
+For the work we now design.</p>
+      <p>A PhD candidate,
+Standing strong and true,
+Turning years of raw research
+Into something new.</p>
+
+      <h3>Pre-Chorus <span class="note">French melodic vocal</span></h3>
+      <p>En deux mille vingt-six,
+Une idée prend vie,
+Des années de recherche
+Deviennent M-AIDA aujourd'hui.</p>
+      <p>Une méthode transparente,
+Des données à vérifier,
+La machine peut proposer,
+Mais l'humain doit décider.</p>
+
+      <div class="refrain">
+      <h3>Chorus</h3>
+      <p>M-AIDA,
+Extract, verify and lock.
+Every source is traceable,
+Every record leaves a mark.</p>
+      <p>M-AIDA,
+Human judgment leads the way.
+AI assists the researcher,
+But I have the final say.</p>
+      <p>Je m'appelle Hương,
+La recherche, c'est ma passion.
+Les données ne mentent pas.</p>
+      <p>M-AIDA,
+Que les preuves décident.</p>
+      </div>
+
+      <h3>Verse 2 <span class="note">determined rhythmic vocal</span></h3>
+      <p>The nights grew longer,
+I forgot the taste of food.
+Warning signs were calling,
+Still I pushed through.</p>
+      <p>Six exam shifts,
+On the fifth floor every day,
+Eyes blurred and hands tired,
+Still I found a way.</p>
+      <p>No sleep, no silence,
+Only meta on my mind.
+A scholar and a builder
+With a purpose I could find.</p>
+      <p>Not for a perfect answer,
+Not for a screen alone,
+But for a process people trust,
+A truth that can be shown.</p>
+
+      <h3>Extended Verse</h3>
+      <p>Millions of data points
+Flowing through the night,
+Turning raw complexity
+Into guiding light.</p>
+      <p>Every variable checked,
+Every error clear,
+Building up the legacy
+Of a brilliant year.</p>
+      <p>From the sleepless hours
+To the final code,
+Walking down this fierce
+And solitary road.</p>
+
+      <h3>Tech Break <span class="note">spoken, low and controlled</span></h3>
+      <p>System verified.
+Core architecture secure.
+The human leads the way.</p>
+
+      <h3>Bridge <span class="note">French vocal, cinematic half-time</span></h3>
+      <p>Extraire le texte,
+Convertir les effets,
+Vérifier chaque donnée
+Avant de la verrouiller.</p>
+      <p>Une trace transparente,
+Un résultat contrôlé,
+Aucune boîte noire
+Ne remplace la vérité.</p>
+
+      <h3>Bridge <span class="note">spoken Vietnamese</span></h3>
+      <p>Mô hình có thể đề xuất.
+Nhưng nhà nghiên cứu
+Là người ra quyết định.</p>
+      <p>Je m'appelle Hương,
+Chercheuse, créatrice et rêveuse.</p>
+
+      <div class="refrain">
+      <h3>Final Chorus</h3>
+      <p>M-AIDA,
+Extract, verify and lock.
+Research integrity is written
+In each record and each mark.</p>
+      <p>M-AIDA,
+From Can Tho to the world.
+Meta-analysis and human judgment,
+A future being unfurled.</p>
+      <p>Je m'appelle Hương,
+Chercheuse, créatrice et rêveuse.
+An unbroken spirit
+Aiming for the stars.</p>
+      <p>Du Vietnam vers le monde entier,
+M-AIDA,
+Construit avec fierté.</p>
+      </div>
+
+      <h3>Outro <span class="note">soft heartbeat pulse, fading cinematic pads</span></h3>
+      <p>Thump-thump...
+Thump-thump...</p>
+      <p>Je m'appelle Hương.
+Voici mon histoire.
+Ce n'est que le début.</p>
+      <p>Bienvenue dans l'univers M-AIDA.
+Human judgment,
+AI by its side.
+Que les preuves décident.</p>
+
+      <h3 class="lyr-ver">«M-AIDA · Que les preuves décident» <span class="note"><span class="lang-vi">· bản 4:22</span><span class="lang-en">· the 4:22 recording</span></span></h3>
+
+      <h3>Intro <span class="note">whispered spoken word, soft heartbeat pulse</span></h3>
+      <p>Thump...
+Thump...
+Thump-thump...</p>
+      <p>Before the data,
+There was a question.</p>
+      <p>Before the answer,
+There was a promise:</p>
+      <p>No shortcuts.
+No shadows.
+No black box.</p>
+      <p>Je m'appelle Hương.
+Je cherche la vérité
+Dans chaque preuve,
+Dans chaque ligne,
+Dans chaque décision.</p>
+      <p>M-AIDA.
+Human judgment.
+Evidence first.</p>
+      <p>Que les preuves décident.</p>
+
+      <h3>Verse 1</h3>
+      <p>In twenty twenty-one,
+My master's journey started,
+Meta-analysis calling
+Like a digital dawn.</p>
+      <p>Through the WBES data,
+Scanning line by line,
+I learned to pool the evidence
+And make the numbers shine.</p>
+      <p>At CTU, with guidance,
+A vision came alive,
+Building core foundations
+For the work we now design.</p>
+      <p>A PhD candidate,
+Standing strong and true,
+Turning years of raw research
+Into something meaningful and new.</p>
+
+      <h3>Pre-Chorus <span class="note">French melodic build</span></h3>
+      <p>En deux mille vingt-six,
+Une idée prend vie.
+Chaque question devient preuve,
+Chaque preuve éclaire la nuit.</p>
+      <p>La machine peut proposer,
+Mais l'humain doit décider.
+M-AIDA, M-AIDA,
+Nous allons nous élever.</p>
+
+      <div class="refrain">
+      <h3>Chorus <span class="note">explosive global electro-pop anthem</span></h3>
+      <p>M-AIDA!
+Extract, verify and lock!
+Every source is traceable,
+Every record leaves a mark!</p>
+      <p>M-AIDA!
+Human judgment leads the way!
+AI can light the path,
+But I have the final say!</p>
+      <p>Oh-oh, we rise!
+Oh-oh, into the light!
+M-AIDA!
+Que les preuves décident!</p>
+      </div>
+
+      <h3>Verse 2 <span class="note">determined rhythmic vocal</span></h3>
+      <p>The nights grew longer,
+I forgot the taste of food.
+Warning signs were calling,
+Still I pushed through.</p>
+      <p>Six exam shifts,
+On the fifth floor every day,
+Eyes blurred and hands tired,
+Still I found a way.</p>
+      <p>No sleep, no silence,
+Only meta on my mind.
+A scholar and a builder
+With a purpose I could find.</p>
+      <p>Not for a perfect answer,
+Not for a screen alone,
+But for a process people trust,
+A truth that can be shown.</p>
+
+      <h3>Rap Break <span class="note">confident bilingual rap, clear diction</span></h3>
+      <p>No shortcuts, no shadows,
+No missing link,
+Dữ liệu phải rõ
+Before I let it sink.</p>
+      <p>Trace the source,
+Let the evidence talk,
+Every record leaves a mark,
+Every claim can walk.</p>
+      <p>L'IA peut aider,
+Nhưng tôi giữ quyền quyết,
+Human judgment first,
+That is my verdict.</p>
+      <p>Từ luận văn đến tương lai,
+Mở từng ô khóa,
+M-AIDA,
+Extract, verify and lock.</p>
+
+      <div class="refrain">
+      <h3>Chorus</h3>
+      <p>M-AIDA!
+Extract, verify and lock!
+Every source is traceable,
+Every record leaves a mark!</p>
+      <p>M-AIDA!
+Human judgment leads the way!
+AI can light the path,
+But I have the final say!</p>
+      <p>Oh-oh, we rise!
+Oh-oh, into the light!
+M-AIDA!
+Que les preuves décident!</p>
+      </div>
+
+      <h3>Tech Break <span class="note">low spoken word, subtle glitch texture</span></h3>
+      <p>System verified.
+Core architecture secure.
+The human leads the way.</p>
+
+      <h3>Bridge <span class="note">French vocal, cinematic half-time</span></h3>
+      <p>Extraire le texte,
+Convertir les effets,
+Vérifier chaque donnée
+Avant de la verrouiller.</p>
+      <p>Une trace transparente,
+Un résultat contrôlé,
+Aucune boîte noire
+Ne remplace la vérité.</p>
+
+      <h3>Emotional Bridge <span class="note">close female vocal, piano and warm pads</span></h3>
+      <p>There were nights
+I could barely breathe,
+When every question
+Felt too big for me.</p>
+      <p>There were days
+My hands were weak,
+But truth was still
+The light I chose to seek.</p>
+
+      <h3>French Build</h3>
+      <p>Je n'ai pas abandonné,
+Même quand la nuit était longue.
+J'ai gardé la vérité,
+Même quand la route était sombre.</p>
+
+      <h3>Bridge <span class="note">spoken Vietnamese</span></h3>
+      <p>Tôi không xây một chiếc hộp đen.</p>
+      <p>Tôi xây một con đường minh bạch.</p>
+      <p>Để mỗi bằng chứng được nhìn thấy.
+Để mỗi quyết định được chịu trách nhiệm.</p>
+
+      <h3>Build-Up <span class="note">drums rise, strings build</span></h3>
+      <p>No more shadows.
+No more fear.
+The evidence is calling,
+And the future is here.</p>
+      <p>Raise the light!
+Let the world see!
+M-AIDA!
+This is my legacy!</p>
+
+      <div class="refrain">
+      <h3>Final Chorus <span class="note">maximum energy, full drums, choir backing vocals</span></h3>
+      <p>M-AIDA!
+Extract, verify and lock!
+Research integrity
+In every record, every mark!</p>
+      <p>M-AIDA!
+From Can Tho to the world!
+Human judgment leads the future,
+Let the truth be unfurled!</p>
+      <p>Oh-oh, we rise!
+Oh-oh, into the light!
+M-AIDA!
+We own the final say tonight!</p>
+      <p>Je m'appelle Hương,
+Chercheuse, créatrice et rêveuse!
+Du Vietnam vers le monde entier,
+M-AIDA, construit avec fierté!</p>
+      <p>M-AIDA!
+Que les preuves décident!</p>
+      </div>
+
+      <h3>Outro <span class="note">soft female vocal, fading heartbeat, intimate spoken word</span></h3>
+      <p>Thump-thump...
+Still beating.
+Thump-thump...
+Still dreaming.</p>
+      <p>From a question,
+To a record.
+From a record,
+To the truth.</p>
+      <p>Je m'appelle Hương.
+Chercheuse.
+Créatrice.
+Rêveuse.</p>
+      <p>From Can Tho
+To the world,
+The evidence lights the way.</p>
+      <p>M-AIDA.
+Human judgment,
+AI by its side.</p>
+      <p>This is not the end.
+C'est le début.</p>
+      <p>Que les preuves décident.</p>
+
+      <h3>Fade Out</h3>
+      <p>M-AIDA...
+M-AIDA...</p>
+    </div>
+
     <div class="shead"><h2><span class="lang-vi">Ngoài album</span><span class="lang-en">Outside the album</span></h2><span class="ln"></span></div>
     <div class="song" style="padding:20px 24px">
       <img class="nhanvat" src="assets/img/huong-nghe-nhac-ngoi.webp" width="768" height="768" loading="lazy" decoding="async"
@@ -1878,8 +2713,8 @@ Ta trở về bờ</p>
           <div class="track-name">«Golden Silt Journey <span style="color:var(--muted)">· Bến phù sa</span>» <span class="lang-vi">· bản 2</span><span class="lang-en">· take 2</span> <span class="len">· 4:17</span></div>
           <audio controls preload="none" src="assets/audio/golden-silt-journey-2.mp3"></audio>
           <p class="song-desc" style="max-width:100%;margin:4px 0 0;font-size:.8rem">
-            <span class="lang-vi">Trùng tên với bài «Journey Golden Silt» bên BizOn, nhưng là một bản thu khác: dài 4:17 so với 3:00, và có thêm tên tiếng Việt «Bến phù sa». Bản của BizOn vẫn nằm ở <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a>.</span>
-            <span class="lang-en">Shares its title with the BizOn track “Journey Golden Silt” but is a different recording: 4:17 against 3:00, and it carries a Vietnamese title, “Bến phù sa”. The BizOn recording stays at <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a>.</span>
+            <span class="lang-vi">Trùng tên với bài «Journey Golden Silt» bên BizOn, nhưng là một bản thu khác: dài 4:17 so với 3:00, và có thêm tên tiếng Việt «Bến phù sa». Bản của BizOn vẫn nằm ở <a href="https://bizonland.com/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a>.</span>
+            <span class="lang-en">Shares its title with the BizOn track “Journey Golden Silt” but is a different recording: 4:17 against 3:00, and it carries a Vietnamese title, “Bến phù sa”. The BizOn recording stays at <a href="https://bizonland.com/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a>.</span>
           </p>
         </div>
         <div class="track">
@@ -1890,8 +2725,8 @@ Ta trở về bờ</p>
           <div class="track-name">«Mekong Sunfire» <span class="lang-vi">· bản ngắn</span><span class="lang-en">· short version</span> <span class="len">· 3:22</span></div>
           <audio controls preload="none" src="assets/audio/mekong-sunfire.mp3"></audio>
           <p class="song-desc" style="max-width:100%;margin:4px 0 0;font-size:.8rem">
-            <span class="lang-vi">Bài này là bản remix của «Bật Nghiệp» (BizOn), dựng trong bối cảnh hoàng hôn sông Mekong. «Rise With The River» là bản dài; điệp khúc cuối được cắt 15 giây cho MV - nghe đoạn hook ngay bên dưới, hoặc xem trọn MV ở cuối mục này.</span>
-            <span class="lang-en">The song is a remix of the BizOn track “Bật Nghiệp”, staged at a Mekong sunset. “Rise With The River” is the long version; the closing chorus is cut to 15 seconds for the music video - the hook is just below, and the full video closes this section.</span>
+            <span class="lang-vi">Bài hát dựng trong bối cảnh hoàng hôn sông Mekong. «Rise With The River» là bản dài; điệp khúc cuối được cắt 15 giây cho MV - nghe đoạn hook ngay bên dưới, hoặc xem trọn MV ở cuối mục này.</span>
+            <span class="lang-en">The song is staged at a Mekong sunset. “Rise With The River” is the long version; the closing chorus is cut to 15 seconds for the music video - the hook is just below, and the full video closes this section.</span>
           </p>
         </div>
         <div class="track">
@@ -1900,15 +2735,16 @@ Ta trở về bờ</p>
         </div>
       </div>
       <figure class="songclip" style="margin-top:18px">
-        <button type="button" class="mv-yt" data-yt="_9JqRSA-HXI">
-          <img src="assets/img/mekong-sunfire-cover.webp" width="1200" height="676" loading="lazy" decoding="async"
-               alt="Bìa MV: Hương trong áo dài trắng bên bờ sông lúc nắng chiều, đang xếp những tượng đất sét nhỏ vào thùng gỗ">
+        <button type="button" class="mv-yt" data-yt="TjZU6_upFao">
+          <img src="assets/video/mv-mekong-sunfire-poster.webp" width="1280" height="720" loading="lazy" decoding="async"
+               alt="Ảnh bìa MV «Mekong Sunfire»: Hương trong áo dài trắng giữa xưởng gỗ miền Tây">
           <span class="mv-play" aria-hidden="true">&#9654;</span>
           <span class="chi-doc"><span class="lang-vi">Xem MV «Mekong Sunfire» trên YouTube</span><span class="lang-en">Watch the music video “Mekong Sunfire” on YouTube</span></span>
         </button>
         <figcaption>
-          <span class="lang-vi">MV «Mekong Sunfire» - bấm để xem trên YouTube.</span>
-          <span class="lang-en">The music video for “Mekong Sunfire” - press to watch on YouTube.</span>
+          <span class="lang-vi">MV «Mekong Sunfire» · 3:44 · có phần giới thiệu bài hát ở đầu và bản quyền ở cuối · bấm để xem trên YouTube.</span>
+          <span class="lang-en">The music video for “Mekong Sunfire” · 3:44 · with a song introduction at the start and credits at the end · press to watch on YouTube.</span>
+          <br><a href="https://music.youtube.com/watch?v=TjZU6_upFao" target="_blank" rel="noopener"><span class="lang-vi">▶ Nghe trên YouTube Music</span><span class="lang-en">▶ Listen on YouTube Music</span></a>
         </figcaption>
       </figure>
       <figure class="songpic" style="margin:14px 0 4px">
@@ -1917,9 +2753,14 @@ Ta trở về bờ</p>
         <figcaption><span class="lang-vi">Dòng sông ra tới biển - ảnh minh hoạ cho «Rise With The River», dựng bằng nhân vật của trang này thay cho hình đất sét bên BizOn.</span><span class="lang-en">The river reaching the sea - artwork for “Rise With The River”, staged with this site's character instead of BizOn's clay figure.</span></figcaption>
       </figure>
       <p class="song-desc" style="max-width:100%;margin-top:14px">
-        <span class="lang-vi">Lời dẫn tour ba thứ tiếng được thu ở <a href="audio.html">phòng thu lời dẫn</a>. Nhạc của các dự án nằm ở <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Bài hát</a> và <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a> - để ở đó dưới dạng liên kết, để trang này chỉ còn nhạc cá nhân.</span>
-        <span class="lang-en">The three-language tour narration is recorded in the <a href="audio.html">narration studio</a>. Project music stays at <a href="https://thuyhuongctu.github.io/M-AIDA/songs.html" target="_blank" rel="noopener">M-AIDA · Songs</a> and <a href="https://thuyhuongctu.github.io/BizOn/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a> - linked, not copied, so this page stays personal.</span>
+        <span class="lang-vi">Lời dẫn tour ba thứ tiếng được thu ở <a href="audio.html">phòng thu lời dẫn</a>. Nhạc của BizOn nằm ở <a href="https://bizonland.com/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a> và album YouTube <a href="https://www.youtube.com/playlist?list=PLXC5_d2VSkr4" target="_blank" rel="noopener">La Maison de Madame Hương – BizOn Songs</a> - để ở đó dưới dạng liên kết. Riêng hai bài của M-AIDA thì đặt hẳn ở đây, có lời đầy đủ, vì phần mềm M-AIDA là một ứng dụng web chứ không có trang nhạc riêng.</span>
+        <span class="lang-en">The three-language tour narration is recorded in the <a href="audio.html">narration studio</a>. BizOn’s music stays at <a href="https://bizonland.com/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a> and in the YouTube album <a href="https://www.youtube.com/playlist?list=PLXC5_d2VSkr4" target="_blank" rel="noopener">La Maison de Madame Hương – BizOn Songs</a> - linked, not copied. The two M-AIDA songs live here in full, with their lyrics, because M-AIDA itself is a web application and has no song page of its own.</span>
       </p>
+      <a href="https://www.youtube.com/channel/UCNt0O_5hQ5nxsSGeTfRFAgA" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;margin-top:14px;text-decoration:none;color:var(--muted);font-size:.85rem">
+        <img src="assets/img/bizonland-qr-dat-set.webp" width="110" height="110" loading="lazy" decoding="async" alt="Mã QR trang bizonland.com" style="width:110px;height:110px;flex:none">
+        <img src="assets/img/youtube-qr-dat-set.webp" width="110" height="110" loading="lazy" decoding="async" alt="Mã QR kênh YouTube Thuy Huong Digital Learning" style="width:110px;height:110px;flex:none">
+        <span><span class="lang-vi">Quét mã bằng camera điện thoại: trang BizOn (trái) và kênh YouTube có MV, lyric video, các album (phải).</span><span class="lang-en">Scan with your phone camera: the BizOn website (left) and the YouTube channel with music videos, lyric videos and albums (right).</span></span>
+      </a>
     </div>
   </section>
 
@@ -2270,51 +3111,193 @@ document.addEventListener('play', function (e) {
 </script>
 
 <script>
-/* Songbook UX: loop the current recording or shuffle through all recordings. */
+/* Songbook UX: phat lien mach ca album hoac ca trang, khong phai mo tung bai. */
 (function(){
-  var audios = Array.from(document.querySelectorAll('audio'));
-  var state = {loop: false, shuffle: false};
+  var ALL = Array.from(document.querySelectorAll('audio'));
+  if(!ALL.length) return;
+
+  var state = {scope: 'album', depth: 'one', loop: false, shuffle: false};
+  try {
+    var sc = localStorage.getItem('huong_pl_scope'); if(sc) state.scope = sc;
+    var dp = localStorage.getItem('huong_pl_depth'); if(dp) state.depth = dp;
+  } catch(e){ /* rieng tu / da chan: dung mac dinh */ }
+  function remember(){
+    try {
+      localStorage.setItem('huong_pl_scope', state.scope);
+      localStorage.setItem('huong_pl_depth', state.depth);
+    } catch(e){ /* khong luu duoc thi thoi */ }
+  }
+
+  /* Hang doi dung tu DOM, khong co danh sach chep tay. */
+  function sections(){
+    return Array.from(document.querySelectorAll('section[id]'))
+      .filter(function(s){ return s.querySelector('audio'); });
+  }
+  var queue = [], idx = -1;
+  function build(){
+    var secs = sections();
+    if(state.scope === 'album') secs = secs.filter(function(s){ return /^t\d+$/.test(s.id); });
+    queue = [];
+    secs.forEach(function(s){
+      var list = state.depth === 'one'
+        ? [s.querySelector('.tracks audio') || s.querySelector('audio')]
+        : Array.from(s.querySelectorAll('audio'));
+      list.forEach(function(a){ if(a) queue.push({audio: a, section: s}); });
+    });
+  }
+  function at(audio){
+    for(var i = 0; i < queue.length; i++) if(queue[i].audio === audio) return i;
+    return -1;
+  }
+
   var panel = document.createElement('div');
-  panel.className = 'playback-modes';
-  panel.setAttribute('aria-label', 'Playback modes');
-  panel.innerHTML = '<span class="playback-modes-label"><span class="lang-vi">Chế độ phát</span><span class="lang-en">Playback</span></span>' +
-    '<button type="button" class="playback-mode" data-mode="loop" aria-pressed="false"><span class="lang-vi">↻ Lặp lại</span><span class="lang-en">↻ Loop</span></button>' +
-    '<button type="button" class="playback-mode" data-mode="shuffle" aria-pressed="false"><span class="lang-vi">⤨ Ngẫu nhiên</span><span class="lang-en">⤨ Shuffle</span></button>';
+  panel.className = 'playback-modes playlist-bar';
+  panel.setAttribute('aria-label', 'Playback');
+  panel.innerHTML =
+    '<div class="pl-row pl-row-main">' +
+      '<button type="button" class="pl-play" aria-pressed="false">' +
+        '<span class="pl-ico" aria-hidden="true">▶</span>' +
+        '<span class="lang-vi">Phát tất cả</span><span class="lang-en">Play all</span></button>' +
+      '<button type="button" class="playback-mode pl-step" data-step="-1">' +
+        '<span aria-hidden="true">⏮</span><span class="pl-sr"><span class="lang-vi">Bài trước</span><span class="lang-en">Previous</span></span></button>' +
+      '<button type="button" class="playback-mode pl-step" data-step="1">' +
+        '<span aria-hidden="true">⏭</span><span class="pl-sr"><span class="lang-vi">Bài sau</span><span class="lang-en">Next</span></span></button>' +
+      '<button type="button" class="pl-now" hidden></button>' +
+    '</div>' +
+    '<div class="pl-row">' +
+      '<span class="playback-modes-label"><span class="lang-vi">Phạm vi</span><span class="lang-en">Scope</span></span>' +
+      '<button type="button" class="playback-mode" data-scope="album"><span class="lang-vi">Album</span><span class="lang-en">The album</span></button>' +
+      '<button type="button" class="playback-mode" data-scope="page"><span class="lang-vi">Cả trang</span><span class="lang-en">Whole page</span></button>' +
+      '<span class="pl-sep" aria-hidden="true"></span>' +
+      '<span class="playback-modes-label"><span class="lang-vi">Bản thu</span><span class="lang-en">Recordings</span></span>' +
+      '<button type="button" class="playback-mode" data-depth="one"><span class="lang-vi">Mỗi bài một bản</span><span class="lang-en">One per song</span></button>' +
+      '<button type="button" class="playback-mode" data-depth="all"><span class="lang-vi">Mọi bản thu</span><span class="lang-en">Every master</span></button>' +
+      '<span class="pl-sep" aria-hidden="true"></span>' +
+      '<button type="button" class="playback-mode" data-mode="loop"><span class="lang-vi">↻ Lặp bản này</span><span class="lang-en">↻ Repeat one</span></button>' +
+      '<button type="button" class="playback-mode" data-mode="shuffle"><span class="lang-vi">⤨ Ngẫu nhiên</span><span class="lang-en">⤨ Shuffle</span></button>' +
+    '</div>' +
+    '<p class="pl-count"></p>';
   var anchor = document.querySelector('#main');
-  if(anchor) anchor.parentNode.insertBefore(panel, anchor);
-  function updateButtons(){
+  if(!anchor) return;
+  anchor.parentNode.insertBefore(panel, anchor);
+
+  var btnPlay = panel.querySelector('.pl-play');
+  var now = panel.querySelector('.pl-now');
+  var count = panel.querySelector('.pl-count');
+
+  function vi(){ return document.documentElement.lang !== 'en'; }
+  function label(item){
+    var h = item.section.querySelector('.shead h2');
+    var name = h ? h.innerText.replace(/\s+/g, ' ').trim() : item.section.id;
+    name = name.replace(/\s*(Phát bài hát|Play song|Tạm dừng|Pause)\s*$/, '').trim();
+    var tr = item.audio.closest('.track');
+    var tn = tr && tr.querySelector('.track-name');
+    var sub = tn ? tn.innerText.replace(/\s+/g, ' ').trim() : '';
+    return sub && state.depth === 'all' ? name + ' · ' + sub : name;
+  }
+  function paint(){
+    panel.querySelectorAll('[data-scope]').forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-scope') === state.scope)); });
+    panel.querySelectorAll('[data-depth]').forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-depth') === state.depth)); });
     panel.querySelector('[data-mode="loop"]').setAttribute('aria-pressed', String(state.loop));
     panel.querySelector('[data-mode="shuffle"]').setAttribute('aria-pressed', String(state.shuffle));
+    var playing = idx >= 0 && queue[idx] && !queue[idx].audio.paused;
+    btnPlay.setAttribute('aria-pressed', String(playing));
+    btnPlay.classList.toggle('is-playing', playing);
+    btnPlay.querySelector('.pl-ico').textContent = playing ? '❚❚' : '▶';
+    btnPlay.querySelector('.lang-vi').textContent = playing ? 'Tạm dừng' : 'Phát tất cả';
+    btnPlay.querySelector('.lang-en').textContent = playing ? 'Pause' : 'Play all';
+    if(idx >= 0 && queue[idx]){
+      now.hidden = false;
+      now.textContent = (vi() ? 'Đang phát: ' : 'Now playing: ') + label(queue[idx]) +
+        '  (' + (idx + 1) + '/' + queue.length + ')';
+    } else { now.hidden = true; }
+    count.textContent = vi()
+      ? queue.length + ' bản thu trong danh sách phát'
+      : queue.length + ' recordings in the queue';
   }
-  panel.querySelectorAll('.playback-mode').forEach(function(button){
-    button.addEventListener('click', function(){
-      var mode = button.getAttribute('data-mode');
-      state[mode] = !state[mode];
-      if(state[mode]) state[mode === 'loop' ? 'shuffle' : 'loop'] = false;
-      updateButtons();
+  function pauseOthers(keep){
+    ALL.forEach(function(a){ if(a !== keep && !a.paused) a.pause(); });
+  }
+  function playAt(i){
+    if(i < 0 || i >= queue.length){ idx = -1; paint(); return; }
+    idx = i;
+    var a = queue[i].audio;
+    pauseOthers(a);
+    a.play().catch(function(){ paint(); });
+    paint();
+  }
+  function step(d){
+    if(!queue.length) return;
+    if(idx < 0){ playAt(d > 0 ? 0 : queue.length - 1); return; }
+    playAt(idx + d);
+  }
+
+  btnPlay.addEventListener('click', function(){
+    if(idx >= 0 && queue[idx] && !queue[idx].audio.paused){ queue[idx].audio.pause(); paint(); return; }
+    playAt(idx >= 0 ? idx : 0);
+  });
+  panel.querySelectorAll('.pl-step').forEach(function(b){
+    b.addEventListener('click', function(){ step(Number(b.getAttribute('data-step'))); });
+  });
+  now.addEventListener('click', function(){
+    if(idx >= 0 && queue[idx]) queue[idx].section.scrollIntoView({behavior: 'smooth', block: 'start'});
+  });
+  panel.querySelectorAll('[data-scope]').forEach(function(b){
+    b.addEventListener('click', function(){
+      state.scope = b.getAttribute('data-scope'); remember(); rebuild(); });
+  });
+  panel.querySelectorAll('[data-depth]').forEach(function(b){
+    b.addEventListener('click', function(){
+      state.depth = b.getAttribute('data-depth'); remember(); rebuild(); });
+  });
+  panel.querySelectorAll('[data-mode]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var m = b.getAttribute('data-mode');
+      state[m] = !state[m];
+      if(state[m]) state[m === 'loop' ? 'shuffle' : 'loop'] = false;
+      paint();
     });
   });
-  function playNext(current){
-    if(!audios.length) return false;
-    if(state.loop){
-      current.currentTime = 0;
-      current.play().catch(function(){});
-      return true;
-    }
-    if(state.shuffle){
-      var choices = audios.filter(function(audio){ return audio !== current; });
-      var next = choices[Math.floor(Math.random() * choices.length)] || current;
-      next.play().catch(function(){});
-      return true;
-    }
-    var nextSequential = audios[audios.indexOf(current) + 1];
-    if(nextSequential){ nextSequential.play().catch(function(){}); return true; }
-    return false;
+
+  /* Doi pham vi / do sau thi giu nguyen bai dang phat neu no con trong hang doi. */
+  function rebuild(){
+    var cur = idx >= 0 && queue[idx] ? queue[idx].audio : null;
+    build();
+    idx = cur ? at(cur) : -1;
+    paint();
   }
-  audios.forEach(function(audio){
-    audio.addEventListener('ended', function(){ playNext(audio); });
+
+  ALL.forEach(function(a){
+    a.addEventListener('play', function(){
+      pauseOthers(a);
+      var i = at(a);
+      if(i >= 0) idx = i;
+      paint();
+    });
+    a.addEventListener('pause', function(){ paint(); });
+    a.addEventListener('ended', function(){
+      if(state.loop){ a.currentTime = 0; a.play().catch(function(){}); return; }
+      var i = at(a);
+      if(i < 0){
+        /* Ban thu ngoai hang doi: giu nep cu, sang the audio ke tiep theo DOM. */
+        var j = ALL.indexOf(a);
+        if(ALL[j + 1]) ALL[j + 1].play().catch(function(){});
+        return;
+      }
+      if(state.shuffle && queue.length > 1){
+        var pick = i;
+        while(pick === i) pick = Math.floor(Math.random() * queue.length);
+        playAt(pick);
+        return;
+      }
+      playAt(i + 1);
+    });
   });
-  updateButtons();
+
+  new MutationObserver(paint).observe(document.documentElement, {attributes: true, attributeFilter: ['lang']});
+  build(); paint();
 })();
 </script>
 

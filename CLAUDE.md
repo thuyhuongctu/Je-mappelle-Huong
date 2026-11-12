@@ -32,8 +32,32 @@ kéo nhánh ấy tiến lên nhánh chính rồi làm tiếp.
 python3 -m http.server 8899        # rồi mở http://127.0.0.1:8899/
 ```
 
-`404.html` dùng đường dẫn tuyệt đối theo đường dẫn thật trên GitHub Pages, nên
-muốn thử riêng trang ấy thì phải phục vụ dưới đúng tên `/Je-mappelle-Huong/`.
+`404.html` dùng đường dẫn tuyệt đối tính từ gốc tên miền (`/blog.html`), nên
+muốn thử riêng trang ấy thì phục vụ thư mục kho ở gốc như lệnh trên.
+
+## Tên miền
+
+Site chạy ở **https://jemappellehuong.com** (tên miền P.A Việt Nam, đăng ký
+20/10/2026). Không thêm tệp `CNAME`: site deploy bằng GitHub Actions, tên miền
+khai ở Settings → Pages. Mọi URL tuyệt đối (canonical, og:, sitemap, JSON-LD)
+dùng tên miền này; đường dẫn tuyệt đối nội bộ không có tiền tố
+`/Je-mappelle-Huong/`.
+
+**Hai địa chỉ cũ phải giữ chuyển hướng, đừng bỏ:**
+`thuyhuongctu.github.io/Je-mappelle-Huong/` (GitHub tự lo khi khai tên miền
+riêng) và `jemappellehuong.id.vn` (dùng từ 18/10 tới 20/10/2026 — ngắn, nhưng
+đủ để có nơi trỏ tới; phải trỏ 301 sang `.com` và duy trì, không để hết hạn).
+
+**Đổi tên miền thì nhớ cả những chỗ ngoài tệp HTML:** `robots.txt`,
+`CITATION.cff`, `BASE_URL` trong `scripts/rebuild-sitemap.py`, dòng `curl` đối
+chiếu trong `.github/workflows/update-sitemap.yml`, `scripts/check-site.py`,
+`assets/css/site-chrome.css`, và `README.md`. Lần chuyển sang `.com` đếm được
+**92 chỗ trên 26 tệp**.
+
+Hai chỗ **ngoài kho này** cũng ghi địa chỉ trang: `index.html` của kho
+`Research-Office` (hai liên kết về trang chủ) và các bản ghi Zenodo đã công bố.
+Bản ghi Zenodo đã phát hành thì không sửa được — đó chính là lý do phải giữ
+chuyển hướng từ địa chỉ cũ vĩnh viễn.
 
 ## Bộ màu đất sét
 
@@ -47,6 +71,24 @@ Dùng chung cho mọi trang, khai lại ở đầu mỗi tệp HTML:
 
 Mỗi trang tự khai ba lần: mặc định, `@media(prefers-color-scheme:dark)` có bọc
 `:root:not([data-theme=light])`, và `:root[data-theme=dark]`.
+
+**Chữ màu đất nung thì dùng `--clay-ink`, đừng dùng `--clay`/`--accent`** (từ
+08/11/2026). Đất nung `#c45c3a` làm chữ trên nền giấy chỉ đạt **3,4–4,1**, dưới
+ngưỡng WCAG 4,5. Đo bằng axe ra khoảng 200 chỗ trên 11 trang. Nên có hai cặp
+khai cạnh `--clay`/`--accent`:
+
+```
+sáng: --clay-ink #a54d31  --on-clay #fff      (4,57 trên #f3e4da, 5,67 chữ trắng)
+tối : --clay-ink #e08055  --on-clay #17130f   (6,2 chữ mực)
+```
+
+- `--clay` vẫn giữ nguyên cho mảng màu, viền, bản đồ: đấy là neo.
+- Nút nền đất nung có chữ dùng `background:var(--clay-ink);color:var(--on-clay)`.
+  Chữ trắng trên `#e08055` ở chế độ tối chỉ 2,84.
+- `site-chrome.css` viết `var(--clay-ink,var(--accent,#c45c3a))` để trang chưa
+  khai vẫn chạy.
+- `vanphong.html` đã chuyển ngày 08/11/2026, cùng lúc với `index.html` của kho
+  Research-Office. `trangvien.html` **chưa** chuyển.
 
 Ba thứ tiếng bằng lớp `.lang-vi` / `.lang-en` / `.lang-fr`, ẩn hiện theo
 thuộc tính `lang` của `<html>`; khoá nhớ là `huong_lang`, `huong_theme`.
@@ -197,6 +239,18 @@ thức sai, cùng một kiểu hỏng:
 Quy tắc rút ra: hễ thấy một hằng số hình học viết tay ở chỗ thứ hai, đi tìm
 nguồn của nó. Ba lần rồi.
 
+**Lần thứ tư, 20/10:** công thức ấy còn nằm ở **ba chỗ nữa** mà ba lần trước
+không ai dò tới — **26 bông sen**, **3 thuyền nan** và **bản đồ tròn ở góc**
+(bản đồ lớn `#toancanh` đã sửa, bản đồ góc `veBanDo()` thì sót). Đo trong cảnh
+đang chạy: **0/26** sen và **0/3** thuyền nằm trên nước. Nay sen và thuyền đặt
+bằng `trenNuoc()` + `canhBo()`, bản đồ góc tô thẳng đa giác `vienSong`; đo lại
+được 26/26 và 3/3. Dò bằng `grep -n "sin(x\*\.05)"`: nay chỉ còn trong chú thích.
+
+`canhBo(x, z)` là khoảng cách tới **mép** sông dù điểm ở trên nước hay trên bờ;
+`xaSong()` nay gọi nó và trả 0 khi điểm trên nước. Đặt thứ gì ven bờ **phía
+trong nước** (sen, thuyền neo) thì phải dùng `canhBo()`, vì `xaSong()` không
+phân biệt sát bờ với giữa dòng. `huongBo()` cho góc quay để vật nằm dọc bờ.
+
 Danh sách lối mòn cũ là **một đường đi liền mạch**, nên muốn rẽ nhánh phải
 quay ngược lại — mỗi lần quay ngược dựng thêm một tấm phẳng nằm đè khít lên
 tấm cũ, cùng `y = 0,07`, hai mặt tranh nhau. Đếm được 16 tấm cho 11 đoạn thật.
@@ -205,6 +259,22 @@ tấm cho đủ **tám** khu.
 
 Trước đó hai khu **không hề có lối mòn nào dẫn tới** — «Lối kể chuyện»
 `(-16,42)` và «Kho tương lai» `(-12,-38)`.
+
+## Mô hình ngoài (Kenney) trong trang viên
+
+Dừa ven sông (`duaVenSong()`) là mô hình CC0 của Kenney nạp bằng `GLTFLoader`.
+Hai chỗ đã vấp ở cảnh thử, đừng mắc lại khi thêm mô hình Kenney khác:
+
+- **Nature Kit khai `metallicFactor = 1` cho mọi vật liệu.** Trang viên không có
+  ảnh môi trường nên vật «kim loại» hiện gần đen. Gán vật liệu qua `vatLieu()`
+  (đặt `metalness: 0`), đừng giữ vật liệu gốc.
+- **Watercraft Kit dùng ảnh màu ngoài** `Textures/colormap.png`, chép thiếu thì
+  nạp lỗi. Nature Kit thì không.
+
+Màu: dùng lại màu **đã có** trong cảnh (gỗ thuyền `#C08A5A`, lá tre `#79B25C`),
+đừng nhuộm sang màu mới — bảng màu cảnh 3D đã gom có chủ đích (mục «Bảng màu
+trang viên»). Đặt thì **gom cụm** tránh nước, tám khu, cầu, lối mòn; 17 cây chỉ
+thêm 37 mesh.
 
 ## Ánh sáng trang viên
 
@@ -439,12 +509,36 @@ GSAP, Iconify, Google Fonts, và ảnh từ kho Supabase riêng của tác giả
 
 ## Kiểm bằng trình duyệt thật
 
-Dùng Playwright với Chromium sẵn có:
+**Playwright chạy ở Node, không ở Python.** Đo lại 10/11/2026: không bản
+`python3` nào trong máy `import playwright` được — cả `/usr/bin/python3` lẫn
+`python3` mặc định đều không. Gói nằm ở
+`/opt/node-tools/node_modules/playwright` (1.63.0). Ghi chú cũ bảo dùng bản
+Python ở `/usr/bin/python3`; nay sai, đừng thử lại.
 
+```js
+import pw from '/opt/node-tools/node_modules/playwright/index.js';
+const { chromium } = pw;
+const b = await chromium.launch({
+  executablePath: '/opt/pw-browsers/chromium',
+  args: ['--enable-unsafe-swiftshader', '--use-gl=swiftshader'] });
 ```
-executable_path=/opt/pw-browsers/chromium
-args=["--enable-unsafe-swiftshader","--use-gl=swiftshader"]
-```
+
+Riêng dòng `import` ấy vấp hai lần mới qua, cả hai đều không đoán ra:
+
+- **`import ... from 'playwright'` không tìm ra gói** nếu script nằm ngoài
+  `/opt/node-tools` (`ERR_MODULE_NOT_FOUND`): ESM phân giải theo thư mục của
+  chính tệp script, và `NODE_PATH` không áp dụng cho ESM. Phải viết đường dẫn
+  tuyệt đối. Đứng ở `/opt/node-tools` mà chạy thì cũng được, nhưng script
+  vẫn phải nằm trong đó.
+- **Gói là CommonJS**, nên `import { chromium } from '…/index.js'` báo
+  «Named export 'chromium' not found». Phải nhập mặc định rồi rút ra, như trên.
+
+Máy chủ thử tại chỗ thì viết luôn bằng `http` của Node cho cùng một tiến
+trình — khỏi phải bắc cầu sang Python, và Node vốn đa luồng nên không dính
+chỗ nghẽn ở mục «Đo thế nào». Muốn kiểm `manifest.webmanifest` thì
+`fetch` thẳng rồi `json()` ngay trong script ấy, không cần trình duyệt: cách
+này bắt được JSON hỏng và đối chiếu được từng `url` của `shortcuts` với tệp
+có thật.
 
 Ba giới hạn của môi trường kiểm, **không phải lỗi của trang**:
 
@@ -457,29 +551,62 @@ Ba giới hạn của môi trường kiểm, **không phải lỗi của trang**
 Vào trang viên phải: chờ `#nut-vao` hết `disabled` rồi bấm, sau đó bấm hết ba
 bước của `#th-guide-next`.
 
-### Kiểm bản ĐANG CHẠY trên github.io
+### Kiểm bản ĐANG CHẠY
 
-`curl` tới `thuyhuongctu.github.io` **bị cổng ra mạng chặn** — trả về
-`CONNECT tunnel failed, response 403`. Đọc trang thật phải qua Firecrawl
-(`firecrawl_scrape`, đặt `maxAge: 0` để khỏi lấy bản lưu).
+**Chỗ cần đọc vẫn là `sw.js`, không phải trang.** Tệp ấy bé, và số
+`jshuong-vNN` trong đó nói thẳng commit nào đang phục vụ. Pages dựng lại cả
+cây tệp một lượt, nên số đệm đúng nghĩa là mọi tệp của commit ấy — kể cả tệp
+nhạc vài megabyte không đọc nổi qua công cụ — đều đã lên theo.
 
-**Cách rẻ nhất để biết commit nào đang phục vụ là đọc `sw.js`**, không phải
-đọc trang: tệp ấy bé, và số `jshuong-vNN` trong đó nói thẳng bản nào đã lên.
-Pages dựng lại cả cây tệp một lượt, nên số đệm đúng nghĩa là mọi tệp của
-commit ấy — kể cả tệp nhạc vài megabyte không đọc nổi qua công cụ — đều đã
-lên theo.
+**Nhưng từ phiên đám mây thì hiện KHÔNG đọc được.** Đo lại 21/10, cả ba
+đường đều tắc:
 
-Đối chiếu HTML thì nhớ **Firecrawl trả về trang đã qua trình duyệt**, không
-phải tệp gốc: đường dẫn tương đối bị viết thành tuyệt đối, `controls` thành
-`controls=""`, và các nút do JavaScript của trang tự chèn (nút «Hiện lời bài
-hát») cũng nằm trong đó. Đo mục `#shore` ra **11 dòng khác nhau mà không dòng
-nào là khác nội dung**. So chữ nghĩa, đừng so từng byte.
+| đường | kết quả |
+| --- | --- |
+| `curl https://jemappellehuong.com/...` | `connect_rejected` — cổng ra mạng từ chối host |
+| Chromium (Playwright) | `ERR_TUNNEL_CONNECTION_FAILED`, cùng cổng ấy |
+| Firecrawl `firecrawl_scrape` | **hết hạn mức tài khoản** |
+
+Ghi chú cũ bảo «chặn `thuyhuongctu.github.io`, đọc qua Firecrawl» — nay sai
+cả hai vế: chặn **cả tên miền `.com`**, và Firecrawl không còn dùng được.
+Đừng thử lại ba đường ấy rồi tưởng trang hỏng.
+
+**Ba cách còn dùng được, theo thứ tự:**
+
+1. **Tác giả tự mở** `https://jemappellehuong.com/sw.js` rồi gửi ảnh chụp.
+   Đây là chứng cứ đọc tận nơi, chắc nhất. Trình duyệt trả bản cũ thì thêm
+   `?t=1` vào cuối địa chỉ.
+2. **Đọc lần chạy `Deploy to GitHub Pages`** của đúng commit ấy qua API
+   GitHub. Thành công nghĩa là cả cây tệp của commit ấy đã phát hành — suy
+   ra được, nhưng là **suy từ bản dựng chứ không phải đọc tệp thật**, nên
+   nói đúng mức ấy, đừng nói chắc như đã đọc.
+3. **Mở cổng mạng** cho phiên: trình đơn môi trường đám mây ở thanh tiêu đề
+   → *Edit* → *Network access*, thêm `jemappellehuong.com` vào *Allowed
+   domains*, giữ nguyên ô *Allow package managers*.
+   <https://code.claude.com/docs/en/cloud-environments#network-access>
+
+Nếu sau này Firecrawl dùng lại được: nhớ **nó trả về trang đã qua trình
+duyệt**, không phải tệp gốc. Đường dẫn tương đối bị viết thành tuyệt đối,
+`controls` thành `controls=""`, và các nút do JavaScript của trang tự chèn
+(nút «Hiện lời bài hát») cũng nằm trong đó. Đo mục `#shore` ra **11 dòng
+khác nhau mà không dòng nào là khác nội dung**. So chữ nghĩa, đừng so từng
+byte. Và đặt `maxAge: 0` để khỏi lấy bản lưu.
 
 ## Lời commit
 
 Viết tiếng Việt, giọng bình thường. Nói **vì sao** chứ không chỉ nói đã đổi
 gì; nếu có chỗ hỏng có sẵn từ trước thì ghi rõ là có sẵn. Ghi lại đã kiểm
 những gì, bằng con số thật.
+
+**Tác giả commit luôn là `thuyhuongctu <thuyhuongctu@gmail.com>`.** Không thêm
+dòng `Co-Authored-By: Claude`, `Claude-Session` hay dòng nào ghi công cho công
+cụ, kể cả khi hệ thống gợi ý thêm. Gộp PR kiểu squash qua API thì tự đặt lời
+commit, vì GitHub sẽ chép dòng đồng tác giả từ các commit trong nhánh sang.
+Mô tả PR cũng không thêm dòng «Generated with Claude Code».
+
+Quy định có từ 20/10/2026. Các commit đã gộp trước ngày ấy (#105, #106, #111)
+còn mang dòng đồng tác giả; để nguyên vì viết lại lịch sử nhánh chính phải ghi
+đè lên GitHub, rủi ro hơn cái được.
 
 ## Ảnh
 
@@ -637,16 +764,20 @@ lấy nguyên con số trong thuộc tính và ảnh bị bóp ngang — `.anh-n
 Làm lần đầu cho «Returning to Shore» và bản lời Việt «Trở về bờ» của nó. Bốn
 chỗ mất thì giờ, ghi lại cả bốn.
 
-### Công cụ: `ffmpeg` không cài sẵn, `ffprobe` không có
+### Công cụ: đo lại trước khi tin, môi trường có đổi
 
-Lấy đường dẫn bằng Python, gói `imageio-ffmpeg` đã có trong máy:
+Ghi 10/10: `ffmpeg` không cài sẵn, phải lấy đường dẫn qua `imageio-ffmpeg`, và
+`ffprobe` không có bản nào.
 
-```python
-import imageio_ffmpeg; imageio_ffmpeg.get_ffmpeg_exe()
-```
+**Đo lại 21/10 thì ngược hẳn:** `/usr/bin/ffmpeg` và `/usr/bin/ffprobe` đều có
+sẵn, còn gói `imageio-ffmpeg` thì **không** cài được nữa (`pip install` chạy
+xong mà `import` vẫn hỏng). Nên cứ `command -v ffmpeg ffprobe` trước, đừng tin
+dòng này.
 
-`ffprobe` thì **không có bản nào** — muốn đọc siêu dữ liệu thì chạy
-`ffmpeg -i <tệp>` rồi đọc phần in ra `stderr`.
+Cũng vậy, đo 10/11/2026: `numpy` chỉ có ở `/usr/bin/python3`, không có ở
+`python3` mặc định; `PIL` thì **cả hai** bản đều có; `cv2` thì **không bản
+nào** có. Dòng này trước đây gọi `/usr/bin/python3` là «bản chạy Playwright» —
+nay không còn đúng, xem mục «Kiểm bằng trình duyệt thật».
 
 ### Mã lại hay chép nguyên dòng, tuỳ nguồn
 
@@ -772,13 +903,92 @@ SynthID chìm vẫn còn trong tệp.
 chính thức để trích dẫn (có DOI Zenodo); bản ở đây là bản trưng bày trong hệ
 sinh thái trang cá nhân.
 
-Khác nhau đúng **hai chỗ**, và chỉ hai chỗ ấy:
+**Văn phòng không còn là một tệp.** Từ 20/10 nó là bốn tệp, phải chép sang cả
+hai kho cùng lúc:
 
-- hai liên kết về trang chủ (`href="index.html"`) đổi thành địa chỉ tuyệt đối
-  `https://thuyhuongctu.github.io/Je-mappelle-Huong/`;
-- kho riêng có thêm `README.md`, `LICENSE`, `CITATION.cff`, `.zenodo.json`,
-  `THIRD-PARTY.md`, `manifest.webmanifest` riêng, `.nojekyll` và quy trình dựng
-  Pages riêng.
+| tệp | là gì |
+| --- | --- |
+| `vanphong.html` / `index.html` | trang, HUD, hội thoại, hai bảng, vòng lặp |
+| `assets/js/office-builder.js` | `xayVanPhong()` dựng phòng, `lamNguoi()` dựng người |
+| `assets/js/characters.js` | `window.NGUOI` — sáu người và câu trả lời viết sẵn |
+| `assets/video/le-bureau-intro.mp4` + `-poster.webp` | phim giới thiệu 63 giây |
+
+Hai tệp JS **phải nằm trong `CORE` của `sw.js`**: thiếu một trong hai thì trang
+mở ra cảnh trống, mà khi có mạng lại chạy y hệt. Video thì **không** — 3,8 MB,
+`preload="none"`, mở trong bảng riêng, thiếu nó văn phòng vẫn chạy (đúng tiền
+lệ cảnh tháp).
+
+### Đã lệch nhau một lần, ba tuần mới phát hiện
+
+Kho riêng được dựng lại riêng và kho này không hay biết: đo ngày 20/10 thì
+`index.html` bên ấy sửa lần cuối **17/10** còn `vanphong.html` bên này từ
+**26/9**, hai tệp 977 dòng mà chỉ **227 dòng chung**. Đã gộp bằng cách lấy bản
+mới của kho riêng.
+
+Lệch được vì **kho riêng tự chứa và tự chạy**, nên sửa bên ấy xong là xem thấy
+kết quả ngay, chẳng có gì nhắc phải chép về. Nếp duy nhất chặn được: sửa văn
+phòng ở **đâu** cũng chép sang bên kia **trong cùng một lần**, đừng để sang
+hôm sau.
+
+Trong chính tệp trang, khác nhau đúng **bốn chỗ** — và cả bốn đều là **tự
+trỏ về mình**, không chỗ nào là khác nội dung. Từ 21/10 là bốn chứ không còn
+ba như ghi chú cũ: hai chỗ sau sinh ra khi thêm mã DOI.
+
+| chỗ | bên `Je-mappelle-Huong` | bên `Research-Office` |
+| --- | --- | --- |
+| hai liên kết về trang chủ | `href="index.html"` | `https://jemappellehuong.com/` |
+| `<link rel=canonical>` | `…com/vanphong.html` | `…github.io/Research-Office/` |
+| `url` trong JSON-LD | `…com/vanphong.html` | `…github.io/Research-Office/` |
+| câu trích dẫn ở bảng mở đầu | «đây là **bản trưng bày**, bản để trích dẫn ở kho riêng» | «đây **là** bản để trích dẫn» |
+
+**Cố ý không cho cả hai cùng trỏ về `.com`**: làm thế là bảo công cụ tìm kiếm
+bỏ qua bản có DOI, mà bản ấy mới là bản để trích dẫn. Tự trỏ về mình là nếp
+của mọi trang khác trong kho này, và không bên nào dìm bên nào. Câu trích dẫn
+theo đúng lẽ ấy: mỗi bên nói đúng vai của chính nó.
+
+Ngoài tệp trang, kho riêng còn có thêm `README.md`, `LICENSE`, `CITATION.cff`,
+`.zenodo.json`, `THIRD-PARTY.md`, `manifest.webmanifest` riêng, `.nojekyll` và
+quy trình dựng Pages riêng. Kho ấy **không có `sw.js`**, nên sửa bên ấy không
+phải nâng số bộ nhớ đệm — khác với `Le-Domaine-de-Huong`, kho ấy có.
+
+Trang viên cũng có **đúng bốn chỗ tự trỏ về mình ấy** (canonical, `og:url`,
+`url` trong JSON-LD, câu trích dẫn trong khu Nhà chính) — nhưng **đừng suy ra
+hai tệp chỉ khác nhau bốn chỗ**. Kho `Le-Domaine-de-Huong` không phải bản chép
+nguyên: đo ngày 21/10 thì `trangvien.html` và `index.html` bên ấy lệch nhau
+**68 dòng**, phần lớn là những chỗ cố ý cắt — tám thẻ nhạc (18 xuống 10) và
+các liên kết nội bộ viết thành tuyệt đối — đã kể ở mục «Kho riêng KHÔNG phải
+bản chép nguyên». Chỉ văn phòng mới là cặp chép nguyên, nên chỉ ở đó mới
+đếm được đúng bốn.
+
+### Gộp từ bản sao NÔNG thì `origin/<nhánh>` không có
+
+Vấp 21/10 ở kho `research-office`. Đẩy nhánh lên bình thường, nhưng
+`git merge --squash origin/claude/doi-trich-dan` báo **«not something we can
+merge»**: bản sao nông chỉ theo dõi nhánh chính nên không có ref
+`origin/<nhánh>` dù nhánh ấy đã nằm trên GitHub. Gộp từ **nhánh cục bộ**
+(`git merge --squash claude/doi-trich-dan`) là xong. Đừng tưởng đẩy hỏng.
+
+### Dải dưới màn hình điện thoại chỉ đủ chỗ cho hai cụm
+
+Ở 390px có bốn thứ tranh nhau khoảng 180px cuối màn hình: cần gạt `#can`
+(y 708–824), nhóm nút `#dieu` (770–824), thẻ «Chạm» `#nhac` (649–692) và dòng
+mẹo `#goiy-tay`. Đặt dòng mẹo **bên cạnh** cần gạt thì nó đâm vào `#dieu` —
+đo được chồng **37px ở 430, 77px ở 390, 107px ở 360**, càng hẹp càng nặng.
+
+Dời lên **trên** cần gạt (`left:18px`, `bottom: safe + 128px`) là hết chồng với
+`#can` và `#dieu`, nhưng lại đâm vào `#nhac` 66px khi đứng gần nhân vật. Chỗ ấy
+không còn khoảng trống nào để né nữa.
+
+Nên giải bằng **loại trừ, không bằng toạ độ**: `veNhacNho()` bật lớp
+`body.co-nhac`, và `body.co-nhac #goiy-tay{display:none}`. Lúc có người đứng
+gần thì thẻ «Chạm» quan trọng hơn dòng mẹo kéo cần gạt. Đo lại ở 360/390/430,
+cả hai trạng thái: **0 cặp chồng nhau**.
+
+Đo thì phải ép **cả hai trạng thái**: thêm `body.tay` rồi thêm `#nhac.hien` +
+`body.co-nhac`. Chỉ đo một trạng thái thì bỏ sót đúng cái chồng nặng nhất.
+
+Còn một chỗ chồng **3px** giữa `#bang` và `#the` ở riêng 360px — có sẵn từ
+trước, chưa sửa.
 
 Sửa nội dung văn phòng thì **chép sang cả hai rồi kiểm cả hai**. Quên một bên
 thì bản có DOI và bản đang chạy nói khác nhau — mà DOI là thứ người ta trích
@@ -803,14 +1013,113 @@ Hai chỗ đã đo, đừng dò lại:
   câu chữ giấy phép đầy đủ; muốn đẹp thì sau mỗi lần phát hành vào Edit sửa một
   ô. Đánh đổi có chủ ý: được cái không bao giờ rơi lại vào mặc định
   `cc-by-4.0` — thứ nguy hiểm thật, vì nó cho phép người khác phát tán lại.
-- **Đừng đặt `access_right: restricted`** dù tài liệu Zenodo có gợi ý thế cho
-  tác phẩm không mở. `restricted` nghĩa là không ai tải được tệp, mà `LICENSE`
-  của kho ấy viết rõ công trình «được công bố để đọc, tham khảo và trích dẫn».
-  Đúng là `open` cộng giấy phép đóng.
+- **`access_right: restricted` là CÓ CHỦ Ý — đừng mở ra.** Tác giả khoá tệp vì
+  bản quyền không cho tải. Mục Files của bản ghi hiện **Restricted** là đúng ý,
+  không phải chỗ hỏng; thấy thế thì **để yên**, đừng vào Edit đặt lại Public.
+
+  Ghi chú trước đây dặn ngược hẳn — bảo đặt `open` vì «`LICENSE` viết rõ công
+  trình được công bố để đọc, tham khảo và trích dẫn». Đọc kỹ lại thì câu ấy cho
+  **đọc và trích dẫn**, chưa bao giờ hứa cho **tải**. Suy từ một câu sang một
+  quyền nó không nói là chỗ sai, và đã khiến tôi ba lần giục mở khoá thứ tác
+  giả cố ý khoá.
+
+  Đo 21/10 trên `Le-Domaine-de-Huong`: `.zenodo.json` khai `"access_right":
+  "open"`, kho để **public**, vậy mà cả hai bản ghi `v1.0.0` và `v1.0.1` vẫn
+  hiện Restricted — «The record is publicly accessible, but files are restricted
+  to users with access». Chưa rõ Zenodo bỏ hẳn trường cũ ấy hay suy từ giấy phép
+  `other-closed` ra; chưa đo được nên đừng ghi là đã biết. Dù sao kết quả cũng
+  trùng ý tác giả, nên không phải can thiệp.
 
 `.zenodo.json` **cố ý không khai `version`**, để Zenodo lấy thẳng tên thẻ. Nên
 đặt thẻ là `v1.1`, **không phải** `v.1.1` — bản đầu tiên đã lỡ mang tên `v.1.0`
-đúng vì lẽ ấy và phải sửa tay.
+đúng vì lẽ ấy và phải sửa tay. Thẻ ba số (`v1.0.0`) cũng được, miễn là
+`CITATION.cff` khai `version` **khớp tên thẻ**; hai chỗ ấy lệch nhau thì nút
+«Cite this repository» của GitHub nói một đằng, Zenodo ghi một nẻo.
+
+Cả hai kho nay cùng khai `access_right: "restricted"`. `Research-Office` vốn
+đã thế; `Le-Domaine-de-Huong` sửa ngày 22/10 từ `open` sang, cho tệp khai
+đúng ý tác giả thay vì xin Zenodo mở tệp.
+
+## Trang viên cũng có HAI bản, từ 21/10
+
+`trangvien.html` trong kho này và `index.html` của kho
+`thuyhuongctu/Le-Domaine-de-Huong` là **cùng một cảnh**. Kho riêng là bản chính
+thức để trích dẫn (có DOI Zenodo); bản ở đây là bản trưng bày trong hệ sinh
+thái trang cá nhân. Nếp y như văn phòng: **sửa ở đâu cũng chép sang bên kia
+trong cùng một lần.**
+
+Tên tác phẩm là «Le Domaine de Hương», song song với «Le Bureau de Hương» của
+kho văn phòng. Tên **tác phẩm** và tên **kho** là hai thứ tách bạch: đổi tên
+kho là gãy địa chỉ và gãy liên kết trong bản ghi DOI đã phát hành.
+
+### Kho riêng KHÔNG phải bản chép nguyên
+
+Khác hẳn văn phòng. Gói đầy đủ của trang viên đo được **132 tệp, 32,0 MB**;
+bản tách chỉ **93 tệp, 19 MB**. Ba nhóm cố ý bỏ, và lý do không phải dung
+lượng mà là **ranh giới tác phẩm**:
+
+- **Đoạn trích 15 giây «Mekong Sunfire»** (`docs/mv/mekong-sunfire-hook-15s.mp3`).
+  Đo tương quan tín hiệu với `assets/audio/bizon/bat-nghiep-mekong-sunfire.mp3`:
+  **0,9996 tại giây 181**, nền 0,0089 — tức trích đoạn nguyên văn của một bản
+  thu **đồng sở hữu với Phan Anh Tú**. Để lại thì tác phẩm lưu trữ thành hai
+  tác giả, đúng cái bẫy mục «Hai chỗ về giấy phép» đã cảnh báo.
+- **Thư viện nhạc trong `music.js`**, rút 34 bài xuống 2 (hai bản solfeggio của
+  khuôn viên). Bản gốc liệt kê 10 bài `bizon/` cũng thuộc phần đồng sở hữu.
+- **Ba bài hát và cả `deck-ecosystem/`** — tác phẩm khác, có hồ sơ riêng.
+
+Giọng đọc lấy bản `_vi` và `_en`, bỏ `_fr`: trang viên chỉ có hai thứ tiếng.
+
+### Ba nhóm tệp mà phép duyệt tĩnh KHÔNG thấy
+
+Dò phụ thuộc bằng cách đọc `src=` / `href=` thì sót, vì ba chỗ này ghép chuỗi
+**lúc chạy**. Đo bằng Chromium mới lộ ra, đúng ba chỗ 404:
+
+- `assets/css/site-chrome.css` — `site-chrome.js` tự chèn;
+- `assets/audio/solfeggio_528.mp3` và `_432` — `music.js` ghép từ biến `A`;
+- `assets/voice/voice_{kieu}_{NG}.mp3` — khuôn tên dựng lúc chạy.
+
+**Đừng duyệt qua `sw.js`.** Tệp ấy khai 96 mục đệm cho *cả trang web*, nên phép
+duyệt kéo vào 112 tệp thay vì 62.
+
+### Kiểm thì phải ĐI BỘ THẬT, đừng nhảy bằng lệnh
+
+Đặt thẳng `nhanVat.position` để nhảy vào một khu thì vòng lặp âm thanh đặt
+`volume` thành NaN và sinh ra **193–194 lỗi console giả** — trên *cả* bản gốc
+lẫn bản tách. Giữ phím mũi tên năm giây thì cả hai ra **0 lỗi**. Lại đúng bài
+học ở mục «Cụm nổi»: giả lập trạng thái bằng cách gán biến thì phải kiểm xem
+vòng lặp có ghi đè không.
+
+Số đo của bản tách: **0** yêu cầu ra ngoài, **0** phản hồi ≥ 400, **0** lỗi
+trang, **1719** mesh (đúng bằng bản gốc), 8 khu, đổi vi/en chạy đúng, 60 mục
+`sw.js` CORE đều tồn tại.
+
+### Bản sao trong phiên đám mây là bản NÔNG
+
+`git log` ở phiên này cắt ở **86 commit**, mốc sớm nhất 22/09/2026 — **không
+phải** ngày tạo thật. Hồ sơ quyền tác giả cần ngày hoàn thành chính xác (mục
+`01` dặn «lấy từ lịch sử git, đừng ghi ước chừng»), nên phải
+`git fetch --unshallow` rồi mới lấy số. Đo lại đủ: **367 commit**, và
+`trangvien.html` tạo **12/08/2026**, **103 commit** chạm vào tệp, **một** địa
+chỉ tác giả duy nhất.
+
+### Hai chỗ vấp khi dựng kho mới
+
+- **GitHub App của phiên không tạo được kho** — `403 Resource not accessible by
+  integration`. Tác giả phải tự tạo kho rỗng trước, rồi mới `add_repo`.
+- **Thẻ git không đẩy được qua cổng mạng** của phiên: commit lên bình thường,
+  thẻ thì đứt sideband mỗi lần, kể cả với refspec tường minh. Không sao — tạo
+  thẻ bằng giao diện GitHub lúc phát hành là xong, mà đằng nào Zenodo cũng chỉ
+  nghe **release** chứ không nghe thẻ trần.
+
+### Công tắc Zenodo: đừng suy, hãy mở ra nhìn
+
+Zenodo chỉ nghe bản phát hành **sau** lúc bật công tắc, không hồi tố. Nhưng
+đừng suy ra trạng thái từ lời kể: lần này đã kết luận nhầm rằng `v1.0.0` trượt
+và ghi hẳn điều ấy vào một lời commit, trong khi nó đã Published. Phải mở
+<https://zenodo.org/account/settings/github/> mà nhìn.
+
+Và nhớ `CITATION.cff` phải điền **DOI khái niệm** (dòng «Cite all versions» ở
+trang bản ghi), không phải DOI của riêng một bản phát hành.
 
 ## Trước khi thêm tệp mới
 

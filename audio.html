@@ -11,9 +11,9 @@
 <meta property="og:title" content="Huong AI - Tour Narration Studio">
 <meta property="og:description" content="Record or upload tour narration voice for Huong AI (VI/EN/FR) in the 3D garden.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/assets/img/og-default-2.jpg">
-<meta property="og:url" content="https://thuyhuongctu.github.io/Je-mappelle-Huong/audio.html">
-<meta property="og:site_name" content="Je m'appelle Hương · Lecturer &amp; Researcher">
+<meta property="og:image" content="https://jemappellehuong.com/assets/img/og-default-2.jpg">
+<meta property="og:url" content="https://jemappellehuong.com/audio.html">
+<meta property="og:site_name" content="Je m'appelle Hương">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
@@ -23,44 +23,44 @@
 /* Bảng màu đất sét - cùng một bộ token với trang chủ, vườn số và CV. */
 :root{
   --paper:#f6f1e7;--surface:#fffcf5;--sunk:#efe8dc;--ink:#1c1814;--muted:#6f6459;
-  --line:#e2d8c7;--accent:#c45c3a;--accent-soft:#f3e4da;--accent2:#3f6f68;--gold:#b8842c;
+  --line:#e2d8c7;--accent:#c45c3a;--clay-ink:#a54d31;--on-clay:#fff;--accent-soft:#f3e4da;--accent2:#3f6f68;--gold:#b8842c;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --serif:"Iowan Old Style",Georgia,"Times New Roman",serif;
   --shadow:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09);
 }
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){
   --paper:#17130f;--surface:#201914;--sunk:#120e0b;--ink:#efe6d8;--muted:#a6998a;
-  --line:#332a22;--accent:#e08055;--accent-soft:#3a251c;--accent2:#79b3a6;--gold:#d6a24e;
+  --line:#332a22;--accent:#e08055;--clay-ink:#e08055;--on-clay:#17130f;--accent-soft:#3a251c;--accent2:#79b3a6;--gold:#d6a24e;
   --shadow:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42);
 }}
 :root[data-theme=dark]{
   --paper:#17130f;--surface:#201914;--sunk:#120e0b;--ink:#efe6d8;--muted:#a6998a;
-  --line:#332a22;--accent:#e08055;--accent-soft:#3a251c;--accent2:#79b3a6;--gold:#d6a24e;
+  --line:#332a22;--accent:#e08055;--clay-ink:#e08055;--on-clay:#17130f;--accent-soft:#3a251c;--accent2:#79b3a6;--gold:#d6a24e;
   --shadow:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42);
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--surface);color:var(--ink);font-family:var(--sans)}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+a{color:var(--clay-ink);text-decoration:none}a:hover{text-decoration:underline}
 .wrap{max-width:760px;margin:0 auto;padding:72px 20px 40px}
 .brand{display:block;text-align:center;margin-bottom:26px}
 .brand img{height:46px;width:auto;object-fit:contain}
 h1{font-family:var(--serif);font-weight:800;font-size:1.7rem;margin:0 0 4px;text-align:center}
 .sub{color:var(--muted);font-size:.9rem;text-align:center;margin:0 0 26px}
-.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px;margin:0 0 16px;box-shadow:0 8px 18px rgba(140,90,70,.07)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px;margin:0 0 16px;box-shadow:0 8px 18px rgba(140,90,70,.07)}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-button{font:700 .82rem var(--sans);border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);padding:9px 16px;cursor:pointer}
-button:hover{border-color:var(--accent);color:var(--accent)}
-button.big{background:var(--accent);color:#fff;border-color:var(--accent);padding:11px 22px;font-size:.95rem}
+button{font:700 .82rem var(--sans);border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 16px;cursor:pointer}
+button:hover{border-color:var(--accent);color:var(--clay-ink)}
+button.big{background:var(--clay-ink);color:var(--on-clay);border-color:var(--clay-ink);padding:11px 22px;font-size:.95rem}
 button.big:hover{opacity:.88}
-button.on{background:var(--accent);border-color:var(--accent);color:#fff}
-select,input[type=text]{font:600 .82rem var(--sans);border:1px solid var(--line);border-radius:999px;padding:9px 14px;background:#fff;color:var(--ink)}
+button.on{background:var(--clay-ink);border-color:var(--clay-ink);color:var(--on-clay)}
+select,input[type=text]{font:600 .82rem var(--sans);border:1px solid var(--line);border-radius:999px;padding:9px 14px;background:var(--surface);color:var(--ink)}
 input[type=text]{border-radius:10px;flex:1;min-width:170px}
-.tag{display:inline-block;background:#f3e7e0;color:var(--accent);border-radius:8px;font-weight:700;font-size:.75rem;padding:3px 9px}
+.tag{display:inline-block;background:var(--accent-soft);color:var(--clay-ink);border-radius:8px;font-weight:700;font-size:.75rem;padding:3px 9px}
 audio{width:100%;margin-top:10px}
 table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.85rem;table-layout:fixed;word-wrap:break-word;overflow-wrap:break-word}
 th,td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:middle}
 th{color:var(--muted);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em}
-.ok{color:#4a8a55;font-weight:700}.no{color:var(--accent);font-weight:700}
+.ok{color:#4a8a55;font-weight:700}.no{color:var(--clay-ink);font-weight:700}
 .note{color:var(--muted);font-size:.8rem;margin:6px 0 0}
 .footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:22px}
 html[lang="en"] .lang-vi{display:none}
@@ -68,11 +68,11 @@ html:not([lang="en"]) .lang-en{display:none}
 html[lang="fr"] .lang-vi{display:none}
 html[lang="fr"] .lang-en{display:none}
 html:not([lang="fr"]) .lang-fr{display:none}
-.langtog{position:fixed;top:14px;right:14px;z-index:6;display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 6px 14px rgba(140,90,70,.1)}
+.langtog{position:fixed;top:14px;right:14px;z-index:6;display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:0 6px 14px rgba(140,90,70,.1)}
 .langtog button{border:none;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:6px 11px}
-.langtog button.active{background:var(--accent);color:#fff}
+.langtog button.active{background:var(--clay-ink);color:var(--on-clay)}
 @media(max-width:560px){h1{font-size:1.35rem}.wrap{padding-top:66px}.row{gap:6px}}
-.skip-link{position:absolute;top:-52px;left:12px;background:var(--accent);color:#fff;font:700 .85rem sans-serif;padding:10px 16px;z-index:100;border-radius:0 0 10px 10px;text-decoration:none;transition:top .2s}.skip-link:focus{top:0;outline:3px solid var(--accent);outline-offset:2px}</style>
+.skip-link{position:absolute;top:-52px;left:12px;background:var(--clay-ink);color:var(--on-clay);font:700 .85rem sans-serif;padding:10px 16px;z-index:100;border-radius:0 0 10px 10px;text-decoration:none;transition:top .2s}.skip-link:focus{top:0;outline:3px solid var(--accent);outline-offset:2px}</style>
 <style>
 /* ===== DeepMind-style header ===== */
 .dmnav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:10px;padding:10px 16px;
@@ -86,9 +86,9 @@ html:not([lang="fr"]) .lang-fr{display:none}
 .dmnav .dmright{margin-left:auto;display:flex;align-items:center;gap:6px;overflow-x:auto;max-width:calc(100vw - 170px)}
 .dmnav .dmright a{color:var(--ink);text-decoration:none;font:500 .76rem/1.4 var(--sans);padding:6px 8px;white-space:nowrap;
   background-image:linear-gradient(var(--accent),var(--accent));background-size:0% 1.5px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .28s ease,color .2s}
-.dmnav .dmright a:hover{color:var(--accent);background-size:100% 1.5px}
+.dmnav .dmright a:hover{color:var(--clay-ink);background-size:100% 1.5px}
 .dmnav .dmico{display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border-radius:50%;color:var(--muted);font-size:.9rem;text-decoration:none;transition:color .2s,background .2s}
-.dmnav .dmico:hover{color:var(--accent);background:var(--accent-soft)}
+.dmnav .dmico:hover{color:var(--clay-ink);background:var(--accent-soft)}
 @media(max-width:760px){.dmnav{padding:7px 10px;gap:6px;flex-wrap:nowrap}.dmnav .dmlabel small{display:none}.dmnav .dmlabel{font-size:.7rem}
 .dmnav .dmright{max-width:calc(100vw - 150px);flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
 .dmnav .dmright::-webkit-scrollbar{display:none}
@@ -103,14 +103,14 @@ html:not([lang="fr"]) .lang-fr{display:none}
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
   #bando{transition:transform .1s linear}
 }
-</style>  <link rel="canonical" href="https://thuyhuongctu.github.io/Je-mappelle-Huong/audio.html">
+</style>  <link rel="canonical" href="https://jemappellehuong.com/audio.html">
 <script>/* Lua chon sang/toi dung chung ca site (khoa huong_theme). Dat trong <head>
    de trang khong nhay mau khi tai. */
 (function(){try{var s=localStorage.getItem('huong_theme');if(s)document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script>
 </head>
 <body>
   <div class="dmnav" id="dmnav">
-    <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
+    <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round-144.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
     <div class="dmright">
       <a href="index.html#about"><span class="lang-vi">Giới thiệu</span><span class="lang-en">About</span></a>
       <a class="hide-xs" href="music.html"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></a>
@@ -123,16 +123,16 @@ html:not([lang="fr"]) .lang-fr{display:none}
     </div>
   </div>
 
-<div class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button><button class="toprefresh" id="nut-ref" type="button" style="border:1px solid rgba(140,90,70,.3);border-radius:20px;background:#fff;box-shadow:0 6px 14px rgba(140,90,70,.1);font-size:.8rem;padding:5px 11px;cursor:pointer;color:#3a2f2a;font:700 .74rem system-ui;margin-right:8px"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button></div>
+<div class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button><button class="toprefresh" id="nut-ref" type="button" style="border:1px solid rgba(140,90,70,.3);border-radius:20px;background:var(--surface);box-shadow:0 6px 14px rgba(140,90,70,.1);font-size:.8rem;padding:5px 11px;cursor:pointer;color:var(--ink);font:700 .74rem system-ui;margin-right:8px"><span>⟳</span> <span id="nut-ref-t">Làm mới</span></button></div>
 <div class="wrap" id="main">
-  <a class="brand" href="index.html"><img src="assets/img/lr-je-mappelle-huong.webp" alt="Je m'appelle Hương · Lecturer &amp; Researcher"></a>
+  <a class="brand" href="index.html"><img src="assets/img/lr-je-mappelle-huong-480.webp" alt="Je m'appelle Hương · Lecturer &amp; Researcher"></a>
   <h1><span class="lang-vi">🎙️ Phòng thu lời dẫn tour</span><span class="lang-en">🎙️ Tour Narration Studio</span><span class="lang-fr">🎙️ Studio de narration</span></h1>
   <p class="sub"><span class="lang-vi">Ghi âm bằng micro hoặc tải file audio, đặt tên đúng quy ước, nghe lại và tải về</span><span class="lang-en">Record via microphone or upload audio, name it correctly, preview and download</span><span class="lang-fr">Enregistrez au micro ou téléchargez un fichier, nommez-le correctement, écoutez et téléchargez</span></p>
 
   <div class="card">
     <div class="row" style="justify-content:space-between">
       <div>
-        <label class="tag"><span class="lang-vi">Khu</span><span class="lang-en">Area</span><span class="lang-fr">Étape</span></label>
+        <label class="tag" for="khu"><span class="lang-vi">Khu</span><span class="lang-en">Area</span><span class="lang-fr">Étape</span></label>
         <select id="khu">
           <option value="chao">chao</option>
           <option value="about">about</option>
@@ -143,7 +143,7 @@ html:not([lang="fr"]) .lang-fr{display:none}
           <option value="teaching">teaching</option>
           <option value="worlddata">worlddata</option>
         </select>
-        <select id="nn">
+        <select id="nn" aria-label="Ngôn ngữ / Language / Langue">
           <option value="vi">🇻🇳 vi</option><option value="en">🇬🇧 en</option><option value="fr">🇫🇷 fr</option>
         </select>
       </div>

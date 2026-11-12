@@ -54,7 +54,7 @@ jobs:
       - name: Verify generated sitemap is valid XML
         run: |
           python3 -c "import xml.etree.ElementTree as t; t.parse('sitemap.xml'); print('sitemap.xml hop le')"
-          curl -sSf https://thuyhuongctu.github.io/Je-mappelle-Huong/sitemap.xml >/dev/null && \
+          curl -sSf https://jemappellehuong.com/sitemap.xml >/dev/null && \
             echo "sitemap hien tai tren GitHub Pages van truy cap duoc (doi chieu)" || true
 
       - name: Write commit message file
@@ -74,8 +74,8 @@ jobs:
             echo 'Sitemap khong doi - khong can commit moi.'
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
-            git config user.name 'github-actions[bot]'
-            git config user.email 'github-actions[bot]@users.noreply.github.com'
+            git config user.name "Je m'appelle Huong"
+            git config user.email 'thuyhuongctu@gmail.com'
             git add sitemap.xml
             git commit -F /tmp/sitemap_commit.txt
             git push origin HEAD

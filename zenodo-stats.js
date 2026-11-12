@@ -33,11 +33,18 @@
       return;
     }
 
-    fetch('https://zenodo.org/api/records/' + recid, {
-      headers: { 'Accept': 'application/json' }
-    }).then(function (r) {
+    // data-zenodo là mã KHÁI NIỆM (DOI «mọi phiên bản»). Gọi thẳng /api/records/<mã> thì
+    // thường được chuyển sang bản mới nhất, nhưng có bản ghi trả 410 «đã xoá» thay vì chuyển
+    // (M-AIDA, 21282516, đo 08/11/2026) - thẻ đứng yên ở số cũ mà không ai thấy. Nên tìm
+    // thẳng bản mới nhất theo conceptrecid; views/downloads của nó là tổng mọi phiên bản.
+    var H = { headers: { 'Accept': 'application/json' } };
+    fetch('https://zenodo.org/api/records?size=1&sort=mostrecent&q=conceptrecid:' + recid, H).then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
+    }).then(function (j) {
+      var h = j && j.hits && j.hits.hits && j.hits.hits[0];
+      if (!h) throw new Error('khong thay ban ghi');
+      return h;
     }).then(function (data) {
       var nv = (data.stats && typeof data.stats.views === 'number') ? data.stats.views : v;
       var nd = (data.stats && typeof data.stats.downloads === 'number') ? data.stats.downloads : d;

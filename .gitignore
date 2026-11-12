@@ -4,8 +4,6 @@ ho-so-quyen-tac-gia/rieng-tu/
 
 # Bản sao lưu rải rác thì bỏ qua, để khỏi lẫn vào kho một cách tình cờ.
 *.bak
-# Nhưng bản cũ cất có chủ đích thì giữ — xem ban-cu/README.md.
-!ban-cu/**
 
 .DS_Store
 

@@ -22,7 +22,7 @@ body{background:transparent}
 
 #vnmark{
   position:fixed;top:50%;right:1.5%;transform:translateY(-50%);
-  width:min(26vw,340px);color:var(--accent,#c45c3a);opacity:.07;
+  width:min(26vw,340px);color:var(--clay-ink,var(--accent,#c45c3a));opacity:.07;
   pointer-events:none;z-index:-1;
 }
 #vnmark svg{width:100%;height:auto;display:block}
@@ -52,8 +52,8 @@ body{background:transparent}
   color:var(--muted,#6f6459);font:600 15px/1 var(--sans,system-ui);
   letter-spacing:.06em;cursor:pointer
 }
-.sc-more:hover{border-color:var(--accent,#c45c3a);color:var(--accent,#c45c3a)}
-.sc-more[aria-expanded="true"]{border-color:var(--accent,#c45c3a);color:var(--accent,#c45c3a)}
+.sc-more:hover{border-color:var(--accent,#c45c3a);color:var(--clay-ink,var(--accent,#c45c3a))}
+.sc-more[aria-expanded="true"]{border-color:var(--accent,#c45c3a);color:var(--clay-ink,var(--accent,#c45c3a))}
 
 .sc-drawer{
   position:absolute;top:calc(100% + 10px);right:0;z-index:120;
@@ -78,7 +78,7 @@ body{background:transparent}
   color:var(--muted,#6f6459);font-size:15px;cursor:pointer;padding:0;
   text-decoration:none
 }
-.sc-btn:hover{border-color:var(--accent,#c45c3a);color:var(--accent,#c45c3a)}
+.sc-btn:hover{border-color:var(--accent,#c45c3a);color:var(--clay-ink,var(--accent,#c45c3a))}
 .sc-note{font:400 11.5px/1.5 var(--sans,system-ui);color:var(--muted,#6f6459);margin:0}
 
 /* Khi ngan keo duoc gan vao menu "..." san co cua trang chu / vuon so thi no
@@ -95,7 +95,7 @@ body{background:transparent}
   border:1px solid var(--line,#e2d8c7);border-radius:999px;
   padding:5px 12px 5px 8px;background:var(--surface,#fffcf5);flex:0 0 auto
 }
-.sc-ck .lmk{width:auto;height:26px;color:var(--accent,#c45c3a);flex:0 0 auto}
+.sc-ck .lmk{width:auto;height:26px;color:var(--clay-ink,var(--accent,#c45c3a));flex:0 0 auto}
 .sc-ck .ckt{display:flex;flex-direction:column;line-height:1.15}
 .sc-ck .cty{
   font:600 9.5px/1.2 var(--sans,system-ui);letter-spacing:.09em;
@@ -115,7 +115,7 @@ body{background:transparent}
   border:1px solid var(--line,#e2d8c7);background:var(--surface,#fffcf5);
   color:var(--muted,#6f6459);cursor:pointer;padding:0;text-decoration:none
 }
-.sc-sh:hover{border-color:var(--accent,#c45c3a);color:var(--accent,#c45c3a)}
+.sc-sh:hover{border-color:var(--accent,#c45c3a);color:var(--clay-ink,var(--accent,#c45c3a))}
 .sc-sh svg{width:15px;height:15px;fill:currentColor}
 
 @media print{.sc-more,.sc-drawer{display:none}}
@@ -128,7 +128,7 @@ body{background:transparent}
   color:var(--muted,#6f6459)
 }
 .sitefoot a{color:inherit;text-decoration:none;border-bottom:1px solid transparent}
-.sitefoot a:hover{color:var(--accent,#c45c3a);border-bottom-color:var(--accent,#c45c3a)}
+.sitefoot a:hover{color:var(--clay-ink,var(--accent,#c45c3a));border-bottom-color:var(--accent,#c45c3a)}
 
 .sf-in{max-width:1040px;margin:0 auto;padding:44px 22px 30px}
 .sf-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:36px;align-items:start}
@@ -158,9 +158,11 @@ body{background:transparent}
 .sf-card .an{font:600 15px/1.25 var(--serif,Georgia,serif);color:var(--ink,#1c1814)}
 .sf-card .ar{
   font:600 9.5px/1.4 var(--sans,system-ui);letter-spacing:.08em;
-  text-transform:uppercase;color:var(--accent,#c45c3a);margin-top:3px
+  text-transform:uppercase;color:var(--clay-ink,var(--accent,#c45c3a));margin-top:3px
 }
 .sf-card .ao{font:400 11.5px/1.6 var(--sans,system-ui);margin-top:2px}
+/* ORCID va email nam sat nhau (tam 18px): duoi khoang cach 24px cua WCAG 2.5.8. Nang vung cham len 24px. */
+.sf-card .ao a{display:inline-block;min-height:24px;line-height:24px}
 
 /* cot phai: cac cot lien ket */
 .sf-cols{display:flex;gap:34px;flex-wrap:wrap}
@@ -174,6 +176,22 @@ body{background:transparent}
 .sf-rule{height:1px;background:var(--line,#e2d8c7);margin:26px 0 14px}
 .sf-fine{font:400 11.5px/1.75 var(--sans,system-ui);color:var(--muted,#6f6459)}
 .sf-fine .sf-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between}
+/* Nut «lay ban moi nhat». Hinh ve bang MANG DAC chu khong dung net: o co that
+   12px thi net manh bien mat. Quay tron khi dang lam, va dung quay khi may cua
+   khach dat giam chuyen dong. */
+.sf-moi{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:13px}
+.sf-nut-moi{display:inline-flex;align-items:center;gap:7px;cursor:pointer;white-space:nowrap;
+  font:600 11.5px/1 var(--sans,system-ui);color:var(--ink,#1c1814);
+  background:var(--surface,#fffcf5);border:1px solid var(--line,#e2d8c7);
+  border-radius:999px;padding:8px 14px;transition:border-color .16s,color .16s}
+.sf-nut-moi:hover{border-color:var(--accent,#c45c3a);color:var(--clay-ink,var(--accent,#c45c3a))}
+.sf-nut-moi:disabled{cursor:default;opacity:.62}
+.sf-nut-moi .sf-xoay{width:12px;height:12px;flex:none;fill:currentColor}
+.sf-nut-moi.dang .sf-xoay{animation:sf-quay .9s linear infinite}
+@keyframes sf-quay{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.sf-nut-moi.dang .sf-xoay{animation:none}}
+.sf-moi-ghi{font:400 11px/1.55 var(--sans,system-ui);color:var(--muted,#6f6459);max-width:48ch}
+
 /* Nut nhac noi dau o goc phai duoi; chua san cho no de no khong de len dong cuoi. */
 .sf-in{padding-right:max(22px,86px)}
 @media(min-width:821px){.sf-in{padding-right:22px}}
@@ -183,3 +201,26 @@ body{background:transparent}
 }
 
 @media print{.sitefoot{display:none}}
+
+/* ---------- 4. bao ve anh va video (site-chrome.js) ----------
+   -webkit-touch-callout:none tat menu luu anh khi nhan giu tren iPhone.
+   Dau (c) dong len anh da bo ngay 20/10, cung voi lop .bv-dau-chu cua no. */
+img,video{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
+@media print{
+  .bv-khong-in body{display:none !important}
+  .bv-khong-in::after{content:"\00a9  2026 \0110\1ED7  Th\00F9y  H\01B0\01A1ng \00B7  jemappellehuong.com";display:block;padding:40mm 20mm;font:16pt serif;color:#1c1814;text-align:center}
+}
+
+/* Nut doi ngon ngu khi DANG BAT: chu trang tren dat nung chi dat 4,25 (nen sang)
+   va 2,84 (nen toi) - duoi nguong WCAG AA 4,5. Nut TAT thi khong sao (5,63 / 6,23).
+   Khong doi token --clay/--accent vi bo mau dat set la neo cua ca trang; chi
+   chinh rieng nut nay:
+     nen sang: dat nung sam hon 4% (#b45535) -> 4,89 voi chu trang;
+     nen toi : giu nen, doi chu thanh muc sam  -> 6,50. */
+.lang button.on, .langtog button.active { background: #b45535; color: #fff; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme=light]) .lang button.on,
+  :root:not([data-theme=light]) .langtog button.active { background: var(--accent); color: #17130f; }
+}
+:root[data-theme=dark] .lang button.on,
+:root[data-theme=dark] .langtog button.active { background: var(--accent); color: #17130f; }

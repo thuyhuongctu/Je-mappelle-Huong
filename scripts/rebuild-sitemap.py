@@ -17,7 +17,7 @@ Nguồn dữ liệu:
                 music.html) : ngày sửa đổi của file.
 - index.html  : luôn ưu tiên lastmod mới nhất của toàn bộ các trang HTML.
 
-URL dùng tiền tố công khai https://thuyhuongctu.github.io/Je-mappelle-Huong/.
+URL dùng tiền tố công khai https://jemappellehuong.com/.
 """
 from __future__ import annotations
 
@@ -29,11 +29,15 @@ import sys
 from datetime import date, datetime
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_URL = 'https://thuyhuongctu.github.io/Je-mappelle-Huong'
+BASE_URL = 'https://jemappellehuong.com'
 
 # ---------- đọc cấu trúc bài viết từ blog.html ----------
+# Thuoc tinh class KHONG phai thu cuoi cung trong the <article>: bai dau trang
+# luon mang them id="main" (moc cua skip-link). Mau cu doi dau '>' ngay sau
+# class nen bo sot dung bai moi nhat, va nhanh 'featured -> 0.8' ben duoi vi the
+# chua bao gio chay. Nay nhan them thuoc tinh phia sau.
 POST_PATTERN = re.compile(
-    r'<article class="post[ a-z]*">.*?'
+    r'<article class="post[ a-z]*"[^>]*>.*?'
     r'<div class="post-meta">(\d{2}) \u00b7 (\d{2}) \u00b7 (\d{4}) \u00b7 .*?</div>.*?'
     r'<h2 class="post-title">\s*<span class="lang-vi">(.*?)</span>',
     re.S | re.DOTALL,
@@ -93,6 +97,7 @@ PAGE_CONF = [
     # (url_tail, lastmod_override_file, priority, changefreq)
     # lop hoc thuat - trang chu, cong bo, CV
     ('/', 'index.html', '1.0', 'weekly'),
+    ('/publications.html', 'publications.html', '0.9', 'monthly'),
     ('/cv.html', 'cv.html', '0.8', 'monthly'),
     ('/blog.html', 'blog.html', '0.9', 'weekly'),
     # lop vuon so

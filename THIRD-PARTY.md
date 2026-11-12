@@ -28,6 +28,27 @@ Dùng cho cảnh 3D của trang viên (`trangvien.html`) và cảnh tháp
 Trang `design-demos/gardenhub3d.html` nạp cùng thư viện ấy qua cdnjs thay vì bản
 trong kho; đó là trang thử nghiệm, không nằm trong phần điều hướng chính.
 
+### GLTFLoader (three.js r128)
+
+| | |
+| --- | --- |
+| Đường dẫn | `assets/vendor/GLTFLoader-r128.js` |
+| Nguồn | gói npm `three@0.128.0`, `examples/js/loaders/GLTFLoader.js` — cùng bản với `three-r128.min.js` |
+| Giấy phép | MIT — three.js authors |
+| Đã sửa? | **Không.** |
+
+Dùng để nạp mô hình `.glb` (dừa ven sông) trong `trangvien.html`. Thiếu tệp thì
+cảnh vẫn chạy, chỉ không có dừa.
+
+### Kenney Nature Kit 2.1 — ba cây dừa
+
+| | |
+| --- | --- |
+| Đường dẫn | `assets/models/kenney/tree_palm.glb`, `tree_palmBend.glb`, `tree_palmShort.glb` |
+| Nguồn | <https://kenney.nl/assets/nature-kit> |
+| Giấy phép | **CC0 1.0** (`assets/models/kenney/LICENSE-kenney-nature-kit.txt`) — không bắt buộc ghi công, vẫn ghi cho rõ nguồn |
+| Đã sửa? | Tệp giữ nguyên. Lúc chạy thay vật liệu bằng hai màu sẵn có của cảnh (`#C08A5A`, `#79B25C`) và đặt `metalness` về 0. |
+
 ---
 
 ## 2. Cảnh tháp — tác phẩm phái sinh
@@ -75,6 +96,61 @@ riêng của tác giả ấy.
 
 Đường viền Việt Nam trong hình chìm dựng từ dữ liệu này. Cách thể hiện — nét
 mảnh, `currentColor`, các chấm đánh dấu quần đảo — là của tác giả.
+
+---
+
+### d3-geo 3.1.1, d3-array 3.2.4, topojson-client 3.1.0
+
+| | |
+| --- | --- |
+| Đường dẫn | `assets/vendor/d3-geo.min.js`, `d3-array.min.js`, `topojson-client.min.js` |
+| Giấy phép | ISC |
+| Tình trạng | Dùng nguyên bản từ npm, không sửa một ký tự |
+
+Ba thư viện này vẽ tấm **Atlas chỉ số** đặt dưới bản đồ khung dữ liệu ở trang
+chủ: `d3-geo` lo phép chiếu và sinh đường, `topojson-client` giải mã hình thể,
+`d3-array` là phụ thuộc mà `d3-geo` khai trong bản UMD.
+
+**Phải nạp `d3-array` TRƯỚC `d3-geo`.** Bản UMD của `d3-geo` gọi `d3.Adder`
+của `d3-array`; nạp sau hoặc nạp song song thì nó ném
+`t.Adder is not a constructor` ngay lúc nạp, và tấm bản đồ không hiện. Đã vấp
+đúng lỗi ấy một lần.
+
+Cả ba **chỉ nạp khi khối bản đồ vào khung nhìn**, không nạp sẵn: cộng với hai
+tệp dữ liệu thì khối này nặng 230 KB, quá nhiều để bắt mọi khách tải trong khi
+phần lớn không cuộn tới.
+
+### world-atlas 2.0.2 — hình thể thế giới
+
+| | |
+| --- | --- |
+| Đường dẫn | `assets/data/countries-110m.json` (105 KB) |
+| Giấy phép | ISC cho gói; dữ liệu biên giới thuộc phạm vi công cộng |
+| Nguồn gốc | Dựng từ Natural Earth, cùng nguồn với bản đồ khung dữ liệu ở mục 3 |
+
+Chọn bản **110m** chứ không phải 50m (739 KB): ở cỡ bản đồ trên trang, biên
+giới thô hơn gần như không nhìn ra, mà nhẹ hơn bảy lần.
+
+### Số liệu trong Atlas chỉ số
+
+| | |
+| --- | --- |
+| Đường dẫn | `assets/data/atlas-chi-so.json` (66 KB) |
+| Nguồn | Ngân hàng Thế giới (bốn chỉ số) và UNDP qua Our World in Data (HDI) |
+| Lấy ngày | 24/10/2026 |
+
+Năm chỉ số, mỗi chỉ số ghi kèm mã gốc của Ngân hàng Thế giới ngay trên giao
+diện (`NY.GDP.PCAP.PP.CD`, `NE.TRD.GNFS.ZS`, `BX.KLT.DINV.WD.GD.ZS`,
+`IT.NET.USER.ZS`). Số liệu của các tổ chức ấy, **không phải của tác giả**.
+
+**Đây không phải dữ liệu luận án.** Luận án dùng khảo sát doanh nghiệp WBES
+ghép bộ chỉ số WGI; năm chỉ số này là bối cảnh phát triển chung. Chú thích
+dưới tấm bản đồ nói thẳng điều đó, để người đọc không nhầm.
+
+Phần dàn dựng và tạo hình do tác giả đặt làm, giao lại dưới dạng một ứng dụng
+React; trang này không có bước build nên phần vẽ **viết lại bằng JavaScript
+thuần** (`assets/js/atlas.js`), giữ nguyên phép chiếu Natural Earth, cách chia
+ngũ phân vị và bảng màu của bản giao.
 
 ---
 
@@ -209,6 +285,195 @@ tình trạng.
 
 ---
 
+## 4d. Phim giới thiệu Văn phòng nghiên cứu
+
+### `assets/video/vanphong-intro.mp4`
+
+| | |
+| --- | --- |
+| **Giọng đọc** | **Giọng của chính tác giả** |
+| Nhân vật trong phim | Dàn nhân vật của chính văn phòng, xem mục 4b |
+| Nội dung và lời trên màn hình | Tác giả, lấy từ chính dự án Văn phòng nghiên cứu |
+| Dựng chuyển động | Soạn trong **Claude Design**, theo chỉ dẫn của tác giả |
+| Nhạc nền | `assets/audio/bizon-theme.mp3` lấy từ kho [`thuyhuongctu/BizOn`](https://github.com/thuyhuongctu/BizOn) — bản không lời |
+| Xuất ra mp4 | Chụp từng khung rồi nén |
+
+Giống mục 4c và khác mục 4: ở đây **không có phần nào của bên thứ ba**. Thứ dễ
+bị cho là do máy sinh — giọng đọc — thì không phải: đó là giọng thật của tác
+giả. Công cụ chỉ làm phần dựng chuyển động, ghi ra đây theo đúng nguyên tắc A.2
+của `ho-so-quyen-tac-gia/04-cong-cu-ho-tro.md`: không giấu việc có dùng công cụ.
+
+Nội dung trên màn hình đều lấy từ chính văn phòng: bảng bảy phương thức thâm
+nhập thị trường, phần luận án «Firms meet institutions» (WBES × WGI, 50 nền
+kinh tế), tấm «No network calls», và cách đi lại bằng WASD với phím E. Góc trên
+phải đóng dấu `© 2026 Đỗ Thùy Hương · DOI 10.5281/zenodo.22971293` suốt phim —
+đúng DOI của bản ghi Zenodo, không phải do phim tự đặt ra.
+
+**Tệp chép nguyên, không mã lại.** Bản gửi tới đã là h264 High 1280×720 ở 30
+hình/giây, AAC đôi 129 kb/s, 1:03,00, và `moov` nằm ở byte 36 tức đã faststart
+giống `maida-film.mp4`. Đối chiếu md5 của dòng hình cộng tiếng trước và sau khi
+chép: trùng khớp (`2b6959c6a657293ebc03ef23e84fd7c3`).
+
+**Độ to −14,9 LUFS, đỉnh −0,6 dBFS.** Phim M-AIDA nằm ngay cạnh nó trên cùng
+trang là −14,7 LUFS; lệch 0,2 LU, dưới ngưỡng 1 LU nên **không chuẩn hoá** —
+mã lại chỉ để chỉnh chừng ấy là mất chất lượng không vì cái gì.
+
+**Nhạc nền thêm vào sau**, khi bản gửi tới còn chưa có. Nguồn là
+`assets/audio/bizon-theme.mp3` của kho BizOn — chính danh mục nhạc trong kho ấy
+khai nó là `title: BizOn Theme`, `version: Instrumental`, `duration: 181`, và
+`use: «Nền chung khi phát phiếu, debrief, checklist — không lời.»` Cùng một tác
+giả, nên như mục 4c: **không có phần nào của bên thứ ba**.
+
+Cách trộn, theo đúng công thức đã dùng cho phim M-AIDA: cắt 63 giây đầu, vuốt
+vào 1,5 giây và vuốt ra 2,5 giây ở cuối, hạ **13,5 dB** để nền nằm **14,6 LU**
+dưới giọng (nền −16,0 LUFS, giọng −14,9 LUFS), trộn với `normalize=0` để
+`amix` khỏi tự chia đôi mức, rồi hạn biên ở −1 dBFS. **Bù mức đặt SAU khâu hạn
+biên** (−0,4 dB) đúng như bài học ở mục 4c: đặt trước thì hạn biên ăn mất một
+phần và chỉnh không ra số mong muốn.
+
+Kết quả đo: **−14,9 LUFS, đỉnh −0,5 dBFS** — bằng đúng độ to của bản chưa có
+nhạc, nên phần giọng nghe không khác. Nền nghe thấy được: đo năm khoảng giữa
+các câu nói, mức dâng từ −44,8…−51,7 dB lên **−28,4…−33,1 dB**.
+
+Hai điều đã vấp khi làm, ghi lại để lần sau khỏi dò lại:
+
+- **Trộn lại là mất faststart.** ffmpeg viết `moov` xuống cuối tệp, trang vẫn
+  chạy nhưng trình duyệt phải tải hết mới phát được. Phải ghép lại một lượt với
+  `-movflags +faststart`; kiểm bằng cách tìm `moov` trong 200 KB đầu — phải ra
+  byte 36 như các video khác trong kho.
+- **Đừng lấy dải trên 6 kHz làm thước đo «có nhạc hay không» cho riêng phim
+  này.** `bizon-theme` là bản nặng trầm: ba dải đo được −17,8 / −30,3 / −46,6 dB,
+  nên thêm nhạc vào mà dải trên 6 kHz gần như không nhúc nhích. Thước dùng được
+  ở đây là mức trung bình trong các khoảng giữa hai câu.
+
+**Phần hình không bị đụng tới.** Trộn bằng `-c:v copy`; md5 của riêng dòng hình
+trước và sau khi thêm nhạc trùng khớp (`1037585aa847e18dae267e69ab98658d`).
+Tệp từ 3 775 379 lên 4 288 766 byte, dòng tiếng mã lại thành AAC 194 kb/s —
+cao hơn bản gốc 129 kb/s để chỗ chuyển mã khỏi ăn thêm.
+
+Hình nền của thẻ trên trang chủ **dùng lại `assets/img/vanphong-bia.webp` đã
+có**, không cắt ảnh mới từ phim — nên khác mục 4c, không phát sinh tệp ảnh nào.
+
+---
+
+## 4e. Clip nền ở cổng trang viên
+
+### `assets/video/cong-sen-chao.mp4`
+
+| | |
+| --- | --- |
+| Phần **hình** | Do một **công cụ sinh video** tạo ra từ lời nhắc của tác giả |
+| Phần **tiếng** | Không có — tệp không mang dòng tiếng nào |
+| Cắt, nối và nén | Tác giả |
+
+Đây là clip chạy nền ở màn cổng (`#cong`) của `trangvien.html`: Hương áo dài
+đứng trên sạp gỗ bên ao sen, lối tạo hình đất sét. **Phần hình không phải tác
+phẩm của tác giả** — cùng lẽ với `trangvien-intro.mp4` ở mục 4: cái được đăng
+ký là cảnh 3D do tác giả dựng bằng three.js, không phải đoạn phim mở đầu nó.
+
+Phần của tác giả ở đây là **dựng lại để lặp liền mạch**. Đo trong chính tệp:
+310 khung, mà khung `i` đối xứng với khung `309−i` ở mức tương quan **0,9988
+tới 1,0000** — tức chỉ có **155 khung thật** (6,46 giây ở 24 hình/giây), phần
+sau là chính nó chạy ngược. Lời commit đưa tệp vào (17/09/2026) ghi đoạn cắt
+là giây **13,5–20** của một bản dài hơn; bản dài hơn ấy **không nằm trong
+kho**.
+
+Ảnh bìa `assets/video/cong-sen-chao-poster.webp` cắt từ chính tệp này nên cùng
+tình trạng — đo tương quan: khớp **khung 37/310 ở mức 0,9994**, nền 0,475.
+
+**Không truy được công cụ nào đã sinh ra nó.** Tệp đã mã lại bằng ffmpeg
+(`Lavf61.1.100` / `libx264`) nên siêu dữ liệu của nguồn không còn; bốn góc
+khung hình không có dấu chìm nhìn thấy được. Khuôn tệp 1280×720 ở 24 hình/giây
+**trùng** với `trangvien-intro.mp4` ở mục 4 — thứ mục ấy khai là của Google
+Gemini — nhưng trùng khuôn tệp chỉ là **dấu hiệu, không phải bằng chứng**, nên
+ở đây viết «một công cụ sinh video» cho đến khi tác giả xác nhận tên.
+
+### `assets/video/cong-hoang-hon.mp4` và ảnh bìa của nó — **không còn dùng**
+
+Đây là clip cổng **đời trước**, dùng từ 10/09 tới 17/09/2026. Lời commit đưa
+nó vào gọi thẳng là *«the Hương AI riverside-sunset animation»* — tức cũng do
+máy sinh, và **người trong hình không phải tác giả**. Ảnh bìa kèm theo
+(`cong-hoang-hon-poster.webp`) lại là **một cảnh khác hẳn** — sa mạc và nền
+nhà cao tầng Dubai; đo tương quan với mọi khung của chính video ấy, cao nhất
+chỉ **−0,05**, tức không phải một khung của nó.
+
+Cả hai tệp nay **không trang nào tham chiếu tới**:
+
+```
+$ grep -rn "cong-hoang-hon" --include=*.html --include=*.js --include=*.py .
+(không kết quả)
+```
+
+Chúng nằm lại trong kho từ lần thay clip cổng, cộng **1,76 MB**. Giữ hay xoá
+là việc của tác giả; chừng nào còn trong kho thì khai ở đây, vì **không thuộc
+phạm vi đăng ký quyền tác giả**.
+
+---
+
+## 4f. Phim giới thiệu trang web
+
+### `assets/video/trang-web-intro.mp4`
+
+| | |
+| --- | --- |
+| Dàn dựng và chuyển động | Bản bàn giao thiết kế do tác giả đặt làm — mã React, không phải tệp video |
+| Nội dung trong khung hình | Chính trang này: chữ, số liệu, ảnh lấy từ kho |
+| Giọng đọc | Sáu đoạn, bản bàn giao ghi là do tác giả thu |
+| Nhạc nền | «BizOn — And The World Say Hello», đi kèm bản bàn giao |
+| Kết xuất, trộn tiếng, nén | Tác giả |
+
+Bản bàn giao **không chứa tệp video**: nó là mã React chạy được kèm bảng đặc
+tả (bảy cảnh, mốc thời gian, đường máy quay, bảng trộn tiếng). Phim mp4 dựng
+lại từ chính mã ấy — bắt 2 010 khung ở 1920×1080, 30 hình/giây, qua đúng giao
+kèo xuất video mà bộ máy dựng sẵn có (`data-om-seek-to-time-frame`), nên mỗi
+khung là một lần vẽ tất định tại mốc thời gian đó chứ không phải quay màn hình.
+
+**Nhạc nền là của tác giả** — tác giả xác nhận ngày 24/10/2026. Chỗ này từng
+để ngỏ vì tên bài nhắc tới dự án BizOn, mà hai mươi bản thu trong
+`assets/audio/bizon/` thì mục 8 khai là đồng sở hữu với Phan Anh Tú. Đo tương
+quan tín hiệu của nhạc này với toàn bộ tệp mp3 trong kho, có trượt theo thời
+gian, thì cao nhất chỉ **0,053** — tức không phải bản nào đang có trong kho (để
+so sánh, lần đối chiếu «Mekong Sunfire» cho 0,9996). Vậy nó là một bản thu
+riêng, **không** nằm trong phần đồng sở hữu.
+
+Ảnh bìa `assets/img/trang-web-intro-poster.webp` cắt từ chính phim này.
+
+---
+
+## 4g. Trailer Gravity Lab
+
+### `assets/video/gravity-lab-trailer.mp4`
+
+| | |
+| --- | --- |
+| Tác phẩm được giới thiệu | Gravity Lab — DOI khái niệm 10.5281/zenodo.23307832 |
+| Quyền tác giả ghi trên khung hình | «© 2026 Assoc. Prof. Dr. Phan Anh Tu and Do Thuy Huong (PhD candidate), School of Economics, Can Tho University» |
+| Dàn dựng và nội dung trong khung hình | **chưa khai** — chờ tác giả xác nhận |
+| Đóng gói | ffmpeg: `Lavf60.16.100`, hình `libx264` (`Lavc60.31.102`), tiếng AAC |
+
+Số đo: 1920×1080, 30 hình/giây, đúng **1 800 khung = 60,000 giây**, H.264
+~1,27 Mb/s, tiếng AAC 48 kHz hai kênh, 9 557 571 byte.
+
+Đặt vào kho **nguyên vẹn, không mã lại**: md5 của tệp trong kho bằng đúng md5
+bản tác giả gửi (`3b0eb6716e87800376f6750461b6683e`). Có thử nén lại ở CRF 26
+thì còn 7,4 MB, tức bớt **19%** — quá ít để đánh đổi chất lượng của một phim
+dựng 3D nhiều dải chuyển màu, nên giữ bản gốc. Tệp **không** khai trong `CORE`
+của `sw.js`, đúng tiền lệ các phim giới thiệu khác: nặng, lại đặt
+`preload="none"` nên chỉ tải khi khách bấm.
+
+Ảnh bìa `assets/img/gravity-lab-trailer-poster.webp` cắt từ chính phim này,
+khung ở giây 40 (tấm «FDI ROOM — Does distance matter for capital flows into
+Viet Nam?» với hệ số −0,38), thu về 1000×562 bằng LANCZOS, WebP chất lượng 84,
+28 694 byte — cùng khoảng với các ảnh bìa đã có (23–64 KB).
+
+**Đồng sở hữu với Phan Anh Tú.** Dòng bản quyền in trên khung hình ghi hai tác
+giả, và `publications.html` cũng khai Gravity Lab là «Phan Anh Tu · Do Thuy
+Huong». Nên phim này và ảnh bìa cắt từ nó nằm trong phần đồng sở hữu ở mục 8,
+cùng loại với tạo hình nhân vật BizOn và hai mươi bản thu trong
+`assets/audio/bizon/`.
+
+---
+
 ## 5. Bộ chữ
 
 Hai bộ chữ, dùng cho trang viên 3D và ba bản demo bố cục. **Từ 22/09/2026 cả
@@ -272,12 +537,6 @@ $ grep -rl "\.claude/skills" --include=*.html --include=*.js --include=*.py .
 Vì vậy chúng **không nằm trong phạm vi tác phẩm đăng ký**. Bộ `huashu-design`
 có giấy phép riêng tại `.claude/skills/huashu-design/LICENSE`.
 
-Thư mục `ban-cu/` cũng không thuộc tác phẩm. Đó là chỗ cất 267 tệp `.bak` —
-bản sao lưu sinh ra trong lúc làm việc, trước nằm rải rác khắp kho. Trong số
-ấy **178 tệp là bản nháp của chính các bộ hướng dẫn bên thứ ba nói trên**, nên
-cũng theo giấy phép riêng của chúng. Không tệp nào trong `ban-cu/` được trang
-web dùng tới. Xem [`ban-cu/README.md`](ban-cu/README.md).
-
 ---
 
 ## 8. Phần thuộc về tác giả
@@ -292,13 +551,14 @@ lập bản kiểm kê này:
 | Năm mô-đun trò chơi trong `assets/js/` | 260 dòng |
 | JavaScript và script khác | 3 104 dòng |
 | CSS | 443 dòng |
-| Ảnh WebP (gồm ảnh nhân vật do tác giả dựng) | 86 tệp |
-| Ghi âm (tệp âm thanh được git theo dõi, trừ `.claude/`) | 118 tệp, **trong đó 20 tệp trong `assets/audio/bizon/` là đồng sở hữu** |
-| Video | **12** tệp (kho có 13; `trangvien-intro.mp4` ở mục 4 là của bên thứ ba) |
+| Ảnh WebP (gồm ảnh nhân vật do tác giả dựng) | **97** tệp (kho có 99; `cong-hoang-hon-poster.webp` ở mục 4e là của bên thứ ba, `gravity-lab-trailer-poster.webp` ở mục 4g là đồng sở hữu). Con số cũ ghi 96 trên 97 là **đếm hụt một tệp**: đo lại tại chính commit đặt ra nó thì kho đã có 98 tệp webp |
+| Ghi âm (tệp âm thanh được git theo dõi, trừ `.claude/`) | 121 tệp, **trong đó 20 tệp trong `assets/audio/bizon/` là đồng sở hữu** |
+| Video | **13** tệp (kho có 17; ba tệp của bên thứ ba: `trangvien-intro.mp4` ở mục 4, `cong-sen-chao.mp4` và `cong-hoang-hon.mp4` ở mục 4e; `gravity-lab-trailer.mp4` ở mục 4g là đồng sở hữu. `trang-web-intro.mp4` ở mục 4f là của tác giả, nhạc nền cũng vậy) |
 
-**Phần đồng sở hữu với Phan Anh Tú.** Hai thứ trong kho này thuộc về hai tác
-giả chứ không phải một: **tạo hình nhân vật của dự án BizOn**, và **hai mươi
-bản thu trong `assets/audio/bizon/`**. Điều này khớp với `LICENSE` của kho
+**Phần đồng sở hữu với Phan Anh Tú.** Ba thứ trong kho này thuộc về hai tác
+giả chứ không phải một: **tạo hình nhân vật của dự án BizOn**, **hai mươi
+bản thu trong `assets/audio/bizon/`**, và **trailer Gravity Lab cùng ảnh bìa
+cắt từ nó** (mục 4g). Điều này khớp với `LICENSE` của kho
 `thuyhuongctu/BizOn`; trước đây hai giấy phép nói khác nhau về cùng một bộ bản
 thu, nay thì không. Xem [`LICENSE`](LICENSE) và
 `ho-so-quyen-tac-gia/05-ung-vien-tiep-theo.md`.

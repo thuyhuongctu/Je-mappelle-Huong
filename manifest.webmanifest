@@ -1,8 +1,8 @@
 {
-  "name": "Je m'appelle Hương — Đỗ Thùy Hương",
+  "name": "Je m'appelle Hương",
   "short_name": "Hương",
-  "description": "Trang học thuật cá nhân của Đỗ Thùy Hương: quốc tế hóa & hiệu quả doanh nghiệp ở châu Á; hệ sinh thái M-AIDA, BizOn, EnQuiz, Trò Chơi Sử Việt.",
-  "lang": "vi",
+  "description": "Academic site of Do Thuy Huong, PhD candidate at Can Tho University: internationalization and firm performance in Asia; the M-AIDA, BizOn, EnQuiz and Trò Chơi Sử Việt ecosystem.",
+  "lang": "en",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -13,5 +13,19 @@
     { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
     { "src": "icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
     { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "3D estate", "short_name": "Estate", "url": "./trangvien.html",
+      "description": "A clay-coloured 3D garden: walk, cycle or paddle through its eight quarters.",
+      "icons": [{ "src": "icons/shortcut-trangvien.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "3D research office", "short_name": "Office", "url": "./vanphong.html",
+      "description": "A small 3D room: tap anyone to ask about the dissertation and the courses.",
+      "icons": [{ "src": "icons/shortcut-vanphong.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Digital garden", "short_name": "Garden", "url": "./garden.html",
+      "description": "A map of the places you can visit: the estate, the office, the music room, the data globe.",
+      "icons": [{ "src": "icons/shortcut-garden.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Music & songbook", "short_name": "Music", "url": "./music.html",
+      "description": "Songs and narration, playable offline.",
+      "icons": [{ "src": "icons/shortcut-music.png", "sizes": "192x192", "type": "image/png" }] }
   ]
 }
