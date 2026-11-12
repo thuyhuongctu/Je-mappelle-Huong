@@ -817,7 +817,7 @@ function veBangThoai(g, moi) {
   if (!con) { var s = document.createElement('span'); s.className = 'het'; s.textContent = L({ vi: 'Bạn đã hỏi hết các câu viết sẵn.', en: "You've asked every prepared question." }); hoi.appendChild(s); }
   $('ghi').textContent = n.chu
     ? L({ vi: 'Câu trả lời viết sẵn, lấy từ chính các trang khác của site. Trang này không gọi mạng.', en: 'Answers are written in advance, drawn from other pages of this site. This page makes no network calls.' })
-    : L({ vi: 'Nhân vật của trang viên — hư cấu, không ứng với người thật nào.', en: 'A character from the estate — fictional, not a portrait of any real person.' });
+    : L({ vi: 'Nhân vật của trang viên: hư cấu, không ứng với người thật nào.', en: 'A character from the estate: fictional, not a portrait of any real person.' });
   $('dong-chu').textContent = L({ vi: 'Đóng', en: 'Close' });
 }
 var theNhac = null, mayCua = null, elMay = $('maynhac');

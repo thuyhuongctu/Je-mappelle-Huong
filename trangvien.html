@@ -1771,9 +1771,9 @@ function hienCuaBien(){
   const vi = document.documentElement.lang !== 'en';
   el.innerHTML = vi
     ? '<b>Cửa sông</b>Con sông nào cũng ra biển. Nhưng không phải doanh nghiệp '
-      + 'nào ra biển cũng lớn lên — đó là câu hỏi tôi theo đuổi.'
+      + 'nào ra biển cũng lớn lên: đó là câu hỏi tôi theo đuổi.'
     : '<b>The river mouth</b>Every river reaches the sea. But not every firm '
-      + 'that ventures out grows from it — that is the question I follow.';
+      + 'that ventures out grows from it: that is the question I follow.';
   el.classList.add('hien');
   clearTimeout(hienCuaBien._h);
   hienCuaBien._h = setTimeout(() => el.classList.remove('hien'), 11000);
