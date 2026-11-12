@@ -12,8 +12,15 @@
  * KHÔNG đụng vào 11 khối `.lyrics` sẵn có: đó là lời chính thức của trang,
  * đầy hơn bản Chansonia ở vài bài. Bảng này là thứ hiện thêm khi khách bấm.
  *
- * Ba thứ tiếng dùng lớp `.lang-*` như mọi chỗ khác, nên không phải tự dò
- * `document.documentElement.lang` lúc vẽ.
+ * HAI thứ tiếng, không phải ba. Trang này khai đúng một cặp luật:
+ *
+ *     html[lang="en"] .lang-vi{display:none}
+ *     html:not([lang="en"]) .lang-en{display:none}
+ *
+ * Không có luật nào ẩn `.lang-fr`, nên thẻ tiếng Pháp sẽ hiện kèm ở CẢ hai
+ * thứ tiếng. Đã vấp đúng thế một lần: nút ra thành «LỜI THEO KHỔ PAROLES PAR
+ * COUPLET» và «LYRICS BY VERSE PAROLES PAR COUPLET». Thêm trang viết bằng ba
+ * thứ tiếng thì phải thêm luật ẩn trước, đừng thêm thẻ trước.
  */
 (function () {
   'use strict';
@@ -25,10 +32,9 @@
     return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
   }
 
-  function ba(vi, en, fr) {
+  function ba(vi, en) {
     return '<span class="lang-vi">' + vi + '</span>'
-         + '<span class="lang-en">' + en + '</span>'
-         + '<span class="lang-fr">' + fr + '</span>';
+         + '<span class="lang-en">' + en + '</span>';
   }
 
   var dem = 0;
@@ -44,8 +50,8 @@
     nut.setAttribute('aria-expanded', 'false');
     nut.setAttribute('aria-controls', id);
     nut.innerHTML = '<span aria-hidden="true">♪</span> ' + (bai.min
-      ? ba('Hát theo', 'Sing along', 'Chanter avec')
-      : ba('Lời theo khổ', 'Lyrics by verse', 'Paroles par couplet'));
+      ? ba('Hát theo', 'Sing along')
+      : ba('Lời theo khổ', 'Lyrics by verse'));
 
     var bang = document.createElement('div');
     bang.className = 'ht-bang';
@@ -54,11 +60,9 @@
 
     var meo = bai.min
       ? ba('Khổ đang hát sẽ sáng lên. Bấm vào một khổ để nhảy tới đó.',
-           'The verse being sung lights up. Tap a verse to jump there.',
-           'Le couplet chanté s’éclaire. Touchez un couplet pour y aller.')
+           'The verse being sung lights up. Tap a verse to jump there.')
       : ba('Bài này chỉ có mốc đầu mỗi khổ, chưa đủ dày để chữ chạy theo nhạc. Bấm vào một khổ để nhảy tới đó.',
-           'This song only has a mark at the head of each verse, too sparse to follow the singing. Tap a verse to jump there.',
-           'Ce morceau n’a qu’un repère par couplet, trop espacé pour suivre le chant. Touchez un couplet pour y aller.');
+           'This song only has a mark at the head of each verse, too sparse to follow the singing. Tap a verse to jump there.');
 
     var h = '<p class="ht-meo">' + meo + '</p><ol class="ht-ds">';
     bai.khuc.forEach(function (k, i) {

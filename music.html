@@ -169,6 +169,99 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-si
 footer a{color:var(--muted)}
 footer a:hover{color:var(--clay-ink)}
 .skip-link{position:absolute;top:-52px;left:12px;background:#a8394e;color:#fff;font:700 .85rem sans-serif;padding:10px 16px;z-index:100;border-radius:0 0 10px 10px;text-decoration:none;transition:top .2s}.skip-link:focus{top:0;outline:3px solid #a8394e;outline-offset:2px}
+/* ── Bố cục kiểu Chansonia, giữ bộ màu đất sét ────────────────────────────
+   Thêm vào đầu trang chứ không phá phần thân: mở đầu có nút và số liệu, một
+   mục lục dính, thẻ bộ sưu tập, mục tính năng. Mọi màu lấy từ biến nên tự
+   đúng ở cả chế độ sáng lẫn tối.
+   Ảnh đều khai width/height, nên CSS phải đặt CẢ width LẪN height, không thì
+   trình duyệt lấy nguyên con số trong thuộc tính và ảnh bị bóp. */
+.m-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 18px 0 0; }
+.m-btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  border-radius: 12px; padding: 11px 18px; font: 600 .88rem/1 var(--sans);
+  box-shadow: var(--press);
+}
+.m-btn:hover { border-color: var(--clay-ink); color: var(--clay-ink); }
+.m-btn.chinh { background: var(--clay-ink); color: var(--on-clay); border-color: var(--clay-ink); }
+.m-btn.chinh:hover { color: var(--on-clay); filter: brightness(1.08); }
+.m-so { display: flex; flex-wrap: wrap; justify-content: center; gap: 26px; margin: 20px 0 0; padding: 0; }
+.m-so div { margin: 0; }
+.m-so dt { font: 700 1.7rem/1 var(--serif); color: var(--clay-ink); }
+.m-so dd { margin: 5px 0 0; font: 400 .78rem/1.3 var(--sans); color: var(--muted);
+  letter-spacing: .05em; text-transform: uppercase; }
+.m-doi {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 18px;
+  text-decoration: none; color: var(--muted); font: 400 .8rem/1 var(--sans);
+}
+.m-doi:hover { color: var(--clay-ink); }
+.m-doi-nhan {
+  background: var(--accent-soft); color: var(--clay-ink); border-radius: 5px;
+  padding: 4px 7px; font: 700 .68rem/1 var(--sans); letter-spacing: .09em;
+}
+
+.m-muc {
+  position: sticky; top: 56px; z-index: 40; display: flex; flex-wrap: wrap; gap: 7px;
+  margin: 26px 0 8px; padding: 9px 10px; border: 1px solid var(--line);
+  border-radius: 14px; background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(9px);
+}
+.m-muc a {
+  text-decoration: none; color: var(--muted); border-radius: 999px; padding: 7px 13px;
+  font: 600 .79rem/1 var(--sans);
+}
+.m-muc a:hover { background: var(--accent-soft); color: var(--clay-ink); }
+
+.m-sec { margin: 42px 0; }
+.m-sec > h2 { margin: 4px 0 20px; }
+.m-kicker {
+  margin: 0; color: var(--clay-ink); font: 700 .72rem/1 var(--sans);
+  letter-spacing: .13em; text-transform: uppercase;
+}
+.m-chim { background: var(--sunk); border-radius: 20px; padding: 30px 26px; }
+
+.m-the { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+.m-card {
+  display: flex; flex-direction: column; text-decoration: none; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+  overflow: hidden; box-shadow: var(--shadow);
+}
+.m-card:hover { border-color: var(--clay-ink); }
+.m-card > img { width: 100%; height: 176px; object-fit: cover; object-position: 50% 32%; display: block; }
+.m-card-chu { padding: 15px 16px 17px; }
+.m-card-chu h3 { margin: 0 0 6px; font: 700 1.02rem/1.3 var(--serif); }
+.m-card-chu p { margin: 0; color: var(--muted); font: 400 .85rem/1.55 var(--sans); }
+.m-dem {
+  display: inline-block; margin-top: 10px; color: var(--clay-ink);
+  font: 700 .72rem/1 var(--sans); letter-spacing: .07em; text-transform: uppercase;
+}
+
+.m-tn { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(248px, 1fr)); }
+.m-tn article { margin: 0; }
+.m-tn-anh {
+  border-radius: 14px; overflow: hidden; border: 1px solid var(--line);
+  background: var(--surface); margin-bottom: 13px;
+}
+.m-tn-anh img { width: 100%; height: 190px; object-fit: cover; object-position: 50% 28%; display: block; }
+.m-tn h3 { margin: 0 0 7px; font: 700 1rem/1.35 var(--serif); }
+.m-tn p { margin: 0; color: var(--muted); font: 400 .87rem/1.6 var(--sans); }
+
+@media (max-width: 640px) {
+  .m-muc { top: 50px; gap: 5px; padding: 7px; }
+  .m-muc a { padding: 6px 10px; font-size: .75rem; }
+  .m-so { gap: 18px; }
+  .m-chim { padding: 22px 16px; }
+}
+
+.m-td {
+  margin: 0; padding: 16px 18px; border-left: 3px solid var(--clay-ink);
+  background: var(--surface); border-radius: 0 12px 12px 0;
+  font: 400 .92rem/1.7 var(--serif); color: var(--ink);
+}
+.m-td a { color: var(--clay-ink); }
+.m-td-dan { margin: 0 0 14px; color: var(--muted); font: 400 .9rem/1.6 var(--sans); }
+.m-td-chu { margin: 12px 0 0; color: var(--muted); font: 400 .82rem/1.6 var(--sans); }
+
 /* Bảng «Hát theo»: lời theo mốc thời gian, dựng bởi assets/js/hat-theo.js.
    Dùng thẳng bộ màu đất sét nên tự đúng ở cả chế độ sáng lẫn tối. */
 .ht { margin: 10px 0 2px; }
@@ -545,6 +638,17 @@ footer a:hover{color:var(--clay-ink)}
     <div class="page-kicker"><span class="lang-vi">Kho nhạc cá nhân</span><span class="lang-en">Personal music</span></div>
     <h1><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></h1>
     <p class="sub"><span class="lang-vi">Các sáng tác riêng của Đỗ Thùy Hương: một album kèm lời, và vài bản nhạc ngoài album. Nhạc của BizOn nằm ở <a href="https://bizonland.com/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a>.</span><span class="lang-en">Personal compositions by Do Thuy Huong: one album with lyrics, and a few pieces outside it. BizOn’s music lives at <a href="https://bizonland.com/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a>.</span></p>
+    <div class="m-cta">
+      <a class="m-btn chinh" href="#main"><span aria-hidden="true">▶</span> <span class="lang-vi">Nghe album</span><span class="lang-en">Play the album</span></a>
+      <a class="m-btn" href="#t07"><span aria-hidden="true">♪</span> <span class="lang-vi">Hát theo</span><span class="lang-en">Sing along</span></a>
+      <a class="m-btn" href="https://thuyhuongctu.github.io/Chansonia/" target="_blank" rel="noopener"><span class="lang-vi">Mở Chansonia ↗</span><span class="lang-en">Open Chansonia ↗</span></a>
+    </div>
+    <dl class="m-so">
+      <div><dt>41</dt><dd><span class="lang-vi">bản thu</span><span class="lang-en">recordings</span></dd></div>
+      <div><dt>11</dt><dd><span class="lang-vi">bản lời</span><span class="lang-en">lyric sheets</span></dd></div>
+      <div><dt>7</dt><dd><span class="lang-vi">bài hát theo được</span><span class="lang-en">songs to sing along</span></dd></div>
+    </dl>
+    <a class="m-doi" href="https://doi.org/10.5281/zenodo.22172794" target="_blank" rel="noopener"><span class="m-doi-nhan">DOI</span> 10.5281/zenodo.22172794</a>
   </header>
 
   <figure class="pagecover">
@@ -553,6 +657,75 @@ footer a:hover{color:var(--clay-ink)}
          alt="Hình đất sét: người cha cõng con gái trên vai đi trên con đường làng lúc hoàng hôn, phía xa là dòng sông và những mái nhà lá">
     <figcaption><span class="lang-vi">Khung hình của cả trang này: «Có những buổi chiều ba cõng con trên vai.» - con đường làng bên sông lúc hoàng hôn, nơi bắt đầu gần như mọi bài hát trong album.</span><span class="lang-en">The frame this whole page grows from: “There were afternoons I carried you on my shoulders.” - the village road by the river at sunset, where nearly every song on the album begins.</span></figcaption>
   </figure>
+
+  <nav class="m-muc" aria-label="Mục lục trang nhạc">
+    <a href="#main"><span class="lang-vi">Album</span><span class="lang-en">The album</span></a>
+    <a href="#shore"><span class="lang-vi">Trở về bờ</span><span class="lang-en">Returning to Shore</span></a>
+    <a href="#ben-phu-sa">Bến Phù Sa</a>
+    <a href="#khac">M-AIDA</a>
+    <a href="#khac"><span class="lang-vi">Ngoài album</span><span class="lang-en">Outside the album</span></a>
+  </nav>
+
+  <section class="m-sec" id="bo-suu-tap">
+    <p class="m-kicker"><span class="lang-vi">Bốn nhóm</span><span class="lang-en">Four groups</span></p>
+    <h2><span class="lang-vi">Một trang nhạc, bốn câu chuyện</span><span class="lang-en">One music page, four stories</span></h2>
+    <div class="m-the">
+      <a class="m-card" href="#main">
+        <img src="assets/img/music-cover-ba-cong-con.webp" width="1600" height="900" loading="lazy" decoding="async" alt="">
+        <div class="m-card-chu">
+          <h3><span class="lang-vi">Album «Je m'appelle Hương»</span><span class="lang-en">The album «Je m'appelle Hương»</span></h3>
+          <p><span class="lang-vi">Sáu bài chính, một bản bonus và một bài viết thêm.</span><span class="lang-en">Six main songs, one bonus track and one written later.</span></p>
+          <span class="m-dem"><span class="lang-vi">23 bản thu</span><span class="lang-en">23 recordings</span></span>
+        </div>
+      </a>
+      <a class="m-card" href="#shore">
+        <img src="assets/img/huong-guitar-hat.webp" width="900" height="1575" loading="lazy" decoding="async" alt="">
+        <div class="m-card-chu">
+          <h3><span class="lang-vi">Trở về bờ</span><span class="lang-en">Returning to Shore</span></h3>
+          <p><span class="lang-vi">Bản tiếng Anh và bản lời Việt của cùng một bài.</span><span class="lang-en">The English song and its Vietnamese lyric version.</span></p>
+          <span class="m-dem"><span class="lang-vi">8 bản thu</span><span class="lang-en">8 recordings</span></span>
+        </div>
+      </a>
+      <a class="m-card" href="#ben-phu-sa">
+        <img src="assets/img/huong-vuon-hoa.webp" width="900" height="1575" loading="lazy" decoding="async" alt="">
+        <div class="m-card-chu">
+          <h3><span class="lang-vi">Bến Phù Sa</span><span class="lang-en">Bến Phù Sa</span></h3>
+          <p><span class="lang-vi">Bài hát của dòng sông, viết ngoài album.</span><span class="lang-en">A song of the river, written outside the album.</span></p>
+          <span class="m-dem"><span class="lang-vi">2 bản thu</span><span class="lang-en">2 recordings</span></span>
+        </div>
+      </a>
+      <a class="m-card" href="#khac">
+        <img src="assets/img/huong-guitar-sofa.webp" width="900" height="913" loading="lazy" decoding="async" alt="">
+        <div class="m-card-chu">
+          <h3><span class="lang-vi">M-AIDA và ngoài album</span><span class="lang-en">M-AIDA and outside the album</span></h3>
+          <p><span class="lang-vi">Nhạc nền của phần mềm M-AIDA, và mấy bản rời.</span><span class="lang-en">The M-AIDA software’s background music, and a few loose pieces.</span></p>
+          <span class="m-dem"><span class="lang-vi">8 bản thu</span><span class="lang-en">8 recordings</span></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="m-sec m-chim" id="tinh-nang">
+    <p class="m-kicker"><span class="lang-vi">Nghe ở đây có gì</span><span class="lang-en">What this page gives you</span></p>
+    <h2><span class="lang-vi">Nghe kỹ hơn, không chỉ bấm phát</span><span class="lang-en">Listen closely, not just press play</span></h2>
+    <div class="m-tn">
+      <article>
+        <div class="m-tn-anh"><img src="assets/img/huong-guitar-cuoi.webp" width="900" height="1576" loading="lazy" decoding="async" alt=""></div>
+        <h3><span class="lang-vi">Lời chạy theo nhạc</span><span class="lang-en">Lyrics that follow the music</span></h3>
+        <p><span class="lang-vi">Hai bài có mốc đủ dày thì khổ đang hát sáng lên và tự cuộn tới. Năm bài còn lại mốc thưa hơn, nên chỉ bấm vào một khổ để nhảy tới đúng giây ấy - nói thẳng chứ không giả vờ đồng bộ.</span><span class="lang-en">Two songs have marks fine enough for the verse being sung to light up and scroll into view. Five others are marked more sparsely, so a tap on a verse jumps to that second instead - said plainly rather than faked.</span></p>
+      </article>
+      <article>
+        <div class="m-tn-anh"><img src="assets/img/huong-guitar-ban-be.webp" width="900" height="1575" loading="lazy" decoding="async" alt=""></div>
+        <h3><span class="lang-vi">Nhiều bản thu một bài</span><span class="lang-en">Several takes of one song</span></h3>
+        <p><span class="lang-vi">Cùng một bài thường có vài bản: bản tiếng Pháp, bản tiếng Việt, bản phối lại. Trình phát ở đầu trang cho chọn nghe một bản mỗi bài hay nghe hết mọi bản.</span><span class="lang-en">A song often exists in several takes: the French one, the Vietnamese one, a remix. The player at the top lets you hear one take per song, or every take.</span></p>
+      </article>
+      <article>
+        <div class="m-tn-anh"><img src="assets/img/huong-nghe-nhac-ngoi.webp" width="768" height="768" loading="lazy" decoding="async" alt=""></div>
+        <h3><span class="lang-vi">Đọc được khi mất mạng</span><span class="lang-en">Readable offline</span></h3>
+        <p><span class="lang-vi">Trang, lời bài hát và bảng hát theo đều lưu sẵn trong máy. Riêng tệp nhạc thì không - chúng nặng, và để trang nhẹ thì nhạc vẫn phải tải về khi nghe.</span><span class="lang-en">The page, the lyrics and the sing-along panels are all stored on your device. The audio files are not - they are heavy, and keeping the page light means the music still downloads as you listen.</span></p>
+      </article>
+    </div>
+  </section>
 
   <section class="reveal" id="main">
     <div class="shead"><h2><span class="lang-vi">Album «Je m'appelle Hương»</span><span class="lang-en">The album «Je m'appelle Hương»</span></h2><span class="ln"></span></div>
@@ -2813,6 +2986,14 @@ M-AIDA...</p>
 
 
 
+  <section class="m-sec" id="trich-dan">
+    <p class="m-kicker"><span class="lang-vi">Trích dẫn</span><span class="lang-en">How to cite</span></p>
+    <h2><span class="lang-vi">Nếu bạn muốn dẫn lại</span><span class="lang-en">If you want to cite this</span></h2>
+    <p class="m-td-dan"><span class="lang-vi">Trình phát đồng bộ lời của album có bản lưu trữ kèm DOI trên Zenodo. Dẫn bản ấy thì địa chỉ không gãy, kể cả khi trang này đổi.</span><span class="lang-en">The album’s lyrics-synchronised player is archived on Zenodo with a DOI. Citing that keeps the link working even if this page changes.</span></p>
+    <blockquote class="m-td">Đỗ, T. H. (2026). <i>Chansonia — a lyrics-synchronised player for «La lampe, le fleuve et les couleurs»</i> (Version 1.1.0) [Software]. Zenodo. <a href="https://doi.org/10.5281/zenodo.22172794" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.22172794</a></blockquote>
+    <p class="m-td-chu"><span class="lang-vi">Tệp nhạc trên Zenodo đặt ở chế độ hạn chế tải, có chủ ý - bản ghi vẫn đọc và trích dẫn được. Nghe thì nghe ngay ở trang này.</span><span class="lang-en">The audio files on Zenodo are deliberately restricted from download; the record itself stays readable and citable. To listen, use this page.</span></p>
+  </section>
+
 </div>
 
 <script>(function(){var r=document.documentElement;/* nho lua chon bang khoa huong_theme nhu trang chu, de ca trang cung mot che do */try{var s=localStorage.getItem('huong_theme');if(s)r.setAttribute('data-theme',s);}catch(e){}document.getElementById('tg').addEventListener('click',function(){var c=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('huong_theme',n);}catch(e2){}});})();</script>
@@ -2996,7 +3177,8 @@ if ('serviceWorker' in navigator) { addEventListener('load', function(){ navigat
             mask:url('assets/img/vn-outline.svg') right bottom/contain no-repeat}
   @media(max-width:560px){.vnmark{width:84px;height:95px;opacity:.14}}
 }
-</style></div>
+</style>
+</div>
 <script src="assets/js/music.js" defer></script>
 
 <script>
