@@ -168,7 +168,42 @@ audio{width:100%;height:38px}
 footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
 footer a{color:var(--muted)}
 footer a:hover{color:var(--clay-ink)}
-.skip-link{position:absolute;top:-52px;left:12px;background:#a8394e;color:#fff;font:700 .85rem sans-serif;padding:10px 16px;z-index:100;border-radius:0 0 10px 10px;text-decoration:none;transition:top .2s}.skip-link:focus{top:0;outline:3px solid #a8394e;outline-offset:2px}</style>
+.skip-link{position:absolute;top:-52px;left:12px;background:#a8394e;color:#fff;font:700 .85rem sans-serif;padding:10px 16px;z-index:100;border-radius:0 0 10px 10px;text-decoration:none;transition:top .2s}.skip-link:focus{top:0;outline:3px solid #a8394e;outline-offset:2px}
+/* Bảng «Hát theo»: lời theo mốc thời gian, dựng bởi assets/js/hat-theo.js.
+   Dùng thẳng bộ màu đất sét nên tự đúng ở cả chế độ sáng lẫn tối. */
+.ht { margin: 10px 0 2px; }
+.ht-nut {
+  appearance: none; display: inline-flex; align-items: center; gap: 7px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--lam);
+  border-radius: 999px; cursor: pointer;
+  font: 700 .76rem/1 var(--sans); letter-spacing: .06em; text-transform: uppercase;
+  padding: 8px 15px;
+}
+.ht-nut:hover { color: var(--clay-ink); border-color: var(--clay-ink); }
+.ht-nut:focus-visible { outline: 3px solid color-mix(in srgb, var(--lam) 42%, transparent); outline-offset: 3px; }
+.ht-mo .ht-nut { background: var(--accent-soft); color: var(--clay-ink); border-color: var(--clay-ink); }
+.ht-bang {
+  margin-top: 10px; max-height: 46vh; overflow: auto; scroll-behavior: smooth;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 6px;
+}
+.ht-meo { margin: 8px 10px 10px; color: var(--muted); font: 400 .82rem/1.5 var(--sans); }
+.ht-ds { list-style: none; margin: 0; padding: 0; }
+.ht-khuc {
+  appearance: none; display: block; width: 100%; text-align: left; cursor: pointer;
+  background: transparent; border: 0; border-left: 3px solid transparent;
+  border-radius: 10px; padding: 9px 12px; color: var(--text);
+}
+.ht-khuc:hover { background: var(--sunk); }
+.ht-khuc:focus-visible { outline: 3px solid color-mix(in srgb, var(--lam) 42%, transparent); outline-offset: -2px; }
+.ht-nhan {
+  display: block; color: var(--clay-ink);
+  font: 700 .7rem/1.4 var(--sans); letter-spacing: .09em; text-transform: uppercase;
+}
+.ht-nhan i { font-style: normal; color: var(--muted); font-weight: 400; letter-spacing: .02em; }
+.ht-dong { display: block; margin-top: 3px; font: 400 .93rem/1.65 var(--serif); }
+.ht-khuc.dang { background: var(--accent-soft); border-left-color: var(--clay-ink); }
+@media (prefers-reduced-motion: reduce) { .ht-bang { scroll-behavior: auto; } }
+</style>
 
 <meta property="og:image" content="https://jemappellehuong.com/assets/img/music-og-ba-cong-con.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -3434,5 +3469,7 @@ document.addEventListener('play', function (e) {
 })();
 </script>
 <div class="pagewash" aria-hidden="true"></div>
+<script src="assets/js/loi-dong-bo.js" defer></script>
+<script src="assets/js/hat-theo.js" defer></script>
 <script src="assets/js/site-chrome.js" defer></script>
 </body></html>
