@@ -1,12 +1,17 @@
 /* Lời theo mốc thời gian, rút từ kho Chansonia (cùng tác giả, cùng bản thu).
-   Mốc đo trên chính các tệp mp3 của trang: lệch 0,02-0,03 giây trên cả bảy bài.
+   Mốc đo trên chính các tệp mp3 phục vụ cho trang: lệch 0,02-0,03 giây trên
+   cả bảy bài album. Hai bài biển đảo lấy nhạc từ kho trò chơi, đã đối chiếu
+   qua API GitHub là tệp có thật.
 
-   `min` = mốc đủ dày để chữ chạy theo nhạc. Ngưỡng 45 giây mỗi khổ; chỉ hai
-   bài đạt. Năm bài còn lại mốc quá thưa (tới 303 giây một khổ), bật đồng bộ
-   thì khối chữ sáng rồi đứng yên hàng phút - nhìn như trang hỏng. Những bài
-   ấy chỉ cho bấm vào một khổ để nhảy tới đúng giây, không giả vờ đồng bộ.
+   Khoá là TÊN TỆP, vì `hat-theo.js` cắt phần cuối của thuộc tính src. Tên
+   của chín tệp này không trùng nhau nên khoá theo tên là đủ.
 
-   KHÔNG thay lời đang có trên trang: đây là dữ liệu riêng cho bảng hát theo.  */
+   `min` = mốc đủ dày để chữ chạy theo nhạc. Ngưỡng 45 giây mỗi khổ. Bài nào
+   không đạt thì chỉ cho bấm vào một khổ để nhảy tới đúng giây, không giả vờ
+   đồng bộ - mốc thưa tới 303 giây một khổ thì khối chữ sáng rồi đứng yên
+   hàng phút, nhìn y như trang hỏng.
+
+   KHÔNG thay lời đang có trên trang: đây là dữ liệu riêng cho bảng hát theo. */
 window.LOI_DONG_BO = {
  "track01.mp3": {
   ten:"Je voudrais te parler", dai:170.952, min:false, khuc:[
@@ -68,5 +73,43 @@ window.LOI_DONG_BO = {
    {n:"Điệp khúc cuối · tiếp",g:293.000,d:["Grandis, avance et vis encore,", "Même si le temps t'appelle dehors.", "Si un jour tu te retournes vers moi,", "Je serai là, tout doucement, sans voix."]},
    {n:"Kết",g:307.000,d:[]},
    {n:"Kết · tiếp",g:328.000,d:[]}
+  ]},
+ "bac-hai-dao-theo-canh-buom-que-huong.mp3": {
+  ten:"Bắc Hải Đảo – Theo cánh buồm quê hương", dai:346.824, min:true, khuc:[
+   {n:"Dạo đầu",g:0.000,d:[]},
+   {n:"Khổ 1",g:38.300,d:["Trời vừa sáng, con thuyền rời bến", "Gió đưa buồm qua cửa biển xa", "Trong tay nải có lời mẹ dặn", "Trong tim người có bóng quê nhà"]},
+   {n:"",g:54.300,d:["Qua sóng bạc, nhìn nhau vững dạ", "Chung tay chèo qua những đêm dài", "Dẫu phía trước còn bao điều lạ", "Vẫn bên nhau đón ánh ban mai"]},
+   {n:"Tiền điệp khúc",g:70.600,d:["Từng cơn gió căng đầy cánh vải", "Từng vì sao soi sáng đường xa", "Giữa biển rộng, nghe lòng nhắc mãi", "Sau lưng mình là cả quê nhà"]},
+   {n:"Điệp khúc",g:87.000,d:["Bắc Hải Đảo, căng buồm đón gió", "Mang quê hương theo mỗi cánh buồm", "Qua giông bão, chung lòng gìn giữ", "Đảo xa này nối với làng thôn"]},
+   {n:"",g:104.000,d:["Bắc Hải Đảo, khắc ghi lời hẹn", "Dẫu xa xôi, lòng chẳng xa nhà", "Xin tiếp bước những người đi trước", "Giữ biển trời, gìn giữ quê ta"]},
+   {n:"Nhạc dạo giữa",g:120.000,d:[]},
+   {n:"Khổ 2",g:141.000,d:["Có người đã qua bao mùa gió", "Áo phai màu theo nắng ngoài khơi", "Có tên tuổi lưu trong trang sách", "Có công lao lặng giữa dòng đời", "Nay ta mở từng trang chuyện cũ", "Nghe người xưa như ở bên mình", "Mỗi dấu tích, một lời nhắn nhủ", "Bao nhọc nhằn mới có bình yên"]},
+   {n:"Tiền điệp khúc",g:170.900,d:["Từng cơn gió căng đầy cánh vải", "Từng vì sao soi sáng đường xa", "Giữa biển rộng, nghe lòng nhắc mãi", "Sau lưng mình là cả quê nhà"]},
+   {n:"Điệp khúc 2",g:187.100,d:["Bắc Hải Đảo, căng buồm đón gió", "Mang quê hương theo mỗi cánh buồm", "Qua giông bão, chung lòng gìn giữ", "Đảo xa này nối với làng thôn"]},
+   {n:"",g:204.100,d:["Bắc Hải Đảo, khắc ghi lời hẹn", "Dẫu xa xôi, lòng chẳng xa nhà", "Xin tiếp bước những người đi trước", "Giữ biển trời, gìn giữ quê ta"]},
+   {n:"Cầu nối",g:220.500,d:["Giữ biển đảo từ điều bình dị", "Một bàn tay nâng đỡ bạn mình", "Một lời hứa mang theo từ bến", "Một tấm lòng gìn giữ niềm tin", "Mai trở lại bên thềm nhà nhỏ", "Kể người nghe chuyện những chuyến đi", "Để con trẻ thêm yêu biển đảo", "Hiểu công người gìn giữ từng khi"]},
+   {n:"Cao trào",g:251.100,d:["Nghe trong gió lời xưa vọng lại", "Cùng bên nhau, vững lái ra khơi"]},
+   {n:"Điệp khúc cuối",g:261.900,d:["Bắc Hải Đảo, căng buồm đón gió", "Mang quê hương theo mỗi cánh buồm", "Qua giông bão, chung lòng gìn giữ", "Đảo xa này nối với làng thôn"]},
+   {n:"",g:278.200,d:["Bắc Hải Đảo, khắc ghi lời hẹn", "Dẫu xa xôi, lòng chẳng xa nhà", "Xin tiếp bước những người đi trước", "Giữ biển trời, gìn giữ quê ta"]},
+   {n:"Kết",g:297.100,d:["Chiều êm xuống, con thuyền về bến", "Khói lam bay trên mái nhà quen", "Lời ru cũ theo người ra biển", "Lại theo người về giữa bình yên"]},
+   {n:"Câu cuối",g:315.500,d:["Bắc Hải Đảo…", "Mang quê hương theo mỗi cánh buồm…"]},
+   {n:"Nhạc kết",g:327.000,d:[]}
+  ]},
+ "van-don-tieng-vong-non-song.mp3": {
+  ten:"Vân Đồn – Tiếng vọng non sông", dai:317.232, min:true, khuc:[
+   {n:"Dạo đầu",g:0.000,d:[]},
+   {n:"Khổ 1",g:42.300,d:["Bình minh lên trên muôn trùng sóng", "Cánh buồm căng giữa nước trời xa", "Có người đi từ miền làng nhỏ", "Mang trong tim hình bóng quê nhà", "Một bờ tre, một lời ru mẹ", "Một dòng sông thương nhớ khôn nguôi", "Nghe non nước gọi, người đứng dậy", "Gác tình riêng, đi giữ quê hương"]},
+   {n:"Tiền điệp khúc",g:70.000,d:["Nghe tiếng trống vang qua cửa biển", "Nghe lời thề hòa giữa trùng khơi", "Dẫu năm tháng phủ mờ dấu cũ", "Chí khí cha ông sáng muôn đời"]},
+   {n:"Điệp khúc",g:91.500,d:["Vân Đồn ơi, vang lời sông núi", "Lớp lớp người gìn giữ biển trời", "Bao người đã qua thời lửa khói", "Cho quê hương rạng ánh ban mai", "Xin khắc ghi công người đi trước", "Giữ trong tim từng tấc đất này", "Từ trang sử, ta nghe lời nhắc", "Giữ non sông bằng cả đôi tay"]},
+   {n:"Nhạc dạo giữa",g:117.800,d:[]},
+   {n:"Khổ 2",g:145.500,d:["Có tên người lưu trong trang sách", "Có bao người chẳng rõ tuổi tên", "Gửi thanh xuân vào lòng biển biếc", "Cho quê nhà yên giấc đêm đêm", "Nay ta bước qua miền dấu tích", "Nghe chuyện xưa gần lại bên mình", "Lật trang sử, càng thêm thấu hiểu", "Bao hy sinh mới có thanh bình"]},
+   {n:"Tiền điệp khúc",g:171.000,d:["Nghe tiếng trống vang qua cửa biển", "Nghe lời thề hòa giữa trùng khơi", "Dẫu năm tháng phủ mờ dấu cũ", "Chí khí cha ông sáng muôn đời"]},
+   {n:"Điệp khúc 2",g:192.600,d:["Vân Đồn ơi, vang lời sông núi", "Lớp lớp người gìn giữ biển trời", "Bao người đã qua thời lửa khói", "Cho quê hương rạng ánh ban mai", "Xin khắc ghi công người đi trước", "Giữ trong tim từng tấc đất này", "Từ trang sử, ta nghe lời nhắc", "Giữ non sông bằng cả đôi tay"]},
+   {n:"Cầu nối",g:219.700,d:["Xin tri ân người nơi chiến trận", "Cả những người ở lại quê nhà", "Càng hiểu những hy sinh thầm lặng", "Càng nâng niu cuộc sống quanh ta"]},
+   {n:"Cao trào",g:233.100,d:["Từng con sóng mang lời nhắn gửi", "Người hôm nay tiếp bước người xưa"]},
+   {n:"Điệp khúc cuối",g:244.900,d:["Vân Đồn ơi, vang lời sông núi", "Lớp lớp người gìn giữ biển trời", "Bao người đã qua thời lửa khói", "Cho quê hương rạng ánh ban mai", "Xin khắc ghi công người đi trước", "Giữ trong tim từng tấc đất này", "Từ trang sử, ta nghe lời nhắc", "Giữ non sông bằng cả đôi tay"]},
+   {n:"Kết",g:271.700,d:["Vân Đồn ơi, ngàn năm sóng hát", "Chuyện cha ông truyền tới hôm nay", "Ta tiếp bước bằng lòng son sắt", "Giữ quê hương, dựng xây từng ngày"]},
+   {n:"Câu cuối",g:288.300,d:["Vân Đồn ơi…", "Vọng tiếng non sông…"]},
+   {n:"Nhạc kết",g:296.500,d:[]}
   ]},
 };
