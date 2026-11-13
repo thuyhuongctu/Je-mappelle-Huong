@@ -134,7 +134,7 @@ own repository and is deposited.
 | **BizOn Bật Nghiệp** | A 3D claymorphism business-simulation game for entrepreneurship education | [site](https://bizonland.com/) · [Play](https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.bizon) | [`zenodo.21592241`](https://doi.org/10.5281/zenodo.21592241) |
 | **EnQuiz** | An offline-first bilingual quiz app for entrepreneurship revision — 300 questions, installable | [site](https://thuyhuongctu.github.io/EnQuiz/) · [Play](https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.enquiz) | [`zenodo.21850735`](https://doi.org/10.5281/zenodo.21850735) |
 | **ComDraft** | A full teaching package: five lecture decks, three lab workbooks, a 200-question bank, eight subtitled videos and an offline revision app | [site](https://thuyhuongctu.github.io/ComDraft/) | [`zenodo.22003676`](https://doi.org/10.5281/zenodo.22003676) |
-| **Vietnamese history games** | Vân Đồn (1149), Bắc Hải Đảo (1780, 2D and 3D), Chợ Nổi (19th century) | [site](https://thuyhuongctu.github.io/ThuyHuong_Digital-2026-Games/) | [`zenodo.21850564`](https://doi.org/10.5281/zenodo.21850564) |
+| **Vietnamese history games** | Vân Đồn (1149), Bắc Hải Đảo (1780, 2D and 3D), Chợ Nổi (19th century) | [site](https://thuyhuongctu.github.io/Vietnamese-History-Games/) | [`zenodo.21850564`](https://doi.org/10.5281/zenodo.21850564) |
 
 ### Music
 
