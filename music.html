@@ -94,6 +94,14 @@ audio{width:100%;height:38px}
 :root[data-theme=dark] .pagewash{opacity:.085}
 @media print{.pagewash{display:none}}
 .songclip{margin:16px 22px 4px}
+/* Hai bìa album nhạc game. Ảnh dọc 384x688 nên xếp hai cột; khai cả width lẫn
+   height trong thẻ img thì CSS phải có height:auto, không thì ảnh bị bóp. */
+.bia2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 22px 4px}
+.bia2 figure{margin:0}
+.bia2 img{display:block;width:100%;height:auto;border-radius:14px;
+  border:1px solid var(--line);background:var(--surface)}
+.bia2 figcaption{margin:7px 2px 0;font-size:.78rem;line-height:1.5;color:var(--muted)}
+@media(max-width:560px){.bia2{grid-template-columns:1fr;margin-inline:16px}}
 .songclip video{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:#120f0e}
     .songclip.doc video{width:auto;max-width:100%;max-height:560px;margin-inline:auto}
 .songclip figcaption{margin:7px 2px 0;font-size:.78rem;line-height:1.5;color:var(--muted)}
@@ -637,11 +645,11 @@ footer a:hover{color:var(--clay-ink)}
   <header class="page">
     <div class="page-kicker"><span class="lang-vi">Kho nhạc cá nhân</span><span class="lang-en">Personal music</span></div>
     <h1><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span></h1>
-    <p class="sub"><span class="lang-vi">Các sáng tác riêng của Đỗ Thùy Hương: một album kèm lời, và vài bản nhạc ngoài album. Nhạc của BizOn nằm ở <a href="https://bizonland.com/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a>.</span><span class="lang-en">Personal compositions by Do Thuy Huong: one album with lyrics, and a few pieces outside it. BizOn’s music lives at <a href="https://bizonland.com/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a>.</span></p>
+    <p class="sub"><span class="lang-vi">Sáng tác của Đỗ Thùy Hương: một album kèm lời, và vài bản nhạc ngoài album. Vài bài thuộc BizOn - đồng tác giả Phan Anh Tú - được để ở đây vì gắn với trang này; trọn bộ nhạc BizOn nằm ở <a href="https://bizonland.com/am-nhac.html" target="_blank" rel="noopener">BizOn · Âm nhạc</a>.</span><span class="lang-en">Compositions by Do Thuy Huong: one album with lyrics, and a few pieces outside it. A few songs belong to BizOn, co-authored with Phan Anh Tú, and are kept here because they belong to this site’s story; the full BizOn set lives at <a href="https://bizonland.com/am-nhac.html" target="_blank" rel="noopener">BizOn · Music</a>.</span></p>
     <div class="m-cta">
       <a class="m-btn chinh" href="#main"><span aria-hidden="true">▶</span> <span class="lang-vi">Nghe album</span><span class="lang-en">Play the album</span></a>
       <a class="m-btn" href="#t07"><span aria-hidden="true">♪</span> <span class="lang-vi">Hát theo</span><span class="lang-en">Sing along</span></a>
-      <a class="m-btn" href="https://thuyhuongctu.github.io/Chansonia/" target="_blank" rel="noopener"><span class="lang-vi">Mở Chansonia ↗</span><span class="lang-en">Open Chansonia ↗</span></a>
+      <a class="m-btn" href="https://thuyhuongctu.github.io/Chansonia/app/" target="_blank" rel="noopener"><span class="lang-vi">Mở Chansonia ↗</span><span class="lang-en">Open Chansonia ↗</span></a>
     </div>
     <dl class="m-so">
       <div><dt>43</dt><dd><span class="lang-vi">bản thu</span><span class="lang-en">recordings</span></dd></div>
@@ -744,7 +752,7 @@ footer a:hover{color:var(--clay-ink)}
            alt="Hình đất sét: Hương AI trong áo dài trắng, một đoá sen trên tay">
       <div class="song-title" style="text-align:center">La lampe, le fleuve et les couleurs</div>
       <p class="song-desc" style="max-width:100%;text-align:center;margin:6px auto 0"><span class="lang-vi">Một mini song-cycle / EP gồm 6 bài hát về sự vắng mặt, sự trưởng thành, và những giấc mơ thay hình đổi dạng · Sáng tác 07 - 13/08/2026.</span><span class="lang-en">A six-song mini song-cycle / EP about absence, growing up, and dreams that change their shape · Composed 7 - 13 Aug 2026.</span></p>
-      <p class="song-desc" style="max-width:100%;text-align:center;margin:8px auto 0"><span class="lang-vi">Nghe cả album với lời chạy theo nhạc ở <a href="https://thuyhuongctu.github.io/Chansonia/" target="_blank" rel="noopener">Chansonia ↗</a>. Đó là trình phát đồng bộ lời dựng riêng cho đĩa này, có <a href="https://doi.org/10.5281/zenodo.22172794" target="_blank" rel="noopener">DOI 10.5281/zenodo.22172794</a> để trích dẫn. Chứa sáu bài của đĩa gốc; Track 08 viết sau nên chưa có trong đó.</span><span class="lang-en">Hear the album with the lyrics scrolling in time at <a href="https://thuyhuongctu.github.io/Chansonia/" target="_blank" rel="noopener">Chansonia ↗</a>. It is a lyrics-synchronised player built for this record, with <a href="https://doi.org/10.5281/zenodo.22172794" target="_blank" rel="noopener">DOI 10.5281/zenodo.22172794</a> for citation. It holds the six songs of the original record; Track 08 came later and is not in it yet.</span></p>
+      <p class="song-desc" style="max-width:100%;text-align:center;margin:8px auto 0"><span class="lang-vi">Nghe cả album với lời chạy theo nhạc ở <a href="https://thuyhuongctu.github.io/Chansonia/" target="_blank" rel="noopener">Chansonia ↗</a>. Đó là trình phát đồng bộ lời dựng riêng cho đĩa này, có <a href="https://doi.org/10.5281/zenodo.22172794" target="_blank" rel="noopener">DOI 10.5281/zenodo.22172794</a> để trích dẫn. Chứa cả bảy bài của đĩa gốc và «Nhà vẫn sáng đèn», cùng nhạc BizOn, M-AIDA và nhạc hai trò chơi sử Việt.</span><span class="lang-en">Hear the album with the lyrics scrolling in time at <a href="https://thuyhuongctu.github.io/Chansonia/" target="_blank" rel="noopener">Chansonia ↗</a>. It is a lyrics-synchronised player built for this record, with <a href="https://doi.org/10.5281/zenodo.22172794" target="_blank" rel="noopener">DOI 10.5281/zenodo.22172794</a> for citation. It holds all seven songs of the original record and “Nhà vẫn sáng đèn”, plus the BizOn, M-AIDA and history-game music.</span></p>
       <div class="taglines">
         Some dreams don't disappear. They change their brush.<br>
         Certains rêves ne disparaissent pas. Ils changent seulement de pinceau.<br>
@@ -2393,9 +2401,9 @@ Ta trở về bờ này</p>
 <section class="reveal" id="ben-phu-sa" style="border-left:6px solid var(--accent2);background:var(--sunk);margin-top:40px;border-radius:0 20px 20px 0">
     <div class="shead"><h2>Bến Phù Sa</h2><span class="ln"></span></div>
     <div class="song" style="padding:20px 24px">
-      <div class="song-meta"><span class="lang-vi">Đĩa đơn, ngoài album · sáng tác 29/10/2026 · lời Việt, song ca nam nữ · 2 bản thu · 2 MV · bài hát của game Bến Phù Sa (BizOn).</span><span class="lang-en">A single, outside the album · composed 29 Oct 2026 · Vietnamese lyrics, a male-female duet · 2 recordings · 2 music videos · the song of the BizOn game Bến Phù Sa.</span></div>
+      <div class="song-meta"><span class="lang-vi">Bài hát của BizOn · sáng tác 29/10/2026 · lời Việt, song ca nam nữ · 2 bản thu · 2 MV.</span><span class="lang-en">A BizOn song · composed 29 Oct 2026 · Vietnamese lyrics, a male-female duet · 2 recordings · 2 music videos.</span></div>
       <p class="keyline" style="color:var(--accent2)">«Em thương anh, thương cả dòng sông / Nơi con nước nuôi hai mình khôn lớn.»</p>
-      <p class="song-desc" style="max-width:100%"><span class="lang-vi">Một bến sông miền Tây, một người đi, một người ở lại. Bài hát kể chuyện thương nhau không chỉ bằng lời hẹn, mà bằng tô canh bông điên điển của má, tấm lưng còng của cha giữa mùa màng, và mong được làm gì đó cho đất ven sông: bắt đầu từ điều nho nhỏ, một gánh hàng, một buổi chợ mai. Bài hát được dùng trong game <a href="https://bizonland.com/ben-phu-sa.html" target="_blank" rel="noopener">Bến Phù Sa</a> của BizOn.</span><span class="lang-en">A river landing in the Mekong Delta: one leaves and one stays behind. The song tells of a love that is more than a promise - a mother’s soup of điên điển flowers, a father’s back bent over the harvest, and a wish to give something back to the riverbank, starting small: a shoulder pole of goods, a morning market. The song is used in the BizOn game <a href="https://bizonland.com/ben-phu-sa.html" target="_blank" rel="noopener">Bến Phù Sa</a>.</span></p>
+      <p class="song-desc" style="max-width:100%"><span class="lang-vi">Một bến sông miền Tây, một người đi, một người ở lại. Bài hát kể chuyện thương nhau không chỉ bằng lời hẹn, mà bằng tô canh bông điên điển của má, tấm lưng còng của cha giữa mùa màng, và mong được làm gì đó cho đất ven sông: bắt đầu từ điều nho nhỏ, một gánh hàng, một buổi chợ mai. Bài hát <b>thuộc BizOn</b>, đồng tác giả <b>Phan Anh Tú</b>, dùng trong game <a href="https://bizonland.com/ben-phu-sa.html" target="_blank" rel="noopener">Bến Phù Sa</a>. Nghe trong trình phát <a href="https://thuyhuongctu.github.io/Chansonia/app/?bai=bizon-ben-phu-sa" target="_blank" rel="noopener">Chansonia ↗</a>, ở đó bài nằm trong bộ BizOn.</span><span class="lang-en">A river landing in the Mekong Delta: one leaves and one stays behind. The song tells of a love that is more than a promise - a mother’s soup of điên điển flowers, a father’s back bent over the harvest, and a wish to give something back to the riverbank, starting small: a shoulder pole of goods, a morning market. The song <b>belongs to BizOn</b>, co-authored with <b>Phan Anh Tú</b>, and is used in the game <a href="https://bizonland.com/ben-phu-sa.html" target="_blank" rel="noopener">Bến Phù Sa</a>. Hear it in the <a href="https://thuyhuongctu.github.io/Chansonia/app/?bai=bizon-ben-phu-sa" target="_blank" rel="noopener">Chansonia ↗</a> player, where it sits in the BizOn collection.</span></p>
       <div class="tracks">
         <div class="track">
           <div class="track-name">«Bến Phù Sa» <span class="lang-vi">· bản 2</span><span class="lang-en">· take 2</span> <span class="len">· 5:49</span></div>
@@ -2538,6 +2546,18 @@ Má còn chờ đó...</p>
           <div class="track-name">«Vân Đồn – Tiếng vọng non sông» <span class="len">· 5:17</span></div>
           <audio controls preload="none" src="https://thuyhuongctu.github.io/Vietnamese-History-Games/van-don-3d/assets/nhac/van-don-tieng-vong-non-song.mp3"></audio>
         </div>
+      </div>
+      <div class="bia2">
+        <figure>
+          <img src="assets/img/bia-nhac-bac-hai-dao.webp" width="384" height="688" loading="lazy" decoding="async"
+               alt="Cô gái mặc áo dài xanh ngồi trong sân một ngôi nhà cổ, cột gỗ và cây cảnh phía sau">
+          <figcaption><span class="lang-vi">«Bắc Hải Đảo – Theo cánh buồm quê hương» · bìa album</span><span class="lang-en">“Bắc Hải Đảo – Theo cánh buồm quê hương” · album cover</span></figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/bia-nhac-van-don.webp" width="384" height="688" loading="lazy" decoding="async"
+               alt="Tượng đất nặn: cô gái mặc áo dài xanh ngồi trên bậc đá giữa sân gạch, mái ngói và chậu cây cảnh phía sau">
+          <figcaption><span class="lang-vi">«Vân Đồn – Tiếng vọng non sông» · bìa album</span><span class="lang-en">“Vân Đồn – Tiếng vọng non sông” · album cover</span></figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -2961,8 +2981,8 @@ M-AIDA...</p>
           <div class="track-name">«Mekong Sunfire» <span class="lang-vi">· bản ngắn</span><span class="lang-en">· short version</span> <span class="len">· 3:22</span></div>
           <audio controls preload="none" src="assets/audio/mekong-sunfire.mp3"></audio>
           <p class="song-desc" style="max-width:100%;margin:4px 0 0;font-size:.8rem">
-            <span class="lang-vi">Bài hát dựng trong bối cảnh hoàng hôn sông Mekong. «Rise With The River» là bản dài; điệp khúc cuối được cắt 15 giây cho MV - nghe đoạn hook ngay bên dưới, hoặc xem trọn MV ở cuối mục này.</span>
-            <span class="lang-en">The song is staged at a Mekong sunset. “Rise With The River” is the long version; the closing chorus is cut to 15 seconds for the music video - the hook is just below, and the full video closes this section.</span>
+            <span class="lang-vi"><b>Bài hát thuộc BizOn</b>, đồng tác giả Phan Anh Tú. Bài dựng trong bối cảnh hoàng hôn sông Mekong. «Rise With The River» là bản dài; điệp khúc cuối được cắt 15 giây cho MV - nghe đoạn hook ngay bên dưới, hoặc xem trọn MV ở cuối mục này.</span>
+            <span class="lang-en"><b>The song belongs to BizOn</b>, co-authored with Phan Anh Tú. It is staged at a Mekong sunset. “Rise With The River” is the long version; the closing chorus is cut to 15 seconds for the music video - the hook is just below, and the full video closes this section.</span>
           </p>
         </div>
         <div class="track">
@@ -3018,7 +3038,7 @@ M-AIDA...</p>
     <p class="m-kicker"><span class="lang-vi">Trích dẫn</span><span class="lang-en">How to cite</span></p>
     <h2><span class="lang-vi">Nếu bạn muốn dẫn lại</span><span class="lang-en">If you want to cite this</span></h2>
     <p class="m-td-dan"><span class="lang-vi">Trình phát đồng bộ lời của album có bản lưu trữ kèm DOI trên Zenodo. Dẫn bản ấy thì địa chỉ không gãy, kể cả khi trang này đổi.</span><span class="lang-en">The album’s lyrics-synchronised player is archived on Zenodo with a DOI. Citing that keeps the link working even if this page changes.</span></p>
-    <blockquote class="m-td">Đỗ, T. H. (2026). <i>Chansonia — a lyrics-synchronised player for «La lampe, le fleuve et les couleurs»</i> (Version 1.1.0) [Software]. Zenodo. <a href="https://doi.org/10.5281/zenodo.22172794" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.22172794</a></blockquote>
+    <blockquote class="m-td">Đỗ, T. H. (2026). <i>Chansonia — a lyrics-synchronised player for «La lampe, le fleuve et les couleurs»</i> (Version 1.2.0) [Software]. Zenodo. <a href="https://doi.org/10.5281/zenodo.22172794" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.22172794</a></blockquote>
     <p class="m-td-chu"><span class="lang-vi">Tệp nhạc trên Zenodo đặt ở chế độ hạn chế tải, có chủ ý - bản ghi vẫn đọc và trích dẫn được. Nghe thì nghe ngay ở trang này.</span><span class="lang-en">The audio files on Zenodo are deliberately restricted from download; the record itself stays readable and citable. To listen, use this page.</span></p>
   </section>
 
