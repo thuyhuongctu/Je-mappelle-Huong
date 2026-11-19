@@ -542,8 +542,12 @@ có thật.
 
 Ba giới hạn của môi trường kiểm, **không phải lỗi của trang**:
 
-- Chromium ở đây **không có H.264**, nên mọi `.mp4` trong kho đều không tải
-  được khi kiểm;
+- ~~Chromium ở đây không có H.264~~ — **đo lại 19/11/2026 thì SAI**: bản
+  Chromium hiện tại phát được `.mp4` H.264. Đo trên
+  `assets/video/trong-toi-co-mot-nuoc-nam.mp4`: `canPlayType` trả `probably`,
+  `loadedmetadata` cho đúng 112,73 giây và 1280×720, `play()` chạy tới giây
+  1,46, `video.error` là null. Nên **kiểm video được**, đừng bỏ qua như ghi
+  chú cũ dặn;
 - `gc.zgo.at` (đếm lượt xem) và Google Fonts bị cổng ra mạng chặn;
 - kết xuất bằng phần mềm nên trang viên chạy rất chậm — muốn kiểm phần dáng
   thì đặt thẳng `nhanVat.position` thay vì chờ nhân vật đi bộ tới.
