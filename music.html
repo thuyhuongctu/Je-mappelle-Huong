@@ -243,6 +243,11 @@ footer a:hover{color:var(--clay-ink)}
   background: var(--surface); margin-bottom: 13px;
 }
 .m-tn-anh img { width: 100%; height: 190px; object-fit: cover; object-position: 50% 28%; display: block; }
+/* Thẻ thứ ba là hình đất sét CẮT RỜI, nền trong suốt - khác hai thẻ kia vốn là
+   ảnh chụp đặc. Để nền --surface thì nó sáng hơn cả nền trang và chói lên giữa
+   bộ ba. Nền lõm cho nó chìm xuống, và contain để không cắt cụt chân. */
+.m-tn-anh.ve { background: var(--sunk); }
+.m-tn-anh.ve img { object-fit: contain; object-position: 50% 50%; padding: 6px 0; }
 .m-tn h3 { margin: 0 0 7px; font: 700 1rem/1.35 var(--serif); }
 .m-anh-sv { display: grid; gap: 10px; grid-template-columns: repeat(5, 1fr); margin: 16px 0 0; }
 @media (max-width: 720px) { .m-anh-sv { grid-template-columns: repeat(2, 1fr); } .m-anh-sv img { height: 170px; } }
@@ -732,7 +737,7 @@ footer a:hover{color:var(--clay-ink)}
         <p><span class="lang-vi">Cùng một bài thường có vài bản: bản tiếng Pháp, bản tiếng Việt, bản phối lại. Trình phát ở đầu trang cho chọn nghe một bản mỗi bài hay nghe hết mọi bản.</span><span class="lang-en">A song often exists in several takes: the French one, the Vietnamese one, a remix. The player at the top lets you hear one take per song, or every take.</span></p>
       </article>
       <article>
-        <div class="m-tn-anh"><img src="assets/img/huong-nghe-nhac-ngoi.webp" width="768" height="768" loading="lazy" decoding="async" alt=""></div>
+        <div class="m-tn-anh ve"><img src="assets/img/huong-nghe-nhac-ngoi-sat.webp" width="528" height="658" loading="lazy" decoding="async" alt=""></div>
         <h3><span class="lang-vi">Đọc được khi mất mạng</span><span class="lang-en">Readable offline</span></h3>
         <p><span class="lang-vi">Trang, lời bài hát và bảng hát theo đều lưu sẵn trong máy. Riêng tệp nhạc thì không - chúng nặng, và để trang nhẹ thì nhạc vẫn phải tải về khi nghe.</span><span class="lang-en">The page, the lyrics and the sing-along panels are all stored on your device. The audio files are not - they are heavy, and keeping the page light means the music still downloads as you listen.</span></p>
       </article>
