@@ -841,6 +841,13 @@ trong thẻ `pre`.
 Chỉ dẫn diễn trong ngoặc vuông (tiếng biển, cách hát, nhạc cụ) đặt vào thẻ
 `.note` của từng mục — đúng lối phần lời tiếng Anh vẫn dùng sẵn.
 
+**Kiểm nút «Hiện lời bài hát» thì đo CHIỀU CAO, đừng đo `display`.** Nút đặt lớp
+`lyrics-collapsed` / `lyrics-open` lên chính khối `.lyrics` rồi ẩn **các con**
+(`.lyrics.lyrics-collapsed > :not(.lyrics-toggle){display:none}`), nên
+`getComputedStyle` của khối mẹ luôn trả `block` dù đang gập — và `h3` con cũng
+trả `block`, đo trên khối lời cũ cũng y hệt. Thước dùng được: chiều cao khối
+(85px khi gập, hơn 2000px khi mở) và nhãn nút.
+
 ### Thay bản thu thì ĐO THỜI LƯỢNG rồi đối chiếu lời
 
 Bản thu thay vào ngắn hơn bản cũ **55 giây, tức 17%**. Hoá ra không phải cùng
