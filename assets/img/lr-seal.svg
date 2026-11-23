@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="1024" height="1024"
+     role="img" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher">
+  <title>Je m'appelle Hương · Lecturer &amp; Researcher</title>
+  <circle cx="50" cy="50" r="49" fill="#c45c3a"/>
+  <circle cx="50" cy="50" r="31" fill="#a54d31"/>
+  <path id="tA" d="M12.33 60.09 A39 39 0 1 1 87.67 60.09" fill="none"/>
+  <path id="dA" d="M87.67 39.91 A39 39 0 1 1 12.33 39.91" fill="none"/>
+  <text font-family="Georgia,'Times New Roman',serif" font-size="8" font-weight="700"
+        letter-spacing="1.2" fill="#fffcf5">
+    <textPath href="#tA" startOffset="50%" text-anchor="middle">JE M'APPELLE HƯƠNG</textPath></text>
+  <text font-family="Georgia,'Times New Roman',serif" font-size="6" letter-spacing="1"
+        fill="#fffcf5" opacity=".88">
+    <textPath href="#dA" startOffset="50%" text-anchor="middle">LECTURER &amp; RESEARCHER</textPath></text>
+  <text x="50" y="61" font-family="Georgia,'Times New Roman',serif" font-style="italic"
+        font-size="34" font-weight="700" text-anchor="middle" fill="#fffcf5">LR</text>
+</svg>

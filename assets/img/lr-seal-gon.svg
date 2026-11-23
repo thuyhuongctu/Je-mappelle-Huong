@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512"
+     role="img" aria-label="Je m'appelle Hương">
+  <title>Je m'appelle Hương</title>
+  <circle cx="50" cy="50" r="49" fill="#c45c3a"/>
+  <circle cx="50" cy="50" r="41" fill="none" stroke="#fffcf5" stroke-opacity=".42" stroke-width="2.6"/>
+  <text x="50" y="65" font-family="Georgia,'Times New Roman',serif" font-style="italic"
+        font-size="47" font-weight="700" text-anchor="middle" fill="#fffcf5">LR</text>
+</svg>
