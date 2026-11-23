@@ -4,7 +4,7 @@
   <circle cx="50" cy="50" r="49" fill="#c45c3a"/>
   <circle cx="50" cy="50" r="31" fill="#a54d31"/>
   <path id="tA" d="M12.33 60.09 A39 39 0 1 1 87.67 60.09" fill="none"/>
-  <path id="dA" d="M87.67 39.91 A39 39 0 1 1 12.33 39.91" fill="none"/>
+  <path id="dA" d="M7.50 38.61 A44 44 0 1 0 92.50 38.61" fill="none"/>
   <text font-family="Georgia,'Times New Roman',serif" font-size="8" font-weight="700"
         letter-spacing="1.2" fill="#fffcf5">
     <textPath href="#tA" startOffset="50%" text-anchor="middle">JE M'APPELLE HƯƠNG</textPath></text>
