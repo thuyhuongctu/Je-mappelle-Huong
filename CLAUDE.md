@@ -555,6 +555,39 @@ Ba giới hạn của môi trường kiểm, **không phải lỗi của trang**
 Vào trang viên phải: chờ `#nut-vao` hết `disabled` rồi bấm, sau đó bấm hết ba
 bước của `#th-guide-next`.
 
+### Gói tệp Pages nặng 487 MB, và hệ quả của nó
+
+Đo 23/11: cây tệp 497 MB, trong đó **165 tệp `.mp3` chiếm 423 MB** — 85% cả
+site. `.mp4` thêm 48 MB. Đây **không** phải chỗ nên dọn: app Chansonia phát
+nhạc trực tuyến thẳng từ `jemappellehuong.com/assets/audio`, nên các tệp ấy
+phải nằm đó.
+
+Nhưng nửa gigabyte làm bước phát hành mong manh, và đã hỏng thật:
+
+**`deploy-pages` hỏi artifact quá sớm.** Đo ở run 45290404715: artifact
+finalize lúc `23:38:04.8` với đủ Artifact ID, rồi `deploy-pages` hỏi lúc
+`23:38:05.3` — **nửa giây sau** — và nhận «Found 0 artifact(s)». API danh
+sách artifact chưa kịp ghi nhận gói 487 MB. Lỗi hiện ra như lỗi hạ tầng
+(«Is githubstatus.com reporting issues…») nên dễ tưởng là nhất thời.
+
+Sửa bằng cách tách `pages.yml` thành **hai job** `build` → `deploy` đúng
+khuôn mẫu Pages chính thức, thay vì một job như trước. Job sau phải chờ cấp
+máy mới, đủ chục giây cho API kịp. Lần chạy thành công gần nhất trước đó
+(#160, 03:12) cùng cỡ gói ấy mà qua được, nên đây là cuộc đua chứ không phải
+ngưỡng cứng — tách job là để khỏi phải may.
+
+**ĐỪNG CHẠY LẠI JOB HỎNG.** `upload-pages-artifact` đặt `overwrite: false`,
+nên mỗi lần «Re-run failed jobs» lại tải thêm **một artifact nữa cùng tên**
+vào cùng run. Đã đếm tới 4, và lỗi đổi thành «Multiple artifacts named
+"github-pages" were unexpectedly found … Artifact count is 4» — từ đó run ấy
+không bao giờ qua được nữa. Muốn phát hành lại thì **đẩy một commit mới**.
+
+**Phiên đám mây không chạy lại workflow được.** Cả
+`POST .../rerun-failed-jobs` lẫn `POST .../workflows/pages.yml/dispatches`
+đều trả **403 «Resource not accessible by integration»**. Cùng loại với chỗ
+403 khi tạo kho ở mục «Hai chỗ vấp khi dựng kho mới». Nên khi cần chạy lại,
+hoặc nhờ tác giả bấm, hoặc đẩy commit.
+
 ### Kiểm bản ĐANG CHẠY
 
 **Chỗ cần đọc vẫn là `sw.js`, không phải trang.** Tệp ấy bé, và số
