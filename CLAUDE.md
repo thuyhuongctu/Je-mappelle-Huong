@@ -612,6 +612,67 @@ Quy định có từ 20/10/2026. Các commit đã gộp trước ngày ấy (#10
 còn mang dòng đồng tác giả; để nguyên vì viết lại lịch sử nhánh chính phải ghi
 đè lên GitHub, rủi ro hơn cái được.
 
+## Logo: hai tệp SVG gốc, mọi ảnh sinh lại từ đó
+
+Từ 23/11 logo là **hai** tệp SVG, không phải một:
+
+| tệp | dùng cho | vì sao |
+| --- | --- | --- |
+| `assets/img/lr-seal.svg` | `lr-seal-round.webp` 1024, ảnh og | con dấu đủ: vành trên «JE M'APPELLE HƯƠNG», vành dưới «LECTURER & RESEARCHER», giữa là LR |
+| `assets/img/lr-seal-gon.svg` | favicon, mọi tệp trong `icons/`, `lr-seal-round-144.webp` | bỏ hẳn chữ vành — ở 16px nó không đọc được mà vẫn chiếm chỗ, ép chữ LR phải nhỏ lại |
+
+Mọi tệp PNG/WebP/ICO đều **dựng lại từ hai tệp SVG ấy bằng Chromium**, đừng
+sửa tay tệp ảnh. Bản maskable sinh thêm từ `lr-seal-gon.svg` bằng cách thay
+`<circle r=49>` bằng `<rect>` tràn viền, vòng còn r=39 và chữ hạ xuống 40.
+
+### `textPath` trên cung: chiều cung quyết định chữ xuôi hay ngược
+
+Vành dưới chạy ngược suốt mấy lượt, phải xoay ảnh mới đọc được. Chữ bám
+**theo chiều vẽ** của đường, nên cung vành dưới phải đi **từ mé trái, ngược
+chiều kim đồng hồ, xuống đáy, rồi sang phải**:
+
+```
+vành trên: M12.33 60.09 A39 39 0 1 1 87.67 60.09   (sweep 1, thuận chiều)
+vành dưới: M7.50  38.61 A44 44 0 1 0 92.50 38.61   (sweep 0, ngược chiều)
+```
+
+Bán kính hai vành **không bằng nhau, và đúng là phải thế**. Chữ trên cung
+thuận chiều mọc **ra ngoài**, chữ trên cung ngược chiều mọc **vào trong**.
+Để cả hai cùng r = 39 thì tâm hai dải chữ lệch nhau 5 đơn vị — 51px ở bản
+1024. Vành trên r = 39 cỡ chữ 8, vành dưới r = 44 cỡ chữ 6 thì tâm cả hai
+rơi vào khoảng 42.
+
+Cung phải **đủ dài cho chữ**. Đã vấp: cung 113 đơn vị mà chữ cần 133 nên
+tràn ra và bị cắt. Cung 210° ở r = 39 dài 143, ở r = 44 dài 161; hai dòng
+chữ hiện tại cần 96 và 87.
+
+### `apple-touch-icon.png` phải ĐẶC, không được có alpha
+
+iOS **không nhận** nền trong suốt cho biểu tượng màn hình chính: nó ghép
+lên **nền đen**, nên một con dấu tròn trên nền trong suốt sẽ hiện thành ô
+đen có hình tròn ở giữa. Đã dính đúng một lần — đo ra 25,6% pixel trong
+suốt ở bốn góc ngoài hình tròn, trong khi bản cũ là RGB đặc.
+
+Nên tệp ấy dựng riêng: nền `#c45c3a` **tràn viền** (iOS tự bo góc), đặc
+hoàn toàn. Kiểm bằng cách đọc pixel góc ảnh — phải ra (196, 92, 58), không
+phải trong suốt.
+
+`icon-192`/`icon-512` và hai tệp `lr-seal-round*` thì **giữ nền trong
+suốt**, chỗ ấy đúng: chúng nằm trên nền trang. Hai bản maskable vốn kín
+khung nên không dính.
+
+`favicon.ico` để **ba cỡ 16/32/48**, ra 8 KB. Thử sáu cỡ thì lên 59 KB mà
+không chỗ nào dùng tới cỡ lớn.
+
+### Mỗi tác phẩm một con dấu riêng — đừng chép đè
+
+`Research-Office` **không** dùng bản chép: nó có con dấu riêng «LE BUREAU DE
+HƯƠNG» chữ H, vốn đã đúng bộ màu. Đừng thấy nó khác kho chính mà tưởng cũ
+rồi ghi đè. `Le-Domaine-de-Huong` thì khác: `assets/img/lr-seal-round.webp`
+bên ấy là **chính con dấu Je m'appelle Hương** đứng ở liên kết về trang chủ
+(`index.html` dòng 734), nên tệp ấy phải chép theo kho chính; còn
+`favicon.ico` và `icons/` của nó là ảnh chân dung Hương, chuyện riêng.
+
 ## Ảnh
 
 WebP, cắt sát nội dung. Ảnh nhân vật cần nền trong suốt.
