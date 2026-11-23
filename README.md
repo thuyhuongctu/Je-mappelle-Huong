@@ -124,7 +124,7 @@ own repository and is deposited.
 | **Gravity Lab** | A browser-based gravity-model laboratory for FDI into Vietnam | [site](https://thuyhuongctu.github.io/Gravity-Lab/) | [`zenodo.23307832`](https://doi.org/10.5281/zenodo.23307832) |
 | **Distance, FDI and Trade** | Research code and data mappings (DA0–DA4) for the Vietnam FDI paper | — | [`zenodo.23115783`](https://doi.org/10.5281/zenodo.23115783) |
 | **AIBIS Global Market Engine** | A deterministic engine for choosing international market-entry modes | [site](https://bizonland.com/aibis-entry-mode-preview.html) | [`zenodo.23317596`](https://doi.org/10.5281/zenodo.23317596) |
-| **Le Bureau de Hương** | An offline 3D research office with a mode-of-entry board for International Business teaching | [site](https://thuyhuongctu.github.io/Research-Office/) | [`zenodo.22971293`](https://doi.org/10.5281/zenodo.22971293) |
+| **Le Bureau de Hương** | An offline 3D research office with a mode-of-entry board for International Business teaching | [site](https://bureau.jemappellehuong.com/) | [`zenodo.22971293`](https://doi.org/10.5281/zenodo.22971293) |
 | **Le Domaine de Hương** | The 3D estate as a standalone work: eight zones, four lighting states, five gameplay modules, no network request at all | [site](https://thuyhuongctu.github.io/Le-Domaine-de-Huong/) | [`zenodo.23539409`](https://doi.org/10.5281/zenodo.23539409) |
 
 ### Teaching
