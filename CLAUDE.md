@@ -956,9 +956,9 @@ thêm thẻ chia sẻ.
 | chỗ | bên `Je-mappelle-Huong` | bên `Research-Office` |
 | --- | --- | --- |
 | hai liên kết về trang chủ | `href="index.html"` | `https://jemappellehuong.com/` |
-| `<link rel=canonical>` | `…com/vanphong.html` | `…github.io/Research-Office/` |
-| `url` trong JSON-LD | `…com/vanphong.html` | `…github.io/Research-Office/` |
-| `og:url`, `og:image`, `twitter:image` | `…com/…` | `…github.io/Research-Office/…` |
+| `<link rel=canonical>` | `…com/vanphong.html` | `…bureau.jemappellehuong.com/` |
+| `url` trong JSON-LD | `…com/vanphong.html` | `…bureau.jemappellehuong.com/` |
+| `og:url`, `og:image`, `twitter:image` | `…com/…` | `…bureau.jemappellehuong.com/…` |
 | câu trích dẫn ở bảng mở đầu | «đây là **bản trưng bày**, bản để trích dẫn ở kho riêng» | «đây **là** bản để trích dẫn» |
 
 Đếm bằng `diff` thì ra **18 dòng** chứ không phải 5, vì mỗi chỗ tính cả hai
