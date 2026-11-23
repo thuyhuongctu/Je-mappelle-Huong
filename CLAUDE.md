@@ -841,6 +841,13 @@ trong thẻ `pre`.
 Chỉ dẫn diễn trong ngoặc vuông (tiếng biển, cách hát, nhạc cụ) đặt vào thẻ
 `.note` của từng mục — đúng lối phần lời tiếng Anh vẫn dùng sẵn.
 
+**Kiểm nút MV thì phải chờ `networkidle`, đừng chờ `domcontentloaded`.** Nút
+`.mv-yt` do script cuối `music.html` gắn trình xử lý; tải trang bằng
+`waitUntil:'domcontentloaded'` rồi bấm ngay thì **không có iframe nào hiện ra**
+và tưởng khối mới hỏng. Đã đo nhầm đúng một lần như thế. Cách chắc: bấm thêm
+một nút MV **đã có sẵn** làm đối chứng trong cùng lần chạy — cả ba nút cùng ra
+0 iframe trước và 1 iframe sau thì mới là trang đúng.
+
 **Kiểm nút «Hiện lời bài hát» thì đo CHIỀU CAO, đừng đo `display`.** Nút đặt lớp
 `lyrics-collapsed` / `lyrics-open` lên chính khối `.lyrics` rồi ẩn **các con**
 (`.lyrics.lyrics-collapsed > :not(.lyrics-toggle){display:none}`), nên
