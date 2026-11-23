@@ -948,16 +948,22 @@ kết quả ngay, chẳng có gì nhắc phải chép về. Nếp duy nhất ch�
 phòng ở **đâu** cũng chép sang bên kia **trong cùng một lần**, đừng để sang
 hôm sau.
 
-Trong chính tệp trang, khác nhau đúng **bốn chỗ** — và cả bốn đều là **tự
+Trong chính tệp trang, khác nhau đúng **năm chỗ** — và cả năm đều là **tự
 trỏ về mình**, không chỗ nào là khác nội dung. Từ 21/10 là bốn chứ không còn
-ba như ghi chú cũ: hai chỗ sau sinh ra khi thêm mã DOI.
+ba như ghi chú cũ (hai chỗ sinh ra khi thêm mã DOI); từ 23/11 là năm, khi
+thêm thẻ chia sẻ.
 
 | chỗ | bên `Je-mappelle-Huong` | bên `Research-Office` |
 | --- | --- | --- |
 | hai liên kết về trang chủ | `href="index.html"` | `https://jemappellehuong.com/` |
 | `<link rel=canonical>` | `…com/vanphong.html` | `…github.io/Research-Office/` |
 | `url` trong JSON-LD | `…com/vanphong.html` | `…github.io/Research-Office/` |
+| `og:url`, `og:image`, `twitter:image` | `…com/…` | `…github.io/Research-Office/…` |
 | câu trích dẫn ở bảng mở đầu | «đây là **bản trưng bày**, bản để trích dẫn ở kho riêng» | «đây **là** bản để trích dẫn» |
+
+Đếm bằng `diff` thì ra **18 dòng** chứ không phải 5, vì mỗi chỗ tính cả hai
+bên và khối chú thích cạnh `canonical` cũng viết khác nhau. Đừng thấy 18 mà
+tưởng hai bản đã lệch nội dung.
 
 **Cố ý không cho cả hai cùng trỏ về `.com`**: làm thế là bảo công cụ tìm kiếm
 bỏ qua bản có DOI, mà bản ấy mới là bản để trích dẫn. Tự trỏ về mình là nếp
