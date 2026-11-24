@@ -14,12 +14,22 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+# Hai job, không phải một. Gói tệp của site nặng ~487 MB (165 tệp .mp3 chiếm
+# 423 MB), và khi dựng gói xong thì API danh sách artifact của GitHub chưa kịp
+# ghi nhận ngay. Để chung một job thì deploy-pages hỏi chỉ NỬA GIÂY sau lúc
+# tải xong và nhận «Found 0 artifact(s)» — đo được ở run 45290404715: artifact
+# finalize lúc 23:38:04.8 với đủ Artifact ID, deploy-pages hỏi lúc 23:38:05.3
+# và không thấy gì. Tách hai job thì job sau phải chờ cấp máy mới, đủ chục
+# giây, nên API kịp. Đây cũng đúng khuôn mẫu Pages chính thức của GitHub.
+#
+# ĐỪNG CHẠY LẠI JOB HỎNG để chữa. upload-pages-artifact đặt overwrite: false,
+# nên mỗi lần chạy lại thêm một artifact nữa cùng tên vào cùng run; tới lần
+# thứ tư thì lỗi đổi thành «Multiple artifacts named "github-pages" … Artifact
+# count is 4» và không bao giờ qua được. Phải đẩy một commit mới.
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
@@ -28,5 +38,13 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4
