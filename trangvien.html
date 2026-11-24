@@ -32,6 +32,10 @@
   --muc:#1C1814; --muc-nhat:#6F6459;
   --kem:#FFF8EE; --vien:#E2D8C7;
   --nhan:#C45C3A; --vang:#B8842C; --lam:#3F6F68;
+  /* Chu mau dat nung phai dung --nhan-chu, khong dung --nhan: #C45C3A lam chu
+     tren nen giay chi dat 3,3-4,2, duoi nguong WCAG 4,5. --nhan van giu nguyen
+     cho mang mau, vien va ban do - day la neo. */
+  --nhan-chu:#A54D31; --tren-nhan:#FFFFFF;
   --bong:0 2px 4px rgba(120,80,60,.10), 0 18px 40px rgba(120,80,60,.18);
   --set:24px 26px 46px rgba(120,80,60,.20), -10px -10px 26px rgba(255,255,255,.75),
         inset 3px 4px 9px rgba(255,255,255,.75), inset -6px -9px 18px rgba(150,105,80,.16);
@@ -40,6 +44,7 @@
      doc cac bien nay, nen tro thang vao bang mau o tren. */
   --surface:#FFFCF5; --ink:var(--muc); --muted:var(--muc-nhat);
   --line:var(--vien); --accent:var(--nhan); --accent-soft:rgba(196,92,58,.12);
+  --clay-ink:var(--nhan-chu); --on-clay:var(--tren-nhan);
   --sans:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -55,7 +60,7 @@ button{font-family:inherit;cursor:pointer;border:0}
 #san canvas{display:block;width:100%;height:100%}
 
 /* ---------- Khối đất sét dùng chung ---------- */
-.set{background:linear-gradient(150deg,#FFFBF4,#F0E0CB);border-radius:26px;box-shadow:var(--set)}
+.set{background:linear-gradient(150deg,#FFFBF4,#F2E5D3);border-radius:26px;box-shadow:var(--set)}
 
 /* ================= MÀN CHỜ / MỞ ĐẦU ================= */
 #cong{
@@ -88,7 +93,7 @@ button{font-family:inherit;cursor:pointer;border:0}
 }
 .cong-hop{max-width:520px;width:100%;padding:2rem 1.7rem;text-align:center}
 .cong-hop h1{font-size:clamp(1.9rem,7vw,2.9rem);color:#2F5C4A;margin-bottom:.4rem}
-.cong-hop h1 span{color:var(--nhan)}
+.cong-hop h1 span{color:var(--nhan-chu)}
 .cong-hop .phu{color:#5E7A6B;font-size:.95rem;margin-bottom:1.4rem}
 .phim{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:.5rem;margin-bottom:1.4rem;text-align:left}
 .phim div{display:flex;align-items:center;gap:.55rem;font-size:.8rem;color:#4E6B5C;background:rgba(255,255,255,.55);padding:.5rem .7rem;border-radius:14px}
@@ -188,7 +193,7 @@ button{font-family:inherit;cursor:pointer;border:0}
 #bd-thang.mo #bd-chon{display:flex;flex-direction:column;gap:.32rem}
 .khu-chon{display:flex;align-items:center;gap:.4rem;padding:.4rem .5rem;border-radius:.8rem;border:none;cursor:pointer;
   font:600 .72rem "Baloo 2",system-ui;color:#4A3730;background:#FFF8EE;width:100%;text-align:left;}
-.khu-chon:hover{background:#F8DCE4}
+.khu-chon:hover{background:#FAE5EB}
 .khu-chon .dot{width:11px;height:11px;border-radius:50%;border:2px solid #FFF8EE;flex:none}
 .khu-chon .icon{font-size:.85rem}
 .khu-chon .ten{flex:1;line-height:1.2}
@@ -261,16 +266,16 @@ body.cham #ban-do canvas{width:84px;height:84px;pointer-events:none; }
 .den-bai:hover{background:#F8E7D6;border-color:var(--nhan)}
 .den-bai:focus-visible{outline:2px solid var(--nhan);outline-offset:2px}
 .den-bai.chu{background:linear-gradient(120deg,#FDF0DC,#F8E2C4);border-color:#E0A94E}
-.den-so{font:800 .78rem 'Baloo 2',system-ui;color:#fff;background:#C77A2E;
+.den-so{font:800 .78rem 'Baloo 2',system-ui;color:var(--tren-nhan);background:#A66626;
   width:26px;height:26px;border-radius:50%;display:grid;place-items:center;flex:none}
-.den-bai.chu .den-so{background:var(--nhan)}
+.den-bai.chu .den-so{background:var(--nhan-chu)}
 .den-chu{min-width:0;display:flex;flex-direction:column;gap:.1rem}
 .den-ten{font:700 .92rem/1.25 'Baloo 2',system-ui;color:#4A3730}
 .den-tt{font-size:.78rem;color:var(--muc-nhat);line-height:1.35}
 .den-bt{font-size:.72rem;color:#8A7568;line-height:1.35}
 .den-phat{font-size:.95rem;color:#C77A2E;flex:none}
-.den-bai.dang .den-phat{color:var(--nhan)}
-.den-bai.dang .den-ten{color:var(--nhan)}
+.den-bai.dang .den-phat{color:var(--nhan-chu)}
+.den-bai.dang .den-ten{color:var(--nhan-chu)}
 
 /* ================= BẢN ĐỒ TOÀN CẢNH =================
    Truoc day khach khong bao gio thay ca trang vien mot luc. Cai duy nhat co
@@ -309,7 +314,7 @@ body.cham #ban-do canvas{width:84px;height:84px;pointer-events:none; }
   background:#FFF8EE;box-shadow:var(--bong);font-size:1rem;color:var(--muc-nhat);
   display:grid;place-items:center;
 }
-#tc-dong:hover{background:#F8DCE4;color:var(--nhan)}
+#tc-dong:hover{background:#FAE5EB;color:var(--nhan-chu)}
 
 /* khung: ban do ben trai, danh sach bay khu ben phai */
 #tc-than{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(.8rem,2.5vw,1.3rem);align-items:start}
@@ -348,7 +353,7 @@ body.cham #ban-do canvas{width:84px;height:84px;pointer-events:none; }
   display:flex;align-items:stretch;gap:.25rem;
   border-radius:.85rem;background:#FFF8EE;border:1px solid transparent;
 }
-.tc-khu:hover{background:#F8DCE4;border-color:rgba(231,126,154,.4)}
+.tc-khu:hover{background:#FAE5EB;border-color:rgba(231,126,154,.4)}
 .tc-di{
   flex:1;min-width:0;
   display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:.5rem;
@@ -496,9 +501,9 @@ body.dang-xem-ban-do #hud-sen{display:none !important}
 #bang-tour{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin:0 0 1rem;
   padding:.55rem .8rem;border-radius:.9rem;background:var(--accent-soft,#F7E4DA);
   border:1px solid rgba(196,92,58,.28);font:600 .78rem/1.4 "Baloo 2",system-ui;color:var(--muc)}
-#bang-tour b{font-weight:800;color:var(--nhan)}
+#bang-tour b{font-weight:800;color:var(--nhan-chu)}
 #bang-tour button{margin-left:auto;border:none;border-radius:999px;cursor:pointer;
-  padding:.4rem .8rem;font:700 .74rem "Baloo 2",system-ui;background:var(--nhan);color:#fff}
+  padding:.4rem .8rem;font:700 .74rem "Baloo 2",system-ui;background:var(--nhan-chu);color:var(--tren-nhan)}
 #bang-tour button.bo{background:#FDECF0;color:#B85C7E}
 .keo{width:52px;height:5px;border-radius:99px;background:var(--vien);margin:0 auto 1rem}
 .bang-dau{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:1.1rem}
@@ -511,11 +516,11 @@ body.dang-xem-ban-do #hud-sen{display:none !important}
 #dong{margin-left:auto;width:38px;height:38px;border-radius:50%;font-size:1.1rem;background:var(--vien);color:var(--muc);flex:none}
 #noi-dung{font-size:.96rem;line-height:1.72}
 #noi-dung p{margin-bottom:.9rem}
-#noi-dung h3{font-size:1.05rem;margin:1.3rem 0 .5rem;color:var(--nhan)}
+#noi-dung h3{font-size:1.05rem;margin:1.3rem 0 .5rem;color:var(--nhan-chu)}
 #noi-dung ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem}
 #noi-dung li{padding-left:1.3rem;position:relative;font-size:.92rem}
 #noi-dung li::before{content:'🪷';position:absolute;left:0;font-size:.8rem;top:.15rem}
-#noi-dung a{color:var(--nhan);font-weight:600}
+#noi-dung a{color:var(--nhan-chu);font-weight:600}
 .the{
   display:block;text-decoration:none;color:inherit;padding:1rem 1.1rem;border-radius:20px;margin-bottom:.65rem;
   background:linear-gradient(150deg,#FFFDF8,#F1E2CC);
@@ -525,10 +530,10 @@ body.dang-xem-ban-do #hud-sen{display:none !important}
 .the:hover{transform:translateY(-4px)}
 .the b{display:block;font-family:'Baloo 2';font-size:1.05rem;margin-bottom:.15rem}
 .the span{font-size:.85rem;color:var(--muc-nhat)}
-.the em{display:inline-block;margin-top:.45rem;font-style:normal;font-size:.78rem;font-weight:700;color:var(--nhan)}
+.the em{display:inline-block;margin-top:.45rem;font-style:normal;font-size:.78rem;font-weight:700;color:var(--nhan-chu)}
 .hang{display:grid;grid-template-columns:repeat(auto-fit,minmax(84px,1fr));gap:.5rem;margin:.9rem 0 1.2rem}
 .o{text-align:center;padding:.75rem .3rem;border-radius:15px;background:rgba(196,89,107,.09)}
-.o b{display:block;font-family:'Baloo 2';font-size:1.25rem;color:var(--nhan);line-height:1.1}
+.o b{display:block;font-family:'Baloo 2';font-size:1.25rem;color:var(--nhan-chu);line-height:1.1}
 .o span{font-size:.66rem;letter-spacing:.05em;color:var(--muc-nhat)}
 .nhan-nho{display:inline-block;font-size:.7rem;font-weight:600;padding:.25rem .6rem;border-radius:99px;background:rgba(92,127,191,.15);color:#3F5D91;margin:0 .3rem .3rem 0}
 .bai{padding:.85rem 1rem;border-radius:18px;background:rgba(255,255,255,.7);margin-bottom:.6rem}
@@ -560,7 +565,7 @@ body.dang-xem-ban-do #hud-sen{display:none !important}
 .o-thap .cho{position:absolute;inset:0;display:grid;place-items:center;
   color:var(--muc-nhat);font-size:.84rem;letter-spacing:.04em}
 .canh-khu .mo-rong{display:inline-block;margin:.45rem .2rem 0;font-size:.8rem;
-  color:var(--nhan);text-decoration:none;border-bottom:1px solid currentColor}
+  color:var(--nhan-chu);text-decoration:none;border-bottom:1px solid currentColor}
 #noi-dung::-webkit-scrollbar{width:0}
 
 @media (min-width:820px){
@@ -593,7 +598,7 @@ body.dang-xem-ban-do #hud-sen{display:none !important}
 #toast-sen h2{margin:0 0 10px;font:700 26px Georgia,serif;color:#a8492b}
 #toast-sen p{margin:0 0 18px;font:15px/1.6 system-ui,sans-serif;color:#6f6459}
 #toast-sen button{border:none;border-radius:999px;padding:11px 26px;font:700 15px system-ui,sans-serif;
-  background:var(--nhan);color:#fff;cursor:pointer;box-shadow:0 6px 16px rgba(196,92,58,.42)}
+  background:var(--nhan-chu);color:var(--tren-nhan);cursor:pointer;box-shadow:0 6px 16px rgba(196,92,58,.42)}
 @media(max-width:720px){#logo-tv{width:36px;height:36px}}
 @media(max-width:420px){#logo-tv{width:30px;height:30px}}
 /* Tren dien thoai, hang nut tren cung truoc day cao toi 143px (17% man hinh) vi
@@ -995,7 +1000,7 @@ const KHU = [
         <a class="the" href="https://thuyhuongctu.github.io/we-create-tomorrow/" target="_blank" rel="noopener"><b>We Create Tomorrow</b><span>Karaoke song ngữ cho ca khúc nhận diện Trường Kinh tế, Đại học Cần Thơ: lời đồng bộ thời gian thực, chuyển Việt - Anh tức thì, có chế độ khuông nhạc. Đồng tác giả với PGS.TS. Phan Anh Tú.</span><em>Hát thử →</em></a>
         <a class="the" href="https://thuyhuongctu.github.io/Vietnamese-History-Games/" target="_blank" rel="noopener"><b>Trò Chơi Sử Việt</b><span>Vân Đồn (1149) - dựng thương cảng quốc tế đầu tiên của Đại Việt; Bắc Hải Đảo (1780) - phiêu lưu và hải chiến trên vịnh Bắc Bộ.</span><em>Vào cổng →</em></a>
         <h3>Nguyên tắc</h3>
-        <p style="font-style:italic;color:var(--nhan)">“Máy đề xuất, người quyết định.”</p>`,
+        <p style="font-style:italic;color:var(--nhan-chu)">“Máy đề xuất, người quyết định.”</p>`,
       en:`<p>Six pieces of software for research and teaching, all running straight in the browser - each kept in a treasure chest below. <b>Tap a chest to open the lid and admire its gem.</b></p>
         <a class="the" href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener"><b>M-AIDA</b><span>LLM-assisted effect-size extraction from PDFs with 100% human verification and immutable locking. Open-source with a Zenodo DOI.</span><em>View project →</em></a>
         <a class="the" href="https://bizonland.com/" target="_blank" rel="noopener"><b>BizOn</b><span>A 3D-claymorphism business simulation: five teams on one multi-agent AI living market, six rounds across a map of Vietnam, with the Lumina AI advisor. Ships with the GO GlObal expansion.</span><em>Play →</em></a>
@@ -1004,7 +1009,7 @@ const KHU = [
         <a class="the" href="https://thuyhuongctu.github.io/we-create-tomorrow/" target="_blank" rel="noopener"><b>We Create Tomorrow</b><span>Bilingual karaoke for the anthem of the School of Economics, Can Tho University: real-time synced lyrics, instant Vietnamese - English switching, staff-notation view. Co-authored with Assoc. Prof. Dr. Phan Anh Tu.</span><em>Sing along →</em></a>
         <a class="the" href="https://thuyhuongctu.github.io/Vietnamese-History-Games/" target="_blank" rel="noopener"><b>Vietnamese History Games</b><span>Vân Đồn (1149) - build Đại Việt's first international trading port; Bắc Hải Đảo (1780) - adventure and naval combat in the Gulf of Tonkin.</span><em>Enter portal →</em></a>
         <h3>Principle</h3>
-        <p style="font-style:italic;color:var(--nhan)">“The machine proposes, the human decides.”</p>`
+        <p style="font-style:italic;color:var(--nhan-chu)">“The machine proposes, the human decides.”</p>`
     }
   },
   {
@@ -1045,7 +1050,7 @@ const KHU = [
         <div class="bai"><b>Đèn còn sáng · remix</b><span>Bản tiếng Việt</span><audio controls preload="none" src="assets/audio/den-con-sang-remix3.mp3"></audio></div>
         <div class="bai"><b>Mekong Sunfire · hook 15s</b><span>Trích đoạn MV</span><audio controls preload="none" src="docs/mv/mekong-sunfire-hook-15s.mp3"></audio></div>
         <a class="the" href="music.html"><b>Trang âm nhạc đầy đủ</b><span>27 bản thu, sáu bài chính cùng một bản bonus, lời và ghi chú sáng tác.</span><em>Mở trang nhạc →</em></a>
-        <p style="font-style:italic;color:var(--nhan);text-align:center;margin-top:1rem">🪷 «Je m'appelle Hương - tu m'as donné ce nom.»</p>`,
+        <p style="font-style:italic;color:var(--nhan-chu);text-align:center;margin-top:1rem">🪷 «Je m'appelle Hương - tu m'as donné ce nom.»</p>`,
       en:`<figure class="canh-khu"><img src="assets/img/khu-am-nhac-dan-nguyet.webp" width="916" height="503" loading="lazy" decoding="async"
         alt="Clay scene: Huong on a wooden bench under a willow playing a đàn nguyệt, beside a lantern and a night-time lotus pond"><figcaption>The bamboo stage by the lotus pond - one lantern, a đàn nguyệt, a moonlit night.</figcaption></figure>
         <p>Personal compositions - listen here, or open the full music page with lyrics and notes.</p>
@@ -1054,7 +1059,7 @@ const KHU = [
         <div class="bai"><b>Đèn còn sáng · remix</b><span>Vietnamese version</span><audio controls preload="none" src="assets/audio/den-con-sang-remix3.mp3"></audio></div>
         <div class="bai"><b>Mekong Sunfire · 15s hook</b><span>Music-video excerpt</span><audio controls preload="none" src="docs/mv/mekong-sunfire-hook-15s.mp3"></audio></div>
         <a class="the" href="music.html"><b>Full music page</b><span>Twenty-seven recordings, six main songs plus one bonus, lyrics and composition notes.</span><em>Open music page →</em></a>
-        <p style="font-style:italic;color:var(--nhan);text-align:center;margin-top:1rem">🪷 «Je m'appelle Hương - you gave me this name.»</p>`
+        <p style="font-style:italic;color:var(--nhan-chu);text-align:center;margin-top:1rem">🪷 «Je m'appelle Hương - you gave me this name.»</p>`
     }
   },
   {
@@ -1151,7 +1156,7 @@ const KHU = [
         </div>
         <h3>Định hướng học thuật</h3>
         <p>Luận án tiến sĩ về <b>quốc tế hóa và hiệu quả hoạt động kinh doanh của doanh nghiệp ở châu Á</b> đang được hoàn thiện; các phát hiện mới sẽ được cập nhật tại khu học thuật.</p>
-        <p style="font-style:italic;color:var(--nhan)">“Hải đăng không cần to - chỉ cần sáng.”</p>`,
+        <p style="font-style:italic;color:var(--nhan-chu)">“Hải đăng không cần to - chỉ cần sáng.”</p>`,
       en:`<figure class="canh-khu"><img src="assets/img/khu-tuong-lai-xe-dap.webp" width="916" height="504" loading="lazy" decoding="async"
         alt="Clay scene: Huong cycling with a basket of lotus along a dirt path through the lotus fields at dawn"><figcaption>The future - a dirt path through the lotus fields, with dawn ahead.</figcaption></figure>
         <p>This estate keeps growing alongside the ecosystem. Every visit lays a brick for what comes next.</p>
@@ -1168,7 +1173,7 @@ const KHU = [
         </div>
         <h3>Academic direction</h3>
         <p>The doctoral dissertation on <b>internationalization and firm performance in Asia</b> is being finalized; new findings will appear in the research area.</p>
-        <p style="font-style:italic;color:var(--nhan)">“A lighthouse need not be big - only bright.”</p>`
+        <p style="font-style:italic;color:var(--nhan-chu)">“A lighthouse need not be big - only bright.”</p>`
     }
   }
 ];
@@ -5651,7 +5656,7 @@ try{ if(window.thePhepVaoVuon) window.thePhepVaoVuon(); }catch(e){}
   '<rect x="7.2" y="5.4" width="1.9" height="17.6" rx=".95" fill="#9FCF7F"/>'+
   '<rect x="23.1" y="6.2" width="1.9" height="16.8" rx=".95" fill="#9FCF7F"/>'+
   '<rect x="25.7" y="8" width="1.9" height="15" rx=".95" fill="#9FCF7F"/>'+
-  '<ellipse cx="16" cy="23.4" rx="9.4" ry="3.1" fill="#F8DCE4"/>'+
+  '<ellipse cx="16" cy="23.4" rx="9.4" ry="3.1" fill="#FAE5EB"/>'+
   '<path d="M6.6 23.4v-1.6a9.4 3.1 0 0 1 18.8 0v1.6z" fill="#F8C0D2"/>'+
   '<rect x="16.5" y="6.2" width="1.9" height="10.2" rx=".95" fill="#D9749B"/>'+
   '<path d="M18.4 6.2c3 .7 4.6 2.2 4.4 4.5-1-1.6-2.5-2.3-4.4-2.4z" fill="#D9749B"/>'+

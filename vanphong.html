@@ -259,9 +259,12 @@ body.mo-thoai #can,body.mo-thoai #goiy-tay{display:none}
   #thang{padding:18px 16px}
 }
 @media (max-width:560px){
-  #bang{width:auto;max-width:48vw;padding:9px 11px}
+  /* 48vw + 46vw + hai le 12px = 362,4px o be ngang 360, tuc chong 2,4px. Dung
+     calc de tong luon la 100vw - 48, cong hai le 24 thanh 100vw - 24: khe ho
+     dung 24px o MOI be ngang, khong phai do lai moi lan. */
+  #bang{width:auto;max-width:calc(52vw - 24px);padding:9px 11px}
   #bando{width:150px;height:110px}
-  #the{max-width:46vw;padding:8px 10px}
+  #the{max-width:calc(48vw - 24px);padding:8px 10px}
   #the b{font-size:.8rem} #the span{font-size:.62rem}
   #dieu a{display:none}
 }

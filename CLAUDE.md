@@ -88,7 +88,24 @@ tối : --clay-ink #e08055  --on-clay #17130f   (6,2 chữ mực)
 - `site-chrome.css` viết `var(--clay-ink,var(--accent,#c45c3a))` để trang chưa
   khai vẫn chạy.
 - `vanphong.html` đã chuyển ngày 08/11/2026, cùng lúc với `index.html` của kho
-  Research-Office. `trangvien.html` **chưa** chuyển.
+  Research-Office. `trangvien.html` chuyển ngày 24/11 — trang ấy đặt tên biến
+  riêng nên dùng `--nhan-chu` / `--tren-nhan`, kèm bí danh `--clay-ink` /
+  `--on-clay` cho CSS dùng chung đọc được.
+
+**Đổi mực chưa chắc đủ — có chỗ lỗi nằm ở NỀN.** Đo trong trang viên: cả sau
+khi đổi sang `#a54d31`, nền `#F0E0CB` (đầu tối của dải khối đất sét) vẫn chỉ
+cho 4,38 và nền hồng `#F8DCE4` cho 4,41. Nâng mỗi nền một bậc sáng, giữ nguyên
+sắc và độ bão hoà, là qua: `#F2E5D3` (4,57) và `#FAE5EB` (4,71). Cũng vậy, chữ
+trắng trên `#C77A2E` của huy hiệu số chỉ **3,36** — tệ hơn cả chỗ đất nung và
+chẳng liên quan gì tới nó; hạ xuống `#A66626` thì được 4,62. Nhưng `#C77A2E`
+còn là **màu khu «Lối kể chuyện»**, mà màu khu là neo, nên chỗ ấy để nguyên.
+
+**Đo bằng trang đang chạy, đừng tính tay từng cặp.** Duyệt mọi phần tử có chữ,
+lấy màu chữ và màu nền **thật sự tô** (leo cây cha tới nền đục đầu tiên), rồi
+xét ngưỡng theo cỡ chữ và độ đậm. Cách ấy mới lòi ra chỗ hỏng **toàn site** mà
+đọc tệp không thấy: `assets/css/music.css` dòng 60 viết
+`color: var(--accent,#c45c3a)` cho `.hm-bai:hover`, và tệp ấy dùng chung cho
+mọi trang có widget nhạc. Nay viết `var(--clay-ink,var(--accent,#c45c3a))`.
 
 Ba thứ tiếng bằng lớp `.lang-vi` / `.lang-en` / `.lang-fr`, ẩn hiện theo
 thuộc tính `lang` của `<html>`; khoá nhớ là `huong_lang`, `huong_theme`.
@@ -575,6 +592,11 @@ khuôn mẫu Pages chính thức, thay vì một job như trước. Job sau ph�
 máy mới, đủ chục giây cho API kịp. Lần chạy thành công gần nhất trước đó
 (#160, 03:12) cùng cỡ gói ấy mà qua được, nên đây là cuộc đua chứ không phải
 ngưỡng cứng — tách job là để khỏi phải may.
+
+**Đo lại sau khi sửa: đúng.** Run 45295068626 — `build` tải xong lúc
+`00:11:45` và kết thúc `00:11:47`, `deploy` bắt đầu `00:11:52` rồi hỏi
+artifact lúc `00:11:53`. Khoảng cách đi từ **0,5 giây lên 8 giây** và qua
+ngay. Không còn là giả thuyết.
 
 **ĐỪNG CHẠY LẠI JOB HỎNG.** `upload-pages-artifact` đặt `overwrite: false`,
 nên mỗi lần «Re-run failed jobs» lại tải thêm **một artifact nữa cùng tên**
@@ -1105,8 +1127,12 @@ cả hai trạng thái: **0 cặp chồng nhau**.
 Đo thì phải ép **cả hai trạng thái**: thêm `body.tay` rồi thêm `#nhac.hien` +
 `body.co-nhac`. Chỉ đo một trạng thái thì bỏ sót đúng cái chồng nặng nhất.
 
-Còn một chỗ chồng **3px** giữa `#bang` và `#the` ở riêng 360px — có sẵn từ
-trước, chưa sửa.
+Chỗ chồng **3px** giữa `#bang` và `#the` ở riêng 360px đã sửa ngày 24/11.
+Tính ra thì rõ: `48vw + 46vw` cộng hai lề 12px thành 362,4px ở bề ngang 360.
+Không hạ hai con số ấy xuống — làm thế thì mỗi bề ngang lại phải đo lại. Dùng
+`calc(52vw - 24px)` và `calc(48vw - 24px)`: tổng luôn là `100vw - 48`, cộng
+hai lề thành `100vw - 24`, nên **khe hở cố định 24px ở mọi bề ngang**. Đo lại
+ở 360/390/430, cả hai trạng thái: 0 cặp chồng.
 
 Sửa nội dung văn phòng thì **chép sang cả hai rồi kiểm cả hai**. Quên một bên
 thì bản có DOI và bản đang chạy nói khác nhau — mà DOI là thứ người ta trích
