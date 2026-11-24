@@ -106,6 +106,7 @@ PAGE_CONF = [
     ('/trangvien.html', 'trangvien.html', '0.5', 'monthly'),
     ('/vanphong.html', 'vanphong.html', '0.5', 'monthly'),
     ('/so-luu-niem.html', 'so-luu-niem.html', '0.5', 'monthly'),
+    ('/apps.html', 'apps.html', '0.6', 'monthly'),
     ('/journey.html', 'journey.html', '0.5', 'monthly'),
 ]
 

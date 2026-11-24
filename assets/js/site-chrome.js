@@ -349,13 +349,14 @@
         '<div><a href="https://www.youtube.com/channel/UCNt0O_5hQ5nxsSGeTfRFAgA" target="_blank" rel="noopener">YouTube</a></div></div>' +
 
         '<div class="sf-col"><div class="sf-ch">' + t('Dự án', 'Projects', 'Projets') + '</div>' +
-        '<div><a href="https://thuyhuongctu.github.io/M-AIDA/" target="_blank" rel="noopener">M-AIDA</a></div>' +
+        '<div><a href="apps.html">' + t('Mọi ứng dụng', 'All apps', 'Toutes les applications') + '</a></div>' +
+        '<div><a href="https://maida.jemappellehuong.com/" target="_blank" rel="noopener">M-AIDA</a></div>' +
         '<div><a href="https://bizonland.com/" target="_blank" rel="noopener">BizOn</a></div>' +
-        '<div><a href="https://thuyhuongctu.github.io/EnQuiz/" target="_blank" rel="noopener">EnQuiz</a></div>' +
-        '<div><a href="https://thuyhuongctu.github.io/ComDraft/" target="_blank" rel="noopener">ComDraft</a></div>' +
-        '<div><a href="https://thuyhuongctu.github.io/we-create-tomorrow/" target="_blank" rel="noopener">We Create Tomorrow</a></div>' +
-        '<div><a href="https://thuyhuongctu.github.io/Chansonia/" target="_blank" rel="noopener">Chansonia</a></div>' +
-        '<div><a href="https://thuyhuongctu.github.io/Vietnamese-History-Games/" target="_blank" rel="noopener">' + t('Trò Chơi Sử Việt', 'History Games', 'Jeux d\u2019histoire') + '</a></div></div>' +
+        '<div><a href="https://enquiz.bizonland.com/" target="_blank" rel="noopener">EnQuiz</a></div>' +
+        '<div><a href="https://comdraft.jemappellehuong.com/" target="_blank" rel="noopener">ComDraft</a></div>' +
+        '<div><a href="https://wct.jemappellehuong.com/" target="_blank" rel="noopener">We Create Tomorrow</a></div>' +
+        '<div><a href="https://chansonia.jemappellehuong.com/" target="_blank" rel="noopener">Chansonia</a></div>' +
+        '<div><a href="https://games.jemappellehuong.com/" target="_blank" rel="noopener">' + t('Trò Chơi Sử Việt', 'History Games', 'Jeux d\u2019histoire') + '</a></div></div>' +
         '</div>' +
 
         '</div>' +
