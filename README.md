@@ -61,7 +61,7 @@ each with an analysis plan registered on OSF.
 
 **Methods.** Firm-level econometrics with moderation tests; three-level
 random-effects meta-analysis. The current coding table of the synthesis was not
-extracted with [M-AIDA](https://thuyhuongctu.github.io/M-AIDA/); it is being
+extracted with [M-AIDA](https://maida.jemappellehuong.com/); it is being
 re-audited value by value against the primary studies, under the plan registered
 on OSF on 25 October 2026. M-AIDA, developed alongside the dissertation, provides
 large-language-model assistance with human verification and immutable locking.
@@ -120,28 +120,28 @@ own repository and is deposited.
 
 | Work | What it does | | |
 |---|---|---|---|
-| **M-AIDA** | Meta-Analysis Intelligent Data Assistant — LLM extraction of effect sizes with 100 % human verification and immutable locking | [site](https://thuyhuongctu.github.io/M-AIDA/) | [`zenodo.21282516`](https://doi.org/10.5281/zenodo.21282516) |
-| **Gravity Lab** | A browser-based gravity-model laboratory for FDI into Vietnam | [site](https://thuyhuongctu.github.io/Gravity-Lab/) | [`zenodo.23307832`](https://doi.org/10.5281/zenodo.23307832) |
+| **M-AIDA** | Meta-Analysis Intelligent Data Assistant — LLM extraction of effect sizes with 100 % human verification and immutable locking | [site](https://maida.jemappellehuong.com/) | [`zenodo.21282516`](https://doi.org/10.5281/zenodo.21282516) |
+| **Gravity Lab** | A browser-based gravity-model laboratory for FDI into Vietnam | [site](https://gravity.bizonland.com/) | [`zenodo.23307832`](https://doi.org/10.5281/zenodo.23307832) |
 | **Distance, FDI and Trade** | Research code and data mappings (DA0–DA4) for the Vietnam FDI paper | — | [`zenodo.23115783`](https://doi.org/10.5281/zenodo.23115783) |
 | **AIBIS Global Market Engine** | A deterministic engine for choosing international market-entry modes | [site](https://bizonland.com/aibis-entry-mode-preview.html) | [`zenodo.23317596`](https://doi.org/10.5281/zenodo.23317596) |
 | **Le Bureau de Hương** | An offline 3D research office with a mode-of-entry board for International Business teaching | [site](https://bureau.jemappellehuong.com/) | [`zenodo.22971293`](https://doi.org/10.5281/zenodo.22971293) |
-| **Le Domaine de Hương** | The 3D estate as a standalone work: eight zones, four lighting states, five gameplay modules, no network request at all | [site](https://thuyhuongctu.github.io/Le-Domaine-de-Huong/) | [`zenodo.23539409`](https://doi.org/10.5281/zenodo.23539409) |
+| **Le Domaine de Hương** | The 3D estate as a standalone work: eight zones, four lighting states, five gameplay modules, no network request at all | [site](https://domaine.jemappellehuong.com/) | [`zenodo.23539409`](https://doi.org/10.5281/zenodo.23539409) |
 
 ### Teaching
 
 | Work | What it does | | |
 |---|---|---|---|
 | **BizOn Bật Nghiệp** | A 3D claymorphism business-simulation game for entrepreneurship education | [site](https://bizonland.com/) · [Play](https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.bizon) | [`zenodo.21592241`](https://doi.org/10.5281/zenodo.21592241) |
-| **EnQuiz** | An offline-first bilingual quiz app for entrepreneurship revision — 300 questions, installable | [site](https://thuyhuongctu.github.io/EnQuiz/) · [Play](https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.enquiz) | [`zenodo.21850735`](https://doi.org/10.5281/zenodo.21850735) |
-| **ComDraft** | A full teaching package: five lecture decks, three lab workbooks, a 200-question bank, eight subtitled videos and an offline revision app | [site](https://thuyhuongctu.github.io/ComDraft/) | [`zenodo.22003676`](https://doi.org/10.5281/zenodo.22003676) |
-| **Vietnamese history games** | Vân Đồn (1149), Bắc Hải Đảo (1780, 2D and 3D), Chợ Nổi (19th century) | [site](https://thuyhuongctu.github.io/Vietnamese-History-Games/) | [`zenodo.21850564`](https://doi.org/10.5281/zenodo.21850564) |
+| **EnQuiz** | An offline-first bilingual quiz app for entrepreneurship revision — 300 questions, installable | [site](https://enquiz.bizonland.com/) · [Play](https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.enquiz) | [`zenodo.21850735`](https://doi.org/10.5281/zenodo.21850735) |
+| **ComDraft** | A full teaching package: five lecture decks, three lab workbooks, a 200-question bank, eight subtitled videos and an offline revision app | [site](https://comdraft.jemappellehuong.com/) | [`zenodo.22003676`](https://doi.org/10.5281/zenodo.22003676) |
+| **Vietnamese history games** | Vân Đồn (1149), Bắc Hải Đảo (1780, 2D and 3D), Chợ Nổi (19th century) | [site](https://games.jemappellehuong.com/) | [`zenodo.21850564`](https://doi.org/10.5281/zenodo.21850564) |
 
 ### Music
 
 | Work | What it does | | |
 |---|---|---|---|
-| **We Create Tomorrow** | Bilingual karaoke for the anthem of the School of Economics, Can Tho University — with Assoc. Prof. Dr. Phan Anh Tú | [site](https://thuyhuongctu.github.io/we-create-tomorrow/) | [`zenodo.22080060`](https://doi.org/10.5281/zenodo.22080060) |
-| **Chansonia** | A lyrics-synchronised player for the album «La lampe, le fleuve et les couleurs» | [site](https://thuyhuongctu.github.io/Chansonia/) | [`zenodo.22172794`](https://doi.org/10.5281/zenodo.22172794) |
+| **We Create Tomorrow** | Bilingual karaoke for the anthem of the School of Economics, Can Tho University — with Assoc. Prof. Dr. Phan Anh Tú | [site](https://wct.jemappellehuong.com/) | [`zenodo.22080060`](https://doi.org/10.5281/zenodo.22080060) |
+| **Chansonia** | A lyrics-synchronised player for the album «La lampe, le fleuve et les couleurs» | [site](https://chansonia.jemappellehuong.com/) | [`zenodo.22172794`](https://doi.org/10.5281/zenodo.22172794) |
 
 Courses taught, with the open material released for each, are listed on the
 [homepage](https://jemappellehuong.com/#teaching).

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-title" content="Hương">
+<title>Ứng dụng · Apps - Je m'appelle Hương</title>
+<meta name="description" content="Every app by Do Thuy Huong in one place: web address, Google Play status and DOI for research, teaching and music tools.">
+<link rel="canonical" href="https://jemappellehuong.com/apps.html">
+<meta property="og:title" content="Ứng dụng · Apps - Je m'appelle Hương">
+<meta property="og:description" content="Every app in one place: web address, Google Play status and DOI.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jemappellehuong.com/apps.html">
+<meta property="og:site_name" content="Je m'appelle Hương">
+<meta property="og:image" content="https://jemappellehuong.com/assets/img/og-default-2.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo «Je m'appelle Hương · Lecturer & Researcher» bên chữ Je m'appelle Hương, PhD Candidate · Can Tho University, trên nền giấy kem">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ứng dụng · Apps - Je m'appelle Hương">
+<meta name="twitter:description" content="Every app in one place: web address, Google Play status and DOI.">
+<meta name="twitter:image" content="https://jemappellehuong.com/assets/img/og-default-2.jpg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>
+:root{--paper:#f6f1e7;--surface:#fffcf5;--ink:#1c1814;--muted:#6f6459;--line:#e2d8c7;
+--accent:#c45c3a;--clay-ink:#a54d31;--on-clay:#fff;--accent-soft:#f3e4da;--gold:#b8842c;--accent2:#3f6f68;
+--serif:"Iowan Old Style",Georgia,"Times New Roman",serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+--shadow:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09);
+--ra:cubic-bezier(.23,1,.32,1)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#17130f;--surface:#201914;--ink:#efe6d8;--muted:#a6998a;--line:#332a22;--accent:#e08055;--clay-ink:#e08055;--on-clay:#17130f;--accent-soft:#3a251c;--gold:#d6a24e;--accent2:#79b3a6;--shadow:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42)}}
+:root[data-theme=dark]{--paper:#17130f;--surface:#201914;--ink:#efe6d8;--muted:#a6998a;--line:#332a22;--accent:#e08055;--clay-ink:#e08055;--on-clay:#17130f;--accent-soft:#3a251c;--gold:#d6a24e;--accent2:#79b3a6;--shadow:0 1px 1px rgba(0,0,0,.4),0 10px 24px rgba(0,0,0,.42)}
+:root[data-theme=light]{--paper:#f6f1e7;--surface:#fffcf5;--ink:#1c1814;--muted:#6f6459;--line:#e2d8c7;--accent:#c45c3a;--clay-ink:#a54d31;--on-clay:#fff;--accent-soft:#f3e4da;--gold:#b8842c;--accent2:#3f6f68;--shadow:0 1px 1px rgba(60,40,28,.05),0 10px 22px rgba(90,60,40,.09)}
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6}
+.wrap{max-width:860px;margin:0 auto;padding:clamp(20px,4vw,48px) 18px;padding-top:96px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
+a{color:var(--clay-ink)}
+.skip{position:absolute;left:-999px;top:0;background:var(--clay-ink);color:var(--on-clay);padding:10px 16px;z-index:99}
+.skip:focus{left:12px;top:12px;border-radius:10px;text-decoration:none}
+.skip-link{position:absolute;top:-48px;left:0;background:var(--clay-ink);color:var(--on-clay);font-weight:700;padding:10px 18px;z-index:100;border-radius:0 0 10px 0;text-decoration:none}
+.skip-link:focus{top:0}
+.brandmini{position:fixed;top:10px;left:12px;z-index:6;display:none;width:min(230px,calc(100vw - 190px));height:auto;text-decoration:none;line-height:0}
+.brandmini img{display:block;width:100%;height:auto;object-fit:contain}
+@media(max-width:560px){.brandmini{top:6px;left:6px;width:96px;background:rgba(255,253,248,.7);border-radius:14px;padding:3px 8px}}
+.topctl{position:fixed;top:58px;right:14px;display:flex;gap:8px;z-index:61;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 24px)}
+@media(max-width:760px){.topctl{top:52px;gap:6px}}
+.toggle{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 13px;font-size:.74rem;cursor:pointer;box-shadow:var(--shadow)}
+.langtog{display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
+.langtog button{border:none;background:transparent;color:var(--muted);font:700 .72rem var(--sans);padding:6px 11px;cursor:pointer}
+.langtog button.active{background:var(--clay-ink);color:var(--on-clay)}
+html[lang="vi"] .lang-en,html[lang="vi"] .lang-fr{display:none}
+html[lang="en"] .lang-vi,html[lang="en"] .lang-fr{display:none}
+html[lang="fr"] .lang-vi,html[lang="fr"] .lang-en{display:none}
+header.page{margin:40px 0 14px;text-align:center;position:relative}
+header.page h1{font-size:clamp(1.7rem,5vw,2.5rem);margin:0 0 8px}
+.page-kicker{margin:0 0 6px;font:700 .7rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--clay-ink)}
+header.page::after{content:"";display:block;margin:26px auto 0;width:84%;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--accent-soft),var(--accent),var(--accent-soft))}
+.sub{color:var(--muted)}
+
+/* ---- danh sách ứng dụng ---------------------------------------------- */
+.nhom{margin:34px 0 0}
+.nhom h2{font-size:clamp(1.2rem,3.2vw,1.5rem);margin:0 0 4px}
+.nhom .mo{color:var(--muted);font-size:.9rem;margin:0 0 14px}
+.luoi{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));margin:0;padding:0;list-style:none}
+.app{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.app h3{font-size:1.08rem}
+.app p{margin:0;font-size:.9rem;color:var(--ink)}
+.app .dc{font:500 .78rem/1.4 var(--sans);color:var(--muted);overflow-wrap:anywhere}
+.app .dc a{color:var(--clay-ink)}
+.app .nut{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-top:6px}
+.mo-web{display:inline-flex;align-items:center;gap:6px;background:var(--clay-ink);color:var(--on-clay);text-decoration:none;
+  font:700 .8rem var(--sans);border-radius:999px;padding:7px 14px}
+.mo-web:hover,.mo-web:focus-visible{opacity:.88}
+.mo-web:focus-visible,.nhan a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.nhan{display:inline-flex;align-items:center;gap:5px;font:700 .7rem/1 var(--sans);letter-spacing:.02em;border-radius:999px;padding:6px 10px;border:1px solid var(--line);color:var(--muted)}
+.nhan.play{border-color:var(--accent2);color:var(--accent2)}
+.nhan.play a{color:inherit;text-decoration:none}
+.nhan.kin{border-style:dashed}
+.ghichu{margin:40px 0 10px;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:var(--accent-soft);font-size:.88rem}
+.ghichu p{margin:0 0 8px}.ghichu p:last-child{margin:0}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
+</style>
+<style>
+/* ===== đầu trang dùng chung (kiểu DeepMind) ===== */
+.dmnav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:10px;padding:10px 16px;
+  background:color-mix(in srgb,var(--surface) 78%,transparent);backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);transition:padding .25s ease,box-shadow .25s ease}
+.dmnav.shrink{padding:6px 16px;box-shadow:0 2px 12px rgba(60,30,30,.12)}
+.dmnav .dmlogo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);line-height:0;flex-shrink:0}
+.dmnav .dmlogo img{height:30px;width:auto}
+.dmnav .dmlabel{font:600 .78rem/1 var(--serif);color:var(--ink);letter-spacing:.02em}
+.dmnav .dmlabel small{display:block;font:600 .56rem/1.2 var(--sans);color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-top:2px}
+.dmnav .dmright{margin-left:auto;display:flex;align-items:center;gap:6px;overflow-x:auto;max-width:calc(100vw - 170px)}
+.dmnav .dmright a{color:var(--ink);text-decoration:none;font:500 .76rem/1.4 var(--sans);padding:6px 8px;white-space:nowrap;
+  background-image:linear-gradient(var(--accent),var(--accent));background-size:0% 1.5px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .28s ease,color .2s}
+.dmnav .dmright a:hover{color:var(--clay-ink);background-size:100% 1.5px}
+.dmnav .dmico{display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border-radius:50%;color:var(--muted);font-size:.9rem;text-decoration:none;transition:color .2s,background .2s}
+.dmnav .dmico:hover{color:var(--clay-ink);background:var(--accent-soft)}
+@media(max-width:760px){.dmnav{padding:7px 10px;gap:6px;flex-wrap:nowrap}.dmnav .dmlabel small{display:none}.dmnav .dmlabel{font-size:.7rem}
+.dmnav .dmright{max-width:calc(100vw - 150px);flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.dmnav .dmright::-webkit-scrollbar{display:none}
+.dmnav .dmright a{font-size:.66rem;padding:5px 5px;white-space:nowrap;flex-shrink:0}
+.dmnav .dmico{width:28px;height:28px;font-size:.8rem;flex-shrink:0}.dmnav .dmico:last-child{display:none}.dmnav .dmright{min-width:0}
+.dmnav{max-width:100%;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;flex-shrink:1}.dmnav::-webkit-scrollbar{display:none}}
+</style>
+<script>/* Lua chon sang/toi dung chung ca site (khoa huong_theme). Dat trong <head>
+   de trang khong nhay mau khi tai. */
+(function(){try{var s=localStorage.getItem('huong_theme');if(s)document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script>
+</head><body>
+  <div class="dmnav" id="dmnav">
+    <a class="dmlogo" href="index.html"><img src="assets/img/lr-seal-round-144.webp" alt="LR seal logo" onerror="this.style.display='none'"><span class="dmlabel">Je m'appelle Hương<small>Lecturer &amp; Researcher</small></span></a>
+    <div class="dmright">
+      <a href="index.html"><span class="lang-vi">Trang chủ</span><span class="lang-en">Home</span><span class="lang-fr">Accueil</span></a>
+      <a href="cv.html">CV</a>
+      <a href="garden.html">🪷 <span class="lang-vi">Vườn số</span><span class="lang-en">Garden</span><span class="lang-fr">Jardin</span></a>
+      <a href="apps.html" aria-current="page"><span class="lang-vi">Ứng dụng</span><span class="lang-en">Apps</span><span class="lang-fr">Applications</span></a>
+      <a class="dmico" href="https://orcid.org/0000-0002-7711-2487" target="_blank" rel="noopener" title="ORCID">🆔</a>
+      <a class="dmico" href="https://github.com/thuyhuongctu" target="_blank" rel="noopener" title="GitHub">💻</a>
+      <a class="dmico" href="mailto:thuyhuongctu@gmail.com" title="Email">✉️</a>
+    </div>
+  </div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip" href="#main"><span class="lang-vi">Nhảy đến danh sách ứng dụng</span><span class="lang-en">Skip to the list of apps</span><span class="lang-fr">Aller à la liste des applications</span></a>
+<a class="brandmini" href="./" aria-label="Je m'appelle Hương · Lecturer &amp; Researcher" title="Je m'appelle Hương · Lecturer &amp; Researcher"><img loading="lazy" src="assets/img/lr-je-mappelle-huong-480.webp" alt="Logo LR - Je m'appelle Hương, Lecturer &amp; Researcher" fetchpriority="high"></a>
+<div class="topctl"><span class="langtog"><button type="button" data-lang="vi" class="active">🇻🇳 VI</button><button type="button" data-lang="en">🇬🇧 EN</button><button type="button" data-lang="fr">🇫🇷 FR</button></span><button class="toggle" id="tg"><span class="lang-vi">◐ Sáng / Tối</span><span class="lang-en">◐ Light / Dark</span><span class="lang-fr">◐ Clair / Sombre</span></button></div>
+
+<div class="wrap">
+<header class="page">
+  <p class="page-kicker"><span class="lang-vi">Ứng dụng</span><span class="lang-en">Apps</span><span class="lang-fr">Applications</span></p>
+  <h1><span class="lang-vi">Mọi ứng dụng ở một chỗ</span><span class="lang-en">Every app in one place</span><span class="lang-fr">Toutes les applications au même endroit</span></h1>
+  <p class="sub"><span class="lang-vi">Mỗi ứng dụng chạy ngay trên trình duyệt ở địa chỉ riêng thuộc jemappellehuong.com hoặc bizonland.com. Một số có thêm bản Android trên Google Play.</span><span class="lang-en">Each app runs in the browser at its own address under jemappellehuong.com or bizonland.com. Some also have an Android build on Google Play.</span><span class="lang-fr">Chaque application fonctionne dans le navigateur, à sa propre adresse sous jemappellehuong.com ou bizonland.com. Certaines ont aussi une version Android sur Google Play.</span></p>
+</header>
+<main id="main">
+  <section class="nhom" id="nghien-cuu" aria-labelledby="nghien-cuu-h">
+    <h2 id="nghien-cuu-h"><span class="lang-vi">Nghiên cứu và phương pháp</span><span class="lang-en">Research and method</span><span class="lang-fr">Recherche et méthode</span></h2>
+    <p class="mo"><span class="lang-vi">Công cụ cho phân tích tổng hợp, mô hình thương mại và hai tác phẩm 3D.</span><span class="lang-en">Tools for meta-analysis and trade models, and two 3D works.</span><span class="lang-fr">Outils pour la méta-analyse et les modèles de commerce, et deux œuvres 3D.</span></p>
+    <ul class="luoi">
+      <li class="app">
+        <h3>M-AIDA</h3>
+        <p><span class="lang-vi">Trợ lý dữ liệu cho phân tích tổng hợp: trích xuất mức độ ảnh hưởng từ PDF bằng mô hình ngôn ngữ lớn, con người kiểm chứng 100%, khóa bất biến.</span><span class="lang-en">Meta-Analysis Intelligent Data Assistant: effect-size extraction from PDFs with large language models, 100% human verification and immutable locking.</span><span class="lang-fr">Assistant de données pour la méta-analyse : extraction des tailles d'effet depuis des PDF par grands modèles de langage, vérification humaine à 100 %, verrouillage immuable.</span></p>
+        <p class="dc">maida.jemappellehuong.com · <a href="https://doi.org/10.5281/zenodo.21282516" target="_blank" rel="noopener">DOI 10.5281/zenodo.21282516</a></p>
+        <div class="nut"><a class="mo-web" href="https://maida.jemappellehuong.com/" target="_blank" rel="noopener"><span class="lang-vi">Mở bản web</span><span class="lang-en">Open on the web</span><span class="lang-fr">Ouvrir sur le web</span> ↗</a><span class="nhan"><span class="lang-vi">Chỉ bản web</span><span class="lang-en">Web only</span><span class="lang-fr">Web uniquement</span></span></div>
+      </li>
+      <li class="app">
+        <h3>Gravity Lab</h3>
+        <p><span class="lang-vi">Phòng thí nghiệm mô hình lực hấp dẫn chạy trên trình duyệt, cho dòng vốn FDI vào Việt Nam.</span><span class="lang-en">A browser-based gravity-model laboratory for FDI into Vietnam.</span><span class="lang-fr">Un laboratoire du modèle de gravité dans le navigateur, pour les IDE au Vietnam.</span></p>
+        <p class="dc">gravity.bizonland.com · <a href="https://doi.org/10.5281/zenodo.23307832" target="_blank" rel="noopener">DOI 10.5281/zenodo.23307832</a></p>
+        <div class="nut"><a class="mo-web" href="https://gravity.bizonland.com/" target="_blank" rel="noopener"><span class="lang-vi">Mở bản web</span><span class="lang-en">Open on the web</span><span class="lang-fr">Ouvrir sur le web</span> ↗</a><span class="nhan kin"><span class="lang-vi">Android: đang thử nghiệm kín</span><span class="lang-en">Android: closed testing</span><span class="lang-fr">Android : test fermé</span></span></div>
+      </li>
+      <li class="app">
+        <h3>AIBIS Global Market Engine</h3>
+        <p><span class="lang-vi">Bộ máy tất định để chọn phương thức thâm nhập thị trường quốc tế.</span><span class="lang-en">A deterministic engine for choosing international market-entry modes.</span><span class="lang-fr">Un moteur déterministe pour choisir le mode d'entrée sur un marché étranger.</span></p>
+        <p class="dc">bizonland.com/app/aibis.html · <a href="https://doi.org/10.5281/zenodo.23317596" target="_blank" rel="noopener">DOI 10.5281/zenodo.23317596</a></p>
+        <div class="nut"><a class="mo-web" href="https://bizonland.com/app/aibis.html" target="_blank" rel="noopener"><span class="lang-vi">Mở bản web</span><span class="lang-en">Open on the web</span><span class="lang-fr">Ouvrir sur le web</span> ↗</a><span class="nhan"><span class="lang-vi">Chỉ bản web</span><span class="lang-en">Web only</span><span class="lang-fr">Web uniquement</span></span></div>
+      </li>
+      <li class="app">
+        <h3>Le Bureau de Hương</h3>
+        <p><span class="lang-vi">Văn phòng nghiên cứu 3D chạy ngoại tuyến, có bảng phương thức thâm nhập thị trường cho môn Kinh doanh quốc tế.</span><span class="lang-en">An offline 3D research office with a mode-of-entry board for International Business teaching.</span><span class="lang-fr">Un bureau de recherche 3D hors ligne, avec un tableau des modes d'entrée pour l'enseignement du commerce international.</span></p>
+        <p class="dc">bureau.jemappellehuong.com · <a href="https://doi.org/10.5281/zenodo.22971293" target="_blank" rel="noopener">DOI 10.5281/zenodo.22971293</a> · <a href="vanphong.html"><span class="lang-vi">xem trong trang này</span><span class="lang-en">view on this site</span><span class="lang-fr">voir sur ce site</span></a></p>
+        <div class="nut"><a class="mo-web" href="https://bureau.jemappellehuong.com/" target="_blank" rel="noopener"><span class="lang-vi">Mở bản web</span><span class="lang-en">Open on the web</span><span class="lang-fr">Ouvrir sur le web</span> ↗</a><span class="nhan kin"><span class="lang-vi">Android: đang thử nghiệm kín</span><span class="lang-en">Android: closed testing</span><span class="lang-fr">Android : test fermé</span></span></div>
+      </li>
+      <li class="app">
+        <h3>Le Domaine de Hương</h3>
+        <p><span class="lang-vi">Trang viên 3D như một tác phẩm độc lập: tám khu, bốn thời khắc ánh sáng, năm mô-đun trò chơi, không gửi yêu cầu mạng nào.</span><span class="lang-en">The 3D estate as a standalone work: eight zones, four lighting states, five gameplay modules, no network request at all.</span><span class="lang-fr">Le domaine 3D comme œuvre autonome : huit zones, quatre éclairages, cinq modules de jeu, aucune requête réseau.</span></p>
+        <p class="dc">domaine.jemappellehuong.com · <a href="https://doi.org/10.5281/zenodo.23539409" target="_blank" rel="noopener">DOI 10.5281/zenodo.23539409</a> · <a href="trangvien.html"><span class="lang-vi">xem trong trang này</span><span class="lang-en">view on this site</span><span class="lang-fr">voir sur ce site</span></a></p>
+        <div class="nut"><a class="mo-web" href="https://domaine.jemappellehuong.com/" target="_blank" rel="noopener"><span class="lang-vi">Mở bản web</span><span class="lang-en">Open on the web</span><span class="lang-fr">Ouvrir sur le web</span> ↗</a><span class="nhan kin"><span class="lang-vi">Android: đang thử nghiệm kín</span><span class="lang-en">Android: closed testing</span><span class="lang-fr">Android : test fermé</span></span></div>
+      </li>
+    </ul>
+  </section>
+  <section class="nhom" id="giang-day" aria-labelledby="giang-day-h">
+    <h2 id="giang-day-h"><span class="lang-vi">Giảng dạy</span><span class="lang-en">Teaching</span><span class="lang-fr">Enseignement</span></h2>
+    <p class="mo"><span class="lang-vi">Học liệu và trò chơi cho các học phần khởi nghiệp, soạn thảo văn bản và lịch sử.</span><span class="lang-en">Course material and games for entrepreneurship, document drafting and history.</span><span class="lang-fr">Supports de cours et jeux pour l'entrepreneuriat, la rédaction et l'histoire.</span></p>
+    <ul class="luoi">
+      <li class="app">
+        <h3>BizOn Bật Nghiệp</h3>
+        <p><span class="lang-vi">Trò chơi mô phỏng kinh doanh 3D phong cách đất sét cho môn khởi nghiệp.</span><span class="lang-en">A 3D claymorphism business-simulation game for entrepreneurship education.</span><span class="lang-fr">Un jeu de simulation d'entreprise en 3D, style pâte à modeler, pour l'enseignement de l'entrepreneuriat.</span></p>
+        <p class="dc">bizonland.com · <a href="https://doi.org/10.5281/zenodo.21592241" target="_blank" rel="noopener">DOI 10.5281/zenodo.21592241</a></p>
+        <div class="nut"><a class="mo-web" href="https://bizonland.com/" target="_blank" rel="noopener"><span class="lang-vi">Mở bản web</span><span class="lang-en">Open on the web</span><span class="lang-fr">Ouvrir sur le web</span> ↗</a><span class="nhan play"><a href="https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.bizon" target="_blank" rel="noopener">Google Play ↗</a></span></div>
+      </li>
+      <li class="app">
+        <h3>EnQuiz</h3>
+        <p><span class="lang-vi">Ứng dụng ôn tập trắc nghiệm song ngữ cho môn khởi nghiệp: chạy ngoại tuyến, 300 câu hỏi, cài được lên máy.</span><span class="lang-en">An offline-first bilingual quiz app for entrepreneurship revision: 300 questions, installable.</span><span class="lang-fr">Une application de révision bilingue hors ligne pour l'entrepreneuriat : 300 questions, installable.</span></p>
+        <p class="dc">enquiz.bizonland.com · <a href="https://doi.org/10.5281/zenodo.21850735" target="_blank" rel="noopener">DOI 10.5281/zenodo.21850735</a></p>
+        <div class="nut"><a class="mo-web" href="https://enquiz.bizonland.com/" target="_blank" rel="noopener"><span class="lang-vi">Mở bản web</span><span class="lang-en">Open on the web</span><span class="lang-fr">Ouvrir sur le web</span> ↗</a><span class="nhan play"><a href="https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.enquiz" target="_blank" rel="noopener">Google Play ↗</a></span></div>
+      </li>
+      <li class="app">
+        <h3>ComDraft</h3>
+        <p><span class="lang-vi">Trọn gói học liệu: năm bộ bài giảng, ba sổ thực hành, ngân hàng 200 câu hỏi, tám video có phụ đề và một ứng dụng ôn tập ngoại tuyến.</span><span class="lang-en">A full teaching package: five lecture decks, three lab workbooks, a 200-question bank, eight subtitled videos and an offline revision app.</span><span class="lang-fr">Un ensemble pédagogique complet : cinq diaporamas, trois cahiers d'exercices, une banque de 200 questions, huit vidéos sous-titrées et une application de révision hors ligne.</span></p>
+        <p class="dc">comdraft.jemappellehuong.com · <a href="https://doi.org/10.5281/zenodo.22003676" target="_blank" rel="noopener">DOI 10.5281/zenodo.22003676</a></p>
+        <div class="nut"><a class="mo-web" href="https://comdraft.jemappellehuong.com/" target="_blank" rel="noopener"><span class="lang-vi">Mở bản web</span><span class="lang-en">Open on the web</span><span class="lang-fr">Ouvrir sur le web</span> ↗</a><span class="nhan kin"><span class="lang-vi">Android: đang thử nghiệm kín</span><span class="lang-en">Android: closed testing</span><span class="lang-fr">Android : test fermé</span></span></div>
+      </li>
+      <li class="app">
+        <h3>CHAM Homestay: Business Case</h3>
+        <p><span class="lang-vi">Tình huống giảng dạy khởi sự doanh nghiệp: homestay sinh thái trên cù lao Tân Lộc, Cần Thơ, viết cùng PGS.TS. Phan Anh Tú.</span><span class="lang-en">A teaching case in new venture creation: an eco-homestay on Tân Lộc river island, Cần Thơ, written with Assoc. Prof. Dr. Phan Anh Tú.</span><span class="lang-fr">Une étude de cas en création d'entreprise : un écohébergement sur l'île fluviale de Tân Lộc, Cần Thơ, écrite avec Phan Anh Tú.</span></p>
+        <p class="dc">bizonland.com/cham · <a href="https://doi.org/10.5281/zenodo.23720576" target="_blank" rel="noopener">DOI 10.5281/zenodo.23720576</a></p>
+        <div class="nut"><a class="mo-web" href="https://bizonland.com/cham/" target="_blank" rel="noopener"><span class="lang-vi">Mở bản web</span><span class="lang-en">Open on the web</span><span class="lang-fr">Ouvrir sur le web</span> ↗</a><span class="nhan kin"><span class="lang-vi">Android: đang thử nghiệm kín</span><span class="lang-en">Android: closed testing</span><span class="lang-fr">Android : test fermé</span></span></div>
+      </li>
+      <li class="app">
+        <h3><span class="lang-vi">Cổng Trò Chơi Sử Việt</span><span class="lang-en">Vietnamese History Games</span><span class="lang-fr">Jeux d'histoire du Vietnam</span></h3>
+        <p><span class="lang-vi">Năm trò chơi lịch sử chạy trên trình duyệt: Vân Đồn (1149, 2D và 3D), Bắc Hải Đảo (1780, 2D và 3D), Chợ Nổi (thế kỷ XIX).</span><span class="lang-en">Five history games in the browser: Vân Đồn (1149, 2D and 3D), Bắc Hải Đảo (1780, 2D and 3D), Chợ Nổi (19th century).</span><span class="lang-fr">Cinq jeux d'histoire dans le navigateur : Vân Đồn (1149, 2D et 3D), Bắc Hải Đảo (1780, 2D et 3D), Chợ Nổi (XIXe siècle).</span></p>
+        <p class="dc">games.jemappellehuong.com · <a href="https://doi.org/10.5281/zenodo.21850564" target="_blank" rel="noopener">DOI 10.5281/zenodo.21850564</a></p>
+        <div class="nut"><a class="mo-web" href="https://games.jemappellehuong.com/" target="_blank" rel="noopener"><span class="lang-vi">Mở bản web</span><span class="lang-en">Open on the web</span><span class="lang-fr">Ouvrir sur le web</span> ↗</a><span class="nhan kin"><span class="lang-vi">Android: đang thử nghiệm kín</span><span class="lang-en">Android: closed testing</span><span class="lang-fr">Android : test fermé</span></span></div>
+      </li>
+    </ul>
+  </section>
+  <section class="nhom" id="am-nhac" aria-labelledby="am-nhac-h">
+    <h2 id="am-nhac-h"><span class="lang-vi">Âm nhạc</span><span class="lang-en">Music</span><span class="lang-fr">Musique</span></h2>
+    <p class="mo"><span class="lang-vi">Hai ứng dụng nghe nhạc có lời chạy theo bài.</span><span class="lang-en">Two music apps with lyrics that follow the song.</span><span class="lang-fr">Deux applications musicales dont les paroles suivent la chanson.</span></p>
+    <ul class="luoi">
+      <li class="app">
+        <h3>Chansonia</h3>
+        <p><span class="lang-vi">Trình phát nhạc chạy lời theo nhịp cho album «La lampe, le fleuve et les couleurs».</span><span class="lang-en">A lyrics-synchronised player for the album «La lampe, le fleuve et les couleurs».</span><span class="lang-fr">Un lecteur aux paroles synchronisées pour l'album «La lampe, le fleuve et les couleurs».</span></p>
+        <p class="dc">chansonia.jemappellehuong.com · <a href="https://doi.org/10.5281/zenodo.22172794" target="_blank" rel="noopener">DOI 10.5281/zenodo.22172794</a></p>
+        <div class="nut"><a class="mo-web" href="https://chansonia.jemappellehuong.com/" target="_blank" rel="noopener"><span class="lang-vi">Mở bản web</span><span class="lang-en">Open on the web</span><span class="lang-fr">Ouvrir sur le web</span> ↗</a><span class="nhan kin"><span class="lang-vi">Android: đang thử nghiệm kín</span><span class="lang-en">Android: closed testing</span><span class="lang-fr">Android : test fermé</span></span></div>
+      </li>
+      <li class="app">
+        <h3>We Create Tomorrow</h3>
+        <p><span class="lang-vi">Karaoke song ngữ cho bài ca của Trường Kinh tế, Đại học Cần Thơ, cùng PGS.TS. Phan Anh Tú.</span><span class="lang-en">Bilingual karaoke for the anthem of the School of Economics, Can Tho University, with Assoc. Prof. Dr. Phan Anh Tú.</span><span class="lang-fr">Karaoké bilingue de l'hymne de l'École d'économie, Université de Cần Thơ, avec Phan Anh Tú.</span></p>
+        <p class="dc">wct.jemappellehuong.com · <a href="https://doi.org/10.5281/zenodo.22080060" target="_blank" rel="noopener">DOI 10.5281/zenodo.22080060</a></p>
+        <div class="nut"><a class="mo-web" href="https://wct.jemappellehuong.com/" target="_blank" rel="noopener"><span class="lang-vi">Mở bản web</span><span class="lang-en">Open on the web</span><span class="lang-fr">Ouvrir sur le web</span> ↗</a><span class="nhan"><span class="lang-vi">Chỉ bản web</span><span class="lang-en">Web only</span><span class="lang-fr">Web uniquement</span></span></div>
+      </li>
+    </ul>
+  </section>
+  <aside class="ghichu">
+    <p><span class="lang-vi">Bản Android của phần lớn ứng dụng là lớp vỏ Trusted Web Activity: nó mở chính trang web của ứng dụng toàn màn hình, nên nội dung luôn khớp bản web. Chansonia là ngoại lệ: nhạc được đóng gói sẵn trong ứng dụng.</span><span class="lang-en">Most Android builds are Trusted Web Activity shells: they open the app's own website full screen, so the content always matches the web version. Chansonia is the exception: its music is packaged inside the app.</span><span class="lang-fr">La plupart des versions Android sont des coquilles Trusted Web Activity : elles ouvrent en plein écran le site de l'application, donc le contenu suit toujours la version web. Chansonia fait exception : sa musique est intégrée à l'application.</span></p>
+    <p><span class="lang-vi">Ứng dụng ghi «đang thử nghiệm kín» chưa mở công khai trên Google Play; bản web thì dùng được ngay, không cần cài.</span><span class="lang-en">Apps marked «closed testing» are not yet public on Google Play; the web version works right away, with nothing to install.</span><span class="lang-fr">Les applications marquées «test fermé» ne sont pas encore publiques sur Google Play ; la version web fonctionne tout de suite, sans installation.</span></p>
+    <p><span class="lang-vi">Mỗi DOI trỏ tới bản lưu trữ trên Zenodo của một trạng thái tác phẩm; bản đang chạy là địa chỉ web.</span><span class="lang-en">Each DOI points to the Zenodo archive of one state of the work; the running version is the web address.</span><span class="lang-fr">Chaque DOI renvoie à l'archive Zenodo d'un état de l'œuvre ; la version en service est l'adresse web.</span></p>
+  </aside>
+</main>
+</div>
+<script>document.getElementById('tg').addEventListener('click',function(){var r=document.documentElement;var c=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('huong_theme',n);}catch(e){}});</script>
+<script>(function(){var r=document.documentElement;var b=document.querySelectorAll(".langtog button[data-lang]");function set(l){r.setAttribute("lang",l);b.forEach(function(x){x.classList.toggle("active",x.getAttribute("data-lang")===l);});try{localStorage.setItem("huong_lang",l);}catch(e){}}b.forEach(function(x){x.addEventListener("click",function(){set(x.getAttribute("data-lang"));});});var s="en";try{s=localStorage.getItem("huong_lang")||"en";}catch(e){}set(s);})();</script>
+<script src="assets/js/music.js" defer></script>
+<script src="assets/js/site-chrome.js" defer></script>
+</body></html>
