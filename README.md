@@ -131,8 +131,8 @@ own repository and is deposited.
 
 | Work | What it does | | |
 |---|---|---|---|
-| **BizOn Bật Nghiệp** | A 3D claymorphism business-simulation game for entrepreneurship education | [site](https://bizonland.com/) · [Play](https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.bizon) | [`zenodo.21592241`](https://doi.org/10.5281/zenodo.21592241) |
-| **EnQuiz** | An offline-first bilingual quiz app for entrepreneurship revision — 300 questions, installable | [site](https://enquiz.bizonland.com/) · [Play](https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.enquiz) | [`zenodo.21850735`](https://doi.org/10.5281/zenodo.21850735) |
+| **BizOn: Business Simulation** | A 3D claymorphism business-simulation game for entrepreneurship education | [site](https://bizonland.com/) · [Play](https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.bizon) | [`zenodo.21592241`](https://doi.org/10.5281/zenodo.21592241) |
+| **EnQuiz: Entrepreneurship** | An offline-first bilingual quiz app for entrepreneurship revision — 300 questions, installable | [site](https://enquiz.bizonland.com/) · [Play](https://play.google.com/store/apps/details?id=io.github.thuyhuongctu.enquiz) | [`zenodo.21850735`](https://doi.org/10.5281/zenodo.21850735) |
 | **ComDraft** | A full teaching package: five lecture decks, three lab workbooks, a 200-question bank, eight subtitled videos and an offline revision app | [site](https://comdraft.jemappellehuong.com/) | [`zenodo.22003676`](https://doi.org/10.5281/zenodo.22003676) |
 | **Vietnamese history games** | Vân Đồn (1149), Bắc Hải Đảo (1780, 2D and 3D), Chợ Nổi (19th century) | [site](https://games.jemappellehuong.com/) | [`zenodo.21850564`](https://doi.org/10.5281/zenodo.21850564) |
 
