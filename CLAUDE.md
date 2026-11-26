@@ -9,7 +9,7 @@ Nhánh chính **không phải `main`** mà là `claude/academic-profile-page-psx
 Nhánh làm việc là `claude/personal-site-bizon-redirect-sxzdbb`; gộp xong thì
 kéo nhánh ấy tiến lên nhánh chính rồi làm tiếp.
 
-## Ba nếp bắt buộc trước khi đẩy
+## Bốn nếp bắt buộc trước khi đẩy
 
 1. **Chạy `python3 scripts/check-site.py`.** Nó canh đúng ba chỗ từng hỏng âm
    thầm — trang vẫn hiện bình thường nên không ai phát hiện:
@@ -25,6 +25,15 @@ kéo nhánh ấy tiến lên nhánh chính rồi làm tiếp.
    sinh lại toàn bộ; dòng chép tay sẽ biến mất ở lần chạy `update-sitemap.yml`
    kế tiếp. Thêm trang mới thì khai trong `PAGE_CONF` rồi chạy
    `python3 scripts/rebuild-sitemap.py --apply`.
+
+4. **Tự chạy `/code-review` trên diff trước khi đẩy** (tác giả dặn 26/11/2026,
+   áp dụng cho mọi kho của chị, không riêng kho này). Soát xong thì sửa những
+   lỗi thật rồi mới đẩy; lỗi nào không chữa thì nói rõ vì sao. Mức `medium` là
+   mặc định; thay đổi nặng — đụng JavaScript, bố cục, hay lõi 3D — thì dùng
+   `high`. Kết quả rỗng `[]` là một kết quả hợp lệ: lượt rà không bịa lỗi cho
+   đủ, nên đừng ép nó nặn ra việc. Thay đổi vặt thuần chữ hay siêu dữ liệu một
+   dòng (ví dụ chỉ nâng số đệm) thì bỏ qua bước này — nó tốn token thật, dành
+   cho thay đổi có mã hoặc có logic.
 
 ## Xem thử tại chỗ
 
